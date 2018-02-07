@@ -1,0 +1,70 @@
+<behavior>
+  <teamName>Gather01</teamName>
+  <unit name="WarHeavy">
+  </unit>
+  <unit name="WarEngineer">
+  </unit>
+  <unit name="WarBase">
+    <SelectWarExplorer />
+    <Task>
+      <parameters>
+        <ReceivedMessage additionalText="where-are-you" />
+      </parameters>
+      <actions>
+        <SendMessage additionalText="@to-senders-of[where-are-you] here" />
+      </actions>
+    </Task>
+    <Task>
+      <parameters>
+        <CanCreate />
+      </parameters>
+      <actions>
+        <CreateUnit />
+      </actions>
+    </Task>
+  </unit>
+  <unit name="WarExplorer">
+    <Task>
+      <parameters>
+        <Full />
+        <NearAllieeBases />
+      </parameters>
+      <actions>
+        <TargetNearABase />
+        <Give />
+        <Turn />
+        <Walk />
+      </actions>
+    </Task>
+    <Task>
+      <parameters>
+        <Full />
+      </parameters>
+      <actions>
+        <SendMessage additionalText="@to-bases where-are-you" />
+      </actions>
+    </Task>
+    <Task>
+      <parameters>
+        <ReceivedMessage additionalText="here" />
+      </parameters>
+      <actions>
+        <TargetNearestMessage additionalText="here" />
+        <Turn />
+        <Walk />
+      </actions>
+    </Task>
+    <Task>
+      <parameters>
+        <NotFull />
+        <NearRessources />
+      </parameters>
+      <actions>
+        <TargetNearestRessource />
+        <Turn />
+        <Walk />
+      </actions>
+    </Task>
+    <Walk />
+  </unit>
+</behavior>

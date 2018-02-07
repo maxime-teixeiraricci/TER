@@ -1,0 +1,92 @@
+<behavior>
+  <teamName>Simple02</teamName>
+  <unit name="WarExplorer">
+    <Heal />
+    <Task>
+      <parameters>
+        <NearAlliees />
+        <NotEmpty />
+      </parameters>
+      <actions>
+        <TargetNearestAlliee />
+        <Give />
+        <Turn />
+        <Walk />
+      </actions>
+    </Task>
+    <Task>
+      <parameters>
+        <NotFull />
+        <NearRessources />
+      </parameters>
+      <actions>
+        <TargetNearestRessource />
+        <Turn />
+        <Walk />
+      </actions>
+    </Task>
+    <Walk />
+  </unit>
+  <unit name="WarBase">
+    <Heal />
+    <SelectRandomUnit />
+    <Task>
+      <parameters>
+        <CanCreate />
+      </parameters>
+      <actions>
+        <CreateUnit />
+      </actions>
+    </Task>
+  </unit>
+  <unit name="WarHeavy">
+    <Heal />
+    <Task>
+      <parameters>
+        <Reloaded />
+        <NearEnemies />
+      </parameters>
+      <actions>
+        <TargetNearestEnemy />
+        <Aim />
+        <Shoot />
+      </actions>
+    </Task>
+    <Walk />
+  </unit>
+  <unit name="WarTurret">
+    <Heal />
+    <Task>
+      <parameters>
+        <Reloaded />
+        <NearEnemies />
+      </parameters>
+      <actions>
+        <TargetNearestEnemy />
+        <Aim />
+        <Shoot />
+      </actions>
+    </Task>
+  </unit>
+  <unit name="WarEngineer">
+    <Heal />
+    <SelectWarTurret />
+    <Task>
+      <parameters>
+        <NearAllieeBases />
+      </parameters>
+      <actions>
+        <Walk />
+      </actions>
+    </Task>
+    <Task>
+      <parameters>
+        <CanCreate />
+      </parameters>
+      <actions>
+        <CreateUnit />
+      </actions>
+    </Task>
+    <Walk />
+  </unit>
+</behavior>

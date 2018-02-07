@@ -1,0 +1,76 @@
+<behavior>
+  <teamName>TestCollect</teamName>
+  <unit name="WarEngineer">
+    <Walk />
+  </unit>
+  <unit name="WarBase">
+    <SelectWarExplorer />
+    <Task>
+      <parameters>
+        <ReceivedMessage additionalText="Sac plein" />
+      </parameters>
+      <actions>
+        <SendMessage additionalText="@to-senders-of[Sac plein] Vide ton sac ici" />
+      </actions>
+    </Task>
+    <Task>
+      <parameters>
+        <CanCreate />
+      </parameters>
+      <actions>
+        <CreateUnit />
+      </actions>
+    </Task>
+  </unit>
+  <unit name="WarExplorer">
+    <Task>
+      <parameters>
+        <Full />
+      </parameters>
+      <actions>
+        <SendMessage additionalText="@to-bases Sac plein" />
+      </actions>
+    </Task>
+    <Task>
+      <parameters>
+        <NearAllieeBases />
+        <NotEmpty />
+        <CanGive />
+      </parameters>
+      <actions>
+        <TargetNearABase />
+        <Turn />
+        <Give />
+      </actions>
+    </Task>
+    <Task>
+      <parameters>
+        <Full />
+        <ReceivedMessage additionalText="Vide ton sac ici" />
+      </parameters>
+      <actions>
+        <TargetNearestMessage additionalText="Vide ton sac ici" />
+        <Turn />
+      </actions>
+    </Task>
+    <Task>
+      <parameters>
+        <NearRessources />
+        <NotFull />
+      </parameters>
+      <actions>
+        <TargetNearestRessource />
+        <Turn />
+        <SendMessage additionalText="@to-explorers Bouffe ici" />
+      </actions>
+    </Task>
+    <Task>
+      <parameters>
+        <ReceivedMessage additionalText="Bouffe ici" />
+        <NotFull />
+      </parameters>
+      <actions />
+    </Task>
+    <Walk />
+  </unit>
+</behavior>

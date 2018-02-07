@@ -24,7 +24,8 @@ namespace WarBotEngine.Managers
         /// <summary>
         /// Actual properties
         /// </summary>
-        public static PropertiesManager Actual {
+        public static PropertiesManager Actual
+        {
             get
             {
                 if (actual != null)
@@ -481,7 +482,7 @@ namespace WarBotEngine.Managers
         public void AssignProperties(bool return_on_throw = false)
         {
             Dictionary<string, PropertyElement> elems = new Dictionary<string, PropertyElement>();
-            
+
             ////// UNITS //////
 
             //WarBase
@@ -530,7 +531,7 @@ namespace WarBotEngine.Managers
                 if (e == null || !e.IsNumber)
                     goto yml_error;
             }
-            
+
             ////// UNITS //////
 
             //WarBase
@@ -590,36 +591,36 @@ namespace WarBotEngine.Managers
 
 Units:
     WarBase:
-        MaxHealth: 300
-        MaxInventory: 200
-        PerceptionRadius: 120
-        SpawnDelay: 1.5
+        MaxHealth: 1000
+        MaxInventory: 500
+        PerceptionRadius: 100
+        SpawnDelay: 1.
     WarTurret:
-        MaxHealth: 30
-        MaxInventory: 20
-        PerceptionRadius: 70
+        MaxHealth: 200
+        MaxInventory: 40
+        PerceptionRadius: 90
         ReloadTime: 0.1
-        Cost: 20
+        Cost: 100
     WarExplorer:
-        MaxHealth: 45
+        MaxHealth: 200
         MaxInventory: 100
         PerceptionRadius: 80
         Speed: 65
-        Cost: 10
+        Cost: 20
     WarEngineer:
-        MaxHealth: 80
+        MaxHealth: 200
         MaxInventory: 100
-        PerceptionRadius: 50
-        Speed: 30
+        PerceptionRadius: 40
+        Speed: 50
         SpawnDelay: 4.0
-        Cost: 15
+        Cost: 100
     WarHeavy:
-        MaxHealth: 100
-        MaxInventory: 50
-        PerceptionRadius: 85
-        Speed: 55
+        MaxHealth: 160
+        MaxInventory: 40
+        PerceptionRadius: 70
+        Speed: 45
         ReloadTime: 1.0
-        Cost: 30
+        Cost: 50
 Ressources:
     HealCost: 30
     HealValue: 20

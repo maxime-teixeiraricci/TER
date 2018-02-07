@@ -1,0 +1,159 @@
+<behavior>
+  <teamName>#YoloArmy</teamName>
+  <unit name="WarBase">
+    <If>
+      <parameters>
+        <ReceivedMessage additionalText="Cree heavy" />
+      </parameters>
+      <actions>
+        <SelectWarHeavy />
+      </actions>
+      <elseActions>
+        <SelectWarExplorer />
+      </elseActions>
+    </If>
+    <Task>
+      <parameters>
+        <ReceivedMessage additionalText="Sac plein" />
+      </parameters>
+      <actions>
+        <SendMessage additionalText="@to-senders-of[Sac plein] Vide ici" />
+      </actions>
+    </Task>
+    <Task>
+      <parameters>
+        <CanCreate />
+      </parameters>
+      <actions>
+        <CreateUnit />
+      </actions>
+    </Task>
+  </unit>
+  <unit name="WarExplorer">
+    <Task>
+      <parameters>
+        <NotEmpty />
+        <NearAllieeBases />
+      </parameters>
+      <actions>
+        <TargetNearABase />
+        <Turn />
+        <Give />
+        <Walk />
+      </actions>
+    </Task>
+    <Task>
+      <parameters>
+        <Empty />
+        <NearAllieeBases />
+      </parameters>
+      <actions>
+        <SendMessage additionalText="@to-bases Cree heavy" />
+      </actions>
+    </Task>
+    <Task>
+      <parameters>
+        <Full />
+      </parameters>
+      <actions>
+        <SendMessage additionalText="@to-bases Sac plein" />
+      </actions>
+    </Task>
+    <Task>
+      <parameters>
+        <Full />
+        <ReceivedMessage additionalText="Vide ici" />
+      </parameters>
+      <actions>
+        <TargetNearestMessage additionalText="Vide ici" />
+        <Turn />
+      </actions>
+    </Task>
+    <Task>
+      <parameters>
+        <NotFull />
+        <ReceivedMessage additionalText="Bouffe ici" />
+      </parameters>
+      <actions>
+        <TargetNearestMessage additionalText="Bouffe ici" />
+        <Turn />
+      </actions>
+    </Task>
+    <Task>
+      <parameters>
+        <NotFull />
+        <NearRessources />
+      </parameters>
+      <actions>
+        <TargetNearestRessource />
+        <Turn />
+        <SendMessage additionalText="@to-explorers Bouffe ici" />
+      </actions>
+    </Task>
+    <Task>
+      <parameters>
+        <NearEnemyBases />
+      </parameters>
+      <actions>
+        <SendMessage additionalText="@to-heavies Base ennemi" />
+        <TargetNearEBase />
+        <Turn />
+        <HalfTurn />
+      </actions>
+    </Task>
+    <Walk />
+  </unit>
+  <unit name="WarHeavy">
+    <TargetNearABase />
+    <Task>
+      <parameters>
+        <NotEmpty />
+        <CanGive />
+      </parameters>
+      <actions>
+        <Turn />
+        <Give />
+      </actions>
+    </Task>
+    <Task>
+      <parameters>
+        <NotEmpty />
+      </parameters>
+      <actions>
+        <Heal />
+      </actions>
+    </Task>
+    <Task>
+      <parameters>
+        <ReceivedMessage additionalText="Base ennemi" />
+      </parameters>
+      <actions>
+        <TargetNearestMsgContent additionalText="Base ennemi" />
+        <Turn />
+      </actions>
+    </Task>
+    <Task>
+      <parameters>
+        <NearEnemyBases />
+      </parameters>
+      <actions>
+        <SendMessage additionalText="@to-heavies Base ennemi" />
+        <TargetNearEBase />
+        <Aim />
+        <Shoot />
+        <Walk />
+      </actions>
+    </Task>
+    <Task>
+      <parameters>
+        <NearEnemies />
+      </parameters>
+      <actions>
+        <TargetNearestEnemy />
+        <Aim />
+        <Shoot />
+      </actions>
+    </Task>
+    <Walk />
+  </unit>
+</behavior>

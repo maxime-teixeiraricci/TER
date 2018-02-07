@@ -1,0 +1,36 @@
+<behavior>
+  <teamName>Simple01</teamName>
+  <unit name="WarExplorer">
+    <Task>
+      <parameters>
+        <NotFull />
+        <NearRessources />
+      </parameters>
+      <actions>
+        <TargetNearestRessource />
+        <Turn />
+        <Walk />
+      </actions>
+    </Task>
+    <Walk />
+  </unit>
+  <unit name="WarHeavy">
+    <Task>
+      <parameters>
+        <Reloaded />
+        <NearEnemies />
+      </parameters>
+      <actions>
+        <TargetNearestEnemy />
+        <Aim />
+        <Shoot />
+      </actions>
+    </Task>
+    <Walk />
+  </unit>
+  <unit name="WarEngineer">
+    <Walk />
+  </unit>
+  <unit name="WarBase">
+  </unit>
+</behavior>

@@ -108,7 +108,6 @@ namespace WarBotEngine.WarBots
         /// </summary>
         public void Init()
         {
-            this.current_inventory = this.max_inventory / 2;
         }
 
         /// <summary>
