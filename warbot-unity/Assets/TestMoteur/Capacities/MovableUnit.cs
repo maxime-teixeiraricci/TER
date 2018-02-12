@@ -1,18 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
+[RequireComponent(typeof(NavMeshAgent))]
 public class MovableUnit : AbstractUnit, IMoveCapacities, IAliveCapacities
 {
     
     public double GetAngle()
     {
-        super.GetAngle();
+        throw new System.NotImplementedException();
     }
 
     public double getHealth()
     {
-        throw new System.NotImplementedException();
+        return base.health;
     }
 
     public int getID()
