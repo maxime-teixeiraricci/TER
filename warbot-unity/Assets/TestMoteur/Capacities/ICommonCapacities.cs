@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface ICommonCapacities : AbstractCapacities
+public interface ICommonCapacities : IAbstractCapacities
 {
-    // 
+   
+
     double GetAngle();
     void setAngle();
     int getID();
+
 	
 }

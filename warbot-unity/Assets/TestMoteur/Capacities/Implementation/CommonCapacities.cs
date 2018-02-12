@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CommonCapacities : ICommonCapacities{
+public class CommonCapacities :  ICommonCapacities{
+
+    public AbstractUnit unit;
+
     public double GetAngle()
     {
         throw new System.NotImplementedException();

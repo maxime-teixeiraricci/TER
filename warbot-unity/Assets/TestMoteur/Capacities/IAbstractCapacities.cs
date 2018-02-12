@@ -2,6 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface AbstractCapacities {
+public interface IAbstractCapacities {
     
 }
