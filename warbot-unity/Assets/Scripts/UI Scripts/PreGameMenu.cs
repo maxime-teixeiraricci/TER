@@ -58,7 +58,7 @@ namespace WarBotEngine.UI {
         void Start() {
             DontDestroyOnLoad(initializer); 
 
-            xmlInterpreter = new XMLInterpreter();
+            xmlInterpreter = new XMLWarbotInterpreter();
 
             string path = Constants.teamsDirectory;
             List<string> teams = xmlInterpreter.allTeamsInXmlFiles(path);

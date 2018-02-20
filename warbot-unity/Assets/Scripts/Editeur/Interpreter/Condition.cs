@@ -19,64 +19,85 @@ namespace WarBotEngine.Editeur
 	 **/
 	public class Condition : Instruction
 	{
-		/// <summary>
-		/// The condition.
-		/// </summary>
-        private string condition;
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="WarBotEngine.Editeur.Condition"/> class.
-		/// </summary>
-		/// <param name="c">C.</param>
-        public Condition(string c)
+        private string condition;
+        private bool neg; 
+	
+        public Condition(string c,bool b)
         {
             condition = c;
+            neg = b;
         }
 
-		/// <summary>
-		/// Calls the unit corresponding method
-		/// </summary>
-		/// <param name="u">U.</param>
+		/**
+         * Parametres : Unit
+         * Appelle la methode correspondante sur l'unite
+         * Renvoie true si appel réussi , false sinon
+         **/
         public override bool execute(Unit u)
         {
             if (needTextInput())
                 u.Message = this.AddText;
-            return u.GetCondition(condition).Invoke();
+
+            if (neg)
+              return !u.GetCondition(condition).Invoke();
+            else
+              return u.GetCondition(condition).Invoke();
         }
-        
+
+        /**
+         * Retour : String , type de condition
+         **/
         public override string Type()
         {
             return condition;
         }
 
-		public override string Description ()
+        /**
+         * Retour : string Description de la condition, utile pour l'affichage
+         **/
+        public override string Description ()
 		{
 			return Unit.GetDescription (condition);
 		}
 
+        /**
+        * Retour : Renvoie la structure XML de la condition pour le stockage (noeud XML)
+        **/
         public override XmlNode xmlStructure()
         {
-            XmlDocument doc = new XmlDocument();
+            XmlDocument l_doc = new XmlDocument();
 
-			XmlNode node = doc.CreateElement(this.Type());
+			XmlNode l_node = l_doc.CreateElement(this.Type());
 
 			if (this.needTextInput () && this.AddText.Length > 0) 
 			{
-				XmlAttribute addText = doc.CreateAttribute(TEXT_ATTRIBUTE_NAME);
-				addText.Value = this.AddText;
-				node.Attributes.Append(addText);
+                XmlAttribute l_addText;
+                if (neg)
+                    l_addText = l_doc.CreateAttribute(TEXT_ATTRIBUTE_NAME + "!");
+                else
+                    l_addText = l_doc.CreateAttribute(TEXT_ATTRIBUTE_NAME);
+				l_addText.Value = this.AddText;
+				l_node.Attributes.Append(l_addText);
 			}
 
-            return node;
+            return l_node;
         }
 
+        /**
+        * Clone la condition et la renvoie
+        **/
         public override Instruction Clone()
         {
-			Condition c = new Condition (condition);
+			Condition c = new Condition (condition,neg);
 			c.AddText = this.AddText;
             return c;
         }
 
+        /**
+         * Verifie si la condition a besoin d'un message
+         * Renvoie true si besoin d'un message, false sinon
+         **/
 		public override bool needTextInput ()
 		{
 			return Unit.NeedMessage(this.condition);

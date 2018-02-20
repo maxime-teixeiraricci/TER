@@ -121,7 +121,7 @@ namespace WarBotEngine.WarBots
             if (team_id != 1 && team_id != 2)
                 return false;
 
-            Editeur.XMLInterpreter interpreter = new Editeur.XMLInterpreter();
+            Editeur.XMLWarbotInterpreter interpreter = new Editeur.XMLWarbotInterpreter();
             string filename = interpreter.whichFileName(name, Editeur.Constants.teamsDirectory);
             if (filename == "")
                 return false;

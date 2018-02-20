@@ -88,12 +88,12 @@ namespace WarBotEngine.Editeur
 			Control.Add (new If());
 
 //			Debug.Log ("Lecture des Conditions");
-			// Dynamically retrieve the condition list
+			// Dynamically retrieve the scondition list
 			List<Instruction> Condition = new List<Instruction> ();
 			foreach (string s in Unit.GetConditions (unitName)) 
 			{
 //				Debug.Log (s);
-				Condition.Add (new Condition (s));
+				Condition.Add (new Condition (s,false));
 			}
 				
 //			Debug.Log ("Lecture des Actions");

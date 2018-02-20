@@ -14,7 +14,7 @@ namespace WarBotEngine.Editeur {
         /// </summary>
         /// <param name="teamName">The name of the new team.</param>
         public static void CreateNewTeam(string teamName) {
-            XMLInterpreter xml = new XMLInterpreter();
+            XMLWarbotInterpreter xml = new XMLWarbotInterpreter();
             xml.generateEmptyFile(teamName, Constants.teamsDirectory);
             MainLayout.Actual.Team_selection.Reload();
             MainLayout.Actual.Team_selection.Team_selector.Selection = teamName;

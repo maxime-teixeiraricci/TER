@@ -68,7 +68,7 @@ namespace WarBotEngine.Editeur
 			this.RemoveAllChilds ();
             cancel_stack = new Stack<List<Instruction>>();
 
-            XMLInterpreter interpreter = new XMLInterpreter();
+            XMLWarbotInterpreter interpreter = new XMLWarbotInterpreter();
 			List<Instruction> instructions = interpreter.xmlToUnitBehavior(teamName, Constants.teamsDirectory, unitName);
             this.Set(instructions);
 		}
@@ -114,7 +114,7 @@ namespace WarBotEngine.Editeur
 
             if (teamName != "")
             {
-                XMLInterpreter interpreter = new XMLInterpreter();
+                XMLWarbotInterpreter interpreter = new XMLWarbotInterpreter();
                 List<Instruction> instructions = interpreter.xmlToUnitBehavior(teamName, Constants.teamsDirectory, unitName);
                 this.Set(instructions);
                 cancel_stack = new Stack<List<Instruction>>();
@@ -171,7 +171,7 @@ namespace WarBotEngine.Editeur
 		public void Save(bool push_cancel = true)
 		{
 			Maj ();
-			XMLInterpreter interpreter = new XMLInterpreter ();
+            XMLWarbotInterpreter interpreter = new XMLWarbotInterpreter();
 			List<Instruction> instructions = this.behavior ();
             interpreter.behaviorToXml (MainLayout.Actual.Team_selection.Team_selector.Selection, 
 				Constants.teamsDirectory, MainLayout.Actual.Team_selection.Unit_selector.Selection, instructions);

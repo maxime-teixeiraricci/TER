@@ -16,31 +16,35 @@ namespace WarBotEngine.Editeur
 	 **/
 	public abstract class Control : Instruction
 	{
-		/// <summary>
-		/// The name of the node for the parameters in the xml.
-		/// </summary>
+		/**
+         * Nom du noeud des parametres dans le fichier xml
+         **/
 		public static readonly string PARAM_NODE_NAME = "parameters";
 
-		/// <summary>
-		/// The name of the node for the action in the xml.
-		/// </summary>
-		public static readonly string ACTION_NODE_NAME = "actions";
+        /**
+         * Nom du noeud des actions dans le fichier xml
+         **/
+        public static readonly string ACTION_NODE_NAME = "actions";
 
-		/// <summary>
-		/// conditions to check
-		/// </summary>
+	    /**
+         * Liste des conditions a verifier
+         **/
 		protected List<Condition> conditions;
 
-        /// <summary>
-        /// actions to execute
-        /// </summary>
+        /**
+         * Liste des actions a executer
+         **/
         protected List<Instruction> actions; 
 
-		// Getters
+		/**
+         * Getters
+         **/
 		public List<Condition> getConditions() { return conditions; }
 		public List<Instruction> getActions() { return actions; }
 
-        // Setters
+        /**
+         * Setters
+         **/
         public void setConditions(List<Condition> c) { conditions = c; }
 		public void setActions(List<Instruction> a) 
 		{ 
@@ -51,10 +55,18 @@ namespace WarBotEngine.Editeur
 					actions.Add(i); 
 			}
 		}
+
+        /**
+         * Ajouts dans les conditons
+         **/
         public void addCondition(Condition c) { conditions.Add(c); }
 		public void addAction(Instruction a) { if(a is Action || a is If) actions.Add(a); }
 
-		public override bool needTextInput ()
+        /**
+         * Verifie si a structure de controle a besoin d'un message
+         * Renvoie true si besoin d'un message, false sinon
+         **/
+        public override bool needTextInput ()
 		{
 			return false;
 		}

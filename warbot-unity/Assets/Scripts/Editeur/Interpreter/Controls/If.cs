@@ -24,6 +24,9 @@ namespace WarBotEngine.Editeur
 	{
 		public static readonly string ELSE_NODE_NAME = "elseActions";
 
+        /**
+         * Liste des actions dans le cas du "Else"
+         **/
 		private List<Instruction> elseActions;
 		
 		public If()
@@ -40,6 +43,9 @@ namespace WarBotEngine.Editeur
 			setElseActions (ea);
 		}
 
+        /**
+         * Recupere les actions du cas "Else"
+         **/
 		public List<Instruction> getElseActions()
 		{
 			return this.elseActions;
@@ -56,38 +62,41 @@ namespace WarBotEngine.Editeur
 		}
 
 		/**
-		 * Returns True if conditions are true, false otherwise. 
+		 * Fais executer les conditions a l'unité,
+         * Renvoie vrai si les conditions sont toutes OK (cas d'un "and") faux sinon
+         * Si c'est bon , executer les actions
 		 */
 		public override bool execute(Unit u)
 		{
-			bool conditionIsTrue = true;
+			bool l_conditionIsTrue = true;
 
-			foreach (Condition c in getConditions()) // check if all conditions are true, breaks if at least one is false
+			foreach (Condition c in getConditions()) 
 			{
 				if (!c.execute(u))
 				{
-					conditionIsTrue = false;
+					l_conditionIsTrue = false;
 					break;
 				}
 			}
 
-			if (conditionIsTrue) { // if all conditions are true, execute all actions
-				foreach (Action a in getActions()) {
-					if (a.execute (u)) {
+			if (l_conditionIsTrue)
+            {
+				foreach (Action a in getActions())
+                {
+					if (a.execute (u))
 						return true;
-					}
 				}
 			}
 			else 
 			{
-				foreach (Action a in getElseActions()) {
-					if (a.execute (u)) {
+				foreach (Action a in getElseActions())
+                {
+					if (a.execute (u))
 						return true;
-					}
 				}
 			}
 
-			return false; // tells if it's a terminal action
+			return false;
 		}
 
 		public override string Description ()
@@ -96,7 +105,7 @@ namespace WarBotEngine.Editeur
 		}
 
 		/**
-         * Returns the IfThenElse xml structure
+         * Renvoie la structure XML du if/then/else
          * <IfThenElse>
          *  <parameters>
          *      <condition></condition>
@@ -112,39 +121,39 @@ namespace WarBotEngine.Editeur
          */
 		public override XmlNode xmlStructure()
 		{
-			XmlDocument doc = new XmlDocument();
-			XmlNode ifNode = doc.CreateElement(this.Type());
+			XmlDocument l_doc = new XmlDocument();
+			XmlNode l_ifNode = l_doc.CreateElement(this.Type());
 
-			XmlNode paramNode = doc.CreateElement(Control.PARAM_NODE_NAME);
-			if(getConditions().Count > 0) {
+			XmlNode l_paramNode = l_doc.CreateElement(Control.PARAM_NODE_NAME);
+			if(getConditions().Count > 0)
+            {
 				foreach(Condition c in getConditions())
-				{
-					paramNode.AppendChild(doc.ImportNode(c.xmlStructure(), true));
-				}
+					l_paramNode.AppendChild(l_doc.ImportNode(c.xmlStructure(), true));
 			}
-			ifNode.AppendChild(paramNode);
 
-			XmlNode actNode = doc.CreateElement(Control.ACTION_NODE_NAME);
+			l_ifNode.AppendChild(l_paramNode);
+
+			XmlNode l_actNode = l_doc.CreateElement(Control.ACTION_NODE_NAME);
 			if (getActions().Count > 0) {
 				foreach (Action a in getActions())
-				{
-					actNode.AppendChild(doc.ImportNode(a.xmlStructure(), true));
-				}
+					l_actNode.AppendChild(l_doc.ImportNode(a.xmlStructure(), true));
 			}
-			ifNode.AppendChild(actNode);
 
-			XmlNode elseActNode = doc.CreateElement(ELSE_NODE_NAME);
+			l_ifNode.AppendChild(l_actNode);
+
+			XmlNode l_elseActNode = l_doc.CreateElement(ELSE_NODE_NAME);
 			if (getElseActions().Count > 0) {
 				foreach (Action a in getElseActions())
-				{
-					elseActNode.AppendChild(doc.ImportNode(a.xmlStructure(), true));
-				}
+					l_elseActNode.AppendChild(l_doc.ImportNode(a.xmlStructure(), true));
 			}
-			ifNode.AppendChild(elseActNode);
+			l_ifNode.AppendChild(l_elseActNode);
 
-			return ifNode;
+			return l_ifNode;
 		}
 
+        /**
+         * Clone l'instance 
+         **/
         public override Instruction Clone()
         {
             If res = new If();

@@ -13,7 +13,7 @@ namespace Assets.Scripts.Editeur.Interpreter
             /*A REECRIRE*/
             string teamName = "DoudouLaMalice";
             string unitName = "explorer";
-            XMLInterpreter interpreter = new XMLInterpreter();
+            XMLWarbotInterpreter interpreter = new XMLWarbotInterpreter();
             
             List<Instruction> behavior = new List<Instruction>();
             /** Ecriture d'un fichier xml **/

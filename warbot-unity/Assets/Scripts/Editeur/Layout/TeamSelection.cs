@@ -117,7 +117,7 @@ namespace WarBotEngine.Editeur
             team_selector.DeployOrTuck += OnDeployOrTuck;
             unit_selector.SelectItem += OnSelectItem;
 
-            XMLInterpreter interpreter = new XMLInterpreter();
+            XMLWarbotInterpreter interpreter = new XMLWarbotInterpreter();
 
             // A SUPPRIMER
             team_selector.Elements = interpreter.allTeamsInXmlFiles(Constants.teamsDirectory).ToArray();
@@ -136,7 +136,7 @@ namespace WarBotEngine.Editeur
 		/// </summary>
         public void Reload()
         {
-            XMLInterpreter interpreter = new XMLInterpreter();
+            XMLWarbotInterpreter interpreter = new XMLWarbotInterpreter();
             
             team_selector.Elements = interpreter.allTeamsInXmlFiles(Constants.teamsDirectory).ToArray();
 

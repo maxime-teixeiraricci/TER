@@ -32,34 +32,34 @@ namespace WarBotEngine.Editeur
 			setActions(a);
 		}
 
-		/**
-		 * Returns True if conditions are true, false otherwise. 
+        /**
+		 * Fais executer les conditions a l'unité,
+         * Renvoie vrai si les conditions sont toutes OK (cas d'un "and") faux sinon
+         * Si c'est bon , executer les actions
 		 */
-		public override bool execute(Unit u)
+        public override bool execute(Unit u)
 		{
-			bool conditionIsTrue = true;
+			bool l_conditionIsTrue = true;
 
-			foreach (Condition c in getConditions()) // check if all conditions are true, breaks if at least one is false
+			foreach (Condition c in getConditions()) 
 			{
 				if (!c.execute(u))
 				{
-					conditionIsTrue = false;
+					l_conditionIsTrue = false;
 					break;
 				}
 			}
 
-			if (conditionIsTrue) // if all conditions are true, execute all actions
+			if (l_conditionIsTrue) 
 			{
 				foreach (Action a in getActions())
 				{
 					if (a.execute (u)) 
-					{
 						return true;
-					}
 				}
 			}
 
-			return false; // tells if the when control has been executed or not
+			return false; 
 		}
 
 		public override string Description ()
@@ -68,7 +68,7 @@ namespace WarBotEngine.Editeur
 		}
 
         /**
-         * Returns the when xml structure
+         * Renvoie la structure XML du if
          * <when>
          *  <parameter>
          *      <condition></condition>
@@ -81,38 +81,40 @@ namespace WarBotEngine.Editeur
          */
         public override XmlNode xmlStructure()
         {
-            XmlDocument doc = new XmlDocument();
-			XmlNode whenNode = doc.CreateElement(this.Type());
+            XmlDocument l_doc = new XmlDocument();
+			XmlNode l_whenNode = l_doc.CreateElement(this.Type());
 
-			XmlNode paramNode = doc.CreateElement(Control.PARAM_NODE_NAME);
-            if(getConditions().Count > 0) {
+			XmlNode paramNode = l_doc.CreateElement(Control.PARAM_NODE_NAME);
+            if(getConditions().Count > 0)
+            {
                 foreach(Condition c in getConditions())
-                {
-                    paramNode.AppendChild(doc.ImportNode(c.xmlStructure(), true));
-                }
+                    paramNode.AppendChild(l_doc.ImportNode(c.xmlStructure(), true));
 			}
-			whenNode.AppendChild(paramNode);
 
-			XmlNode actNode = doc.CreateElement(Control.ACTION_NODE_NAME);
-            if (getActions().Count > 0) {
+			l_whenNode.AppendChild(paramNode);
+
+			XmlNode actNode = l_doc.CreateElement(Control.ACTION_NODE_NAME);
+            if (getActions().Count > 0)
+            {
 				foreach (Instruction a in getActions())
-                {
-                    actNode.AppendChild(doc.ImportNode(a.xmlStructure(), true));
-                }
+                    actNode.AppendChild(l_doc.ImportNode(a.xmlStructure(), true));
 			}
-			whenNode.AppendChild(actNode);
+			l_whenNode.AppendChild(actNode);
 
-            return whenNode;
+            return l_whenNode;
         }
 
+        /**
+         * Clone l'instance 
+         **/
         public override Instruction Clone()
         {
-            Task res = new Task();
+            Task l_res = new Task();
             foreach (Condition cond in this.conditions)
-                res.conditions.Add((Condition)cond.Clone());
+                l_res.conditions.Add((Condition)cond.Clone());
             foreach (Instruction ins in this.actions)
-                res.actions.Add(ins.Clone());
-            return res;
+                l_res.actions.Add(ins.Clone());
+            return l_res;
         }
     }
 }

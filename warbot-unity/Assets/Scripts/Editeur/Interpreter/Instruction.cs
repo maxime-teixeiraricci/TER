@@ -14,70 +14,67 @@ namespace WarBotEngine.Editeur
 	 **/
 	public abstract class Instruction
     {
-		/// <summary>
-		/// The name of the attribute containing the additionalText in xml.
-		/// </summary>
+		/**
+         * Nom de l'attribut contenant le texte additionel dans le fichier XML
+		**/
 		public static readonly string TEXT_ATTRIBUTE_NAME = "additionalText";
 
-		/// <summary>
-		/// The additional text.
-		/// </summary>
-		private string additionalText = "";
+        /**
+         * Le texte additionel lui meme
+		**/
+        private string additionalText = "";
 
         /***********/
         /* METHODS */
         /***********/
 
-		/// <summary>
-		/// Gets or sets the add text.
-		/// </summary>
-		/// <value>The add text.</value>
+		/**
+         * Getter et setters sur le texte additionel
+         **/
 		public string AddText{
-			get{ return this.additionalText;} 
+			get{return this.additionalText;} 
 			set{ 
-				if (needTextInput()) {
+				if (needTextInput())
 					this.additionalText = value;	
-				}
 			}
 		}
 
-        /// <summary>
-		/// Calls the unit corresponding method
-        /// </summary>
-        /// <param name="u">U.</param>
+        /**
+         * Parametres : Unit sur laquelle va etre execute l'instruction
+         * Retour : Boolean, true si l'unite a effectue l'instruction, false sinon
+         **/
         public abstract bool execute(Unit u);
 
-        /// <summary>
-		/// Returns the instruction xml structure
-        /// </summary>
-        /// <returns>The structure.</returns>
+        /**
+        * Retour : Renvoie la structure XML de l'instruction pour le stockage (noeud XML)
+        **/
         public abstract XmlNode xmlStructure();
 
-		/// <summary>
-		/// Return the name of the instruction
-		/// </summary>
-		public virtual string Type()
+        /**
+         * Retour : String , type de l'instruction
+         **/
+        public virtual string Type()
 		{
 			return this.GetType ().Name;
 		}
 
-		/// <summary>
-		/// Return the description of this instruction
-		/// </summary>
-		public virtual string Description()
+        /**
+         * Retour : string Description de l'instruction, utile pour l'affichage
+         **/
+        public virtual string Description()
 		{
 			return "Instruction";
 		}
 
-		/// <summary>
-		/// Clone this instance.
-		/// </summary>
+        /**
+        * Clone l'instruction et la renvoie
+        **/
         public abstract Instruction Clone();
 
-		/// <summary>
-		/// Tells if the instruction needs a text
-		/// </summary>
-		/// <returns><c>true</c>, if text input was needed, <c>false</c> otherwise.</returns>
-		public abstract bool needTextInput ();
+        /**
+         * Verifie si l'instruction a besoin d'un message
+         * Renvoie true si besoin d'un message, false sinon
+         **/
+        public abstract bool needTextInput ();
     }
 }
