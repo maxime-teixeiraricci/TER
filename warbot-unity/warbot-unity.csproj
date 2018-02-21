@@ -365,6 +365,8 @@
     <Compile Include="Assets\Scripts\UI Scripts\Editeur_UI.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\EscMenu.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\GameSpeed.cs" />
+    <Compile Include="Assets\Scripts\UI Scripts\GUI\PanelCompare.cs" />
+    <Compile Include="Assets\Scripts\UI Scripts\GUI\ReturnButton.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\HealthBar\LineUpCanvasWithCamera.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\HealthBar\ShowGroups.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\HealthBar\ShowHealthBar.cs" />
