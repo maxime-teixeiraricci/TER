@@ -144,7 +144,7 @@ namespace WarBotEngine.Editeur
                             ////////////////////
                             Condition l_c;
                             if (ins.Name.Contains("NEG"))
-                                l_c = new Condition(ins.Name, true);
+                                l_c = new Condition(ins.Name.Remove(ins.Name.Length - 3), true);
                             else
                                 l_c = new Condition(ins.Name, false);
                             foreach (XmlAttribute att in ins.Attributes)
