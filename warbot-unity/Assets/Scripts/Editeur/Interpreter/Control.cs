@@ -27,9 +27,12 @@ namespace WarBotEngine.Editeur
         public static readonly string ACTION_NODE_NAME = "actions";
 
 	    /**
-         * Liste des conditions a verifier
+         * Liste des conditions a verifier semantique "Et"
          **/
 		protected List<Condition> conditions;
+
+        protected Or Ou;
+     
 
         /**
          * Liste des actions a executer
@@ -41,12 +44,14 @@ namespace WarBotEngine.Editeur
          **/
 		public List<Condition> getConditions() { return conditions; }
 		public List<Instruction> getActions() { return actions; }
+        public Or getConditionsOu() { return Ou; }
 
         /**
          * Setters
          **/
         public void setConditions(List<Condition> c) { conditions = c; }
-		public void setActions(List<Instruction> a) 
+        public void setConditionsOu(Or co) { Ou = co;  }
+        public void setActions(List<Instruction> a) 
 		{ 
 			actions = new List<Instruction> ();
 			foreach (Instruction i in a) 
@@ -59,8 +64,10 @@ namespace WarBotEngine.Editeur
         /**
          * Ajouts dans les conditons
          **/
+
         public void addCondition(Condition c) { conditions.Add(c); }
-		public void addAction(Instruction a) { if(a is Action || a is If) actions.Add(a); }
+        public void addConditionOu(Condition c) { Ou.Add(c); }
+        public void addAction(Instruction a) { if(a is Action || a is If) actions.Add(a); }
 
         /**
          * Verifie si a structure de controle a besoin d'un message

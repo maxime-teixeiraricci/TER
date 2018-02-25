@@ -68,6 +68,7 @@
      <Compile Include="Assets\Scripts\Editeur\Interpreter\Controls\Task.cs" />
      <Compile Include="Assets\Scripts\Editeur\Interpreter\Instruction.cs" />
      <Compile Include="Assets\Scripts\Editeur\Interpreter\Main.cs" />
+     <Compile Include="Assets\Scripts\Editeur\Interpreter\Or.cs" />
      <Compile Include="Assets\Scripts\Editeur\Interpreter\TestInterpreter.cs" />
      <Compile Include="Assets\Scripts\Editeur\Interpreter\Unit.cs" />
      <Compile Include="Assets\Scripts\Editeur\Interpreter\XMLInterpreter.cs" />

@@ -43,26 +43,58 @@ namespace WarBotEngine.Editeur
                 if (l_cond != null)
                 {
                     foreach (XmlNode c in l_cond)
-                        l_conditions.Add((Condition)whichInstruction(unitName, c));
+                        if (c.Name.Equals(typeof(Or).Name))
+                            l_conditions.Add((Or)whichInstruction(unitName, c));
+                        else
+                            l_conditions.Add((Condition)whichInstruction(unitName, c));
                 }
                 List<Instruction> l_actions = new List<Instruction>();
                 XmlNode l_act = ins.LastChild;
+                System.Console.WriteLine("l_act : ");
                 if (l_act != null)
                 {
                     foreach (XmlNode a in l_act)
+                    {
+                        System.Console.WriteLine("a : " + a.ToString());
                         l_actions.Add((Instruction)whichInstruction(unitName, a));
+                    }
                 }
 
                 return new Task(l_conditions, l_actions);
             }
             else if (ins.Name.Equals(typeof(If).Name) && ins.ChildNodes.Count == 3)
             {//Cas d'un "If/then/Else"
+                System.Console.WriteLine("if");
                 List<Condition> l_conditions = new List<Condition>();
                 XmlNode l_cond = ins.FirstChild;
+                System.Console.WriteLine("l_cond" + l_cond.ToString());
                 if (l_cond != null)
                 {
                     foreach (XmlNode c in l_cond)
-                        l_conditions.Add((Condition)whichInstruction(unitName, c));
+                    {
+                        System.Console.WriteLine("nom : " + c.Name);
+                        if (c.Name.Equals(typeof(Or).Name))
+                        {
+                            Or o = new Or(null, false);
+                            List<Condition> l_conditions2 = new List<Condition>();
+                            XmlNode l_cond2 = l_cond.FirstChild;
+                            System.Console.WriteLine("l_cond2" + l_cond2.ToString());
+                            if (l_cond2 != null)
+                            {
+                                foreach (XmlNode c2 in l_cond2)
+                                        l_conditions2.Add((Condition)whichInstruction(unitName, c2));
+                            }
+                            Or tmp = new Or(null, false);
+                            foreach (Condition c3 in l_conditions2)
+                            {
+                                tmp.Add(c3);
+                            }
+
+                            l_conditions.Add(tmp);
+                        }
+                        else
+                            l_conditions.Add((Condition)whichInstruction(unitName, c));
+                    }
                 }
                 List<Instruction> l_actions = new List<Instruction>();
                 XmlNode l_act = ins.ChildNodes[1];
@@ -83,38 +115,50 @@ namespace WarBotEngine.Editeur
             }
             else
             {
-                List<string> l_actions = new List<string>(Unit.GetActions(unitName));
-                if (l_actions.Contains(ins.Name))
-                {
-                    Action l_a = new Action(ins.Name);
-                    foreach (XmlAttribute att in ins.Attributes)
+                ///////
+                    List<string> l_actions = new List<string>(Unit.GetActions(unitName));
+                    if (l_actions.Contains(ins.Name))
                     {
-                        if (att.Name == Instruction.TEXT_ATTRIBUTE_NAME)
-                            l_a.AddText = att.Value;
-                    }
-                    return l_a;
-                }
-                else
-                {
-                    List<string> l_conditions = new List<string>(Unit.GetConditions(unitName));
-                    if (l_conditions.Contains(ins.Name))
-                    {
-                        Condition l_c;
-                        if (ins.Name.Contains("!"))
-                            l_c = new Condition(ins.Name,true);
-                        else
-                            l_c = new Condition(ins.Name, false);
+                        Action l_a = new Action(ins.Name);
                         foreach (XmlAttribute att in ins.Attributes)
                         {
                             if (att.Name == Instruction.TEXT_ATTRIBUTE_NAME)
-                                l_c.AddText = att.Value;
+                                l_a.AddText = att.Value;
                         }
-                        return l_c;
+                        return l_a;
+                    }
+                    else
+                    {
+                        string tmp;
+                        if (ins.Name.Contains("NEG"))
+                        {
+                            tmp = ins.Name.Remove(ins.Name.Length - 3);
+                        }
+                        else
+                            tmp = ins.Name;
+
+                        System.Console.WriteLine("tmp : " + tmp);
+                        List<string> l_conditions = new List<string>(Unit.GetConditions(unitName));
+                        if (l_conditions.Contains(tmp))
+                        {
+                            ////////////////////
+                            Condition l_c;
+                            if (ins.Name.Contains("NEG"))
+                                l_c = new Condition(ins.Name, true);
+                            else
+                                l_c = new Condition(ins.Name, false);
+                            foreach (XmlAttribute att in ins.Attributes)
+                            {
+                                if (att.Name == Instruction.TEXT_ATTRIBUTE_NAME)
+                                    l_c.AddText = att.Value;
+                            }
+                            return l_c;
+                        }
                     }
                 }
-            }
-
-            return new Action("Idle");
+            
+            System.Console.WriteLine("pas trouve" + ins.Name + ";");
+            return new Action("Heal");
         }
 
 

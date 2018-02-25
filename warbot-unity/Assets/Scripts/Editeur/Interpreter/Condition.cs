@@ -20,8 +20,8 @@ namespace WarBotEngine.Editeur
 	public class Condition : Instruction
 	{
 
-        private string condition;
-        private bool neg; 
+        protected string condition;
+        protected bool neg; 
 	
         public Condition(string c,bool b)
         {
@@ -40,7 +40,7 @@ namespace WarBotEngine.Editeur
                 u.Message = this.AddText;
 
             if (neg)
-              return !u.GetCondition(condition).Invoke();
+                return !(u.GetCondition(condition).Invoke());
             else
               return u.GetCondition(condition).Invoke();
         }
@@ -50,7 +50,10 @@ namespace WarBotEngine.Editeur
          **/
         public override string Type()
         {
-            return condition;
+            if (!neg)
+                return condition;
+            else
+                return condition + "NEG";
         }
 
         /**
@@ -68,15 +71,13 @@ namespace WarBotEngine.Editeur
         {
             XmlDocument l_doc = new XmlDocument();
 
-			XmlNode l_node = l_doc.CreateElement(this.Type());
+            XmlNode l_node;
+            l_node = l_doc.CreateElement(this.Type());
 
-			if (this.needTextInput () && this.AddText.Length > 0) 
+            if (this.needTextInput () && this.AddText.Length > 0) 
 			{
                 XmlAttribute l_addText;
-                if (neg)
-                    l_addText = l_doc.CreateAttribute(TEXT_ATTRIBUTE_NAME + "!");
-                else
-                    l_addText = l_doc.CreateAttribute(TEXT_ATTRIBUTE_NAME);
+                l_addText = l_doc.CreateAttribute(TEXT_ATTRIBUTE_NAME);
 				l_addText.Value = this.AddText;
 				l_node.Attributes.Append(l_addText);
 			}
@@ -103,5 +104,9 @@ namespace WarBotEngine.Editeur
 			return Unit.NeedMessage(this.condition);
 		}
 
+        public override string ToString()
+        {
+            return condition + " ";
+        }
     }
 }

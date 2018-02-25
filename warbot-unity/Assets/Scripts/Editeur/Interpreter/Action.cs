@@ -89,5 +89,10 @@ namespace WarBotEngine.Editeur
 		{
 			return Unit.NeedMessage(this.action);
 		}
+
+        public override string ToString()
+        {
+            return action + " ";
+        }
     }
 }

@@ -1,0 +1,14 @@
+<behavior>
+  <teamName>DoudouLaMalice</teamName>
+  <unit name="WarExplorer">
+    <Task>
+      <parameters>
+        <EmptyNEG />
+      </parameters>
+      <actions>
+        <Walk />
+      </actions>
+    </Task>
+    <HalfTurn />
+  </unit>
+</behavior>

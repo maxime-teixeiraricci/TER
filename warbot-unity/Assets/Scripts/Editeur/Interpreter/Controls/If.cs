@@ -69,6 +69,7 @@ namespace WarBotEngine.Editeur
 		public override bool execute(Unit u)
 		{
 			bool l_conditionIsTrue = true;
+            bool l_flagOu = false;
 
 			foreach (Condition c in getConditions()) 
 			{
@@ -79,7 +80,18 @@ namespace WarBotEngine.Editeur
 				}
 			}
 
-			if (l_conditionIsTrue)
+            l_flagOu = Ou.execute(u);
+
+            foreach (Condition c in getConditions())
+            {
+                if (!c.execute(u))
+                {
+                    l_conditionIsTrue = false;
+                    break;
+                }
+            }
+
+            if (l_conditionIsTrue && l_flagOu)
             {
 				foreach (Action a in getActions())
                 {
@@ -99,6 +111,9 @@ namespace WarBotEngine.Editeur
 			return false;
 		}
 
+        public void addElseActions(Instruction a) {
+            elseActions.Add(a);
+        }
 		public override string Description ()
 		{
 			return "Structure de contrôle pour organiser les actions en blocs de type [if() - then{} - else{}]";
@@ -165,5 +180,29 @@ namespace WarBotEngine.Editeur
                 res.elseActions.Add(ins.Clone());
             return res;
         }
+        
+        public override string ToString()
+        {
+            string s = "if : condition : ";
+            foreach (Condition c in conditions)
+            {
+                s = s + c.ToString();
+            }
+
+            foreach (Action c in actions)
+            {
+                s = s + " actions : ";
+                s = s + c.ToString();
+            }
+
+            foreach (Action c in elseActions)
+            {
+                s = s + " elseactions : ";
+                s = s + c.ToString();
+            }
+
+            return s;
+        }
+
     }
 }
