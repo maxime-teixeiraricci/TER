@@ -187,6 +187,11 @@ namespace WarBotEngine.Editeur
         private object target;
 
         /// <summary>
+        /// The current goal
+        /// </summary>
+        private object goal;
+
+        /// <summary>
         /// The type of unit to be spawned
         /// </summary>
         private WarBots.BotType selected_unit;
@@ -319,7 +324,9 @@ namespace WarBotEngine.Editeur
         {
             this.agent = agent;
             this.behavior = beh;
-            this.target = null;
+            this.goal = null;
+            this.target = this.goal;
+            
         }
 
 
@@ -592,7 +599,7 @@ namespace WarBotEngine.Editeur
         /// </summary>
         public void Run()
         {
-            this.target = null;
+            this.target = this.goal;
             this.message = null;
             foreach (Instruction i in behavior)
             {
@@ -1025,7 +1032,7 @@ namespace WarBotEngine.Editeur
             }
             else
             {
-                this.target = null;
+                this.target = this.goal;
             }
             return false;
         }
@@ -1049,7 +1056,7 @@ namespace WarBotEngine.Editeur
             }
             else
             {
-                this.target = null;
+                this.target = this.goal;
             }
             return false;
         }
@@ -1082,7 +1089,7 @@ namespace WarBotEngine.Editeur
             }
             else
             {
-                this.target = null;
+                this.target = this.goal;
             }
             return false;
         }
@@ -1106,7 +1113,7 @@ namespace WarBotEngine.Editeur
             }
             else
             {
-                this.target = null;
+                this.target = this.goal;
             }
             return false;
         }
@@ -1137,7 +1144,7 @@ namespace WarBotEngine.Editeur
             }
             else
             {
-                this.target = null;
+                this.target = this.goal;
             }
             return false;
         }
@@ -1174,7 +1181,7 @@ namespace WarBotEngine.Editeur
             }
             else
             {
-                this.target = null;
+                this.target = this.goal;
             }
             return false;
         }
@@ -1211,7 +1218,7 @@ namespace WarBotEngine.Editeur
             }
             else
             {
-                this.target = null;
+                this.target = this.goal;
             }
             return false;
         }
@@ -1248,7 +1255,7 @@ namespace WarBotEngine.Editeur
             }
             else
             {
-                this.target = null;
+                this.target = this.goal;
             }
             return false;
         }
@@ -1285,7 +1292,7 @@ namespace WarBotEngine.Editeur
             }
             else
             {
-                this.target = null;
+                this.target = this.goal;
             }
             return false;
         }
@@ -1322,7 +1329,7 @@ namespace WarBotEngine.Editeur
             }
             else
             {
-                this.target = null;
+                this.target = this.goal;
             }
             return false;
         }
@@ -1359,7 +1366,7 @@ namespace WarBotEngine.Editeur
             }
             else
             {
-                this.target = null;
+                this.target = this.goal;
             }
             return false;
         }
@@ -1396,7 +1403,7 @@ namespace WarBotEngine.Editeur
             }
             else
             {
-                this.target = null;
+                this.target = this.goal;
             }
             return false;
         }
@@ -1433,7 +1440,7 @@ namespace WarBotEngine.Editeur
             }
             else
             {
-                this.target = null;
+                this.target = this.goal;
             }
             return false;
         }
@@ -1470,7 +1477,7 @@ namespace WarBotEngine.Editeur
             }
             else
             {
-                this.target = null;
+                this.target = this.goal;
             }
             return false;
         }
@@ -1507,7 +1514,7 @@ namespace WarBotEngine.Editeur
             }
             else
             {
-                this.target = null;
+                this.target = this.goal;
             }
             return false;
         }
@@ -1992,10 +1999,13 @@ namespace WarBotEngine.Editeur
             if (this.message != "")
             {
                 List<GameObject> list = new List<GameObject>();
+                List<GameObject> goalList = new List<GameObject>();
                 foreach (WarBots.MessageController.Message msg in this.agent.GetComponent<WarBots.MessageController>().Messages)
                 {
                     if (msg.Content[0] == this.message)
                         list.Add(msg.Sender);
+                    if (msg.Content[msg.Content.Length - 1].Equals('G'))
+                        goalList.Add(msg.Sender);
                 }
                 if (list.Count > 0)
                 {
@@ -2010,9 +2020,22 @@ namespace WarBotEngine.Editeur
                         }
                     }
                 }
+                if (goalList.Count > 0)
+                {
+                    this.goal = goalList[0];
+                    float distance = Vector3.Distance(this.Controller.transform.position, goalList[0].transform.position), tmp;
+                    for (int i = 1; i < goalList.Count; i++)
+                    {
+                        if ((tmp = Vector3.Distance(this.Controller.transform.position, goalList[i].transform.position)) < distance)
+                        {
+                            this.goal = goalList[i];
+                            distance = tmp;
+                        }
+                    }
+                }
                 else
                 {
-                    this.target = null;
+                    this.target = this.goal;
                 }
             }
             return false;
@@ -2040,8 +2063,11 @@ namespace WarBotEngine.Editeur
                     if (msg.Content[0] == this.message)
                     {
                         this.target = msg.Sender;
+                        if (msg.Content[msg.Content.Length - 1].Equals('G'))
+                            this.goal = msg.Sender;
                         return false;
                     }
+
                 }
             }
             return false;
@@ -2064,10 +2090,20 @@ namespace WarBotEngine.Editeur
             if (this.message != "")
             {
                 List<Vector3> list = new List<Vector3>();
+                List<Vector3> goalList = new List<Vector3>();
                 foreach (WarBots.MessageController.Message msg in this.agent.GetComponent<WarBots.MessageController>().Messages)
                 {
                     if (msg.Content[0] == this.message && msg.Content[1] != "")
                     {
+                        if (msg.Content[msg.Content.Length - 1].Equals('G'))
+                        {
+                            string[] splitedG = msg.Content[1].Split(',');
+                            goalList.Add(new Vector3(
+                                (float)Convert.ToDouble(splitedG[0]),
+                                (float)Convert.ToDouble(splitedG[1]),
+                                (float)Convert.ToDouble(splitedG[2])
+                            ));
+                        }
                         string[] splited = msg.Content[1].Split(',');
                         list.Add(new Vector3(
                             (float)Convert.ToDouble(splited[0]),
@@ -2075,6 +2111,7 @@ namespace WarBotEngine.Editeur
                             (float)Convert.ToDouble(splited[2])
                         ));
                     }
+                    
                 }
                 if (list.Count > 0)
                 {
@@ -2089,9 +2126,22 @@ namespace WarBotEngine.Editeur
                         }
                     }
                 }
+                if (goalList.Count > 0)
+                {
+                    this.goal = goalList[0];
+                    float distance = Vector3.Distance(this.Controller.transform.position, goalList[0]), tmp;
+                    for (int i = 1; i < goalList.Count; i++)
+                    {
+                        if ((tmp = Vector3.Distance(this.Controller.transform.position, goalList[i])) < distance)
+                        {
+                            this.goal = goalList[i];
+                            distance = tmp;
+                        }
+                    }
+                }
                 else
                 {
-                    this.target = null;
+                    this.target = this.goal;
                 }
             }
             return false;
@@ -2118,6 +2168,15 @@ namespace WarBotEngine.Editeur
                 {
                     if (msg.Content[0] == this.message && msg.Content[1] != "")
                     {
+                        if (msg.Content[msg.Content.Length - 1].Equals('G'))
+                        {
+                            string[] splitedG = msg.Content[1].Split(',');
+                            this.goal = new Vector3(
+                                (float)Convert.ToDouble(splitedG[0]),
+                                (float)Convert.ToDouble(splitedG[1]),
+                                (float)Convert.ToDouble(splitedG[2])
+                            ));
+                        }
                         string[] splited = msg.Content[1].Split(',');
                         this.target = new Vector3(
                             (float)Convert.ToDouble(splited[0]),
