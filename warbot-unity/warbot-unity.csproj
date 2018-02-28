@@ -368,8 +368,10 @@
     <Compile Include="Assets\Scripts\UI Scripts\EscMenu.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\GameSpeed.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\GUI\createPuzzle.cs" />
+    <Compile Include="Assets\Scripts\UI Scripts\GUI\createPuzzle2.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\GUI\OnCollision.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\GUI\PanelCompare.cs" />
+    <Compile Include="Assets\Scripts\UI Scripts\GUI\panelHolder.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\GUI\ReturnButton.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\HealthBar\LineUpCanvasWithCamera.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\HealthBar\ShowGroups.cs" />

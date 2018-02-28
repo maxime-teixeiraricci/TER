@@ -5,7 +5,7 @@ using UnityEngine;
 public class ManageDragAndDrop : MonoBehaviour {
 
     float distance = 10;
-
+    
 
     public void OnMouseDrag()
     {
@@ -38,9 +38,7 @@ public class ManageDragAndDrop : MonoBehaviour {
         transform.position = objPosition;
    
         float currentPositionX = transform.position.x + widthPuzzle / 2;
-        //float maxPositionX = widthEditor - widthPuzzle;
         float maxPositionX = widthCanvas - widthPuzzle;
-        //float minPositionX = maxPositionX - widthCanvas + widthControlPanel + (widthPuzzle / 2);
         float minPositionX = widthControlPanel + widthPuzzle / 2;
 
     
@@ -49,11 +47,8 @@ public class ManageDragAndDrop : MonoBehaviour {
         float minPositionY = 0 + heightPuzzle;
         float maxPositionY = heightEditor;
 
-
-        Debug.Log("CurrentPositionY = " + currentPositionY);
-
-        Debug.Log("POSITION Y CANVAS = " + rendCanvas.transform.position.y);
-        //Debug.Log("POSITION X EDITEUR = " + rendEditeur.transform.position.x);
+        Debug.Log("SOURIS X = " + currentPositionX);
+        Debug.Log("SOURIS Y = " + currentPositionY);
 
         if (transform.position.x > maxPositionX)
             {
@@ -75,4 +70,46 @@ public class ManageDragAndDrop : MonoBehaviour {
             transform.position = new Vector3(transform.position.x, maxPositionY, transform.position.z);
         }
     }
+
+    public void OnMouseUpAsButton()
+    
+    {
+        Renderer rendEditeur = GameObject.Find("Editeur").GetComponent<Renderer>();
+        Renderer rendCanvas = GameObject.Find("GameEditorScreen").GetComponent<Renderer>();
+        Renderer rendControlPanel = GameObject.Find("Panneau controle").GetComponent<Renderer>();
+        var collider2D = gameObject.GetComponent<Collider2D>();
+
+        // Dimensions du canvas
+        float widthCanvas = rendCanvas.bounds.size.x;
+        float heightCanvas = rendCanvas.bounds.size.y;
+
+
+        // Largeur et hauteur de la pièce de puzzle
+        float widthPuzzle = collider2D.bounds.size.x;
+        float heightPuzzle = collider2D.bounds.size.y;
+
+
+        // Largeur et hauteur de l'éditeur de comportement
+        float widthEditor = rendEditeur.bounds.size.x;
+        float heightEditor = rendEditeur.bounds.size.y;
+
+        // Largeur et hauteur du panneau de contrôle
+        float widthControlPanel = rendControlPanel.bounds.size.x;
+        float heightControlPanel = rendControlPanel.bounds.size.y;
+
+        float currentPositionX = transform.position.x + widthPuzzle / 2;
+        float maxPositionX = widthCanvas - widthPuzzle;
+        float minPositionX = widthControlPanel + widthPuzzle / 2;
+
+
+        float currentPositionY = transform.position.y - heightPuzzle / 2;
+        float minPositionY = 0 + heightPuzzle;
+        float maxPositionY = heightEditor;
+
+        if (transform.position.x >= minPositionX - widthPuzzle || transform.position.x <= maxPositionX)
+        {
+            transform.position = new Vector3((maxPositionX / 2) +( widthPuzzle / 2), maxPositionY, transform.position.z);
+        }
+    }
+
 }
