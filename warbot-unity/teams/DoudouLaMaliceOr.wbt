@@ -1,0 +1,31 @@
+<behavior>
+  <teamName>DoudouLaMaliceOr</teamName>
+  <unit name="WarExplorer">
+    <If>
+      <parameters>
+        <EmptyNEG />
+        <Or>
+          <parameters>
+            <Reloaded />
+            <NearAllieeBases />
+          </parameters>
+        </Or>
+      </parameters>
+      <actions>
+        <Idle />
+      </actions>
+      <elseActions>
+        <Walk />
+      </elseActions>
+    </If>
+    <Task>
+      <parameters>
+        <ReloadedNEG />
+      </parameters>
+      <actions>
+        <Walk />
+      </actions>
+    </Task>
+    <HalfTurn />
+  </unit>
+</behavior>

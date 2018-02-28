@@ -1,5 +1,5 @@
 <behavior>
-  <teamName>DoudouLaMalice</teamName>
+  <teamName>DoudouLaMaliceNot</teamName>
   <unit name="WarExplorer">
     <Task>
       <parameters>
@@ -9,6 +9,6 @@
         <Walk />
       </actions>
     </Task>
-    <HalfTurn />
+    <Idle />
   </unit>
 </behavior>

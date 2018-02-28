@@ -2175,7 +2175,7 @@ namespace WarBotEngine.Editeur
                                 (float)Convert.ToDouble(splitedG[0]),
                                 (float)Convert.ToDouble(splitedG[1]),
                                 (float)Convert.ToDouble(splitedG[2])
-                            ));
+                            );
                         }
                         string[] splited = msg.Content[1].Split(',');
                         this.target = new Vector3(

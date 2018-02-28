@@ -79,8 +79,10 @@ namespace WarBotEngine.Editeur
         public override string ToString()
         {
             string s = "or : ";
+            s = s + "Taille : " + conditionsOu.Count;
             foreach (Condition c in this.conditionsOu)
             {
+                
                 s = s + c.ToString();
             }
             return s;

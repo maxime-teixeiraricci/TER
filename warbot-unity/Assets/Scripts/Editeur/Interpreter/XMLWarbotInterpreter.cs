@@ -38,24 +38,31 @@ namespace WarBotEngine.Editeur
         {
             if (ins.Name.Equals(typeof(Task).Name))
             {//cas d'un "If"
+               // System.Console.WriteLine("Task");
                 List<Condition> l_conditions = new List<Condition>();
                 XmlNode l_cond = ins.FirstChild;
                 if (l_cond != null)
                 {
                     foreach (XmlNode c in l_cond)
+                    {
+                      //  System.Console.WriteLine("dans le task : condition");
                         if (c.Name.Equals(typeof(Or).Name))
+                        {
                             l_conditions.Add((Or)whichInstruction(unitName, c));
+                            //  System.Console.WriteLine("Cas d'un or ! ");
+                        }
                         else
                             l_conditions.Add((Condition)whichInstruction(unitName, c));
+                    }
                 }
                 List<Instruction> l_actions = new List<Instruction>();
                 XmlNode l_act = ins.LastChild;
-                System.Console.WriteLine("l_act : ");
+                //System.Console.WriteLine("l_act : ");
                 if (l_act != null)
                 {
                     foreach (XmlNode a in l_act)
                     {
-                        System.Console.WriteLine("a : " + a.ToString());
+                        // System.Console.WriteLine("a : " + a.ToString());
                         l_actions.Add((Instruction)whichInstruction(unitName, a));
                     }
                 }
@@ -64,25 +71,27 @@ namespace WarBotEngine.Editeur
             }
             else if (ins.Name.Equals(typeof(If).Name) && ins.ChildNodes.Count == 3)
             {//Cas d'un "If/then/Else"
-                System.Console.WriteLine("if");
+              //  System.Console.WriteLine("if");
                 List<Condition> l_conditions = new List<Condition>();
                 XmlNode l_cond = ins.FirstChild;
-                System.Console.WriteLine("l_cond" + l_cond.ToString());
                 if (l_cond != null)
                 {
                     foreach (XmlNode c in l_cond)
                     {
-                        System.Console.WriteLine("nom : " + c.Name);
+                        //System.Console.WriteLine("dans le if : condition");
                         if (c.Name.Equals(typeof(Or).Name))
                         {
+                            //  System.Console.WriteLine("Cas d'un or ! ");
                             Or o = new Or(null, false);
                             List<Condition> l_conditions2 = new List<Condition>();
-                            XmlNode l_cond2 = l_cond.FirstChild;
-                            System.Console.WriteLine("l_cond2" + l_cond2.ToString());
+                            XmlNode l_cond2 = c.FirstChild;
                             if (l_cond2 != null)
                             {
                                 foreach (XmlNode c2 in l_cond2)
-                                        l_conditions2.Add((Condition)whichInstruction(unitName, c2));
+                                {
+                                    //   System.Console.WriteLine("dans le or : condition");
+                                    l_conditions2.Add((Condition)whichInstruction(unitName, c2));
+                                }
                             }
                             Or tmp = new Or(null, false);
                             foreach (Condition c3 in l_conditions2)
@@ -130,18 +139,24 @@ namespace WarBotEngine.Editeur
                     else
                     {
                         string tmp;
-                        if (ins.Name.Contains("NEG"))
-                        {
-                            tmp = ins.Name.Remove(ins.Name.Length - 3);
-                        }
-                        else
-                            tmp = ins.Name;
-
-                        System.Console.WriteLine("tmp : " + tmp);
+                    if (ins.Name.Contains("NEG"))
+                    {
+                        tmp = ins.Name.Remove(ins.Name.Length - 3);
+                      //  System.Console.WriteLine("tmp (neg) : " + tmp);
+                    }
+                    else
+                    {
+                        tmp = ins.Name;
+                        //System.Console.WriteLine("tmp : " + tmp);
+                    }
                         List<string> l_conditions = new List<string>(Unit.GetConditions(unitName));
+                    //for (int j = 0; j < l_conditions.Count; j++)
+                    //{
+                    //    System.Console.WriteLine(l_conditions[j].ToString());
+                    //}
                         if (l_conditions.Contains(tmp))
                         {
-                            ////////////////////
+                         
                             Condition l_c;
                             if (ins.Name.Contains("NEG"))
                                 l_c = new Condition(ins.Name.Remove(ins.Name.Length - 3), true);

@@ -8,10 +8,9 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <ProjectGuid>{4A41DE27-A7ED-D385-3A45-0146A85D0DE3}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
@@ -38,9 +37,6 @@
     <NoWarn>0169</NoWarn>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.XML" />
@@ -55,182 +51,182 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Resources\Prefabs\Imports\Water\Scripts\Displace.cs" />
-    <Compile Include="Assets\Resources\Prefabs\Imports\Water\Scripts\GerstnerDisplace.cs" />
-    <Compile Include="Assets\Resources\Prefabs\Imports\Water\Scripts\MeshContainer.cs" />
-    <Compile Include="Assets\Resources\Prefabs\Imports\Water\Scripts\PlanarReflection.cs" />
-    <Compile Include="Assets\Resources\Prefabs\Imports\Water\Scripts\SpecularLighting.cs" />
-    <Compile Include="Assets\Resources\Prefabs\Imports\Water\Scripts\Water.cs" />
-    <Compile Include="Assets\Resources\Prefabs\Imports\Water\Scripts\WaterBase.cs" />
-    <Compile Include="Assets\Resources\Prefabs\Imports\Water\Scripts\WaterTile.cs" />
-    <Compile Include="Assets\Scripts\Editeur\Constants.cs" />
-    <Compile Include="Assets\Scripts\Editeur\CreateTeam.cs" />
-    <Compile Include="Assets\Scripts\Editeur\Interpreter\Action.cs" />
-    <Compile Include="Assets\Scripts\Editeur\Interpreter\Condition.cs" />
-    <Compile Include="Assets\Scripts\Editeur\Interpreter\Control.cs" />
-    <Compile Include="Assets\Scripts\Editeur\Interpreter\Controls\If.cs" />
-    <Compile Include="Assets\Scripts\Editeur\Interpreter\Controls\Task.cs" />
-    <Compile Include="Assets\Scripts\Editeur\Interpreter\Instruction.cs" />
-    <Compile Include="Assets\Scripts\Editeur\Interpreter\Main.cs" />
-    <Compile Include="Assets\Scripts\Editeur\Interpreter\Or.cs" />
-    <Compile Include="Assets\Scripts\Editeur\Interpreter\TestInterpreter.cs" />
-    <Compile Include="Assets\Scripts\Editeur\Interpreter\Unit.cs" />
-    <Compile Include="Assets\Scripts\Editeur\Interpreter\XMLInterpreter.cs" />
-    <Compile Include="Assets\Scripts\Editeur\Interpreter\XMLWarbotInterpreter.cs" />
-    <Compile Include="Assets\Scripts\Editeur\Layout\BehaviorEditor.cs" />
-    <Compile Include="Assets\Scripts\Editeur\Layout\DragAndDrop.cs" />
-    <Compile Include="Assets\Scripts\Editeur\Layout\PrimitivesCollection.cs" />
-    <Compile Include="Assets\Scripts\Editeur\Layout\TeamSelection.cs" />
-    <Compile Include="Assets\Scripts\Editeur\MainLayout.cs" />
-    <Compile Include="Assets\Scripts\Editeur\Widget.cs" />
-    <Compile Include="Assets\Scripts\Editeur\Widget\Category.cs" />
-    <Compile Include="Assets\Scripts\Editeur\Widget\Container.cs" />
-    <Compile Include="Assets\Scripts\Editeur\Widget\Label.cs" />
-    <Compile Include="Assets\Scripts\Editeur\Widget\MotionScroll.cs" />
-    <Compile Include="Assets\Scripts\Editeur\Widget\Primitive.cs" />
-    <Compile Include="Assets\Scripts\Editeur\Widget\PrimitiveContainer.cs" />
-    <Compile Include="Assets\Scripts\Editeur\Widget\Scrollbar.cs" />
-    <Compile Include="Assets\Scripts\Editeur\Widget\Selector.cs" />
-    <Compile Include="Assets\Scripts\Engine\EntityInfo.cs" />
-    <Compile Include="Assets\Scripts\Engine\Items\WarResource.cs" />
-    <Compile Include="Assets\Scripts\Engine\Managers\Area.cs" />
-    <Compile Include="Assets\Scripts\Engine\Managers\GameManager.cs" />
-    <Compile Include="Assets\Scripts\Engine\Managers\GameSpeedControls.cs" />
-    <Compile Include="Assets\Scripts\Engine\Managers\PropertiesManager.cs" />
-    <Compile Include="Assets\Scripts\Engine\Managers\SoundManager.cs" />
-    <Compile Include="Assets\Scripts\Engine\Managers\TeamManager.cs" />
-    <Compile Include="Assets\Scripts\Engine\Projectiles\WarProjectile.cs" />
-    <Compile Include="Assets\Scripts\Engine\WarBots\AttackController.cs" />
-    <Compile Include="Assets\Scripts\Engine\WarBots\BehaviorController.cs" />
-    <Compile Include="Assets\Scripts\Engine\WarBots\BotTypes.cs" />
-    <Compile Include="Assets\Scripts\Engine\WarBots\DetectionController.cs" />
-    <Compile Include="Assets\Scripts\Engine\WarBots\GatherController.cs" />
-    <Compile Include="Assets\Scripts\Engine\WarBots\GroupController.cs" />
-    <Compile Include="Assets\Scripts\Engine\WarBots\HealthController.cs" />
-    <Compile Include="Assets\Scripts\Engine\WarBots\InventoryController.cs" />
-    <Compile Include="Assets\Scripts\Engine\WarBots\MessageController.cs" />
-    <Compile Include="Assets\Scripts\Engine\WarBots\SpawnController.cs" />
-    <Compile Include="Assets\Scripts\Engine\WarBots\WalkController.cs" />
-    <Compile Include="Assets\Scripts\Engine\WarBots\WarBase.cs" />
-    <Compile Include="Assets\Scripts\Engine\WarBots\WarBotController.cs" />
-    <Compile Include="Assets\Scripts\Engine\WarBots\WarEngineer.cs" />
-    <Compile Include="Assets\Scripts\Engine\WarBots\WarExplorer.cs" />
-    <Compile Include="Assets\Scripts\Engine\WarBots\WarHeavy.cs" />
-    <Compile Include="Assets\Scripts\Engine\WarBots\WarTurret.cs" />
-    <Compile Include="Assets\Scripts\Particles\ParticleDestroy.cs" />
-    <Compile Include="Assets\Scripts\Particles\SpotlightFade.cs" />
-    <Compile Include="Assets\Scripts\UI Scripts\AddTextFromButton.cs" />
-    <Compile Include="Assets\Scripts\UI Scripts\CameraController.cs" />
-    <Compile Include="Assets\Scripts\UI Scripts\CreateUnit\ManageButtons.cs" />
-    <Compile Include="Assets\Scripts\UI Scripts\CreateUnit\ToggleCreation.cs" />
-    <Compile Include="Assets\Scripts\UI Scripts\CreateUnit\UnitCreation.cs" />
-    <Compile Include="Assets\Scripts\UI Scripts\DebugMod.cs" />
-    <Compile Include="Assets\Scripts\UI Scripts\DeleteUnit.cs" />
-    <Compile Include="Assets\Scripts\UI Scripts\Editeur_UI.cs" />
-    <Compile Include="Assets\Scripts\UI Scripts\EscMenu.cs" />
-    <Compile Include="Assets\Scripts\UI Scripts\GameSpeed.cs" />
-    <Compile Include="Assets\Scripts\UI Scripts\HealthBar\LineUpCanvasWithCamera.cs" />
-    <Compile Include="Assets\Scripts\UI Scripts\HealthBar\ShowGroups.cs" />
-    <Compile Include="Assets\Scripts\UI Scripts\HealthBar\ShowHealthBar.cs" />
-    <Compile Include="Assets\Scripts\UI Scripts\HealthBar\ShowRessources.cs" />
-    <Compile Include="Assets\Scripts\UI Scripts\HealthBar\ToggleGroups.cs" />
-    <Compile Include="Assets\Scripts\UI Scripts\HealthBar\ToggleHealthBar.cs" />
-    <Compile Include="Assets\Scripts\UI Scripts\HealthBar\ToggleRessources.cs" />
-    <Compile Include="Assets\Scripts\UI Scripts\Informations_Warbot\ShowInformationWarbot.cs" />
-    <Compile Include="Assets\Scripts\UI Scripts\Initializer.cs" />
-    <Compile Include="Assets\Scripts\UI Scripts\MoveUnit.cs" />
-    <Compile Include="Assets\Scripts\UI Scripts\MusicManager.cs" />
-    <Compile Include="Assets\Scripts\UI Scripts\PreGameMenu.cs" />
-    <Compile Include="Assets\Scripts\UI Scripts\SceneLoader.cs" />
-    <Compile Include="Assets\Scripts\UI Scripts\StatistiquesMod.cs" />
-    <Compile Include="Assets\Scripts\UI Scripts\TeamHealth.cs" />
-    <Compile Include="Assets\Scripts\UI Scripts\Toggle_MessageViewer.cs" />
-    <Compile Include="Assets\Scripts\UI Scripts\UI_Information.cs" />
-    <None Include="Assets\Resources\Prefabs\Imports\Water\Shaders\FXWaterPro.shader" />
-    <Reference Include="UnityEngine.UI">
-      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.UI">
-      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Networking">
-      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.Networking">
-      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/Editor/UnityEditor.Networking.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.TestRunner">
-      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/Editor/UnityEditor.TestRunner.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.TestRunner">
-      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework">
-      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Timeline">
-      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.Timeline">
-      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Timeline/Editor/UnityEditor.Timeline.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.TreeEditor">
-      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TreeEditor/Editor/UnityEditor.TreeEditor.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UIAutomation">
-      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UIAutomation/UnityEngine.UIAutomation.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.UIAutomation">
-      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UIAutomation/Editor/UnityEditor.UIAutomation.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.GoogleAudioSpatializer">
-      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityGoogleAudioSpatializer/Editor/UnityEditor.GoogleAudioSpatializer.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.GoogleAudioSpatializer">
-      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityGoogleAudioSpatializer/RuntimeEditor/UnityEngine.GoogleAudioSpatializer.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.HoloLens">
-      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/Editor/UnityEditor.HoloLens.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.HoloLens">
-      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.SpatialTracking">
-      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/Editor/UnityEditor.SpatialTracking.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.SpatialTracking">
-      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.VR">
-      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/Editor/UnityEditor.VR.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.Graphs">
-      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.WindowsStandalone.Extensions">
-      <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Advertisements">
-      <HintPath>C:/Users/Fireez/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/UnityEngine.Advertisements.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.Advertisements">
-      <HintPath>C:/Users/Fireez/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/Editor/UnityEditor.Advertisements.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Analytics">
-      <HintPath>C:/Users/Fireez/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.13/UnityEngine.Analytics.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.Analytics">
-      <HintPath>C:/Users/Fireez/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.13/Editor/UnityEditor.Analytics.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Purchasing">
-      <HintPath>C:/Users/Fireez/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.purchasing@0.0.19/UnityEngine.Purchasing.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.Purchasing">
-      <HintPath>C:/Users/Fireez/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.purchasing@0.0.19/Editor/UnityEditor.Purchasing.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.StandardEvents">
-      <HintPath>C:/Users/Fireez/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
-    </Reference>
+     <Compile Include="Assets\Resources\Prefabs\Imports\Water\Scripts\Displace.cs" />
+     <Compile Include="Assets\Resources\Prefabs\Imports\Water\Scripts\GerstnerDisplace.cs" />
+     <Compile Include="Assets\Resources\Prefabs\Imports\Water\Scripts\MeshContainer.cs" />
+     <Compile Include="Assets\Resources\Prefabs\Imports\Water\Scripts\PlanarReflection.cs" />
+     <Compile Include="Assets\Resources\Prefabs\Imports\Water\Scripts\SpecularLighting.cs" />
+     <Compile Include="Assets\Resources\Prefabs\Imports\Water\Scripts\Water.cs" />
+     <Compile Include="Assets\Resources\Prefabs\Imports\Water\Scripts\WaterBase.cs" />
+     <Compile Include="Assets\Resources\Prefabs\Imports\Water\Scripts\WaterTile.cs" />
+     <Compile Include="Assets\Scripts\Editeur\Constants.cs" />
+     <Compile Include="Assets\Scripts\Editeur\CreateTeam.cs" />
+     <Compile Include="Assets\Scripts\Editeur\Interpreter\Action.cs" />
+     <Compile Include="Assets\Scripts\Editeur\Interpreter\Condition.cs" />
+     <Compile Include="Assets\Scripts\Editeur\Interpreter\Control.cs" />
+     <Compile Include="Assets\Scripts\Editeur\Interpreter\Controls\If.cs" />
+     <Compile Include="Assets\Scripts\Editeur\Interpreter\Controls\Task.cs" />
+     <Compile Include="Assets\Scripts\Editeur\Interpreter\Instruction.cs" />
+     <Compile Include="Assets\Scripts\Editeur\Interpreter\Main.cs" />
+     <Compile Include="Assets\Scripts\Editeur\Interpreter\Or.cs" />
+     <Compile Include="Assets\Scripts\Editeur\Interpreter\TestInterpreter.cs" />
+     <Compile Include="Assets\Scripts\Editeur\Interpreter\Unit.cs" />
+     <Compile Include="Assets\Scripts\Editeur\Interpreter\XMLInterpreter.cs" />
+     <Compile Include="Assets\Scripts\Editeur\Interpreter\XMLWarbotInterpreter.cs" />
+     <Compile Include="Assets\Scripts\Editeur\Layout\BehaviorEditor.cs" />
+     <Compile Include="Assets\Scripts\Editeur\Layout\DragAndDrop.cs" />
+     <Compile Include="Assets\Scripts\Editeur\Layout\PrimitivesCollection.cs" />
+     <Compile Include="Assets\Scripts\Editeur\Layout\TeamSelection.cs" />
+     <Compile Include="Assets\Scripts\Editeur\MainLayout.cs" />
+     <Compile Include="Assets\Scripts\Editeur\Widget.cs" />
+     <Compile Include="Assets\Scripts\Editeur\Widget\Category.cs" />
+     <Compile Include="Assets\Scripts\Editeur\Widget\Container.cs" />
+     <Compile Include="Assets\Scripts\Editeur\Widget\Label.cs" />
+     <Compile Include="Assets\Scripts\Editeur\Widget\MotionScroll.cs" />
+     <Compile Include="Assets\Scripts\Editeur\Widget\Primitive.cs" />
+     <Compile Include="Assets\Scripts\Editeur\Widget\PrimitiveContainer.cs" />
+     <Compile Include="Assets\Scripts\Editeur\Widget\Scrollbar.cs" />
+     <Compile Include="Assets\Scripts\Editeur\Widget\Selector.cs" />
+     <Compile Include="Assets\Scripts\Engine\EntityInfo.cs" />
+     <Compile Include="Assets\Scripts\Engine\Items\WarResource.cs" />
+     <Compile Include="Assets\Scripts\Engine\Managers\Area.cs" />
+     <Compile Include="Assets\Scripts\Engine\Managers\GameManager.cs" />
+     <Compile Include="Assets\Scripts\Engine\Managers\GameSpeedControls.cs" />
+     <Compile Include="Assets\Scripts\Engine\Managers\PropertiesManager.cs" />
+     <Compile Include="Assets\Scripts\Engine\Managers\SoundManager.cs" />
+     <Compile Include="Assets\Scripts\Engine\Managers\TeamManager.cs" />
+     <Compile Include="Assets\Scripts\Engine\Projectiles\WarProjectile.cs" />
+     <Compile Include="Assets\Scripts\Engine\WarBots\AttackController.cs" />
+     <Compile Include="Assets\Scripts\Engine\WarBots\BehaviorController.cs" />
+     <Compile Include="Assets\Scripts\Engine\WarBots\BotTypes.cs" />
+     <Compile Include="Assets\Scripts\Engine\WarBots\DetectionController.cs" />
+     <Compile Include="Assets\Scripts\Engine\WarBots\GatherController.cs" />
+     <Compile Include="Assets\Scripts\Engine\WarBots\GroupController.cs" />
+     <Compile Include="Assets\Scripts\Engine\WarBots\HealthController.cs" />
+     <Compile Include="Assets\Scripts\Engine\WarBots\InventoryController.cs" />
+     <Compile Include="Assets\Scripts\Engine\WarBots\MessageController.cs" />
+     <Compile Include="Assets\Scripts\Engine\WarBots\SpawnController.cs" />
+     <Compile Include="Assets\Scripts\Engine\WarBots\WalkController.cs" />
+     <Compile Include="Assets\Scripts\Engine\WarBots\WarBase.cs" />
+     <Compile Include="Assets\Scripts\Engine\WarBots\WarBotController.cs" />
+     <Compile Include="Assets\Scripts\Engine\WarBots\WarEngineer.cs" />
+     <Compile Include="Assets\Scripts\Engine\WarBots\WarExplorer.cs" />
+     <Compile Include="Assets\Scripts\Engine\WarBots\WarHeavy.cs" />
+     <Compile Include="Assets\Scripts\Engine\WarBots\WarTurret.cs" />
+     <Compile Include="Assets\Scripts\Particles\ParticleDestroy.cs" />
+     <Compile Include="Assets\Scripts\Particles\SpotlightFade.cs" />
+     <Compile Include="Assets\Scripts\UI Scripts\AddTextFromButton.cs" />
+     <Compile Include="Assets\Scripts\UI Scripts\CameraController.cs" />
+     <Compile Include="Assets\Scripts\UI Scripts\CreateUnit\ManageButtons.cs" />
+     <Compile Include="Assets\Scripts\UI Scripts\CreateUnit\ToggleCreation.cs" />
+     <Compile Include="Assets\Scripts\UI Scripts\CreateUnit\UnitCreation.cs" />
+     <Compile Include="Assets\Scripts\UI Scripts\DebugMod.cs" />
+     <Compile Include="Assets\Scripts\UI Scripts\DeleteUnit.cs" />
+     <Compile Include="Assets\Scripts\UI Scripts\Editeur_UI.cs" />
+     <Compile Include="Assets\Scripts\UI Scripts\EscMenu.cs" />
+     <Compile Include="Assets\Scripts\UI Scripts\GameSpeed.cs" />
+     <Compile Include="Assets\Scripts\UI Scripts\HealthBar\LineUpCanvasWithCamera.cs" />
+     <Compile Include="Assets\Scripts\UI Scripts\HealthBar\ShowGroups.cs" />
+     <Compile Include="Assets\Scripts\UI Scripts\HealthBar\ShowHealthBar.cs" />
+     <Compile Include="Assets\Scripts\UI Scripts\HealthBar\ShowRessources.cs" />
+     <Compile Include="Assets\Scripts\UI Scripts\HealthBar\ToggleGroups.cs" />
+     <Compile Include="Assets\Scripts\UI Scripts\HealthBar\ToggleHealthBar.cs" />
+     <Compile Include="Assets\Scripts\UI Scripts\HealthBar\ToggleRessources.cs" />
+     <Compile Include="Assets\Scripts\UI Scripts\Informations_Warbot\ShowInformationWarbot.cs" />
+     <Compile Include="Assets\Scripts\UI Scripts\Initializer.cs" />
+     <Compile Include="Assets\Scripts\UI Scripts\MoveUnit.cs" />
+     <Compile Include="Assets\Scripts\UI Scripts\MusicManager.cs" />
+     <Compile Include="Assets\Scripts\UI Scripts\PreGameMenu.cs" />
+     <Compile Include="Assets\Scripts\UI Scripts\SceneLoader.cs" />
+     <Compile Include="Assets\Scripts\UI Scripts\StatistiquesMod.cs" />
+     <Compile Include="Assets\Scripts\UI Scripts\TeamHealth.cs" />
+     <Compile Include="Assets\Scripts\UI Scripts\Toggle_MessageViewer.cs" />
+     <Compile Include="Assets\Scripts\UI Scripts\UI_Information.cs" />
+     <None Include="Assets\Resources\Prefabs\Imports\Water\Shaders\FXWaterPro.shader" />
+ <Reference Include="UnityEngine.UI">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.UI">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Networking">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.Networking">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/Editor/UnityEditor.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.TestRunner">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/Editor/UnityEditor.TestRunner.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.TestRunner">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
+ </Reference>
+ <Reference Include="nunit.framework">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Timeline">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.Timeline">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Timeline/Editor/UnityEditor.Timeline.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.TreeEditor">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TreeEditor/Editor/UnityEditor.TreeEditor.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.UIAutomation">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UIAutomation/UnityEngine.UIAutomation.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.UIAutomation">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UIAutomation/Editor/UnityEditor.UIAutomation.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.GoogleAudioSpatializer">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityGoogleAudioSpatializer/Editor/UnityEditor.GoogleAudioSpatializer.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.GoogleAudioSpatializer">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityGoogleAudioSpatializer/RuntimeEditor/UnityEngine.GoogleAudioSpatializer.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.HoloLens">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/Editor/UnityEditor.HoloLens.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.HoloLens">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.SpatialTracking">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/Editor/UnityEditor.SpatialTracking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.SpatialTracking">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.VR">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/Editor/UnityEditor.VR.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.Graphs">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.WindowsStandalone.Extensions">
+ <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Advertisements">
+ <HintPath>C:/Users/Fireez/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/UnityEngine.Advertisements.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.Advertisements">
+ <HintPath>C:/Users/Fireez/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/Editor/UnityEditor.Advertisements.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Analytics">
+ <HintPath>C:/Users/Fireez/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.13/UnityEngine.Analytics.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.Analytics">
+ <HintPath>C:/Users/Fireez/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.13/Editor/UnityEditor.Analytics.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Purchasing">
+ <HintPath>C:/Users/Fireez/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.purchasing@0.0.19/UnityEngine.Purchasing.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.Purchasing">
+ <HintPath>C:/Users/Fireez/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.purchasing@0.0.19/Editor/UnityEditor.Purchasing.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.StandardEvents">
+ <HintPath>C:/Users/Fireez/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
+ </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -240,4 +236,5 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  
 </Project>
