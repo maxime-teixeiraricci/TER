@@ -8,7 +8,7 @@ public class createPuzzle : MonoBehaviour {
     public GameObject puzzle2;
     public ArrayList listPieces = new ArrayList();
     public ArrayList recoverList = new ArrayList();
-    public int cptObjects;
+    public static int cptObjects;
     public int sizeRecoverList;
 
     public void OnMouseDown()

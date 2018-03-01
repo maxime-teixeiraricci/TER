@@ -11,7 +11,7 @@ public class ManageDragAndDrop : MonoBehaviour {
     public void OnMouseDown()
     {
         // Nombre de pièces de puzzle présentes dans l'éditeur
-        int nbrObjects = GetComponent<createPuzzle>().cptObjects;
+        nbrObjects = createPuzzle.cptObjects;
         Debug.Log("NOMBRE DE PIECES DE PUZZLE = " + nbrObjects);
     }
 
@@ -112,12 +112,12 @@ public class ManageDragAndDrop : MonoBehaviour {
 
 
         float currentPositionY = transform.position.y - heightPuzzle / 2;
-        float minPositionY = 0 + heightPuzzle;
+        float minPositionY = heightPuzzle;
         float maxPositionY = heightEditor;
 
         if (transform.position.x >= minPositionX - widthPuzzle || transform.position.x <= maxPositionX)
         {
-            transform.position = new Vector3((maxPositionX / 2) +( widthPuzzle / 2), maxPositionY + heightPuzzle* nbrObjects, transform.position.z);
+            transform.position = new Vector3((maxPositionX / 4) +( widthPuzzle / 2), maxPositionY + heightPuzzle * (nbrObjects-1) * (-1), transform.position.z);
         }
     }
 
