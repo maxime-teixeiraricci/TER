@@ -291,7 +291,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\ManageDragAndDrop.cs" />
     <Compile Include="Assets\Resources\Prefabs\Imports\Water\Scripts\Displace.cs" />
     <Compile Include="Assets\Resources\Prefabs\Imports\Water\Scripts\GerstnerDisplace.cs" />
     <Compile Include="Assets\Resources\Prefabs\Imports\Water\Scripts\MeshContainer.cs" />
@@ -369,6 +368,7 @@
     <Compile Include="Assets\Scripts\UI Scripts\GameSpeed.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\GUI\createPuzzle.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\GUI\createPuzzle2.cs" />
+    <Compile Include="Assets\Scripts\UI Scripts\GUI\ManageDragAndDrop.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\GUI\OnCollision.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\GUI\PanelCompare.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\GUI\panelHolder.cs" />
