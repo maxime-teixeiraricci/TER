@@ -6,17 +6,21 @@ public class ManageDragAndDrop : MonoBehaviour {
 
     float distance = 10;
     int nbrObjects = 0;
+    public static GameObject currentObject;
 
 
     public void OnMouseDown()
     {
         // Nombre de pièces de puzzle présentes dans l'éditeur
         nbrObjects = createPuzzle.cptObjects;
-        Debug.Log("NOMBRE DE PIECES DE PUZZLE = " + nbrObjects);
+        
+
+
     }
 
     public void OnMouseDrag()
     {
+        
         Renderer rendEditeur = GameObject.Find("Editeur").GetComponent<Renderer>();
         Renderer rendCanvas = GameObject.Find("GameEditorScreen").GetComponent<Renderer>();
         Renderer rendControlPanel = GameObject.Find("Panneau controle").GetComponent<Renderer>();
@@ -77,11 +81,19 @@ public class ManageDragAndDrop : MonoBehaviour {
         {
             transform.position = new Vector3(transform.position.x, maxPositionY, transform.position.z);
         }
+
+        if (Input.GetKeyDown("delete"))
+        {
+            Destroy(gameObject);
+        }
+            
     }
 
     public void OnMouseUpAsButton()
     
     {
+        currentObject = gameObject;
+        Debug.Log("ITEM DANS MANAGE APRES CLICK = " + currentObject);
         Renderer rendEditeur = GameObject.Find("Editeur").GetComponent<Renderer>();
         Renderer rendCanvas = GameObject.Find("GameEditorScreen").GetComponent<Renderer>();
         Renderer rendControlPanel = GameObject.Find("Panneau controle").GetComponent<Renderer>();

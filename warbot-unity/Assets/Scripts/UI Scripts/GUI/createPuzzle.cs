@@ -16,7 +16,6 @@ public class createPuzzle : MonoBehaviour {
         GameObject puzzleClone = (GameObject)Instantiate(puzzle, GameObject.Find("Editeur").transform);
         listPieces.Add(puzzleClone);
         cptObjects = listPieces.Count;
-        Debug.Log("TAILLE LISTE ONCLICK DOOOOOOWN = " + cptObjects);
     }
 
     public void Undo()
