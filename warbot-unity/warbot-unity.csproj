@@ -368,7 +368,6 @@
     <Compile Include="Assets\Scripts\UI Scripts\GameSpeed.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\GUI\createPuzzle.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\GUI\createPuzzle2.cs" />
-    <Compile Include="Assets\Scripts\UI Scripts\GUI\DeleteButton.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\GUI\gridEditor.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\GUI\ManageDragAndDrop.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\GUI\OnCollision.cs" />

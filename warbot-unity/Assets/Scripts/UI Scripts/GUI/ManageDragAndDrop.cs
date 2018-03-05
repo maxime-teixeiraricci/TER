@@ -8,6 +8,14 @@ public class ManageDragAndDrop : MonoBehaviour {
     int nbrObjects = 0;
     public static GameObject currentObject;
 
+    /*
+    public static ArrayList recoverList = new ArrayList();
+    public static int cptObjects;
+    public static int cptUndo;
+    public static GameObject pieceToUndo;
+    public static GameObject pieceToRedo;*/
+
+
 
     public void OnMouseDown()
     {
@@ -20,7 +28,7 @@ public class ManageDragAndDrop : MonoBehaviour {
 
     public void OnMouseDrag()
     {
-        
+        createPuzzle _createPuzzle = GameObject.Find("EventSystem").GetComponent<createPuzzle>();
         Renderer rendEditeur = GameObject.Find("Editeur").GetComponent<Renderer>();
         Renderer rendCanvas = GameObject.Find("GameEditorScreen").GetComponent<Renderer>();
         Renderer rendControlPanel = GameObject.Find("Panneau controle").GetComponent<Renderer>();
@@ -81,19 +89,19 @@ public class ManageDragAndDrop : MonoBehaviour {
         {
             transform.position = new Vector3(transform.position.x, maxPositionY, transform.position.z);
         }
+        
+            if (Input.GetKeyDown("delete"))
+            {
+                _createPuzzle.Undo();
+            }
+        
 
-        if (Input.GetKeyDown("delete"))
-        {
-            Destroy(gameObject);
-        }
-            
     }
 
     public void OnMouseUpAsButton()
     
     {
         currentObject = gameObject;
-        Debug.Log("ITEM DANS MANAGE APRES CLICK = " + currentObject);
         Renderer rendEditeur = GameObject.Find("Editeur").GetComponent<Renderer>();
         Renderer rendCanvas = GameObject.Find("GameEditorScreen").GetComponent<Renderer>();
         Renderer rendControlPanel = GameObject.Find("Panneau controle").GetComponent<Renderer>();
