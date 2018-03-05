@@ -371,6 +371,7 @@
     <Compile Include="Assets\Scripts\UI Scripts\GUI\gridEditor.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\GUI\ManageDragAndDrop.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\GUI\OnCollision.cs" />
+    <Compile Include="Assets\Scripts\UI Scripts\GUI\OverEditor.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\GUI\PanelCompare.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\GUI\panelHolder.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\GUI\ReturnButton.cs" />

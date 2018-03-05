@@ -16,19 +16,10 @@ public class createPuzzle : MonoBehaviour {
     public void OnMouseDown()
     {
         GameObject puzzleClone = (GameObject)Instantiate(puzzle, GameObject.Find("Editeur").transform);
-        //GameObject puzzleCloneRecover = puzzleClone.AddComponent<GameObject>();
         listPieces.Add(puzzleClone);
-        //recoverList.Add(puzzleCloneRecover);
         cptObjects = listPieces.Count;
     }
 
-    public void OnMouseOver()
-    {
-        if (Input.GetKeyDown("delete"))
-        {
-            Undo();
-        }
-    }
 
     public void Undo()
     {
@@ -36,8 +27,6 @@ public class createPuzzle : MonoBehaviour {
         pieceToUndo = (GameObject)listPieces[cptObjects - 1];
         recoverList.Add(pieceToUndo);
         pieceToUndo.SetActive(false);
-        
-        //listPieces.Remove(listPieces[cptObjects - 1]);
         cptObjects--;
         cptUndo = recoverList.Count;
     }
@@ -49,16 +38,6 @@ public class createPuzzle : MonoBehaviour {
         recoverList.RemoveAt(cptUndo - 1);
         cptUndo = recoverList.Count;
         cptObjects++;
-        //GameObject pieceToRedo = (GameObject)recoverList[cptUndo - 1];
-        //Debug.Log("PIECE TO REDOOOOO = " + pieceToRedo);
-        //listPieces.Add(pieceToRedo);
-        //GameObject redoPiece = (GameObject)Instantiate(puzzle, new Vector3((float)recoverList[cptUndo - 3],
-                                                                          // (float)recoverList[cptUndo - 2],
-                                                                          // (float)recoverList[cptUndo - 1]), 
-                                                                          // Quaternion.identity);
-        //recoverList.RemoveAt(cptUndo - 1);
-        //recoverList.RemoveAt(cptUndo - 1);
-        //recoverList.RemoveAt(cptUndo - 1);
     }
 
 }

@@ -26,9 +26,14 @@ public class ManageDragAndDrop : MonoBehaviour {
 
     }
 
+    private void OnMouseOver()
+    {
+        
+    }
+
     public void OnMouseDrag()
     {
-        createPuzzle _createPuzzle = GameObject.Find("EventSystem").GetComponent<createPuzzle>();
+        //createPuzzle _createPuzzle = GameObject.Find("EventSystem").GetComponent<createPuzzle>();
         Renderer rendEditeur = GameObject.Find("Editeur").GetComponent<Renderer>();
         Renderer rendCanvas = GameObject.Find("GameEditorScreen").GetComponent<Renderer>();
         Renderer rendControlPanel = GameObject.Find("Panneau controle").GetComponent<Renderer>();
@@ -89,12 +94,12 @@ public class ManageDragAndDrop : MonoBehaviour {
         {
             transform.position = new Vector3(transform.position.x, maxPositionY, transform.position.z);
         }
-        
-            if (Input.GetKeyDown("delete"))
-            {
-                _createPuzzle.Undo();
-            }
-        
+        /*
+        if (Input.GetKeyDown("delete"))
+        {
+            _createPuzzle.Undo();
+        }
+        */
 
     }
 
