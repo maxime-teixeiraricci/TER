@@ -16,6 +16,7 @@ public class createPuzzle : MonoBehaviour {
     public void OnMouseDown()
     {
         GameObject puzzleClone = (GameObject)Instantiate(puzzle, GameObject.Find("Editeur").transform);
+           puzzleClone.GetComponent<RectTransform>().localPosition = new Vector3(293, 336, -0.2084961f);
         listPieces.Add(puzzleClone);
         cptObjects = listPieces.Count;
     }

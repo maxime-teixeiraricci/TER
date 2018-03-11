@@ -61,7 +61,7 @@ public class ManageDragAndDrop : MonoBehaviour
         Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, distance);
         Vector3 objPosition = Camera.main.ScreenToWorldPoint(mousePosition);
         transform.position = objPosition;
-   
+
         float currentPositionX = transform.position.x + widthPuzzle / 2;
         float maxPositionX = widthCanvas - widthPuzzle;
         float minPositionX = widthControlPanel + widthPuzzle / 2;
@@ -69,7 +69,7 @@ public class ManageDragAndDrop : MonoBehaviour
     
 
         float currentPositionY = transform.position.y - heightPuzzle / 2;
-        float minPositionY = 0 + heightPuzzle;
+        float minPositionY = heightPuzzle;
         float maxPositionY = heightEditor;
 
         Debug.Log("SOURIS X = " + currentPositionX);
@@ -105,11 +105,11 @@ public class ManageDragAndDrop : MonoBehaviour
         Renderer rendControlPanel = GameObject.Find("Panneau controle").GetComponent<Renderer>();
         var collider2D = gameObject.GetComponent<Collider2D>();
 
-        /*
-                // Dimensions du canvas
-                float widthCanvas = rendCanvas.bounds.size.x;
-                float heightCanvas = rendCanvas.bounds.size.y;
-        */
+        
+        // Dimensions du canvas
+        float widthCanvas = rendCanvas.bounds.size.x;
+        float heightCanvas = rendCanvas.bounds.size.y;
+        
 
         // Largeur et hauteur de la pièce de puzzle
         float widthPuzzle = collider2D.bounds.size.x;
@@ -122,6 +122,7 @@ public class ManageDragAndDrop : MonoBehaviour
   
        // Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, distance);
        // Vector3 trueMousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+       
 
             // transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
             // 1;5;9;13;17;21
@@ -129,32 +130,32 @@ public class ManageDragAndDrop : MonoBehaviour
             {       // 1
                     if ( currentObject.GetComponent<RectTransform>().localPosition.y < 286 && currentObject.GetComponent<RectTransform>().localPosition.y > 186)
                     {
-                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(-271, 236, 0); 
+                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(-271, 236, transform.position.z); 
                     }
                     // 5
                     else if (currentObject.GetComponent<RectTransform>().localPosition.y < 186 && currentObject.GetComponent<RectTransform>().localPosition.y > 86)
                     {
-                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(-271, 136, 0);
+                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(-271, 136, transform.position.z);
                     }
                     // 9
                     else if (currentObject.GetComponent<RectTransform>().localPosition.y < 86 && currentObject.GetComponent<RectTransform>().localPosition.y > -14)
                     {
-                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(-271, 36, 0);
+                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(-271, 36, transform.position.z);
                     }
                     // 13
                     else if (currentObject.GetComponent<RectTransform>().localPosition.y < -14 && currentObject.GetComponent<RectTransform>().localPosition.y > -114)
                     {
-                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(-271, -64, 0);
+                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(-271, -64, transform.position.z);
                     }
                     // 17
                     else if (currentObject.GetComponent<RectTransform>().localPosition.y < -114 && currentObject.GetComponent<RectTransform>().localPosition.y > -214)
                     {
-                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(-271, -164, 0);
+                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(-271, -164, transform.position.z);
                     }
                     // 21
                     else if (currentObject.GetComponent<RectTransform>().localPosition.y < -214 && currentObject.GetComponent<RectTransform>().localPosition.y > -314)
                     {
-                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(-271, -264, 0);
+                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(-271, -264, transform.position.z);
                     }
 
             }
@@ -165,32 +166,32 @@ public class ManageDragAndDrop : MonoBehaviour
                     // 2
                     if (currentObject.GetComponent<RectTransform>().localPosition.y < 286 && currentObject.GetComponent<RectTransform>().localPosition.y > 186)
                     {
-                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(-83, 236, 0);
+                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(-83, 236, transform.position.z);
                     }
                     // 6
                     else if (currentObject.GetComponent<RectTransform>().localPosition.y < 186 && currentObject.GetComponent<RectTransform>().localPosition.y > 86)
                     {
-                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(-83, 136, 0);
+                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(-83, 136, transform.position.z);
                     }
                     // 10
                     else if (currentObject.GetComponent<RectTransform>().localPosition.y < 86 && currentObject.GetComponent<RectTransform>().localPosition.y > -14)
                     {
-                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(-83, 36, 0);
+                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(-83, 36, transform.position.z);
                     }
                     // 14
                     else if (currentObject.GetComponent<RectTransform>().localPosition.y < -14 && currentObject.GetComponent<RectTransform>().localPosition.y > -114)
                     {
-                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(-83, -64, 0);
+                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(-83, -64, transform.position.z);
                     }
                     // 18
                     else  if (currentObject.GetComponent<RectTransform>().localPosition.y < -114 && currentObject.GetComponent<RectTransform>().localPosition.y > -214)
                     {
-                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(-83, -164, 0);
+                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(-83, -164, transform.position.z);
                     }
                     // 22
                     else if (currentObject.GetComponent<RectTransform>().localPosition.y < -214 && currentObject.GetComponent<RectTransform>().localPosition.y > -314)
                     {
-                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(-83, -264, 0);
+                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(-83, -264, transform.position.z);
                     }
             }
             // 3;7;11;15;19;23
@@ -199,32 +200,32 @@ public class ManageDragAndDrop : MonoBehaviour
                     // 3
                     if (currentObject.GetComponent<RectTransform>().localPosition.y < 286 && currentObject.GetComponent<RectTransform>().localPosition.y > 186)
                     {
-                       currentObject.GetComponent<RectTransform>().localPosition = new Vector3(105, 236, 0);
+                       currentObject.GetComponent<RectTransform>().localPosition = new Vector3(105, 236, transform.position.z);
                     }
                     // 7
                     else if (currentObject.GetComponent<RectTransform>().localPosition.y < 186 && currentObject.GetComponent<RectTransform>().localPosition.y > 86)
                     {
-                       currentObject.GetComponent<RectTransform>().localPosition = new Vector3(105, 136, 0);
+                       currentObject.GetComponent<RectTransform>().localPosition = new Vector3(105, 136, transform.position.z);
                     }
                     // 11
                     else if (currentObject.GetComponent<RectTransform>().localPosition.y < 86 && currentObject.GetComponent<RectTransform>().localPosition.y > -14)
                     {
-                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(105, 36, 0);
+                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(105, 36, transform.position.z);
                     }
                     // 15
                     else if (currentObject.GetComponent<RectTransform>().localPosition.y < -14 && currentObject.GetComponent<RectTransform>().localPosition.y > -114)
                     {
-                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(105, -64, 0);
+                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(105, -64, transform.position.z);
                     }
                     // 19
                     else if (currentObject.GetComponent<RectTransform>().localPosition.y < -114 && currentObject.GetComponent<RectTransform>().localPosition.y > -214)
                     {
-                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(105, -164, 0);
+                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(105, -164, transform.position.z);
                     }
                     // 23
                     else if (currentObject.GetComponent<RectTransform>().localPosition.y < -214 && currentObject.GetComponent<RectTransform>().localPosition.y > -314)
                     {
-                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(105, -264, 0);
+                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(105, -264, transform.position.z);
                     }
             }
             // 4;8;12;16;20;24
@@ -233,32 +234,32 @@ public class ManageDragAndDrop : MonoBehaviour
                     // 4
                     if (currentObject.GetComponent<RectTransform>().localPosition.y < 286 && currentObject.GetComponent<RectTransform>().localPosition.y > 186)
                     {
-                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(293, 236, 0);
+                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(293, 236, transform.position.z);
                     }
                     // 8
                     else if (currentObject.GetComponent<RectTransform>().localPosition.y < 186 && currentObject.GetComponent<RectTransform>().localPosition.y > 86)
                     {
-                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(293, 136, 0);
+                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(293, 136, transform.position.z);
                     }
                     // 12
                     else if (currentObject.GetComponent<RectTransform>().localPosition.y < 86 && currentObject.GetComponent<RectTransform>().localPosition.y > -14)
                     {
-                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(293, 36, 0);
+                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(293, 36, transform.position.z);
                     }
                     // 16
                     else if (currentObject.GetComponent<RectTransform>().localPosition.y < -14 && currentObject.GetComponent<RectTransform>().localPosition.y > -114)
                     {
-                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(293, -64, 0);
+                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(293, -64, transform.position.z);
                     }
                     // 20
                     else if (currentObject.GetComponent<RectTransform>().localPosition.y < -114 && currentObject.GetComponent<RectTransform>().localPosition.y > -214)
                     {
-                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(293, -164, 0);
+                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(293, -164, transform.position.z);
                     }
                     // 24
                     else if (currentObject.GetComponent<RectTransform>().localPosition.y < -214 && currentObject.GetComponent<RectTransform>().localPosition.y > -314)
                     {
-                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(293, -264, 0);
+                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(293, -264, transform.position.z);
                     }
             }
             else transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
