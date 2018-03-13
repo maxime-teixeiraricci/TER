@@ -291,7 +291,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\ManageDragAndDrop.cs" />
     <Compile Include="Assets\MetaBot\Engine\GameManager.cs" />
     <Compile Include="Assets\MetaBot\Engine\Instruction\Instruction.cs" />
     <Compile Include="Assets\MetaBot\Engine\Item\Item.cs" />
