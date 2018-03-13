@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/TestMoteur/BetaScene/BetaTest.unity
+- path: Assets/MetaBot/Game/WarBot/Scene/TestInterpreter.unity
   isLoaded: 1
   isActive: 1

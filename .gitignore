@@ -1,4 +1,4 @@
-/warbot-unity/[Ll]ibrary/
+/warbot-unity/[Ll]ibrary/metadata/
 warbot-unity/[Tt]emp/
 warbot-unity/[Oo]bj/
 warbot-unity/[Bb]uild/
@@ -32,3 +32,4 @@ warbot-unity/sysinfo.txt
 # Builds
 warbot-unity/*.apk
 warbot-unity/*.unitypackage
+warbot-unity/*.tst

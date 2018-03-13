@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2017
+# Visual Studio 2015
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "warbot-unity", "warbot-unity.csproj", "{9BCD2A08-FF67-61C2-38D2-A27D44139652}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "warbot-unity.Editor", "warbot-unity.Editor.csproj", "{83E1496C-842F-CF6D-6D81-66145AA275F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +15,10 @@ Global
 		{9BCD2A08-FF67-61C2-38D2-A27D44139652}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9BCD2A08-FF67-61C2-38D2-A27D44139652}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9BCD2A08-FF67-61C2-38D2-A27D44139652}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83E1496C-842F-CF6D-6D81-66145AA275F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83E1496C-842F-CF6D-6D81-66145AA275F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83E1496C-842F-CF6D-6D81-66145AA275F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83E1496C-842F-CF6D-6D81-66145AA275F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
