@@ -1,10 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ManageDragAndDrop : MonoBehaviour
 {
+    public int posGridX;
+    public int posGridY;
+    public int posGridH;
+    public int posGridW;
 
+    public float sizePuzzleX;
+    public float sizePuzzleY;
     float distance = 10;
     int nbrObjects = 0;
     public static GameObject currentObject;
@@ -29,8 +36,9 @@ public class ManageDragAndDrop : MonoBehaviour
 
     private void OnMouseOver()
     {
-        
+        print("Over ! " + gameObject);
     }
+
 
     public void OnMouseDrag()
     {
@@ -62,6 +70,12 @@ public class ManageDragAndDrop : MonoBehaviour
         Vector3 objPosition = Camera.main.ScreenToWorldPoint(mousePosition);
         transform.position = objPosition;
 
+        float newX = Mathf.Min(Mathf.Max(GetComponent<RectTransform>().localPosition.x, -widthEditor / 2), widthEditor / 2);
+        float newY = Mathf.Min(Mathf.Max(GetComponent<RectTransform>().localPosition.y, -heightEditor / 2), heightEditor / 2);
+        Vector3 newPos = new Vector3(newX, newY, transform.position.z);
+        GetComponent<RectTransform>().localPosition = newPos;
+
+        /*
         float currentPositionX = transform.position.x + widthPuzzle / 2;
         float maxPositionX = widthCanvas - widthPuzzle;
         float minPositionX = widthControlPanel + widthPuzzle / 2;
@@ -93,9 +107,9 @@ public class ManageDragAndDrop : MonoBehaviour
         if(transform.position.y > maxPositionY)
         {
             transform.position = new Vector3(transform.position.x, maxPositionY, transform.position.z);
-        }
+        }*/
     }
-
+    
     public void OnMouseUpAsButton()
 
     {
@@ -109,24 +123,61 @@ public class ManageDragAndDrop : MonoBehaviour
         // Dimensions du canvas
         float widthCanvas = rendCanvas.bounds.size.x;
         float heightCanvas = rendCanvas.bounds.size.y;
-        
+
 
         // Largeur et hauteur de la pièce de puzzle
-        float widthPuzzle = collider2D.bounds.size.x;
-        float heightPuzzle = collider2D.bounds.size.y;
+        /*float widthPuzzle = collider2D.bounds.size.x;
+        float heightPuzzle = collider2D.bounds.size.y;*/
+
+        float widthPuzzle = sizePuzzleX;
+        float heightPuzzle = sizePuzzleY;
 
 
         // Largeur et hauteur de l'éditeur de comportement
         float widthEditor = rendEditeur.bounds.size.x;
         float heightEditor = rendEditeur.bounds.size.y;
-  
-       // Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, distance);
-       // Vector3 trueMousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-       
 
-            // transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-            // 1;5;9;13;17;21
-            if ( currentObject.GetComponent<RectTransform>().localPosition.x > -365 && currentObject.GetComponent<RectTransform>().localPosition.x < -177)
+        // Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, distance);
+        // Vector3 trueMousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+        //y = 100
+        //x = -271 - -83 = 
+        float minX = -widthEditor / 2;
+        float maxX = widthEditor / 2;
+        float minY = -heightEditor/2;
+        float maxY = heightEditor/2;
+        
+        posGridX = (int)Mathf.Round(currentObject.GetComponent<RectTransform>().localPosition.x  / widthPuzzle);
+        posGridY = (int)Mathf.Round(currentObject.GetComponent<RectTransform>().localPosition.y / heightPuzzle);
+        float newX = posGridX * widthPuzzle;
+        float newY = posGridY * heightPuzzle;
+        Vector3 newPos = new Vector3(newX, newY, transform.position.z);
+
+        currentObject.GetComponent<RectTransform>().localPosition = newPos;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*
+
+
+        // transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        // 1;5;9;13;17;21
+        if ( currentObject.GetComponent<RectTransform>().localPosition.x > -365 && currentObject.GetComponent<RectTransform>().localPosition.x < -177)
             {       // 1
                     if ( currentObject.GetComponent<RectTransform>().localPosition.y < 286 && currentObject.GetComponent<RectTransform>().localPosition.y > 186)
                     {
@@ -263,6 +314,6 @@ public class ManageDragAndDrop : MonoBehaviour
                     }
             }
             else transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-
+            */
     }
 }

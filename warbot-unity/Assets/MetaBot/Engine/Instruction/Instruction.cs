@@ -39,6 +39,12 @@ public class Instruction {
 
         return l_whenNode;
     }
+
+    public string toString()
+    {
+        return _listeStringPerceptsVoulus.ToString() + _stringAction;
+    }
+
     /*
     public bool verify()
     {
