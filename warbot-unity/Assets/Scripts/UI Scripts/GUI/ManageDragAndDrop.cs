@@ -12,6 +12,7 @@ public class ManageDragAndDrop : MonoBehaviour
 
     public float sizePuzzleX;
     public float sizePuzzleY;
+    public bool undestructible;
     float distance = 10;
     int nbrObjects = 0;
     public static GameObject currentObject;
@@ -28,6 +29,7 @@ public class ManageDragAndDrop : MonoBehaviour
     public void OnMouseDown()
     {
         // Nombre de pièces de puzzle présentes dans l'éditeur
+        print("CLICK " + gameObject);
         nbrObjects = createPuzzle.cptObjects;
         
 
@@ -37,6 +39,11 @@ public class ManageDragAndDrop : MonoBehaviour
     private void OnMouseOver()
     {
         print("Over ! " + gameObject);
+        if (Input.GetMouseButtonDown(1) && !undestructible)
+        {
+            print("DESTROY");
+            Destroy(gameObject);
+        }
     }
 
 
@@ -316,4 +323,10 @@ public class ManageDragAndDrop : MonoBehaviour
             else transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
             */
     }
+
+    public bool isRight(GameObject other)
+    {
+        return posGridX + posGridW == other.GetComponent<ManageDragAndDrop>().posGridX;
+    }
+
 }
