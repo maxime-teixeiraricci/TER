@@ -50,12 +50,20 @@ public class Brain : MonoBehaviour
 
     bool Verify(Instruction instruction)
     {
-
+        bool flag = true;
         foreach (string percept in instruction._listeStringPerceptsVoulus)
         {
-            if (!(_percepts._percepts.ContainsKey(percept) && _percepts._percepts[percept]())) { return false; }
+            if (!(_percepts._percepts.ContainsKey(percept) && _percepts._percepts[percept]())) { flag = false; }
         }
-        return true;
+
+        // bool flag2 = false;
+        // foreach (string percept in instruction._listeStringPerceptsOu)
+        // {
+        //     if (!(_percepts._percepts.ContainsKey(percept) && _percepts._percepts[percept]())) { flag2 = true; }
+        // }
+        // return (flag && flag2);
+
+        return flag;
     }
 
 

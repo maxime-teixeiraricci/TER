@@ -6,13 +6,16 @@ using UnityEngine;
 public class Instruction {
 
     public string[] _listeStringPerceptsVoulus;
+    public string[] _listeStringPerceptsOu;
     public string _stringAction;
 
     
-   public Instruction(string[] ins, string act)
+   public Instruction(string[] ins, string[] ou, string act)
     {
         _stringAction = act;
         _listeStringPerceptsVoulus = ins;
+        _listeStringPerceptsOu = ou; ;
+
     }
 
     public XmlNode xmlStructure()
@@ -26,8 +29,15 @@ public class Instruction {
             XmlElement t = l_doc.CreateElement(c);
             paramNode.AppendChild(t);
         }
-       
 
+        XmlNode ouNode = l_doc.CreateElement("or");
+        foreach (string c2 in _listeStringPerceptsOu)
+        {
+            XmlElement t2 = l_doc.CreateElement(c2);
+            ouNode.AppendChild(t2);
+        }
+
+        paramNode.AppendChild(ouNode);
         l_whenNode.AppendChild(paramNode);
 
         XmlNode actNode = l_doc.CreateElement("actions");
@@ -93,5 +103,15 @@ public class Instruction {
     public void setStringAction(string action)
     {
         this._stringAction = action;
+    }
+
+    public string[] getListeStringPerceptsOu()
+    {
+        return this._listeStringPerceptsOu;
+    }
+
+    public void setListeStringPerceptsOu(string[] percepts)
+    {
+        this._listeStringPerceptsOu = percepts;
     }
 }
