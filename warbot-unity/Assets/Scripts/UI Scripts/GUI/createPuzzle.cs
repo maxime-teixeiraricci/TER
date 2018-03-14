@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class createPuzzle : MonoBehaviour {
 
     public GameObject puzzle;
-    public GameObject puzzle2;
+    public string _label;
+    public Vector3 positionInitial;
     public static ArrayList listPieces = new ArrayList();
     public static ArrayList recoverList = new ArrayList();
     public static int cptObjects;
@@ -13,10 +15,20 @@ public class createPuzzle : MonoBehaviour {
     public static GameObject pieceToUndo;
     public static GameObject pieceToRedo;
 
-    public void OnMouseDown()
+    public void create()
     {
         GameObject puzzleClone = (GameObject)Instantiate(puzzle, GameObject.Find("Editeur").transform);
-           puzzleClone.GetComponent<RectTransform>().localPosition = new Vector3(293, 336, -0.2084961f);
+        if (puzzleClone.GetComponent<ActionPuzzleScript>())
+        {
+            Debug.Log("Label ACTION = " + _label);
+            puzzleClone.GetComponent<ActionPuzzleScript>().actionName = _label;
+        }
+        else if (puzzleClone.GetComponent<CondPuzzleScript>())
+        {
+            puzzleClone.GetComponent<CondPuzzleScript>()._labelText.text = _label;
+        }
+
+        puzzleClone.GetComponent<RectTransform>().anchoredPosition = positionInitial;
         listPieces.Add(puzzleClone);
         cptObjects = listPieces.Count;
     }
