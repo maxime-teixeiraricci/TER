@@ -10,11 +10,11 @@ public class Instruction {
     public string _stringAction;
 
     
-   public Instruction(string[] ins, string[] ou, string act)
+   public Instruction(string[] ins, string act)
     {
         _stringAction = act;
         _listeStringPerceptsVoulus = ins;
-        _listeStringPerceptsOu = ou; ;
+       // _listeStringPerceptsOu = ou; ;
 
     }
 
