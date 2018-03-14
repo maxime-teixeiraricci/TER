@@ -12,6 +12,10 @@ public class MovableCharacter : MonoBehaviour
     public float _edgeDistance;
     public bool _obstacleEncounter;
 
+    public bool a;
+    public bool b;
+    public GameObject B;
+
     private Vector3 nextposition;
     	
 
@@ -28,14 +32,30 @@ public class MovableCharacter : MonoBehaviour
     public bool isBlocked()
     {
         Ray rA = new Ray(nextposition + vectMov.normalized * _offsetGround, Vector3.down * _edgeDistance);
+        Ray rB = new Ray(nextposition + vectMov.normalized * _offsetObstacle, transform.right* 0.25f);
+
+        RaycastHit hit;
+        a = Physics.Raycast(rA.origin,rA.direction);
+        b = Physics.Raycast(rB, out hit, 1);
+        Debug.DrawRay(rB.origin, rB.direction, Color.black);
+        Debug.DrawRay(rA.origin, rA.direction, Color.red);
 
 
-        bool a = Physics.Raycast(rA.origin,rA.direction);
+        B = null;
+        if (b)
+        {
+            
+            if (hit.transform.tag == "Unit" && hit.transform.gameObject != gameObject && !hit.collider.isTrigger)
+            {
+                B = hit.transform.gameObject;
+                print(gameObject + " : " + B);
+                return true;
+            }
+            else { Debug.DrawRay(rB.origin, rB.direction, Color.white);  }
+        }
+        if (!a) { return true; }
         
-        if (!a) { Debug.DrawRay(rA.origin, rA.direction, Color.green); }
-        else { Debug.DrawRay(rA.origin, rA.direction, Color.red); }
-        
-        return !a ;
+        return false ;
 
     }
 
@@ -44,8 +64,8 @@ public class MovableCharacter : MonoBehaviour
         if (other.gameObject.tag != "Ground")
         {
 
-            _isblocked = true;
-            transform.position += (transform.position - other.gameObject.transform.position).normalized * 0.01f;
+            //_isblocked = true;
+            //transform.position += (transform.position - other.gameObject.transform.position).normalized * 0.01f;
         }
     }
 
