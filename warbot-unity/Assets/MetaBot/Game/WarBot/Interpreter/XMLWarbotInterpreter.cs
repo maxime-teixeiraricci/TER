@@ -42,15 +42,34 @@ namespace UnityTER.Interpreter
             //if (ins.Name.Equals(typeof(Task).Name))
             //{//cas d'un If"
                 List<string> l_conditions = new List<string>();
-                List<string> l_actions = new List<string>();
+            List<string> l_conditionsOu = new List<string>();
+            List<string> l_actions = new List<string>();
 
                     XmlNode l_cond = ins.FirstChild;
                     if (l_cond != null)
                     {
-                        foreach (XmlNode c in l_cond)
-                            l_conditions.Add(c.Name);
+                    foreach (XmlNode c in l_cond)
+                    if (c.Name == "or")
+                    {
+                        foreach (XmlNode c2 in c.ChildNodes)
+                            l_conditionsOu.Add(c2.Name);
                     }
-
+                    else
+                    {
+                        l_conditions.Add(c.Name);
+                    }
+                    }
+                    /*
+                    if (ins.ChildNodes.Count > 2)
+                    {
+                        XmlNode l_OU = ins.ChildNodes[1];
+                        if (l_OU != null)
+                        {
+                            foreach (XmlNode c in l_cond)
+                                l_conditionsOu.Add(c.Name);
+                        }
+                    }
+                    */
                     XmlNode l_noeudAct = ins.LastChild;
                     if (l_noeudAct != null)
                     {
@@ -64,6 +83,7 @@ namespace UnityTER.Interpreter
                     {
                         cond[i] = l_conditions[i];
                     }
+                    //ajouter dans constructeur
                     Instruction t = new Instruction(cond,l_actions[0]);
 
             return t;

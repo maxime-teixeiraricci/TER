@@ -30,14 +30,17 @@ public class Instruction {
             paramNode.AppendChild(t);
         }
 
-        XmlNode ouNode = l_doc.CreateElement("or");
-        foreach (string c2 in _listeStringPerceptsOu)
+        if (_listeStringPerceptsOu.Length > 0)
         {
-            XmlElement t2 = l_doc.CreateElement(c2);
-            ouNode.AppendChild(t2);
-        }
+            XmlNode ouNode = l_doc.CreateElement("or");
+            foreach (string c2 in _listeStringPerceptsOu)
+            {
+                XmlElement t2 = l_doc.CreateElement(c2);
+                ouNode.AppendChild(t2);
+            }
 
-        paramNode.AppendChild(ouNode);
+            paramNode.AppendChild(ouNode);
+        }
         l_whenNode.AppendChild(paramNode);
 
         XmlNode actNode = l_doc.CreateElement("actions");
