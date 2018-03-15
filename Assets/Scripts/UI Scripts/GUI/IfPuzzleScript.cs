@@ -22,6 +22,8 @@ public class IfPuzzleScript : MonoBehaviour
     {
         updateCondPuzzle();
         updateActionPuzzle();
+        
+        
         if (debugInstruction)
         {
             debugInstruction = false;

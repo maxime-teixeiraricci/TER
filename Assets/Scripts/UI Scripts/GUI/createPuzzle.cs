@@ -25,7 +25,7 @@ public class createPuzzle : MonoBehaviour {
         }
         else if (puzzleClone.GetComponent<CondPuzzleScript>())
         {
-            puzzleClone.GetComponent<CondPuzzleScript>()._labelText.text = _label;
+            puzzleClone.GetComponent<CondPuzzleScript>().condName = _label;
         }
 
         puzzleClone.GetComponent<RectTransform>().anchoredPosition = positionInitial;

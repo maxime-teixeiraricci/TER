@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19117647, g: 0.79918855, b: 1, a: 1}
+  m_Color: {r: 0.60294116, g: 0.60294116, b: 0.60294116, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -180,6 +180,7 @@ MonoBehaviour:
   posGridW: 2
   sizePuzzleX: 100
   sizePuzzleY: 100
+  undestructible: 0
 --- !u!114 &114933008525066690
 MonoBehaviour:
   m_ObjectHideFlags: 1

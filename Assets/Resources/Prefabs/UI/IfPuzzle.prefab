@@ -148,6 +148,7 @@ MonoBehaviour:
   posGridW: 1
   sizePuzzleX: 100
   sizePuzzleY: 100
+  undestructible: 0
 --- !u!114 &114354956916370496
 MonoBehaviour:
   m_ObjectHideFlags: 1

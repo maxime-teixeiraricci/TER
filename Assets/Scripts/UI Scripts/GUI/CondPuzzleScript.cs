@@ -9,23 +9,61 @@ public class CondPuzzleScript : MonoBehaviour
     public string condName;
     ManageDragAndDrop manager;
     public Text _labelText;
+    Image image;
+    Color defaultColor;
+    Color validColor = new Color(49.0F / 255, 204.0F / 255.0F, 1);
 
     // Use this for initialization
     void Start ()
     {
+        
         manager = GetComponent<ManageDragAndDrop>();
         _labelText.GetComponent<Text>().text = condName;
+        image = GetComponent<Image>();
+        defaultColor = image.color;
     }
 
     // Update is called once per frame
     void Update ()
     {
+        UpdateIfPuzzle();
+        UpdateCondPuzzle();
+        
+
+
+    }
+
+    void UpdateIfPuzzle()
+    {
+        image.color = defaultColor;
+
+        foreach (GameObject puzzle in GameObject.FindGameObjectsWithTag("IfPuzzle"))
+        {
+            if (manager.posGridX - 1 == puzzle.GetComponent<ManageDragAndDrop>().posGridX
+                && manager.posGridY == puzzle.GetComponent<ManageDragAndDrop>().posGridY)
+            {
+                image.color = validColor;
+                break;
+            }
+        }
+    }
+
+    void UpdateCondPuzzle()
+    {
         nextCondPuzzle = null;
+
+
         foreach (GameObject puzzle in GameObject.FindGameObjectsWithTag("CondPuzzle"))
         {
             if (manager.posGridX + 2 == puzzle.GetComponent<ManageDragAndDrop>().posGridX && manager.posGridY == puzzle.GetComponent<ManageDragAndDrop>().posGridY)
             {
                 nextCondPuzzle = puzzle;
+                break;
+            }
+
+            if (manager.posGridX - 2 == puzzle.GetComponent<ManageDragAndDrop>().posGridX && manager.posGridY == puzzle.GetComponent<ManageDragAndDrop>().posGridY)
+            {
+                image.color = validColor;
                 break;
             }
         }
