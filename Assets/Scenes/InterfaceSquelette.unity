@@ -5547,6 +5547,10 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1598452874832904, guid: 7d6796989adc9c14aa6d274aab8450f7, type: 2}
+      propertyPath: m_TagString
+      value: StartPuzzle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7d6796989adc9c14aa6d274aab8450f7, type: 2}
   m_IsPrefabParent: 0

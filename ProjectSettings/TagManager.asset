@@ -13,6 +13,12 @@ TagManager:
   - ShowGroups
   - RessourcesBar
   - Music
+  - ActionEditor
+  - CondPuzzle
+  - IfPuzzle
+  - ActionPuzzle
+  - Unit
+  - StartPuzzle
   layers:
   - Default
   - TransparentFX
