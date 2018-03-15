@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,7 +8,7 @@ public class IfPuzzleScript : MonoBehaviour
 {
     public GameObject puzzleCondObject;
     public GameObject puzzleActionObject;
-
+    public String validPlace = "false";
     public ManageDragAndDrop manager;
     Image image;
     Color defaultColor;
@@ -68,6 +69,7 @@ public class IfPuzzleScript : MonoBehaviour
     void UpdateIfPuzzle()
     {
         image.color = defaultColor;
+        validPlace = "false";
 
         GameObject startPuzzle = GameObject.FindGameObjectWithTag("StartPuzzle");
         foreach (GameObject puzzle in GameObject.FindGameObjectsWithTag("IfPuzzle"))
@@ -80,6 +82,7 @@ public class IfPuzzleScript : MonoBehaviour
             && manager.posGridY + 2 == puzzle.GetComponent<ManageDragAndDrop>().posGridY)
             {
                 image.color = validColor;
+                validPlace = "true";
                 break;
             }
         }

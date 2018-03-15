@@ -9,6 +9,7 @@ public class CondPuzzleScript : MonoBehaviour
     public string condName;
     ManageDragAndDrop manager;
     public Text _labelText;
+    public string validPlace = "false";
     Image image;
     Color defaultColor;
     Color validColor = new Color(49.0F / 255, 204.0F / 255.0F, 1);
@@ -28,14 +29,12 @@ public class CondPuzzleScript : MonoBehaviour
     {
         UpdateIfPuzzle();
         UpdateCondPuzzle();
-        
-
-
     }
 
     void UpdateIfPuzzle()
     {
         image.color = defaultColor;
+        validPlace = "false";
 
         foreach (GameObject puzzle in GameObject.FindGameObjectsWithTag("IfPuzzle"))
         {
@@ -43,6 +42,7 @@ public class CondPuzzleScript : MonoBehaviour
                 && manager.posGridY == puzzle.GetComponent<ManageDragAndDrop>().posGridY)
             {
                 image.color = validColor;
+                validPlace = "true";
                 break;
             }
         }
@@ -51,7 +51,6 @@ public class CondPuzzleScript : MonoBehaviour
     void UpdateCondPuzzle()
     {
         nextCondPuzzle = null;
-
 
         foreach (GameObject puzzle in GameObject.FindGameObjectsWithTag("CondPuzzle"))
         {
@@ -64,6 +63,7 @@ public class CondPuzzleScript : MonoBehaviour
             if (manager.posGridX - 2 == puzzle.GetComponent<ManageDragAndDrop>().posGridX && manager.posGridY == puzzle.GetComponent<ManageDragAndDrop>().posGridY)
             {
                 image.color = validColor;
+                validPlace = "true";
                 break;
             }
         }
