@@ -18,14 +18,32 @@ public class createPuzzle : MonoBehaviour {
     public void create()
     {
         GameObject puzzleClone = (GameObject)Instantiate(puzzle, GameObject.Find("Editeur").transform);
+        bool negAction = GameObject.Find("NegationAction").GetComponent<Toggle>().isOn;
+        bool negCondition = GameObject.Find("NegationCondition").GetComponent<Toggle>().isOn;
         if (puzzleClone.GetComponent<ActionPuzzleScript>())
         {
-            Debug.Log("Label ACTION = " + _label);
-            puzzleClone.GetComponent<ActionPuzzleScript>().actionName = _label;
+            if (negAction)
+            {
+                //Debug.Log("Label ACTION = " + _label);
+                puzzleClone.GetComponent<ActionPuzzleScript>().actionName = "Not" + _label;
+            }
+            else
+            {
+                puzzleClone.GetComponent<ActionPuzzleScript>().actionName = _label;
+            }
+            
         }
         else if (puzzleClone.GetComponent<CondPuzzleScript>())
         {
-            puzzleClone.GetComponent<CondPuzzleScript>().condName = _label;
+            if (negCondition)
+            {
+                //Debug.Log("Label ACTION = " + _label);
+                puzzleClone.GetComponent<CondPuzzleScript>().condName = "Not" + _label;
+            }
+            else
+            {
+                puzzleClone.GetComponent<CondPuzzleScript>().condName = _label;
+            }
         }
 
         puzzleClone.GetComponent<RectTransform>().anchoredPosition = positionInitial;

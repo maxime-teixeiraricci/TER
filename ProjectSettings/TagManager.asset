@@ -19,6 +19,9 @@ TagManager:
   - ActionPuzzle
   - Unit
   - StartPuzzle
+  - ControlItem
+  - ConditionItem
+  - ActionItem
   layers:
   - Default
   - TransparentFX
