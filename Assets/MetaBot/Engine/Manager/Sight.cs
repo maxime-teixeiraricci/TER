@@ -31,7 +31,7 @@ public class Sight : MonoBehaviour
             float angle = Vector3.Angle(A, B);
             if (angle <= _angle)
             {
-                Debug.DrawLine(transform.position, transform.position + B.normalized * _distance, Color.blue);
+                //Debug.DrawLine(transform.position, transform.position + B.normalized * _distance, Color.blue);
             }
         }
 
