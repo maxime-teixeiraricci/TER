@@ -12,8 +12,8 @@ public class SaveFile : MonoBehaviour {
     GameObject nextIf;
     GameObject numberIf;
     public ArrayList pieceIf = new ArrayList();
-    //List<GameObject> listPieces = new List<GameObject>();
-    public ArrayList listPieces = new ArrayList();
+    List<GameObject> listPieces = new List<GameObject>();
+   // public ArrayList listPieces = new ArrayList();
 
     int numberIfPuzzle;
 
@@ -24,14 +24,8 @@ public class SaveFile : MonoBehaviour {
         numberIfPuzzle = 0;
     }
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
 
     // Comtpe le nombre de pièces IF présentes dans l'éditeur
-    /*
     public int countIfPuzzle()
     {
         pieceIf = new ArrayList();
@@ -41,39 +35,22 @@ public class SaveFile : MonoBehaviour {
             {
                 pieceIf.Add(puzzle);
             }
-            // ifPuzzleCreated = pieceIf.Count;
-            Debug.Log("VAL COUNT IF = " + pieceIf.Count);
         }
         return pieceIf.Count;
     }
-    */
+    
 
-    //Permet de récupérer une pièce présente sur la grille, à l'aide de ses coordonnées X et Y relatives aux cases
-    /*
-    public GameObject getPiece(int posGridX, int posGridY)
-    {
-        foreach (GameObject puzzle in GameObject.FindGameObjectsWithTag("IfPuzzle"))
-        {
-            if (puzzle.GetComponent<ManageDragAndDrop>().posGridX == posGridX && puzzle.GetComponent<ManageDragAndDrop>().posGridY == posGridY)
-            {
-                return puzzle;
-            }
-
-        }
-        return null;
-    }
-    */
-
-    /*
+    // Methode créant un Comportement ( liste d'Instructions )
     public void createBehavior()
     {
-        
-        numberIfPuzzle = countIfPuzzle();        // Le nombre de pièces IF présentes sur le board
-        int initialX = -4;
-        int initialY = 2;
+        numberIfPuzzle = countIfPuzzle();                                                   // Le nombre de pièces IF présentes sur le board
+        GameObject startPuzzle = GameObject.FindGameObjectWithTag("StartPuzzle");           // La pièce de puzzle de départ
+        int initialX = startPuzzle.GetComponent<ManageDragAndDrop>().posGridX;              // Ses coordonnées
+        int initialY = startPuzzle.GetComponent<ManageDragAndDrop>().posGridY;
+        string[] I;
         foreach (GameObject puzzle in GameObject.FindGameObjectsWithTag("IfPuzzle"))
         {
-            if(puzzle.GetComponent<ManageDragAndDrop>().posGridX == initialX && puzzle.GetComponent<ManageDragAndDrop>().posGridY == initialY)
+            if(puzzle.GetComponent<ManageDragAndDrop>().posGridX == initialX && puzzle.GetComponent<ManageDragAndDrop>().posGridY + 1 == initialY)
             {
                 initialIf = puzzle;
                 listPieces.Add(initialIf);
@@ -83,7 +60,7 @@ public class SaveFile : MonoBehaviour {
         }
         while (listPieces.Count != numberIfPuzzle)
         {
-            nextIf = getPiece(initialX, initialY - 2);
+            nextIf = currentIf.GetComponent<IfPuzzleScript>().puzzleIfObject;
             listPieces.Add(nextIf);
             initialX = nextIf.GetComponent<ManageDragAndDrop>().posGridX;
             initialY = nextIf.GetComponent<ManageDragAndDrop>().posGridY;
@@ -93,12 +70,23 @@ public class SaveFile : MonoBehaviour {
 
         for(int i = 0; i < listPieces.Count; i++)
         {
-            Debug.Log("LAST LOOP : " + listPieces[i].GetComponent<IfPuzzleScript>().createInstruction());
             listBehavior.Add(listPieces[i].GetComponent<IfPuzzleScript>().createInstruction());
         }
-    }
-    */
 
+        for(int i = 0; i < listPieces.Count; i++)
+        {
+            I = listBehavior[i]._listeStringPerceptsVoulus;
+            //I.ToString();
+            
+            for (int j = 0; j < I.Length; j++)
+            {
+                string h = I[j];
+                Debug.Log("Instruction " + i + ", Condition = " + h);
+            }
+        }
+    }
+    
+    /*
     public void createBehavior()
     {
         List<GameObject> ifPuzzleList = new List<GameObject>();
@@ -122,5 +110,5 @@ public class SaveFile : MonoBehaviour {
                 }
             }
         }
-    }
+    }*/
 }
