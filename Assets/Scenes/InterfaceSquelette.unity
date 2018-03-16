@@ -827,6 +827,7 @@ MonoBehaviour:
   puzzle: {fileID: 0}
   _label: 
   positionInitial: {x: 0, y: 0, z: 0}
+  cptIfPuzzle: 0
 --- !u!1 &190799409
 GameObject:
   m_ObjectHideFlags: 0
@@ -2968,6 +2969,7 @@ MonoBehaviour:
   puzzle: {fileID: 0}
   _label: 
   positionInitial: {x: 0, y: 0, z: 0}
+  cptIfPuzzle: 0
 --- !u!114 &680229401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5023,6 +5025,7 @@ MonoBehaviour:
   puzzle: {fileID: 1146533950915122, guid: 1743852c5f156334e88822350058b8dc, type: 2}
   _label: Fire
   positionInitial: {x: 0, y: 0, z: 0}
+  cptIfPuzzle: 0
 --- !u!1 &1235530684
 GameObject:
   m_ObjectHideFlags: 0
@@ -5419,6 +5422,7 @@ GameObject:
   - component: {fileID: 1319590452}
   - component: {fileID: 1319590451}
   - component: {fileID: 1319590450}
+  - component: {fileID: 1319590454}
   m_Layer: 5
   m_Name: SaveFile
   m_TagString: Untagged
@@ -5500,7 +5504,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1319590452}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1319590454}
+        m_MethodName: createBehavior
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1319590452
@@ -5536,6 +5551,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1319590448}
+--- !u!114 &1319590454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1319590448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70cb9fb6aeac2bd499393c8df87eb15e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1349780310
 GameObject:
   m_ObjectHideFlags: 0
@@ -7628,6 +7654,7 @@ MonoBehaviour:
   puzzle: {fileID: 1023210813146100, guid: 9a2fcd79281119843b3edde35f732bbc, type: 2}
   _label: 
   positionInitial: {x: 0, y: 0, z: 0}
+  cptIfPuzzle: 0
 --- !u!61 &1751014672
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7757,6 +7784,7 @@ MonoBehaviour:
   puzzle: {fileID: 1365571069593978, guid: 0dc514413ad4467498376e45db8e93cc, type: 2}
   _label: LifeIsMax
   positionInitial: {x: 0, y: 0, z: 0}
+  cptIfPuzzle: 0
 --- !u!114 &1754356484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8453,6 +8481,7 @@ MonoBehaviour:
   puzzle: {fileID: 1365571069593978, guid: 0dc514413ad4467498376e45db8e93cc, type: 2}
   _label: Enemy
   positionInitial: {x: 0, y: 0, z: 0}
+  cptIfPuzzle: 0
 --- !u!61 &1910339806
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8683,6 +8712,7 @@ MonoBehaviour:
   puzzle: {fileID: 1146533950915122, guid: 1743852c5f156334e88822350058b8dc, type: 2}
   _label: Move
   positionInitial: {x: 0, y: 0, z: 0}
+  cptIfPuzzle: 0
 --- !u!1 &1928721354
 GameObject:
   m_ObjectHideFlags: 0
@@ -9822,6 +9852,7 @@ MonoBehaviour:
   puzzle: {fileID: 1146533950915122, guid: 1743852c5f156334e88822350058b8dc, type: 2}
   _label: Idle
   positionInitial: {x: 0, y: 0, z: 0}
+  cptIfPuzzle: 0
 --- !u!1 &2113180431
 GameObject:
   m_ObjectHideFlags: 0
@@ -10051,6 +10082,7 @@ MonoBehaviour:
   puzzle: {fileID: 0}
   _label: 
   positionInitial: {x: 0, y: 0, z: 0}
+  cptIfPuzzle: 0
 --- !u!1 &2123118211
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,11 +8,13 @@ public class IfPuzzleScript : MonoBehaviour
 {
     public GameObject puzzleCondObject;
     public GameObject puzzleActionObject;
+    public GameObject puzzleIfObject;
     public String validPlace = "false";
     public ManageDragAndDrop manager;
     Image image;
     Color defaultColor;
     Color validColor = new Color(158.0F / 255, 1, 79.0F / 255);
+    public int ID;
 
     public bool debugInstruction;
 	// Use this for initialization
@@ -70,14 +72,21 @@ public class IfPuzzleScript : MonoBehaviour
     {
         image.color = defaultColor;
         validPlace = "false";
+        puzzleIfObject = null;
 
         GameObject startPuzzle = GameObject.FindGameObjectWithTag("StartPuzzle");
         foreach (GameObject puzzle in GameObject.FindGameObjectsWithTag("IfPuzzle"))
         {
-            // startPuzzle.GetComponent<ManageDragAndDrop>().posGridX == -4
-            // startPuzzle.GetComponent<ManageDragAndDrop>().posGridY == 3
-            if (manager.posGridX == -4 && manager.posGridY + 1 == 3 
-            ||
+            if(manager.posGridX == puzzle.GetComponent<ManageDragAndDrop>().posGridX && manager.posGridY - 2 == puzzle.GetComponent<ManageDragAndDrop>().posGridY)
+            {
+                puzzleIfObject = puzzle;
+                break;
+            }
+        }
+
+        foreach (GameObject puzzle in GameObject.FindGameObjectsWithTag("IfPuzzle"))
+        {
+            if (manager.posGridX == -4 && manager.posGridY + 1 == 3 ||
             manager.posGridX == puzzle.GetComponent<ManageDragAndDrop>().posGridX
             && manager.posGridY + 2 == puzzle.GetComponent<ManageDragAndDrop>().posGridY)
             {
@@ -86,7 +95,8 @@ public class IfPuzzleScript : MonoBehaviour
                 break;
             }
         }
-            
+
+
     }
 
     /*

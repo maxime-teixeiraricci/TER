@@ -25,11 +25,12 @@ public class ManageDragAndDrop : MonoBehaviour
     public static GameObject pieceToRedo;*/
 
 
+    
+
 
     public void OnMouseDown()
     {
         // Nombre de pièces de puzzle présentes dans l'éditeur
-        print("CLICK " + gameObject);
         nbrObjects = createPuzzle.cptObjects;
         
 
@@ -38,10 +39,8 @@ public class ManageDragAndDrop : MonoBehaviour
 
     private void OnMouseOver()
     {
-        print("Over ! " + gameObject);
         if (Input.GetMouseButtonDown(1) && !undestructible)
         {
-            print("DESTROY");
             Destroy(gameObject);
         }
     }

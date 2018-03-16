@@ -12,8 +12,31 @@ public class createPuzzle : MonoBehaviour {
     public static ArrayList recoverList = new ArrayList();
     public static int cptObjects;
     public static int cptUndo;
+    public int cptIfPuzzle = 1;
+    int countID = 0;
+    public ArrayList pieceIf = new ArrayList();
     public static GameObject pieceToUndo;
     public static GameObject pieceToRedo;
+
+    private void Update()
+    {
+        
+    }
+
+    public int numberIfPuzzle()
+    {
+        pieceIf = new ArrayList();
+        foreach (GameObject puzzle in GameObject.FindGameObjectsWithTag("IfPuzzle"))
+        {
+            if (!pieceIf.Contains(puzzle))
+            {
+                pieceIf.Add(puzzle);
+            }
+            // ifPuzzleCreated = pieceIf.Count;
+            // Debug.Log("VAL LIST UPDATE = " + ifPuzzleCreated);
+        }
+        return pieceIf.Count;
+    }
 
     public void create()
     {
@@ -46,16 +69,31 @@ public class createPuzzle : MonoBehaviour {
             }
         }
 
+        else if (puzzleClone.GetComponent<IfPuzzleScript>())
+        {
+            puzzleClone.GetComponent<IfPuzzleScript>().ID = countID + 1;            // Attribute the ID of the piece equal to the number of IfPuzzle pieces
+            countID++;
+        }
+
         puzzleClone.GetComponent<RectTransform>().anchoredPosition = positionInitial;
         listPieces.Add(puzzleClone);
         cptObjects = listPieces.Count;
+        
+        //Debug.Log("Nombre piece IF a la création " + cptIfPuzzle);
+
     }
 
 
     public void Undo()
     {
-
+        //Debug.Log("Valeur liste entrée undo = " + ifPuzzleCreated);
         pieceToUndo = (GameObject)listPieces[cptObjects - 1];
+        if (pieceToUndo.tag == "IfPuzzle")
+        {
+            Debug.Log("Suppression piece IF n°" + cptIfPuzzle);
+            cptIfPuzzle = numberIfPuzzle() - 1;
+            Debug.Log("Il reste " + cptIfPuzzle + " pièces IF");
+        }
         recoverList.Add(pieceToUndo);
         pieceToUndo.SetActive(false);
         cptObjects--;
@@ -64,7 +102,14 @@ public class createPuzzle : MonoBehaviour {
 
     public void Redo()
     {
+        //Debug.Log("Valeur liste entrée redo = " + ifPuzzleCreated);
         GameObject pieceToRedo = (GameObject)recoverList[cptUndo - 1];
+        if (pieceToRedo.tag == "IfPuzzle")
+        {
+            Debug.Log("Recréation piece IF " + cptIfPuzzle);
+            cptIfPuzzle = numberIfPuzzle() + 1;
+            Debug.Log("Il y a maintenant " + cptIfPuzzle + " pièces IF");
+        }
         pieceToRedo.SetActive(true);
         recoverList.RemoveAt(cptUndo - 1);
         cptUndo = recoverList.Count;
