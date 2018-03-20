@@ -19,6 +19,7 @@ namespace UnityTER.Interpreter
 
         // attributes names
         public static readonly string attributeName = "name";
+        public static readonly string gameModeWarBot = "TestBot";
 
     }
 }
