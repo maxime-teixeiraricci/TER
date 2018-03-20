@@ -86,6 +86,18 @@ public class SaveFile : MonoBehaviour {
         }
     }
     
+    public void createXML()
+    {
+        //recuperation de l'unité actuellement traitée et de l'equipe
+        string teamName = "";
+        string unit = "";
+        string path = UnityTER.Interpreter.Constants.teamsDirectory;
+
+        UnityTER.Interpreter.XMLWarbotInterpreter interpreter = new UnityTER.Interpreter.XMLWarbotInterpreter();
+        interpreter.behaviorToXml(teamName, path,unit, listBehavior);
+
+    }
+
     /*
     public void createBehavior()
     {
