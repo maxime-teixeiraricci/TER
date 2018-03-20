@@ -23,7 +23,8 @@ public class EditorManagerScript : MonoBehaviour
 
     public void ReadGameFile()
     {
-        string path = "Assets/MetaBot/Game/WarBot/test.txt";
+        string gameName = "TestBot";
+        string path = "Assets/MetaBot/Game/WarBot/"+gameName+".gameset";
         StreamReader reader = new StreamReader(path);
 
         while (!reader.EndOfStream)

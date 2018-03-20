@@ -58,11 +58,11 @@ GameObject:
   - component: {fileID: 114629578900802230}
   - component: {fileID: 114650775230158826}
   - component: {fileID: 114529498503752388}
-  - component: {fileID: 114185896324841782}
   - component: {fileID: 114462790742861060}
   - component: {fileID: 54851728022423404}
   - component: {fileID: 135536693387658596}
   - component: {fileID: 114536579665419618}
+  - component: {fileID: 114191992950110330}
   - component: {fileID: 65596263803047018}
   m_Layer: 0
   m_Name: WarLight
@@ -180,7 +180,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.32, y: 2, z: 2}
   m_Center: {x: 0, y: 0.1, z: 0}
---- !u!114 &114185896324841782
+--- !u!114 &114191992950110330
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -188,7 +188,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1837564357218730}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0aa9bc24293eaf41971386b9b03d92a, type: 3}
+  m_Script: {fileID: 11500000, guid: e1b43c83d2d9f014da9bf66f69979c15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114462790742861060
@@ -231,6 +231,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _percepts: {fileID: 0}
   _actions: {fileID: 0}
+  _messageManager: {fileID: 0}
 --- !u!114 &114529498503752388
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -249,6 +250,9 @@ MonoBehaviour:
   _offsetObstacle: 1.5
   _edgeDistance: 1.5
   _obstacleEncounter: 0
+  a: 0
+  b: 0
+  B: {fileID: 0}
 --- !u!114 &114536579665419618
 MonoBehaviour:
   m_ObjectHideFlags: 1

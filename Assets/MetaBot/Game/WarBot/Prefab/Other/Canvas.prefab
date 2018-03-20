@@ -843,12 +843,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameName: 
+  gamepath: 
   _minNumberOfTeam: 0
   _maxNumberOfTeam: 0
   _listUnitGameObject: []
-  _listUnitName: []
-  _listUnitPercepts: []
-  _listUnitActions: []
+  fileUnit: []
 --- !u!114 &114715935494537064
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 {
     [Header("Game Settings")]
     public string _gameName;
+    public string gamepath;
     public int _minNumberOfTeam;
     public int _maxNumberOfTeam;
 
@@ -21,7 +22,7 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
-        string gamepath = "./teams/" + _gameName + "/";
+        gamepath = "./teams/" + _gameName + "/";
         if (!Directory.Exists(gamepath))
         {
             //if it doesn't, create it
@@ -47,7 +48,7 @@ public class GameManager : MonoBehaviour
 
     public void SaveGameFile()
     {
-        string path = "Assets/MetaBot/Game/WarBot/test.txt";
+        string path = "Assets/MetaBot/Game/WarBot/" + _gameName + ".gameset";
 
         //Write some text to the test.txt file
         StreamWriter writer = new StreamWriter(path, false);
@@ -79,20 +80,4 @@ public class GameManager : MonoBehaviour
         print("Done !");
     }
 
-    public void ReadGameFile()
-    {
-        string path = "Assets/MetaBot/Game/WarBot/test.txt";
-        StreamReader reader = new StreamReader(path);
-        string mode = "";
-
-        while ( !reader.EndOfStream )
-        {
-            string currentString = reader.ReadLine();
-            if (currentString.Equals("<"))
-            {
-
-            }
-        }
-        reader.Close();
-    }
 }

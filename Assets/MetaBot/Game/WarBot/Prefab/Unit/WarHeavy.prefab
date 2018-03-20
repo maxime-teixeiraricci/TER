@@ -53,8 +53,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4921897705751876}
   - component: {fileID: 114628389031207392}
+  - component: {fileID: 114072179023332378}
   - component: {fileID: 114614631316123548}
-  - component: {fileID: 114876302155388706}
   - component: {fileID: 114424686724352526}
   - component: {fileID: 114102966698844488}
   - component: {fileID: 114601829754097294}
@@ -214,6 +214,17 @@ MonoBehaviour:
   _sphereCollider: {fileID: 135042677106352350}
   _brain: {fileID: 0}
   _listOfCollision: []
+--- !u!114 &114072179023332378
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1670267256757844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1b43c83d2d9f014da9bf66f69979c15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114102966698844488
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -324,17 +335,6 @@ MonoBehaviour:
   - {fileID: 4584436217239334}
   - {fileID: 4537531416114584}
   _weapon: {fileID: 1296904110595814, guid: 45dc042a1363cc448889d82ba691d0d4, type: 2}
---- !u!114 &114876302155388706
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1670267256757844}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0aa9bc24293eaf41971386b9b03d92a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!135 &135022460162252836
 SphereCollider:
   m_ObjectHideFlags: 1
