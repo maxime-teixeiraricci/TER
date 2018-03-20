@@ -4,5 +4,7 @@ using UnityEngine;
 
 public abstract class Action : MonoBehaviour
 {
-    abstract public void Do();
+    public delegate void Act();
+    public Dictionary<string, Act> _actions = new Dictionary<string, Act>();
+    public abstract void InitAction();
 }

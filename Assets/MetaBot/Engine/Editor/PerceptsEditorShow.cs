@@ -29,5 +29,6 @@ public class LookAtPointEditor : Editor
             if (myTarget._percepts[key]()) { s.normal.textColor = new Color(0.1f,0.6f, 0.1f); }
             EditorGUILayout.LabelField("> " + key, s);
         }
+        
     }
 }

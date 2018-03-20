@@ -1,16 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
+using System.IO;
+
 
 public class PerceptCommon : Percept
 {
+    [ExecuteInEditMode()]
     void Start()
     {
         InitPercept();
     }
 
-
-    public void InitPercept()
+    
+    public override void InitPercept()
     {
         _percepts["PERCEPT_LIFE_MAX"] = delegate () { return GetComponent<Stats>()._maxHealth == GetComponent<Stats>()._health; };
         _percepts["PERCEPT_BLOCKED"] = delegate () { return GetComponent<Stats>()._isBlocked; };
@@ -43,4 +47,6 @@ public class PerceptCommon : Percept
         };
        
     }
+
+    
 }

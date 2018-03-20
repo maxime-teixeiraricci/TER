@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActionUnit : MonoBehaviour
+public class ActionUnit : Action
 {
-    public delegate void Act();
-
-    // Liste des déclarations des actions. (ACTION_...)
-
-    public Dictionary<string, Act> _actions = new Dictionary<string, Act>();
 
     void Start()
     {
+        InitAction();
+    }
+
+    public override void InitAction()
+    {
         _actions["ACTION_MOVE"] = delegate () { GetComponent<MovableCharacter>().Move(); };
-        _actions["ACTION_RANDOM_MOVE"] = delegate () 
+        _actions["ACTION_RANDOM_MOVE"] = delegate ()
         {
             GetComponent<Stats>()._heading = Random.Range(0, 360);
             GetComponent<MovableCharacter>().Move();
@@ -23,7 +23,8 @@ public class ActionUnit : MonoBehaviour
 
         _actions["ACTION_PICK"] = delegate () {
             GameObject target = GetComponent<Stats>()._target;
-            if (target != null) {
+            if (target != null)
+            {
                 Objet obj = target.GetComponent<ItemHeldler>()._heldObjet;
                 Inventory unitInventory = GetComponent<Inventory>();
                 unitInventory.add(obj);

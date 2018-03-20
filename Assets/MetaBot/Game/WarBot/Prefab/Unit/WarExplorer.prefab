@@ -253,9 +253,9 @@ MonoBehaviour:
   speed: 7
   vectMov: {x: 0, y: 0, z: 0}
   _isblocked: 0
-  _offsetGround: 1.5
-  _offsetObstacle: 1.5
-  _edgeDistance: 1.5
+  _offsetGround: 2
+  _offsetObstacle: 2
+  _edgeDistance: 2
   _obstacleEncounter: 0
   a: 0
   b: 0

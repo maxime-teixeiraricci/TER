@@ -23,8 +23,9 @@ public class MovableCharacter : MonoBehaviour
     {
         vectMov = Utility.vectorFromAngle(GetComponent<Stats>()._heading) ;
         nextposition = transform.position + vectMov.normalized * speed * Time.deltaTime;
-        _isblocked = isBlocked();
+        
         if (!_isblocked) { transform.position = nextposition; }
+        _isblocked = isBlocked();
         _obstacleEncounter = false;
     }
 
@@ -35,8 +36,8 @@ public class MovableCharacter : MonoBehaviour
         Ray rB = new Ray(nextposition + vectMov.normalized * _offsetObstacle, transform.right* 0.25f);
 
         RaycastHit hit;
-        a = Physics.Raycast(rA.origin,rA.direction);
-        b = Physics.Raycast(rB, out hit, 1);
+        a = Physics.Raycast(rA.origin,rA.direction, rA.direction.magnitude);
+        b = Physics.Raycast(rB, out hit, rB.direction.magnitude);
         Debug.DrawRay(rB.origin, rB.direction, Color.black);
         Debug.DrawRay(rA.origin, rA.direction, Color.red);
 
@@ -44,9 +45,10 @@ public class MovableCharacter : MonoBehaviour
         B = null;
         if (b)
         {
-            
+            print("" + hit.transform.tag + " - " + hit.transform.gameObject + " - " + gameObject + " - " + hit.collider.isTrigger);
             if (hit.transform.tag == "Unit" && hit.transform.gameObject != gameObject && !hit.collider.isTrigger)
             {
+                Debug.DrawRay(rB.origin, rB.direction, Color.red);
                 B = hit.transform.gameObject;
                 print(gameObject + " : " + B);
                 return true;
