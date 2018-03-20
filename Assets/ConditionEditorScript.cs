@@ -27,23 +27,30 @@ public class ConditionEditorScript : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (test)
+        if (!test)
         {
             test = !test;
-            UpdateCondition();
-            UpdateAction();
+            UpdateButton();
         }
+    }
+
+    public void UpdateButton()
+    {
+        ClearButton();
+        UpdateCondition();
+        UpdateAction();
     }
 
     void UpdateCondition()
     {
-        ClearButton();
+        
         UnitDropDownScript dropDown = GameObject.Find("UnitDropdown").GetComponent<UnitDropDownScript>();
         UnitPerceptAction upa = GameObject.Find("EditorManager").GetComponent<EditorManagerScript>().find(_dropDown.captionText.text);
         Vector2 mov = Vector2.zero;
         foreach (string s in upa.percepts)
         {
             GameObject button = Instantiate(_labelConditionbuttonObject, _conditionParent);
+            _buttonConditionCreated.Add(button);
             button.GetComponent<RectTransform>().anchoredPosition += mov;
             mov += deltaVect;
 
@@ -56,13 +63,13 @@ public class ConditionEditorScript : MonoBehaviour
 
     void UpdateAction()
     {
-        ClearButton();
         UnitDropDownScript dropDown = GetComponent<UnitDropDownScript>();
         UnitPerceptAction upa = GetComponent<EditorManagerScript>().find(_dropDown.captionText.text);
         Vector2 mov = Vector2.zero;
         foreach (string s in upa.actions)
         {
             GameObject button = Instantiate(_labelActionbuttonObject, _actionParent);
+            _buttonActionCreated.Add(button);
             button.GetComponent<RectTransform>().anchoredPosition += mov;
             mov += deltaVect;
 
