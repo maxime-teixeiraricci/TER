@@ -87,6 +87,8 @@ public class SaveFile : MonoBehaviour {
             }
         }
         createXML();
+        Debug.Log("here");
+        listBehavior.RemoveRange(0, listBehavior.Count);
     }
     
     public void createXML()
