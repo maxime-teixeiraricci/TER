@@ -46,6 +46,7 @@ public class SaveFile : MonoBehaviour {
     // Methode créant un Comportement ( liste d'Instructions )
     public void createBehavior()
     {
+        listPieces.RemoveRange(0, listPieces.Count);
         numberIfPuzzle = countIfPuzzle();                                                   // Le nombre de pièces IF présentes sur le board
         GameObject startPuzzle = GameObject.FindGameObjectWithTag("StartPuzzle");           // La pièce de puzzle de départ
         int initialX = startPuzzle.GetComponent<ManageDragAndDrop>().posGridX;              // Ses coordonnées
@@ -85,6 +86,7 @@ public class SaveFile : MonoBehaviour {
                 string h = I[j];
             }
         }
+        createXML();
     }
     
     public void createXML()

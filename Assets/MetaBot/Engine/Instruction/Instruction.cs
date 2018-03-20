@@ -29,7 +29,7 @@ public class Instruction {
             XmlElement t = l_doc.CreateElement(c);
             paramNode.AppendChild(t);
         }
-
+        /*
         if (_listeStringPerceptsOu.Length > 0)
         {
             XmlNode ouNode = l_doc.CreateElement("or");
@@ -40,7 +40,7 @@ public class Instruction {
             }
 
             paramNode.AppendChild(ouNode);
-        }
+        }*/
         l_whenNode.AppendChild(paramNode);
 
         XmlNode actNode = l_doc.CreateElement("actions");
