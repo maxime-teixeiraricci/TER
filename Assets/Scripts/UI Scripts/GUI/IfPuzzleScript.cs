@@ -86,9 +86,8 @@ public class IfPuzzleScript : MonoBehaviour
 
         foreach (GameObject puzzle in GameObject.FindGameObjectsWithTag("IfPuzzle"))
         {
-            if (manager.posGridX == -4 && manager.posGridY + 1 == 3 ||
-            manager.posGridX == puzzle.GetComponent<ManageDragAndDrop>().posGridX
-            && manager.posGridY + 2 == puzzle.GetComponent<ManageDragAndDrop>().posGridY)
+            if (manager.posGridX == startPuzzle.GetComponent<ManageDragAndDrop>().posGridX && manager.posGridY + 1 == startPuzzle.GetComponent<ManageDragAndDrop>().posGridY ||
+            manager.posGridX == puzzle.GetComponent<ManageDragAndDrop>().posGridX && manager.posGridY + 2 == puzzle.GetComponent<ManageDragAndDrop>().posGridY)
             {
                 image.color = validColor;
                 validPlace = "true";

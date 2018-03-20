@@ -60,6 +60,10 @@ public class CondPuzzleScript : MonoBehaviour
                 break;
             }
 
+            
+        }
+        foreach (GameObject puzzle in GameObject.FindGameObjectsWithTag("CondPuzzle"))
+        {
             if (manager.posGridX - 2 == puzzle.GetComponent<ManageDragAndDrop>().posGridX && manager.posGridY == puzzle.GetComponent<ManageDragAndDrop>().posGridY)
             {
                 image.color = validColor;
