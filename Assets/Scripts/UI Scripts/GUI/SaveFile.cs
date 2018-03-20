@@ -11,6 +11,7 @@ public class SaveFile : MonoBehaviour {
     GameObject currentIf;
     GameObject nextIf;
     GameObject numberIf;
+    TeamAndUnit teamUnit;
     public ArrayList pieceIf = new ArrayList();
     List<GameObject> listPieces = new List<GameObject>();
    // public ArrayList listPieces = new ArrayList();
@@ -22,10 +23,11 @@ public class SaveFile : MonoBehaviour {
         manager = GetComponent<ManageDragAndDrop>();
         editor = GetComponent<createPuzzle>();
         numberIfPuzzle = 0;
+        teamUnit = GetComponent<TeamAndUnit>();
     }
 	
 
-    // Comtpe le nombre de pièces IF présentes dans l'éditeur
+    // Compte le nombre de pièces IF présentes dans l'éditeur
     public int countIfPuzzle()
     {
         pieceIf = new ArrayList();
@@ -89,8 +91,8 @@ public class SaveFile : MonoBehaviour {
     public void createXML()
     {
         //recuperation de l'unité actuellement traitée et de l'equipe
-        string teamName = "";
-        string unit = "";
+        string teamName = teamUnit.valueTeam;
+        string unit = teamUnit.valueUnit;
         string path = UnityTER.Interpreter.Constants.teamsDirectory;
 
         UnityTER.Interpreter.XMLWarbotInterpreter interpreter = new UnityTER.Interpreter.XMLWarbotInterpreter();
