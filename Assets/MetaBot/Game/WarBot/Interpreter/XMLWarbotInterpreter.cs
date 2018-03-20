@@ -208,12 +208,12 @@ namespace UnityTER.Interpreter
             //Load(path + "/" + fileName);
             Load(l_fileName);
 
-            // Get all nodes named "unit"
+            // Get all nodes named "unit" if null , create it
             XmlNode l_node = SelectSingleNode("//" + Constants.nodeUnit + "[@" + Constants.attributeName + "='" + unitName + "']");
             if (l_node == null)
                 l_node = CreateElement(Constants.nodeUnit);
 
-            //            Debug.Log(node.OuterXml);
+            //erase the old behavior to add the new one
             l_node.RemoveAll();
 
             XmlAttribute l_name = CreateAttribute(Constants.attributeName);
