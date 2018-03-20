@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SaveFile : MonoBehaviour {
 
@@ -11,7 +12,8 @@ public class SaveFile : MonoBehaviour {
     GameObject currentIf;
     GameObject nextIf;
     GameObject numberIf;
-    TeamAndUnit teamUnit;
+    public Dropdown team;
+    public Dropdown unit;
     public ArrayList pieceIf = new ArrayList();
     List<GameObject> listPieces = new List<GameObject>();
    // public ArrayList listPieces = new ArrayList();
@@ -23,7 +25,6 @@ public class SaveFile : MonoBehaviour {
         manager = GetComponent<ManageDragAndDrop>();
         editor = GetComponent<createPuzzle>();
         numberIfPuzzle = 0;
-        teamUnit = GetComponent<TeamAndUnit>();
     }
 	
 
@@ -78,12 +79,10 @@ public class SaveFile : MonoBehaviour {
         for(int i = 0; i < listPieces.Count; i++)
         {
             I = listBehavior[i]._listeStringPerceptsVoulus;
-            //I.ToString();
             
             for (int j = 0; j < I.Length; j++)
             {
                 string h = I[j];
-                Debug.Log("Instruction " + i + ", Condition = " + h);
             }
         }
     }
@@ -91,12 +90,12 @@ public class SaveFile : MonoBehaviour {
     public void createXML()
     {
         //recuperation de l'unité actuellement traitée et de l'equipe
-        string teamName = teamUnit.valueTeam;
-        string unit = teamUnit.valueUnit;
+        string teamName = team.captionText.text;
+        string unitName = unit.captionText.text;
         string path = UnityTER.Interpreter.Constants.teamsDirectory;
 
         UnityTER.Interpreter.XMLWarbotInterpreter interpreter = new UnityTER.Interpreter.XMLWarbotInterpreter();
-        interpreter.behaviorToXml(teamName, path,unit, listBehavior);
+        interpreter.behaviorToXml(teamName, path, unitName, listBehavior);
 
     }
 

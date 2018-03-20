@@ -5516,6 +5516,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1319590454}
+        m_MethodName: createXML
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1319590452
@@ -5562,6 +5573,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70cb9fb6aeac2bd499393c8df87eb15e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  team: {fileID: 688641940}
+  unit: {fileID: 828720489}
 --- !u!1 &1349780310
 GameObject:
   m_ObjectHideFlags: 0
@@ -6943,7 +6956,6 @@ GameObject:
   - component: {fileID: 1639485874}
   - component: {fileID: 1639485876}
   - component: {fileID: 1639485875}
-  - component: {fileID: 1639485877}
   m_Layer: 5
   m_Name: Team&UnitChoice
   m_TagString: Untagged
@@ -7006,19 +7018,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1639485873}
---- !u!114 &1639485877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1639485873}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 743de4d5114f64942beea971dc8e4cf3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dropdownMenuTeam: {fileID: 688641939}
-  dropdownMenuUnit: {fileID: 828720488}
 --- !u!1 &1667929327
 GameObject:
   m_ObjectHideFlags: 0
