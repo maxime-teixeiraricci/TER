@@ -101,7 +101,6 @@ namespace UnityTER.Interpreter
             {
                 if (file.Contains(Constants.xmlExtension))
                 {
-                    //Debug.Log(file);
                     using (var stream = new FileStream(file, FileMode.Open))
                     {
                         if (stream.CanRead)
