@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
             Directory.CreateDirectory(gamepath);
 
         }
-    }
+    } 
 
     public void Restart()
     {

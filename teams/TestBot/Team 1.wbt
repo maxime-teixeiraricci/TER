@@ -1,0 +1,28 @@
+<behavior>
+  <teamName>Team 1</teamName>
+  <unit name="Base">
+    <instruction>
+      <parameters>
+        <PERCEPT_LIFE_MAX />
+        <PERCEPT_IS_RELOADED />
+      </parameters>
+      <actions>
+        <ACTION_FIRE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_BAG_NOT_FULL />
+      </parameters>
+      <actions>
+        <ACTION_PICK />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters />
+      <actions>
+        <ACTION_RANDOM_MOVE />
+      </actions>
+    </instruction>
+  </unit>
+</behavior>
