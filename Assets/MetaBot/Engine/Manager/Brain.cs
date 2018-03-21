@@ -16,8 +16,7 @@ public class Brain : MonoBehaviour
     public ActionUnit _actions;
     private string _currentAction;
     public MessageManager _messageManager;
-
-    [ExecuteInEditMode]
+    
     void Start()
     {
         //GameObject.Find("Canvas").GetComponent<HUDManager>().CreateHUD(gameObject);
