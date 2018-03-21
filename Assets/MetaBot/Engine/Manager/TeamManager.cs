@@ -7,6 +7,10 @@ public class TeamManager : MonoBehaviour
 {
     public List<Team> _teams = new List<Team>();
 
+    public void Start()
+    {
+        DontDestroyOnLoad(this);
+    }
 
     public List<Instruction> getUnitsBevahiours(int teamIndex, string unitType)
     {

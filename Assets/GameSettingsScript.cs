@@ -28,6 +28,8 @@ public class GameSettingsScript : MonoBehaviour
             if (i < nbPlayers) { _teamsHUD[i].SetActive(true); }
             else { _teamsHUD[i].SetActive(false); }
         }
+
+        
     }
 
     string stringDifference(string s, string z)
