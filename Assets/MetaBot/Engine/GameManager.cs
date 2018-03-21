@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using System.IO;
 using System.Text;
 
-[ExecuteInEditMode()]
+
 public class GameManager : MonoBehaviour
 {
     [Header("Game Settings")]
@@ -20,6 +20,20 @@ public class GameManager : MonoBehaviour
     [Header("Debug")]
     public List<string> fileUnit = new List<string>();
 
+    static bool created = false;
+    void Awake()
+    {
+        if (!created)
+        {
+            DontDestroyOnLoad(this.gameObject);
+            created = true;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
     public void Start()
     {
         gamepath = "./teams/" + _gameName + "/";
@@ -30,16 +44,6 @@ public class GameManager : MonoBehaviour
 
         }
     } 
-
-    public void Restart()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-
-    public void Quit()
-    {
-        Application.Quit();
-    }
 
 
 

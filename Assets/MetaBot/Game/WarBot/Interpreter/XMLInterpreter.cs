@@ -3,13 +3,12 @@ using UnityEngine;
 using System.Xml;
 using System.IO;
 
-namespace UnityTER.Interpreter
+public abstract class XMLInterpreter : XmlDocument
 {
-    public abstract class XMLInterpreter : XmlDocument
+    public XMLInterpreter()
     {
-        public XMLInterpreter()
-        {
-        }
+
+    }
 
         /**
          * Genere un fichier XML contenant uniquement le nom de l'equipe
@@ -41,7 +40,6 @@ namespace UnityTER.Interpreter
          **/
         public abstract List<string> allTeamsInXmlFiles(string path);
 
-    }
+ }
 
-}
         

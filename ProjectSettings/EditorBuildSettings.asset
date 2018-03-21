@@ -6,20 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
-    guid: 8fdf4d5377670074aa12c3b0c61ff45d
+    path: Assets/Scenes/BetaMenu.unity
+    guid: e19f907ea6c367241869dc8ce8ce9e1c
   - enabled: 1
-    path: Assets/Scenes/SelectionMenu.unity
-    guid: 1ad7b5717a32aed48a85642acb0ca539
-  - enabled: 1
-    path: Assets/Scenes/Engine Test.unity
-    guid: 47d49a85ac4b22b40b9e06a31d0b3da5
-  - enabled: 1
-    path: Assets/Scenes/UI Test.unity
-    guid: 0cca8984099901f468c5e9c4f65f4439
-  - enabled: 1
-    path: Assets/Scenes/Editeur.unity
-    guid: 93eae3b3535eaa047a33ad670e8611ac
+    path: Assets/MetaBot/Game/WarBot/Scene/TestInterpreter.unity
+    guid: 2d8f43048af84e9459829b55afd1cced
   - enabled: 1
     path: Assets/Scenes/InterfaceSquelette.unity
     guid: 9f2c0f28b9254c142b8061cfab5f228d

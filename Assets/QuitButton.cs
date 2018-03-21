@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class ReturnMenu : MonoBehaviour {
+public class QuitButton : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -15,8 +14,8 @@ public class ReturnMenu : MonoBehaviour {
 		
 	}
 
-    public void StartGame()
+    public void QuitGame()
     {
-        SceneManager.LoadScene(0);
+        Application.Quit();
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ReturnMenu : MonoBehaviour {
+public class EditorButton : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -15,8 +15,9 @@ public class ReturnMenu : MonoBehaviour {
 		
 	}
 
-    public void StartGame()
+
+    public void ButtonEditor()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(2);
     }
 }

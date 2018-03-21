@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityTER.Interpreter;
+
+using UnityEngine.SceneManagement;
 
 public class PlayButton : MonoBehaviour
 {
@@ -35,6 +36,8 @@ public class PlayButton : MonoBehaviour
             team._color = playerColor[i];
             team._name = _DropDownList[i].GetComponent<Dropdown>().captionText.text;
             team._unitsBehaviour = interpreter.xmlToBehavior(team._name, gamePath);
+            gameManager.GetComponent<TeamManager>()._teams.Add(team);
         }
+        SceneManager.LoadScene(1);
     }
 }

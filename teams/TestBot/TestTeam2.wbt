@@ -1,0 +1,54 @@
+<behavior>
+  <teamName>TestTeam</teamName>
+  <unit name="Explorer">
+     <instruction>
+      <parameters />
+      <actions>
+        <ACTION_MOVE />
+      </actions>
+    </instruction>
+  </unit>
+  <unit name="Light">
+    <instruction>
+      <parameters />
+      <actions>
+        <ACTION_MOVE />
+      </actions>
+    </instruction>
+  </unit>
+  <unit name="Heavy">
+     <instruction>
+      <parameters />
+      <actions>
+        <ACTION_MOVE />
+      </actions>
+    </instruction>
+  </unit>
+  <unit name="Base">
+    <instruction>
+      <parameters>
+        <PERCEPT_LIFE_NOT_MAX />
+        <PERCEPT_BAG_NOT_EMPTY />
+      </parameters>
+      <actions>
+        <ACTION_HEAL />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_BAG_25 />
+      </parameters>
+      <actions>
+        <ACTION_CREATE_HEAVY />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_BAG_10 />
+      </parameters>
+      <actions>
+        <ACTION_CREATE_LIGHT />
+      </actions>
+    </instruction>
+  </unit>
+</behavior>

@@ -1,0 +1,27 @@
+<behavior>
+  <teamName>Team 1</teamName>
+  <unit name="Explorer">
+    <instruction>
+      <parameters>
+        <PERCEPT_FOOD />
+      </parameters>
+      <actions>
+        <ACTION_RANDOM_MOVE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_BLOCKED />
+      </parameters>
+      <actions>
+        <ACTION_RANDOM_MOVE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters />
+      <actions>
+        <ACTION_MOVE />
+      </actions>
+    </instruction>
+  </unit>
+</behavior>

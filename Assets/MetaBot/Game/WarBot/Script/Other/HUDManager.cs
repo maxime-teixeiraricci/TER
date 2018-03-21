@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class HUDManager : MonoBehaviour
 {
@@ -18,4 +20,16 @@ public class HUDManager : MonoBehaviour
         GameObject _hud = Instantiate(_HUDObject, transform);
         _hud.GetComponent<HP_HUDManager>()._target = unit;
     }
+
+    public void RestartScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void QuitToMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+
 }

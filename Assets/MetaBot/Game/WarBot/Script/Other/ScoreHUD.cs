@@ -5,21 +5,21 @@ using UnityEngine.UI;
 
 public class ScoreHUD : MonoBehaviour
 {
-    public Image _Score1;
-    public Image _Score2;
-    public Image _Score3;
-    public Image _Score4;
+    public Image[] _scores;
     
 
 	// Update is called once per frame
 	void Update ()
     {
-        _Score1.color = GameObject.Find("GameManager").GetComponent<TeamManager>()._teams[0]._color;
-        _Score2.color = GameObject.Find("GameManager").GetComponent<TeamManager>()._teams[1]._color;
-        _Score3.color = GameObject.Find("GameManager").GetComponent<TeamManager>()._teams[2]._color;
-        _Score4.color = GameObject.Find("GameManager").GetComponent<TeamManager>()._teams[3]._color;
         Dictionary<int, int> _score = new Dictionary<int, int>();
-        _score[0] = 0; _score[1] = 0; _score[2] = 0; _score[3] = 0;
+
+        for (int i = 0; i < GameObject.Find("GameManager").GetComponent<TeamManager>()._teams.Count; i ++)
+        {
+            _scores[i].color = GameObject.Find("GameManager").GetComponent<TeamManager>()._teams[i]._color;
+            _score[i] = 0;
+        }
+
+        float total = 0;
         foreach (GameObject unit in GameObject.FindGameObjectsWithTag("Unit"))
         {
             int teamUnit = unit.GetComponent<Stats>()._teamIndex;
@@ -32,12 +32,16 @@ public class ScoreHUD : MonoBehaviour
             {
                 _score[teamUnit] = scoreUnit;
             }
+            total += scoreUnit;
         }
-        float total = _score[0] + _score[1] + _score[2] + _score[3];
-        _Score1.fillAmount = _score[0] / total;
-        _Score2.fillAmount = (_score[0] + _score[1]) / total;
-        _Score3.fillAmount = (_score[0] + _score[1] + _score[2]) / total;
-        _Score4.fillAmount = 1;
+
+        float currentValue = 0;
+        for (int i = 0; i < GameObject.Find("GameManager").GetComponent<TeamManager>()._teams.Count; i++)
+        {
+            currentValue += _score[i];
+            _scores[i].fillAmount = currentValue / total;
+        }
+
 
     }
 }

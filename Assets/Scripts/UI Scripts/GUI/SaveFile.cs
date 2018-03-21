@@ -96,9 +96,9 @@ public class SaveFile : MonoBehaviour {
         //recuperation de l'unité actuellement traitée et de l'equipe
         string teamName = team.captionText.text;
         string unitName = unit.captionText.text;
-        string path = UnityTER.Interpreter.Constants.teamsDirectory + UnityTER.Interpreter.Constants.gameModeWarBot;
+        string path = Constants.teamsDirectory + Constants.gameModeWarBot;
 
-        UnityTER.Interpreter.XMLWarbotInterpreter interpreter = new UnityTER.Interpreter.XMLWarbotInterpreter();
+        XMLWarbotInterpreter interpreter = new XMLWarbotInterpreter();
         interpreter.behaviorToXml(teamName, path, unitName, listBehavior);
 
     }

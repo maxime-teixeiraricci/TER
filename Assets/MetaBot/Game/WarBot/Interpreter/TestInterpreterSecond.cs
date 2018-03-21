@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
-using UnityTER.Interpreter;
+
 using System.IO;
 
 //[assembly: AssemblyVersionAttribute("1.0")]
