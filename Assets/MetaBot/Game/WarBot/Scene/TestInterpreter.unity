@@ -586,9 +586,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38498f91e2fd8424fa5771dc74f1177c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rayon: 50
+  _rayon: 60
   _ressource: {fileID: 1015467381009534, guid: a6b0b465978bdad4eb547ebf97a23780, type: 2}
-  _timer: 1
+  _timer: 0.2
 --- !u!4 &632479354
 Transform:
   m_ObjectHideFlags: 0

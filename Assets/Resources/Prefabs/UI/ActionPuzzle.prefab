@@ -62,7 +62,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 50, y: 0}
+  m_Offset: {x: 37.5, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -73,7 +73,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 1
   serializedVersion: 2
-  m_Size: {x: 200, y: 100}
+  m_Size: {x: 150, y: 75}
   m_EdgeRadius: 0
 --- !u!114 &114280814445170404
 MonoBehaviour:
@@ -178,8 +178,8 @@ MonoBehaviour:
   posGridY: 0
   posGridH: 1
   posGridW: 2
-  sizePuzzleX: 100
-  sizePuzzleY: 100
+  sizePuzzleX: 75
+  sizePuzzleY: 75
   undestructible: 0
 --- !u!114 &114890633662104206
 MonoBehaviour:
@@ -223,8 +223,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -200, y: 100}
-  m_SizeDelta: {x: 200, y: 100}
+  m_AnchoredPosition: {x: -329, y: 123}
+  m_SizeDelta: {x: 150, y: 75}
   m_Pivot: {x: 0.25, y: 0.5}
 --- !u!224 &224238226510299966
 RectTransform:
@@ -242,5 +242,5 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 190, y: 90}
+  m_SizeDelta: {x: 142.5, y: 67.5}
   m_Pivot: {x: 0.5, y: 0.5}

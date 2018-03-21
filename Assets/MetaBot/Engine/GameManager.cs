@@ -67,6 +67,7 @@ public class GameManager : MonoBehaviour
             // Recuperer les percepts
             writer.WriteLine("[PERCEPTS]");
             Percept unitPercepts = unit.GetComponent<Percept>();
+            Debug.Log(unit.name + " PERCEPT : "+unitPercepts.name);
             unitPercepts.InitPercept();
             foreach (string s in unitPercepts._percepts.Keys) { writer.WriteLine(s); }
 

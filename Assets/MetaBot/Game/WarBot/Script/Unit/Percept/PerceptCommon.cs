@@ -6,7 +6,7 @@ using System.IO;
 
 public class PerceptCommon : Percept
 {
-    [ExecuteInEditMode()]
+
     void Start()
     {
         InitPercept();
@@ -15,6 +15,7 @@ public class PerceptCommon : Percept
     
     public override void InitPercept()
     {
+        print("COMMON");
         _percepts["PERCEPT_LIFE_MAX"] = delegate () { return GetComponent<Stats>()._maxHealth == GetComponent<Stats>()._health; };
         _percepts["PERCEPT_BLOCKED"] = delegate () { return GetComponent<Stats>()._isBlocked; };
         _percepts["PERCEPT_LIFE_NOT_MAX"] = delegate () { return GetComponent<Stats>()._maxHealth != GetComponent<Stats>()._health; };
