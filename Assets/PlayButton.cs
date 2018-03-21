@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class PlayButton : MonoBehaviour
 {
     public GameObject[] _DropDownList;
+    public GameObject _numberplayerDropDown;
     public Color[] playerColor;
     public int nbPlayers;
 
@@ -25,6 +26,7 @@ public class PlayButton : MonoBehaviour
 
     public void StartGame()
     {
+        nbPlayers = int.Parse(_numberplayerDropDown.GetComponent<Dropdown>().captionText.text);
         XMLWarbotInterpreter interpreter = new XMLWarbotInterpreter();
         string gamePath = "./teams/" + GameObject.Find("GameManager").GetComponent<GameManager>()._gameName + "/";
         GameObject gameManager = GameObject.Find("GameManager");
