@@ -202,6 +202,7 @@ namespace UnityTER.Interpreter
                 generateEmptyFile(teamName, path);
             }
 
+            l_fileName = whichFileName(teamName, path);
             // Load the file
             //Load(path + "/" + fileName);
             Load(l_fileName);
