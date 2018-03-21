@@ -195,7 +195,6 @@ namespace UnityTER.Interpreter
             // Try to find an already existing file with this team name
             System.Console.WriteLine(path);
             string l_fileName = whichFileName(teamName, path);
-            
             // If no file has been found, create a new one with the given team name
             if (l_fileName.Equals(""))
             {

@@ -22,6 +22,8 @@ TagManager:
   - ControlItem
   - ConditionItem
   - ActionItem
+  - Item
+  - Ground
   layers:
   - Default
   - TransparentFX
