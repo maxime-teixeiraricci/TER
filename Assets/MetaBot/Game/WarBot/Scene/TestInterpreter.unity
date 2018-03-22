@@ -1470,6 +1470,11 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114432414734104694, guid: d9479473451588040a207d0bee6c26d3,
+        type: 2}
+      propertyPath: m_MaxValue
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114680246424033652, guid: d9479473451588040a207d0bee6c26d3, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: d9479473451588040a207d0bee6c26d3, type: 2}
