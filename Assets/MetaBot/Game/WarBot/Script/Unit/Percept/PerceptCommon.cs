@@ -52,33 +52,46 @@ public class PerceptCommon : Percept
             Brain brain = GetComponent<Brain>();
             Sight sight = brain.GetComponent<Sight>();
             List<GameObject> _listOfUnitColl = new List<GameObject>();
-            GameObject _gameObject = GetComponent<Stats>()._target;
-            int angleEnemy;
-
-
             foreach (GameObject gO in sight._listOfCollision)
             {
-                if (gO && !_gameObject)
+                if (gO && !GetComponent<Stats>()._target)
                 {
                     if (gO.GetComponent<Stats>() && gO.GetComponent<Stats>()._teamIndex != GetComponent<Stats>()._teamIndex)
                     {
-                        _gameObject = gO;
-                        angleEnemy = getAngle(_gameObject);
-                        GetComponent<Stats>()._heading = getAngle(_gameObject);
+                        GetComponent<Stats>()._target = gO;
+                        GetComponent<Stats>()._heading = getAngle(gO);
                         return true;
                     }
                 }
             }
             return false;
         };
-        _percepts["PERCEPT_NOT_ENEMY"] = delegate ()
+        _percepts["PERCEPT_ALLY"] = delegate ()
         {
-            if (GetComponent<Stats>()._target != null && GetComponent<Stats>()._target.GetComponent<Stats>())
+            Brain brain = GetComponent<Brain>();
+            Sight sight = brain.GetComponent<Sight>();
+            List<GameObject> _listOfUnitColl = new List<GameObject>();
+
+            foreach (GameObject gO in sight._listOfCollision)
             {
-                return GetComponent<Stats>()._target.GetComponent<Stats>()._teamIndex == GetComponent<Stats>()._teamIndex;
+                if (gO && !GetComponent<Stats>()._target)
+                {
+                    if (gO.GetComponent<Stats>() && gO.GetComponent<Stats>()._teamIndex == GetComponent<Stats>()._teamIndex)
+                    {
+                        GetComponent<Stats>()._target = gO;
+                        GetComponent<Stats>()._heading = getAngle(gO);
+                        return true;
+                    }
+                }
             }
             return false;
         };
+
+        _percepts["PERCEPT_NOT_ENEMY"] = delegate ()
+        {
+            return _percepts["PERCEPT_ALLY"]();
+        };
+
         _percepts["PERCEPT_BASE_NEAR_ALLY"] = delegate ()
         {
             GetComponent<Stats>()._target = null;
