@@ -2670,6 +2670,7 @@ GameObject:
   - component: {fileID: 688641942}
   - component: {fileID: 688641941}
   - component: {fileID: 688641940}
+  - component: {fileID: 688641943}
   m_Layer: 5
   m_Name: Dropdown
   m_TagString: Untagged
@@ -2786,6 +2787,24 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 688641938}
+--- !u!114 &688641943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 688641938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7db4fc391e1bac40943d2c907823686, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  team: {fileID: 688641940}
+  unit: {fileID: 828720489}
+  ifPuzzle: {fileID: 1023210813146100, guid: 9a2fcd79281119843b3edde35f732bbc, type: 2}
+  condPuzzle: {fileID: 1365571069593978, guid: 0dc514413ad4467498376e45db8e93cc, type: 2}
+  actionPuzzle: {fileID: 1146533950915122, guid: 1743852c5f156334e88822350058b8dc,
+    type: 2}
+  positionInitial: {x: 0, y: 0, z: 0}
 --- !u!1 &745258635
 GameObject:
   m_ObjectHideFlags: 0
@@ -2934,6 +2953,7 @@ GameObject:
   - component: {fileID: 828720490}
   - component: {fileID: 828720489}
   - component: {fileID: 828720492}
+  - component: {fileID: 828720493}
   m_Layer: 5
   m_Name: UnitDropdown
   m_TagString: Untagged
@@ -3037,6 +3057,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 828720493}
+        m_MethodName: createBehaviorFromXML
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Dropdown+DropdownEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &828720490
@@ -3083,6 +3114,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87c53ab3c2813c945a7424ea58e089c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &828720493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 828720487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7db4fc391e1bac40943d2c907823686, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  team: {fileID: 688641940}
+  unit: {fileID: 828720489}
+  ifPuzzle: {fileID: 1023210813146100, guid: 9a2fcd79281119843b3edde35f732bbc, type: 2}
+  condPuzzle: {fileID: 1365571069593978, guid: 0dc514413ad4467498376e45db8e93cc, type: 2}
+  actionPuzzle: {fileID: 1146533950915122, guid: 1743852c5f156334e88822350058b8dc,
+    type: 2}
+  positionInitial: {x: 0, y: 0, z: 0}
 --- !u!1 &829225709
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,29 +1,5 @@
 <behavior>
   <teamName>Team 1</teamName>
-  <unit name="Explorer">
-    <instruction>
-      <parameters>
-        <PERCEPT_BLOCKED />
-      </parameters>
-      <actions>
-        <ACTION_TURN_AROUND_MOVE />
-      </actions>
-    </instruction>
-    <instruction>
-      <parameters>
-        <PERCEPT_FOOD_NEAR />
-      </parameters>
-      <actions>
-        <ACTION_PICK />
-      </actions>
-    </instruction>
-    <instruction>
-      <parameters />
-      <actions>
-        <ACTION_MOVE />
-      </actions>
-    </instruction>
-  </unit>
   <unit name="Base">
     <instruction>
       <parameters>
@@ -40,6 +16,16 @@
       </parameters>
       <actions>
         <ACTION_IDLE />
+      </actions>
+    </instruction>
+  </unit>
+  <unit name="Explorer">
+    <instruction>
+      <parameters>
+        <PERCEPT_BLOCKED />
+      </parameters>
+      <actions>
+        <ACTION_TURN_AROUND_MOVE />
       </actions>
     </instruction>
   </unit>
