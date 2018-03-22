@@ -36,6 +36,8 @@ public class LoadFile : MonoBehaviour
     
     public void createBehaviorFromXML()
     {
+
+        int nbrIf = 1;
         clear = new NewFile();
         clear.clearEditor();        // On clear l'editeur avant de charger un nouveau comportement
         /*
@@ -66,7 +68,9 @@ public class LoadFile : MonoBehaviour
             //Debug.Log("PosX Start = " + startPuzzle.GetComponent<ManageDragAndDrop>().posGridX);
             //Debug.Log("PosY Start = " + startPuzzle.GetComponent<ManageDragAndDrop>().posGridY);
             puzzleIf.GetComponent<ManageDragAndDrop>().posGridX = startPuzzle.GetComponent<ManageDragAndDrop>().posGridX;
-            puzzleIf.GetComponent<ManageDragAndDrop>().posGridY = startPuzzle.GetComponent<ManageDragAndDrop>().posGridY + 1;
+            puzzleIf.GetComponent<ManageDragAndDrop>().posGridY = startPuzzle.GetComponent<ManageDragAndDrop>().posGridY + nbrIf;
+            //puzzleIf.GetComponent<RectTransform>().anchoredPosition = positionInitial;
+            nbrIf += 2;
 
             // Pour chaque percept associé au IF
             for (int i = 0; i < instruction._listeStringPerceptsVoulus.Length; i++)
