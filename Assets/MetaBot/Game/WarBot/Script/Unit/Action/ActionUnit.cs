@@ -17,7 +17,12 @@ public class ActionUnit : ActionCommon
         _actions["ACTION_RANDOM_MOVE"] = delegate ()
         {
             GetComponent<Stats>()._heading = Random.Range(0, 360);
-            GetComponent<MovableCharacter>().Move();
+            _actions["ACTION_MOVE"]();
+        };
+        _actions["ACTION_TURN_AROUND_MOVE"] = delegate ()
+        {
+            GetComponent<Stats>()._heading += 180;
+            _actions["ACTION_MOVE"]();
         };
         _actions["ACTION_HEAL"] = delegate () { GetComponent<Inventory>().use("Ressource"); };
         _actions["ACTION_IDLE"] = delegate () { };
