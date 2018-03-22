@@ -42,15 +42,5 @@
         <ACTION_IDLE />
       </actions>
     </instruction>
-    <instruction>
-      <parameters>
-        <PERCEPT_LIFE_NOT_MAX />
-        <PERCEPT_BLOCKED />
-        <PERCEPT_BAG_FULL />
-      </parameters>
-      <actions>
-        <ACTION_GIVE_RESSOURCE />
-      </actions>
-    </instruction>
   </unit>
 </behavior>
