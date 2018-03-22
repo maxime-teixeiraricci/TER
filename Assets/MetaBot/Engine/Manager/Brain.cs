@@ -29,7 +29,7 @@ public class Brain : MonoBehaviour
         _messageManager = GetComponent<MessageManager>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (_instructions != null)
         {

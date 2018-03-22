@@ -14,3 +14,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/InterfaceSquelette.unity
     guid: 9f2c0f28b9254c142b8061cfab5f228d
+  - enabled: 1
+    path: Assets/MetaBot/Game/WarBot/Scene/MapBeta.unity
+    guid: 97fbd0c9818a1f0469e05d8c54a9a4f6

@@ -1,5 +1,5 @@
 <behavior>
-  <teamName>Team 1</teamName>
+  <teamName>Team B</teamName>
   <unit name="Explorer">
     <instruction>
       <parameters>
@@ -7,6 +7,15 @@
       </parameters>
       <actions>
         <ACTION_TURN_AROUND_MOVE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_ALLY />
+        <PERCEPT_BAG_NOT_EMPTY />
+      </parameters>
+      <actions>
+        <ACTION_GIVE_RESSOURCE />
       </actions>
     </instruction>
     <instruction>

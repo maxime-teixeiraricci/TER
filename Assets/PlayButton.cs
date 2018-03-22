@@ -24,7 +24,7 @@ public class PlayButton : MonoBehaviour
 		
 	}
 
-    public void StartGame()
+    public void StartGame(int id)
     {
         nbPlayers = int.Parse(_numberplayerDropDown.GetComponent<Dropdown>().captionText.text);
         XMLWarbotInterpreter interpreter = new XMLWarbotInterpreter();
@@ -40,6 +40,6 @@ public class PlayButton : MonoBehaviour
             team._unitsBehaviour = interpreter.xmlToBehavior(team._name, gamePath);
             gameManager.GetComponent<TeamManager>()._teams.Add(team);
         }
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(id);
     }
 }

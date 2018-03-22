@@ -48,7 +48,7 @@ public class Sight : MonoBehaviour
     
     void OnTriggerStay(Collider other)
     {
-        if (!other.isTrigger)
+        if ((other.isTrigger && other.GetComponent<ItemHeldler>()) || !other.isTrigger)
         {
 
             float h = GetComponent<Stats>()._heading;

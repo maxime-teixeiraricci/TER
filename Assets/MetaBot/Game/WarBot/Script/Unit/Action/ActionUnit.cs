@@ -16,12 +16,12 @@ public class ActionUnit : ActionCommon
         _actions["ACTION_MOVE"] = delegate () { GetComponent<MovableCharacter>().Move(); };
         _actions["ACTION_RANDOM_MOVE"] = delegate ()
         {
-            GetComponent<Stats>()._heading = Random.Range(0, 360);
+            GetComponent<Stats>()._heading = Random.Range(0f, 360f);
             _actions["ACTION_MOVE"]();
         };
         _actions["ACTION_TURN_AROUND_MOVE"] = delegate ()
         {
-            GetComponent<Stats>()._heading += 180;
+            GetComponent<Stats>()._heading += Random.Range(90f, 270f);
             _actions["ACTION_MOVE"]();
         };
         _actions["ACTION_HEAL"] = delegate () { GetComponent<Inventory>().use("Ressource"); };

@@ -1,5 +1,5 @@
 <behavior>
-  <teamName>Team 1</teamName>
+  <teamName>Team C</teamName>
   <unit name="Explorer">
     <instruction>
       <parameters>
@@ -11,7 +11,25 @@
     </instruction>
     <instruction>
       <parameters>
+        <PERCEPT_ALLY />
+        <PERCEPT_BAG_NOT_EMPTY />
+      </parameters>
+      <actions>
+        <ACTION_GIVE_RESSOURCE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_BAG_FULL />
+      </parameters>
+      <actions>
+        <ACTION_BACK_TO_BASE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
         <PERCEPT_FOOD_NEAR />
+        <PERCEPT_BAG_NOT_FULL />
       </parameters>
       <actions>
         <ACTION_PICK />
