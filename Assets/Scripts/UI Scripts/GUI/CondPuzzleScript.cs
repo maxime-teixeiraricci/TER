@@ -19,7 +19,7 @@ public class CondPuzzleScript : MonoBehaviour
     {
         
         manager = GetComponent<ManageDragAndDrop>();
-        _labelText.GetComponent<Text>().text = condName;
+        _labelText.GetComponent<Text>().text = condName.Replace("PERCEPT_", "").Replace("_"," ")+ "?";
         image = GetComponent<Image>();
         defaultColor = image.color;
     }

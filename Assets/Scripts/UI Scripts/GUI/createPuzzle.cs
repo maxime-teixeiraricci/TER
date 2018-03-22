@@ -40,7 +40,7 @@ public class createPuzzle : MonoBehaviour {
 
     public void create()
     {
-        GameObject puzzleClone = (GameObject)Instantiate(puzzle, GameObject.Find("Editeur").transform);
+        GameObject puzzleClone = (GameObject)Instantiate(puzzle, GameObject.Find("MaskEditeur").transform);
         bool negAction = GameObject.Find("NegationAction").GetComponent<Toggle>().isOn;
         bool negCondition = GameObject.Find("NegationCondition").GetComponent<Toggle>().isOn;
         if (puzzleClone.GetComponent<ActionPuzzleScript>())
@@ -76,6 +76,7 @@ public class createPuzzle : MonoBehaviour {
         }
 
         puzzleClone.GetComponent<RectTransform>().anchoredPosition = positionInitial;
+        puzzleClone.transform.parent = GameObject.Find("Editeur").transform;
         listPieces.Add(puzzleClone);
         cptObjects = listPieces.Count;
         

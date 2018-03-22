@@ -64,8 +64,10 @@ public class ManageDragAndDrop : MonoBehaviour
 
 
         // Largeur et hauteur de l'éditeur de comportement
-        float widthEditor = rendEditeur.bounds.size.x;
-        float heightEditor = rendEditeur.bounds.size.y;
+        /*float widthEditor = rendEditeur.bounds.size.x;
+        float heightEditor = rendEditeur.bounds.size.y;*/
+        float widthEditor = GameObject.Find("Editeur").GetComponent<RectTransform>().rect.width;
+        float heightEditor = GameObject.Find("Editeur").GetComponent<RectTransform>().rect.height;
 
         // Largeur et hauteur du panneau de contrôle
         float widthControlPanel = rendControlPanel.bounds.size.x;
@@ -140,8 +142,8 @@ public class ManageDragAndDrop : MonoBehaviour
 
 
         // Largeur et hauteur de l'éditeur de comportement
-        float widthEditor = rendEditeur.bounds.size.x;
-        float heightEditor = rendEditeur.bounds.size.y;
+        float widthEditor = GameObject.Find("Editeur").GetComponent<RectTransform>().rect.width;
+        float heightEditor = GameObject.Find("Editeur").GetComponent<RectTransform>().rect.height;
 
         // Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, distance);
         // Vector3 trueMousePosition = Camera.main.ScreenToWorldPoint(mousePosition);

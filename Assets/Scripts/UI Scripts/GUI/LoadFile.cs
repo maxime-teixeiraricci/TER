@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
+using System.IO;
 using UnityEngine.UI;
 
 public class LoadFile : MonoBehaviour
@@ -20,6 +21,7 @@ public class LoadFile : MonoBehaviour
     void Start()
     {
         startPuzzle = GameObject.FindGameObjectWithTag("StartPuzzle");
+        Updating();
     }
 
     // Update is called once per frame
@@ -55,7 +57,6 @@ public class LoadFile : MonoBehaviour
                 int nbrCond = 1;
                 // Création du bloc IF
                 GameObject puzzleIf = (GameObject)Instantiate(ifPuzzle, GameObject.Find("Editeur").transform);
-
                 puzzleIf.GetComponent<RectTransform>().position = new Vector3(startPuzzle.GetComponent<RectTransform>().position.x, startPuzzle.GetComponent<RectTransform>().position.y - placeIf, startPuzzle.GetComponent<RectTransform>().position.z);
                 puzzleIf.GetComponent<ManageDragAndDrop>().posGridX = startPuzzle.GetComponent<ManageDragAndDrop>().posGridX;
                 puzzleIf.GetComponent<ManageDragAndDrop>().posGridY = startPuzzle.GetComponent<ManageDragAndDrop>().posGridY - nbrIf;
@@ -90,6 +91,28 @@ public class LoadFile : MonoBehaviour
             print("Aucun comportement existant !");
         }
     }
+
+    public void Updating()
+    {
+        string gamePath = "./teams/TestBot/";
+        List<string> teams = new List<string>();
+        string[] fileEntries = Directory.GetFiles(gamePath);
+        foreach (string s in fileEntries)
+        {
+            print(s);
+            string team = s.Replace(gamePath,"");
+            if (team.Contains(".wbt"))
+            {
+                team = team.Replace(".wbt", "");
+                teams.Add(team);
+            }
+        }
+        team.ClearOptions();
+        team.AddOptions(teams);
+
+    }
+
+ 
 }
 
 

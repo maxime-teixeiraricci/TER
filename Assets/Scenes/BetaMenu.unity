@@ -7326,7 +7326,7 @@ GameObject:
   - component: {fileID: 1863114142}
   - component: {fileID: 1863114141}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: PlayBetaButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7660,7 +7660,7 @@ GameObject:
   - component: {fileID: 1980952684}
   - component: {fileID: 1980952683}
   m_Layer: 5
-  m_Name: ReloadButton (1)
+  m_Name: QuitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

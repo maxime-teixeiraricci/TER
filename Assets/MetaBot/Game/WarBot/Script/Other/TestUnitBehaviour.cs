@@ -7,8 +7,16 @@ public class TestUnitBehaviour : MonoBehaviour
 {
 
 	// Use this for initialization
-	void Start ()
+	
+	
+	// Update is called once per frame
+	void Update () {
+		
+	}
+
+    public void CreateDefaultBehaviour()
     {
+        Debug.Log("Creating Default Team ...");
         List<Instruction> behavior = new List<Instruction>(){
             new Instruction(new string[] { "PERCEPT_BASE_NEAR_ALLY", "PERCEPT_BAG_NOT_EMPTY"}, "ACTION_GIVE_RESSOURCE"),
             new Instruction(new string[] { "PERCEPT_BAG_FULL"}, "ACTION_BACK_TO_BASE"),
@@ -18,7 +26,7 @@ public class TestUnitBehaviour : MonoBehaviour
             new Instruction(new string[] { }, "ACTION_MOVE") };
         string gamePath = "./teams/" + GetComponent<GameManager>()._gameName + "/";
 
-        string teamName = GetComponent<TeamManager>()._teams[0]._name;
+        string teamName = "Default Team";
         XMLWarbotInterpreter interpreter = new XMLWarbotInterpreter();
         interpreter.behaviorToXml(teamName, gamePath, "Explorer", behavior);
 
@@ -38,10 +46,6 @@ public class TestUnitBehaviour : MonoBehaviour
             new Instruction(new string[] { "PERCEPT_BAG_25"}, "ACTION_CREATE_HEAVY"),
         new Instruction(new string[] { "PERCEPT_BAG_10"}, "ACTION_CREATE_LIGHT")};
         interpreter.behaviorToXml(teamName, gamePath, "Base", behavior);
+        Debug.Log("Creating Default Team DONE!");
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

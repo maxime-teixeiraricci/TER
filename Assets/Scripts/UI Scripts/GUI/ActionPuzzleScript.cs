@@ -21,7 +21,7 @@ public class ActionPuzzleScript : MonoBehaviour {
 
     void Update()
     {
-        _labelText.GetComponent<Text>().text = actionName;
+        _labelText.GetComponent<Text>().text = actionName.Replace("ACTION_", "").Replace("_", " ");
 
         image.color = defaultColor;
         validPlace = "false";
