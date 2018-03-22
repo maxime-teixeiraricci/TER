@@ -39,7 +39,7 @@ public class CondPuzzleScript : MonoBehaviour
         foreach (GameObject puzzle in GameObject.FindGameObjectsWithTag("IfPuzzle"))
         {
             if (manager.posGridX - 1 == puzzle.GetComponent<ManageDragAndDrop>().posGridX
-                && manager.posGridY == puzzle.GetComponent<ManageDragAndDrop>().posGridY)
+                && manager.posGridY == puzzle.GetComponent<ManageDragAndDrop>().posGridY && puzzle.GetComponent<IfPuzzleScript>().validPlace == "true")
             {
                 image.color = validColor;
                 validPlace = "true";
@@ -54,7 +54,7 @@ public class CondPuzzleScript : MonoBehaviour
 
         foreach (GameObject puzzle in GameObject.FindGameObjectsWithTag("CondPuzzle"))
         {
-            if (manager.posGridX + 2 == puzzle.GetComponent<ManageDragAndDrop>().posGridX && manager.posGridY == puzzle.GetComponent<ManageDragAndDrop>().posGridY)
+            if (manager.posGridX + 2 == puzzle.GetComponent<ManageDragAndDrop>().posGridX && manager.posGridY == puzzle.GetComponent<ManageDragAndDrop>().posGridY && puzzle.GetComponent<CondPuzzleScript>().validPlace == "true")
             {
                 nextCondPuzzle = puzzle;
                 break;
@@ -64,7 +64,7 @@ public class CondPuzzleScript : MonoBehaviour
         }
         foreach (GameObject puzzle in GameObject.FindGameObjectsWithTag("CondPuzzle"))
         {
-            if (manager.posGridX - 2 == puzzle.GetComponent<ManageDragAndDrop>().posGridX && manager.posGridY == puzzle.GetComponent<ManageDragAndDrop>().posGridY)
+            if (manager.posGridX - 2 == puzzle.GetComponent<ManageDragAndDrop>().posGridX && manager.posGridY == puzzle.GetComponent<ManageDragAndDrop>().posGridY && puzzle.GetComponent<CondPuzzleScript>().validPlace == "true")
             {
                 image.color = validColor;
                 validPlace = "true";

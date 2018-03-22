@@ -29,7 +29,7 @@ public class ActionPuzzleScript : MonoBehaviour {
         foreach (GameObject puzzle in GameObject.FindGameObjectsWithTag("IfPuzzle"))
         {
             if (manager.posGridX - 1 == puzzle.GetComponent<ManageDragAndDrop>().posGridX
-                && manager.posGridY + 1 == puzzle.GetComponent<ManageDragAndDrop>().posGridY)
+                && manager.posGridY + 1 == puzzle.GetComponent<ManageDragAndDrop>().posGridY && puzzle.GetComponent<IfPuzzleScript>().validPlace == "true")
             {
                 image.color = validColor;
                 validPlace = "true";
