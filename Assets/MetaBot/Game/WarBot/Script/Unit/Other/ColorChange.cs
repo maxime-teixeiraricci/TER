@@ -12,7 +12,10 @@ public class ColorChange : MonoBehaviour
         {
             foreach (Material mat in mesh.materials)
             {
-                mat.color = GameObject.Find("GameManager").GetComponent<TeamManager>()._teams[GetComponent<Stats>()._teamIndex]._color;
+                if (GetComponent<Stats>()._teamIndex < GameObject.Find("GameManager").GetComponent<TeamManager>()._teams.Count)
+                {
+                    mat.color = GameObject.Find("GameManager").GetComponent<TeamManager>()._teams[GetComponent<Stats>()._teamIndex]._color;
+                }
             }
         }
 	}

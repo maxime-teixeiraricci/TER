@@ -11,7 +11,7 @@ using UnityEngine;
 public class Brain : MonoBehaviour
 {
 
-    public List<Instruction> _instructions;
+    public List<Instruction> _instructions = new List<Instruction>();
     public Percept _percepts;
     public ActionUnit _actions;
     private string _currentAction;
@@ -21,7 +21,14 @@ public class Brain : MonoBehaviour
     {
         //GameObject.Find("Canvas").GetComponent<HUDManager>().CreateHUD(gameObject);
         GameObject.Find("Canvas").GetComponent<HUDManager>().CreateHUD(gameObject);
-        _instructions = GameObject.Find("GameManager").GetComponent<TeamManager>().getUnitsBevahiours(GetComponent<Stats>()._teamIndex, GetComponent<Stats>()._unitType);
+        if (GetComponent<Stats>()._teamIndex < GameObject.Find("GameManager").GetComponent<TeamManager>()._teams.Count)
+        {
+            _instructions = GameObject.Find("GameManager").GetComponent<TeamManager>().getUnitsBevahiours(GetComponent<Stats>()._teamIndex, GetComponent<Stats>()._unitType);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
         print("Nombre Instruction : " + _instructions.Count + "[" + GetComponent<Stats>()._unitType + "]");
         _percepts = GetComponent<Percept>();
         _actions = GetComponent<ActionUnit>();
@@ -31,7 +38,7 @@ public class Brain : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (_instructions != null && _actions._actions != null && _actions._actions.Count != 0)
+        if (_instructions != null && _actions != null && _actions._actions.Count != 0)
         {
             string _action = NextAction();
             _actions._actions[_action]();
