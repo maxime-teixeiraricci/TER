@@ -125,16 +125,16 @@ public class XMLWarbotInterpreter : XMLInterpreter
     public override Dictionary<string, List<Instruction>> xmlToBehavior(string teamName, string path)
     {
         // Try to find an already existing file with this team name
-
         string l_fileName = whichFileName(teamName, path);
 
         // If no file has been found, create a new one with the given team name
         if (l_fileName.Equals(""))
-            l_fileName = teamName;
+            l_fileName = teamName + Constants.xmlExtension;
         Debug.Log(l_fileName);
         Dictionary<string, List<Instruction>> behavior = new Dictionary<string, List<Instruction>>();
 
-        using (var stream = new FileStream(path + l_fileName, FileMode.Open))
+        string pathtmp = path;
+        using (var stream = new FileStream(l_fileName, FileMode.Open))
         {
             Load(stream);
             XmlNodeList l_units = GetElementsByTagName(Constants.nodeUnit);
@@ -165,7 +165,7 @@ public class XMLWarbotInterpreter : XMLInterpreter
 
         List<Instruction> l_behavior = new List<Instruction>();
             
-        using (FileStream stream = new FileStream(path + l_fileName, FileMode.Open))
+        using (FileStream stream = new FileStream(l_fileName, FileMode.Open))
         {
             Load(stream);
             // select the node containing the unit name
