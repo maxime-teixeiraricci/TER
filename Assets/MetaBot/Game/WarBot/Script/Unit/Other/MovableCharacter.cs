@@ -45,12 +45,11 @@ public class MovableCharacter : MonoBehaviour
         B = null;
         if (b)
         {
-            print("" + hit.transform.tag + " - " + hit.transform.gameObject + " - " + gameObject + " - " + hit.collider.isTrigger);
+
             if (hit.transform.tag == "Unit" && hit.transform.gameObject != gameObject && !hit.collider.isTrigger)
             {
                 Debug.DrawRay(rB.origin, rB.direction, Color.red);
                 B = hit.transform.gameObject;
-                print(gameObject + " : " + B);
                 return true;
             }
             else { Debug.DrawRay(rB.origin, rB.direction, Color.white);  }

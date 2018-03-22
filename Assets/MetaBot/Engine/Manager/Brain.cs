@@ -31,7 +31,7 @@ public class Brain : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (_instructions != null && _actions._actions.Count != 0)
+        if (_instructions != null && _actions._actions != null && _actions._actions.Count != 0)
         {
             string _action = NextAction();
             _actions._actions[_action]();
