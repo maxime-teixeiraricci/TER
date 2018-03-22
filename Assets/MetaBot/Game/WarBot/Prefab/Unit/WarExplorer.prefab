@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4608809123674540}
   - component: {fileID: 33904307035435882}
   - component: {fileID: 23405173478968676}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 136462975295457720}
   - component: {fileID: 114699229294144876}
   - component: {fileID: 114606630165051546}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WarExplorer
   m_TagString: Unit
   m_Icon: {fileID: 0}

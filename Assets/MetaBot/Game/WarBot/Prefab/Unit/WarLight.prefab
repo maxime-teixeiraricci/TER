@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4400338860301782}
   - component: {fileID: 33029402874502308}
   - component: {fileID: 23176756062021578}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4147898957323632}
   - component: {fileID: 135978105125924454}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BulletSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64,7 +64,7 @@ GameObject:
   - component: {fileID: 114536579665419618}
   - component: {fileID: 114191992950110330}
   - component: {fileID: 65596263803047018}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WarLight
   m_TagString: Unit
   m_Icon: {fileID: 0}

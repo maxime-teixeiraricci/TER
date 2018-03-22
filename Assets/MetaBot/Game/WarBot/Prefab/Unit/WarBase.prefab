@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4001098663993526}
   - component: {fileID: 135284674726962912}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4943464102314282}
   - component: {fileID: 135955718012159544}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4066797114629726}
   - component: {fileID: 135769109990229584}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4448659812584334}
   - component: {fileID: 135125073695165066}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,7 +85,7 @@ GameObject:
   - component: {fileID: 4728507547241420}
   - component: {fileID: 33796931369996670}
   - component: {fileID: 23064433396448068}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,7 +112,7 @@ GameObject:
   - component: {fileID: 114018871307719316}
   - component: {fileID: 114808038850239514}
   - component: {fileID: 114638530246078812}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WarBase
   m_TagString: Unit
   m_Icon: {fileID: 0}
