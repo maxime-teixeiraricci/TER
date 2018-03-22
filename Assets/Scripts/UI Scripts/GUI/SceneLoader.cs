@@ -14,8 +14,8 @@ namespace WarBotEngine.UI {
         /// Change the scene.
         /// </summary>
         /// <param name="sceneName">The name of the desired scene.</param>
-        public void ChangeScene(string sceneName) {
-            SceneManager.LoadScene(sceneName);
+        public void ChangeScene(int idScene) {
+            SceneManager.LoadScene(idScene);
         }
 
         /// <summary>

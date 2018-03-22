@@ -24,17 +24,5 @@ public class ActionBase : ActionCommon
             GetComponent<Inventory>()._objets[o] -= 25;
             GetComponent<CreatorUnit>().Create("Heavy");
         };
-        _actions["ACTION_BACK_TO_BASE"] = delegate () {
-            foreach (GameObject go in GameObject.FindGameObjectsWithTag("Unit"))
-            {
-                if (go.GetComponent<Stats>()._unitType == "Base" && go.GetComponent<Stats>()._teamIndex == GetComponent<Stats>()._teamIndex)
-                {
-                    float a = Utility.getAngle(gameObject, go);
-                    GetComponent<Stats>()._heading = a;
-                    GetComponent<MovableCharacter>().Move();
-                    break;
-                }
-            }
-        };
     }
 }
