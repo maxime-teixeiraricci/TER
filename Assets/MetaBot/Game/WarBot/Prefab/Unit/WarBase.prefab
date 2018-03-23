@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 114228534123011052}
   - component: {fileID: 114018871307719316}
   - component: {fileID: 114808038850239514}
-  - component: {fileID: 114638530246078812}
+  - component: {fileID: 114010804989806642}
   m_Layer: 8
   m_Name: WarBase
   m_TagString: Unit
@@ -270,6 +270,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6, y: 6.75, z: 6}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114010804989806642
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1862762559995188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 751850577ae4ef340a5d9a4828ecefb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114016212018482190
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -334,6 +345,8 @@ MonoBehaviour:
   _percepts: {fileID: 0}
   _actions: {fileID: 0}
   _messageManager: {fileID: 0}
+  nbInstruction: 0
+  nbActions: 0
 --- !u!114 &114375346082489782
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -369,17 +382,6 @@ MonoBehaviour:
   _maxHealth: 1000
   _reloadTime: 0
   _objectif: {x: 0, y: 0, z: 0}
---- !u!114 &114638530246078812
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1862762559995188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 751850577ae4ef340a5d9a4828ecefb8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114808038850239514
 MonoBehaviour:
   m_ObjectHideFlags: 1

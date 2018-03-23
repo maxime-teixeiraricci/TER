@@ -129,7 +129,7 @@ public class XMLWarbotInterpreter : XMLInterpreter
 
         // If no file has been found, create a new one with the given team name
         if (l_fileName.Equals(""))
-            l_fileName = teamName + Constants.xmlExtension;
+            l_fileName = teamName.Replace(".wbt","") + Constants.xmlExtension;
         Debug.Log(l_fileName);
         Dictionary<string, List<Instruction>> behavior = new Dictionary<string, List<Instruction>>();
 
@@ -164,7 +164,6 @@ public class XMLWarbotInterpreter : XMLInterpreter
             l_fileName = teamName;
 
         List<Instruction> l_behavior = new List<Instruction>();
-            
         using (FileStream stream = new FileStream(l_fileName, FileMode.Open))
         {
             Load(stream);

@@ -30,7 +30,7 @@ public class Inventory : MonoBehaviour{
             if (_objets.ContainsKey(obj)) { _objets[obj] += 1; }
             else { _objets.Add(obj, 1); }
             _actualSize += obj._size;
-            print(gameObject + " | Ressource : " + _objets[obj]);
+
             return true;
         }
         else return false;

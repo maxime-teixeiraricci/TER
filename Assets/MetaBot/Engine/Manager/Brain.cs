@@ -13,10 +13,12 @@ public class Brain : MonoBehaviour
 
     public List<Instruction> _instructions = new List<Instruction>();
     public Percept _percepts;
-    public ActionUnit _actions;
+    public Action _actions;
     private string _currentAction;
     public MessageManager _messageManager;
-    
+    public int nbInstruction;
+    public int nbActions;
+
     void Start()
     {
         //GameObject.Find("Canvas").GetComponent<HUDManager>().CreateHUD(gameObject);
@@ -29,18 +31,20 @@ public class Brain : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        print("Nombre Instruction : " + _instructions.Count + "[" + GetComponent<Stats>()._unitType + "]");
+
         _percepts = GetComponent<Percept>();
-        _actions = GetComponent<ActionUnit>();
+        _actions = GetComponent<Action>();
         //_messageManager = new MessageManager(this.gameObject);
         _messageManager = GetComponent<MessageManager>();
     }
 
     void FixedUpdate()
     {
+        nbInstruction = _instructions.Count;
         if (_instructions != null && _actions != null && _actions._actions.Count != 0)
         {
             string _action = NextAction();
+            print(gameObject + " " + _action);
             _actions._actions[_action]();
         }
     }

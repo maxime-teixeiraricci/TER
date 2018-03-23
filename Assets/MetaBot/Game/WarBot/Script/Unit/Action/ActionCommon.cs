@@ -19,13 +19,11 @@ public class ActionCommon : Action
             if (target != null)
             {
                 Objet item = GetComponent<Inventory>().find("Ressource");
+                print(item);
                 if (GetComponent<Inventory>()._objets.ContainsKey(item) && GetComponent<Inventory>()._objets[item] != 0 && target.GetComponent<Inventory>())
                 {
-                    if (Vector3.Distance(GetComponent<Stats>()._target.transform.position, transform.position) < 1.75f)
-                    {
-                        target.GetComponent<Inventory>().add(item);
+                    target.GetComponent<Inventory>().add(item);
                         GetComponent<Inventory>().pop(item);
-                    }
                 }
             }
         };

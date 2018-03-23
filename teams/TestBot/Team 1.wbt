@@ -1,31 +1,26 @@
 <behavior>
   <teamName>Team 1</teamName>
-  <unit name="Base">
-    <instruction>
-      <parameters>
-        <PERCEPT_LIFE_NOT_MAX />
-      </parameters>
-      <actions>
-        <ACTION_HEAL />
-      </actions>
-    </instruction>
-    <instruction>
-      <parameters>
-        <PERCEPT_BLOCKED />
-        <PERCEPT_LIFE_MAX />
-      </parameters>
-      <actions>
-        <ACTION_IDLE />
-      </actions>
-    </instruction>
-  </unit>
   <unit name="Explorer">
     <instruction>
       <parameters>
         <PERCEPT_BLOCKED />
       </parameters>
       <actions>
-        <ACTION_TURN_AROUND_MOVE />
+        <ACTION_RANDOM_MOVE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters />
+      <actions>
+        <ACTION_MOVE />
+      </actions>
+    </instruction>
+  </unit>
+  <unit name="Base">
+    <instruction>
+      <parameters />
+      <actions>
+        <ACTION_CREATE_LIGHT />
       </actions>
     </instruction>
   </unit>

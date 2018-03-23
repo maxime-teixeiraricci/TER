@@ -15,6 +15,6 @@ public class TeamManager : MonoBehaviour
     {
         string gamePath = "./teams/" + GetComponent<GameManager>()._gameName + "/";
         XMLWarbotInterpreter interpreter = new XMLWarbotInterpreter();
-        return interpreter.xmlToUnitBehavior(_teams[teamIndex]._name, gamePath, unitType);
+        return _teams[teamIndex]._unitsBehaviour[unitType];
     }
 }

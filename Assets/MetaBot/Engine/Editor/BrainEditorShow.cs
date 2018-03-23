@@ -15,6 +15,7 @@ public class BrainEditorShow : Editor
 
     public override void OnInspectorGUI()
     {
+        DrawDefaultInspector();
         Brain myTarget = (Brain)target;
         GUILayout.Label("Current Action :", EditorStyles.boldLabel);
         if (myTarget._instructions != null)
