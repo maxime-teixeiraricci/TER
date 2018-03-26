@@ -20,7 +20,7 @@ public class ActionCommon : Action
             {
                 Objet item = GetComponent<Inventory>().find("Ressource");
                 print(item);
-                if (GetComponent<Inventory>()._objets.ContainsKey(item) && GetComponent<Inventory>()._objets[item] != 0 && target.GetComponent<Inventory>())
+                if (GetComponent<Inventory>()._objets.ContainsKey(item) && GetComponent<Inventory>()._objets[item] != 0 && !target.GetComponent<Inventory>().isFull())
                 {
                     target.GetComponent<Inventory>().add(item);
                         GetComponent<Inventory>().pop(item);

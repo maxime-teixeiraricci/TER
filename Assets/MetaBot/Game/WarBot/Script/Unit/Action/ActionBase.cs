@@ -26,5 +26,12 @@ public class ActionBase : ActionCommon
             GetComponent<Inventory>()._objets[o] -= 25;
             GetComponent<CreatorUnit>().Create("Heavy");
         };
+
+        _actions["ACTION_CREATE_EXPLORER"] = delegate () {
+            print("OK");
+            Objet o = GetComponent<Inventory>().find("Ressource");
+            GetComponent<Inventory>()._objets[o] -= 10;
+            GetComponent<CreatorUnit>().Create("Explorer");
+        };
     }
 }
