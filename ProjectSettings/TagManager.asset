@@ -24,6 +24,9 @@ TagManager:
   - ActionItem
   - Item
   - Ground
+  - SaveButton
+  - SaveButton2
+  - saveInitial
   layers:
   - Default
   - TransparentFX

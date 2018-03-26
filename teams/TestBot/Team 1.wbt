@@ -20,7 +20,7 @@
     <instruction>
       <parameters />
       <actions>
-        <ACTION_CREATE_LIGHT />
+        <ACTION_GIVE_RESSOURCE />
       </actions>
     </instruction>
   </unit>
