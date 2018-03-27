@@ -32,8 +32,11 @@ public class ActionUnit : ActionCommon
             {
                 Objet obj = target.GetComponent<ItemHeldler>()._heldObjet;
                 Inventory unitInventory = GetComponent<Inventory>();
-                unitInventory.add(obj);
-                Destroy(target);
+                if (!unitInventory.isFull())
+                {
+                    unitInventory.add(obj);
+                    Destroy(target);
+                }
             }
         };
         _actions["ACTION_BACK_TO_BASE"] = delegate () {
