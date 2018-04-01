@@ -14,6 +14,7 @@ public class Brain : MonoBehaviour
     public List<Instruction> _instructions = new List<Instruction>();
     public Percept _componentPercepts;
     public Action _componentActions;
+    public ActionNonTerminal _componentActionsNonTerminales;
     private string _currentAction;
     public MessageManager _messageManager;
     public int nbInstruction;
@@ -34,6 +35,7 @@ public class Brain : MonoBehaviour
 
         _componentPercepts = GetComponent<Percept>();
         _componentActions = GetComponent<Action>();
+        _componentActionsNonTerminales = GetComponent<ActionNonTerminal>();
         //_messageManager = new MessageManager(this.gameObject);
         _messageManager = GetComponent<MessageManager>();
     }
@@ -53,7 +55,12 @@ public class Brain : MonoBehaviour
     {
         foreach (Instruction instruction in _instructions)
         {
-            if (Verify(instruction)) { return instruction._stringAction; }
+            if (Verify(instruction)) {
+                foreach (MessageStruct act in instruction._stringActionsNonTerminales)
+                {
+                    //_componentActionsNonTerminales._actionsNonTerminales[act._destinataire]();
+                }
+                return instruction._stringAction; }
         }
         return "ACTION_IDLE";
     }
