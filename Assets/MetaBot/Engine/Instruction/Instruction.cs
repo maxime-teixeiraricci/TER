@@ -6,7 +6,6 @@ using UnityEngine;
 public class Instruction {
 
     public string[] _listeStringPerceptsVoulus;
-    public string[] _listeStringPerceptsOu;
     public MessageStruct[] _stringActionsNonTerminales;
     public string _stringAction;
 
@@ -119,13 +118,4 @@ public class Instruction {
         this._stringAction = action;
     }
 
-    public string[] getListeStringPerceptsOu()
-    {
-        return this._listeStringPerceptsOu;
-    }
-
-    public void setListeStringPerceptsOu(string[] percepts)
-    {
-        this._listeStringPerceptsOu = percepts;
-    }
 }

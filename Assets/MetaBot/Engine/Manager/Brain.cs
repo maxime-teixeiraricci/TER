@@ -20,6 +20,8 @@ public class Brain : MonoBehaviour
     public int nbInstruction;
     public int nbActions;
 
+    public bool debugMessage;
+
     void Start()
     {
         //GameObject.Find("Canvas").GetComponent<HUDManager>().CreateHUD(gameObject);
@@ -42,11 +44,18 @@ public class Brain : MonoBehaviour
 
     void FixedUpdate()
     {
+        _messageManager.UpdateMessage();
+        if (debugMessage)
+        {
+            _componentActionsNonTerminales._actionsNT["MESSAGE_HELP"]("Explorer");
+            debugMessage = !debugMessage;
+        }
+
         nbInstruction = _instructions.Count;
         if (_instructions != null && _componentActions != null && _componentActions._actions.Count != 0)
         {
             string _action = NextAction();
-            print(gameObject + " " + _action);
+
             _componentActions._actions[_action]();
         }
     }
@@ -58,7 +67,7 @@ public class Brain : MonoBehaviour
             if (Verify(instruction)) {
                 foreach (MessageStruct act in instruction._stringActionsNonTerminales)
                 {
-                    //_componentActionsNonTerminales._actionsNonTerminales[act._destinataire]();
+                    _componentActionsNonTerminales._actionsNT[act._intitule](act._destinataire);
                 }
                 return instruction._stringAction; }
         }

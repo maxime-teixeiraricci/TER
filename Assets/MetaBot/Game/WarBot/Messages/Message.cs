@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Message : MonoBehaviour {
+[System.Serializable]
+public class Message {
 
     public string _titre;
     public string _contenu;
@@ -15,5 +16,12 @@ public class Message : MonoBehaviour {
         _contenu = contenu;
         _sender = sender;
         _receiver = receiver;
+    }
+
+    public Message(GameObject sender, string titre)
+    {
+        _titre = titre;
+        _contenu = "";
+        _sender = sender;
     }
 }

@@ -1025,7 +1025,8 @@ Prefab:
       propertyPath: _offsetGround
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114211289603400040, guid: 8fcd7e5dbb0f10b49bfb219b83572151, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 8fcd7e5dbb0f10b49bfb219b83572151, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &487375366

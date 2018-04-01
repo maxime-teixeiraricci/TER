@@ -8,7 +8,7 @@ public class Stats : MonoBehaviour
     [Header("Unit type")]
     public string _unitType;
     public int _teamIndex;
-    public int id;
+    public int _id;
     public GameObject _target;
     public Objet _objectToUse;
     public GameObject _bullet;
