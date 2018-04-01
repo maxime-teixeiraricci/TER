@@ -55,7 +55,7 @@ public class XMLWarbotInterpreter : XMLInterpreter
                     XmlNode l_Messages = ins.ChildNodes[1];
                     if (l_Messages != null)
                     {
-                        foreach (XmlNode c in l_cond)
+                        foreach (XmlElement c in l_cond)
                             l_MsgStruct.Add(new MessageStruct(c.Name,c.FirstChild.Name));
                     }
                 }
