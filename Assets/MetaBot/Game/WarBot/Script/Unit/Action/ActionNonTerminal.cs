@@ -4,7 +4,8 @@ using UnityEngine;
 
 public abstract class ActionNonTerminal : MonoBehaviour
 {
-    public delegate void ActNT(string dest);
-    public Dictionary<string, ActNT> _actionsNT = new Dictionary<string, ActNT>();
+    public delegate void ActNonTerm();
+    public Dictionary<string, ActNonTerm> _actionsNT = new Dictionary<string, ActNonTerm>();
     public abstract void InitActionNonTerminal();
+    public string _messageDestinataire;
 }

@@ -36,6 +36,7 @@ public class EditorManagerScript : MonoBehaviour
                 UnitPerceptAction unitBehav = new UnitPerceptAction();
                 unitBehav.percepts = new List<string>();
                 unitBehav.actions = new List<string>();
+                unitBehav.actionsNonTerminal = new List<string>();
 
                 unitBehav.unit = reader.ReadLine();
                  
@@ -48,9 +49,16 @@ public class EditorManagerScript : MonoBehaviour
                 }
 
                 s = reader.ReadLine();
-                while (s != ">" && !reader.EndOfStream)
+                while (s != "[ACTIONS NON TERMINAL]" && !reader.EndOfStream)
                 {
                     unitBehav.actions.Add(s);
+                    s = reader.ReadLine();
+                }
+
+                s = reader.ReadLine();
+                while (s != ">" && !reader.EndOfStream)
+                {
+                    unitBehav.actionsNonTerminal.Add(s);
                     s = reader.ReadLine();
                 }
                 _unitBehaviour.Add(unitBehav);
@@ -76,4 +84,5 @@ public struct UnitPerceptAction
     public string unit;
     public List<string> percepts;
     public List<string> actions;
+    public List<string> actionsNonTerminal;
 }

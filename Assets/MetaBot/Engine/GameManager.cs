@@ -77,6 +77,12 @@ public class GameManager : MonoBehaviour
             unitAction.InitAction();
             foreach (string s in unitAction._actions.Keys) {  writer.WriteLine(s); }
 
+            // Recuperer les actions
+            writer.WriteLine("[ACTIONS NON TERMINAL]");
+            ActionNonTerminal unitActionNonTerminal = unit.GetComponent<ActionNonTerminal>();
+            unitActionNonTerminal.InitActionNonTerminal();
+            foreach (string s in unitActionNonTerminal._actionsNT.Keys) { writer.WriteLine(s); }
+
             writer.WriteLine(">");
         }
 

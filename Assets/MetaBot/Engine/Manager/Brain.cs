@@ -47,7 +47,6 @@ public class Brain : MonoBehaviour
         _messageManager.UpdateMessage();
         if (debugMessage)
         {
-            _componentActionsNonTerminales._actionsNT["MESSAGE_HELP"]("Explorer");
             debugMessage = !debugMessage;
         }
 
@@ -67,7 +66,8 @@ public class Brain : MonoBehaviour
             if (Verify(instruction)) {
                 foreach (MessageStruct act in instruction._stringActionsNonTerminales)
                 {
-                    _componentActionsNonTerminales._actionsNT[act._intitule](act._destinataire);
+                    _componentActionsNonTerminales._messageDestinataire = act._destinataire;
+                    _componentActionsNonTerminales._actionsNT[act._intitule]();
                 }
                 return instruction._stringAction; }
         }

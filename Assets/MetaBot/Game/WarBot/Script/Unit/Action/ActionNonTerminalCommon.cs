@@ -12,10 +12,10 @@ public class ActionNonTerminalCommon : ActionNonTerminal
 
     public override void InitActionNonTerminal()
     {
-        _actionsNT["MESSAGE_HELP"] = delegate (string dest)
+        _actionsNT["MESSAGE_HELP"] = delegate ()
         {
             Message message = new Message(gameObject, "MESSAGE_HELP");
-            GetComponent<MessageManager>().Send(message, dest);
+            GetComponent<MessageManager>().Send(message, _messageDestinataire);
         };
 
 
