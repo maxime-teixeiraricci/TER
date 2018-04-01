@@ -53,7 +53,21 @@ public class Instruction {
         }*/
         l_whenNode.AppendChild(paramNode);
 
-        XmlNode actNode = l_doc.CreateElement("actions");
+        if (_stringActionsNonTerminales.Length > 0)
+        {
+            XmlNode MsgNode = l_doc.CreateElement("message");
+            foreach (MessageStruct c2 in _stringActionsNonTerminales)
+            {
+                XmlElement t2 = l_doc.CreateElement(c2._intitule);
+                XmlElement t2d = l_doc.CreateElement(c2._destinataire);
+                t2.AppendChild(t2d);
+                MsgNode.AppendChild(t2);
+            }
+
+            l_whenNode.AppendChild(MsgNode);
+        }
+
+            XmlNode actNode = l_doc.CreateElement("actions");
         XmlElement a = l_doc.CreateElement(_stringAction);
 
         actNode.AppendChild(a);
