@@ -12,7 +12,8 @@ public class BaseUnitScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-		if (GetComponent<Stats>()._health < 0)
+
+        if (GetComponent<Stats>()._health < 0)
         {
             foreach (GameObject unit in GameObject.FindGameObjectsWithTag("Unit"))
             {
@@ -23,4 +24,6 @@ public class BaseUnitScript : MonoBehaviour {
             }
         }
 	}
+
+
 }

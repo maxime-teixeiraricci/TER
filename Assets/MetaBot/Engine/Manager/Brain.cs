@@ -12,8 +12,8 @@ public class Brain : MonoBehaviour
 {
 
     public List<Instruction> _instructions = new List<Instruction>();
-    public Percept _percepts;
-    public Action _actions;
+    public Percept _componentPercepts;
+    public Action _componentActions;
     private string _currentAction;
     public MessageManager _messageManager;
     public int nbInstruction;
@@ -32,8 +32,8 @@ public class Brain : MonoBehaviour
             Destroy(gameObject);
         }
 
-        _percepts = GetComponent<Percept>();
-        _actions = GetComponent<Action>();
+        _componentPercepts = GetComponent<Percept>();
+        _componentActions = GetComponent<Action>();
         //_messageManager = new MessageManager(this.gameObject);
         _messageManager = GetComponent<MessageManager>();
     }
@@ -41,11 +41,11 @@ public class Brain : MonoBehaviour
     void FixedUpdate()
     {
         nbInstruction = _instructions.Count;
-        if (_instructions != null && _actions != null && _actions._actions.Count != 0)
+        if (_instructions != null && _componentActions != null && _componentActions._actions.Count != 0)
         {
             string _action = NextAction();
             print(gameObject + " " + _action);
-            _actions._actions[_action]();
+            _componentActions._actions[_action]();
         }
     }
 
@@ -63,7 +63,7 @@ public class Brain : MonoBehaviour
         bool flag = true;
         foreach (string percept in instruction._listeStringPerceptsVoulus)
         {
-            if (!(_percepts._percepts.ContainsKey(percept) && _percepts._percepts[percept]())) { flag = false; }
+            if (!(_componentPercepts._percepts.ContainsKey(percept) && _componentPercepts._percepts[percept]())) { flag = false; }
         }
 
         // bool flag2 = false;

@@ -15,5 +15,5 @@ public class Message : MonoBehaviour {
         _contenu = contenu;
         _sender = sender;
         _receiver = receiver;
-}
+    }
 }

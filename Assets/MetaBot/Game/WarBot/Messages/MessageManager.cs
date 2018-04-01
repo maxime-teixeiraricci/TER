@@ -5,35 +5,14 @@ using UnityEngine;
 public class MessageManager : MonoBehaviour {
 
     public GameObject sender;
-    public List<Message> _messagesRecus = new List<Message>();
-    public List<Message> _messages = new List<Message>();
+    public List<Message> _waitingMessages = new List<Message>();
+    public List<Message> _currentMessages = new List<Message>();
 
-    public void sendMessage(Message message)
+    public void UpdateMessage()
     {
-
-        message._receiver.GetComponent<MessageManager>()._messagesRecus.Add(message);
-
+        _currentMessages = _waitingMessages;
+        _waitingMessages = new List<Message>();
     }
-
-    public void resetMessagesRecus()
-    {
-
-        _messagesRecus = new List<Message>();
-
-    }
-
-    public void createMessage(string titre, string contenu, GameObject receiver)
-    {
-
-        _messages.Add(new Message(sender, titre, contenu, receiver));
-
-    }
-
-    public void resetMessages()
-    {
-
-        _messages = new List<Message>();
-
-    }
+    
 
 }
