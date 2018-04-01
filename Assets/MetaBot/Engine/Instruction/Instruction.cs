@@ -7,15 +7,24 @@ public class Instruction {
 
     public string[] _listeStringPerceptsVoulus;
     public string[] _listeStringPerceptsOu;
-    public string[] _stringActionsNonTerminales;
+    public MessageStruct[] _stringActionsNonTerminales;
     public string _stringAction;
 
     
-   public Instruction(string[] ins, string[] actionsNonTerminales, string act)
+   public Instruction(string[] ins, MessageStruct[] actionsNonTerminales, string act)
     {
         _stringAction = act;
         _listeStringPerceptsVoulus = ins;
         _stringActionsNonTerminales = actionsNonTerminales;
+        // _listeStringPerceptsOu = ou; ;
+
+    }
+
+    public Instruction(string[] ins, string act)
+    {
+        _stringAction = act;
+        _listeStringPerceptsVoulus = ins;
+        _stringActionsNonTerminales = new MessageStruct[0];
         // _listeStringPerceptsOu = ou; ;
 
     }

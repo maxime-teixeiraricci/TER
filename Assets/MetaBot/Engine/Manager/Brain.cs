@@ -56,9 +56,9 @@ public class Brain : MonoBehaviour
         foreach (Instruction instruction in _instructions)
         {
             if (Verify(instruction)) {
-                foreach (String act in instruction._stringActionsNonTerminales)
+                foreach (MessageStruct act in instruction._stringActionsNonTerminales)
                 {
-                    _componentActionsNonTerminales._actionsNonTerminales[act]();
+                    //_componentActionsNonTerminales._actionsNonTerminales[act._destinataire]();
                 }
                 return instruction._stringAction; }
         }
