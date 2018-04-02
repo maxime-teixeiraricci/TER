@@ -17,6 +17,7 @@ public class LookAtPointEditor : Editor
 
     public override void OnInspectorGUI()
     {
+        DrawDefaultInspector();
         Percept myTarget = (Percept)target;
         GUILayout.Label("Percepts :", EditorStyles.boldLabel);
         

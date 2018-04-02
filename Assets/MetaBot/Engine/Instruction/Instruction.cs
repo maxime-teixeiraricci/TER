@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using System.Xml;
 using UnityEngine;
 
+[System.Serializable]
 public class Instruction {
 
     public string[] _listeStringPerceptsVoulus;
     public MessageStruct[] _stringActionsNonTerminales;
     public string _stringAction;
 
+    public new string ToString()
+    {
+        return "Percepts : " + _listeStringPerceptsVoulus.Length + " ANT : " + _stringActionsNonTerminales.Length + " Action : " + _stringAction;  
+    } 
     
    public Instruction(string[] ins, MessageStruct[] actionsNonTerminales, string act)
     {

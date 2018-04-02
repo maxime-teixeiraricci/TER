@@ -22,14 +22,14 @@ public class TestUnitBehaviour : MonoBehaviour
             new Instruction(new string[] { "PERCEPT_BAG_FULL"}, "ACTION_BACK_TO_BASE"),
             new Instruction(new string[] { "PERCEPT_LIFE_NOT_MAX","PERCEPT_BAG_NOT_EMPTY"}, "ACTION_HEAL"),
             new Instruction(new string[] { "PERCEPT_BAG_NOT_FULL", "PERCEPT_FOOD_NEAR" }, "ACTION_PICK"),
-            new Instruction(new string[] { "PERCEPT_BLOCKED" }, "ACTION_RANDOM_MOVE"),
-            new Instruction(new string[] { }, new MessageStruct[] {new MessageStruct("MESSAGE_HELP", "ALL") }, "ACTION_MOVE") };
+            new Instruction(new string[] { "PERCEPT_BLOCKED" }, "ACTION_MOVE_UNTIL_UNBLOCKED"),
+            new Instruction(new string[] { }, /*new MessageStruct[] {new MessageStruct("MESSAGE_HELP", "Explorer") },*/ "ACTION_MOVE") };
         string gamePath = "./teams/" + GetComponent<GameManager>()._gameName + "/";
 
         string teamName = "Default Team";
         XMLWarbotInterpreter interpreter = new XMLWarbotInterpreter();
         interpreter.behaviorToXml(teamName, gamePath, "Explorer", behavior);
-
+        
 
         behavior = new List<Instruction>(){
             new Instruction(new string[] { "PERCEPT_LIFE_NOT_MAX","PERCEPT_BAG_NOT_EMPTY"}, "ACTION_HEAL"),

@@ -24,6 +24,15 @@ public class ActionUnit : ActionCommon
             GetComponent<Stats>()._heading += Random.Range(90f, 270f);
             _actions["ACTION_MOVE"]();
         };
+        _actions["ACTION_MOVE_UNTIL_UNBLOCKED"] = delegate ()
+        {
+            GetComponent<Stats>()._heading = Random.Range(0f, 360f);
+            if (!(GetComponent<Brain>()._componentPercepts._percepts["PERCEPT_BLOCKED"]()))
+            {
+                _actions["ACTION_MOVE"]();
+            }
+            
+        };
         _actions["ACTION_HEAL"] = delegate () { GetComponent<Inventory>().use("Ressource"); };
         _actions["ACTION_IDLE"] = delegate () { };
         _actions["ACTION_PICK"] = delegate () {

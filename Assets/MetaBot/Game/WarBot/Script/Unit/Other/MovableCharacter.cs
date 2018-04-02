@@ -32,6 +32,8 @@ public class MovableCharacter : MonoBehaviour
 
     public bool isBlocked()
     {
+        vectMov = Utility.vectorFromAngle(GetComponent<Stats>()._heading);
+        nextposition = transform.position + vectMov.normalized * speed * Time.deltaTime;
         Ray rA = new Ray(nextposition + vectMov.normalized * _offsetGround, Vector3.down * _edgeDistance);
         Ray rB = new Ray(nextposition + vectMov.normalized * _offsetObstacle, transform.right* 0.25f);
 

@@ -2,7 +2,7 @@
 using System.Reflection;
 using UnityEngine;
 using System.Xml;
-using System.IO; 
+using System.IO;
 
 
 
@@ -39,60 +39,71 @@ public class XMLWarbotInterpreter : XMLInterpreter
     {
         //if (ins.Name.Equals(typeof(Task).Name))
         //{//cas d'un If"
-            List<string> l_conditions = new List<string>();
-            List<MessageStruct> l_MsgStruct = new List<MessageStruct>();
-            List<string> l_actions = new List<string>();
+        List<string> l_conditions = new List<string>();
+        List<MessageStruct> l_MsgStruct = new List<MessageStruct>();
+        List<string> l_actions = new List<string>();
 
-                foreach (XmlNode x in ins.ChildNodes)
+        foreach (XmlNode x in ins.ChildNodes)
+        {
+
+            if (x.Name.Contains("parameters"))
+            {
+                foreach (XmlNode c in x)
+                    l_conditions.Add(c.Name);
+            }
+
+            if (x.Name.Contains("message"))
+            {
+                foreach (XmlNode c in x)
                 {
-
-                    if (x.Name.Contains("parameters"))
-                    {
-                          foreach (XmlNode c in x)
-                              l_conditions.Add(c.Name);
-                    }
-
-                    if (x.Name.Contains("message"))
-                    {
-                       foreach (XmlNode c in x)
-                           l_MsgStruct.Add(new MessageStruct(c.Name, c.FirstChild.Name));
-                    }
-
-                    if (x.Name.Contains("actions"))
-                    {
-                        foreach (XmlNode c in x)
-                            l_actions.Add(c.Name);
-                    }
+                    l_MsgStruct.Add(new MessageStruct(c.Name, c.FirstChild.Name));
+                    Debug.Log("c" + c.Name + " " + c.FirstChild.Name);
                 }
-                Instruction t;
-                if (l_conditions.Count > 0)
+            }
+
+            if (x.Name.Contains("actions"))
+            {
+                foreach (XmlNode c in x)
+                    l_actions.Add(c.Name);
+            }
+        }
+        Instruction t;
+
+        /*
+        if (l_conditions.Count > 0)
+        {
+            string[] cond = new string[l_conditions.Count];
+            for (int i = 0; i < l_conditions.Count; i++)
+            {
+                cond[i] = l_conditions[i];
+            }
+
+            if (l_MsgStruct.Count > 0)
+            {
+                MessageStruct[] msgstruct = new MessageStruct[l_MsgStruct.Count];
+                for (int i = 0; i < l_MsgStruct.Count; i++)
                 {
-                    string[] cond = new string[l_conditions.Count];
-                    for (int i = 0; i < l_conditions.Count; i++)
-                    {
-                        cond[i] = l_conditions[i];
-                    }
-
-                    if (l_MsgStruct.Count > 0)
-                    {
-                        MessageStruct[] msgstruct = new MessageStruct[l_MsgStruct.Count];
-                        for (int i = 0; i < l_MsgStruct.Count; i++)
-                        {
-                            msgstruct[i] = l_MsgStruct[i];
-                        }
-
-                        t = new Instruction(cond, msgstruct, l_actions[0]);
-                    }
-                    else
-                        t = new Instruction(cond, l_actions[0]);
+                    msgstruct[i] = l_MsgStruct[i];
                 }
-                else
-                {
-                    t = new Instruction(l_actions[0]);
-                }
-  
 
-                return t;
+                t = new Instruction(cond, msgstruct, l_actions[0]);
+                Debug.Log("A1");
+            }
+            else
+            {
+                t = new Instruction(cond, l_actions[0]);
+                Debug.Log("A2");
+            }
+        }
+        else
+        {
+            t = new Instruction(l_actions[0]);
+            Debug.Log("A3");
+        }
+
+        Debug.Log(" T : " + t.ToString());
+        return t;*/
+        return new Instruction(l_conditions.ToArray(), l_MsgStruct.ToArray(), l_actions[0]);
 
     }
 
@@ -137,7 +148,7 @@ public class XMLWarbotInterpreter : XMLInterpreter
 
         // If no file has been found, create a new one with the given team name
         if (l_fileName.Equals(""))
-            l_fileName = teamName.Replace(".wbt","") + Constants.xmlExtension;
+            l_fileName = teamName.Replace(".wbt", "") + Constants.xmlExtension;
         Debug.Log(l_fileName);
         Dictionary<string, List<Instruction>> behavior = new Dictionary<string, List<Instruction>>();
 
@@ -185,7 +196,7 @@ public class XMLWarbotInterpreter : XMLInterpreter
                     l_behavior.Add(whichInstruction(unitName, ins));
                     //System.Console.WriteLine(l_behavior[l_behavior.Count - 1].ToString());
                 }
-                        
+
             }
 
             stream.Close();

@@ -18,7 +18,6 @@ public class Brain : MonoBehaviour
     private string _currentAction;
     public MessageManager _messageManager;
     public int nbInstruction;
-    public int nbActions;
 
     public bool debugMessage;
 
@@ -64,10 +63,12 @@ public class Brain : MonoBehaviour
         foreach (Instruction instruction in _instructions)
         {
             if (Verify(instruction)) {
+                print("Action non terminal : " + instruction._stringActionsNonTerminales.Length);
                 foreach (MessageStruct act in instruction._stringActionsNonTerminales)
                 {
                     _componentActionsNonTerminales._messageDestinataire = act._destinataire;
                     _componentActionsNonTerminales._actionsNT[act._intitule]();
+                    print("Debug");
                 }
                 return instruction._stringAction; }
         }

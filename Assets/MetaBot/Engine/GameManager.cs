@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public List<string> fileUnit = new List<string>();
 
     static bool created = false;
+
     void Awake()
     {
         if (!created)
