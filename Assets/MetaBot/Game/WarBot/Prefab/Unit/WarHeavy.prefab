@@ -62,6 +62,8 @@ GameObject:
   - component: {fileID: 114515922954556768}
   - component: {fileID: 114449647509387942}
   - component: {fileID: 135042677106352350}
+  - component: {fileID: 114603053617523302}
+  - component: {fileID: 114500141143698420}
   - component: {fileID: 54637856206010176}
   - component: {fileID: 136969798248474020}
   m_Layer: 8
@@ -238,6 +240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _unitType: Heavy
   _teamIndex: 0
+  _id: 0
   _target: {fileID: 0}
   _objectToUse: {fileID: 0}
   _bullet: {fileID: 0}
@@ -246,7 +249,7 @@ MonoBehaviour:
   _health: 275
   _maxHealth: 275
   _reloadTime: 0
-  _objectif: {x: 0, y: 0, z: 0}
+  _objectif: {fileID: 0}
 --- !u!114 &114424686724352526
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -269,9 +272,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fa7b92dec9baf34782388a22c9f006e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _percepts: {fileID: 0}
-  _actions: {fileID: 0}
+  _componentPercepts: {fileID: 0}
+  _componentActions: {fileID: 0}
+  _componentActionsNonTerminales: {fileID: 0}
   _messageManager: {fileID: 0}
+  nbInstruction: 0
+  nbActions: 0
+  debugMessage: 0
+--- !u!114 &114500141143698420
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1670267256757844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59a440e5abc48244397e18428d5d91d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _messageDestinataire: 
 --- !u!114 &114515922954556768
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -299,6 +318,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _materials:
   - {fileID: 23127402658897536}
+--- !u!114 &114603053617523302
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1670267256757844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a3201c144b24c045a2747cd33f99f0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sender: {fileID: 0}
+  _waitingMessages: []
+  _currentMessages: []
+  _messageType:
+  - MESSAGE_HELP
+  - MESSAGE_POSITION
+  - MESSAGE_DEFENSE
 --- !u!114 &114614631316123548
 MonoBehaviour:
   m_ObjectHideFlags: 1

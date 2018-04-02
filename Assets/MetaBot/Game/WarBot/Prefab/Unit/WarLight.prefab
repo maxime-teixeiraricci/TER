@@ -61,6 +61,8 @@ GameObject:
   - component: {fileID: 114462790742861060}
   - component: {fileID: 54851728022423404}
   - component: {fileID: 135536693387658596}
+  - component: {fileID: 114461914509928388}
+  - component: {fileID: 114079933145180142}
   - component: {fileID: 114536579665419618}
   - component: {fileID: 114191992950110330}
   - component: {fileID: 65596263803047018}
@@ -180,6 +182,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.32, y: 2, z: 2}
   m_Center: {x: 0, y: 0.1, z: 0}
+--- !u!114 &114079933145180142
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1837564357218730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59a440e5abc48244397e18428d5d91d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _messageDestinataire: 
 --- !u!114 &114191992950110330
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -191,6 +205,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1b43c83d2d9f014da9bf66f69979c15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114461914509928388
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1837564357218730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a3201c144b24c045a2747cd33f99f0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sender: {fileID: 0}
+  _waitingMessages: []
+  _currentMessages: []
+  _messageType:
+  - MESSAGE_HELP
+  - MESSAGE_POSITION
+  - MESSAGE_DEFENSE
 --- !u!114 &114462790742861060
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -229,9 +261,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fa7b92dec9baf34782388a22c9f006e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _percepts: {fileID: 0}
-  _actions: {fileID: 0}
+  _componentPercepts: {fileID: 0}
+  _componentActions: {fileID: 0}
+  _componentActionsNonTerminales: {fileID: 0}
   _messageManager: {fileID: 0}
+  nbInstruction: 0
+  nbActions: 0
+  debugMessage: 0
 --- !u!114 &114529498503752388
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -280,6 +316,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _unitType: Light
   _teamIndex: 0
+  _id: 0
   _target: {fileID: 0}
   _objectToUse: {fileID: 0}
   _bullet: {fileID: 1060883780152844, guid: 8d235f711da98aa409eca32a55e591de, type: 2}
@@ -288,7 +325,7 @@ MonoBehaviour:
   _health: 125
   _maxHealth: 125
   _reloadTime: 0
-  _objectif: {x: 0, y: 0, z: 0}
+  _objectif: {fileID: 0}
 --- !u!114 &114650775230158826
 MonoBehaviour:
   m_ObjectHideFlags: 1

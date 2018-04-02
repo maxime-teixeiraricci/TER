@@ -112,6 +112,8 @@ GameObject:
   - component: {fileID: 114018871307719316}
   - component: {fileID: 114808038850239514}
   - component: {fileID: 114010804989806642}
+  - component: {fileID: 114404676544177780}
+  - component: {fileID: 114228995306872970}
   m_Layer: 8
   m_Name: WarBase
   m_TagString: Unit
@@ -331,6 +333,18 @@ MonoBehaviour:
   _maxSize: 99999
   _actualSize: 0
   _ressource: {fileID: 0}
+--- !u!114 &114228995306872970
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1862762559995188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59a440e5abc48244397e18428d5d91d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _messageDestinataire: 
 --- !u!114 &114347100874443590
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -342,11 +356,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fa7b92dec9baf34782388a22c9f006e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _percepts: {fileID: 0}
-  _actions: {fileID: 0}
+  _componentPercepts: {fileID: 0}
+  _componentActions: {fileID: 0}
+  _componentActionsNonTerminales: {fileID: 0}
   _messageManager: {fileID: 0}
   nbInstruction: 0
   nbActions: 0
+  debugMessage: 0
 --- !u!114 &114375346082489782
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -360,6 +376,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _materials:
   - {fileID: 23064433396448068}
+--- !u!114 &114404676544177780
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1862762559995188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a3201c144b24c045a2747cd33f99f0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sender: {fileID: 0}
+  _waitingMessages: []
+  _currentMessages: []
+  _messageType:
+  - MESSAGE_HELP
+  - MESSAGE_POSITION
+  - MESSAGE_DEFENSE
 --- !u!114 &114439792897233452
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -373,6 +407,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _unitType: Base
   _teamIndex: 0
+  _id: 0
   _target: {fileID: 0}
   _objectToUse: {fileID: 0}
   _bullet: {fileID: 0}
@@ -381,7 +416,7 @@ MonoBehaviour:
   _health: 1000
   _maxHealth: 1000
   _reloadTime: 0
-  _objectif: {x: 0, y: 0, z: 0}
+  _objectif: {fileID: 0}
 --- !u!114 &114808038850239514
 MonoBehaviour:
   m_ObjectHideFlags: 1
