@@ -52,7 +52,8 @@ public class ActionNonTerminalCommon : ActionNonTerminal
         };
         _actionsNT["ACTN_ADD_CONTRACT"] = delegate ()
         {
-           
+            EliminationContract newContract = new EliminationContract((GameObject)GetComponent<Percept>()._tmpMessage._contenu);
+            GetComponent<Stats>()._contract = newContract;
         };
 
 
