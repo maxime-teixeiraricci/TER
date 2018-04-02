@@ -40,43 +40,59 @@ public class XMLWarbotInterpreter : XMLInterpreter
         //if (ins.Name.Equals(typeof(Task).Name))
         //{//cas d'un If"
             List<string> l_conditions = new List<string>();
-        List<MessageStruct> l_MsgStruct = new List<MessageStruct>();
-        List<string> l_actions = new List<string>();
+            List<MessageStruct> l_MsgStruct = new List<MessageStruct>();
+            List<string> l_actions = new List<string>();
 
-                XmlNode l_cond = ins.FirstChild;
-                if (l_cond != null)
+                foreach (XmlNode x in ins.ChildNodes)
                 {
-                foreach (XmlNode c in l_cond)
-                    l_conditions.Add(c.Name);
-                }
-              
-                if (ins.ChildNodes.Count > 2)
-                {
-                    XmlNode l_Messages = ins.ChildNodes[1];
-                    if (l_Messages != null)
+
+                    if (x.Name.Contains("parameters"))
                     {
-                        foreach (XmlElement c in l_cond)
-                            l_MsgStruct.Add(new MessageStruct(c.Name,c.FirstChild.Name));
+                          foreach (XmlNode c in x)
+                              l_conditions.Add(c.Name);
+                    }
+
+                    if (x.Name.Contains("message"))
+                    {
+                       foreach (XmlNode c in x)
+                           l_MsgStruct.Add(new MessageStruct(c.Name, c.FirstChild.Name));
+                    }
+
+                    if (x.Name.Contains("actions"))
+                    {
+                        foreach (XmlNode c in x)
+                            l_actions.Add(c.Name);
                     }
                 }
-                
-                XmlNode l_noeudAct = ins.LastChild;
-                if (l_noeudAct != null)
+                Instruction t;
+                if (l_conditions.Count > 0)
                 {
-                    foreach (XmlNode a in l_noeudAct)
+                    string[] cond = new string[l_conditions.Count];
+                    for (int i = 0; i < l_conditions.Count; i++)
                     {
-                        l_actions.Add(a.Name);
+                        cond[i] = l_conditions[i];
                     }
-                }
-                string[] cond = new string[l_conditions.Count];
-                for (int i = 0; i < l_conditions.Count; i++)
-                {
-                    cond[i] = l_conditions[i];
-                }
-                //ajouter dans constructeur
-                Instruction t = new Instruction(cond,l_actions[0]);
 
-        return t;
+                    if (l_MsgStruct.Count > 0)
+                    {
+                        MessageStruct[] msgstruct = new MessageStruct[l_MsgStruct.Count];
+                        for (int i = 0; i < l_MsgStruct.Count; i++)
+                        {
+                            msgstruct[i] = l_MsgStruct[i];
+                        }
+
+                        t = new Instruction(cond, msgstruct, l_actions[0]);
+                    }
+                    else
+                        t = new Instruction(cond, l_actions[0]);
+                }
+                else
+                {
+                    t = new Instruction(l_actions[0]);
+                }
+  
+
+                return t;
 
     }
 

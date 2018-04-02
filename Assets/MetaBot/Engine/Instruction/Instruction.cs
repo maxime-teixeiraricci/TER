@@ -28,6 +28,15 @@ public class Instruction {
 
     }
 
+    public Instruction(string act)
+    {
+        _stringAction = act;
+        _listeStringPerceptsVoulus = new string[0];
+        _stringActionsNonTerminales = new MessageStruct[0];
+        // _listeStringPerceptsOu = ou; ;
+
+    }
+
     public XmlNode xmlStructure()
     {
         XmlDocument l_doc = new XmlDocument();
@@ -58,8 +67,8 @@ public class Instruction {
             XmlNode MsgNode = l_doc.CreateElement("message");
             foreach (MessageStruct c2 in _stringActionsNonTerminales)
             {
-                XmlElement t2 = l_doc.CreateElement(c2._intitule);
-                XmlElement t2d = l_doc.CreateElement(c2._destinataire);
+                XmlNode t2 = l_doc.CreateElement(c2._intitule);
+                XmlNode t2d = l_doc.CreateElement(c2._destinataire);
                 t2.AppendChild(t2d);
                 MsgNode.AppendChild(t2);
             }
@@ -68,7 +77,7 @@ public class Instruction {
         }
 
             XmlNode actNode = l_doc.CreateElement("actions");
-        XmlElement a = l_doc.CreateElement(_stringAction);
+        XmlNode a = l_doc.CreateElement(_stringAction);
 
         actNode.AppendChild(a);
 

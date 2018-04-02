@@ -14,7 +14,7 @@ public class TestInterpreterSecond : MonoBehaviour
 
     void Start()
     {
-        string teamName = "FooTeam";
+        string teamName = "blabla";
         string unitName = "Unit";
         string gameName = "TestBot";
 
