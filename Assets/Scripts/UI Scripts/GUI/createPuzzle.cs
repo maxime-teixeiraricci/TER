@@ -48,7 +48,7 @@ public class createPuzzle : MonoBehaviour {
             if (negAction)
             {
                 //Debug.Log("Label ACTION = " + _label);
-                puzzleClone.GetComponent<ActionPuzzleScript>().actionName = "Not" + _label;
+                puzzleClone.GetComponent<ActionPuzzleScript>().actionName = "NOT_" + _label;
             }
             else
             {
@@ -61,7 +61,7 @@ public class createPuzzle : MonoBehaviour {
             if (negCondition)
             {
                 //Debug.Log("Label ACTION = " + _label);
-                puzzleClone.GetComponent<CondPuzzleScript>().condName = "Not" + _label;
+                puzzleClone.GetComponent<CondPuzzleScript>().condName = "NOT_" + _label;
             }
             else
             {

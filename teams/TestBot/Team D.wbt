@@ -1,0 +1,14 @@
+<behavior>
+  <teamName>Team D</teamName>
+  <unit name="Base" />
+  <unit name="Explorer">
+    <instruction>
+      <parameters>
+        <NotPERCEPT_BAG_FULL />
+      </parameters>
+      <actions>
+        <ACTION_MOVE />
+      </actions>
+    </instruction>
+  </unit>
+</behavior>

@@ -153,6 +153,9 @@ public class XMLWarbotInterpreter : XMLInterpreter
         Dictionary<string, List<Instruction>> behavior = new Dictionary<string, List<Instruction>>();
 
         string pathtmp = path;
+        Debug.Log("Path : " + l_fileName);
+        l_fileName = path +"/" +  l_fileName.Replace(path, "");
+        Debug.Log("Path : " + l_fileName);
         using (var stream = new FileStream(l_fileName, FileMode.Open))
         {
             Load(stream);
@@ -183,6 +186,10 @@ public class XMLWarbotInterpreter : XMLInterpreter
             l_fileName = teamName;
 
         List<Instruction> l_behavior = new List<Instruction>();
+        Debug.Log("Path : " + l_fileName);
+        l_fileName = teamName.Replace(".wbt", "") + Constants.xmlExtension;
+        l_fileName = path + "/" + l_fileName.Replace(path, "");
+        Debug.Log("Path : " + l_fileName);
         using (FileStream stream = new FileStream(l_fileName, FileMode.Open))
         {
             Load(stream);

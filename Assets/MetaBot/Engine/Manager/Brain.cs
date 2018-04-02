@@ -80,7 +80,7 @@ public class Brain : MonoBehaviour
         bool flag = true;
         foreach (string percept in instruction._listeStringPerceptsVoulus)
         {
-            if (!(_componentPercepts._percepts.ContainsKey(percept) && _componentPercepts._percepts[percept]())) { flag = false; }
+            if (!(_componentPercepts._percepts.ContainsKey(percept.Replace("NOT_", "")) && (percept.Contains("NOT_") ^ _componentPercepts._percepts[percept.Replace("NOT_", "")]())))  { flag = false; }
         }
 
         // bool flag2 = false;

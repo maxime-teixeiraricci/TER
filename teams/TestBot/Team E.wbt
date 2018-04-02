@@ -1,0 +1,13 @@
+<behavior>
+  <teamName>Team E</teamName>
+  <unit name="Explorer">
+    <instruction>
+      <parameters>
+        <NOT_PERCEPT_BLOCKED />
+      </parameters>
+      <actions>
+        <ACTION_MOVE />
+      </actions>
+    </instruction>
+  </unit>
+</behavior>
