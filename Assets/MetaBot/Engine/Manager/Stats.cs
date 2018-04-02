@@ -8,7 +8,7 @@ public class Stats : MonoBehaviour
     [Header("Unit type")]
     public string _unitType;
     public int _teamIndex;
-    public int _id;
+    public long _id;
     public GameObject _target;
     public Objet _objectToUse;
     public GameObject _bullet;
@@ -21,6 +21,11 @@ public class Stats : MonoBehaviour
     public float _reloadTime;
     //public Vector3 _target;
     public GameObject _objectif;
+
+    void Awake()
+    {
+        _id = Random.Range(0, int.MaxValue);
+    }
 
     void Start()
     {

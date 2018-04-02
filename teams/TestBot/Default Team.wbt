@@ -1,9 +1,66 @@
 <behavior>
   <teamName>Default Team</teamName>
+  <unit name="Explorer">
+    <instruction>
+      <parameters>
+        <PERCEPT_BASE_NEAR_ALLY />
+        <PERCEPT_BAG_NOT_EMPTY />
+      </parameters>
+      <actions>
+        <ACTION_GIVE_RESSOURCE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_BAG_FULL />
+      </parameters>
+      <actions>
+        <ACTION_BACK_TO_BASE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_LIFE_NOT_MAX />
+        <PERCEPT_BAG_NOT_EMPTY />
+      </parameters>
+      <actions>
+        <ACTION_HEAL />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_BAG_NOT_FULL />
+        <PERCEPT_FOOD_NEAR />
+      </parameters>
+      <actions>
+        <ACTION_PICK />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_BLOCKED />
+      </parameters>
+      <actions>
+        <ACTION_MOVE_UNTIL_UNBLOCKED />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters />
+      <message>
+        <ACTN_TURN_AROUND>
+          <Explorer />
+        </ACTN_TURN_AROUND>
+      </message>
+      <actions>
+        <ACTION_MOVE />
+      </actions>
+    </instruction>
+  </unit>
   <unit name="Light">
     <instruction>
       <parameters>
         <PERCEPT_LIFE_NOT_MAX />
+        <PERCEPT_BAG_NOT_EMPTY />
       </parameters>
       <actions>
         <ACTION_HEAL />
@@ -125,57 +182,6 @@
       </parameters>
       <actions>
         <ACTION_CREATE_LIGHT />
-      </actions>
-    </instruction>
-  </unit>
-  <unit name="Explorer">
-    <instruction>
-      <parameters>
-        <PERCEPT_BASE_NEAR_ALLY />
-        <NOT_PERCEPT_BAG_EMPTY />
-      </parameters>
-      <actions>
-        <ACTION_GIVE_RESSOURCE />
-      </actions>
-    </instruction>
-    <instruction>
-      <parameters>
-        <PERCEPT_BAG_FULL />
-      </parameters>
-      <actions>
-        <ACTION_BACK_TO_BASE />
-      </actions>
-    </instruction>
-    <instruction>
-      <parameters>
-        <PERCEPT_LIFE_NOT_MAX />
-        <NOT_PERCEPT_BAG_EMPTY />
-      </parameters>
-      <actions>
-        <ACTION_HEAL />
-      </actions>
-    </instruction>
-    <instruction>
-      <parameters>
-        <NOT_PERCEPT_BAG_FULL />
-        <PERCEPT_FOOD_NEAR />
-      </parameters>
-      <actions>
-        <ACTION_PICK />
-      </actions>
-    </instruction>
-    <instruction>
-      <parameters>
-        <PERCEPT_BLOCKED />
-      </parameters>
-      <actions>
-        <ACTION_MOVE_UNTIL_UNBLOCKED />
-      </actions>
-    </instruction>
-    <instruction>
-      <parameters />
-      <actions>
-        <ACTION_MOVE />
       </actions>
     </instruction>
   </unit>

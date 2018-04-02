@@ -6,11 +6,11 @@ using UnityEngine;
 public class Message {
 
     public string _titre;
-    public string _contenu;
+    public Object _contenu;
     public GameObject _sender;
     public GameObject _receiver;
 
-    public Message(GameObject sender, string titre, string contenu, GameObject receiver)
+    public Message(GameObject sender, string titre, Object contenu, GameObject receiver)
     {
         _titre = titre;
         _contenu = contenu;
@@ -21,7 +21,13 @@ public class Message {
     public Message(GameObject sender, string titre)
     {
         _titre = titre;
-        _contenu = "";
+        _sender = sender;
+    }
+
+    public Message(GameObject sender, string titre, Object contenu)
+    {
+        _titre = titre;
+        _contenu = contenu;
         _sender = sender;
     }
 }

@@ -23,7 +23,7 @@ public class TestUnitBehaviour : MonoBehaviour
             new Instruction(new string[] { "PERCEPT_LIFE_NOT_MAX","PERCEPT_BAG_NOT_EMPTY"}, "ACTION_HEAL"),
             new Instruction(new string[] { "PERCEPT_BAG_NOT_FULL", "PERCEPT_FOOD_NEAR" }, "ACTION_PICK"),
             new Instruction(new string[] { "PERCEPT_BLOCKED" }, "ACTION_MOVE_UNTIL_UNBLOCKED"),
-            new Instruction(new string[] { }, /*new MessageStruct[] {new MessageStruct("MESSAGE_HELP", "Explorer") },*/ "ACTION_MOVE") };
+            new Instruction(new string[] { }, new MessageStruct[] {new MessageStruct("ACTN_TURN_AROUND", "Explorer") }, "ACTION_MOVE") };
         string gamePath = "./teams/" + GetComponent<GameManager>()._gameName + "/";
 
         string teamName = "Default Team";

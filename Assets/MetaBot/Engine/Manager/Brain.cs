@@ -21,6 +21,7 @@ public class Brain : MonoBehaviour
 
     public bool debugMessage;
 
+    
     void Start()
     {
         //GameObject.Find("Canvas").GetComponent<HUDManager>().CreateHUD(gameObject);
