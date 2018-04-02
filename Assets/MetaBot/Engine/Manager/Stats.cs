@@ -10,8 +10,10 @@ public class Stats : MonoBehaviour
     public int _teamIndex;
     public long _id;
     public GameObject _target;
+    public float distanceToTarget;
     public Objet _objectToUse;
     public GameObject _bullet;
+    public Contract _contract;
 
     [Header("Stats")]
     public float _heading;
@@ -35,7 +37,10 @@ public class Stats : MonoBehaviour
     void Update()
     {
         //_reloadTime -= Time.deltaTime;
-
+        if (_target != null)
+        {
+            distanceToTarget = Vector3.Distance(_target.transform.position, transform.position);
+        }
         _heading = (_heading + 360) % 360;
         _health = Mathf.Min(_health, _maxHealth);
         transform.eulerAngles = new Vector3(transform.eulerAngles.x, _heading , transform.eulerAngles.z);

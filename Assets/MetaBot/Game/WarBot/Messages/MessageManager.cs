@@ -42,13 +42,13 @@ public abstract class MessageManager : MonoBehaviour {
         }
     }
 
-    public bool ContainsType(string type)
+    public Message ContainsType(string type)
     {
         foreach (Message m in _currentMessages)
         {
-            if (m._titre == type) return true;
+            if (m._titre == type) return m;
         }
-        return false;
+        return null;
     }
 
 

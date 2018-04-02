@@ -7,6 +7,8 @@ public abstract class Percept : MonoBehaviour
 {
     public delegate bool Listener();
     public Dictionary<string, Listener> _percepts = new Dictionary<string, Listener>();
+    public Message _tmpMessage;
+
     public virtual void InitPercept()
     {
         // Generation des percepts liées aux messages.
@@ -14,7 +16,11 @@ public abstract class Percept : MonoBehaviour
         mm.Init();
         foreach (string messageType in mm._messageType)
         {
-            _percepts[messageType] = delegate () { return mm.ContainsType(messageType); };
+            _percepts[messageType] = delegate () 
+            {
+                _tmpMessage = mm.ContainsType(messageType);
+                return _tmpMessage != null;
+            };
         }
     }
 }

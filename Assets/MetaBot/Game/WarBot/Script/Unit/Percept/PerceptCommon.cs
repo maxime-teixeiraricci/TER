@@ -22,10 +22,7 @@ public class PerceptCommon : Percept
         _percepts["PERCEPT_BAG_EMPTY"] = delegate () { return GetComponent<Inventory>()._actualSize == 0; };
         _percepts["PERCEPT_BAG_10"] = delegate () { return GetComponent<Inventory>()._actualSize >= 10; };
         _percepts["PERCEPT_BAG_25"] = delegate () { return GetComponent<Inventory>()._actualSize >= 25; };
-        _percepts["PERCPET_CAN_GIVE"] = delegate () 
-        {
-            return (GetComponent<Stats>()._target != null) && (Vector3.Distance(GetComponent<Stats>()._target.transform.position, transform.position) < 1.5f);
-        };
+        _percepts["PERCEPT_CONTRACT"] = delegate () { return GetComponent<Stats>()._contract != null; };
         _percepts["PERCEPT_FOOD"] = delegate ()
         {
             GetComponent<Stats>()._target = null;
