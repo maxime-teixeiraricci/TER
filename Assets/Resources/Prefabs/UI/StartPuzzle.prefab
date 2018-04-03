@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114884811696119352}
   - component: {fileID: 114408980491833176}
   - component: {fileID: 61120749337861026}
+  - component: {fileID: 114033698840818092}
   m_Layer: 5
   m_Name: StartPuzzle
   m_TagString: IfPuzzle
@@ -74,6 +75,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 100, y: 100}
   m_EdgeRadius: 0
+--- !u!114 &114033698840818092
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1598452874832904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1573420865, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.234}
+  m_EffectDistance: {x: 5, y: -9}
+  m_UseGraphicAlpha: 1
 --- !u!114 &114408980491833176
 MonoBehaviour:
   m_ObjectHideFlags: 1

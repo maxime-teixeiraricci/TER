@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114819041461709956}
   - component: {fileID: 114620140282141666}
   - component: {fileID: 61748475030379814}
+  - component: {fileID: 114929945345632454}
   m_Layer: 5
   m_Name: ActionPuzzle
   m_TagString: ActionPuzzle
@@ -194,6 +195,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 0, y: -3}
+  m_UseGraphicAlpha: 1
+--- !u!114 &114929945345632454
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1146533950915122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1573420865, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.234}
+  m_EffectDistance: {x: 5, y: -9}
   m_UseGraphicAlpha: 1
 --- !u!222 &222008853040058714
 CanvasRenderer:

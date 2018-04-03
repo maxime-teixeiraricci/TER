@@ -21,8 +21,6 @@ public class Stats : MonoBehaviour
     public int _health;
     public int _maxHealth;
     public float _reloadTime;
-    //public Vector3 _target;
-    public GameObject _objectif;
 
     void Awake()
     {
@@ -32,10 +30,14 @@ public class Stats : MonoBehaviour
     void Start()
     {
         _heading = Random.Range(0, 360);
+        Contract C = new EliminationContract(this.gameObject);
+        _contract = C;
+
     }
 
     void Update()
     {
+        print(_contract);
         //_reloadTime -= Time.deltaTime;
         if (_target != null)
         {

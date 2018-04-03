@@ -49,7 +49,6 @@ GameObject:
   - component: {fileID: 136462975295457720}
   - component: {fileID: 114699229294144876}
   - component: {fileID: 114606630165051546}
-  - component: {fileID: 114133988533202608}
   m_Layer: 8
   m_Name: WarExplorer
   m_TagString: Unit
@@ -154,18 +153,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _materials:
   - {fileID: 23405173478968676}
---- !u!114 &114133988533202608
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1517124188230958}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59a440e5abc48244397e18428d5d91d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _messageDestinataire: 
 --- !u!114 &114407417761323848
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -177,12 +164,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fa7b92dec9baf34782388a22c9f006e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _instructions: []
   _componentPercepts: {fileID: 0}
   _componentActions: {fileID: 0}
   _componentActionsNonTerminales: {fileID: 0}
   _messageManager: {fileID: 0}
   nbInstruction: 0
-  nbActions: 0
   debugMessage: 0
 --- !u!114 &114535154049158002
 MonoBehaviour:
@@ -207,6 +194,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5176729134ecec44ac909ce7abdc748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _tmpMessage:
+    _titre: 
+    _contenu: {fileID: 0}
+    _sender: {fileID: 0}
+    _receiver: {fileID: 0}
 --- !u!114 &114672049450424364
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -281,6 +273,7 @@ MonoBehaviour:
   _teamIndex: 0
   _id: 0
   _target: {fileID: 0}
+  distanceToTarget: 0
   _objectToUse: {fileID: 0}
   _bullet: {fileID: 0}
   _heading: 0
@@ -288,7 +281,6 @@ MonoBehaviour:
   _health: 100
   _maxHealth: 100
   _reloadTime: 0
-  _objectif: {fileID: 0}
 --- !u!114 &114991993633843772
 MonoBehaviour:
   m_ObjectHideFlags: 1
