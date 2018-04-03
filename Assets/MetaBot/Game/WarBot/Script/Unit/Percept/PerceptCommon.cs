@@ -95,7 +95,31 @@ public class PerceptCommon : Percept
             }
             return false;
         };
-       
+
+
+
+        /** PERCEPT **/
+
+        _percepts["CONTRACT_ELIMINATION"] = delegate () { return GetComponent<Stats>()._contract.GetType() == gameObject.GetType(); };
+        _percepts["CONTRACT_ELIMINATION_TARGET_NEAR"] = delegate () {
+            Brain brain = GetComponent<Brain>();
+            Sight sight = brain.GetComponent<Sight>();
+            List<GameObject> _listOfUnitColl = new List<GameObject>();
+            foreach (GameObject gO in sight._listOfCollision)
+            {
+                EliminationContract contract = (EliminationContract)GetComponent<Stats>()._contract;
+                if (gO && contract._target == gO)
+                {
+                    if (gO.GetComponent<Stats>() && gO.GetComponent<Stats>()._teamIndex != GetComponent<Stats>()._teamIndex)
+                    {
+                        GetComponent<Stats>()._target = gO;
+                        GetComponent<Stats>()._heading = getAngle(gO);
+                        return true;
+                    }
+                }
+            }
+            return false;
+        };
     }
 
     public int getAngle(GameObject _gameObject)
