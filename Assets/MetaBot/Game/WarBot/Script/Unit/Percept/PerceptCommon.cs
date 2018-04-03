@@ -110,12 +110,9 @@ public class PerceptCommon : Percept
                 EliminationContract contract = (EliminationContract)GetComponent<Stats>()._contract;
                 if (gO && contract._target == gO)
                 {
-                    if (gO.GetComponent<Stats>() && gO.GetComponent<Stats>()._teamIndex != GetComponent<Stats>()._teamIndex)
-                    {
                         GetComponent<Stats>()._target = gO;
                         GetComponent<Stats>()._heading = getAngle(gO);
                         return true;
-                    }
                 }
             }
             return false;
