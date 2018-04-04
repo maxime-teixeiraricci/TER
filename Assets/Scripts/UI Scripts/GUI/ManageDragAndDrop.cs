@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class ManageDragAndDrop : MonoBehaviour
+public class ManageDragAndDrop : MonoBehaviour, IPointerEnterHandler//, IPointerExitHandler
 {
     public int posGridX;
     public int posGridY;
@@ -20,6 +21,15 @@ public class ManageDragAndDrop : MonoBehaviour
     public Vector3 _initialPosition;
     public float deltaDest = 10;
     public bool overEditor;
+
+    void Update()
+    {
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        Debug.Log("Here"); //This is never logging
+    }
 
 
     private void OnMouseOver()

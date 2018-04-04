@@ -23,7 +23,7 @@ public abstract class MessageManager : MonoBehaviour {
         foreach (GameObject unit in GameObject.FindGameObjectsWithTag("Unit"))
         {
             if (unit.GetComponent<Stats>()._teamIndex == GetComponent<Stats>()._teamIndex && 
-                ((unit.GetComponent<Stats>()._unitType == dest) || (dest == "ALL")))
+                ((unit.GetComponent<Stats>()._unitType == dest) || (dest == "All")))
             {
                 print(unit);
                 unit.GetComponent<MessageManager>()._waitingMessages.Add(message);
