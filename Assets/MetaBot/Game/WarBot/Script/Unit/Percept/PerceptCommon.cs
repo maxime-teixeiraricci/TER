@@ -105,9 +105,10 @@ public class PerceptCommon : Percept
             Brain brain = GetComponent<Brain>();
             Sight sight = brain.GetComponent<Sight>();
             List<GameObject> _listOfUnitColl = new List<GameObject>();
+            EliminationContract contract = (EliminationContract)GetComponent<Stats>()._contract;
+
             foreach (GameObject gO in sight._listOfCollision)
             {
-                EliminationContract contract = (EliminationContract)GetComponent<Stats>()._contract;
                 if (gO && contract._target == gO)
                 {
                     if (gO.GetComponent<Stats>() && gO.GetComponent<Stats>()._teamIndex != GetComponent<Stats>()._teamIndex)
