@@ -8,6 +8,11 @@ public class StatsLoader : MonoBehaviour
 
     public Dropdown unit;
 
+    public void Start()
+    {
+        ReadStats();
+    }
+
     public void ReadStats()
     {
         Text statText = GameObject.Find("PropertiesValues").GetComponentInChildren<Text>();
