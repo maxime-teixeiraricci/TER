@@ -16,6 +16,7 @@ public class TestUnitBehaviour : MonoBehaviour
 
     public void CreateDefaultBehaviour()
     {
+        Debug.ClearDeveloperConsole();
         Debug.Log("Creating Default Team ...");
         List<Instruction> behavior = new List<Instruction>(){
             new Instruction(new string[] { "PERCEPT_ENEMY"},new MessageStruct[] {new MessageStruct("MESSAGE_ATTACK", "Light") }, "ACTION_MOVE"),
@@ -33,14 +34,14 @@ public class TestUnitBehaviour : MonoBehaviour
         
 
         behavior = new List<Instruction>(){
-            new Instruction(new string[] { "PERCEPT_IS_RELOADED", "PERCEPT_CONTRACT", "CONTRACT_ELIMINATION_TARGET_NEAR"}, "ACTION_FIRE"),
-            new Instruction(new string[] {"NOT_PERCEPT_CONTRACT","MESSAGE_ATTACK"}, new MessageStruct[] {new MessageStruct("ACTN_ADD_ELIMINATION_CONTRACT", "") }, "ACTION_MOVE"),
-            new Instruction(new string[] { "PERCEPT_LIFE_NOT_MAX","PERCEPT_BAG_NOT_EMPTY"}, "ACTION_HEAL"),
+           // new Instruction(new string[] { "PERCEPT_IS_RELOADED", "PERCEPT_CONTRACT", "CONTRACT_ELIMINATION_TARGET_NEAR"}, "ACTION_FIRE"),
+           new Instruction(new string[] {"PERCEPT_MESSAGE_ATTACK"}, new MessageStruct[] {new MessageStruct("ACTN_ADD_ELIMINATION_CONTRACT", "None") }, "ACTION_MOVE"),
+            /*new Instruction(new string[] { "PERCEPT_LIFE_NOT_MAX","PERCEPT_BAG_NOT_EMPTY"}, "ACTION_HEAL"),
             new Instruction(new string[] { "PERCEPT_IS_NOT_RELOADED" }, "ACTION_RELOAD"),
             //new Instruction(new string[] { "PERCEPT_IS_RELOADED", "PERCEPT_ENEMY" }, "ACTION_FIRE"),
             new Instruction(new string[] { "PERCEPT_BAG_NOT_FULL", "PERCEPT_FOOD_NEAR" }, "ACTION_PICK"),
             new Instruction(new string[] { "PERCEPT_BLOCKED" }, "ACTION_MOVE_UNTIL_UNBLOCKED"),
-            new Instruction(new string[] { }, "ACTION_MOVE") };
+            new Instruction(new string[] { }, "ACTION_MOVE") */};
         interpreter.behaviorToXml(teamName, gamePath, "Light", behavior);
         interpreter.behaviorToXml(teamName, gamePath, "Heavy", behavior);
 

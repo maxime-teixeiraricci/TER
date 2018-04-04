@@ -26,6 +26,7 @@ public class ActionNonTerminalCommon : ActionNonTerminal
         {
             Message message = new Message(gameObject, "MESSAGE_ATTACK", GetComponent<Stats>()._target);
             GetComponent<MessageManager>().Send(message, _messageDestinataire);
+            print("Sender : " + gameObject +"  Target : " + message._contenu);
         };
 
 
@@ -54,6 +55,7 @@ public class ActionNonTerminalCommon : ActionNonTerminal
         {
             EliminationContract newContract = new EliminationContract((GameObject)GetComponent<Percept>()._tmpMessage._contenu);
             GetComponent<Stats>()._contract = newContract;
+            Debug.Break();
         };
 
 

@@ -12,6 +12,7 @@ public class Brain : MonoBehaviour
 {
 
     public List<Instruction> _instructions = new List<Instruction>();
+    public List<InstructionEditor> _instructionsEditor = new List<InstructionEditor>();
     public Percept _componentPercepts;
     public Action _componentActions;
     public ActionNonTerminal _componentActionsNonTerminales;
@@ -40,6 +41,15 @@ public class Brain : MonoBehaviour
         _componentActionsNonTerminales = GetComponent<ActionNonTerminal>();
         //_messageManager = new MessageManager(this.gameObject);
         _messageManager = GetComponent<MessageManager>();
+
+        foreach (Instruction I in _instructions)
+        {
+            InstructionEditor IE = new InstructionEditor();
+            IE._listeStringPerceptsVoulus = I._listeStringPerceptsVoulus;
+            IE._stringAction = I._stringAction;
+            IE._stringActionsNonTerminales = I._stringActionsNonTerminales;
+            _instructionsEditor.Add(IE);
+        }
     }
 
     void FixedUpdate()
@@ -64,12 +74,13 @@ public class Brain : MonoBehaviour
         foreach (Instruction instruction in _instructions)
         {
             if (Verify(instruction)) {
-                print("Action non terminal : " + instruction._stringActionsNonTerminales.Length);
+
                 foreach (MessageStruct act in instruction._stringActionsNonTerminales)
                 {
                     _componentActionsNonTerminales._messageDestinataire = act._destinataire;
+                    print(gameObject + "    Action nt = " + act._intitule);
                     _componentActionsNonTerminales._actionsNT[act._intitule]();
-                    print("Debug");
+
                 }
                 return instruction._stringAction; }
         }
@@ -96,4 +107,12 @@ public class Brain : MonoBehaviour
 
 
 
+}
+
+[System.Serializable]
+public struct InstructionEditor
+{
+    public string[] _listeStringPerceptsVoulus;
+    public MessageStruct[] _stringActionsNonTerminales;
+    public string _stringAction;
 }

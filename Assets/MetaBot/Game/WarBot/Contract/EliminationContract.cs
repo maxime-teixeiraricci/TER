@@ -8,18 +8,12 @@ public class EliminationContract : Contract
 
     public EliminationContract(GameObject target)
     {
+        type = "Elimination";
         _target = target;
     }
-
-    public override bool isDone()
+    public EliminationContract()
     {
-        GameObject[] listeUnits = GameObject.FindGameObjectsWithTag("Unit");
-        foreach(GameObject unit in listeUnits){
-            if (unit.Equals(_target))
-            {
-                return false;
-            }
-        }
-        return true;
     }
+
+   
 }

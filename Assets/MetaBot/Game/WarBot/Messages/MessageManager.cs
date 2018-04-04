@@ -14,6 +14,7 @@ public abstract class MessageManager : MonoBehaviour {
     public void UpdateMessage()
     {
         _currentMessages = _waitingMessages;
+
         _waitingMessages = new List<Message>();
     }
     
@@ -25,7 +26,7 @@ public abstract class MessageManager : MonoBehaviour {
             if (unit.GetComponent<Stats>()._teamIndex == GetComponent<Stats>()._teamIndex && 
                 ((unit.GetComponent<Stats>()._unitType == dest) || (dest == "All")))
             {
-                print(unit);
+
                 unit.GetComponent<MessageManager>()._waitingMessages.Add(message);
             }
         }

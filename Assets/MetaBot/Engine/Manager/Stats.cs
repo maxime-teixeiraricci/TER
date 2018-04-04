@@ -14,6 +14,7 @@ public class Stats : MonoBehaviour
     public Objet _objectToUse;
     public GameObject _bullet;
     public Contract _contract;
+    public GameObject _targetContract;
 
     [Header("Stats")]
     public float _heading;
@@ -30,14 +31,18 @@ public class Stats : MonoBehaviour
     void Start()
     {
         _heading = Random.Range(0, 360);
-        Contract C = new EliminationContract(this.gameObject);
-        _contract = C;
 
     }
 
     void Update()
     {
-        print(_contract);
+        if (_contract != null)
+        {
+            _targetContract = ((EliminationContract)_contract)._target;
+            Debug.ClearDeveloperConsole();
+            print(_contract);
+            Debug.Break();
+        }
         //_reloadTime -= Time.deltaTime;
         if (_target != null)
         {

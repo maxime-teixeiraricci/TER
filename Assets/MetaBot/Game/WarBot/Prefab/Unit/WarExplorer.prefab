@@ -76,7 +76,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1517124188230958}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14.66, y: 1.07, z: -14.05}
+  m_LocalPosition: {x: -1.8394909, y: 1.02, z: -13.717749}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4608809123674540}
@@ -165,10 +165,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _instructions: []
-  _componentPercepts: {fileID: 0}
-  _componentActions: {fileID: 0}
-  _componentActionsNonTerminales: {fileID: 0}
-  _messageManager: {fileID: 0}
+  _componentPercepts: {fileID: 114606630165051546}
+  _componentActions: {fileID: 114699229294144876}
+  _componentActionsNonTerminales: {fileID: 114535154049158002}
+  _messageManager: {fileID: 114790890713267580}
   nbInstruction: 0
   debugMessage: 0
 --- !u!114 &114535154049158002

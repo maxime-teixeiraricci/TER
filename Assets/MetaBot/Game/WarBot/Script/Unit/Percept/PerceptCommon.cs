@@ -17,7 +17,7 @@ public class PerceptCommon : Percept
     {
         base.InitPercept();
         _percepts["PERCEPT_LIFE_MAX"] = delegate () { return GetComponent<Stats>()._maxHealth == GetComponent<Stats>()._health; };
-        _percepts["PERCEPT_BLOCKED"] = delegate () { return GetComponent<MovableCharacter>().isBlocked(); };
+        
         _percepts["PERCEPT_BAG_FULL"] = delegate () { return GetComponent<Inventory>()._maxSize == GetComponent<Inventory>()._actualSize; };
         _percepts["PERCEPT_BAG_EMPTY"] = delegate () { return GetComponent<Inventory>()._actualSize == 0; };
         _percepts["PERCEPT_BAG_10"] = delegate () { return GetComponent<Inventory>()._actualSize >= 10; };
@@ -73,7 +73,7 @@ public class PerceptCommon : Percept
                     if (gO.GetComponent<Stats>() && gO.GetComponent<Stats>()._teamIndex == GetComponent<Stats>()._teamIndex)
                     {
                         GetComponent<Stats>()._target = gO;
-                        Debug.Log(gO);
+
                         GetComponent<Stats>()._heading = getAngle(gO);
                         return true;
                     }
@@ -100,11 +100,12 @@ public class PerceptCommon : Percept
 
         /** PERCEPT **/
 
-        _percepts["CONTRACT_ELIMINATION"] = delegate () { return GetComponent<Stats>()._contract.GetType() == gameObject.GetType(); };
+        _percepts["CONTRACT_ELIMINATION"] = delegate () { return GetComponent<Stats>()._contract!= null && GetComponent<Stats>()._contract.type == "Elimination"; };
         _percepts["CONTRACT_ELIMINATION_TARGET_NEAR"] = delegate () {
             Brain brain = GetComponent<Brain>();
             Sight sight = brain.GetComponent<Sight>();
             List<GameObject> _listOfUnitColl = new List<GameObject>();
+            if (GetComponent<Stats>()._contract == null || GetComponent<Stats>()._contract.type != "Elimination") { return false; }
             EliminationContract contract = (EliminationContract)GetComponent<Stats>()._contract;
 
             foreach (GameObject gO in sight._listOfCollision)
