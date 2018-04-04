@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 114021536629099052}
   - component: {fileID: 136462975295457720}
   - component: {fileID: 114699229294144876}
-  - component: {fileID: 114606630165051546}
+  - component: {fileID: 114804970405907090}
   m_Layer: 8
   m_Name: WarExplorer
   m_TagString: Unit
@@ -75,14 +75,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1517124188230958}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0.0013089952, y: 0, z: 0, w: 0.9999992}
   m_LocalPosition: {x: -1.8394909, y: 1.02, z: -13.717749}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4608809123674540}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.15, y: 0, z: 0}
 --- !u!23 &23405173478968676
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -165,7 +165,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _instructions: []
-  _componentPercepts: {fileID: 114606630165051546}
+  _instructionsEditor: []
+  _componentPercepts: {fileID: 0}
   _componentActions: {fileID: 114699229294144876}
   _componentActionsNonTerminales: {fileID: 114535154049158002}
   _messageManager: {fileID: 114790890713267580}
@@ -183,22 +184,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _messageDestinataire: 
---- !u!114 &114606630165051546
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1517124188230958}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5176729134ecec44ac909ce7abdc748, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _tmpMessage:
-    _titre: 
-    _contenu: {fileID: 0}
-    _sender: {fileID: 0}
-    _receiver: {fileID: 0}
 --- !u!114 &114672049450424364
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -257,7 +242,23 @@ MonoBehaviour:
   _messageType:
   - MESSAGE_HELP
   - MESSAGE_POSITION
-  - MESSAGE_DEFENSE
+  - MESSAGE_ATTACK
+--- !u!114 &114804970405907090
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1517124188230958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 370793cdbdc4f5b429c4d83b2418674e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tmpMessage:
+    _titre: 
+    _contenu: {fileID: 0}
+    _sender: {fileID: 0}
+    _receiver: {fileID: 0}
 --- !u!114 &114806030400751272
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -276,6 +277,7 @@ MonoBehaviour:
   distanceToTarget: 0
   _objectToUse: {fileID: 0}
   _bullet: {fileID: 0}
+  _targetContract: {fileID: 0}
   _heading: 0
   _isBlocked: 0
   _health: 100
