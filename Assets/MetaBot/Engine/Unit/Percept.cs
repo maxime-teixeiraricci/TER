@@ -18,7 +18,7 @@ public abstract class Percept : MonoBehaviour
         mm.Init();
         foreach (string messageType in mm._messageType)
         {
-            _percepts[messageType] = delegate () 
+            _percepts["PERCEPT_"+messageType] = delegate () 
             {
                 _tmpMessage = mm.ContainsType(messageType);
                 return _tmpMessage != null;

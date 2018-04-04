@@ -70,11 +70,11 @@ public class GameManager : MonoBehaviour
             unitPercepts.InitPercept();
             foreach (string s in unitPercepts._percepts.Keys)
             {
-                if (!s.Contains("MESSAGE"))
+                if (s.Contains("PERCEPT"))
                 {
                     writer.WriteLine("[PERCEPTS]" + s);
                 }
-                else
+                if(s.Contains("MESSAGE"))
                 {
                     writer.WriteLine("[MESSAGE]" + s);
                 }

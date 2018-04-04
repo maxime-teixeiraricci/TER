@@ -48,17 +48,17 @@ public class CondPuzzleScript : MonoBehaviour
     public void NormalizedLabel()
     {
         string questionString = (_value.Contains("PERCEPT_")) ? "?" : "";
-        if (_value.Contains("PERCEPT_"))
+        if (type == Type.CONDITION)
         {
             _label.GetComponent<Text>().text = _value.Replace("PERCEPT_", "").Replace("_", " ") + "?";
         }
-        if (_value.Contains("ACTION_"))
+        if (type == Type.ACTION)
         {
             _label.GetComponent<Text>().text = _value.Replace("ACTION_", "").Replace("_", " ");
         }
-        if (_value.Contains("MESSAGE_"))
+        if (type == Type.ACTION_NON_TERMINAL)
         {
-            _label.GetComponent<Text>().text = "SEND \"" + _value.Replace("MESSAGE_", "").Replace("_", " ") + "\"";
+            _label.GetComponent<Text>().text = "SEND \"" + _value.Replace("MESSAGE_", "").Replace("PERCEPT_", "").Replace("_", " ") + "\"";
         }
 
     }
