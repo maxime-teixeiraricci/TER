@@ -5,34 +5,19 @@ using UnityEngine.UI;
 
 public class ConditionEditorScript : MonoBehaviour
 {
-    public GameObject _labelActionbuttonObject;
-    public GameObject _labelConditionbuttonObject;
+    public GameObject _labelActionButtonObject;
+    public GameObject _labelConditionButtonObject;
+    public GameObject _labelMessageButtonObject;
+    public GameObject _labelControlButtonObject;
 
-    public Transform _conditionParent;
-    public Transform _actionParent;
 
-    public List<GameObject> _buttonConditionCreated;
-    public List<GameObject> _buttonActionCreated;
+    public List<GameObject> _buttonCreated;
 
     public Dropdown _dropDown;
     public Vector2 deltaVect;
-    public bool test;
 
 	// Use this for initialization
-	void Start ()
-    {
-		
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-        if (!test)
-        {
-            test = !test;
-            UpdateButton();
-        }
-    }
+
 
     public void UpdateButton()
     {
@@ -41,26 +26,81 @@ public class ConditionEditorScript : MonoBehaviour
         UpdateAction();
     }
 
-    void UpdateCondition()
+    public void UpdateCondition()
     {
-        
+        ClearButton();
         UnitDropDownScript dropDown = GameObject.Find("UnitDropdown").GetComponent<UnitDropDownScript>();
         UnitPerceptAction upa = GameObject.Find("EditorManager").GetComponent<EditorManagerScript>().find(_dropDown.captionText.text);
         Vector2 mov = Vector2.zero;
         foreach (string s in upa.percepts)
         {
-            GameObject button = Instantiate(_labelConditionbuttonObject, _conditionParent);
-            _buttonConditionCreated.Add(button);
+            GameObject button = Instantiate(_labelConditionButtonObject, GameObject.Find("ListPuzzle").transform);
+            button.transform.parent = GameObject.Find("ListPuzzle").transform;
+            _buttonCreated.Add(button);
             button.GetComponent<RectTransform>().anchoredPosition += mov;
-            mov += deltaVect;
+            mov += new Vector2(0, -button.GetComponent<RectTransform>().rect.height)+ deltaVect;
 
-            button.GetComponent<Text>().text = s.Replace('_', ' ');
+            button.GetComponent<PuzzleButtonScript>().value = s;
             button.GetComponent<createPuzzle>()._label = s;
-
         }
 
     }
 
+    public void UpdateAction()
+    {
+        ClearButton();
+        UnitDropDownScript dropDown = GameObject.Find("UnitDropdown").GetComponent<UnitDropDownScript>();
+        UnitPerceptAction upa = GameObject.Find("EditorManager").GetComponent<EditorManagerScript>().find(_dropDown.captionText.text);
+        Vector2 mov = Vector2.zero;
+        foreach (string s in upa.actions)
+        {
+            GameObject button = Instantiate(_labelActionButtonObject, GameObject.Find("ListPuzzle").transform);
+            button.transform.parent = GameObject.Find("ListPuzzle").transform;
+            _buttonCreated.Add(button);
+            button.GetComponent<RectTransform>().anchoredPosition += mov;
+            mov += new Vector2(0, -button.GetComponent<RectTransform>().rect.height) + deltaVect;
+
+            button.GetComponent<PuzzleButtonScript>().value = s;
+            button.GetComponent<createPuzzle>()._label = s;
+        }
+
+    }
+
+    public void UpdateMessage()
+    {
+        ClearButton();
+        UnitDropDownScript dropDown = GameObject.Find("UnitDropdown").GetComponent<UnitDropDownScript>();
+        UnitPerceptAction upa = GameObject.Find("EditorManager").GetComponent<EditorManagerScript>().find(_dropDown.captionText.text);
+        Vector2 mov = Vector2.zero;
+        foreach (string s in upa.message)
+        {
+            GameObject button = Instantiate(_labelMessageButtonObject, GameObject.Find("ListPuzzle").transform);
+            button.transform.parent = GameObject.Find("ListPuzzle").transform;
+            _buttonCreated.Add(button);
+            button.GetComponent<RectTransform>().anchoredPosition += mov;
+            mov += new Vector2(0, -button.GetComponent<RectTransform>().rect.height) + deltaVect;
+
+            button.GetComponent<PuzzleButtonScript>().value = s;
+            button.GetComponent<createPuzzle>()._label = s;
+        }
+
+    }
+
+    public void UpdateControl()
+    {
+        ClearButton();
+        Vector2 mov = Vector2.zero;
+        foreach (string s in GameObject.Find("EditorManager").GetComponent<EditorManagerScript>()._controlePuzzle)
+        {
+            GameObject button = Instantiate(_labelControlButtonObject, GameObject.Find("ListPuzzle").transform);
+            button.transform.parent = GameObject.Find("ListPuzzle").transform;
+            _buttonCreated.Add(button);
+            button.GetComponent<RectTransform>().anchoredPosition += mov;
+            mov += new Vector2(0, -button.GetComponent<RectTransform>().rect.height) + deltaVect;
+        }
+
+    }
+    /*
     void UpdateAction()
     {
         UnitDropDownScript dropDown = GetComponent<UnitDropDownScript>();
@@ -78,19 +118,14 @@ public class ConditionEditorScript : MonoBehaviour
 
         }
 
-    }
+    }*/
 
     void ClearButton()
     {
-        foreach (GameObject go in _buttonActionCreated)
+        foreach (GameObject go in _buttonCreated)
         {
             Destroy(go);
         }
-        foreach (GameObject go in _buttonConditionCreated)
-        {
-            Destroy(go);
-        }
-        _buttonActionCreated = new List<GameObject>();
-        _buttonConditionCreated = new List<GameObject>();
+        _buttonCreated = new List<GameObject>();
     }
 }

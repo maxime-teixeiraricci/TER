@@ -111,12 +111,9 @@ public class PerceptCommon : Percept
             {
                 if (gO && contract._target == gO)
                 {
-                    if (gO.GetComponent<Stats>() && gO.GetComponent<Stats>()._teamIndex != GetComponent<Stats>()._teamIndex)
-                    {
                         GetComponent<Stats>()._target = gO;
                         GetComponent<Stats>()._heading = getAngle(gO);
                         return true;
-                    }
                 }
             }
             return false;

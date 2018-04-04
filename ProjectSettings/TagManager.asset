@@ -27,6 +27,7 @@ TagManager:
   - SaveButton
   - SaveButton2
   - saveInitial
+  - Puzzle
   layers:
   - Default
   - TransparentFX

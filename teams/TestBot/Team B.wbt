@@ -1,35 +1,16 @@
 <behavior>
   <teamName>Team B</teamName>
   <unit name="Explorer">
+  </unit>
+  <unit name="Heavy" />
+  <unit name="Light" />
+  <unit name="Base">
     <instruction>
       <parameters>
-        <PERCEPT_BLOCKED />
+        <PERCEPT_LIFE_MAX />
       </parameters>
       <actions>
-        <ACTION_TURN_AROUND_MOVE />
-      </actions>
-    </instruction>
-    <instruction>
-      <parameters>
-        <PERCEPT_ALLY />
-        <PERCEPT_BAG_NOT_EMPTY />
-      </parameters>
-      <actions>
-        <ACTION_GIVE_RESSOURCE />
-      </actions>
-    </instruction>
-    <instruction>
-      <parameters>
-        <PERCEPT_FOOD_NEAR />
-      </parameters>
-      <actions>
-        <ACTION_PICK />
-      </actions>
-    </instruction>
-    <instruction>
-      <parameters />
-      <actions>
-        <ACTION_MOVE />
+        <ACTION_0 />
       </actions>
     </instruction>
   </unit>

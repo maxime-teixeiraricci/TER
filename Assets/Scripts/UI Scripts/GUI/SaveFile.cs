@@ -41,9 +41,10 @@ public class SaveFile : MonoBehaviour {
         }
         return pieceIf.Count;
     }
-    
+
 
     // Methode créant un Comportement ( liste d'Instructions )
+    /*
     public void createBehavior()
     {
         listPieces.RemoveRange(0, listPieces.Count);
@@ -90,7 +91,21 @@ public class SaveFile : MonoBehaviour {
         Debug.Log("here");
         listBehavior.RemoveRange(0, listBehavior.Count);
     }
-    
+    */
+    public void createBehavior()
+    {
+        GameObject startPuzzle = GameObject.FindGameObjectWithTag("StartPuzzle");
+        GameObject ifpuzzle = startPuzzle.GetComponent<StartPuzzleScript>().ifPuzzle;
+        while (ifpuzzle != null)
+        {
+            listBehavior.Add(ifpuzzle.GetComponent<IfPuzzleScript>().createInstruction());
+            ifpuzzle = ifpuzzle.GetComponent<IfPuzzleScript>().puzzleIfObject;
+        }
+        createXML();
+        Debug.Log("Saving file done !");
+        listBehavior.RemoveRange(0, listBehavior.Count);
+    }
+
     public void createXML()
     {
         //recuperation de l'unité actuellement traitée et de l'equipe

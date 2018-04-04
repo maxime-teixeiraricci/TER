@@ -3,9 +3,7 @@
   <unit name="Base" />
   <unit name="Explorer">
     <instruction>
-      <parameters>
-        <NotPERCEPT_BAG_FULL />
-      </parameters>
+      <parameters />
       <actions>
         <ACTION_MOVE />
       </actions>

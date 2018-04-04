@@ -13,7 +13,7 @@ public class IfPuzzleScript : MonoBehaviour
     public ManageDragAndDrop manager;
     Image image;
     Color defaultColor;
-    Color validColor = new Color(158.0F / 255, 1, 79.0F / 255);
+    public Color validColor = new Color(158.0F / 255, 1, 79.0F / 255);
     public int ID;
 
     public bool debugInstruction;
@@ -45,12 +45,15 @@ public class IfPuzzleScript : MonoBehaviour
     void updateCondPuzzle()
     {
         puzzleCondObject = null;
-        foreach (GameObject puzzle in GameObject.FindGameObjectsWithTag("CondPuzzle"))
+        foreach (GameObject puzzle in GameObject.FindGameObjectsWithTag("Puzzle"))
         {
-            if (manager.posGridX + 1 == puzzle.GetComponent<ManageDragAndDrop>().posGridX && manager.posGridY == puzzle.GetComponent<ManageDragAndDrop>().posGridY)
+            puzzle.GetComponent<CondPuzzleScript>().beforePuzzle = null;
+            if (manager.posGridX + 1 == puzzle.GetComponent<ManageDragAndDrop>().posGridX && manager.posGridY == puzzle.GetComponent<ManageDragAndDrop>().posGridY &&
+                puzzle.GetComponent<CondPuzzleScript>().type == CondPuzzleScript.Type.CONDITION)
             {
                 puzzleCondObject = puzzle;
-                break;
+
+                puzzle.GetComponent<CondPuzzleScript>().beforePuzzle = gameObject;
             }
         }
     }
@@ -58,15 +61,19 @@ public class IfPuzzleScript : MonoBehaviour
     void updateActionPuzzle()
     {
         puzzleActionObject = null;
-        foreach (GameObject puzzle in GameObject.FindGameObjectsWithTag("ActionPuzzle"))
+        foreach (GameObject puzzle in GameObject.FindGameObjectsWithTag("Puzzle"))
         {
-            if (manager.posGridX + 1 == puzzle.GetComponent<ManageDragAndDrop>().posGridX && manager.posGridY - 1 == puzzle.GetComponent<ManageDragAndDrop>().posGridY)
+            if (manager.posGridX + 1 == puzzle.GetComponent<ManageDragAndDrop>().posGridX && manager.posGridY - 1 == puzzle.GetComponent<ManageDragAndDrop>().posGridY &&
+                (puzzle.GetComponent<CondPuzzleScript>().type == CondPuzzleScript.Type.ACTION || puzzle.GetComponent<CondPuzzleScript>().type == CondPuzzleScript.Type.ACTION_NON_TERMINAL))
             {
                 puzzleActionObject = puzzle;
+                puzzle.GetComponent<CondPuzzleScript>().beforePuzzle = gameObject;
                 break;
             }
         }
     }
+
+  
 
     void UpdateIfPuzzle()
     {
@@ -108,15 +115,32 @@ public class IfPuzzleScript : MonoBehaviour
     public Instruction createInstruction()
     {
         List<string> percepts = new List<string>();
-        string action = puzzleActionObject.GetComponent<ActionPuzzleScript>().actionName;
+        List<MessageStruct> ms = new List<MessageStruct>();
+        string action = puzzleActionObject.GetComponent<CondPuzzleScript>()._value;
+
         GameObject condObjectCurrent = puzzleCondObject;
+        GameObject actionObjectCurrent = puzzleActionObject;
         while (condObjectCurrent != null)
         {
-            percepts.Add(condObjectCurrent.GetComponent<CondPuzzleScript>().condName);
-            condObjectCurrent = condObjectCurrent.GetComponent<CondPuzzleScript>().nextCondPuzzle;
+            percepts.Add(condObjectCurrent.GetComponent<CondPuzzleScript>()._value);
+            condObjectCurrent = condObjectCurrent.GetComponent<CondPuzzleScript>().nextPuzzle;
         }
-        print(percepts.Count);
-        print(action);
-        return new Instruction(percepts.ToArray(), action);
+        while (actionObjectCurrent != null)
+        {
+            if (actionObjectCurrent.GetComponent<CondPuzzleScript>().type == CondPuzzleScript.Type.ACTION_NON_TERMINAL)
+            {
+                MessageStruct message = new MessageStruct(actionObjectCurrent.GetComponent<CondPuzzleScript>()._value, actionObjectCurrent.GetComponent<CondPuzzleScript>().messageDropDown.captionText.text);
+                ms.Add(message);
+            }
+            else
+            {
+                action = actionObjectCurrent.GetComponent<CondPuzzleScript>()._value;
+            }
+            actionObjectCurrent = actionObjectCurrent.GetComponent<CondPuzzleScript>().nextPuzzle;
+
+
+
+        }
+        return new Instruction(percepts.ToArray(), ms.ToArray(), action);
     }
 }

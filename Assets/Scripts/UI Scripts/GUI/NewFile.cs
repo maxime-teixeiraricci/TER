@@ -35,14 +35,7 @@ public class NewFile : MonoBehaviour {
                
             }
 
-            foreach (GameObject puzzle in GameObject.FindGameObjectsWithTag("ActionPuzzle"))
-            {
-            
-                    Destroy(puzzle);
-             
-            }
-
-            foreach (GameObject puzzle in GameObject.FindGameObjectsWithTag("CondPuzzle"))
+            foreach (GameObject puzzle in GameObject.FindGameObjectsWithTag("Puzzle"))
             {
                 
                     Destroy(puzzle);

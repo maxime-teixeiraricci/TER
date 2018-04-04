@@ -17,126 +17,58 @@ public class ManageDragAndDrop : MonoBehaviour
     int nbrObjects = 0;
     public static GameObject currentObject;
 
-    /*
-    public static ArrayList recoverList = new ArrayList();
-    public static int cptObjects;
-    public static int cptUndo;
-    public static GameObject pieceToUndo;
-    public static GameObject pieceToRedo;*/
+    public Vector3 _initialPosition;
+    public float deltaDest = 10;
+    public bool overEditor;
 
-
-    
-
-
-    public void OnMouseDown()
-    {
-        // Nombre de pièces de puzzle présentes dans l'éditeur
-        nbrObjects = createPuzzle.cptObjects;
-        
-
-
-    }
 
     private void OnMouseOver()
     {
+        print("OK3");
         if (Input.GetMouseButtonDown(1) && !undestructible)
         {
             Destroy(gameObject);
+        }
+        if (Input.GetMouseButtonDown(0))
+        {
+            _initialPosition = Input.mousePosition;
         }
     }
 
 
     public void OnMouseDrag()
     {
-        Renderer rendEditeur = GameObject.Find("Editeur").GetComponent<Renderer>();
-        Renderer rendCanvas = GameObject.Find("GameEditorScreen").GetComponent<Renderer>();
-        Renderer rendControlPanel = GameObject.Find("Panneau controle").GetComponent<Renderer>();
-        var collider2D = gameObject.GetComponent<Collider2D>();
+        if (Input.GetMouseButtonDown(0))
+        {
+            _initialPosition = Input.mousePosition;
+        }
+        else if (Input.GetMouseButton(0) && Vector3.Distance(_initialPosition, Input.mousePosition ) > deltaDest)
+        {
+            // Largeur et hauteur de l'éditeur de comportement
+            /*float widthEditor = rendEditeur.bounds.size.x;
+            float heightEditor = rendEditeur.bounds.size.y;*/
+            float widthEditor = GameObject.Find("Editeur").GetComponent<RectTransform>().rect.width;
+            float heightEditor = GameObject.Find("Editeur").GetComponent<RectTransform>().rect.height;
 
-        // Dimensions du canvas
-        float widthCanvas = rendCanvas.bounds.size.x;
-        float heightCanvas = rendCanvas.bounds.size.y;
-
-
-        // Largeur et hauteur de la pièce de puzzle
-        float widthPuzzle = collider2D.bounds.size.x;
-        float heightPuzzle = collider2D.bounds.size.y;
-
-
-        // Largeur et hauteur de l'éditeur de comportement
-        /*float widthEditor = rendEditeur.bounds.size.x;
-        float heightEditor = rendEditeur.bounds.size.y;*/
-        float widthEditor = GameObject.Find("Editeur").GetComponent<RectTransform>().rect.width;
-        float heightEditor = GameObject.Find("Editeur").GetComponent<RectTransform>().rect.height;
-
-        // Largeur et hauteur du panneau de contrôle
-        float widthControlPanel = rendControlPanel.bounds.size.x;
-        float heightControlPanel = rendControlPanel.bounds.size.y;
+            Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, distance);
+            Vector3 objPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+            transform.parent = GameObject.Find("Editeur").transform;
+            transform.position = objPosition;
+            GetComponent<RectTransform>().localPosition = new Vector3(GetComponent<RectTransform>().localPosition.x, GetComponent<RectTransform>().localPosition.y, 10);
 
 
-        Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, distance);
-        Vector3 objPosition = Camera.main.ScreenToWorldPoint(mousePosition);
-        transform.position = objPosition;
-
-        float newX = Mathf.Min(Mathf.Max(GetComponent<RectTransform>().localPosition.x, -widthEditor / 2), widthEditor / 2);
-        float newY = Mathf.Min(Mathf.Max(GetComponent<RectTransform>().localPosition.y, -heightEditor / 2), heightEditor / 2);
-        Vector3 newPos = new Vector3(newX, newY, transform.position.z);
-        GetComponent<RectTransform>().localPosition = newPos;
-
-        /*
-        float currentPositionX = transform.position.x + widthPuzzle / 2;
-        float maxPositionX = widthCanvas - widthPuzzle;
-        float minPositionX = widthControlPanel + widthPuzzle / 2;
-
-    
-
-        float currentPositionY = transform.position.y - heightPuzzle / 2;
-        float minPositionY = heightPuzzle;
-        float maxPositionY = heightEditor;
-
-        Debug.Log("SOURIS X = " + currentPositionX);
-        Debug.Log("SOURIS Y = " + currentPositionY);
-
-        if (transform.position.x > maxPositionX)
-            {
-            transform.position = new Vector3(maxPositionX, transform.position.y, transform.position.z);
-            }  
-
-        if(transform.position.x + (widthPuzzle / 2) < minPositionX)
-            {
-            transform.position = new Vector3(minPositionX - (widthPuzzle / 2), transform.position.y, transform.position.z);
+            float newX = Mathf.Min(Mathf.Max(GetComponent<RectTransform>().localPosition.x, -widthEditor / 2), widthEditor / 2);
+            float newY = Mathf.Min(Mathf.Max(GetComponent<RectTransform>().localPosition.y, -heightEditor / 2), heightEditor / 2);
+            Vector3 newPos = new Vector3(newX, newY, 10);
+            GetComponent<RectTransform>().localPosition = newPos;
         }
 
-        if(transform.position.y < minPositionY)
-        {
-            transform.position = new Vector3(transform.position.x, minPositionY, transform.position.z);
-        }
-
-        if(transform.position.y > maxPositionY)
-        {
-            transform.position = new Vector3(transform.position.x, maxPositionY, transform.position.z);
-        }*/
     }
-    
-    public void OnMouseUpAsButton()
+
+    public void OnMouseUp()
 
     {
-        currentObject = gameObject;
-        Renderer rendEditeur = GameObject.Find("Editeur").GetComponent<Renderer>();
-        Renderer rendCanvas = GameObject.Find("GameEditorScreen").GetComponent<Renderer>();
-        Renderer rendControlPanel = GameObject.Find("Panneau controle").GetComponent<Renderer>();
-        var collider2D = gameObject.GetComponent<Collider2D>();
-
-        
-        // Dimensions du canvas
-        float widthCanvas = rendCanvas.bounds.size.x;
-        float heightCanvas = rendCanvas.bounds.size.y;
-
-
-        // Largeur et hauteur de la pièce de puzzle
-        /*float widthPuzzle = collider2D.bounds.size.x;
-        float heightPuzzle = collider2D.bounds.size.y;*/
-
+        print("UP");
         float widthPuzzle = sizePuzzleX;
         float heightPuzzle = sizePuzzleY;
 
@@ -144,190 +76,37 @@ public class ManageDragAndDrop : MonoBehaviour
         // Largeur et hauteur de l'éditeur de comportement
         float widthEditor = GameObject.Find("Editeur").GetComponent<RectTransform>().rect.width;
         float heightEditor = GameObject.Find("Editeur").GetComponent<RectTransform>().rect.height;
+        transform.parent = GameObject.Find("Editeur").transform;
 
-        // Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, distance);
-        // Vector3 trueMousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-        //y = 100
-        //x = -271 - -83 = 
         float minX = -widthEditor / 2;
         float maxX = widthEditor / 2;
-        float minY = -heightEditor/2;
-        float maxY = heightEditor/2;
-        
-        posGridX = (int)Mathf.Round(currentObject.GetComponent<RectTransform>().localPosition.x  / widthPuzzle);
-        posGridY = (int)Mathf.Round(currentObject.GetComponent<RectTransform>().localPosition.y / heightPuzzle);
+        float minY = -heightEditor / 2;
+        float maxY = heightEditor / 2;
+
+        posGridX = (int)Mathf.Round(GetComponent<RectTransform>().localPosition.x / widthPuzzle);
+        posGridY = (int)Mathf.Round(GetComponent<RectTransform>().localPosition.y / heightPuzzle);
         float newX = posGridX * widthPuzzle;
         float newY = posGridY * heightPuzzle;
-        Vector3 newPos = new Vector3(newX, newY, transform.position.z);
+        Vector3 newPos = new Vector3(newX, newY, 10);
 
-        currentObject.GetComponent<RectTransform>().localPosition = newPos;
+        GetComponent<RectTransform>().localPosition = newPos;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        /*
-
-
-        // transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-        // 1;5;9;13;17;21
-        if ( currentObject.GetComponent<RectTransform>().localPosition.x > -365 && currentObject.GetComponent<RectTransform>().localPosition.x < -177)
-            {       // 1
-                    if ( currentObject.GetComponent<RectTransform>().localPosition.y < 286 && currentObject.GetComponent<RectTransform>().localPosition.y > 186)
-                    {
-                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(-271, 236, transform.position.z); 
-                    }
-                    // 5
-                    else if (currentObject.GetComponent<RectTransform>().localPosition.y < 186 && currentObject.GetComponent<RectTransform>().localPosition.y > 86)
-                    {
-                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(-271, 136, transform.position.z);
-                    }
-                    // 9
-                    else if (currentObject.GetComponent<RectTransform>().localPosition.y < 86 && currentObject.GetComponent<RectTransform>().localPosition.y > -14)
-                    {
-                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(-271, 36, transform.position.z);
-                    }
-                    // 13
-                    else if (currentObject.GetComponent<RectTransform>().localPosition.y < -14 && currentObject.GetComponent<RectTransform>().localPosition.y > -114)
-                    {
-                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(-271, -64, transform.position.z);
-                    }
-                    // 17
-                    else if (currentObject.GetComponent<RectTransform>().localPosition.y < -114 && currentObject.GetComponent<RectTransform>().localPosition.y > -214)
-                    {
-                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(-271, -164, transform.position.z);
-                    }
-                    // 21
-                    else if (currentObject.GetComponent<RectTransform>().localPosition.y < -214 && currentObject.GetComponent<RectTransform>().localPosition.y > -314)
-                    {
-                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(-271, -264, transform.position.z);
-                    }
-
-            }
-
-            // 2;6;10;14;18;22
-            else if (currentObject.GetComponent<RectTransform>().localPosition.x > -177 && currentObject.GetComponent<RectTransform>().localPosition.x < 11)
-            {
-                    // 2
-                    if (currentObject.GetComponent<RectTransform>().localPosition.y < 286 && currentObject.GetComponent<RectTransform>().localPosition.y > 186)
-                    {
-                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(-83, 236, transform.position.z);
-                    }
-                    // 6
-                    else if (currentObject.GetComponent<RectTransform>().localPosition.y < 186 && currentObject.GetComponent<RectTransform>().localPosition.y > 86)
-                    {
-                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(-83, 136, transform.position.z);
-                    }
-                    // 10
-                    else if (currentObject.GetComponent<RectTransform>().localPosition.y < 86 && currentObject.GetComponent<RectTransform>().localPosition.y > -14)
-                    {
-                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(-83, 36, transform.position.z);
-                    }
-                    // 14
-                    else if (currentObject.GetComponent<RectTransform>().localPosition.y < -14 && currentObject.GetComponent<RectTransform>().localPosition.y > -114)
-                    {
-                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(-83, -64, transform.position.z);
-                    }
-                    // 18
-                    else  if (currentObject.GetComponent<RectTransform>().localPosition.y < -114 && currentObject.GetComponent<RectTransform>().localPosition.y > -214)
-                    {
-                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(-83, -164, transform.position.z);
-                    }
-                    // 22
-                    else if (currentObject.GetComponent<RectTransform>().localPosition.y < -214 && currentObject.GetComponent<RectTransform>().localPosition.y > -314)
-                    {
-                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(-83, -264, transform.position.z);
-                    }
-            }
-            // 3;7;11;15;19;23
-            else if (currentObject.GetComponent<RectTransform>().localPosition.x > 11 && currentObject.GetComponent<RectTransform>().localPosition.x < 199)
-            {
-                    // 3
-                    if (currentObject.GetComponent<RectTransform>().localPosition.y < 286 && currentObject.GetComponent<RectTransform>().localPosition.y > 186)
-                    {
-                       currentObject.GetComponent<RectTransform>().localPosition = new Vector3(105, 236, transform.position.z);
-                    }
-                    // 7
-                    else if (currentObject.GetComponent<RectTransform>().localPosition.y < 186 && currentObject.GetComponent<RectTransform>().localPosition.y > 86)
-                    {
-                       currentObject.GetComponent<RectTransform>().localPosition = new Vector3(105, 136, transform.position.z);
-                    }
-                    // 11
-                    else if (currentObject.GetComponent<RectTransform>().localPosition.y < 86 && currentObject.GetComponent<RectTransform>().localPosition.y > -14)
-                    {
-                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(105, 36, transform.position.z);
-                    }
-                    // 15
-                    else if (currentObject.GetComponent<RectTransform>().localPosition.y < -14 && currentObject.GetComponent<RectTransform>().localPosition.y > -114)
-                    {
-                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(105, -64, transform.position.z);
-                    }
-                    // 19
-                    else if (currentObject.GetComponent<RectTransform>().localPosition.y < -114 && currentObject.GetComponent<RectTransform>().localPosition.y > -214)
-                    {
-                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(105, -164, transform.position.z);
-                    }
-                    // 23
-                    else if (currentObject.GetComponent<RectTransform>().localPosition.y < -214 && currentObject.GetComponent<RectTransform>().localPosition.y > -314)
-                    {
-                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(105, -264, transform.position.z);
-                    }
-            }
-            // 4;8;12;16;20;24
-            else if (currentObject.GetComponent<RectTransform>().localPosition.x > 199 && currentObject.GetComponent<RectTransform>().localPosition.x < 387)
-            {
-                    // 4
-                    if (currentObject.GetComponent<RectTransform>().localPosition.y < 286 && currentObject.GetComponent<RectTransform>().localPosition.y > 186)
-                    {
-                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(293, 236, transform.position.z);
-                    }
-                    // 8
-                    else if (currentObject.GetComponent<RectTransform>().localPosition.y < 186 && currentObject.GetComponent<RectTransform>().localPosition.y > 86)
-                    {
-                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(293, 136, transform.position.z);
-                    }
-                    // 12
-                    else if (currentObject.GetComponent<RectTransform>().localPosition.y < 86 && currentObject.GetComponent<RectTransform>().localPosition.y > -14)
-                    {
-                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(293, 36, transform.position.z);
-                    }
-                    // 16
-                    else if (currentObject.GetComponent<RectTransform>().localPosition.y < -14 && currentObject.GetComponent<RectTransform>().localPosition.y > -114)
-                    {
-                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(293, -64, transform.position.z);
-                    }
-                    // 20
-                    else if (currentObject.GetComponent<RectTransform>().localPosition.y < -114 && currentObject.GetComponent<RectTransform>().localPosition.y > -214)
-                    {
-                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(293, -164, transform.position.z);
-                    }
-                    // 24
-                    else if (currentObject.GetComponent<RectTransform>().localPosition.y < -214 && currentObject.GetComponent<RectTransform>().localPosition.y > -314)
-                    {
-                        currentObject.GetComponent<RectTransform>().localPosition = new Vector3(293, -264, transform.position.z);
-                    }
-            }
-            else transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-            */
     }
 
     public bool isRight(GameObject other)
     {
         return posGridX + posGridW == other.GetComponent<ManageDragAndDrop>().posGridX;
+    }
+
+    public void setGridPosition(Vector2 p)
+    {
+        posGridX = (int)p.x;
+        posGridY = (int)p.y;
+        GetComponent<RectTransform>().localPosition = new Vector3(posGridX * sizePuzzleX, posGridY * sizePuzzleY, 10);
+    }
+    public Vector2 getGridPosition()
+    {
+        return new Vector2(posGridX, posGridY);
     }
 
 }

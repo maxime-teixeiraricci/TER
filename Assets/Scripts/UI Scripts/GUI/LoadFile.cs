@@ -13,6 +13,8 @@ public class LoadFile : MonoBehaviour
     public GameObject ifPuzzle;
     public GameObject condPuzzle;
     public GameObject actionPuzzle;
+    public GameObject messPuzl;
+    public GameObject messagePuzzle; 
     public Vector3 positionInitial;
     GameObject startPuzzle;
     NewFile clear;
@@ -30,7 +32,7 @@ public class LoadFile : MonoBehaviour
 
     }
 
-
+    /*
     public void createBehaviorFromXML()
     {
 
@@ -56,15 +58,15 @@ public class LoadFile : MonoBehaviour
             {
                 int nbrCond = 1;
                 // Création du bloc IF
-                GameObject puzzleIf = (GameObject)Instantiate(ifPuzzle, GameObject.Find("Editeur").transform);
-                puzzleIf.GetComponent<RectTransform>().position = new Vector3(startPuzzle.GetComponent<RectTransform>().position.x, startPuzzle.GetComponent<RectTransform>().position.y - placeIf, startPuzzle.GetComponent<RectTransform>().position.z);
+                GameObject puzzleIf = Instantiate(ifPuzzle, GameObject.Find("Editeur").transform);
+                puzzleIf.GetComponent<RectTransform>().anchoredPosition = new Vector3(startPuzzle.GetComponent<RectTransform>().anchoredPosition.x, startPuzzle.GetComponent<RectTransform>().anchoredPosition.y - placeIf, startPuzzle.GetComponent<RectTransform>().anchoredPosition.z);
                 puzzleIf.GetComponent<ManageDragAndDrop>().posGridX = startPuzzle.GetComponent<ManageDragAndDrop>().posGridX;
                 puzzleIf.GetComponent<ManageDragAndDrop>().posGridY = startPuzzle.GetComponent<ManageDragAndDrop>().posGridY - nbrIf;
 
-                placeIf += 150;
+                placeIf += (int)puzzleIf.GetComponent<RectTransform>().rect.height;
                 nbrIf += 2;
 
-                int placeCond = 75;
+                int placeCond = (int)puzzleCond.GetComponent<RectTransform>().rect.height;
                 // Pour chaque percept associé au IF
                 for (int i = 0; i < instruction._listeStringPerceptsVoulus.Length; i++)
                 {
@@ -90,7 +92,85 @@ public class LoadFile : MonoBehaviour
         {
             print("Aucun comportement existant !");
         }
+    }*/
+
+    public void createBehaviorFromXML()
+    {
+        clear = new NewFile();
+        clear.clearEditor();
+        string teamName = team.captionText.text;
+        string unitName = unit.captionText.text;
+        string path = Constants.teamsDirectory + Constants.gameModeWarBot;
+        Transform editeurTransform = GameObject.Find("Editeur").transform;
+        XMLWarbotInterpreter interpreter = new XMLWarbotInterpreter();
+
+        Dictionary<string, List<Instruction>> behavior = interpreter.xmlToBehavior(teamName, path);
+        Vector2 delta = new Vector2(0, -1);
+        if (behavior[unitName].Count != 0)
+        {
+            GameObject currentIf = GameObject.Find("StartPuzzle");
+            GameObject currentPercept = GameObject.Find("StartPuzzle");
+            GameObject currentAction = GameObject.Find("StartPuzzle");
+            foreach (Instruction I in behavior[unitName])
+            {
+                GameObject _ifPuzzle = Instantiate(ifPuzzle, editeurTransform);
+                _ifPuzzle.GetComponent<ManageDragAndDrop>().setGridPosition(currentIf.GetComponent<ManageDragAndDrop>().getGridPosition() + delta);
+                currentIf = _ifPuzzle;
+
+                // INSTRUCTION : public string[] _listeStringPerceptsVoulus; MessageStruct[] _stringActionsNonTerminales; public string _stringAction;
+                delta = new Vector2(1, 0);
+                currentPercept = currentIf;
+
+
+                foreach (string s in I._listeStringPerceptsVoulus)
+                {
+                    GameObject _condPuzzle = Instantiate(condPuzzle, editeurTransform);
+                    
+
+                    _condPuzzle.GetComponent<ManageDragAndDrop>().setGridPosition(currentPercept.GetComponent<ManageDragAndDrop>().getGridPosition() + delta);
+                    currentPercept = _condPuzzle;
+                    _condPuzzle.GetComponent<CondPuzzleScript>()._value = s;
+                    if (s.Contains("NOT_"))
+                    {
+                        _condPuzzle.GetComponent<CondPuzzleScript>().NegationBoutton();
+                    }
+                    delta = new Vector2(2, 0);
+                }
+                delta = new Vector2(1, -1);
+                currentAction = currentIf;
+                if (I._stringActionsNonTerminales.Length != 0)
+                {
+                    foreach (MessageStruct s in I._stringActionsNonTerminales)
+                    {
+                        GameObject _messPuzzle = Instantiate(messagePuzzle, editeurTransform);
+
+
+                        _messPuzzle.GetComponent<ManageDragAndDrop>().setGridPosition(currentAction.GetComponent<ManageDragAndDrop>().getGridPosition() + delta);
+                        currentAction = _messPuzzle;
+                        _messPuzzle.GetComponent<CondPuzzleScript>()._value = s._intitule;
+                        /*
+                        _messPuzzle.GetComponent<CondPuzzleScript>().messageDropDown.value
+                        */
+                        Dropdown dropdown =_messPuzzle.GetComponent<CondPuzzleScript>().messageDropDown;
+                        for (int i = 0; i < dropdown.options.Count; i++)
+                        {
+                            if (dropdown.options[i].text == s._destinataire) { _messPuzzle.GetComponent<CondPuzzleScript>().messageDropDown.value = i; }
+                        }
+                        delta = new Vector2(2, 0);
+                    }
+                }
+                else
+                {
+                    delta = new Vector2(1, -1);
+                }
+                GameObject _actPuzzle = Instantiate(actionPuzzle, editeurTransform);
+                _actPuzzle.GetComponent<ManageDragAndDrop>().setGridPosition(currentAction.GetComponent<ManageDragAndDrop>().getGridPosition() + delta);
+                _actPuzzle.GetComponent<CondPuzzleScript>()._value = I._stringAction;
+                delta = new Vector2(0, -2);
+            }
+        }
     }
+
 
     public void Updating()
     {

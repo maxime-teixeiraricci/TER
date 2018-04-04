@@ -7,6 +7,8 @@ public abstract class Percept : MonoBehaviour
 {
     public delegate bool Listener();
     public Dictionary<string, Listener> _percepts = new Dictionary<string, Listener>();
+
+    public Dictionary<string, Listener> _messagePercepts = new Dictionary<string, Listener>();
     public Message _tmpMessage;
 
     public virtual void InitPercept()

@@ -41,42 +41,13 @@ public class createPuzzle : MonoBehaviour {
     public void create()
     {
         GameObject puzzleClone = (GameObject)Instantiate(puzzle, GameObject.Find("MaskEditeur").transform);
-        bool negAction = GameObject.Find("NegationAction").GetComponent<Toggle>().isOn;
-        bool negCondition = GameObject.Find("NegationCondition").GetComponent<Toggle>().isOn;
-        if (puzzleClone.GetComponent<ActionPuzzleScript>())
+        if (puzzleClone.GetComponent<CondPuzzleScript>())
         {
-            if (negAction)
-            {
-                //Debug.Log("Label ACTION = " + _label);
-                puzzleClone.GetComponent<ActionPuzzleScript>().actionName = "NOT_" + _label;
-            }
-            else
-            {
-                puzzleClone.GetComponent<ActionPuzzleScript>().actionName = _label;
-            }
-            
+            puzzleClone.GetComponent<CondPuzzleScript>()._value = _label;
         }
-        else if (puzzleClone.GetComponent<CondPuzzleScript>())
-        {
-            if (negCondition)
-            {
-                //Debug.Log("Label ACTION = " + _label);
-                puzzleClone.GetComponent<CondPuzzleScript>().condName = "NOT_" + _label;
-            }
-            else
-            {
-                puzzleClone.GetComponent<CondPuzzleScript>().condName = _label;
-            }
-        }
-
-        else if (puzzleClone.GetComponent<IfPuzzleScript>())
-        {
-            puzzleClone.GetComponent<IfPuzzleScript>().ID = countID + 1;            // Attribute the ID of the piece equal to the number of IfPuzzle pieces
-            countID++;
-        }
-
-        puzzleClone.GetComponent<RectTransform>().anchoredPosition = positionInitial;
+        puzzleClone.GetComponent<RectTransform>().anchoredPosition = new Vector3(positionInitial.x, positionInitial.y,15);
         puzzleClone.transform.parent = GameObject.Find("Editeur").transform;
+        puzzleClone.GetComponent<RectTransform>().localPosition = new Vector3(puzzleClone.GetComponent<RectTransform>().localPosition.x, puzzleClone.GetComponent<RectTransform>().localPosition.y, 10);
         listPieces.Add(puzzleClone);
         cptObjects = listPieces.Count;
         

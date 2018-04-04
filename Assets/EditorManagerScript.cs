@@ -7,7 +7,7 @@ using UnityEngine.Serialization;
 
 public class EditorManagerScript : MonoBehaviour
 {
-
+    public List<string> _controlePuzzle;
     public List<UnitPerceptAction> _unitBehaviour = new List<UnitPerceptAction>();
 
 	// Use this for initialization
@@ -29,19 +29,40 @@ public class EditorManagerScript : MonoBehaviour
 
         while (!reader.EndOfStream)
         {
-            string currentString = reader.ReadLine();
+            string s = reader.ReadLine();
 
-            if (currentString.Equals("<"))
+            if (s.Equals("<"))
             {
                 UnitPerceptAction unitBehav = new UnitPerceptAction();
                 unitBehav.percepts = new List<string>();
                 unitBehav.actions = new List<string>();
                 unitBehav.actionsNonTerminal = new List<string>();
+                unitBehav.message = new List<string>();
 
                 unitBehav.unit = reader.ReadLine();
-                 
+                while (!s.Equals(">"))
+                {
+                    s = reader.ReadLine();
+                    if (s.Contains("[MESSAGE]"))
+                    {
+                        unitBehav.message.Add(s.Replace("[MESSAGE]", ""));
+                    }
+                    else if (s.Contains("[PERCEPTS]"))
+                    {
+                        unitBehav.percepts.Add(s.Replace("[PERCEPTS]", ""));
+                    }
+                    else if (s.Contains("[ACTIONS]"))
+                    {
+                        unitBehav.actions.Add(s.Replace("[ACTIONS]", ""));
+                    }
+                    else if (s.Contains("[ANT]"))
+                    {
+                        unitBehav.actionsNonTerminal.Add(s.Replace("[ANT]", ""));
+                    }
+                }
+                /*
                 string action = reader.ReadLine();
-                string s = reader.ReadLine();
+                
                 while (  s != "[ACTIONS]" && !reader.EndOfStream)
                 {
                     unitBehav.percepts.Add(s);
@@ -60,7 +81,7 @@ public class EditorManagerScript : MonoBehaviour
                 {
                     unitBehav.actionsNonTerminal.Add(s);
                     s = reader.ReadLine();
-                }
+                }*/
                 _unitBehaviour.Add(unitBehav);
             }
         }
@@ -84,5 +105,7 @@ public struct UnitPerceptAction
     public string unit;
     public List<string> percepts;
     public List<string> actions;
+    public List<string> message ;
     public List<string> actionsNonTerminal;
+
 }

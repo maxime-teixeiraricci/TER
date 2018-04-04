@@ -10,7 +10,7 @@ public class ActionPuzzleScript : MonoBehaviour {
     public string validPlace = "false";
     Image image;
     Color defaultColor;
-    Color validColor = new Color(1, 105.0F / 255.0F, 121.0F / 255);
+    public Color validColor = new Color(1, 105.0F / 255.0F, 121.0F / 255);
 
     private void Start()
     {

@@ -66,24 +66,30 @@ public class GameManager : MonoBehaviour
             writer.WriteLine(unit.GetComponent<Stats>()._unitType);
 
             // Recuperer les percepts
-            writer.WriteLine("[PERCEPTS]");
             Percept unitPercepts = unit.GetComponent<Percept>();
-            Debug.Log(unit.name + " PERCEPT : "+unitPercepts.name);
             unitPercepts.InitPercept();
-            foreach (string s in unitPercepts._percepts.Keys) { writer.WriteLine(s); }
+            foreach (string s in unitPercepts._percepts.Keys)
+            {
+                if (!s.Contains("MESSAGE"))
+                {
+                    writer.WriteLine("[PERCEPTS]" + s);
+                }
+                else
+                {
+                    writer.WriteLine("[MESSAGE]" + s);
+                }
+            }
 
             // Recuperer les actions
-            writer.WriteLine("[ACTIONS]");
             Action unitAction = unit.GetComponent<Action>();
             unitAction.InitAction();
-            foreach (string s in unitAction._actions.Keys) {  writer.WriteLine(s); }
+            foreach (string s in unitAction._actions.Keys) {  writer.WriteLine("[ACTIONS]"+s); }
 
             // Recuperer les actions
-            writer.WriteLine("[ACTIONS NON TERMINAL]");
             ActionNonTerminal unitActionNonTerminal = unit.GetComponent<ActionNonTerminal>();
             unitActionNonTerminal.InitActionNonTerminal();
-            foreach (string s in unitActionNonTerminal._actionsNT.Keys) { writer.WriteLine(s); }
-
+            foreach (string s in unitActionNonTerminal._actionsNT.Keys) { writer.WriteLine("[ANT]"+s); }
+            
             writer.WriteLine(">");
         }
 
