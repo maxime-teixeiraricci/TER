@@ -55,7 +55,6 @@ public class ActionNonTerminalCommon : ActionNonTerminal
         {
             EliminationContract newContract = new EliminationContract((GameObject)GetComponent<Percept>()._tmpMessage._contenu);
             GetComponent<Stats>()._contract = newContract;
-            Debug.Break();
         };
 
 

@@ -41,7 +41,6 @@ public class Stats : MonoBehaviour
             _targetContract = ((EliminationContract)_contract)._target;
             Debug.ClearDeveloperConsole();
             print(_contract);
-            Debug.Break();
         }
         //_reloadTime -= Time.deltaTime;
         if (_target != null)
