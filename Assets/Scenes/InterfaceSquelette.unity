@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -2134,7 +2134,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.92964023, y: 1}
-  m_AnchoredPosition: {x: -0.011214256, y: 0.00005370332}
+  m_AnchoredPosition: {x: -0.01121521, y: 0.00005370332}
   m_SizeDelta: {x: 0.022064, y: 915.1}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &547294997
@@ -6088,22 +6088,22 @@ Prefab:
     - target: {fileID: 224822742255034766, guid: 7d6796989adc9c14aa6d274aab8450f7,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0.0000014305
+      value: -0.0000104903265
       objectReference: {fileID: 0}
     - target: {fileID: 224822742255034766, guid: 7d6796989adc9c14aa6d274aab8450f7,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 74.65
+      value: 55.58
       objectReference: {fileID: 0}
     - target: {fileID: 224822742255034766, guid: 7d6796989adc9c14aa6d274aab8450f7,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -0.000010014
+      value: -1.1555734
       objectReference: {fileID: 0}
     - target: {fileID: 224822742255034766, guid: 7d6796989adc9c14aa6d274aab8450f7,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 75
+      value: 87.14
       objectReference: {fileID: 0}
     - target: {fileID: 61120749337861026, guid: 7d6796989adc9c14aa6d274aab8450f7,
         type: 2}
@@ -8626,7 +8626,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 190336735}
   m_Direction: 2
   m_Value: 0.9999999
-  m_Size: 0.45509377
+  m_Size: 0.45506302
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
