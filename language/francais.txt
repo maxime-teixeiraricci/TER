@@ -1,0 +1,3 @@
+# Partie moteur
+	PERCEPT_ALLY : PERCEPT_Allié_Proche
+	PERCEPT_BASE : PERCEPT_Base_Proche

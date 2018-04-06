@@ -1,2 +1,0 @@
-# Partie editeur 
-	PERCEPT_ALLY : Condition_Allié_Proche
