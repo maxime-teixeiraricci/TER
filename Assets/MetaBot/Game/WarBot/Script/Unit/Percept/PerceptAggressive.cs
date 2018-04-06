@@ -4,7 +4,7 @@ using System;
 using UnityEngine;
 
 
-public class PerceptAggressive : PerceptCommon
+public class PerceptAggressive : PerceptUnit
 {
 
     void Start()

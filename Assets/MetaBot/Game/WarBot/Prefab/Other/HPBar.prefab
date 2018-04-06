@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 222309743564740232}
   - component: {fileID: 114027741442240126}
   m_Layer: 5
-  m_Name: Image
+  m_Name: HpBarBg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 222326239862442060}
   - component: {fileID: 114143682128095260}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: HpBarFill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -279,6 +279,13 @@ MonoBehaviour:
   _ressourceText: {fileID: 114269811358612268}
   _ressourceImage: {fileID: 114722484417039956}
   ressource: {fileID: 11400000, guid: 96c210943228bd244947536d2f1cc39f, type: 2}
+  _hpColor:
+  - hpPercent: 0.25
+    color: {r: 1, g: 0.28676468, b: 0.28676468, a: 1}
+  - hpPercent: 0.5
+    color: {r: 0.85294116, g: 0.75207615, b: 0.18814877, a: 1}
+  - hpPercent: 1
+    color: {r: 0.37712982, g: 0.75, b: 0.12132351, a: 1}
 --- !u!114 &114581141818048876
 MonoBehaviour:
   m_ObjectHideFlags: 1
