@@ -4,7 +4,7 @@ using UnityEngine;
 
 class TestInterpreter 
 {
-    static void Main(string[] args) {
+    static void test(string[] args) {
         string teamName = "TestInterpret";
         string unitName = "Light";
 

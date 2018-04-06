@@ -7,6 +7,9 @@ public class Constants
     // Path to the directory containing all xml files
     public static readonly string teamsDirectory = "./teams/";
 
+    //Path to the language directory
+    public static readonly string langDirectory = "./language/";
+
     // files extension
     public static readonly string xmlExtension = ".wbt";
 
