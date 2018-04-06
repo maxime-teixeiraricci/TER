@@ -5,30 +5,32 @@ using System.IO;
 
 public class LangageLoader {
     public string Language;
-    public string path;
+
 
 	public LangageLoader(string l){
         Language = l;
-        path = Constants.langDirectory;
 	}
 
     public bool checkFile()
     {
         bool flag = false;
 
-        if (!Directory.Exists(path))
-            Directory.CreateDirectory(path);
-
-        foreach (string file in Directory.GetFiles(path))
+        if (!Directory.Exists(Constants.langDirectory))
         {
-            System.Console.WriteLine(file);
-            if (file.Equals(Language + ".txt"))
+            Directory.CreateDirectory(Constants.langDirectory);
+            System.Console.WriteLine("Dossier existe pas");
+        }
+
+        foreach (string file in Directory.GetFiles(Constants.langDirectory))
+        {
+            System.Console.WriteLine("File : " + file);
+            if (file.Contains(Language))
             {
                 flag = true;
                 break;
             }
         }
-
+        System.Console.WriteLine(" flag = "+flag);
         return flag;
     }
 
@@ -39,7 +41,7 @@ public class LangageLoader {
         if (!checkFile())
             return null;
 
-        string[] lines = System.IO.File.ReadAllLines(path + Language + ".txt");
+        string[] lines = System.IO.File.ReadAllLines(Constants.langDirectory + Language + ".txt");
         foreach (string line in lines)
         {
             if (!(line[0] == '#'))

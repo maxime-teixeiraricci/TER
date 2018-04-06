@@ -12,6 +12,8 @@ public class TestLangageLoader  {
         System.Console.WriteLine(Constants.langDirectory + l.Language + ".txt");
         if (l.checkFile())
             System.Console.WriteLine("Fichier Ok ! ");
+        else
+            System.Console.WriteLine("Pas de fichier");
 
         Dictionary<string, string> r = l.readFile();
         if (r == null)
