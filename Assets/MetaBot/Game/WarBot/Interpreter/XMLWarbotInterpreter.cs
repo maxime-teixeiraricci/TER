@@ -57,7 +57,7 @@ public class XMLWarbotInterpreter : XMLInterpreter
                 foreach (XmlNode c in x)
                 {
                     l_MsgStruct.Add(new MessageStruct(c.Name, c.FirstChild.Name));
-                    Debug.Log("c" + c.Name + " " + c.FirstChild.Name);
+                   // Debug.Log("c" + c.Name + " " + c.FirstChild.Name);
                 }
             }
 
@@ -149,6 +149,7 @@ public class XMLWarbotInterpreter : XMLInterpreter
         // If no file has been found, create a new one with the given team name
         if (l_fileName.Equals(""))
             l_fileName = teamName.Replace(".wbt", "") + Constants.xmlExtension;
+
         Dictionary<string, List<Instruction>> behavior = new Dictionary<string, List<Instruction>>();
 
         string pathtmp = path;
