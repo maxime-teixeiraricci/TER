@@ -103,6 +103,10 @@ public class XMLWarbotInterpreter : XMLInterpreter
 
         Debug.Log(" T : " + t.ToString());
         return t;*/
+        if (l_actions.Count == 0)
+        {
+            return new Instruction(l_conditions.ToArray(), l_MsgStruct.ToArray());
+        }
         return new Instruction(l_conditions.ToArray(), l_MsgStruct.ToArray(), l_actions[0]);
 
     }

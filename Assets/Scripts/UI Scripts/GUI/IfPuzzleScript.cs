@@ -116,7 +116,7 @@ public class IfPuzzleScript : MonoBehaviour
     {
         List<string> percepts = new List<string>();
         List<MessageStruct> ms = new List<MessageStruct>();
-        string action = puzzleActionObject.GetComponent<CondPuzzleScript>()._value;
+        string action ="";
 
         GameObject condObjectCurrent = puzzleCondObject;
         GameObject actionObjectCurrent = puzzleActionObject;
@@ -141,6 +141,7 @@ public class IfPuzzleScript : MonoBehaviour
 
 
         }
+        
         return new Instruction(percepts.ToArray(), ms.ToArray(), action);
     }
 }

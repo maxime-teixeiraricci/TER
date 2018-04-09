@@ -163,9 +163,12 @@ public class LoadFile : MonoBehaviour
                 {
                     delta = new Vector2(1, -1);
                 }
-                GameObject _actPuzzle = Instantiate(actionPuzzle, editeurTransform);
-                _actPuzzle.GetComponent<ManageDragAndDrop>().setGridPosition(currentAction.GetComponent<ManageDragAndDrop>().getGridPosition() + delta);
-                _actPuzzle.GetComponent<CondPuzzleScript>()._value = I._stringAction;
+                if (I._stringAction != "")
+                {
+                    GameObject _actPuzzle = Instantiate(actionPuzzle, editeurTransform);
+                    _actPuzzle.GetComponent<ManageDragAndDrop>().setGridPosition(currentAction.GetComponent<ManageDragAndDrop>().getGridPosition() + delta);
+                    _actPuzzle.GetComponent<CondPuzzleScript>()._value = I._stringAction;
+                }
                 delta = new Vector2(0, -2);
             }
         }

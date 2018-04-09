@@ -8,6 +8,7 @@ public abstract class MessageManager : MonoBehaviour {
     public List<Message> _waitingMessages = new List<Message>();
     public List<Message> _currentMessages = new List<Message>();
     public string[] _messageType;
+    public GameObject _messageLineObject;
 
     public abstract void Init();
 
@@ -26,7 +27,9 @@ public abstract class MessageManager : MonoBehaviour {
             if (unit.GetComponent<Stats>()._teamIndex == GetComponent<Stats>()._teamIndex && 
                 ((unit.GetComponent<Stats>()._unitType == dest) || (dest == "All")))
             {
-
+                GameObject messageLine = Instantiate(_messageLineObject);
+                messageLine.GetComponent<MessageLineScript>()._sender = this.gameObject;
+                messageLine.GetComponent<MessageLineScript>()._receiver = unit;
                 unit.GetComponent<MessageManager>()._waitingMessages.Add(message);
             }
         }
