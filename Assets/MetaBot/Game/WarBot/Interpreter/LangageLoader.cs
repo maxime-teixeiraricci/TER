@@ -44,8 +44,7 @@ public class LangageLoader : MonoBehaviour {
                 string [] tmp = line.Split(':');
                 Traduction l_tmp = new Traduction();
 
-                l_tmp.cle = tmp[0].Replace(" ","").Replace("\t","") ;
-                l_tmp.valeur = tmp[1].Replace(" ", "");
+                l_tmp.cle = tmp[0].Replace("\t","") ;
                 l_lang.trads.Add(l_tmp);
             }
         }
