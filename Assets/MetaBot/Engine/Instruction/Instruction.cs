@@ -24,6 +24,15 @@ public class Instruction {
 
     }
 
+    public Instruction(string[] ins, MessageStruct[] actionsNonTerminales)
+    {
+        _stringAction = "";
+        _listeStringPerceptsVoulus = ins;
+        _stringActionsNonTerminales = actionsNonTerminales;
+        // _listeStringPerceptsOu = ou; ;
+
+    }
+
     public Instruction(string[] ins, string act)
     {
         _stringAction = act;
@@ -82,11 +91,15 @@ public class Instruction {
         }
 
             XmlNode actNode = l_doc.CreateElement("actions");
-        XmlNode a = l_doc.CreateElement(_stringAction);
+        if (_stringAction != "")
+        {
+            XmlNode a = l_doc.CreateElement(_stringAction);
+            actNode.AppendChild(a);
 
-        actNode.AppendChild(a);
+            l_whenNode.AppendChild(actNode);
+        }
 
-        l_whenNode.AppendChild(actNode);
+        
 
         return l_whenNode;
     }

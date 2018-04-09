@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
                 }
                 if(s.Contains("MESSAGE"))
                 {
-                    writer.WriteLine("[MESSAGE]" + s);
+                    writer.WriteLine("[MESSAGE]" + s.Replace("PERCEPT_", ""));
                 }
             }
 

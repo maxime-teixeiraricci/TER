@@ -8,13 +8,16 @@ public class ColorChange : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-		foreach (MeshRenderer mesh in _materials)
+        if (GameObject.Find("GameManager"))
         {
-            foreach (Material mat in mesh.materials)
+            foreach (MeshRenderer mesh in _materials)
             {
-                if (GetComponent<Stats>()._teamIndex < GameObject.Find("GameManager").GetComponent<TeamManager>()._teams.Count)
+                foreach (Material mat in mesh.materials)
                 {
-                    mat.color = GameObject.Find("GameManager").GetComponent<TeamManager>()._teams[GetComponent<Stats>()._teamIndex]._color;
+                    if (GetComponent<Stats>()._teamIndex < GameObject.Find("GameManager").GetComponent<TeamManager>()._teams.Count)
+                    {
+                        mat.color = GameObject.Find("GameManager").GetComponent<TeamManager>()._teams[GetComponent<Stats>()._teamIndex]._color;
+                    }
                 }
             }
         }

@@ -1,5 +1,20 @@
 <behavior>
   <teamName>Team E</teamName>
+  <unit name="Base">
+    <instruction>
+      <parameters>
+        <NOT_PERCEPT_BAG_25 />
+      </parameters>
+      <message>
+        <PERCEPT_MESSAGE_HELP>
+          <Explorer />
+        </PERCEPT_MESSAGE_HELP>
+      </message>
+      <actions>
+        <PERCEPT_MESSAGE_HELP />
+      </actions>
+    </instruction>
+  </unit>
   <unit name="Explorer">
     <instruction>
       <parameters>
@@ -7,6 +22,15 @@
       </parameters>
       <actions>
         <ACTION_MOVE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_FOOD_NEAR />
+        <NOT_PERCEPT_BAG_FULL />
+      </parameters>
+      <actions>
+        <ACTION_PICK />
       </actions>
     </instruction>
   </unit>

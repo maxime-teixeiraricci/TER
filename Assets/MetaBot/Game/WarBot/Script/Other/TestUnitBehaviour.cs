@@ -48,7 +48,7 @@ public class TestUnitBehaviour : MonoBehaviour
 
         behavior = new List<Instruction>(){
             new Instruction(new string[] { "PERCEPT_LIFE_NOT_MAX","PERCEPT_BAG_NOT_EMPTY"}, "ACTION_HEAL"),
-            new Instruction(new string[] { "PERCEPT_BAG_25"}, "ACTION_CREATE_LIGHT") };
+            new Instruction(new string[] { "PERCEPT_BAG_10"}, "ACTION_CREATE_LIGHT") };
         interpreter.behaviorToXml(teamName, gamePath, "Base", behavior);
         Debug.Log("Creating Default Team DONE!");
     }
