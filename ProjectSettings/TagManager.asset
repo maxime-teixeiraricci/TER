@@ -28,6 +28,7 @@ TagManager:
   - SaveButton2
   - saveInitial
   - Puzzle
+  - FpsCamera
   layers:
   - Default
   - TransparentFX

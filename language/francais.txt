@@ -64,7 +64,7 @@
 	Reload Teams:Recharger les equipes
 	Jouer:Jouer
 	Editer:Editer
-	Jouer sur la carte test:Jouer sur la carte test
+	Carte de test:Carte de test
 	Equipe 1:Equipe 1
 	Equipe 2:Equipe 2
 	Equipe 3:Equipe 3
