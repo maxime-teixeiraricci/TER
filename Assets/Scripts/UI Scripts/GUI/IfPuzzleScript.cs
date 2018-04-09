@@ -54,6 +54,7 @@ public class IfPuzzleScript : MonoBehaviour
                 puzzleCondObject = puzzle;
 
                 puzzle.GetComponent<CondPuzzleScript>().beforePuzzle = gameObject;
+                puzzle.GetComponent<CondPuzzleScript>().ifPuzzle = gameObject;
             }
         }
     }
@@ -64,10 +65,11 @@ public class IfPuzzleScript : MonoBehaviour
         foreach (GameObject puzzle in GameObject.FindGameObjectsWithTag("Puzzle"))
         {
             if (manager.posGridX + 1 == puzzle.GetComponent<ManageDragAndDrop>().posGridX && manager.posGridY - 1 == puzzle.GetComponent<ManageDragAndDrop>().posGridY &&
-                (puzzle.GetComponent<CondPuzzleScript>().type == CondPuzzleScript.Type.ACTION || puzzle.GetComponent<CondPuzzleScript>().type == CondPuzzleScript.Type.ACTION_NON_TERMINAL))
+                (puzzle.GetComponent<CondPuzzleScript>().type == CondPuzzleScript.Type.ACTION || puzzle.GetComponent<CondPuzzleScript>().type == CondPuzzleScript.Type.ACTION_NON_TERMINAL || puzzle.GetComponent<CondPuzzleScript>().type == CondPuzzleScript.Type.MESSAGE))
             {
                 puzzleActionObject = puzzle;
                 puzzle.GetComponent<CondPuzzleScript>().beforePuzzle = gameObject;
+                puzzle.GetComponent<CondPuzzleScript>().ifPuzzle = gameObject;
                 break;
             }
         }
@@ -127,9 +129,14 @@ public class IfPuzzleScript : MonoBehaviour
         }
         while (actionObjectCurrent != null)
         {
-            if (actionObjectCurrent.GetComponent<CondPuzzleScript>().type == CondPuzzleScript.Type.ACTION_NON_TERMINAL)
+            if (actionObjectCurrent.GetComponent<CondPuzzleScript>().type == CondPuzzleScript.Type.MESSAGE)
             {
                 MessageStruct message = new MessageStruct(actionObjectCurrent.GetComponent<CondPuzzleScript>()._value, actionObjectCurrent.GetComponent<CondPuzzleScript>().messageDropDown.captionText.text);
+                ms.Add(message);
+            }
+            else if (actionObjectCurrent.GetComponent<CondPuzzleScript>().type == CondPuzzleScript.Type.ACTION_NON_TERMINAL)
+            {
+                MessageStruct message = new MessageStruct(actionObjectCurrent.GetComponent<CondPuzzleScript>()._value, "NONE");
                 ms.Add(message);
             }
             else

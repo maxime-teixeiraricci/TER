@@ -16,7 +16,7 @@ public class PuzzleButtonScript : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        label = value.Replace("PERCEPT_", "").Replace("_", " ");
+        label = value.Replace("PERCEPT_", "").Replace("ACTN_", "").Replace("_", " ");
         _text.text = label;
 	}
 }

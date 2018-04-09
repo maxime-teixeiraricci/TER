@@ -19,7 +19,7 @@ public class TestUnitBehaviour : MonoBehaviour
         Debug.ClearDeveloperConsole();
         Debug.Log("Creating Default Team ...");
         List<Instruction> behavior = new List<Instruction>(){
-            new Instruction(new string[] { "PERCEPT_ENEMY"},new MessageStruct[] {new MessageStruct("MESSAGE_ATTACK", "Light") }, "ACTION_MOVE"),
+            new Instruction(new string[] { "PERCEPT_ENEMY"},new MessageStruct[] {new MessageStruct("ACTN_MESSAGE_HELP", "Light") }, "ACTION_MOVE"),
             new Instruction(new string[] { "PERCEPT_BLOCKED" }, "ACTION_MOVE_UNTIL_UNBLOCKED"),
             new Instruction(new string[] { "PERCEPT_BASE_NEAR_ALLY", "PERCEPT_BAG_NOT_EMPTY"}, "ACTION_GIVE_RESSOURCE"),
             new Instruction(new string[] { "PERCEPT_BAG_FULL"}, "ACTION_BACK_TO_BASE"),

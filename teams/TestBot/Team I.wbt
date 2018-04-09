@@ -3,43 +3,18 @@
   <unit name="Explorer">
     <instruction>
       <parameters>
-        <PERCEPT_BLOCKED />
+        <PERCEPT_ENEMY />
       </parameters>
-      <actions>
-        <ACTION_TURN_AROUND_MOVE />
-      </actions>
-    </instruction>
-    <instruction>
-      <parameters>
-        <PERCEPT_ALLY />
-        <PERCEPT_BAG_NOT_EMPTY />
-      </parameters>
-      <actions>
-        <ACTION_GIVE_RESSOURCE />
-      </actions>
-    </instruction>
-    <instruction>
-      <parameters>
-        <PERCEPT_BAG_FULL />
-      </parameters>
-      <actions>
-        <ACTION_BACK_TO_BASE />
-      </actions>
-    </instruction>
-    <instruction>
-      <parameters>
-        <PERCEPT_FOOD_NEAR />
-        <PERCEPT_BAG_NOT_FULL />
-      </parameters>
-      <actions>
-        <ACTION_PICK />
-      </actions>
-    </instruction>
-    <instruction>
-      <parameters />
+      <message>
+        <ACTN_TURN_AROUND>
+          <Light />
+        </ACTN_TURN_AROUND>
+      </message>
       <actions>
         <ACTION_MOVE />
       </actions>
     </instruction>
+
+
   </unit>
 </behavior>

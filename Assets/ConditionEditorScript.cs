@@ -9,6 +9,7 @@ public class ConditionEditorScript : MonoBehaviour
     public GameObject _labelConditionButtonObject;
     public GameObject _labelMessageButtonObject;
     public GameObject _labelControlButtonObject;
+    public GameObject _labelANTButtonObject;
 
 
     public List<GameObject> _buttonCreated;
@@ -97,6 +98,27 @@ public class ConditionEditorScript : MonoBehaviour
             _buttonCreated.Add(button);
             button.GetComponent<RectTransform>().anchoredPosition += mov;
             mov += new Vector2(0, -button.GetComponent<RectTransform>().rect.height) + deltaVect;
+        }
+
+    }
+
+    public void UpdateANT()
+    {
+        ClearButton();
+        UnitDropDownScript dropDown = GameObject.Find("UnitDropdown").GetComponent<UnitDropDownScript>();
+        UnitPerceptAction upa = GameObject.Find("EditorManager").GetComponent<EditorManagerScript>().find(_dropDown.captionText.text);
+        Vector2 mov = Vector2.zero;
+        foreach (string s in upa.actionsNonTerminal)
+        {
+            print(s);
+            GameObject button = Instantiate(_labelANTButtonObject, GameObject.Find("ListPuzzle").transform);
+            button.transform.parent = GameObject.Find("ListPuzzle").transform;
+            _buttonCreated.Add(button);
+            button.GetComponent<RectTransform>().anchoredPosition += mov;
+            mov += new Vector2(0, -button.GetComponent<RectTransform>().rect.height) + deltaVect;
+
+            button.GetComponent<PuzzleButtonScript>().value = s;
+            button.GetComponent<createPuzzle>()._label = s;
         }
 
     }

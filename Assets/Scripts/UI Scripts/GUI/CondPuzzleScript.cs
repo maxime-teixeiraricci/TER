@@ -56,9 +56,13 @@ public class CondPuzzleScript : MonoBehaviour
         {
             _label.GetComponent<Text>().text = _value.Replace("ACTION_", "").Replace("_", " ");
         }
-        if (type == Type.ACTION_NON_TERMINAL)
+        if (type == Type.MESSAGE)
         {
             _label.GetComponent<Text>().text = "SEND \"" + _value.Replace("MESSAGE_", "").Replace("PERCEPT_", "").Replace("_", " ") + "\"";
+        }
+        if (type == Type.ACTION_NON_TERMINAL)
+        {
+            _label.GetComponent<Text>().text = _value.Replace("MESSAGE_", "").Replace("ACTN_", "").Replace("_", " ");
         }
 
     }
@@ -141,9 +145,10 @@ public class CondPuzzleScript : MonoBehaviour
             {
                 return (beforePuzzle.GetComponent<IfPuzzleScript>() != null) || (beforePuzzle.GetComponent<CondPuzzleScript>().type == Type.CONDITION);
             }
-            if (type == Type.ACTION || type == Type.ACTION_NON_TERMINAL)
+            if (type == Type.ACTION || type == Type.ACTION_NON_TERMINAL || type == Type.MESSAGE)
             {
-                return (beforePuzzle.GetComponent<IfPuzzleScript>() != null) || (beforePuzzle.GetComponent<CondPuzzleScript>().type == Type.ACTION_NON_TERMINAL);
+                Type t = beforePuzzle.GetComponent<CondPuzzleScript>().type;
+                return (beforePuzzle.GetComponent<IfPuzzleScript>() != null) || (t == Type.ACTION_NON_TERMINAL) || (t == Type.MESSAGE);
             }
         }
         return false;

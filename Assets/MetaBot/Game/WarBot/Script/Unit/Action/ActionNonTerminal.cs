@@ -8,4 +8,5 @@ public abstract class ActionNonTerminal : MonoBehaviour
     public Dictionary<string, ActNonTerm> _actionsNT = new Dictionary<string, ActNonTerm>();
     public abstract void InitActionNonTerminal();
     public string _messageDestinataire;
+    public Message _tmpMessage;
 }

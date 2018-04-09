@@ -440,7 +440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc809812828d1014ea8e27f44653b69f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 2
+  type: 3
   nextPuzzle: {fileID: 0}
   ifPuzzle: {fileID: 0}
   beforePuzzle: {fileID: 0}

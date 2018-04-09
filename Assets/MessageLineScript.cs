@@ -25,6 +25,10 @@ public class MessageLineScript : MonoBehaviour
 	void Update ()
     {
         _countTick++;
+        if (!(_sender && _receiver ))
+        {
+            Destroy(gameObject);
+        }
         Vector3[] pos = new Vector3[] { _sender.transform.position, _receiver.transform.position };
         GetComponent<LineRenderer>().SetPositions(pos);
         float t = (1.0f*_countTick) / _nbTick;

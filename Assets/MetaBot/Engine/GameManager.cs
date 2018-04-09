@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
                 }
                 if(s.Contains("MESSAGE"))
                 {
-                    writer.WriteLine("[MESSAGE]" + s.Replace("PERCEPT_", ""));
+                    writer.WriteLine("[MESSAGE]ACTN_" + s.Replace("PERCEPT_", ""));
                 }
             }
 
@@ -88,7 +88,10 @@ public class GameManager : MonoBehaviour
             // Recuperer les actions
             ActionNonTerminal unitActionNonTerminal = unit.GetComponent<ActionNonTerminal>();
             unitActionNonTerminal.InitActionNonTerminal();
-            foreach (string s in unitActionNonTerminal._actionsNT.Keys) { writer.WriteLine("[ANT]"+s); }
+            foreach (string s in unitActionNonTerminal._actionsNT.Keys)
+            {
+                if (!s.Contains("ACTN_MESSAGE_")) writer.WriteLine("[ANT]"+s);
+            }
             
             writer.WriteLine(">");
         }

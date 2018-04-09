@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ActionNonTerminalCommon : ActionNonTerminal
 {
+    
 
     void Start()
     {
@@ -12,21 +13,23 @@ public class ActionNonTerminalCommon : ActionNonTerminal
 
     public override void InitActionNonTerminal()
     {
-        _actionsNT["MESSAGE_HELP"] = delegate ()
+        _actionsNT["ACTN_MESSAGE_HELP"] = delegate ()
         {
             Message message = new Message(gameObject, "MESSAGE_HELP");
             GetComponent<MessageManager>().Send(message, _messageDestinataire);
+            print("SEND HELP !");
         };
-        _actionsNT["MESSAGE_POSITION"] = delegate ()
+        _actionsNT["ACTN_MESSAGE_POSITION"] = delegate ()
         {
             Message message = new Message(gameObject, "MESSAGE_POSITION");
             GetComponent<MessageManager>().Send(message, _messageDestinataire);
+            print("SEND POSITION !");
         };
-        _actionsNT["MESSAGE_ATTACK"] = delegate ()
+        _actionsNT["ACTN_MESSAGE_ATTACK"] = delegate ()
         {
             Message message = new Message(gameObject, "MESSAGE_ATTACK", GetComponent<Stats>()._target);
             GetComponent<MessageManager>().Send(message, _messageDestinataire);
-            print("Sender : " + gameObject +"  Target : " + message._contenu);
+            print("SEND ATTACK !");
         };
 
 
@@ -51,11 +54,21 @@ public class ActionNonTerminalCommon : ActionNonTerminal
         {
             GetComponent<Stats>()._heading += 180;
         };
+        _actionsNT["ACTN_TOWARD_MESSAGE_SENDER"] = delegate ()
+        {
+            print("ACTN_TOWARD_MESSAGE_SENDER " + _tmpMessage);
+            if (_tmpMessage != null)
+            {
+                print("Heading : " + _tmpMessage.heading);
+                GetComponent<Stats>()._heading = _tmpMessage.heading;
+            }
+        };
         _actionsNT["ACTN_ADD_ELIMINATION_CONTRACT"] = delegate ()
         {
-            EliminationContract newContract = new EliminationContract((GameObject)GetComponent<Percept>()._tmpMessage._contenu);
+            EliminationContract newContract = new EliminationContract((GameObject)_tmpMessage._contenu);
             GetComponent<Stats>()._contract = newContract;
         };
+       
 
 
 

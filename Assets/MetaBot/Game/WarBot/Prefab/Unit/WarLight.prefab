@@ -194,6 +194,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _messageDestinataire: 
+  _tmpMessage:
+    _titre: 
+    _contenu: {fileID: 0}
+    _sender: {fileID: 0}
+    _receiver: {fileID: 0}
+    heading: 0
 --- !u!114 &114191992950110330
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -222,7 +228,9 @@ MonoBehaviour:
   _messageType:
   - MESSAGE_HELP
   - MESSAGE_POSITION
-  - MESSAGE_DEFENSE
+  - MESSAGE_ATTACK
+  _messageLineObject: {fileID: 1570930958659960, guid: 369a6c66779f7494fbf20cd2d86e12f7,
+    type: 2}
 --- !u!114 &114462790742861060
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -261,12 +269,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fa7b92dec9baf34782388a22c9f006e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentPercepts: {fileID: 0}
-  _componentActions: {fileID: 0}
-  _componentActionsNonTerminales: {fileID: 0}
-  _messageManager: {fileID: 0}
+  _instructions: []
+  _instructionsEditor: []
+  _componentPercepts: {fileID: 114650775230158826}
+  _componentActions: {fileID: 114191992950110330}
+  _componentActionsNonTerminales: {fileID: 114079933145180142}
+  _messageManager: {fileID: 114461914509928388}
   nbInstruction: 0
-  nbActions: 0
   debugMessage: 0
 --- !u!114 &114529498503752388
 MonoBehaviour:
@@ -318,14 +327,15 @@ MonoBehaviour:
   _teamIndex: 0
   _id: 0
   _target: {fileID: 0}
+  distanceToTarget: 0
   _objectToUse: {fileID: 0}
   _bullet: {fileID: 1060883780152844, guid: 8d235f711da98aa409eca32a55e591de, type: 2}
+  _targetContract: {fileID: 0}
   _heading: 0
   _isBlocked: 0
   _health: 125
   _maxHealth: 125
   _reloadTime: 0
-  _objectif: {fileID: 0}
 --- !u!114 &114650775230158826
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -337,6 +347,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91977c1ea3c42b846a6a88d99a089797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  angleToMessage: 0
 --- !u!114 &114691494367898142
 MonoBehaviour:
   m_ObjectHideFlags: 1

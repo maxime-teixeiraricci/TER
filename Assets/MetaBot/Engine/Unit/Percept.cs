@@ -9,7 +9,8 @@ public abstract class Percept : MonoBehaviour
     public Dictionary<string, Listener> _percepts = new Dictionary<string, Listener>();
 
     public Dictionary<string, Listener> _messagePercepts = new Dictionary<string, Listener>();
-    public Message _tmpMessage;
+    
+    public float angleToMessage;
 
     public virtual void InitPercept()
     {
@@ -20,8 +21,12 @@ public abstract class Percept : MonoBehaviour
         {
             _percepts["PERCEPT_"+messageType] = delegate () 
             {
-                _tmpMessage = mm.ContainsType(messageType);
-                return _tmpMessage != null;
+                GetComponent<ActionNonTerminal>()._tmpMessage = mm.ContainsType(messageType);
+                if (GetComponent<ActionNonTerminal>()._tmpMessage != null)
+                {
+                    print(gameObject + " MESSAGE : " + GetComponent<ActionNonTerminal>()._tmpMessage._sender + " >> "+ GetComponent<ActionNonTerminal>()._tmpMessage._receiver);
+                }
+                return GetComponent<ActionNonTerminal>()._tmpMessage != null;
             };
         }
     }

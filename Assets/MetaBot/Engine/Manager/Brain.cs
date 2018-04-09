@@ -64,8 +64,10 @@ public class Brain : MonoBehaviour
         if (_instructions != null && _componentActions != null && _componentActions._actions.Count != 0)
         {
             string _action = NextAction();
-
-            _componentActions._actions[_action]();
+            if (_componentActions._actions.ContainsKey(_action))
+            {
+                _componentActions._actions[_action]();
+            }
         }
     }
 
@@ -79,7 +81,11 @@ public class Brain : MonoBehaviour
                 {
                     _componentActionsNonTerminales._messageDestinataire = act._destinataire;
                     print(gameObject + "    Action nt = " + act._intitule);
-                    _componentActionsNonTerminales._actionsNT[act._intitule]();
+                    if (_componentActionsNonTerminales._actionsNT.ContainsKey(act._intitule))
+                    {
+                        
+                        _componentActionsNonTerminales._actionsNT[act._intitule]();
+                    }
 
                 }
                 return instruction._stringAction; }

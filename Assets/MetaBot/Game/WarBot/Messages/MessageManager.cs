@@ -27,10 +27,14 @@ public abstract class MessageManager : MonoBehaviour {
             if (unit.GetComponent<Stats>()._teamIndex == GetComponent<Stats>()._teamIndex && 
                 ((unit.GetComponent<Stats>()._unitType == dest) || (dest == "All")))
             {
+                Message M = new Message(message);
+
                 GameObject messageLine = Instantiate(_messageLineObject);
                 messageLine.GetComponent<MessageLineScript>()._sender = this.gameObject;
                 messageLine.GetComponent<MessageLineScript>()._receiver = unit;
-                unit.GetComponent<MessageManager>()._waitingMessages.Add(message);
+                M._receiver = unit;
+                M.heading = Utility.getAngle(unit, gameObject);
+                unit.GetComponent<MessageManager>()._waitingMessages.Add(M);
             }
         }
     }

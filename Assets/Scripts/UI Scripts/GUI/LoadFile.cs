@@ -13,8 +13,8 @@ public class LoadFile : MonoBehaviour
     public GameObject ifPuzzle;
     public GameObject condPuzzle;
     public GameObject actionPuzzle;
-    public GameObject messPuzl;
-    public GameObject messagePuzzle; 
+    public GameObject messagePuzzle;
+    public GameObject antPuzzle;
     public Vector3 positionInitial;
     GameObject startPuzzle;
     NewFile clear;
@@ -142,21 +142,27 @@ public class LoadFile : MonoBehaviour
                 {
                     foreach (MessageStruct s in I._stringActionsNonTerminales)
                     {
-                        GameObject _messPuzzle = Instantiate(messagePuzzle, editeurTransform);
+                        GameObject _messPuzzle = null;
 
-
-                        _messPuzzle.GetComponent<ManageDragAndDrop>().setGridPosition(currentAction.GetComponent<ManageDragAndDrop>().getGridPosition() + delta);
-                        currentAction = _messPuzzle;
-                        _messPuzzle.GetComponent<CondPuzzleScript>()._value = s._intitule;
-                        /*
-                        _messPuzzle.GetComponent<CondPuzzleScript>().messageDropDown.value
-                        */
-                        Dropdown dropdown =_messPuzzle.GetComponent<CondPuzzleScript>().messageDropDown;
-                        for (int i = 0; i < dropdown.options.Count; i++)
+                        if (s._intitule.Contains("ACTN"))
                         {
-                            if (dropdown.options[i].text == s._destinataire) { _messPuzzle.GetComponent<CondPuzzleScript>().messageDropDown.value = i; }
+                            _messPuzzle = Instantiate(antPuzzle, editeurTransform);
                         }
-                        delta = new Vector2(2, 0);
+                        if (s._intitule.Contains("ACTN_MESSAGE_"))
+                        {
+                            _messPuzzle = Instantiate(messagePuzzle, editeurTransform);
+                        }
+                        print(s._intitule); 
+                        if (_messPuzzle != null)
+                        {
+                            _messPuzzle.GetComponent<ManageDragAndDrop>().setGridPosition(currentAction.GetComponent<ManageDragAndDrop>().getGridPosition() + delta);
+                            currentAction = _messPuzzle;
+                            _messPuzzle.GetComponent<CondPuzzleScript>()._value = s._intitule;
+                            /*
+                            _messPuzzle.GetComponent<CondPuzzleScript>().messageDropDown.value
+                            */
+                            delta = new Vector2(2, 0);
+                        }
                     }
                 }
                 else

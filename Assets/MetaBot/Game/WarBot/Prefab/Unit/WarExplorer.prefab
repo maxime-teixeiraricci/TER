@@ -75,8 +75,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1517124188230958}
-  m_LocalRotation: {x: 0.0013089952, y: 0, z: 0, w: 0.9999992}
-  m_LocalPosition: {x: -1.8394909, y: 1.02, z: -13.717749}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 22.5, y: 0.75, z: 22.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4608809123674540}
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _instructions: []
   _instructionsEditor: []
-  _componentPercepts: {fileID: 0}
+  _componentPercepts: {fileID: 114804970405907090}
   _componentActions: {fileID: 114699229294144876}
   _componentActionsNonTerminales: {fileID: 114535154049158002}
   _messageManager: {fileID: 114790890713267580}
@@ -184,6 +184,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _messageDestinataire: 
+  _tmpMessage:
+    _titre: 
+    _contenu: {fileID: 0}
+    _sender: {fileID: 0}
+    _receiver: {fileID: 0}
+    heading: 0
 --- !u!114 &114672049450424364
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -243,6 +249,8 @@ MonoBehaviour:
   - MESSAGE_HELP
   - MESSAGE_POSITION
   - MESSAGE_ATTACK
+  _messageLineObject: {fileID: 1570930958659960, guid: 369a6c66779f7494fbf20cd2d86e12f7,
+    type: 2}
 --- !u!114 &114804970405907090
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -254,11 +262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 370793cdbdc4f5b429c4d83b2418674e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tmpMessage:
-    _titre: 
-    _contenu: {fileID: 0}
-    _sender: {fileID: 0}
-    _receiver: {fileID: 0}
+  angleToMessage: 0
 --- !u!114 &114806030400751272
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -271,7 +275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _unitType: Explorer
-  _teamIndex: 0
+  _teamIndex: 1
   _id: 0
   _target: {fileID: 0}
   distanceToTarget: 0
