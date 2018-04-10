@@ -45,6 +45,10 @@
 # Map en jeu 
 	Recommencer=Try again
 	Quitter=Quit
+	Health : =Health : 
+	Bag : =Bag : 
+	Heading : =Heading : 
+	Contract :=Contract :
 # Menu principal
 	Reload Teams=Reload teams
 	Jouer=Play
