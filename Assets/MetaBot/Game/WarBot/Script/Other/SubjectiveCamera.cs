@@ -21,7 +21,7 @@ public class SubjectiveCamera : MonoBehaviour {
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity) && hit.collider.name.Contains("War"))
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity) && hit.collider.tag == "Unit" )
             return hit.transform.gameObject;
         else
             return null;
@@ -53,13 +53,8 @@ public class SubjectiveCamera : MonoBehaviour {
 
         if (fps)
         {
-           /* Quaternion  q = unit.gameObject.transform.rotation;
-            q.SetEulerRotation(new Vector3(unit.gameObject.transform.rotation.x, unit.gameObject.transform.rotation.y, unit.gameObject.transform.rotation.z));*/
-            Camera.main.transform.SetPositionAndRotation(new Vector3(unit.gameObject.transform.position.x + 2, unit.gameObject.transform.position.y + 2, unit.gameObject.transform.position.z), unit.gameObject.transform.rotation);
-            /*Vector3 rotation = transform.eulerAngles;
-
-            rotation.x += Input.GetAxis("Horizontal") * rotationSpeed * Time.deltaTime;
-            transform.eulerAngles = rotation;*/
+              Camera.main.transform.SetPositionAndRotation(new Vector3(unit.gameObject.transform.position.x , unit.gameObject.transform.position.y + 2, unit.gameObject.transform.position.z), unit.gameObject.transform.rotation);
+            Camera.main.transform.eulerAngles += new Vector3(0,90,0);
         }
     }
 }
