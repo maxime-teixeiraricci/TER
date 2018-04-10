@@ -7,32 +7,40 @@ public class StartPuzzleScript : MonoBehaviour
     public GameObject ifPuzzle;
 	// Use this for initialization
 	void Start () {
-		
-	}
+       UpdateCondPuzzle();
+       UpdateAllValidPuzzles();
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        UpdateCondPuzzle();
-        UpdateAllValidPuzzles();
+        if (!ifPuzzle || ifPuzzle.GetComponent<IfPuzzleScript>().isValid == false) // Pour eviter de recalculer a chaque fois
+        {
+            UpdateCondPuzzle();
+            UpdateAllValidPuzzles();
+        }
 
     }
 
     void UpdateCondPuzzle()
     {
-        ifPuzzle = null;
         foreach (GameObject puzzle in GameObject.FindGameObjectsWithTag("IfPuzzle"))
         {
             if (GetComponent<ManageDragAndDrop>().getGridPosition() + new Vector2(0,-1) == puzzle.GetComponent<ManageDragAndDrop>().getGridPosition())
             {
+
                 ifPuzzle = puzzle;
                 break;
             }
         }
     }
 
-    void UpdateAllValidPuzzles()
+    public void UpdateAllValidPuzzles()
     {
         // Initialize all at false 
+        ifPuzzle = null;
+        print("TEST1 : " + ifPuzzle);
+        UpdateCondPuzzle();
+        print("TEST2 : " + ifPuzzle);
         foreach (GameObject puzzle in GameObject.FindGameObjectsWithTag("Puzzle"))
         {
             puzzle.GetComponent<PuzzleScript>().isValid = false;
@@ -42,11 +50,15 @@ public class StartPuzzleScript : MonoBehaviour
             puzzle.GetComponent<IfPuzzleScript>().isValid = false;
         }
 
-        if (ifPuzzle)
+        
+        
+        if (ifPuzzle.GetComponent<IfPuzzleScript>().isValid == false)
         {
             ifPuzzle.GetComponent<IfPuzzleScript>().isValid = true;
             ifPuzzle.GetComponent<IfPuzzleScript>().UpdatePuzzle();
         }
+        
+        UpdateCondPuzzle();
 
     }
 

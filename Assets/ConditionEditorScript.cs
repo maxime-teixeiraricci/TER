@@ -18,13 +18,17 @@ public class ConditionEditorScript : MonoBehaviour
     public Vector2 deltaVect;
 
 	// Use this for initialization
-
+    public void Start()
+    {
+        UpdateControl();
+    }
 
     public void UpdateButton()
     {
         ClearButton();
         UpdateCondition();
         UpdateAction();
+        GameObject.Find("StartPuzzle").GetComponent<StartPuzzleScript>().UpdateAllValidPuzzles();
     }
 
     public void UpdateCondition()

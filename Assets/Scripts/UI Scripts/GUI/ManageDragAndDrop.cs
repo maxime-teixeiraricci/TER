@@ -34,7 +34,6 @@ public class ManageDragAndDrop : MonoBehaviour, IPointerEnterHandler//, IPointer
 
     private void OnMouseOver()
     {
-        print("OK3");
         if (Input.GetMouseButtonDown(1) && !undestructible)
         {
             Destroy(gameObject);
@@ -100,6 +99,10 @@ public class ManageDragAndDrop : MonoBehaviour, IPointerEnterHandler//, IPointer
         Vector3 newPos = new Vector3(newX, newY, 10);
 
         GetComponent<RectTransform>().localPosition = newPos;
+
+        // UPDATE verify puzzle
+
+        GameObject.Find("StartPuzzle").GetComponent<StartPuzzleScript>().UpdateAllValidPuzzles();
 
     }
 

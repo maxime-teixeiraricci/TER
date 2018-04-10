@@ -44,7 +44,6 @@ GameObject:
   - component: {fileID: 114781588865238516}
   - component: {fileID: 61905187761267190}
   - component: {fileID: 114570189627596028}
-  - component: {fileID: 114899221682573372}
   m_Layer: 5
   m_Name: 'ActionNTPuzzle '
   m_TagString: Puzzle
@@ -175,6 +174,7 @@ MonoBehaviour:
   neg: 0
   defaultColor: {r: 0.43382353, g: 0.43382353, b: 0.43382353, a: 0.784}
   validColor: {r: 1, g: 0.57991886, b: 0.19852942, a: 1}
+  currentColor: {r: 0, g: 0, b: 0, a: 0}
   messageDropDown: {fileID: 0}
 --- !u!114 &114879700544688956
 MonoBehaviour:
@@ -190,29 +190,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
   m_EffectDistance: {x: 1, y: 1}
   m_UseGraphicAlpha: 1
---- !u!114 &114899221682573372
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1723287799381636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc809812828d1014ea8e27f44653b69f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 0
-  nextPuzzle: {fileID: 0}
-  ifPuzzle: {fileID: 0}
-  beforePuzzle: {fileID: 0}
-  _value: 
-  _label: {fileID: 0}
-  validPlace: false
-  isValid: 0
-  neg: 0
-  defaultColor: {r: 0, g: 0, b: 0, a: 0}
-  validColor: {r: 0, g: 0, b: 0, a: 0}
-  messageDropDown: {fileID: 0}
 --- !u!114 &114992247429475568
 MonoBehaviour:
   m_ObjectHideFlags: 1

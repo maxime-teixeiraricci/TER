@@ -28,20 +28,24 @@ public class PuzzleScript : MonoBehaviour
     void Start ()
     {
         
-        manager = GetComponent<ManageDragAndDrop>();
+        
         NormalizedLabel();
         //defaultColor = image.color;
         if (messageDropDown)
         {
-            messageDropDown.ClearOptions();
-            List<string> options = new List<string>();
-            options.Add("Target");
-            foreach (UnitPerceptAction upa in GameObject.Find("EditorManager").GetComponent<EditorManagerScript>()._unitBehaviour)
-                options.Add(upa.unit);
-            options.Add("All");
-            messageDropDown.AddOptions(options);
-
+            DropDownUpdate();
         }
+    }
+
+    public void DropDownUpdate()
+    {
+        messageDropDown.ClearOptions();
+        List<string> options = new List<string>();
+        options.Add("Target");
+        foreach (UnitPerceptAction upa in GameObject.Find("EditorManager").GetComponent<EditorManagerScript>()._unitBehaviour)
+            options.Add(upa.unit);
+        options.Add("All");
+        messageDropDown.AddOptions(options);
     }
 
     public void NormalizedLabel()
@@ -57,7 +61,7 @@ public class PuzzleScript : MonoBehaviour
         }
         if (type == Type.MESSAGE)
         {
-            _label.GetComponent<Text>().text = "SEND \"" + _value.Replace("MESSAGE_", "").Replace("PERCEPT_", "").Replace("_", " ") + "\"";
+            _label.GetComponent<Text>().text = "SEND \"" + _value.Replace("ACTN_MESSAGE_", "").Replace("PERCEPT_", "").Replace("_", " ") + "\"";
         }
         if (type == Type.ACTION_NON_TERMINAL)
         {
@@ -139,6 +143,8 @@ public class PuzzleScript : MonoBehaviour
         
         foreach (GameObject puzzle in GameObject.FindGameObjectsWithTag("Puzzle"))
         {
+
+            manager = GetComponent<ManageDragAndDrop>();
             Vector2 currentGridPos = manager.getGridPosition();
             Vector2 puzzleGridPos = puzzle.GetComponent<ManageDragAndDrop>().getGridPosition();
             Type typePuzzle = puzzle.GetComponent<PuzzleScript>().type;
@@ -156,7 +162,7 @@ public class PuzzleScript : MonoBehaviour
     {
         foreach (GameObject puzzle in GameObject.FindGameObjectsWithTag("Puzzle"))
         {
-            Vector2 currentGridPos = manager.getGridPosition();
+            Vector2 currentGridPos = GetComponent<ManageDragAndDrop>().getGridPosition();
             Vector2 puzzleGridPos = puzzle.GetComponent<ManageDragAndDrop>().getGridPosition();
             Type typePuzzle = puzzle.GetComponent<PuzzleScript>().type;
             

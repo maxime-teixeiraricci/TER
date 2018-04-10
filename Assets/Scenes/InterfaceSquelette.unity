@@ -10060,6 +10060,10 @@ Prefab:
       propertyPath: m_Name
       value: ActionNTPuzzle (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1723287799381636, guid: 668b29640b2474c42b300ff643de2a81, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 668b29640b2474c42b300ff643de2a81, type: 2}
   m_IsPrefabParent: 0

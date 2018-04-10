@@ -187,12 +187,13 @@ MonoBehaviour:
   ifPuzzle: {fileID: 0}
   beforePuzzle: {fileID: 0}
   _value: 
-  _label: {fileID: 114553918577696858, guid: 0dc514413ad4467498376e45db8e93cc, type: 2}
+  _label: {fileID: 114464871799310004}
   validPlace: false
   isValid: 0
   neg: 0
   defaultColor: {r: 0.43382353, g: 0.43382353, b: 0.43382353, a: 0.784}
   validColor: {r: 1, g: 0.28676468, b: 0.28676468, a: 1}
+  currentColor: {r: 0, g: 0, b: 0, a: 0}
   messageDropDown: {fileID: 0}
 --- !u!114 &114890633662104206
 MonoBehaviour:

@@ -202,26 +202,17 @@
   </unit>
   <unit name="Base">
     <instruction>
-      <parameters>
-        <PERCEPT_MESSAGE_HELP />
-        <PERCEPT_MESSAGE_ATTACK />
-      </parameters>
-      <actions>
-        <ACTION_HEAL />
-      </actions>
+      <parameters />
+      <message>
+        <ACTN_MESSAGE_ATTACK>
+          <Light />
+        </ACTN_MESSAGE_ATTACK>
+      </message>
     </instruction>
     <instruction>
       <parameters>
-        <PERCEPT_BAG_10 />
+        <PERCEPT_MESSAGE_POSITION />
       </parameters>
-      <message>
-        <ACTN_TURN_AROUND>
-          <NONE />
-        </ACTN_TURN_AROUND>
-        <ACTN_MESSAGE_ATTACK>
-          <Target />
-        </ACTN_MESSAGE_ATTACK>
-      </message>
     </instruction>
   </unit>
 </behavior>

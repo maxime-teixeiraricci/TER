@@ -38,7 +38,7 @@ public class IfPuzzleScript : MonoBehaviour
         puzzleCondObject = null;
         puzzleActionObject = null;
         puzzleIfObject = null;
-
+        manager = GetComponent<ManageDragAndDrop>();
         UpdateIfPuzzle();
         updateCondPuzzle();
         updateActPuzzle();

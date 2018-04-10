@@ -24,6 +24,7 @@ public class LoadFile : MonoBehaviour
     {
         startPuzzle = GameObject.FindGameObjectWithTag("StartPuzzle");
         Updating();
+        createBehaviorFromXML();
     }
 
     // Update is called once per frame
@@ -106,7 +107,7 @@ public class LoadFile : MonoBehaviour
 
         Dictionary<string, List<Instruction>> behavior = interpreter.xmlToBehavior(teamName, path);
         Vector2 delta = new Vector2(0, -1);
-        if (behavior[unitName].Count != 0)
+        if (behavior.ContainsKey(unitName) && behavior[unitName].Count != 0)
         {
             GameObject currentIf = GameObject.Find("StartPuzzle");
             GameObject currentPercept = GameObject.Find("StartPuzzle");
@@ -158,9 +159,23 @@ public class LoadFile : MonoBehaviour
                             _messPuzzle.GetComponent<ManageDragAndDrop>().setGridPosition(currentAction.GetComponent<ManageDragAndDrop>().getGridPosition() + delta);
                             currentAction = _messPuzzle;
                             _messPuzzle.GetComponent<PuzzleScript>()._value = s._intitule;
-                            /*
-                            _messPuzzle.GetComponent<CondPuzzleScript>().messageDropDown.value
-                            */
+                            print("A Dest : " + s._destinataire);
+                            if (_messPuzzle.GetComponent<PuzzleScript>().messageDropDown)
+                            {
+                                _messPuzzle.GetComponent<PuzzleScript>().DropDownUpdate();
+                                for (int i = 0; i < _messPuzzle.GetComponent<PuzzleScript>().messageDropDown.options.Count; i++)
+                                {
+                                    print("B " + _messPuzzle.GetComponent<PuzzleScript>().messageDropDown.options[i].text + " >< " + s._destinataire);
+                                    if (_messPuzzle.GetComponent<PuzzleScript>().messageDropDown.options[i].text == s._destinataire)
+                                    {
+                                        print("B Dest : " + s._destinataire);
+                                        _messPuzzle.GetComponent<PuzzleScript>().messageDropDown.value = i;
+                                        _messPuzzle.GetComponent<PuzzleScript>().messageDropDown.Select();
+                                        _messPuzzle.GetComponent<PuzzleScript>().messageDropDown.RefreshShownValue();
+                                        break;
+                                    }
+                                }
+                            }
                             delta = new Vector2(2, 0);
                         }
                     }
@@ -176,8 +191,11 @@ public class LoadFile : MonoBehaviour
                     _actPuzzle.GetComponent<PuzzleScript>()._value = I._stringAction;
                 }
                 delta = new Vector2(0, -2);
+                
             }
+            
         }
+        
     }
 
 
@@ -198,7 +216,6 @@ public class LoadFile : MonoBehaviour
         }
         team.ClearOptions();
         team.AddOptions(teams);
-
     }
 
  
