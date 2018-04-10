@@ -46,7 +46,7 @@
 	Recommencer=Recommencer
 	Quitter=Quitter
 # Menu principal	
-	Reload Teams=Recharger les equipes
+	Reload Teams=Recharger les équipes
 	Jouer=Jouer
 	Editer=Editer
 	Carte de test=Carte de test

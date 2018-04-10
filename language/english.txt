@@ -46,7 +46,7 @@
 	Recommencer=Try again
 	Quitter=Quit
 # Menu principal
-	Reload Teams=Reaload teams
+	Reload Teams=Reload teams
 	Jouer=Play
 	Editer=Edit
 	Carte de test=Testing map

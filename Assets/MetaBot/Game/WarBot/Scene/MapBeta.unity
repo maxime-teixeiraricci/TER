@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43362305, g: 0.45303643, b: 0.47994387, a: 1}
+  m_IndirectSpecularColor: {r: 0.43367508, g: 0.45307106, b: 0.48000586, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1053,6 +1053,7 @@ GameObject:
   - component: {fileID: 327542190}
   - component: {fileID: 327542189}
   - component: {fileID: 327542188}
+  - component: {fileID: 327542193}
   m_Layer: 5
   m_Name: QuitButton
   m_TagString: Untagged
@@ -1198,6 +1199,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 327542186}
+--- !u!114 &327542193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 327542186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e6d991c239194b4a82c285df21310ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  langues: []
+  conteneur: {fileID: 1798925956}
 --- !u!1 &345084777
 GameObject:
   m_ObjectHideFlags: 0
@@ -1379,6 +1393,7 @@ GameObject:
   - component: {fileID: 487375370}
   - component: {fileID: 487375369}
   - component: {fileID: 487375368}
+  - component: {fileID: 487375373}
   m_Layer: 5
   m_Name: RestartButton
   m_TagString: Untagged
@@ -1524,6 +1539,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 487375366}
+--- !u!114 &487375373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 487375366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e6d991c239194b4a82c285df21310ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  langues: []
+  conteneur: {fileID: 1113484201}
 --- !u!1001 &527774450
 Prefab:
   m_ObjectHideFlags: 0

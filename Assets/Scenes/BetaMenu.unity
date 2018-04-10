@@ -8148,8 +8148,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1736369420}
-  - component: {fileID: 1736369422}
-  - component: {fileID: 1736369421}
   m_Layer: 5
   m_Name: GameObject
   m_TagString: Untagged
@@ -8177,33 +8175,6 @@ RectTransform:
   m_AnchoredPosition: {x: -353.7, y: 146}
   m_SizeDelta: {x: 428.3, y: 35.9}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1736369421
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1736369419}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e197a93420432a648afdc4cfee72347f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  langue: 
-  textOriginal: 
-  traduction: 
---- !u!114 &1736369422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1736369419}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e6d991c239194b4a82c285df21310ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  langues: []
-  conteneur: {fileID: 0}
 --- !u!1 &1738298978
 GameObject:
   m_ObjectHideFlags: 0

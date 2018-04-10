@@ -73,6 +73,10 @@ public class LangageLoader : MonoBehaviour {
         applyTradToscene("english");
     }
 
+    void Update()
+    {
+
+    }
 }
 [System.Serializable]
 public struct Langage
