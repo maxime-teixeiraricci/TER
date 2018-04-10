@@ -6,7 +6,9 @@ using UnityEngine.UI;
 public class CreateTeam : MonoBehaviour
 {
     public GameObject window;
-
+    public Dropdown teamDropDown;
+    List<string> dropOption = new List<string>();
+    public InputField mainInputField;
 
     public void NameInput()
     {
@@ -20,8 +22,9 @@ public class CreateTeam : MonoBehaviour
 
     public void validateName()
     {
+        dropOption.Add(mainInputField.text);
+        teamDropDown.AddOptions(dropOption);
         window.SetActive(false);
-
     }
 }
 

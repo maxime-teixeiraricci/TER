@@ -478,8 +478,8 @@ RectTransform:
   - {fileID: 486343959}
   - {fileID: 1172038350}
   - {fileID: 900120569}
-  - {fileID: 2095814446}
   - {fileID: 478806640}
+  - {fileID: 2095814446}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2285,25 +2285,25 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &478806640
 RectTransform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 478806639}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 55236459}
   - {fileID: 1375428991}
   m_Father: {fileID: 40282827}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -4.2200554e-10, y: 0.000007629511}
+  m_AnchoredPosition: {x: 0, y: 0.00012207031}
   m_SizeDelta: {x: -1060.9, y: -579.53}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &478806641
@@ -4054,6 +4054,7 @@ GameObject:
   - component: {fileID: 866527487}
   - component: {fileID: 866527486}
   - component: {fileID: 866527489}
+  - component: {fileID: 866527490}
   m_Layer: 5
   m_Name: CancelButton
   m_TagString: Untagged
@@ -4118,7 +4119,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 866527487}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 866527490}
+        m_MethodName: disableWindow
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &866527487
@@ -4168,6 +4180,20 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
+--- !u!114 &866527490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 866527484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4315223f67ad7047a331e32f06ab7f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  window: {fileID: 478806639}
+  teamDropDown: {fileID: 0}
+  mainInputField: {fileID: 0}
 --- !u!1 &887946132
 GameObject:
   m_ObjectHideFlags: 0
@@ -5608,6 +5634,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   window: {fileID: 478806639}
+  teamDropDown: {fileID: 0}
+  mainInputField: {fileID: 0}
 --- !u!114 &1137934576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10611,6 +10639,7 @@ GameObject:
   - component: {fileID: 2093819954}
   - component: {fileID: 2093819953}
   - component: {fileID: 2093819956}
+  - component: {fileID: 2093819957}
   m_Layer: 5
   m_Name: OkButton
   m_TagString: Untagged
@@ -10675,7 +10704,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2093819954}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2093819957}
+        m_MethodName: validateName
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2093819954
@@ -10725,6 +10765,20 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
+--- !u!114 &2093819957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2093819951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4315223f67ad7047a331e32f06ab7f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  window: {fileID: 478806639}
+  teamDropDown: {fileID: 688641940}
+  mainInputField: {fileID: 1518910184}
 --- !u!1 &2095814445
 GameObject:
   m_ObjectHideFlags: 0
@@ -10756,7 +10810,7 @@ RectTransform:
   m_Children:
   - {fileID: 1564497119}
   m_Father: {fileID: 40282827}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90.00001}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
