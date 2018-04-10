@@ -1,5 +1,4 @@
 # Percepts
-
 	PERCEPT_ALLY:PERCEPT_Ally_in_Range
 	PERCEPT_BLOCKED:PERCEPT_Blocked
 	PERCEPT_IS_RELOADED:PERCEPT_Loaded
@@ -14,21 +13,14 @@
 	PERCEPT_FOOD_NEAR:PERCEPT_Close_Food
 	PERCEPT_ENEMY:PERCEPT_Opponent_in_Range
 	PERCEPT_BASE_NEAR_ALLY:PERCEPT_Close_Ally_Base
-
 #Contrats
-
 	CONTRACT_ELIMINATION:CONTRACT_I_Have_an_Elimination_Contract
 	CONTRACT_ELIMINATION_TARGET_NEAR:CONTRACT_Close_Contract's_Target
-
 # Messages
-
 	MESSAGE_HELP:MESSAGE_Help
 	MESSAGE_POSITION:MESSAGE_Give_Position
 	MESSAGE_ATTACK:MESSAGE_Attack
-	
-
 # Actions
-
 	ACTION_CREATE_LIGHT:ACTION_Create_Light
 	ACTION_CREATE_HEAVY:ACTION_Create_Heavy
 	ACTION_CREATE_EXPLORER:ACTION_Create_Explorer
@@ -43,24 +35,17 @@
 	ACTION_MOVE_UNTIL_UNBLOCKED:ACTION_Move_Until_Unblocked
 	ACTION_PICK:ACTION_Pick_Up
 	ACTION_BACK_TO_BASE:ACTION_Back_To_Base
-	
 # Actions non terminales
-
 	ACTN_HEADING_SOUTH:ACTN_Turn_Toward_South
 	ACTN_HEADING_NORTH:ACTN_Turn_Toward_North
 	ACTN_HEADING_EAST:ACTN_Turn_Toward_East
 	ACTN_HEADING_WEST:ACTN_Turn_Toward_West
 	ACTN_TURN_AROUND:ACTN_Turn_Arround
 	ACTN_ADD_ELIMINATION_CONTRACT:ACTN_Add_Elimination_Contract
-
 # Map en jeu 
-
 	Recommencer:Try again
 	Quitter:Quit
-	
 # Menu principal
-
-	
 	Reload Teams:Reaload teams
 	Jouer:Play
 	Editer:Edit
@@ -71,9 +56,7 @@
 	Equipe 4:Team 4
 	Nombre de joueurs:Number of players
 	WarBot MODE:WarBot game mode
-
 # Editeur 
-
 	Start:Start
 	Propriétés:Properties
 	MaxHealth:Maximum Health

@@ -1,5 +1,4 @@
 # Percepts
-
 	PERCEPT_ALLY:PERCEPT_Allié_à_portée
 	PERCEPT_BLOCKED:PERCEPT_Bloqué
 	PERCEPT_IS_RELOADED:PERCEPT_Rechargé
@@ -14,21 +13,14 @@
 	PERCEPT_FOOD_NEAR:PERCEPT_Nourriture_proche
 	PERCEPT_ENEMY:PERCEPT_Ennemi_à_portée
 	PERCEPT_BASE_NEAR_ALLY:PERCEPT_Base_alliée_proche
-
 #Contrats
-
 	CONTRACT_ELIMINATION:CONTRACT_J'ai_un_contrat_d'élimination
 	CONTRACT_ELIMINATION_TARGET_NEAR:CONTRACT_Cible_du_contrat_proche
-
 # Messages
-
 	MESSAGE_HELP:MESSAGE_A_l'aide
 	MESSAGE_POSITION:MESSAGE_Donner_sa_position
 	MESSAGE_ATTACK:MESSAGE_Attaquer
-	
-
 # Actions
-
 	ACTION_CREATE_LIGHT:ACTION_Créer_char_léger
 	ACTION_CREATE_HEAVY:ACTION_Créer_tank
 	ACTION_CREATE_EXPLORER:ACTION_Créer_explorateur
@@ -43,24 +35,17 @@
 	ACTION_MOVE_UNTIL_UNBLOCKED:ACTION_Avancer_jusqu'à_être_débloqué
 	ACTION_PICK:ACTION_Ramasser
 	ACTION_BACK_TO_BASE:ACTION_Rentrer_à_la_base
-	
 # Actions non terminales
-
 	ACTN_HEADING_SOUTH:ACTN_Se_touner_vers_le_sud
 	ACTN_HEADING_NORTH:ACTN_Se_touner_vers_le_nord
 	ACTN_HEADING_EAST:ACTN_Se_touner_vers_l'est
 	ACTN_HEADING_WEST:ACTN_Se_tourner_vers_l'ouest
 	ACTN_TURN_AROUND:ACTN_Se_retourner
 	ACTN_ADD_ELIMINATION_CONTRACT:ACTN_Ajouter_un_contrat_d'elemination
-
 # Map en jeu 
-
 	Recommencer:Recommencer
 	Quitter:Quitter
-	
-# Menu principal
-
-	
+# Menu principal	
 	Reload Teams:Recharger les equipes
 	Jouer:Jouer
 	Editer:Editer
@@ -71,9 +56,7 @@
 	Equipe 4:Equipe 4
 	Nombre de joueurs:Nombre de joueurs
 	WarBot MODE:Mode de jeu WarBot
-
 # Editeur 
-
 	Start:Debut
 	Propriétés:Propriétés
 	MaxHealth:Vie Maximale
