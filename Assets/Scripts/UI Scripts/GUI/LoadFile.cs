@@ -129,10 +129,10 @@ public class LoadFile : MonoBehaviour
 
                     _condPuzzle.GetComponent<ManageDragAndDrop>().setGridPosition(currentPercept.GetComponent<ManageDragAndDrop>().getGridPosition() + delta);
                     currentPercept = _condPuzzle;
-                    _condPuzzle.GetComponent<CondPuzzleScript>()._value = s;
+                    _condPuzzle.GetComponent<PuzzleScript>()._value = s;
                     if (s.Contains("NOT_"))
                     {
-                        _condPuzzle.GetComponent<CondPuzzleScript>().NegationBoutton();
+                        _condPuzzle.GetComponent<PuzzleScript>().NegationBoutton();
                     }
                     delta = new Vector2(2, 0);
                 }
@@ -157,7 +157,7 @@ public class LoadFile : MonoBehaviour
                         {
                             _messPuzzle.GetComponent<ManageDragAndDrop>().setGridPosition(currentAction.GetComponent<ManageDragAndDrop>().getGridPosition() + delta);
                             currentAction = _messPuzzle;
-                            _messPuzzle.GetComponent<CondPuzzleScript>()._value = s._intitule;
+                            _messPuzzle.GetComponent<PuzzleScript>()._value = s._intitule;
                             /*
                             _messPuzzle.GetComponent<CondPuzzleScript>().messageDropDown.value
                             */
@@ -173,7 +173,7 @@ public class LoadFile : MonoBehaviour
                 {
                     GameObject _actPuzzle = Instantiate(actionPuzzle, editeurTransform);
                     _actPuzzle.GetComponent<ManageDragAndDrop>().setGridPosition(currentAction.GetComponent<ManageDragAndDrop>().getGridPosition() + delta);
-                    _actPuzzle.GetComponent<CondPuzzleScript>()._value = I._stringAction;
+                    _actPuzzle.GetComponent<PuzzleScript>()._value = I._stringAction;
                 }
                 delta = new Vector2(0, -2);
             }

@@ -41,9 +41,9 @@ public class createPuzzle : MonoBehaviour {
     public void create()
     {
         GameObject puzzleClone = (GameObject)Instantiate(puzzle, GameObject.Find("MaskEditeur").transform);
-        if (puzzleClone.GetComponent<CondPuzzleScript>())
+        if (puzzleClone.GetComponent<PuzzleScript>())
         {
-            puzzleClone.GetComponent<CondPuzzleScript>()._value = _label;
+            puzzleClone.GetComponent<PuzzleScript>()._value = _label;
         }
         puzzleClone.GetComponent<RectTransform>().anchoredPosition = new Vector3(positionInitial.x, positionInitial.y,15);
         puzzleClone.transform.parent = GameObject.Find("Editeur").transform;

@@ -10,9 +10,10 @@ public class IfPuzzleScript : MonoBehaviour
     public GameObject puzzleActionObject;
     public GameObject puzzleIfObject;
     public String validPlace = "false";
+    public bool isValid;
     public ManageDragAndDrop manager;
     Image image;
-    Color defaultColor;
+    public Color defaultColor;
     public Color validColor = new Color(158.0F / 255, 1, 79.0F / 255);
     public int ID;
 
@@ -29,90 +30,83 @@ public class IfPuzzleScript : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
+        image.color = (isValid) ? validColor : defaultColor;
+    }
+
+    public void UpdatePuzzle()
+    {
+        puzzleCondObject = null;
+        puzzleActionObject = null;
+        puzzleIfObject = null;
+
         UpdateIfPuzzle();
         updateCondPuzzle();
-        updateActionPuzzle();
-        
-        
-        if (debugInstruction)
+        updateActPuzzle();
+
+        if (puzzleCondObject)
         {
-            debugInstruction = false;
-            Instruction I = createInstruction();
-            print(I.toString());
+            puzzleCondObject.GetComponent<PuzzleScript>().isValid = true;
+            puzzleCondObject.GetComponent<PuzzleScript>().UpdateNextPuzzle();
         }
-    }
+        if (puzzleActionObject)
+        {
+            puzzleActionObject.GetComponent<PuzzleScript>().isValid = true;
+            puzzleActionObject.GetComponent<PuzzleScript>().UpdateNextPuzzle();
+        }
+        if (puzzleIfObject)
+        {
+            puzzleIfObject.GetComponent<IfPuzzleScript>().isValid = true;
+            puzzleIfObject.GetComponent<IfPuzzleScript>().UpdatePuzzle();
+        }
+}
 
     void updateCondPuzzle()
     {
-        puzzleCondObject = null;
         foreach (GameObject puzzle in GameObject.FindGameObjectsWithTag("Puzzle"))
         {
-            puzzle.GetComponent<CondPuzzleScript>().beforePuzzle = null;
-            if (manager.posGridX + 1 == puzzle.GetComponent<ManageDragAndDrop>().posGridX && manager.posGridY == puzzle.GetComponent<ManageDragAndDrop>().posGridY &&
-                puzzle.GetComponent<CondPuzzleScript>().type == CondPuzzleScript.Type.CONDITION)
+            Vector2 currentGridPos = manager.getGridPosition();
+            Vector2 puzzleGridPos = puzzle.GetComponent<ManageDragAndDrop>().getGridPosition();
+            PuzzleScript.Type typePuzzle = puzzle.GetComponent<PuzzleScript>().type;
+
+
+            if (currentGridPos + new Vector2(1,0) == puzzleGridPos && typePuzzle == PuzzleScript.Type.CONDITION)
             {
                 puzzleCondObject = puzzle;
-
-                puzzle.GetComponent<CondPuzzleScript>().beforePuzzle = gameObject;
-                puzzle.GetComponent<CondPuzzleScript>().ifPuzzle = gameObject;
-            }
-        }
-    }
-
-    void updateActionPuzzle()
-    {
-        puzzleActionObject = null;
-        foreach (GameObject puzzle in GameObject.FindGameObjectsWithTag("Puzzle"))
-        {
-            if (manager.posGridX + 1 == puzzle.GetComponent<ManageDragAndDrop>().posGridX && manager.posGridY - 1 == puzzle.GetComponent<ManageDragAndDrop>().posGridY &&
-                (puzzle.GetComponent<CondPuzzleScript>().type == CondPuzzleScript.Type.ACTION || puzzle.GetComponent<CondPuzzleScript>().type == CondPuzzleScript.Type.ACTION_NON_TERMINAL || puzzle.GetComponent<CondPuzzleScript>().type == CondPuzzleScript.Type.MESSAGE))
-            {
-                puzzleActionObject = puzzle;
-                puzzle.GetComponent<CondPuzzleScript>().beforePuzzle = gameObject;
-                puzzle.GetComponent<CondPuzzleScript>().ifPuzzle = gameObject;
                 break;
             }
         }
     }
 
-  
+    void updateActPuzzle()
+    {
+        foreach (GameObject puzzle in GameObject.FindGameObjectsWithTag("Puzzle"))
+        {
+            Vector2 currentGridPos = manager.getGridPosition();
+            Vector2 puzzleGridPos = puzzle.GetComponent<ManageDragAndDrop>().getGridPosition();
+            PuzzleScript.Type typePuzzle = puzzle.GetComponent<PuzzleScript>().type;
+            
+            if (currentGridPos + new Vector2(1, -1) == puzzleGridPos && (
+                typePuzzle == PuzzleScript.Type.ACTION || typePuzzle == PuzzleScript.Type.ACTION_NON_TERMINAL || typePuzzle == PuzzleScript.Type.MESSAGE))
+            {
+                puzzleActionObject = puzzle;
+                break;
+            }
+        }
+    }
 
     void UpdateIfPuzzle()
     {
-        image.color = defaultColor;
-        validPlace = "false";
-        puzzleIfObject = null;
-
-        GameObject startPuzzle = GameObject.FindGameObjectWithTag("StartPuzzle");
         foreach (GameObject puzzle in GameObject.FindGameObjectsWithTag("IfPuzzle"))
         {
-            if(manager.posGridX == puzzle.GetComponent<ManageDragAndDrop>().posGridX && manager.posGridY - 2 == puzzle.GetComponent<ManageDragAndDrop>().posGridY)
+            Vector2 currentGridPos = manager.getGridPosition();
+            Vector2 puzzleGridPos = puzzle.GetComponent<ManageDragAndDrop>().getGridPosition();
+            if (manager.getGridPosition() + new Vector2(0, -2) == puzzle.GetComponent<ManageDragAndDrop>().getGridPosition())
             {
                 puzzleIfObject = puzzle;
                 break;
             }
         }
-
-        foreach (GameObject puzzle in GameObject.FindGameObjectsWithTag("IfPuzzle"))
-        {
-            if (manager.posGridX == startPuzzle.GetComponent<ManageDragAndDrop>().posGridX && manager.posGridY + 1 == startPuzzle.GetComponent<ManageDragAndDrop>().posGridY ||
-            (manager.posGridX == puzzle.GetComponent<ManageDragAndDrop>().posGridX && manager.posGridY + 2 == puzzle.GetComponent<ManageDragAndDrop>().posGridY && puzzle.GetComponent<IfPuzzleScript>().validPlace == "true"))
-            {
-                image.color = validColor;
-                validPlace = "true";
-                break;
-            }
-        }
-
-
     }
-
-    /*
-      behavior = new List<Instruction>(){
-            new Instruction(new string[] { "PERCEPT_LIFE_NOT_MAX","PERCEPT_BAG_NOT_EMPTY"}, "ACTION_HEAL"),
-            new Instruction(new string[] { "PERCEPT_BAG_25"}, "ACTION_CREATE_HEAVY"),
-        new Instruction(new string[] { "PERCEPT_BAG_10"}, "ACTION_CREATE_LIGHT")};
-        */
 
     public Instruction createInstruction()
     {
@@ -124,26 +118,26 @@ public class IfPuzzleScript : MonoBehaviour
         GameObject actionObjectCurrent = puzzleActionObject;
         while (condObjectCurrent != null)
         {
-            percepts.Add(condObjectCurrent.GetComponent<CondPuzzleScript>()._value);
-            condObjectCurrent = condObjectCurrent.GetComponent<CondPuzzleScript>().nextPuzzle;
+            percepts.Add(condObjectCurrent.GetComponent<PuzzleScript>()._value);
+            condObjectCurrent = condObjectCurrent.GetComponent<PuzzleScript>().nextPuzzle;
         }
         while (actionObjectCurrent != null)
         {
-            if (actionObjectCurrent.GetComponent<CondPuzzleScript>().type == CondPuzzleScript.Type.MESSAGE)
+            if (actionObjectCurrent.GetComponent<PuzzleScript>().type == PuzzleScript.Type.MESSAGE)
             {
-                MessageStruct message = new MessageStruct(actionObjectCurrent.GetComponent<CondPuzzleScript>()._value, actionObjectCurrent.GetComponent<CondPuzzleScript>().messageDropDown.captionText.text);
+                MessageStruct message = new MessageStruct(actionObjectCurrent.GetComponent<PuzzleScript>()._value, actionObjectCurrent.GetComponent<PuzzleScript>().messageDropDown.captionText.text);
                 ms.Add(message);
             }
-            else if (actionObjectCurrent.GetComponent<CondPuzzleScript>().type == CondPuzzleScript.Type.ACTION_NON_TERMINAL)
+            else if (actionObjectCurrent.GetComponent<PuzzleScript>().type == PuzzleScript.Type.ACTION_NON_TERMINAL)
             {
-                MessageStruct message = new MessageStruct(actionObjectCurrent.GetComponent<CondPuzzleScript>()._value, "NONE");
+                MessageStruct message = new MessageStruct(actionObjectCurrent.GetComponent<PuzzleScript>()._value, "NONE");
                 ms.Add(message);
             }
             else
             {
-                action = actionObjectCurrent.GetComponent<CondPuzzleScript>()._value;
+                action = actionObjectCurrent.GetComponent<PuzzleScript>()._value;
             }
-            actionObjectCurrent = actionObjectCurrent.GetComponent<CondPuzzleScript>().nextPuzzle;
+            actionObjectCurrent = actionObjectCurrent.GetComponent<PuzzleScript>().nextPuzzle;
 
 
 

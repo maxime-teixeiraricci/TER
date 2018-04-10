@@ -449,7 +449,7 @@ MonoBehaviour:
   validPlace: false
   isValid: 0
   neg: 0
-  defaultColor: {r: 0.36764705, g: 0.36764705, b: 0.36764705, a: 1}
+  defaultColor: {r: 0.43382353, g: 0.43382353, b: 0.43382353, a: 0.784}
   validColor: {r: 1, g: 0.9803922, b: 0.38823533, a: 1}
   messageDropDown: {fileID: 114297778775931320}
 --- !u!114 &114194241693491148

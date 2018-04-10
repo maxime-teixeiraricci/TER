@@ -17,9 +17,9 @@ public class CreatePuzzle : MonoBehaviour
         {
             _puzzle.GetComponent<ActionPuzzleScript>().actionName = _label;
         }
-        else if (_puzzle.GetComponent<CondPuzzleScript>())
+        else if (_puzzle.GetComponent<PuzzleScript>())
         {
-            _puzzle.GetComponent<CondPuzzleScript>()._value = _label;
+            _puzzle.GetComponent<PuzzleScript>()._value = _label;
         }
             _puzzle.transform.parent = GameObject.Find("Editeur").transform;
         _puzzle.GetComponent<RectTransform>().anchoredPosition = positionInitial;
