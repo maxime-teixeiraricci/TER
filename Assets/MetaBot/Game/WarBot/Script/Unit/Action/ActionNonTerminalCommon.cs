@@ -59,7 +59,7 @@ public class ActionNonTerminalCommon : ActionNonTerminal
             print("ACTN_TOWARD_MESSAGE_SENDER " + _tmpMessage);
             if (_tmpMessage != null)
             {
-                print("Heading : " + _tmpMessage.heading);
+
                 GetComponent<Stats>()._heading = _tmpMessage.heading;
             }
         };
