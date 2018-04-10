@@ -1,72 +1,72 @@
 # Percepts
-	PERCEPT_ALLY:PERCEPT_Allié_à_portée
-	PERCEPT_BLOCKED:PERCEPT_Bloqué
-	PERCEPT_IS_RELOADED:PERCEPT_Rechargé
-	PERCEPT_IS_NOT_RELOADED:PERCEPT_Pas_Rechargé
-	PERCEPT_LIFE_MAX:PERCEPT_Vie_au_niveau_max
-	PERCEPT_BAG_FULL:PERCEPT_Sac_plein
-	PERCEPT_BAG_EMPTY:PERCEPT_Sac_vide
-	PERCEPT_BAG_10:PERCEPT_Au_moins_10_ressources_dans_le_sac
-	PERCEPT_BAG_25:PERCEPT_Au_moins_25_ressources_dans_le_sac
-	PERCEPT_CONTRACT:PERCEPT_J'ai_un_contrat
-	PERCEPT_FOOD:PERCEPT_Nourriture_à_portée
-	PERCEPT_FOOD_NEAR:PERCEPT_Nourriture_proche
-	PERCEPT_ENEMY:PERCEPT_Ennemi_à_portée
-	PERCEPT_BASE_NEAR_ALLY:PERCEPT_Base_alliée_proche
+	PERCEPT_ALLY=PERCEPT_AlliÃ©_Ã _portÃ©e
+	PERCEPT_BLOCKED=PERCEPT_BloquÃ©
+	PERCEPT_IS_RELOADED=PERCEPT_RechargÃ©
+	PERCEPT_IS_NOT_RELOADED=PERCEPT_Pas_RechargÃ©
+	PERCEPT_LIFE_MAX=PERCEPT_Vie_au_niveau_max
+	PERCEPT_BAG_FULL=PERCEPT_Sac_plein
+	PERCEPT_BAG_EMPTY=PERCEPT_Sac_vide
+	PERCEPT_BAG_10=PERCEPT_Au_moins_10_ressources_dans_le_sac
+	PERCEPT_BAG_25=PERCEPT_Au_moins_25_ressources_dans_le_sac
+	PERCEPT_CONTRACT=PERCEPT_J'ai_un_contrat
+	PERCEPT_FOOD=PERCEPT_Nourriture_Ã _portÃ©e
+	PERCEPT_FOOD_NEAR=PERCEPT_Nourriture_proche
+	PERCEPT_ENEMY=PERCEPT_Ennemi_Ã _portÃ©e
+	PERCEPT_BASE_NEAR_ALLY=PERCEPT_Base_alliÃ©e_proche
 #Contrats
-	CONTRACT_ELIMINATION:CONTRACT_J'ai_un_contrat_d'élimination
-	CONTRACT_ELIMINATION_TARGET_NEAR:CONTRACT_Cible_du_contrat_proche
+	CONTRACT_ELIMINATION=CONTRACT_J'ai_un_contrat_d'Ã©limination
+	CONTRACT_ELIMINATION_TARGET_NEAR=CONTRACT_Cible_du_contrat_proche
 # Messages
-	MESSAGE_HELP:MESSAGE_A_l'aide
-	MESSAGE_POSITION:MESSAGE_Donner_sa_position
-	MESSAGE_ATTACK:MESSAGE_Attaquer
+	MESSAGE_HELP=MESSAGE_A_l'aide
+	MESSAGE_POSITION=MESSAGE_Donner_sa_position
+	MESSAGE_ATTACK=MESSAGE_Attaquer
 # Actions
-	ACTION_CREATE_LIGHT:ACTION_Créer_char_léger
-	ACTION_CREATE_HEAVY:ACTION_Créer_tank
-	ACTION_CREATE_EXPLORER:ACTION_Créer_explorateur
-	ACTION_IDLE:ACTION_Ne_rien_faire
-	ACTION_GIVE_RESSOURCE:ACTION_Donner_une_ressource
-	ACTION_HEAL:ACTION_Se_soigner
-	ACTION_FIRE:ACTION_Tirer
-	ACTION_RELOAD:ACTION_Recharger
-	ACTION_MOVE:ACTION_Avancer
-	ACTION_RANDOM_MOVE:ACTION_Avancer_orientation_aléatoire
-	ACTION_TURN_AROUND_MOVE:ACTION_Se_retourner_puis_avancer
-	ACTION_MOVE_UNTIL_UNBLOCKED:ACTION_Avancer_jusqu'à_être_débloqué
-	ACTION_PICK:ACTION_Ramasser
-	ACTION_BACK_TO_BASE:ACTION_Rentrer_à_la_base
+	ACTION_CREATE_LIGHT=ACTION_CrÃ©er_char_lÃ©ger
+	ACTION_CREATE_HEAVY=ACTION_CrÃ©er_tank
+	ACTION_CREATE_EXPLORER=ACTION_CrÃ©er_explorateur
+	ACTION_IDLE=ACTION_Ne_rien_faire
+	ACTION_GIVE_RESSOURCE=ACTION_Donner_une_ressource
+	ACTION_HEAL=ACTION_Se_soigner
+	ACTION_FIRE=ACTION_Tirer
+	ACTION_RELOAD=ACTION_Recharger
+	ACTION_MOVE=ACTION_Avancer
+	ACTION_RANDOM_MOVE=ACTION_Avancer_orientation_alÃ©atoire
+	ACTION_TURN_AROUND_MOVE=ACTION_Se_retourner_puis_avancer
+	ACTION_MOVE_UNTIL_UNBLOCKED=ACTION_Avancer_jusqu'Ã _Ãªtre_dÃ©bloquÃ©
+	ACTION_PICK=ACTION_Ramasser
+	ACTION_BACK_TO_BASE=ACTION_Rentrer_Ã _la_base
 # Actions non terminales
-	ACTN_HEADING_SOUTH:ACTN_Se_touner_vers_le_sud
-	ACTN_HEADING_NORTH:ACTN_Se_touner_vers_le_nord
-	ACTN_HEADING_EAST:ACTN_Se_touner_vers_l'est
-	ACTN_HEADING_WEST:ACTN_Se_tourner_vers_l'ouest
-	ACTN_TURN_AROUND:ACTN_Se_retourner
-	ACTN_ADD_ELIMINATION_CONTRACT:ACTN_Ajouter_un_contrat_d'elemination
+	ACTN_HEADING_SOUTH=ACTN_Se_touner_vers_le_sud
+	ACTN_HEADING_NORTH=ACTN_Se_touner_vers_le_nord
+	ACTN_HEADING_EAST=ACTN_Se_touner_vers_l'est
+	ACTN_HEADING_WEST=ACTN_Se_tourner_vers_l'ouest
+	ACTN_TURN_AROUND=ACTN_Se_retourner
+	ACTN_ADD_ELIMINATION_CONTRACT=ACTN_Ajouter_un_contrat_d'elemination
 # Map en jeu 
-	Recommencer:Recommencer
-	Quitter:Quitter
+	Recommencer=Recommencer
+	Quitter=Quitter
 # Menu principal	
-	Reload Teams:Recharger les equipes
-	Jouer:Jouer
-	Editer:Editer
-	Carte de test:Carte de test
-	Equipe 1:Equipe 1
-	Equipe 2:Equipe 2
-	Equipe 3:Equipe 3
-	Equipe 4:Equipe 4
-	Nombre de joueurs:Nombre de joueurs
-	WarBot MODE:Mode de jeu WarBot
+	Reload Teams=Recharger les equipes
+	Jouer=Jouer
+	Editer=Editer
+	Carte de test=Carte de test
+	Equipe 1=Equipe 1
+	Equipe 2=Equipe 2
+	Equipe 3=Equipe 3
+	Equipe 4=Equipe 4
+	Nombre de joueurs :=Nombre de joueurs :
+	WarBot MODE=Mode de jeu WarBot
 # Editeur 
-	Start:Debut
-	Propriétés:Propriétés
-	MaxHealth:Vie Maximale
-	MaxInventory:Taille de l'inventaire
-	PerceptionRadius:Rayon de perception
-	SpawnDelay:Délai d'apparition
-	Equipe:Equipe
-	Unité:Unité
-	CONTROLES:CONTROLES
-	CONDITIONS:CONDITIONS
-	ACTIONS:ACTIONS
-	MESSAGES:MESSAGES
-	Retour:Retour
+	Start=Debut
+	PropriÃ©tÃ©s=PropriÃ©tÃ©s
+	MaxHealth=Vie Maximale
+	MaxInventory=Taille de l'inventaire
+	PerceptionRadius=Rayon de perception
+	SpawnDelay=DÃ©lai d'apparition
+	Equipe=Equipe
+	UnitÃ©=UnitÃ©
+	CONTROLES=CONTROLES
+	CONDITIONS=CONDITIONS
+	ACTIONS=ACTIONS
+	MESSAGES=MESSAGES
+	Retour=Retour

@@ -29,11 +29,11 @@ public class Traducteur : MonoBehaviour {
     }
 	// Use this for initialization
 	void Start () {
-        Traduction();
+        
     }
 	
 	// Update is called once per frame
 	void Update () {
-
-	}
+        Traduction();
+    }
 }
