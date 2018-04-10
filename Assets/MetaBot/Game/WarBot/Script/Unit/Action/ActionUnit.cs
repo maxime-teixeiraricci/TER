@@ -60,18 +60,5 @@ public class ActionUnit : ActionCommon
                 }
             }
         };
-        _actions["ACTION_CREATE_LIGHT"] = delegate () {
-            print("OK");
-            Objet o = GetComponent<Inventory>().find("Ressource");
-
-            GetComponent<Inventory>()._objets[o] -= 10;
-            GetComponent<CreatorUnit>().Create("Light");
-        };
-        _actions["ACTION_CREATE_HEAVY"] = delegate () {
-            print("OK");
-            Objet o = GetComponent<Inventory>().find("Ressource");
-            GetComponent<Inventory>()._objets[o] -= 25;
-            GetComponent<CreatorUnit>().Create("Heavy");
-        };
     }
 }
