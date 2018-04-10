@@ -9,6 +9,7 @@ public class CreateTeam : MonoBehaviour
     public Dropdown teamDropDown;
     List<string> dropOption = new List<string>();
     public InputField mainInputField;
+    XMLWarbotInterpreter interpreter;
 
     public void NameInput()
     {
@@ -22,8 +23,13 @@ public class CreateTeam : MonoBehaviour
 
     public void validateName()
     {
-        dropOption.Add(mainInputField.text);
+        string teamName = mainInputField.text;
+        string path = Constants.teamsDirectory + Constants.gameModeWarBot;
+        dropOption.Add(teamName);
         teamDropDown.AddOptions(dropOption);
+        interpreter = new XMLWarbotInterpreter();
+        interpreter.generateEmptyFile(teamName, path);
+
         window.SetActive(false);
     }
 }
