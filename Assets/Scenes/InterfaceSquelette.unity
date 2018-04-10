@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -428,6 +428,7 @@ GameObject:
   - component: {fileID: 61570353}
   - component: {fileID: 61570355}
   - component: {fileID: 61570354}
+  - component: {fileID: 61570356}
   m_Layer: 5
   m_Name: ChoiceTeamText
   m_TagString: Untagged
@@ -487,6 +488,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 61570352}
+--- !u!114 &61570356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 61570352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e6d991c239194b4a82c285df21310ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  langues: []
+  conteneur: {fileID: 832084734}
 --- !u!1001 &62669749
 Prefab:
   m_ObjectHideFlags: 0
@@ -629,6 +643,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ifPuzzle: {fileID: 0}
+--- !u!114 &101264366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 101264359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e6d991c239194b4a82c285df21310ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  langues: []
+  conteneur: {fileID: 451218004}
 --- !u!1 &109349085
 GameObject:
   m_ObjectHideFlags: 0
@@ -2019,6 +2046,11 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 448844832}
+--- !u!1 &451218004 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1742641102701704, guid: 7d6796989adc9c14aa6d274aab8450f7,
+    type: 2}
+  m_PrefabInternal: {fileID: 1376240924}
 --- !u!1 &486343958
 GameObject:
   m_ObjectHideFlags: 0
@@ -2030,6 +2062,7 @@ GameObject:
   - component: {fileID: 486343961}
   - component: {fileID: 486343960}
   - component: {fileID: 486343962}
+  - component: {fileID: 486343963}
   m_Layer: 5
   m_Name: MessagesButton
   m_TagString: Untagged
@@ -2141,6 +2174,19 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &486343963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 486343958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e6d991c239194b4a82c285df21310ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  langues: []
+  conteneur: {fileID: 1631820181}
 --- !u!1 &536546392
 GameObject:
   m_ObjectHideFlags: 0
@@ -2366,6 +2412,7 @@ GameObject:
   - component: {fileID: 605579441}
   - component: {fileID: 605579443}
   - component: {fileID: 605579442}
+  - component: {fileID: 605579444}
   m_Layer: 5
   m_Name: PropertiesValues
   m_TagString: Untagged
@@ -2425,6 +2472,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 605579440}
+--- !u!114 &605579444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 605579440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e6d991c239194b4a82c285df21310ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  langues: []
+  conteneur: {fileID: 2113180431}
 --- !u!1 &609563600
 GameObject:
   m_ObjectHideFlags: 0
@@ -2883,7 +2943,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 784990399}
   m_HandleRect: {fileID: 784990398}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0.99999994
   m_Size: 0.3496843
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -3758,6 +3818,7 @@ GameObject:
   - component: {fileID: 893869256}
   - component: {fileID: 893869255}
   - component: {fileID: 893869257}
+  - component: {fileID: 893869258}
   m_Layer: 5
   m_Name: ControleButton
   m_TagString: Untagged
@@ -3869,6 +3930,19 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &893869258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 893869253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e6d991c239194b4a82c285df21310ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  langues: []
+  conteneur: {fileID: 931699657}
 --- !u!224 &897028160 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224563889241861886, guid: 8a080157862b7fe4d97f1dcbcfd101bd,
@@ -3968,6 +4042,7 @@ GameObject:
   - component: {fileID: 900120571}
   - component: {fileID: 900120570}
   - component: {fileID: 900120573}
+  - component: {fileID: 900120574}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -4090,6 +4165,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a10a09c5dd0d3b4e8c88e0d406a9301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &900120574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 900120568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e6d991c239194b4a82c285df21310ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  langues: []
+  conteneur: {fileID: 1487341044}
 --- !u!1 &917180609
 GameObject:
   m_ObjectHideFlags: 0
@@ -4738,6 +4826,7 @@ GameObject:
   - component: {fileID: 1029037996}
   - component: {fileID: 1029037998}
   - component: {fileID: 1029037997}
+  - component: {fileID: 1029037999}
   m_Layer: 5
   m_Name: ChoiceUnitText
   m_TagString: Untagged
@@ -4797,6 +4886,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1029037995}
+--- !u!114 &1029037999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1029037995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e6d991c239194b4a82c285df21310ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  langues: []
+  conteneur: {fileID: 579249239}
 --- !u!1 &1033612570
 GameObject:
   m_ObjectHideFlags: 0
@@ -6551,6 +6653,7 @@ GameObject:
   - component: {fileID: 1382683876}
   - component: {fileID: 1382683875}
   - component: {fileID: 1382683877}
+  - component: {fileID: 1382683878}
   m_Layer: 5
   m_Name: ActionButton
   m_TagString: Untagged
@@ -6662,6 +6765,19 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &1382683878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1382683873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e6d991c239194b4a82c285df21310ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  langues: []
+  conteneur: {fileID: 1000012030}
 --- !u!1001 &1395301271
 Prefab:
   m_ObjectHideFlags: 0
@@ -7037,6 +7153,7 @@ GameObject:
   - component: {fileID: 1530512731}
   - component: {fileID: 1530512730}
   - component: {fileID: 1530512732}
+  - component: {fileID: 1530512733}
   m_Layer: 5
   m_Name: ConditionButton
   m_TagString: Untagged
@@ -7148,6 +7265,19 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &1530512733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1530512728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e6d991c239194b4a82c285df21310ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  langues: []
+  conteneur: {fileID: 798531592}
 --- !u!1 &1557864221
 GameObject:
   m_ObjectHideFlags: 0
@@ -7550,6 +7680,7 @@ GameObject:
   - component: {fileID: 1667929328}
   - component: {fileID: 1667929330}
   - component: {fileID: 1667929329}
+  - component: {fileID: 1667929331}
   m_Layer: 5
   m_Name: PropertiesText
   m_TagString: Untagged
@@ -7609,6 +7740,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1667929327}
+--- !u!114 &1667929331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1667929327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e6d991c239194b4a82c285df21310ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  langues: []
+  conteneur: {fileID: 1305862238}
 --- !u!1 &1711093219
 GameObject:
   m_ObjectHideFlags: 0
@@ -9038,7 +9182,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 190336735}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.45505732
+  m_Size: 0.45508623
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -9432,6 +9576,7 @@ GameObject:
   - component: {fileID: 2095814449}
   - component: {fileID: 2095814448}
   - component: {fileID: 2095814447}
+  - component: {fileID: 2095814450}
   m_Layer: 5
   m_Name: ANTButton
   m_TagString: Untagged
@@ -9543,6 +9688,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2095814445}
+--- !u!114 &2095814450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2095814445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e6d991c239194b4a82c285df21310ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  langues: []
+  conteneur: {fileID: 1564497118}
 --- !u!1 &2113180431
 GameObject:
   m_ObjectHideFlags: 0
