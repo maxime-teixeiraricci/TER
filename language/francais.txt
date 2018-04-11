@@ -79,6 +79,7 @@
 	MESSAGES=MESSAGES
 	Retour=Retour
 	ACTION NON TERMINALE=ACTION NON TERMINALE
+	SEND=Envoi
 # Properties
 	MaxHealth=Vie maximale
 	MaxInventory=Taille max de l'inventaire

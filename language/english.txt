@@ -79,7 +79,8 @@
 	MESSAGES=MESSAGES
 	Retour=Back
 	ACTION NON TERMINALE=NON-TERMINAL ACTION
-	# Properties
+	SEND=Send
+# Properties
 	MaxHealth=Maximum health
 	MaxInventory=Inventory size
 	PerceptionRadius=Perception radius

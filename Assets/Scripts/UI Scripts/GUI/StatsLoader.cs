@@ -120,10 +120,9 @@ public class StatsLoader : MonoBehaviour
             {
                 string oldText = statText.text;
                 line = line.Replace("   ", "").Replace(" ","");
-                System.Console.WriteLine("ligne :" + line);
                 string[] splited = line.Split(':');
-                Traducteur l = new Traducteur(langage, splited[0]);
-                string trad = l.Traduction();
+                GameObject.Find("GameManager").GetComponent<Traducteur>().setTextOriginal(splited[0]);
+                string trad = GameObject.Find("GameManager").GetComponent<Traducteur>().traduction;
                 line = "    "+trad + ": " + splited[1];
                 statText.text = line;
             }
@@ -131,10 +130,9 @@ public class StatsLoader : MonoBehaviour
             {
                 string oldText = statText.text;
                 line = line.Replace("   ", "").Replace(" ","") ;
-                System.Console.WriteLine("ligne :" + line);
                 string[] splited = line.Split(':');
-                Traducteur l = new Traducteur(langage, splited[0]);
-                string trad = l.Traduction();
+                GameObject.Find("GameManager").GetComponent<Traducteur>().setTextOriginal(splited[0]);
+                string trad = GameObject.Find("GameManager").GetComponent<Traducteur>().traduction;
                 line = "    "+trad + ": " + splited[1];
                 string newText = oldText + line;
                 statText.text = newText;
