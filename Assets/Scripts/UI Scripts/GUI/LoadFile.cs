@@ -16,6 +16,8 @@ public class LoadFile : MonoBehaviour
     public GameObject messagePuzzle;
     public GameObject antPuzzle;
     public Vector3 positionInitial;
+    public Scrollbar scrollEdit;
+    public Scrollbar scrollPieces;
     GameObject startPuzzle;
     NewFile clear;
 
@@ -195,12 +197,15 @@ public class LoadFile : MonoBehaviour
             }
             
         }
-        
+        scrollEdit.value = 1;
+        scrollPieces.value = 1;
+
     }
 
 
     public void Updating()
     {
+        
         string gamePath = "./teams/TestBot/";
         List<string> teams = new List<string>();
         string[] fileEntries = Directory.GetFiles(gamePath);
