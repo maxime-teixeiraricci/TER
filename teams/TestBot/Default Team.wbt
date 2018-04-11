@@ -65,34 +65,6 @@
       </actions>
     </instruction>
   </unit>
-  <unit name="Base">
-    <instruction>
-      <parameters>
-        <PERCEPT_ENEMY />
-      </parameters>
-      <message>
-        <ACTN_MESSAGE_ATTACK>
-          <Light />
-        </ACTN_MESSAGE_ATTACK>
-      </message>
-    </instruction>
-    <instruction>
-      <parameters>
-        <NOT_PERCEPT_LIFE_MAX />
-      </parameters>
-      <actions>
-        <ACTION_HEAL />
-      </actions>
-    </instruction>
-    <instruction>
-      <parameters>
-        <PERCEPT_BAG_10 />
-      </parameters>
-      <actions>
-        <ACTION_CREATE_LIGHT />
-      </actions>
-    </instruction>
-  </unit>
   <unit name="Explorer">
     <instruction>
       <parameters>
@@ -167,6 +139,32 @@
       </message>
       <actions>
         <ACTION_MOVE />
+      </actions>
+    </instruction>
+  </unit>
+  <unit name="Base">
+    <instruction>
+      <parameters />
+      <message>
+        <ACTN_MESSAGE_ATTACK>
+          <All />
+        </ACTN_MESSAGE_ATTACK>
+      </message>
+    </instruction>
+    <instruction>
+      <parameters />
+      <actions>
+        <ACTION_CREATE_LIGHT />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <NOT_PERCEPT_LIFE_MAX />
+        <PERCEPT_BAG_10 />
+        <PERCEPT_ENEMY />
+      </parameters>
+      <actions>
+        <ACTION_HEAL />
       </actions>
     </instruction>
   </unit>

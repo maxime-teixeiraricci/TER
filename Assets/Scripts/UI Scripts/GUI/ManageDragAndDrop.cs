@@ -64,12 +64,13 @@ public class ManageDragAndDrop : MonoBehaviour, IPointerEnterHandler//, IPointer
             transform.parent = GameObject.Find("Editeur").transform;
             transform.position = objPosition;
             GetComponent<RectTransform>().localPosition = new Vector3(GetComponent<RectTransform>().localPosition.x, GetComponent<RectTransform>().localPosition.y, 10);
-
+            /*
 
             float newX = Mathf.Min(Mathf.Max(GetComponent<RectTransform>().localPosition.x, -widthEditor / 2), widthEditor / 2);
             float newY = Mathf.Min(Mathf.Max(GetComponent<RectTransform>().localPosition.y, -heightEditor / 2), heightEditor / 2);
             Vector3 newPos = new Vector3(newX, newY, 10);
             GetComponent<RectTransform>().localPosition = newPos;
+            */
         }
 
     }
@@ -77,32 +78,17 @@ public class ManageDragAndDrop : MonoBehaviour, IPointerEnterHandler//, IPointer
     public void OnMouseUp()
 
     {
-        print("UP");
+        UpdateGridPosition();
+        // UPDATE verify puzzle
+
+        GameObject.Find("StartPuzzle").GetComponent<StartPuzzleScript>().UpdateAllValidPuzzles();
         float widthPuzzle = sizePuzzleX;
         float heightPuzzle = sizePuzzleY;
-
-
-        // Largeur et hauteur de l'éditeur de comportement
-        float widthEditor = GameObject.Find("Editeur").GetComponent<RectTransform>().rect.width;
-        float heightEditor = GameObject.Find("Editeur").GetComponent<RectTransform>().rect.height;
-        transform.parent = GameObject.Find("Editeur").transform;
-
-        float minX = -widthEditor / 2;
-        float maxX = widthEditor / 2;
-        float minY = -heightEditor / 2;
-        float maxY = heightEditor / 2;
-
-        posGridX = (int)Mathf.Round(GetComponent<RectTransform>().localPosition.x / widthPuzzle);
-        posGridY = (int)Mathf.Round(GetComponent<RectTransform>().localPosition.y / heightPuzzle);
         float newX = posGridX * widthPuzzle;
         float newY = posGridY * heightPuzzle;
         Vector3 newPos = new Vector3(newX, newY, 10);
 
         GetComponent<RectTransform>().localPosition = newPos;
-
-        // UPDATE verify puzzle
-
-        GameObject.Find("StartPuzzle").GetComponent<StartPuzzleScript>().UpdateAllValidPuzzles();
 
     }
 
@@ -111,6 +97,24 @@ public class ManageDragAndDrop : MonoBehaviour, IPointerEnterHandler//, IPointer
         return posGridX + posGridW == other.GetComponent<ManageDragAndDrop>().posGridX;
     }
 
+
+    public void UpdateGridPosition()
+    {
+        float widthPuzzle = sizePuzzleX;
+        float heightPuzzle = sizePuzzleY;
+        // Largeur et hauteur de l'éditeur de comportement
+        float widthEditor = GameObject.Find("Editeur").GetComponent<RectTransform>().rect.width;
+        float heightEditor = GameObject.Find("Editeur").GetComponent<RectTransform>().rect.height;
+        transform.SetParent(GameObject.Find("Editeur").transform, false);
+        float minX = -widthEditor / 2;
+        float maxX = widthEditor / 2;
+        float minY = -heightEditor / 2;
+        float maxY = heightEditor / 2;
+
+        posGridX = (int)Mathf.Round(GetComponent<RectTransform>().localPosition.x / widthPuzzle);
+        posGridY = (int)Mathf.Round(GetComponent<RectTransform>().localPosition.y / heightPuzzle);
+        
+    }
     public void setGridPosition(Vector2 p)
     {
         posGridX = (int)p.x;

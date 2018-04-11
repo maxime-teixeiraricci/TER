@@ -11,15 +11,26 @@ public class IfPuzzleScript : MonoBehaviour
     public GameObject puzzleIfObject;
     public String validPlace = "false";
     public bool isValid;
+    public bool isLock;
     public ManageDragAndDrop manager;
+
+    public Sprite lockImage;
+    public Sprite openLockImage;
+    public Image buttonLock;
+
     Image image;
     public Color defaultColor;
     public Color validColor = new Color(158.0F / 255, 1, 79.0F / 255);
     public int ID;
 
     public bool debugInstruction;
-	// Use this for initialization
-	void Start ()
+
+
+    public Vector2 deltaPosCondObject;
+    public Vector2 deltaPosActionObject;
+
+    // Use this for initialization
+    void Start ()
     {
         manager = GetComponent<ManageDragAndDrop>();
         image = GetComponent<Image>();
@@ -27,10 +38,53 @@ public class IfPuzzleScript : MonoBehaviour
 
     }
 	
+    public void LockButton()
+    {
+        isLock = !isLock;
+        if (puzzleCondObject)
+        {
+            puzzleCondObject.GetComponent<PuzzleScript>().LockUpdate(isLock);
+            deltaPosCondObject = puzzleCondObject.GetComponent<RectTransform>().anchoredPosition - GetComponent<RectTransform>().anchoredPosition;
+        }
+        if (puzzleActionObject)
+        {
+            puzzleActionObject.GetComponent<PuzzleScript>().LockUpdate(isLock);
+            deltaPosActionObject = puzzleActionObject.GetComponent<RectTransform>().anchoredPosition - GetComponent<RectTransform>().anchoredPosition;
+            
+        }
+        
+        
+    }
+
+    public void LockTransition()
+    {
+        if (puzzleCondObject)
+        {
+            puzzleCondObject.GetComponent<RectTransform>().anchoredPosition = deltaPosCondObject + GetComponent<RectTransform>().anchoredPosition;
+            puzzleCondObject.GetComponent<ManageDragAndDrop>().UpdateGridPosition();
+        }
+        if (puzzleActionObject)
+        {
+            puzzleActionObject.GetComponent<RectTransform>().anchoredPosition = deltaPosActionObject + GetComponent<RectTransform>().anchoredPosition;
+            puzzleActionObject.GetComponent<ManageDragAndDrop>().UpdateGridPosition();
+        }
+    }
+
 	// Update is called once per frame
 	void Update ()
     {
         image.color = (isValid) ? validColor : defaultColor;
+        if (isLock)
+        {
+            buttonLock.sprite = lockImage;
+            buttonLock.color = new Color(1f, 0.5f, 0.5f);
+            LockTransition();
+        }
+        else
+        {
+            buttonLock.sprite = openLockImage;
+            buttonLock.color = new Color(0.5f, 0.5f, 0.5f);
+        }
     }
 
     public void UpdatePuzzle()

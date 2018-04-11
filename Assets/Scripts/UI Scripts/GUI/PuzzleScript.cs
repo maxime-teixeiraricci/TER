@@ -17,12 +17,14 @@ public class PuzzleScript : MonoBehaviour
     public Text _label;
     public string validPlace = "false";
     public bool isValid;
+    public bool isLock;
     public bool neg;
     public Color defaultColor;
     public Color validColor;
     public Color currentColor;
     public Dropdown messageDropDown;
-    
+    public Vector2 deltaPosNextObject;
+
     // Use this for initialization
     void Start ()
     {
@@ -34,6 +36,19 @@ public class PuzzleScript : MonoBehaviour
             DropDownUpdate();
         }
     }
+
+    public void LockUpdate(bool value)
+    {
+        isLock = value;
+        if (nextPuzzle)
+        {
+            nextPuzzle.GetComponent<PuzzleScript>().LockUpdate(value);
+            deltaPosNextObject = nextPuzzle.GetComponent<RectTransform>().anchoredPosition - GetComponent<RectTransform>().anchoredPosition;
+            nextPuzzle.GetComponent<ManageDragAndDrop>().UpdateGridPosition();
+        }
+    }
+
+
 
     public void DropDownUpdate()
     {
@@ -115,6 +130,10 @@ public class PuzzleScript : MonoBehaviour
         // isValid = IsValid();
         currentColor = (isValid) ? validColor : defaultColor;
         GetComponent<Image>().color = currentColor;
+        if (isLock)
+        {
+            LockTransition();
+        }
     }
 
  
@@ -189,6 +208,15 @@ public class PuzzleScript : MonoBehaviour
                 nextPuzzle = puzzle;
                 break;
             }
+        }
+    }
+
+    public void LockTransition()
+    {
+        if (nextPuzzle && nextPuzzle.GetComponent<PuzzleScript>().isLock)
+        {
+            nextPuzzle.GetComponent<RectTransform>().anchoredPosition = deltaPosNextObject + GetComponent<RectTransform>().anchoredPosition;
+            nextPuzzle.GetComponent<ManageDragAndDrop>().UpdateGridPosition();
         }
     }
 
