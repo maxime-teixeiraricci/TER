@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.574817, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -526,8 +526,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 3.01, y: -3.92}
+  m_SizeDelta: {x: 13.1, y: 16.35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &55236460
 MonoBehaviour:
@@ -2360,7 +2360,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &478806640
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2378,8 +2378,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.00012207031}
-  m_SizeDelta: {x: -1060.9, y: -579.53}
+  m_AnchoredPosition: {x: 1.29, y: 0.86}
+  m_SizeDelta: {x: -1058.31, y: -577.81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &478806641
 MonoBehaviour:
@@ -2393,7 +2393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3395,7 +3395,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 784990399}
   m_HandleRect: {fileID: 784990398}
   m_Direction: 2
-  m_Value: 0.99999994
+  m_Value: 1
   m_Size: 0.3496843
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -4130,6 +4130,7 @@ GameObject:
   - component: {fileID: 866527486}
   - component: {fileID: 866527489}
   - component: {fileID: 866527490}
+  - component: {fileID: 866527491}
   m_Layer: 5
   m_Name: CancelButton
   m_TagString: Untagged
@@ -4269,6 +4270,20 @@ MonoBehaviour:
   window: {fileID: 478806639}
   teamDropDown: {fileID: 0}
   mainInputField: {fileID: 0}
+--- !u!114 &866527491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 866527484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1.5, y: 2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &887946132
 GameObject:
   m_ObjectHideFlags: 0
@@ -10010,7 +10025,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1313297919}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.5275855
+  m_Size: 0.52758545
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -10343,7 +10358,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 190336735}
   m_Direction: 2
   m_Value: 0.9999999
-  m_Size: 0.4550818
+  m_Size: 0.45509377
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -10768,6 +10783,7 @@ GameObject:
   - component: {fileID: 2093819953}
   - component: {fileID: 2093819956}
   - component: {fileID: 2093819957}
+  - component: {fileID: 2093819958}
   m_Layer: 5
   m_Name: OkButton
   m_TagString: Untagged
@@ -10907,6 +10923,20 @@ MonoBehaviour:
   window: {fileID: 478806639}
   teamDropDown: {fileID: 688641940}
   mainInputField: {fileID: 1518910184}
+--- !u!114 &2093819958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2093819951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1.5, y: 2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &2095814445
 GameObject:
   m_ObjectHideFlags: 0
