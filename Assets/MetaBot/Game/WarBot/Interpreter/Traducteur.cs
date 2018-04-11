@@ -2,38 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Traducteur : MonoBehaviour {
+public class Traducteur{
     public string langue;
     public string textOriginal;
     public string traduction;
 
-    public void Traduction()
+    public Traducteur(string l,string original)
     {
-        LangageLoader ll = GameObject.Find("GameManager").GetComponent<LangageLoader>();
-        foreach(Langage l in ll.langues)
+        langue = l;
+        textOriginal = original;
+        traduction = textOriginal;
+    }
+
+    public string Traduction()
+    {
+        string result;
+        LangageLoaderPuzzle llp = new LangageLoaderPuzzle(langue);
+        foreach(Langage l in llp.langues)
         {
             if (l.langue == langue)
             {
                 foreach(Traduction t in l.trads)
                 {
-                    if (textOriginal == t.cle)
+                    if (textOriginal.Equals(t.cle))
                     {
                         traduction = t.valeur;
-                        return;
+                        break;
                     }
                 }
             }
         }
 
-        traduction = textOriginal;
-    }
-	// Use this for initialization
-	void Start () {
-        Traduction();
-    }
-	
-	// Update is called once per frame
-	void Update () {
-        
+        result = traduction;
+        return result;
     }
 }

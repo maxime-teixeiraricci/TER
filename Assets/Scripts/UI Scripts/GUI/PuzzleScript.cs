@@ -23,12 +23,10 @@ public class PuzzleScript : MonoBehaviour
     public Color currentColor;
     public Dropdown messageDropDown;
     
-
     // Use this for initialization
     void Start ()
     {
-        
-        
+       
         NormalizedLabel();
         //defaultColor = image.color;
         if (messageDropDown)
@@ -43,29 +41,62 @@ public class PuzzleScript : MonoBehaviour
         List<string> options = new List<string>();
         options.Add("Target");
         foreach (UnitPerceptAction upa in GameObject.Find("EditorManager").GetComponent<EditorManagerScript>()._unitBehaviour)
-            options.Add(upa.unit);
+        options.Add(upa.unit);
         options.Add("All");
         messageDropDown.AddOptions(options);
     }
 
     public void NormalizedLabel()
     {
+        string langage = "";
+        string[] lines = System.IO.File.ReadAllLines("properties.yml");
+        foreach (string line in lines)
+        {
+            if (line.Contains("Language"))
+            {
+                string[] tmp = line.Split('=');
+                langage = tmp[1];
+                break;
+            }
+        }
+        Traducteur l = new Traducteur(langage,_value);
+        string traduction = l.Traduction();
+        string affiche;
+        if (traduction != null)
+        {
+            print("traduction non nulle :");
+            affiche = traduction;
+        }
+        else
+        {
+            print("traduction nulle");
+            affiche = _value;
+        }
+
+        print("Valeur finale affiche: " + affiche);
         string questionString = (_value.Contains("PERCEPT_")) ? "?" : "";
         if (type == Type.CONDITION)
         {
-            _label.GetComponent<Text>().text = _value.Replace("PERCEPT_", "").Replace("_", " ") + "?";
+           // _label.GetComponent<Text>().text = _value.Replace("PERCEPT_", "").Replace("_", " ") + "?";
+            _label.GetComponent<Text>().text = affiche.Replace("PERCEPT_", "").Replace("_", " ") + "?";
         }
         if (type == Type.ACTION)
         {
-            _label.GetComponent<Text>().text = _value.Replace("ACTION_", "").Replace("_", " ");
+           // _label.GetComponent<Text>().text = _value.Replace("ACTION_", "").Replace("_", " ");
+            _label.GetComponent<Text>().text = affiche.Replace("ACTION_", "").Replace("_", " ");
         }
         if (type == Type.MESSAGE)
         {
-            _label.GetComponent<Text>().text = "SEND \"" + _value.Replace("ACTN_MESSAGE_", "").Replace("PERCEPT_", "").Replace("_", " ") + "\"";
+          //  _label.GetComponent<Text>().text = "SEND \"" + _value.Replace("ACTN_MESSAGE_", "").Replace("PERCEPT_", "").Replace("_", " ") + "\"";
+            if (langage == "english")
+                _label.GetComponent<Text>().text = "Send \"" + affiche.Replace("ACTN_MESSAGE_", "").Replace("PERCEPT_", "").Replace("_", " ") + "\"";
+            else
+                _label.GetComponent<Text>().text = "Envoi \"" + affiche.Replace("ACTN_MESSAGE_", "").Replace("PERCEPT_", "").Replace("_", " ") + "\"";
         }
         if (type == Type.ACTION_NON_TERMINAL)
         {
-            _label.GetComponent<Text>().text = _value.Replace("MESSAGE_", "").Replace("ACTN_", "").Replace("_", " ");
+          //  _label.GetComponent<Text>().text = _value.Replace("MESSAGE_", "").Replace("ACTN_", "").Replace("_", " ");
+            _label.GetComponent<Text>().text = affiche.Replace("MESSAGE_", "").Replace("ACTN_", "").Replace("_", " ");
         }
 
     }
