@@ -234,6 +234,7 @@ public class PuzzleScript : MonoBehaviour
             gameObject.SetActive(false);
             createPuzzle.listPieces.Remove(gameObject);
             createPuzzle.listPieces.Add(gameObject);
+            createPuzzle.cptObjects = createPuzzle.listPieces.Count;
         } 
     }
 }
