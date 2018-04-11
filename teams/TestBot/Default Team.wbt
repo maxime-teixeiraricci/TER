@@ -65,69 +65,6 @@
       </actions>
     </instruction>
   </unit>
-  <unit name="Light">
-    <instruction>
-      <parameters>
-        <PERCEPT_ENEMY />
-      </parameters>
-      <actions>
-        <ACTION_FIRE />
-      </actions>
-    </instruction>
-    <instruction>
-      <parameters>
-        <PERCEPT_MESSAGE_ATTACK />
-      </parameters>
-      <message>
-        <ACTN_TOWARD_MESSAGE_SENDER>
-          <NONE />
-        </ACTN_TOWARD_MESSAGE_SENDER>
-      </message>
-      <actions>
-        <ACTION_MOVE />
-      </actions>
-    </instruction>
-    <instruction>
-      <parameters>
-        <NOT_PERCEPT_LIFE_MAX />
-        <NOT_PERCEPT_BAG_EMPTY />
-      </parameters>
-      <actions>
-        <ACTION_HEAL />
-      </actions>
-    </instruction>
-    <instruction>
-      <parameters>
-        <NOT_PERCEPT_IS_RELOADED />
-      </parameters>
-      <actions>
-        <ACTION_RELOAD />
-      </actions>
-    </instruction>
-    <instruction>
-      <parameters>
-        <NOT_PERCEPT_BAG_FULL />
-        <PERCEPT_FOOD_NEAR />
-      </parameters>
-      <actions>
-        <ACTION_PICK />
-      </actions>
-    </instruction>
-    <instruction>
-      <parameters>
-        <PERCEPT_BLOCKED />
-      </parameters>
-      <actions>
-        <ACTION_MOVE_UNTIL_UNBLOCKED />
-      </actions>
-    </instruction>
-    <instruction>
-      <parameters />
-      <actions>
-        <ACTION_MOVE />
-      </actions>
-    </instruction>
-  </unit>
   <unit name="Explorer">
     <instruction>
       <parameters>
@@ -215,6 +152,22 @@
       <parameters>
         <PERCEPT_MESSAGE_POSITION />
       </parameters>
+    </instruction>
+  </unit>
+  <unit name="Light">
+    <instruction>
+      <parameters>
+        <PERCEPT_BLOCKED />
+      </parameters>
+      <actions>
+        <ACTION_MOVE_UNTIL_UNBLOCKED />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters />
+      <actions>
+        <ACTION_MOVE />
+      </actions>
     </instruction>
   </unit>
 </behavior>

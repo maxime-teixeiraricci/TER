@@ -65,7 +65,7 @@ GameObject:
   - component: {fileID: 114603053617523302}
   - component: {fileID: 114500141143698420}
   - component: {fileID: 54637856206010176}
-  - component: {fileID: 136969798248474020}
+  - component: {fileID: 64755770115321574}
   m_Layer: 8
   m_Name: WarHeavy
   m_TagString: Unit
@@ -135,7 +135,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1670267256757844}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.54, y: 1.333324, z: -9.71}
+  m_LocalPosition: {x: -11.530931, y: 1.333324, z: -20.576893}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4584436217239334}
@@ -200,6 +200,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!64 &64755770115321574
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1670267256757844}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: -1
+  m_SkinWidth: 1.00000005e-20
+  m_Mesh: {fileID: 4300000, guid: ca6f4ece036ff0147b00ea954272795c, type: 3}
 --- !u!114 &114052746757936770
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -242,14 +256,15 @@ MonoBehaviour:
   _teamIndex: 0
   _id: 0
   _target: {fileID: 0}
+  distanceToTarget: 0
   _objectToUse: {fileID: 0}
   _bullet: {fileID: 0}
+  _targetContract: {fileID: 0}
   _heading: 0
   _isBlocked: 0
   _health: 275
   _maxHealth: 275
   _reloadTime: 0
-  _objectif: {fileID: 0}
 --- !u!114 &114424686724352526
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -261,6 +276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91977c1ea3c42b846a6a88d99a089797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  angleToMessage: 0
 --- !u!114 &114449647509387942
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -272,12 +288,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fa7b92dec9baf34782388a22c9f006e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _instructions: []
+  _instructionsEditor: []
   _componentPercepts: {fileID: 0}
   _componentActions: {fileID: 0}
   _componentActionsNonTerminales: {fileID: 0}
   _messageManager: {fileID: 0}
   nbInstruction: 0
-  nbActions: 0
   debugMessage: 0
 --- !u!114 &114500141143698420
 MonoBehaviour:
@@ -291,6 +308,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _messageDestinataire: 
+  _tmpMessage:
+    _titre: 
+    _contenu: {fileID: 0}
+    _sender: {fileID: 0}
+    _receiver: {fileID: 0}
+    heading: 0
 --- !u!114 &114515922954556768
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -336,6 +359,7 @@ MonoBehaviour:
   - MESSAGE_HELP
   - MESSAGE_POSITION
   - MESSAGE_DEFENSE
+  _messageLineObject: {fileID: 0}
 --- !u!114 &114614631316123548
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -356,7 +380,10 @@ MonoBehaviour:
   _obstacleEncounter: 0
   a: 0
   b: 0
+  c: 0
+  d: 0
   B: {fileID: 0}
+  collisionObject: {fileID: 0}
 --- !u!114 &114628389031207392
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -408,16 +435,3 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &136969798248474020
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1670267256757844}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 1.35
-  m_Height: 3.48
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.4, z: 0}

@@ -46,9 +46,9 @@ GameObject:
   - component: {fileID: 114407417761323848}
   - component: {fileID: 114991993633843772}
   - component: {fileID: 114021536629099052}
-  - component: {fileID: 136462975295457720}
   - component: {fileID: 114699229294144876}
   - component: {fileID: 114804970405907090}
+  - component: {fileID: 64082610769355158}
   m_Layer: 8
   m_Name: WarExplorer
   m_TagString: Unit
@@ -76,7 +76,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1517124188230958}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 22.5, y: 0.75, z: 22.5}
+  m_LocalPosition: {x: -10.940461, y: 0.43, z: -15.849305}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4608809123674540}
@@ -140,6 +140,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!64 &64082610769355158
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1517124188230958}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: -1
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 2ce30ced83d1454498fe449302f1cef2, type: 3}
 --- !u!114 &114021536629099052
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -307,7 +321,10 @@ MonoBehaviour:
   _obstacleEncounter: 0
   a: 0
   b: 0
+  c: 0
+  d: 0
   B: {fileID: 0}
+  collisionObject: {fileID: 0}
 --- !u!135 &135434769475321970
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -320,16 +337,3 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &136462975295457720
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1517124188230958}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.88
-  m_Height: 1.76
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.4, z: 0}

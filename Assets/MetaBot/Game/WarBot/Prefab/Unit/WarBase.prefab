@@ -106,7 +106,6 @@ GameObject:
   - component: {fileID: 135745310929737104}
   - component: {fileID: 54966014305499314}
   - component: {fileID: 114375346082489782}
-  - component: {fileID: 65820642231399636}
   - component: {fileID: 114903467683322418}
   - component: {fileID: 114228534123011052}
   - component: {fileID: 114018871307719316}
@@ -114,6 +113,7 @@ GameObject:
   - component: {fileID: 114010804989806642}
   - component: {fileID: 114404676544177780}
   - component: {fileID: 114228995306872970}
+  - component: {fileID: 64834784456306956}
   m_Layer: 8
   m_Name: WarBase
   m_TagString: Unit
@@ -166,7 +166,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1862762559995188}
-  m_LocalRotation: {x: 0, y: 0.74314487, z: 0, w: 0.66913056}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -30, y: 3, z: -30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -218,7 +218,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 137b56e1153329c4ca4b7759badcb1c4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -260,8 +260,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!65 &65820642231399636
-BoxCollider:
+--- !u!64 &64834784456306956
+MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -269,9 +269,11 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 6, y: 6.75, z: 6}
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: -1
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: c531f69af93aba0468509422c1f398c9, type: 3}
 --- !u!114 &114010804989806642
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -295,7 +297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _angle: 360
-  _distance: 5
+  _distance: 17.5
   _sphereCollider: {fileID: 135745310929737104}
   _brain: {fileID: 114347100874443590}
   _listOfCollision:
@@ -346,6 +348,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _messageDestinataire: 
+  _tmpMessage:
+    _titre: 
+    _contenu: {fileID: 0}
+    _sender: {fileID: 0}
+    _receiver: {fileID: 0}
+    heading: 0
 --- !u!114 &114347100874443590
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -396,6 +404,8 @@ MonoBehaviour:
   - MESSAGE_HELP
   - MESSAGE_POSITION
   - MESSAGE_ATTACK
+  _messageLineObject: {fileID: 1570930958659960, guid: 369a6c66779f7494fbf20cd2d86e12f7,
+    type: 2}
 --- !u!114 &114439792897233452
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -408,7 +418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _unitType: Base
-  _teamIndex: 0
+  _teamIndex: 3
   _id: 38425542
   _target: {fileID: 0}
   distanceToTarget: 0
@@ -442,11 +452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5176729134ecec44ac909ce7abdc748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tmpMessage:
-    _titre: 
-    _contenu: {fileID: 0}
-    _sender: {fileID: 0}
-    _receiver: {fileID: 0}
+  angleToMessage: 0
 --- !u!135 &135125073695165066
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -481,7 +487,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 5
+  m_Radius: 15
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &135769109990229584
 SphereCollider:

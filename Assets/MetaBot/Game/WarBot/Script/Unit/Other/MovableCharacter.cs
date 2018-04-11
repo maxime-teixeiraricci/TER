@@ -18,6 +18,8 @@ public class MovableCharacter : MonoBehaviour
     public bool d;
     public GameObject B;
 
+    public GameObject collisionObject;
+
     private Vector3 nextposition;
     	
 
@@ -27,11 +29,12 @@ public class MovableCharacter : MonoBehaviour
         nextposition = transform.position + vectMov.normalized * speed * Time.deltaTime;
         
         transform.position = nextposition;
-        _isblocked = isBlocked();
-        _obstacleEncounter = false;
     }
-
-
+    public bool isBlocked()
+    {
+        return collisionObject != null;
+    }
+    /*
     public bool isBlocked()
     {
         vectMov = Utility.vectorFromAngle(GetComponent<Stats>()._heading);
@@ -89,19 +92,45 @@ public class MovableCharacter : MonoBehaviour
             else { Debug.DrawRay(rD.origin, rD.direction, Color.white); }
         }
         if (!a) { return true; }
-        
+
         return false ;
 
     }
+    */
 
     void OnCollisionStay(Collision other)
     {
         if (other.gameObject.tag != "Ground")
         {
-
-            //_isblocked = true;
-            //transform.position += (transform.position - other.gameObject.transform.position).normalized * 0.01f;
+           /* RaycastHit[] hits;
+            hits = Physics.RaycastAll(transform.position, transform.right, 3.0F);
+            Debug.DrawRay(transform.position, transform.right, Color.red);*/
+            foreach (ContactPoint contact in other.contacts)
+            {
+                print(contact.thisCollider.name + " hit " + contact.otherCollider.name);
+                if (Mathf.Abs(Utility.getAngle(gameObject.transform.position, contact.point) - GetComponent<Stats>()._heading) < 45f)
+                {
+                    Debug.DrawRay(contact.point, contact.normal, Color.white);
+                    collisionObject = other.transform.gameObject;
+                    break;
+                }
+                
+            }
+            /*
+            for (int i = 0; i < hits.Length; i++)
+            {
+                RaycastHit hit = hits[i];
+                if (hit.transform.gameObject != gameObject)
+                {
+                    collisionObject = hit.transform.gameObject;
+                }
+            }*/
         }
+    }
+
+    void OnCollisionExit(Collision other)
+    {
+        collisionObject = null;
     }
 
 }
