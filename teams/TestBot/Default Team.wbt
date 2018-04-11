@@ -137,23 +137,6 @@
       </actions>
     </instruction>
   </unit>
-  <unit name="Base">
-    <instruction>
-      <parameters>
-        <PERCEPT_ENEMY />
-      </parameters>
-      <message>
-        <ACTN_MESSAGE_ATTACK>
-          <Light />
-        </ACTN_MESSAGE_ATTACK>
-      </message>
-    </instruction>
-    <instruction>
-      <parameters>
-        <PERCEPT_MESSAGE_POSITION />
-      </parameters>
-    </instruction>
-  </unit>
   <unit name="Light">
     <instruction>
       <parameters>
@@ -168,6 +151,23 @@
       <actions>
         <ACTION_MOVE />
       </actions>
+    </instruction>
+  </unit>
+  <unit name="Base">
+    <instruction>
+      <parameters>
+        <NOT_PERCEPT_ENEMY />
+      </parameters>
+      <message>
+        <ACTN_MESSAGE_ATTACK>
+          <Light />
+        </ACTN_MESSAGE_ATTACK>
+      </message>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_MESSAGE_POSITION />
+      </parameters>
     </instruction>
   </unit>
 </behavior>

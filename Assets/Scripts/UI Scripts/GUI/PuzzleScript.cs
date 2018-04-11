@@ -59,7 +59,7 @@ public class PuzzleScript : MonoBehaviour
                 break;
             }
         }
-        Traducteur l = new Traducteur(langage,_value);
+        Traducteur l = new Traducteur(langage,_value.Replace("NOT_",""));
         string traduction = l.Traduction();
         string affiche;
         if (traduction != null)
@@ -141,6 +141,14 @@ public class PuzzleScript : MonoBehaviour
     public void NegationBoutton()
     {
         neg = !neg;
+        if (neg)
+        {
+            _value = "NOT_"+ _value.Replace("NOT_", "");
+        }
+        else
+        {
+            _value = _value.Replace("NOT_", "");
+        }
         NormalizedLabel();
     }
 
