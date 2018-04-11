@@ -63,31 +63,8 @@ public class PuzzleScript : MonoBehaviour
 
     public void NormalizedLabel()
     {
-        string langage = "";
-        string[] lines = System.IO.File.ReadAllLines("properties.yml");
-        foreach (string line in lines)
-        {
-            if (line.Contains("Language"))
-            {
-                string[] tmp = line.Split('=');
-                langage = tmp[1];
-                break;
-            }
-        }
-        Traducteur l = new Traducteur(langage,_value.Replace("NOT_",""));
-        string traduction = l.Traduction();
-        string affiche;
-        if (traduction != null)
-        {
-            print("traduction non nulle :");
-            affiche = traduction;
-        }
-        else
-        {
-            print("traduction nulle");
-            affiche = _value;
-        }
-
+        GameObject.Find("GameManager").GetComponent<Traducteur>().setTextOriginal(_value);
+        string affiche = GameObject.Find("GameManager").GetComponent<Traducteur>().traduction;
         print("Valeur finale affiche: " + affiche);
         if (type == Type.CONDITION)
         {
@@ -99,10 +76,9 @@ public class PuzzleScript : MonoBehaviour
         }
         if (type == Type.MESSAGE)
         {
-            if (langage == "english")
-                _label.GetComponent<Text>().text = "Send \"" + affiche.Replace("ACTN_MESSAGE_", "").Replace("PERCEPT_", "").Replace("_", " ") + "\"";
-            else
-                _label.GetComponent<Text>().text = "Envoi \"" + affiche.Replace("ACTN_MESSAGE_", "").Replace("PERCEPT_", "").Replace("_", " ") + "\"";
+            GameObject.Find("GameManager").GetComponent<Traducteur>().setTextOriginal("SEND");
+            string verb = GameObject.Find("GameManager").GetComponent<Traducteur>().traduction;
+                _label.GetComponent<Text>().text = verb +" \"" + affiche.Replace("ACTN_MESSAGE_", "").Replace("PERCEPT_", "").Replace("_", " ") + "\"";
         }
         if (type == Type.ACTION_NON_TERMINAL)
         {

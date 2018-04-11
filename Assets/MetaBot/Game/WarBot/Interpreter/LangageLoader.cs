@@ -7,7 +7,7 @@ using System.IO;
 public class LangageLoader : MonoBehaviour {
     public List<Langage> langues;
     public GameObject conteneur;
-    string language;
+    public string language;
 
     public bool checkFile(string Language)
     {
@@ -69,7 +69,6 @@ public class LangageLoader : MonoBehaviour {
 
     void Start()
     {
-
         string[] lines = System.IO.File.ReadAllLines("properties.yml");
         foreach (string line in lines)
         {
@@ -83,7 +82,8 @@ public class LangageLoader : MonoBehaviour {
 
         langues = new List<Langage>();
         langues.Add(readFile(language));
-        applyTradToscene(language);
+        if (conteneur != null)
+            applyTradToscene(language);
     }
 
     void Update()
