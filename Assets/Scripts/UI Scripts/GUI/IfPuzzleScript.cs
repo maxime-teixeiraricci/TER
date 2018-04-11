@@ -145,4 +145,15 @@ public class IfPuzzleScript : MonoBehaviour
         
         return new Instruction(percepts.ToArray(), ms.ToArray(), action);
     }
+
+    private void OnMouseOver()
+    {
+        if ( Input.GetMouseButtonDown(1) && GameObject.Find("Undo"))
+        {   
+            gameObject.SetActive(false);
+            createPuzzle.listPieces.Remove(gameObject);
+            createPuzzle.listPieces.Add(gameObject);
+            createPuzzle.cptObjects = createPuzzle.listPieces.Count;
+        } 
+    }
 }
