@@ -58,34 +58,39 @@ public class createPuzzle : MonoBehaviour {
 
     public void Undo()
     {
-        //Debug.Log("Valeur liste entrée undo = " + ifPuzzleCreated);
-        pieceToUndo = (GameObject)listPieces[cptObjects - 1];
-        if (pieceToUndo.tag == "IfPuzzle")
+        if( cptObjects > 0 )
         {
-            Debug.Log("Suppression piece IF n°" + cptIfPuzzle);
-            cptIfPuzzle = numberIfPuzzle() - 1;
-            Debug.Log("Il reste " + cptIfPuzzle + " pièces IF");
+            pieceToUndo = (GameObject)listPieces[cptObjects - 1];
+            if (pieceToUndo.tag == "IfPuzzle")
+            {
+                Debug.Log("Suppression piece IF n°" + cptIfPuzzle);
+                cptIfPuzzle = numberIfPuzzle() - 1;
+                Debug.Log("Il reste " + cptIfPuzzle + " pièces IF");
+            }
+            recoverList.Add(pieceToUndo);
+            pieceToUndo.SetActive(false);
+            cptObjects--;
+            cptUndo = recoverList.Count;
         }
-        recoverList.Add(pieceToUndo);
-        pieceToUndo.SetActive(false);
-        cptObjects--;
-        cptUndo = recoverList.Count;
     }
 
     public void Redo()
     {
-        //Debug.Log("Valeur liste entrée redo = " + ifPuzzleCreated);
-        GameObject pieceToRedo = (GameObject)recoverList[cptUndo - 1];
-        if (pieceToRedo.tag == "IfPuzzle")
+        if( recoverList.Count > 0 )
         {
-            Debug.Log("Recréation piece IF " + cptIfPuzzle);
-            cptIfPuzzle = numberIfPuzzle() + 1;
-            Debug.Log("Il y a maintenant " + cptIfPuzzle + " pièces IF");
+            //Debug.Log("Valeur liste entrée redo = " + ifPuzzleCreated);
+            GameObject pieceToRedo = (GameObject)recoverList[cptUndo - 1];
+            if (pieceToRedo.tag == "IfPuzzle")
+            {
+                Debug.Log("Recréation piece IF " + cptIfPuzzle);
+                cptIfPuzzle = numberIfPuzzle() + 1;
+                Debug.Log("Il y a maintenant " + cptIfPuzzle + " pièces IF");
+            }
+            pieceToRedo.SetActive(true);
+            recoverList.RemoveAt(cptUndo - 1);
+            cptUndo = recoverList.Count;
+            cptObjects++;
         }
-        pieceToRedo.SetActive(true);
-        recoverList.RemoveAt(cptUndo - 1);
-        cptUndo = recoverList.Count;
-        cptObjects++;
     }
 
 }
