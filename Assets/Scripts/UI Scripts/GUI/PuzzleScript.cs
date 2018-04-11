@@ -74,20 +74,16 @@ public class PuzzleScript : MonoBehaviour
         }
 
         print("Valeur finale affiche: " + affiche);
-        string questionString = (_value.Contains("PERCEPT_")) ? "?" : "";
         if (type == Type.CONDITION)
         {
-           // _label.GetComponent<Text>().text = _value.Replace("PERCEPT_", "").Replace("_", " ") + "?";
             _label.GetComponent<Text>().text = affiche.Replace("PERCEPT_", "").Replace("_", " ") + "?";
         }
         if (type == Type.ACTION)
         {
-           // _label.GetComponent<Text>().text = _value.Replace("ACTION_", "").Replace("_", " ");
             _label.GetComponent<Text>().text = affiche.Replace("ACTION_", "").Replace("_", " ");
         }
         if (type == Type.MESSAGE)
         {
-          //  _label.GetComponent<Text>().text = "SEND \"" + _value.Replace("ACTN_MESSAGE_", "").Replace("PERCEPT_", "").Replace("_", " ") + "\"";
             if (langage == "english")
                 _label.GetComponent<Text>().text = "Send \"" + affiche.Replace("ACTN_MESSAGE_", "").Replace("PERCEPT_", "").Replace("_", " ") + "\"";
             else
@@ -97,6 +93,15 @@ public class PuzzleScript : MonoBehaviour
         {
           //  _label.GetComponent<Text>().text = _value.Replace("MESSAGE_", "").Replace("ACTN_", "").Replace("_", " ");
             _label.GetComponent<Text>().text = affiche.Replace("MESSAGE_", "").Replace("ACTN_", "").Replace("_", " ");
+        }
+        if (neg)
+        {
+            _label.GetComponent<Text>().text = "Not " + _label.GetComponent<Text>().text;
+            _label.GetComponent<Text>().color = new Color(1, 0.6f, 0.6f);
+        }
+        else
+        {
+            _label.GetComponent<Text>().color = Color.white;
         }
 
     }
@@ -136,17 +141,7 @@ public class PuzzleScript : MonoBehaviour
     public void NegationBoutton()
     {
         neg = !neg;
-        if (!neg)
-        {
-            _value = _value.Replace("NOT_", "");
-            _label.GetComponent<Text>().color = Color.white;
-        }
-        else
-        {
-            _value = "NOT_" + _value.Replace("NOT_", "");
-            _label.GetComponent<Text>().color = new Color(0.95f, 0.5f, 0.5f);
-        }
-        _label.GetComponent<Text>().text = _value.Replace("PERCEPT_", "").Replace("_", " ") + "?";
+        NormalizedLabel();
     }
 
     public void UpdateNextPuzzle()

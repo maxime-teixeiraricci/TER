@@ -163,7 +163,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114760523546689658}
         m_MethodName: NegationBoutton
         m_Mode: 1
         m_Arguments:
@@ -340,6 +340,7 @@ MonoBehaviour:
   neg: 0
   defaultColor: {r: 0.43382353, g: 0.43382353, b: 0.43382353, a: 0.784}
   validColor: {r: 0.19215688, g: 0.8000001, b: 1, a: 1}
+  currentColor: {r: 0, g: 0, b: 0, a: 0}
   messageDropDown: {fileID: 0}
 --- !u!114 &114933008525066690
 MonoBehaviour:
