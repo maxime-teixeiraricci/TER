@@ -34,10 +34,10 @@ public class ManageDragAndDrop : MonoBehaviour, IPointerEnterHandler//, IPointer
 
     private void OnMouseOver()
     {
-        if (Input.GetMouseButtonDown(1) && !undestructible)
+        /*if (Input.GetMouseButtonDown(1) && !undestructible)
         {
-            Destroy(gameObject);
-        }
+           Destroy(gameObject);
+        }*/
         if (Input.GetMouseButtonDown(0))
         {
             _initialPosition = Input.mousePosition;

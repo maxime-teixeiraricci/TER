@@ -67,9 +67,21 @@ public class createPuzzle : MonoBehaviour {
                 cptIfPuzzle = numberIfPuzzle() - 1;
                 Debug.Log("Il reste " + cptIfPuzzle + " pièces IF");
             }
-            recoverList.Add(pieceToUndo);
-            pieceToUndo.SetActive(false);
-            cptObjects--;
+            if(pieceToUndo.activeSelf == true)
+            {
+                recoverList.Add(pieceToUndo);
+                pieceToUndo.SetActive(false);
+                cptObjects--;
+            }
+
+            else if(pieceToUndo.activeSelf == false)
+            {
+                pieceToUndo.SetActive(true);
+                GameObject tmp = pieceToUndo;
+                listPieces.Remove(pieceToUndo);
+                listPieces.Insert(0,pieceToUndo);
+            }
+
             cptUndo = recoverList.Count;
         }
     }
@@ -78,7 +90,6 @@ public class createPuzzle : MonoBehaviour {
     {
         if( recoverList.Count > 0 )
         {
-            //Debug.Log("Valeur liste entrée redo = " + ifPuzzleCreated);
             GameObject pieceToRedo = (GameObject)recoverList[cptUndo - 1];
             if (pieceToRedo.tag == "IfPuzzle")
             {
@@ -86,10 +97,13 @@ public class createPuzzle : MonoBehaviour {
                 cptIfPuzzle = numberIfPuzzle() + 1;
                 Debug.Log("Il y a maintenant " + cptIfPuzzle + " pièces IF");
             }
+
             pieceToRedo.SetActive(true);
             recoverList.RemoveAt(cptUndo - 1);
-            cptUndo = recoverList.Count;
             cptObjects++;
+
+            cptUndo = recoverList.Count;
+            
         }
     }
 

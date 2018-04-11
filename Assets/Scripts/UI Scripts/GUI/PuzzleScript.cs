@@ -225,4 +225,15 @@ public class PuzzleScript : MonoBehaviour
         }
         return false;
     }*/
+
+
+    private void OnMouseOver()
+    {
+        if ( Input.GetMouseButtonDown(1) && GameObject.Find("Undo"))
+        {   
+            gameObject.SetActive(false);
+            createPuzzle.listPieces.Remove(gameObject);
+            createPuzzle.listPieces.Add(gameObject);
+        } 
+    }
 }
