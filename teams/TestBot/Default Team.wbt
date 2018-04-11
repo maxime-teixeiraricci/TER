@@ -202,7 +202,9 @@
   </unit>
   <unit name="Base">
     <instruction>
-      <parameters />
+      <parameters>
+        <PERCEPT_ENEMY />
+      </parameters>
       <message>
         <ACTN_MESSAGE_ATTACK>
           <Light />

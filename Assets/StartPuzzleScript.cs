@@ -38,9 +38,7 @@ public class StartPuzzleScript : MonoBehaviour
     {
         // Initialize all at false 
         ifPuzzle = null;
-        print("TEST1 : " + ifPuzzle);
         UpdateCondPuzzle();
-        print("TEST2 : " + ifPuzzle);
         foreach (GameObject puzzle in GameObject.FindGameObjectsWithTag("Puzzle"))
         {
             puzzle.GetComponent<PuzzleScript>().isValid = false;
@@ -52,13 +50,11 @@ public class StartPuzzleScript : MonoBehaviour
 
         
         
-        if (ifPuzzle.GetComponent<IfPuzzleScript>().isValid == false)
+        if (ifPuzzle && ifPuzzle.GetComponent<IfPuzzleScript>().isValid == false)
         {
             ifPuzzle.GetComponent<IfPuzzleScript>().isValid = true;
             ifPuzzle.GetComponent<IfPuzzleScript>().UpdatePuzzle();
         }
-        
-        UpdateCondPuzzle();
 
     }
 
