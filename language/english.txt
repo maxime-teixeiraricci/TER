@@ -79,3 +79,17 @@
 	MESSAGES=MESSAGES
 	Retour=Back
 	ACTION NON TERMINALE=NON-TERMINAL ACTION
+	# Properties
+	MaxHealth=Maximum health
+	MaxInventory=Inventory size
+	PerceptionRadius=Perception radius
+	ReloadTime=Reload time
+	Cost=Creation cost
+	SpawnDelay=Create delay
+	Speed=Speed
+	HealCost=Quantity for heal
+	HealValue=Life restored
+	TakeCount=Quantity picked
+	GiveCount=Quantity given
+	GiveDistance=Max distance to give
+	MaxRessources=Maximum ressource quantity
