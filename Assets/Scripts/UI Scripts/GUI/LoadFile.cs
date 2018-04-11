@@ -35,6 +35,12 @@ public class LoadFile : MonoBehaviour
 
     }
 
+
+    public void ResetScrollBarPosition()
+    {
+        scrollEdit.value = 1;
+        scrollPieces.value = 1;
+    }
     /*
     public void createBehaviorFromXML()
     {
@@ -197,8 +203,7 @@ public class LoadFile : MonoBehaviour
             }
             
         }
-        scrollEdit.value = 1;
-        scrollPieces.value = 1;
+        ResetScrollBarPosition();
 
     }
 
