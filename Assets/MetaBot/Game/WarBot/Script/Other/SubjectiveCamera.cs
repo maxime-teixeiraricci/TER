@@ -36,22 +36,28 @@ public class SubjectiveCamera : MonoBehaviour {
         _hudStatsUnit.SetActive(unit != null);
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit) && hit.collider.tag == "Unit")
+        RaycastHit[] hits;
+        hits = Physics.RaycastAll(ray);
+        foreach (RaycastHit hit in hits)
         {
-            _hudTextUnit.transform.position = Camera.main.WorldToScreenPoint(hit.transform.position);
-            _hudTextUnit.GetComponent<Text>().text = hit.transform.name;
-            unit = hit.transform.gameObject;
-            if (Input.GetMouseButtonDown(0))
+            if (hit.collider.tag == "Unit" && !hit.collider.isTrigger)
             {
-                fps = true;
-                minimap.gameObject.SetActive(true);
+                _hudTextUnit.transform.position = Camera.main.WorldToScreenPoint(hit.transform.position);
+                _hudTextUnit.GetComponent<Text>().text = hit.transform.name;
+                unit = hit.transform.gameObject;
+                if (Input.GetMouseButtonDown(0))
+                {
+                    fps = true;
+                    minimap.gameObject.SetActive(true);
+                }
+                break;
             }
-        }
-        else
-        {
-            _hudTextUnit.GetComponent<Text>().text = "";
-            unit = null;
+            else
+            {
+                _hudTextUnit.GetComponent<Text>().text = "";
+                unit = null;
+            }
+           
         }
         if (Input.GetMouseButtonDown(1) && unit != null)
         {
@@ -63,7 +69,6 @@ public class SubjectiveCamera : MonoBehaviour {
                 unit = null;
             }
         }
-
         if (fps)
         {
               Camera.main.transform.SetPositionAndRotation(new Vector3(unit.gameObject.transform.position.x , unit.gameObject.transform.position.y + 2, unit.gameObject.transform.position.z), unit.gameObject.transform.rotation);

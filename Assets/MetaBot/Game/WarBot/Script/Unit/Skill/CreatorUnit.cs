@@ -27,7 +27,8 @@ public class CreatorUnit : MonoBehaviour
                 target = _unit;
             }
         }
-        GameObject unit = Instantiate(target);
+        GameObject unit = Instantiate(target,transform.parent);
+        transform.parent.GetComponent<TeamPlayManagerScript>().UpdateUnit();
         unit.transform.position = _spawnPoint[Random.Range(0, _spawnPoint.Length - 1)].position;
         unit.GetComponent<Stats>()._teamIndex = GetComponent<Stats>()._teamIndex;
     }
