@@ -25,10 +25,13 @@ public class MovableCharacter : MonoBehaviour
 
     public void Move()
     {
-        vectMov = Utility.vectorFromAngle(GetComponent<Stats>()._heading) ;
-        nextposition = transform.position + vectMov.normalized * speed * Time.deltaTime;
-        
-        transform.position = nextposition;
+        if (!isBlocked())
+        {
+            vectMov = Utility.vectorFromAngle(GetComponent<Stats>()._heading);
+            nextposition = transform.position + vectMov.normalized * speed * Time.deltaTime;
+
+            transform.position = nextposition;
+        }
     }
     public bool isBlocked()
     {

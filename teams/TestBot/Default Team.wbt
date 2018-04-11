@@ -65,7 +65,7 @@
       </actions>
     </instruction>
   </unit>
-  <unit name="Explorer">
+  <unit name="Base">
     <instruction>
       <parameters>
         <PERCEPT_ENEMY />
@@ -75,39 +75,10 @@
           <Light />
         </ACTN_MESSAGE_ATTACK>
       </message>
-      <actions>
-        <ACTION_MOVE />
-      </actions>
-    </instruction>
-    <instruction>
-      <parameters>
-        <PERCEPT_BLOCKED />
-      </parameters>
-      <actions>
-        <ACTION_MOVE_UNTIL_UNBLOCKED />
-      </actions>
-    </instruction>
-    <instruction>
-      <parameters>
-        <PERCEPT_BASE_NEAR_ALLY />
-        <NOT_PERCEPT_BAG_EMPTY />
-      </parameters>
-      <actions>
-        <ACTION_GIVE_RESSOURCE />
-      </actions>
-    </instruction>
-    <instruction>
-      <parameters>
-        <PERCEPT_BAG_FULL />
-      </parameters>
-      <actions>
-        <ACTION_BACK_TO_BASE />
-      </actions>
     </instruction>
     <instruction>
       <parameters>
         <NOT_PERCEPT_LIFE_MAX />
-        <NOT_PERCEPT_BAG_EMPTY />
       </parameters>
       <actions>
         <ACTION_HEAL />
@@ -115,19 +86,52 @@
     </instruction>
     <instruction>
       <parameters>
-        <NOT_PERCEPT_BAG_FULL />
-        <PERCEPT_FOOD_NEAR />
+        <PERCEPT_BAG_10 />
       </parameters>
       <actions>
-        <ACTION_PICK />
+        <ACTION_CREATE_LIGHT />
       </actions>
     </instruction>
+  </unit>
+  <unit name="Explorer">
     <instruction>
       <parameters>
         <PERCEPT_BLOCKED />
       </parameters>
       <actions>
-        <ACTION_MOVE_UNTIL_UNBLOCKED />
+        <ACTION_RANDOM_MOVE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_ENEMY />
+      </parameters>
+      <message>
+        <ACTN_MESSAGE_HELP>
+          <Light />
+        </ACTN_MESSAGE_HELP>
+        <ACTN_MESSAGE_HELP>
+          <Heavy />
+        </ACTN_MESSAGE_HELP>
+      </message>
+      <actions>
+        <ACTION_TURN_AROUND_MOVE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <NOT_PERCEPT_LIFE_MAX />
+      </parameters>
+      <actions>
+        <ACTION_HEAL />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_FOOD_NEAR />
+      </parameters>
+      <actions>
+        <ACTION_PICK />
       </actions>
     </instruction>
     <instruction>
@@ -143,31 +147,27 @@
         <PERCEPT_BLOCKED />
       </parameters>
       <actions>
-        <ACTION_MOVE_UNTIL_UNBLOCKED />
+        <ACTION_TURN_AROUND_MOVE />
       </actions>
     </instruction>
     <instruction>
       <parameters />
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_MESSAGE_HELP />
+      </parameters>
+      <message>
+        <ACTN_ADD_ELIMINATION_CONTRACT>
+          <NONE />
+        </ACTN_ADD_ELIMINATION_CONTRACT>
+        <ACTN_TOWARD_MESSAGE_SENDER>
+          <NONE />
+        </ACTN_TOWARD_MESSAGE_SENDER>
+      </message>
       <actions>
         <ACTION_MOVE />
       </actions>
-    </instruction>
-  </unit>
-  <unit name="Base">
-    <instruction>
-      <parameters>
-        <NOT_PERCEPT_ENEMY />
-      </parameters>
-      <message>
-        <ACTN_MESSAGE_ATTACK>
-          <Light />
-        </ACTN_MESSAGE_ATTACK>
-      </message>
-    </instruction>
-    <instruction>
-      <parameters>
-        <PERCEPT_MESSAGE_POSITION />
-      </parameters>
     </instruction>
   </unit>
 </behavior>

@@ -1011,6 +1011,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114134709624586656, guid: f803624d2c783d54a99cd2d93a0527e0,
+        type: 2}
+      propertyPath: _teams.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4713595209440132, guid: f803624d2c783d54a99cd2d93a0527e0, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1046,6 +1051,56 @@ Prefab:
     - target: {fileID: 1361202898811600, guid: f803624d2c783d54a99cd2d93a0527e0, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114134709624586656, guid: f803624d2c783d54a99cd2d93a0527e0,
+        type: 2}
+      propertyPath: _teams.Array.data[3]._name
+      value: TestTeam
+      objectReference: {fileID: 0}
+    - target: {fileID: 114134709624586656, guid: f803624d2c783d54a99cd2d93a0527e0,
+        type: 2}
+      propertyPath: _teams.Array.data[3]._color.r
+      value: 0.598601
+      objectReference: {fileID: 0}
+    - target: {fileID: 114134709624586656, guid: f803624d2c783d54a99cd2d93a0527e0,
+        type: 2}
+      propertyPath: _teams.Array.data[3]._color.g
+      value: 0.8455882
+      objectReference: {fileID: 0}
+    - target: {fileID: 114134709624586656, guid: f803624d2c783d54a99cd2d93a0527e0,
+        type: 2}
+      propertyPath: _teams.Array.data[3]._color.b
+      value: 0.39792383
+      objectReference: {fileID: 0}
+    - target: {fileID: 114134709624586656, guid: f803624d2c783d54a99cd2d93a0527e0,
+        type: 2}
+      propertyPath: _teams.Array.data[3]._color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114134709624586656, guid: f803624d2c783d54a99cd2d93a0527e0,
+        type: 2}
+      propertyPath: _teams.Array.data[2]._name
+      value: TestTeam
+      objectReference: {fileID: 0}
+    - target: {fileID: 114134709624586656, guid: f803624d2c783d54a99cd2d93a0527e0,
+        type: 2}
+      propertyPath: _teams.Array.data[2]._color.r
+      value: 0.7794118
+      objectReference: {fileID: 0}
+    - target: {fileID: 114134709624586656, guid: f803624d2c783d54a99cd2d93a0527e0,
+        type: 2}
+      propertyPath: _teams.Array.data[2]._color.g
+      value: 0.7794118
+      objectReference: {fileID: 0}
+    - target: {fileID: 114134709624586656, guid: f803624d2c783d54a99cd2d93a0527e0,
+        type: 2}
+      propertyPath: _teams.Array.data[2]._color.b
+      value: 0.7794118
+      objectReference: {fileID: 0}
+    - target: {fileID: 114134709624586656, guid: f803624d2c783d54a99cd2d93a0527e0,
+        type: 2}
+      propertyPath: _teams.Array.data[2]._color.a
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f803624d2c783d54a99cd2d93a0527e0, type: 2}
@@ -2265,7 +2320,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &641846961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2457,9 +2512,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e197a93420432a648afdc4cfee72347f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  langue: 
-  textOriginal: 
-  traduction: 
 --- !u!114 &839659990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2842,9 +2894,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e197a93420432a648afdc4cfee72347f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  langue: 
-  textOriginal: 
-  traduction: 
 --- !u!114 &894485510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3562,9 +3611,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e197a93420432a648afdc4cfee72347f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  langue: 
-  textOriginal: 
-  traduction: 
 --- !u!114 &1189600521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5308,9 +5354,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e197a93420432a648afdc4cfee72347f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  langue: 
-  textOriginal: 
-  traduction: 
 --- !u!114 &2046535577
 MonoBehaviour:
   m_ObjectHideFlags: 0

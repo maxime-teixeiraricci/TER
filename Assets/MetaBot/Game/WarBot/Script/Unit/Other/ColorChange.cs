@@ -8,6 +8,16 @@ public class ColorChange : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
+        ChangeColor();
+    }
+	
+	// Update is called once per frame
+	void Update () {
+		
+	}
+
+    public void ChangeColor()
+    {
         if (GameObject.Find("GameManager"))
         {
             foreach (MeshRenderer mesh in _materials)
@@ -21,10 +31,5 @@ public class ColorChange : MonoBehaviour
                 }
             }
         }
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    }
 }

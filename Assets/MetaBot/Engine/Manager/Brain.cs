@@ -27,21 +27,6 @@ public class Brain : MonoBehaviour
     {
         //GameObject.Find("Canvas").GetComponent<HUDManager>().CreateHUD(gameObject);
         GameObject.Find("Canvas").GetComponent<HUDManager>().CreateHUD(gameObject);
-        if (GetComponent<Stats>()._teamIndex < GameObject.Find("GameManager").GetComponent<TeamManager>()._teams.Count)
-        {
-            _instructions = GameObject.Find("GameManager").GetComponent<TeamManager>().getUnitsBevahiours(GetComponent<Stats>()._teamIndex, GetComponent<Stats>()._unitType);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-
-        _componentPercepts = GetComponent<Percept>();
-        _componentActions = GetComponent<Action>();
-        _componentActionsNonTerminales = GetComponent<ActionNonTerminal>();
-        //_messageManager = new MessageManager(this.gameObject);
-        _messageManager = GetComponent<MessageManager>();
-
         foreach (Instruction I in _instructions)
         {
             InstructionEditor IE = new InstructionEditor();
@@ -52,6 +37,19 @@ public class Brain : MonoBehaviour
         }
     }
 
+    public void LoadBehaviour()
+    {
+        if (GetComponent<Stats>()._teamIndex < GameObject.Find("GameManager").GetComponent<TeamManager>()._teams.Count)
+        {
+            _instructions = GameObject.Find("GameManager").GetComponent<TeamManager>().getUnitsBevahiours(GetComponent<Stats>()._teamIndex, GetComponent<Stats>()._unitType);
+        }
+
+        _componentPercepts = GetComponent<Percept>();
+        _componentActions = GetComponent<Action>();
+        _componentActionsNonTerminales = GetComponent<ActionNonTerminal>();
+        //_messageManager = new MessageManager(this.gameObject);
+        _messageManager = GetComponent<MessageManager>();
+    }
     void FixedUpdate()
     {
         _messageManager.UpdateMessage();
