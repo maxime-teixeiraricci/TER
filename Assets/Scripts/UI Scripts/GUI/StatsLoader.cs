@@ -99,6 +99,18 @@ public class StatsLoader : MonoBehaviour
 
     void readStatsFile(string unitName, TextReader reader, int nbrStats, Text statText)
     {
+        string langage = "";
+        string[] lines = System.IO.File.ReadAllLines("properties.yml");
+        foreach (string line1 in lines)
+        {
+            if (line1.Contains("Language"))
+            {
+                string[] tmp = line1.Split('=');
+                langage = tmp[1];
+                break;
+            }
+        }
+
         string line;
 
         for (int i = 0; i < nbrStats; i++)
@@ -106,12 +118,24 @@ public class StatsLoader : MonoBehaviour
             line = reader.ReadLine();
             if (i == 0)
             {
-                string oldTexte = statText.text;
+                string oldText = statText.text;
+                line = line.Replace("   ", "").Replace(" ","");
+                System.Console.WriteLine("ligne :" + line);
+                string[] splited = line.Split(':');
+                Traducteur l = new Traducteur(langage, splited[0]);
+                string trad = l.Traduction();
+                line = "    "+trad + ": " + splited[1];
                 statText.text = line;
             }
             else
             {
                 string oldText = statText.text;
+                line = line.Replace("   ", "").Replace(" ","") ;
+                System.Console.WriteLine("ligne :" + line);
+                string[] splited = line.Split(':');
+                Traducteur l = new Traducteur(langage, splited[0]);
+                string trad = l.Traduction();
+                line = "    "+trad + ": " + splited[1];
                 string newText = oldText + line;
                 statText.text = newText;
                 statText.resizeTextForBestFit = true;
