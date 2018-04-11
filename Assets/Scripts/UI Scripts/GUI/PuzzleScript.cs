@@ -63,8 +63,12 @@ public class PuzzleScript : MonoBehaviour
 
     public void NormalizedLabel()
     {
-        GameObject.Find("GameManager").GetComponent<Traducteur>().setTextOriginal(_value);
-        string affiche = GameObject.Find("GameManager").GetComponent<Traducteur>().traduction;
+        string affiche = _value;
+        if (GameObject.Find("GameManager"))
+        {
+            GameObject.Find("GameManager").GetComponent<Traducteur>().setTextOriginal(_value);
+            affiche = GameObject.Find("GameManager").GetComponent<Traducteur>().traduction;
+        }
         print("Valeur finale affiche: " + affiche);
         if (type == Type.CONDITION)
         {
@@ -76,8 +80,12 @@ public class PuzzleScript : MonoBehaviour
         }
         if (type == Type.MESSAGE)
         {
-            GameObject.Find("GameManager").GetComponent<Traducteur>().setTextOriginal("SEND");
-            string verb = GameObject.Find("GameManager").GetComponent<Traducteur>().traduction;
+            string verb = "SEND";
+            if (GameObject.Find("GameManager"))
+            {
+                GameObject.Find("GameManager").GetComponent<Traducteur>().setTextOriginal("SEND");
+                verb = GameObject.Find("GameManager").GetComponent<Traducteur>().traduction;
+            }
                 _label.GetComponent<Text>().text = verb +" \"" + affiche.Replace("ACTN_MESSAGE_", "").Replace("PERCEPT_", "").Replace("_", " ") + "\"";
         }
         if (type == Type.ACTION_NON_TERMINAL)

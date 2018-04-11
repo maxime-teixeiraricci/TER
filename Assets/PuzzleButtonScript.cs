@@ -17,8 +17,12 @@ public class PuzzleButtonScript : MonoBehaviour
     // Update is called once per frame
     void Update ()
     {
-        GameObject.Find("GameManager").GetComponent<Traducteur>().setTextOriginal(value);
-        string traduction = GameObject.Find("GameManager").GetComponent<Traducteur>().traduction;
+        string traduction = value;
+        if (GameObject.Find("GameManager"))
+        {
+            GameObject.Find("GameManager").GetComponent<Traducteur>().setTextOriginal(value);
+            traduction = GameObject.Find("GameManager").GetComponent<Traducteur>().traduction;
+        }
         label = traduction.Replace("PERCEPT_", "").Replace("ACTN_", "").Replace("_", " ");
         _text.text = label;
         //label = value.Replace("PERCEPT_", "").Replace("ACTN_", "").Replace("_", " ");

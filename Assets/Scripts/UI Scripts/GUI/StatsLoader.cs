@@ -121,8 +121,12 @@ public class StatsLoader : MonoBehaviour
                 string oldText = statText.text;
                 line = line.Replace("   ", "").Replace(" ","");
                 string[] splited = line.Split(':');
-                GameObject.Find("GameManager").GetComponent<Traducteur>().setTextOriginal(splited[0]);
-                string trad = GameObject.Find("GameManager").GetComponent<Traducteur>().traduction;
+                string trad = splited[0];
+                if (GameObject.Find("GameManager"))
+                {
+                    GameObject.Find("GameManager").GetComponent<Traducteur>().setTextOriginal(splited[0]);
+                    trad = GameObject.Find("GameManager").GetComponent<Traducteur>().traduction;
+                }
                 line = "    "+trad + ": " + splited[1];
                 statText.text = line;
             }
@@ -131,8 +135,12 @@ public class StatsLoader : MonoBehaviour
                 string oldText = statText.text;
                 line = line.Replace("   ", "").Replace(" ","") ;
                 string[] splited = line.Split(':');
-                GameObject.Find("GameManager").GetComponent<Traducteur>().setTextOriginal(splited[0]);
-                string trad = GameObject.Find("GameManager").GetComponent<Traducteur>().traduction;
+                string trad = splited[0];
+                if (GameObject.Find("GameManager"))
+                {
+                    GameObject.Find("GameManager").GetComponent<Traducteur>().setTextOriginal(splited[0]);
+                    trad = GameObject.Find("GameManager").GetComponent<Traducteur>().traduction;
+                }
                 line = "    "+trad + ": " + splited[1];
                 string newText = oldText + line;
                 statText.text = newText;
