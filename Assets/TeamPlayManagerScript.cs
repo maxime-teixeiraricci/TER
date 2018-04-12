@@ -5,12 +5,12 @@ using UnityEngine;
 public class TeamPlayManagerScript : MonoBehaviour
 {
     public int teamIndex;
-    public int id = 0;
+    int id = 0;
     // Use this for initialization
     void Start ()
     {
         UpdateUnit();
-        print("Team ID : " + teamIndex + " & Nb Team : " + GameObject.Find("GameManager").GetComponent<TeamManager>()._teams.Count);
+
         if(!(teamIndex < GameObject.Find("GameManager").GetComponent<TeamManager>()._teams.Count))
         {
             Destroy(gameObject);

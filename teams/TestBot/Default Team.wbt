@@ -205,8 +205,8 @@
   <unit name="Base">
     <instruction>
       <parameters>
-        <PERCEPT_LIFE_NOT_MAX />
-        <PERCEPT_BAG_NOT_EMPTY />
+        <NOT_PERCEPT_LIFE_MAX />
+        <NOT_PERCEPT_BAG_EMPTY />
       </parameters>
       <actions>
         <ACTION_HEAL />

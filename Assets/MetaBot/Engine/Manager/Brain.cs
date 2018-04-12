@@ -26,7 +26,7 @@ public class Brain : MonoBehaviour
     void Start()
     {
         //GameObject.Find("Canvas").GetComponent<HUDManager>().CreateHUD(gameObject);
-        GameObject.Find("Canvas").GetComponent<HUDManager>().CreateHUD(gameObject);
+        GameObject.Find("CanvasHUD").GetComponent<HUDManager>().CreateHUD(gameObject);
         foreach (Instruction I in _instructions)
         {
             InstructionEditor IE = new InstructionEditor();

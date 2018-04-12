@@ -14,7 +14,7 @@ public class FadeText : MonoBehaviour {
     private Color endColor;
     float FadeoutTime;
     public float countdown;
-    float timeRemaining;
+    float timeRemaining;     
 
 
 
