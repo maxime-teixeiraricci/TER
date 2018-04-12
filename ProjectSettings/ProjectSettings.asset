@@ -7,7 +7,7 @@ PlayerSettings:
   productGUID: 19332169b3fc6bd489123c6cbf006915
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
-  defaultScreenOrientation: 3
+  defaultScreenOrientation: 4
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
@@ -158,7 +158,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.MetaBotTest.MetaBot
+    Android: com.MetaBot.MetaBot
     Standalone: unity.DefaultCompany.Warbot
     Tizen: com.Company.ProductName
     iOS: com.Company.ProductName
