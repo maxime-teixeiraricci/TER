@@ -120,7 +120,7 @@ public class XMLWarbotInterpreter : XMLInterpreter
         string l_fileName = "";
         foreach (string file in Directory.GetFiles(path))
         {
-            if (file.Contains(Constants.xmlExtension))
+            if (file.Contains(Constants.xmlExtension) && !file.Contains(".meta"))
             {
                 using (var stream = new FileStream(file, FileMode.Open))
                 {

@@ -20,7 +20,7 @@ public class ChangeLanguage : MonoBehaviour {
     {
         GameObject.Find("GameManager").GetComponent<Traducteur>().langue = newLangage;
         GameObject.Find("GameManager").GetComponent<LangageLoader>().language = newLangage;
-        string[] lines = System.IO.File.ReadAllLines("properties.yml");
+        string[] lines = System.IO.File.ReadAllLines(Application.dataPath +"/StreamingAssets/properties.yml");
         int cpt = 0;
         foreach (string line in lines)
         {
@@ -33,7 +33,7 @@ public class ChangeLanguage : MonoBehaviour {
             }
             cpt++;
         }
-        System.IO.File.WriteAllLines("properties.yml", lines);
+        System.IO.File.WriteAllLines(Application.dataPath +"/StreamingAssets/properties.yml", lines);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

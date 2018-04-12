@@ -11,13 +11,13 @@ public class LangageLoader : MonoBehaviour {
 
     public bool checkFile(string Language)
     {
-        if (!Directory.Exists(Constants.langDirectory))
+        if (!Directory.Exists(Application.dataPath + "/StreamingAssets/"+Constants.langDirectory))
         {
-            Directory.CreateDirectory(Constants.langDirectory);
+            Directory.CreateDirectory(Application.dataPath + "/StreamingAssets/"+Constants.langDirectory);
            print("Dossier existe pas");
         }
 
-        foreach (string file in Directory.GetFiles(Constants.langDirectory))
+        foreach (string file in Directory.GetFiles(Application.dataPath + "/StreamingAssets/"+Constants.langDirectory))
         {
          //  print("File : " + file);
             if (file.Contains(Language))
@@ -48,7 +48,7 @@ public class LangageLoader : MonoBehaviour {
         if (!checkFile(Language))
             return new Langage();
             
-        string[] lines = System.IO.File.ReadAllLines(Constants.langDirectory + Language + ".txt");
+        string[] lines = System.IO.File.ReadAllLines(Application.dataPath + "/StreamingAssets/"+Constants.langDirectory + Language + ".txt");
 
         //Debug.Log(Constants.langDirectory + Language + ".txt");
 
@@ -69,7 +69,7 @@ public class LangageLoader : MonoBehaviour {
 
     void Start()
     {
-        string[] lines = System.IO.File.ReadAllLines("properties.yml");
+        string[] lines = System.IO.File.ReadAllLines(Application.dataPath +"/StreamingAssets/properties.yml");
         foreach (string line in lines)
         {
             if (line.Contains("Language"))

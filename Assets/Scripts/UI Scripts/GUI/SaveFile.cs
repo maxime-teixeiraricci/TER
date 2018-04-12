@@ -111,7 +111,7 @@ public class SaveFile : MonoBehaviour {
         //recuperation de l'unité actuellement traitée et de l'equipe
         string teamName = team.captionText.text;
         string unitName = unit.captionText.text;
-        string path = Constants.teamsDirectory + Constants.gameModeWarBot;
+        string path = Application.dataPath + "/StreamingAssets/" + Constants.teamsDirectory + Constants.gameModeWarBot;
 
         XMLWarbotInterpreter interpreter = new XMLWarbotInterpreter();
         interpreter.behaviorToXml(teamName, path, unitName, listBehavior);
