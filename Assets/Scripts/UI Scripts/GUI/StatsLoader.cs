@@ -153,6 +153,10 @@ public class StatsLoader : MonoBehaviour
                 case 3:
                     Text t3 = GameObject.Find("Text4").GetComponent<Text>();
                     t3.text = line;
+                    Text t3_1 = GameObject.Find("Text5").GetComponent<Text>();
+                    t3_1.text = "";
+                    Text t3_2 = GameObject.Find("Text6").GetComponent<Text>();
+                    t3_2.text = "";
                     break;
                 case 4:
                     Text t4 = GameObject.Find("Text5").GetComponent<Text>();
