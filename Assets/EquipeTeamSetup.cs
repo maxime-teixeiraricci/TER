@@ -23,7 +23,7 @@ public class EquipeTeamSetup : MonoBehaviour {
         GameObject.Find("GameSetting").GetComponent<GameSettingsScript>().Updating();
         List<string> nameTeams = GameObject.Find("GameSetting").GetComponent<GameSettingsScript>().teams;
         List<string> customNames = new List<string>();
-        for(int i = 0; i < nameTeams.Count - 1; i++)
+        for(int i = 0; i < nameTeams.Count; i++)
         {
             string tmp = nameTeams[i].Replace(" ", "_");
             customNames.Add(tmp.Replace(".wbt", ""));
