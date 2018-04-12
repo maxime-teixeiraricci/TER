@@ -63,7 +63,7 @@ GameObject:
   - component: {fileID: 114449647509387942}
   - component: {fileID: 135042677106352350}
   - component: {fileID: 114603053617523302}
-  - component: {fileID: 114500141143698420}
+  - component: {fileID: 114135927836566028}
   - component: {fileID: 54637856206010176}
   - component: {fileID: 64755770115321574}
   m_Layer: 8
@@ -265,6 +265,24 @@ MonoBehaviour:
   _health: 275
   _maxHealth: 275
   _reloadTime: 0
+--- !u!114 &114135927836566028
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1670267256757844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19b5839e1a637834a999058e8d33fb21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _messageDestinataire: 
+  _tmpMessage:
+    _titre: 
+    _contenu: {fileID: 0}
+    _sender: {fileID: 0}
+    _receiver: {fileID: 0}
+    heading: 0
 --- !u!114 &114424686724352526
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -290,30 +308,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _instructions: []
   _instructionsEditor: []
-  _componentPercepts: {fileID: 0}
-  _componentActions: {fileID: 0}
-  _componentActionsNonTerminales: {fileID: 0}
-  _messageManager: {fileID: 0}
+  _componentPercepts: {fileID: 114424686724352526}
+  _componentActions: {fileID: 114072179023332378}
+  _componentActionsNonTerminales: {fileID: 114135927836566028}
+  _messageManager: {fileID: 114603053617523302}
   nbInstruction: 0
   debugMessage: 0
---- !u!114 &114500141143698420
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1670267256757844}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59a440e5abc48244397e18428d5d91d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _messageDestinataire: 
-  _tmpMessage:
-    _titre: 
-    _contenu: {fileID: 0}
-    _sender: {fileID: 0}
-    _receiver: {fileID: 0}
-    heading: 0
 --- !u!114 &114515922954556768
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -358,7 +358,7 @@ MonoBehaviour:
   _messageType:
   - MESSAGE_HELP
   - MESSAGE_POSITION
-  - MESSAGE_DEFENSE
+  - MESSAGE_ATTACK
   _messageLineObject: {fileID: 0}
 --- !u!114 &114614631316123548
 MonoBehaviour:
