@@ -24,7 +24,7 @@ public abstract class MessageManager : MonoBehaviour {
     {
         foreach (GameObject unit in GameObject.FindGameObjectsWithTag("Unit"))
         {
-            if (unit.GetComponent<Stats>()._teamIndex == GetComponent<Stats>()._teamIndex && 
+            if (!unit.Equals(this.gameObject) &&unit.GetComponent<Stats>()._teamIndex == GetComponent<Stats>()._teamIndex && 
                 ((unit.GetComponent<Stats>()._unitType == dest) || (dest == "All")))
             {
                 Message M = new Message(message);
