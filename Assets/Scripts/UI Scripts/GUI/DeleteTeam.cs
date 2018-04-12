@@ -39,7 +39,9 @@ public class DeleteTeam : MonoBehaviour
             string res = file.Replace(path + "\\", "");
             if (res == nameTeam + ".wbt")
             {
+                string fileMeta = file + ".meta";
                 File.Delete(file);
+                //File.Delete(fileMeta);
                 break;
             }
         }
