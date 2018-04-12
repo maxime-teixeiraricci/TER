@@ -41,7 +41,7 @@ public class StatsLoader : MonoBehaviour
             // Lecture des statistiques de la base
             else if (unitName == "Base" && line.Contains("WarBase"))
             {
-                readStatsFile(unitName, reader, statBase, statText);
+                readStatsFile(unitName, reader, statBase);
                 imageUnit.sprite = baseSprite.sprite;
                 imageUnit.color = new Color(imageUnit.color.r, imageUnit.color.g, imageUnit.color.b, 255);
                 /*
@@ -72,21 +72,32 @@ public class StatsLoader : MonoBehaviour
 
             else if (unitName == "Explorer" && line.Contains("WarExplorer"))
             {
-                readStatsFile(unitName, reader, statExplo, statText);
+                readStatsFile(unitName, reader, statExplo);
                 imageUnit.sprite = explorerSprite.sprite;
                 imageUnit.color = new Color(imageUnit.color.r, imageUnit.color.g, imageUnit.color.b, 255);
             }
 
             else if (unitName == "Heavy" && line.Contains("WarHeavy"))
             {
-                readStatsFile(unitName, reader, statHeavy, statText);
+                readStatsFile(unitName, reader, statHeavy);
                 imageUnit.sprite = heavySprite.sprite;
                 imageUnit.color = new Color(imageUnit.color.r, imageUnit.color.g, imageUnit.color.b, 255);
             }
 
             else if (unitName == "Light")
             {
-                statText.text = "No data available";
+                Text t0 = GameObject.Find("Text1").GetComponent<Text>();
+                t0.text = "No data available";
+                Text t1 = GameObject.Find("Text2").GetComponent<Text>();
+                t1.text = "No data available";
+                Text t2 = GameObject.Find("Text3").GetComponent<Text>();
+                t2.text = "No data available";
+                Text t3 = GameObject.Find("Text4").GetComponent<Text>();
+                t3.text = "No data available";
+                Text t4 = GameObject.Find("Text5").GetComponent<Text>();
+                t4.text = "No data available";
+                Text t5 = GameObject.Find("Text6").GetComponent<Text>();
+                t5.text = "No data available";
                 imageUnit.sprite = lightSprite.sprite;
                 imageUnit.color = new Color(imageUnit.color.r, imageUnit.color.g, imageUnit.color.b, 255);
             }
@@ -97,10 +108,10 @@ public class StatsLoader : MonoBehaviour
     }
 
 
-    void readStatsFile(string unitName, TextReader reader, int nbrStats, Text statText)
+    void readStatsFile(string unitName, TextReader reader, int nbrStats)
     {
         string langage = "";
-        string[] lines = System.IO.File.ReadAllLines(Application.dataPath + "/StreamingAssets/" + "properties.yml");
+        string[] lines = File.ReadAllLines(Application.dataPath + "/StreamingAssets/" + "properties.yml");
         foreach (string line1 in lines)
         {
             if (line1.Contains("Language"))
@@ -116,7 +127,44 @@ public class StatsLoader : MonoBehaviour
         for (int i = 0; i < nbrStats; i++)
         {
             line = reader.ReadLine();
-            if (i == 0)
+            line = line.Replace("   ", "").Replace(" ", "");
+            string[] splited = line.Split(':');
+            string trad = splited[0];
+            if (GameObject.Find("GameManager"))
+            {
+                GameObject.Find("GameManager").GetComponent<Traducteur>().setTextOriginal(splited[0]);
+                trad = GameObject.Find("GameManager").GetComponent<Traducteur>().traduction;
+            }
+            line = "    " + trad + ": " + splited[1];
+            switch (i)
+            {
+                case 0:
+                    Text t0 = GameObject.Find("Text1").GetComponent<Text>();
+                    t0.text = line;
+                    break;
+                case 1:
+                    Text t1 = GameObject.Find("Text2").GetComponent<Text>();
+                    t1.text = line;
+                    break;
+                case 2:
+                    Text t2 = GameObject.Find("Text3").GetComponent<Text>();
+                    t2.text = line;
+                    break;
+                case 3:
+                    Text t3 = GameObject.Find("Text4").GetComponent<Text>();
+                    t3.text = line;
+                    break;
+                case 4:
+                    Text t4 = GameObject.Find("Text5").GetComponent<Text>();
+                    t4.text = line;
+                    break;
+                case 5:
+                    Text t5 = GameObject.Find("Text6").GetComponent<Text>();
+                    t5.text = line;
+                    break;
+            }
+            //statText.text = line;
+            /*if (i == 0)
             {
                 string oldText = statText.text;
                 line = line.Replace("   ", "").Replace(" ","");
@@ -145,7 +193,7 @@ public class StatsLoader : MonoBehaviour
                 string newText = oldText + line;
                 statText.text = newText;
                 statText.resizeTextForBestFit = true;
-            }
+            }*/
         }
     }
 }
