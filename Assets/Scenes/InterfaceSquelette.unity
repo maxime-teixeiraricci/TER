@@ -2417,8 +2417,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: validateName
+      - m_Target: {fileID: 438952409}
+        m_MethodName: Delete
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6157,7 +6157,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1027008108}
-        m_MethodName: Delete
+        m_MethodName: DisplayWindow
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
