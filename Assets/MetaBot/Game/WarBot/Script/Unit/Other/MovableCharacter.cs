@@ -111,7 +111,7 @@ public class MovableCharacter : MonoBehaviour
             foreach (ContactPoint contact in other.contacts)
             {
 
-                if (Mathf.Abs(Utility.getAngle(gameObject.transform.position, contact.point) - GetComponent<Stats>()._heading) < 45f)
+                if (Mathf.Abs(Utility.getAngle(gameObject.transform.position, contact.point) - GetComponent<Stats>()._heading) < 60f)
                 {
                     Debug.DrawRay(contact.point, contact.normal, Color.white);
                     collisionObject = other.transform.gameObject;

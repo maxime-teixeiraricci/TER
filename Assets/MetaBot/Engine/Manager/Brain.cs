@@ -73,7 +73,8 @@ public class Brain : MonoBehaviour
     {
         foreach (Instruction instruction in _instructions)
         {
-            if (Verify(instruction)) {
+            if (Verify(instruction))
+            {
 
                 foreach (MessageStruct act in instruction._stringActionsNonTerminales)
                 {
@@ -86,7 +87,11 @@ public class Brain : MonoBehaviour
                     }
 
                 }
-                return instruction._stringAction; }
+                if (instruction._stringAction != "")
+                {
+                    return instruction._stringAction;
+                }
+            }
         }
         return "ACTION_IDLE";
     }
