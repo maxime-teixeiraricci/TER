@@ -110,7 +110,7 @@ public class MovableCharacter : MonoBehaviour
             Debug.DrawRay(transform.position, transform.right, Color.red);*/
             foreach (ContactPoint contact in other.contacts)
             {
-                print(contact.thisCollider.name + " hit " + contact.otherCollider.name);
+
                 if (Mathf.Abs(Utility.getAngle(gameObject.transform.position, contact.point) - GetComponent<Stats>()._heading) < 45f)
                 {
                     Debug.DrawRay(contact.point, contact.normal, Color.white);

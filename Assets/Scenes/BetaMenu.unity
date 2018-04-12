@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1514,6 +1514,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   langues: []
   conteneur: {fileID: 661363531}
+  language: 
 --- !u!1 &390353947
 GameObject:
   m_ObjectHideFlags: 0
@@ -1676,6 +1677,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   langues: []
   conteneur: {fileID: 0}
+  language: 
 --- !u!114 &397876373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1690,7 +1692,6 @@ MonoBehaviour:
   langue: 
   textOriginal: 
   traduction: 
-  loader: {fileID: 397876372}
 --- !u!1 &399640855
 GameObject:
   m_ObjectHideFlags: 0
@@ -1871,6 +1872,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   langues: []
   conteneur: {fileID: 1232266580}
+  language: 
 --- !u!1 &414289943
 GameObject:
   m_ObjectHideFlags: 0
@@ -2271,6 +2273,48 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 490941177}
+--- !u!1001 &492265960
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4437696413363040, guid: 878855a7e9623ae4cbd0a6d7ac243089, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -22.636257
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437696413363040, guid: 878855a7e9623ae4cbd0a6d7ac243089, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -18.066278
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437696413363040, guid: 878855a7e9623ae4cbd0a6d7ac243089, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 9.023346
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437696413363040, guid: 878855a7e9623ae4cbd0a6d7ac243089, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437696413363040, guid: 878855a7e9623ae4cbd0a6d7ac243089, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437696413363040, guid: 878855a7e9623ae4cbd0a6d7ac243089, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437696413363040, guid: 878855a7e9623ae4cbd0a6d7ac243089, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437696413363040, guid: 878855a7e9623ae4cbd0a6d7ac243089, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 878855a7e9623ae4cbd0a6d7ac243089, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &518228213
 GameObject:
   m_ObjectHideFlags: 0
@@ -2667,6 +2711,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   langues: []
   conteneur: {fileID: 577140902}
+  language: 
 --- !u!1 &578407503
 GameObject:
   m_ObjectHideFlags: 0
@@ -4241,6 +4286,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   langues: []
   conteneur: {fileID: 2061117758}
+  language: 
 --- !u!1 &907198023
 GameObject:
   m_ObjectHideFlags: 0
@@ -4326,6 +4372,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   langues: []
   conteneur: {fileID: 1711570043}
+  language: 
 --- !u!1 &956117866
 GameObject:
   m_ObjectHideFlags: 0
@@ -6139,6 +6186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   langues: []
   conteneur: {fileID: 333294871}
+  language: 
 --- !u!1 &1433193746
 GameObject:
   m_ObjectHideFlags: 0
@@ -7724,6 +7772,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   langues: []
   conteneur: {fileID: 1523842461}
+  language: 
 --- !u!114 &1692485015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8320,6 +8369,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   langues: []
   conteneur: {fileID: 1612334546}
+  language: 
 --- !u!1 &1736369419
 GameObject:
   m_ObjectHideFlags: 0
@@ -8919,6 +8969,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   langues: []
   conteneur: {fileID: 582143904}
+  language: 
 --- !u!1 &1966336845
 GameObject:
   m_ObjectHideFlags: 0
@@ -9346,6 +9397,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   langues: []
   conteneur: {fileID: 998763812}
+  language: 
 --- !u!1 &1993520544
 GameObject:
   m_ObjectHideFlags: 0
@@ -9974,6 +10026,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   langues: []
   conteneur: {fileID: 2037442657}
+  language: 
 --- !u!114 &2106456521
 MonoBehaviour:
   m_ObjectHideFlags: 0

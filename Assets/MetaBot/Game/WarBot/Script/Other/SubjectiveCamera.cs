@@ -47,7 +47,7 @@ public class SubjectiveCamera : MonoBehaviour {
                 unit = hit.transform.gameObject;
                 if (Input.GetMouseButtonDown(0))
                 {
-                    fps = true;
+                   // fps = true;
                     minimap.gameObject.SetActive(true);
                 }
                 break;

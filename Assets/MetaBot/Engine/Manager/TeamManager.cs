@@ -19,6 +19,7 @@ public class TeamManager : MonoBehaviour
     }
 
     public bool endGameTestFunc()
+    {
         List<int> teams = new List<int>();
         GameObject[] units = GameObject.FindGameObjectsWithTag("Unit");
         foreach(GameObject u in units)

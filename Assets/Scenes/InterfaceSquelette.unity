@@ -379,6 +379,95 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 1
+--- !u!1 &37419608
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 37419609}
+  - component: {fileID: 37419612}
+  - component: {fileID: 37419611}
+  - component: {fileID: 37419610}
+  m_Layer: 5
+  m_Name: ErrorName
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &37419609
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 37419608}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 204479855}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.00048406044, y: 0.00003576307}
+  m_SizeDelta: {x: 276.83, y: 43.4}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &37419610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 37419608}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
+--- !u!114 &37419611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 37419608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 01cd679a1b9ee48bf9c546f6ce2cb97e, type: 3}
+    m_FontSize: 23
+    m_FontStyle: 2
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "L'\xE9quipe existe d\xE9j\xE0 !"
+--- !u!222 &37419612
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 37419608}
 --- !u!1 &40282823
 GameObject:
   m_ObjectHideFlags: 0
@@ -1251,6 +1340,40 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 190336734}
+--- !u!1 &204479854
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 204479855}
+  m_Layer: 5
+  m_Name: ErrorMessage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &204479855
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 204479854}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 37419609}
+  m_Father: {fileID: 1375428991}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 1.2952, y: -33}
+  m_SizeDelta: {x: 451.54, y: 43.414}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &214611493
 GameObject:
   m_ObjectHideFlags: 0
@@ -2862,7 +2985,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1377094207}
-        m_MethodName: ResetScrollBarPosition
+        m_MethodName: ResetScrollBarPiecesPosition
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4753,7 +4876,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -97.3, y: -66.8}
+  m_AnchoredPosition: {x: -97.302124, y: -85.99997}
   m_SizeDelta: {x: 137.62, y: 36.15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &866527486
@@ -4869,6 +4992,7 @@ MonoBehaviour:
   window: {fileID: 478806639}
   teamDropDown: {fileID: 0}
   mainInputField: {fileID: 0}
+  errorText: {fileID: 0}
 --- !u!114 &866527491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5147,7 +5271,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1377094207}
-        m_MethodName: ResetScrollBarPosition
+        m_MethodName: ResetScrollBarPiecesPosition
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6677,6 +6801,7 @@ MonoBehaviour:
   window: {fileID: 478806639}
   teamDropDown: {fileID: 0}
   mainInputField: {fileID: 0}
+  errorText: {fileID: 0}
 --- !u!114 &1137934576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8025,6 +8150,7 @@ RectTransform:
   - {fileID: 1518910183}
   - {fileID: 866527485}
   - {fileID: 2093819952}
+  - {fileID: 204479855}
   m_Father: {fileID: 478806640}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8687,7 +8813,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1377094207}
-        m_MethodName: ResetScrollBarPosition
+        m_MethodName: ResetScrollBarPiecesPosition
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9411,7 +9537,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1377094207}
-        m_MethodName: ResetScrollBarPosition
+        m_MethodName: ResetScrollBarPiecesPosition
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11884,7 +12010,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 99.2, y: -66.8}
+  m_AnchoredPosition: {x: 98, y: -86}
   m_SizeDelta: {x: 137.62, y: 36.15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2093819953
@@ -12000,6 +12126,7 @@ MonoBehaviour:
   window: {fileID: 478806639}
   teamDropDown: {fileID: 688641940}
   mainInputField: {fileID: 1518910184}
+  errorText: {fileID: 204479854}
 --- !u!114 &2093819958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12103,7 +12230,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1377094207}
-        m_MethodName: ResetScrollBarPosition
+        m_MethodName: ResetScrollBarPiecesPosition
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

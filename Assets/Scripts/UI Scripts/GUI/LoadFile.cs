@@ -36,9 +36,13 @@ public class LoadFile : MonoBehaviour
     }
 
 
-    public void ResetScrollBarPosition()
+    public void ResetScrollBarEditorPosition()
     {
         scrollEdit.value = 1;
+    }
+
+    public void ResetScrollBarPiecesPosition()
+    {
         scrollPieces.value = 1;
     }
     /*
@@ -203,7 +207,7 @@ public class LoadFile : MonoBehaviour
             }
             
         }
-        ResetScrollBarPosition();
+        ResetScrollBarEditorPosition();
 
     }
 
