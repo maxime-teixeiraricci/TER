@@ -64,9 +64,10 @@ public class PuzzleScript : MonoBehaviour
     public void NormalizedLabel()
     {
         string affiche = _value;
+        affiche = affiche.Replace("NOT_", "");
         if (GameObject.Find("GameManager"))
         {
-            GameObject.Find("GameManager").GetComponent<Traducteur>().setTextOriginal(_value);
+            GameObject.Find("GameManager").GetComponent<Traducteur>().setTextOriginal(affiche);
             affiche = GameObject.Find("GameManager").GetComponent<Traducteur>().traduction;
         }
         print("Valeur finale affiche: " + affiche);
@@ -83,7 +84,7 @@ public class PuzzleScript : MonoBehaviour
             string verb = "SEND";
             if (GameObject.Find("GameManager"))
             {
-                GameObject.Find("GameManager").GetComponent<Traducteur>().setTextOriginal("SEND");
+                GameObject.Find("GameManager").GetComponent<Traducteur>().setTextOriginal(verb);
                 verb = GameObject.Find("GameManager").GetComponent<Traducteur>().traduction;
             }
                 _label.GetComponent<Text>().text = verb +" \"" + affiche.Replace("ACTN_MESSAGE_", "").Replace("PERCEPT_", "").Replace("_", " ") + "\"";
@@ -95,7 +96,13 @@ public class PuzzleScript : MonoBehaviour
         }
         if (neg)
         {
-            _label.GetComponent<Text>().text = "Not " + _label.GetComponent<Text>().text;
+            string not = "Not";
+            if (GameObject.Find("GameManager"))
+            {
+                GameObject.Find("GameManager").GetComponent<Traducteur>().setTextOriginal(not);
+                not = GameObject.Find("GameManager").GetComponent<Traducteur>().traduction;
+            }
+            _label.GetComponent<Text>().text = not + " " + _label.GetComponent<Text>().text.Replace("NOT_","");
             _label.GetComponent<Text>().color = new Color(1, 0.6f, 0.6f);
         }
         else
@@ -146,6 +153,7 @@ public class PuzzleScript : MonoBehaviour
         neg = !neg;
         if (neg)
         {
+
             _value = "NOT_"+ _value.Replace("NOT_", "");
         }
         else

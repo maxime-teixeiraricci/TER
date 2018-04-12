@@ -80,6 +80,7 @@
 	Retour=Back
 	ACTION NON TERMINALE=NON-TERMINAL ACTION
 	SEND=Send
+	Not=Not
 # Properties
 	MaxHealth=Maximum health
 	MaxInventory=Inventory size
