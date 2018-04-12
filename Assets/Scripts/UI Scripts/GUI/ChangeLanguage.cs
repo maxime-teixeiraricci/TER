@@ -18,8 +18,9 @@ public class ChangeLanguage : MonoBehaviour {
 
     public void ChangementLangue(string newLangage)
     {
+        GameObject.Find("GameManager").GetComponent<LangageLoader>().changeLanguage(newLangage);
         GameObject.Find("GameManager").GetComponent<Traducteur>().langue = newLangage;
-        GameObject.Find("GameManager").GetComponent<LangageLoader>().language = newLangage;
+
         string[] lines = System.IO.File.ReadAllLines(Application.dataPath +"/StreamingAssets/properties.yml");
         int cpt = 0;
         foreach (string line in lines)

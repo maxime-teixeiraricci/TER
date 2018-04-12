@@ -38,7 +38,12 @@ public class LangageLoader : MonoBehaviour {
                 conteneur.gameObject.GetComponent<Text>().text = t.valeur;
             }
     }
-
+    public void changeLanguage(string s)
+    {
+        language = s;
+        langues.Clear();
+        langues.Add(readFile(s));
+    }
     public Langage readFile(string Language)
     {
         Langage l_lang = new Langage();
