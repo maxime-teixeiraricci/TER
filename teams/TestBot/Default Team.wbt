@@ -162,6 +162,7 @@
         <NOT_PERCEPT_LIFE_MAX />
         <PERCEPT_BAG_10 />
         <PERCEPT_ENEMY />
+        <PERCEPT_MESSAGE_POSITION />
       </parameters>
       <actions>
         <ACTION_HEAL />
