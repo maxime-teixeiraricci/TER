@@ -13,9 +13,14 @@ public class TeamManager : MonoBehaviour
 
     public List<Instruction> getUnitsBevahiours(int teamIndex, string unitType)
     {
-        string gamePath = "./teams/" + GetComponent<GameManager>()._gameName + "/";
+        
+        string gamePath = Application.streamingAssetsPath + "/teams/" + GetComponent<GameManager>()._gameName + "/";
         XMLWarbotInterpreter interpreter = new XMLWarbotInterpreter();
-        return _teams[teamIndex]._unitsBehaviour[unitType];
+        if (_teams[teamIndex]._unitsBehaviour.ContainsKey(unitType))
+        {
+            return _teams[teamIndex]._unitsBehaviour[unitType];
+        }
+        return new List<Instruction>();
     }
 
     public bool endGameTestFunc()

@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
-        if (!Directory.Exists("/teams/"))
+        /*if (!Directory.Exists("/teams/"))
         {
             //if it doesn't, create it
             Directory.CreateDirectory("/teams/");
@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
             //if it doesn't, create it
             Directory.CreateDirectory(gamepath);
 
-        }
+        }*/
     } 
 
 
@@ -61,8 +61,7 @@ public class GameManager : MonoBehaviour
 
     public void SaveGameFile()
     {
-        string path = "Assets/MetaBot/Game/WarBot/" + _gameName + ".gameset";
-
+        string path = Application.streamingAssetsPath + "/Warbot/" + _gameName + ".gameset";
         //Write some text to the test.txt file
         StreamWriter writer = new StreamWriter(path, false);
 
