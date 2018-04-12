@@ -64,7 +64,7 @@ public class PuzzleScript : MonoBehaviour
     public void NormalizedLabel()
     {
         string affiche = _value;
-        affiche = affiche.Replace("NOT_", "");
+        affiche = affiche.Replace("NOT_", "FALSE_");
         if (GameObject.Find("GameManager"))
         {
             GameObject.Find("GameManager").GetComponent<Traducteur>().setTextOriginal(affiche);
@@ -96,13 +96,13 @@ public class PuzzleScript : MonoBehaviour
         }
         if (neg)
         {
-            string not = "Not";
+         /*   string not = "Not";
             if (GameObject.Find("GameManager"))
             {
                 GameObject.Find("GameManager").GetComponent<Traducteur>().setTextOriginal(not);
                 not = GameObject.Find("GameManager").GetComponent<Traducteur>().traduction;
             }
-            _label.GetComponent<Text>().text = not + " " + _label.GetComponent<Text>().text.Replace("NOT_","");
+            _label.GetComponent<Text>().text = not + " " + _label.GetComponent<Text>().text.Replace("NOT_","");*/
             _label.GetComponent<Text>().color = new Color(1, 0.6f, 0.6f);
         }
         else
