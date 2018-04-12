@@ -396,24 +396,24 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &37419609
 RectTransform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 37419608}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1375428991}
-  m_RootOrder: 4
+  m_Father: {fileID: 204479855}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.34895, y: -21.61}
-  m_SizeDelta: {x: 332.92, y: 32.6}
+  m_AnchoredPosition: {x: 0.00048406044, y: 0.00003576307}
+  m_SizeDelta: {x: 276.83, y: 43.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &37419610
 MonoBehaviour:
@@ -1340,6 +1340,40 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 190336734}
+--- !u!1 &204479854
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 204479855}
+  m_Layer: 5
+  m_Name: ErrorMessage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &204479855
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 204479854}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 37419609}
+  m_Father: {fileID: 1375428991}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 1.2952, y: -33}
+  m_SizeDelta: {x: 451.54, y: 43.414}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &214611493
 GameObject:
   m_ObjectHideFlags: 0
@@ -6767,7 +6801,7 @@ MonoBehaviour:
   window: {fileID: 478806639}
   teamDropDown: {fileID: 0}
   mainInputField: {fileID: 0}
-  errorText: {fileID: 37419611}
+  errorText: {fileID: 0}
 --- !u!114 &1137934576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8116,7 +8150,7 @@ RectTransform:
   - {fileID: 1518910183}
   - {fileID: 866527485}
   - {fileID: 2093819952}
-  - {fileID: 37419609}
+  - {fileID: 204479855}
   m_Father: {fileID: 478806640}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12092,7 +12126,7 @@ MonoBehaviour:
   window: {fileID: 478806639}
   teamDropDown: {fileID: 688641940}
   mainInputField: {fileID: 1518910184}
-  errorText: {fileID: 37419611}
+  errorText: {fileID: 204479854}
 --- !u!114 &2093819958
 MonoBehaviour:
   m_ObjectHideFlags: 0
