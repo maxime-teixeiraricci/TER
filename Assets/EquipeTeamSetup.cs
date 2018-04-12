@@ -21,6 +21,13 @@ public class EquipeTeamSetup : MonoBehaviour {
     {
         GetComponent<Dropdown>().ClearOptions();
         GameObject.Find("GameSetting").GetComponent<GameSettingsScript>().Updating();
-        GetComponent<Dropdown>().AddOptions(GameObject.Find("GameSetting").GetComponent<GameSettingsScript>().teams);
+        List<string> nameTeams = GameObject.Find("GameSetting").GetComponent<GameSettingsScript>().teams;
+        List<string> customNames = new List<string>();
+        Debug.Log(nameTeams.Count);
+        for(int i = 0; i < nameTeams.Count - 1; i++)
+        {
+            customNames.Add(nameTeams[i].Replace(".wbt", ""));
+        }
+        GetComponent<Dropdown>().AddOptions(customNames);
     }
 }
