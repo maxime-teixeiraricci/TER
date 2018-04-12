@@ -25,7 +25,7 @@ public class MovableCharacter : MonoBehaviour
 
     public void Move()
     {
-        if (!isBlocked())
+        if (true)
         {
             vectMov = Utility.vectorFromAngle(GetComponent<Stats>()._heading);
             nextposition = transform.position + vectMov.normalized * speed * Time.deltaTime;
@@ -113,7 +113,8 @@ public class MovableCharacter : MonoBehaviour
                 float a = Utility.getAngle(gameObject.transform.position, contact.point);
                 float b = GetComponent<Stats>()._heading;
                 float A = Mathf.Abs(a - b);
-                if (Mathf.Min(A, (A+360)%360) < 45f)
+                float B = Mathf.Abs( 360+ Mathf.Min(a,b) - Mathf.Max(a, b) ) ;
+                if (Mathf.Min(A, B) < 60f)
                 {
                     Debug.DrawRay(contact.point, contact.normal, Color.white);
                     collisionObject = other.transform.gameObject;

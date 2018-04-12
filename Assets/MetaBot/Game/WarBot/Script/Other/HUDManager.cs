@@ -1,19 +1,50 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 
 public class HUDManager : MonoBehaviour
 {
     public GameObject _HUDObject;
+    public Image _StatsButton;
+    public Image _MessageButton;
+
     private bool _isCreated;
 
-	// Update is called once per frame
-	void Update ()
+
+
+    public bool messageOn;
+    public bool statsOn;
+
+
+
+    void Update()
     {
-		
-	}
+        foreach (HP_HUDManager hud in Resources.FindObjectsOfTypeAll<HP_HUDManager>())
+        {
+            hud.transform.gameObject.SetActive(statsOn);
+        }
+
+        foreach (MessageLineScript message in Resources.FindObjectsOfTypeAll<MessageLineScript>())
+        {
+            message.transform.gameObject.SetActive(messageOn);
+        }
+    }
+
+    public void MessageButton()
+    {
+        messageOn = !messageOn;
+        _MessageButton.color = (messageOn) ? Color.green : Color.red;
+    }
+
+    public void StatsButton()
+    {
+        statsOn = !statsOn;
+        _StatsButton.color = (statsOn) ? Color.green : Color.red;
+    }
+	
 
     public void CreateHUD(GameObject unit)
     {

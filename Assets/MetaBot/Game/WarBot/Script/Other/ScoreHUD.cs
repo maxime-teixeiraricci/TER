@@ -6,13 +6,15 @@ using UnityEngine.UI;
 public class ScoreHUD : MonoBehaviour
 {
     public Image[] _scores;
-    
+   
 
-	// Update is called once per frame
-	void Update ()
+
+
+    // Update is called once per frame
+    void Update ()
     {
         Dictionary<int, int> _score = new Dictionary<int, int>();
-
+        
         for (int i = 0; i < GameObject.Find("GameManager").GetComponent<TeamManager>()._teams.Count; i ++)
         {
             _scores[i].color = GameObject.Find("GameManager").GetComponent<TeamManager>()._teams[i]._color;

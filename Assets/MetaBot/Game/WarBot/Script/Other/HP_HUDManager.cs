@@ -15,12 +15,18 @@ public class HP_HUDManager : MonoBehaviour
     public Text _ressourceText;
     public Image _ressourceImage;
     public Objet ressource;
+    public GameObject targetIcon;
 
     public HPColor[] _hpColor;
 	
 	// Update is called once per frame
 	void Update ()
     {
+        if (_target)
+        {
+            targetIcon.SetActive(_target.gameObject.GetComponent<Stats>()._contract != null);
+        }
+
         if (!_target)
         {
             Destroy(gameObject);

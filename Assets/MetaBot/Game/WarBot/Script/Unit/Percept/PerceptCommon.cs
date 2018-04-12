@@ -43,6 +43,9 @@ public class PerceptCommon : Percept
             }
             return false;
         };
+
+        
+
         _percepts["PERCEPT_ALLY"] = delegate ()
         {
             Brain brain = GetComponent<Brain>();

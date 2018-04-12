@@ -31,6 +31,9 @@ TagManager:
   - FpsCamera
   - Text
   - FinishText
+  - FinishTest
+  - HPBar
+  - MessageLine
   layers:
   - Default
   - TransparentFX

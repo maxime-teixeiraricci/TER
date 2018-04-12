@@ -22,7 +22,7 @@ public class PerceptUnit : PerceptCommon
             foreach (GameObject gO in GetComponent<Sight>()._listOfCollision)
             {
                 if (gO && gO.GetComponent<Stats>() != null && gO.GetComponent<Stats>()._unitType == "Base" &&
-                Vector3.Distance(transform.position, gO.transform.position) < 7f && gO.GetComponent<Stats>()._teamIndex == GetComponent<Stats>()._teamIndex)
+                Vector3.Distance(transform.position, gO.transform.position) < 8f && gO.GetComponent<Stats>()._teamIndex == GetComponent<Stats>()._teamIndex)
                 {
                     GetComponent<Stats>()._target = gO;
                     return true;
@@ -31,9 +31,22 @@ public class PerceptUnit : PerceptCommon
             return false;
         };
         /** PERCEPT **/
-
-        _percepts["CONTRACT_ELIMINATION"] = delegate () { return GetComponent<Stats>()._contract != null && GetComponent<Stats>()._contract.type == "Elimination"; };
-        _percepts["CONTRACT_ELIMINATION_TARGET_NEAR"] = delegate () {
+        _percepts["PERCEPT_CAN_GIVE"] = delegate ()
+        {
+            GetComponent<Stats>()._target = null;
+            foreach (GameObject gO in GetComponent<Sight>()._listOfCollision)
+            {
+                if (gO && gO.GetComponent<Stats>() != null &&
+                Vector3.Distance(transform.position, gO.transform.position) < 8f && gO.GetComponent<Stats>()._teamIndex == GetComponent<Stats>()._teamIndex)
+                {
+                    GetComponent<Stats>()._target = gO;
+                    return true;
+                }
+            }
+            return false;
+        };
+        _percepts["PERCEPT_CONTRACT_ELIMINATION"] = delegate () { return GetComponent<Stats>()._contract != null && GetComponent<Stats>()._contract.type == "Elimination"; };
+        _percepts["PERCEPT_CONTRACT_ELIMINATION_TARGET_NEAR"] = delegate () {
             Brain brain = GetComponent<Brain>();
             Sight sight = brain.GetComponent<Sight>();
             List<GameObject> _listOfUnitColl = new List<GameObject>();

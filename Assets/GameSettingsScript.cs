@@ -47,7 +47,7 @@ public class GameSettingsScript : MonoBehaviour
 
     public void Updating()
     {
-        gamePath = Application.dataPath + "/StreamingAssets/teams/TestBot/";
+        gamePath = Application.streamingAssetsPath+"/teams/TestBot/";
         teams = new List<string>();
         string[] fileEntries = Directory.GetFiles(gamePath);
         foreach (string s in fileEntries)

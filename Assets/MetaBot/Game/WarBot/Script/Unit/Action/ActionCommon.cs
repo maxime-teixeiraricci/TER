@@ -16,7 +16,7 @@ public class ActionCommon : Action
         _actions["ACTION_GIVE_RESSOURCE"] = delegate ()
         {
             GameObject target = GetComponent<Stats>()._target;
-            if (target != null)
+            if (target != null && GetComponent<Percept>()._percepts.ContainsKey("PERCEPT_CAN_GIVE" )&& GetComponent<Percept>()._percepts["PERCEPT_CAN_GIVE"]())
             {
                 Objet item = GetComponent<Inventory>().find("Ressource");
                 print(item);

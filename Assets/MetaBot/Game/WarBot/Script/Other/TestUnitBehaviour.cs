@@ -27,7 +27,7 @@ public class TestUnitBehaviour : MonoBehaviour
             new Instruction(new string[] { "PERCEPT_BAG_NOT_FULL", "PERCEPT_FOOD_NEAR" }, "ACTION_PICK"),
             new Instruction(new string[] { "PERCEPT_BLOCKED" }, "ACTION_MOVE_UNTIL_UNBLOCKED"),
             new Instruction(new string[] { },"ACTION_MOVE") };
-        string gamePath = "./teams/" + GetComponent<GameManager>()._gameName + "/";
+        string gamePath = Application.streamingAssetsPath + "/teams/" + GetComponent<GameManager>()._gameName + "/";
 
         string teamName = "Default Team";
         XMLWarbotInterpreter interpreter = new XMLWarbotInterpreter();
