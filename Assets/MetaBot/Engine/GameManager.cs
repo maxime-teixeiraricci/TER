@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
         {
             DontDestroyOnLoad(this.gameObject);
             created = true;
+            SaveGameFile();
         }
         else
         {
@@ -37,7 +38,14 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
-        gamepath = "./teams/" + _gameName + "/";
+        if (!Directory.Exists("/teams/"))
+        {
+            //if it doesn't, create it
+            Directory.CreateDirectory("/teams/");
+            GetComponent<TestUnitBehaviour>().CreateDefaultBehaviour();
+
+        }
+        gamepath = "/teams/" + _gameName + "/";
         if (!Directory.Exists(gamepath))
         {
             //if it doesn't, create it
