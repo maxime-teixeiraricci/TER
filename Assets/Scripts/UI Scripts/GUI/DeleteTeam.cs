@@ -33,13 +33,15 @@ public class DeleteTeam : MonoBehaviour
     public void Delete()
     {
         nameTeam = dropdown.captionText.text;
-        string path = Constants.teamsDirectory + Constants.gameModeWarBot;
+        string path = Application.dataPath + "/StreamingAssets/teams/TestBot/";
         foreach (string file in Directory.GetFiles(path))
         {
             string res = file.Replace(path + "\\", "");
             if (res == nameTeam + ".wbt")
+            //Debug.Log("RES = " + res);
+            //Debug.Log("nameTeam = " + nameTeam);
             {
-                string fileMeta = file + ".meta";
+                //string fileMeta = file + ".meta";
                 File.Delete(file);
                 //File.Delete(fileMeta);
                 break;
@@ -52,14 +54,14 @@ public class DeleteTeam : MonoBehaviour
     public void Updating()
     {
 
-        string gamePath = "./teams/TestBot/";
+        string gamePath = Application.dataPath + "/StreamingAssets/teams/TestBot/";
         List<string> teams = new List<string>();
         string[] fileEntries = Directory.GetFiles(gamePath);
         foreach (string s in fileEntries)
         {
-            print(s);
+            //print(s);
             string team = s.Replace(gamePath, "");
-            if (team.Contains(".wbt"))
+            if (team.Contains(".wbt") && !team.Contains(".meta"))
             {
                 team = team.Replace(".wbt", "");
                 teams.Add(team);
