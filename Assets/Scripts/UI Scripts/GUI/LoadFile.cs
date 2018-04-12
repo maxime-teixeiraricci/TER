@@ -109,7 +109,7 @@ public class LoadFile : MonoBehaviour
         clear.clearEditor();
         string teamName = team.captionText.text;
         string unitName = unit.captionText.text;
-        string path = Constants.teamsDirectory + Constants.gameModeWarBot;
+        string path = Application.dataPath + "/StreamingAssets/" + Constants.teamsDirectory + Constants.gameModeWarBot;
         Transform editeurTransform = GameObject.Find("Editeur").transform;
         XMLWarbotInterpreter interpreter = new XMLWarbotInterpreter();
 
@@ -211,14 +211,14 @@ public class LoadFile : MonoBehaviour
     public void Updating()
     {
         
-        string gamePath = "./teams/TestBot/";
+        string gamePath = Application.dataPath + "/StreamingAssets/" + "teams/TestBot/";
         List<string> teams = new List<string>();
         string[] fileEntries = Directory.GetFiles(gamePath);
         foreach (string s in fileEntries)
         {
             print(s);
             string team = s.Replace(gamePath,"");
-            if (team.Contains(".wbt"))
+            if (team.Contains(".wbt") && !team.Contains(".meta"))
             {
                 team = team.Replace(".wbt", "");
                 teams.Add(team);

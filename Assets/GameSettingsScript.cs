@@ -47,13 +47,13 @@ public class GameSettingsScript : MonoBehaviour
 
     public void Updating()
     {
-        gamePath = "./teams/TestBot/";
+        gamePath = Application.dataPath + "/StreamingAssets"+"/teams/TestBot/";
         teams = new List<string>();
         string[] fileEntries = Directory.GetFiles(gamePath);
         foreach (string s in fileEntries)
         {
             string team = stringDifference(s, gamePath);
-            if (team.Contains(".wbt"))
+            if (team.Contains(".wbt") && !team.Contains(".meta"))
             {
                 teams.Add(team);
             }
