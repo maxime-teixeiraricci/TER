@@ -33,7 +33,7 @@ public class DeleteTeam : MonoBehaviour
     public void Delete()
     {
         nameTeam = dropdown.captionText.text;
-        string path = Application.dataPath + "/StreamingAssets/teams/TestBot/";
+        string path = Application.streamingAssetsPath + "/teams/TestBot/"; //Application.dataPath + "/StreamingAssets/teams/TestBot/";
         foreach (string file in Directory.GetFiles(path))
         {
             string res = file.Replace(path + "\\", "");
@@ -54,7 +54,7 @@ public class DeleteTeam : MonoBehaviour
     public void Updating()
     {
 
-        string gamePath = Application.dataPath + "/StreamingAssets/teams/TestBot/";
+        string gamePath = Application.streamingAssetsPath + "/teams/TestBot/";  //Application.dataPath + "/StreamingAssets/teams/TestBot/";
         //Debug.Log(Application.dataPath);
         List<string> teams = new List<string>();
         string[] fileEntries = Directory.GetFiles(gamePath);

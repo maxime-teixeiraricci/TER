@@ -27,7 +27,8 @@ public class CreateTeam : MonoBehaviour
     public void validateName()
     {
         string teamName = mainInputField.text;
-        string path = Application.dataPath + "/StreamingAssets/teams/TestBot/";
+        string path = Application.streamingAssetsPath + "/teams/TestBot/";
+            //Application.dataPath + "/StreamingAssets/teams/TestBot/";
 
         List<int> listInt = new List<int>();
         for (int i = 0; i < teamName.Length; i++)
