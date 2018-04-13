@@ -28,7 +28,7 @@ public class PlayButton : MonoBehaviour
     {
         nbPlayers = int.Parse(_numberplayerDropDown.GetComponent<Dropdown>().captionText.text);
         XMLWarbotInterpreter interpreter = new XMLWarbotInterpreter();
-        string gamePath = Application.dataPath + "/StreamingAssets/" + "teams/" + GameObject.Find("GameManager").GetComponent<GameManager>()._gameName + "/";
+        string gamePath = Application.streamingAssetsPath + "teams/" + GameObject.Find("GameManager").GetComponent<GameManager>()._gameName + "/";
         GameObject gameManager = GameObject.Find("GameManager");
         gameManager.GetComponent<TeamManager>()._teams = new List<Team>();
 

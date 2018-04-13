@@ -53,7 +53,7 @@ public class LangageLoader : MonoBehaviour {
         if (!checkFile(Language))
             return new Langage();
             
-        string[] lines = System.IO.File.ReadAllLines(Application.dataPath + "/StreamingAssets/"+Constants.langDirectory + Language + ".txt");
+        string[] lines = System.IO.File.ReadAllLines(Application.streamingAssetsPath + Constants.langDirectory + Language + ".txt");
 
         //Debug.Log(Constants.langDirectory + Language + ".txt");
 
@@ -74,7 +74,7 @@ public class LangageLoader : MonoBehaviour {
 
     void Start()
     {
-        string[] lines = System.IO.File.ReadAllLines(Application.dataPath +"/StreamingAssets/properties.yml");
+        string[] lines = System.IO.File.ReadAllLines(Application.streamingAssetsPath+"properties.yml");
         foreach (string line in lines)
         {
             if (line.Contains("Language"))

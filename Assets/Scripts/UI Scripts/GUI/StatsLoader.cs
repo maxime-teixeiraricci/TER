@@ -28,7 +28,7 @@ public class StatsLoader : MonoBehaviour
         int statHeavy = 6;
         string fileName = "properties.yml";
         TextReader reader;
-        reader = new StreamReader(Application.dataPath + "/StreamingAssets/"+fileName);
+        reader = new StreamReader(Application.streamingAssetsPath + fileName);
         string line;
         while (true)
         {
@@ -111,7 +111,7 @@ public class StatsLoader : MonoBehaviour
     void readStatsFile(string unitName, TextReader reader, int nbrStats)
     {
         string langage = "";
-        string[] lines = File.ReadAllLines(Application.dataPath + "/StreamingAssets/" + "properties.yml");
+        string[] lines = File.ReadAllLines(Application.streamingAssetsPath + "properties.yml");
         foreach (string line1 in lines)
         {
             if (line1.Contains("Language"))
