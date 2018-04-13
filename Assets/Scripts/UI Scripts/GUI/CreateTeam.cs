@@ -28,6 +28,26 @@ public class CreateTeam : MonoBehaviour
     {
         string teamName = mainInputField.text;
         string path = Application.dataPath + "/StreamingAssets/teams/TestBot/";
+
+        List<int> listInt = new List<int>();
+        for (int i = 0; i < teamName.Length; i++)
+        {
+            listInt.Add(System.Convert.ToInt32(teamName[i]));
+        }
+
+        for (int i = 0; i < listInt.Count; i++)
+        {
+            int result = listInt[i];
+            if ((result > 90 && result < 97) || (result < 65 && result > 57) || result > 122)
+            {
+                //Debug.Log("REASON ERROR = " + result);
+                errorText.SetActive(true);
+                Text error = errorText.GetComponentInChildren<Text>();
+                error.text = "Nom invalide ! (a-zA-Z0-9)";
+                return;
+            }
+        }
+
         foreach (string file in Directory.GetFiles(path))
         {
             //Debug.Log("VALUE FILE = " + file);
@@ -43,24 +63,7 @@ public class CreateTeam : MonoBehaviour
             }
         }
 
-        List<int> listInt = new List<int>();
-        for(int i = 0; i < teamName.Length; i++)
-        {
-            listInt.Add(System.Convert.ToInt32(teamName[i]));
-        }
-
-        for(int i = 0; i < listInt.Count; i++)
-        {
-            int result = listInt[i];
-            if((result > 90 && result < 97) || (result < 65 && result > 57) || result > 122 )
-            {
-                //Debug.Log("REASON ERROR = " + result);
-                errorText.SetActive(true);
-                Text error = errorText.GetComponentInChildren<Text>();
-                error.text = "Nom invalide ! (a-zA-Z0-9)";
-                return;
-            }
-        }
+        
 
         dropOption.Add(teamName);
         teamDropDown.AddOptions(dropOption);

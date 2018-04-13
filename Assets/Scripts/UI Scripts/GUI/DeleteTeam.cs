@@ -38,12 +38,12 @@ public class DeleteTeam : MonoBehaviour
         {
             string res = file.Replace(path + "\\", "");
             if (res == nameTeam + ".wbt")
-            //Debug.Log("RES = " + res);
-            //Debug.Log("nameTeam = " + nameTeam);
+            Debug.Log("RES = " + res);
+            Debug.Log("nameTeam = " + nameTeam);
             {
-                //string fileMeta = file + ".meta";
+                string fileMeta = file + ".meta";
                 File.Delete(file);
-                //File.Delete(fileMeta);
+                File.Delete(fileMeta);
                 break;
             }
         }
@@ -55,6 +55,7 @@ public class DeleteTeam : MonoBehaviour
     {
 
         string gamePath = Application.dataPath + "/StreamingAssets/teams/TestBot/";
+        //Debug.Log(Application.dataPath);
         List<string> teams = new List<string>();
         string[] fileEntries = Directory.GetFiles(gamePath);
         foreach (string s in fileEntries)
