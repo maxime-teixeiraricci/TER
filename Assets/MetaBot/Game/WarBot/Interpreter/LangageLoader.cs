@@ -74,7 +74,7 @@ public class LangageLoader : MonoBehaviour {
 
     void Start()
     {
-        string[] lines = System.IO.File.ReadAllLines(Application.streamingAssetsPath+"properties.yml");
+        string[] lines = System.IO.File.ReadAllLines(Application.streamingAssetsPath+"/properties.yml");
         foreach (string line in lines)
         {
             if (line.Contains("Language"))
