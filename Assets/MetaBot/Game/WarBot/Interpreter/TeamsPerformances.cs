@@ -1,11 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Reflection;
 using UnityEngine;
-using System.Xml;
-using System.IO;
 
-
-public class TeamsPerformance : XmlDocument {
+public class TeamsPerformance {
 
     public TeamsPerformance()
     {
@@ -22,12 +18,12 @@ public class TeamsPerformance : XmlDocument {
                 string[] DetailStat = Stat.Split('/');
                 if (DetailStat[0] == Teams[0] || DetailStat[0] == Teams[1] || DetailStat[0] == Teams[2] || DetailStat[0] == Teams[3])
                 {
-                    int numVal = Int32.Parse(DetailStat[1]);
+                    int numVal = int.Parse(DetailStat[1]);
                     numVal++;
                     DetailStat[1] = numVal.ToString(); //NbMatch
                     if (Team == Winner)
                     {
-                        numVal = Int32.Parse(DetailStat[2]);
+                        numVal = int.Parse(DetailStat[2]);
                         numVal++;
                         DetailStat[2] = numVal.ToString(); //NbVictoire
                     }
@@ -39,58 +35,33 @@ public class TeamsPerformance : XmlDocument {
         }
     }
     
-    public Dictionary<string, List<int>> getStats(string path)
+    public KeyValuePair<string,List<Matchup>>  getStats(string team)
     {
-        // Try to find an already existing file with this team name
+        List<Matchup> matchs = new List<Matchup>();
 
-        Dictionary<string, List<int>> stats = new Dictionary<string, List<int>>();
-
-        string l_filename = path + "/stats.xml";
-
-        List<string> teams = allTeamsInXmlFiles(l_filename);
-  
-        using (FileStream stream = new FileStream(l_filename, FileMode.Open))
+        string[] Stats = System.IO.File.ReadAllLines(Application.streamingAssetsPath + "/Stats/" + team + ".stat");
+        foreach (string stat in Stats)
         {
-            Load(stream);
-            foreach (string stmp in teams)
-            {
-                XmlNode teamNode = SelectSingleNode(stmp);
-                List<int> statsTeam = new List<int>();
-                foreach (XmlNode x in teamNode.ChildNodes)
-                {
-                    statsTeam.Add(int.Parse(x.Name));
-                }
-                stats.Add(stmp,statsTeam);
+            string[] DetailStat = stat.Split('/');
+            Matchup tmp = new Matchup();
+            tmp.opponent = DetailStat[0];
+            tmp.totalMatchCount = int.Parse(DetailStat[1]);
+            tmp.victoryCount = int.Parse(DetailStat[2]);
 
-            }
-        }
-            return stats;
-    }
-
-        public List<string> allTeamsInXmlFiles(string path)
-    {
-        List<string> l_teams = new List<string>();
-
-        if (!Directory.Exists(path))
-            Directory.CreateDirectory(path);
-
-        foreach (string file in Directory.GetFiles(path))
-        {
-            if (file.Contains(Constants.xmlExtension))
-            {
-                using (var stream = new FileStream(file, FileMode.Open))
-                {
-                    if (stream.CanRead)
-                    {
-                        Load(stream);
-                        XmlNode l_team = SelectSingleNode("//" + Constants.nodeTeam);
-                        if (l_team.InnerText != null)
-                            l_teams.Add(l_team.InnerText);
-                    }
-                }
-            }
+            matchs.Add(tmp);
         }
 
-        return l_teams;
+        KeyValuePair<string, List<Matchup>> result = new KeyValuePair<string, List<Matchup>>(team,matchs);
+        return result;
     }
+
+   
+}
+
+[System.Serializable]
+public struct Matchup
+{
+    public string opponent;
+    public int victoryCount;
+    public int totalMatchCount;
 }
