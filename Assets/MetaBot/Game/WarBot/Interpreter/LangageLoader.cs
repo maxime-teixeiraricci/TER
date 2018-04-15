@@ -11,9 +11,9 @@ public class LangageLoader : MonoBehaviour {
 
     public bool checkFile(string Language)
     {
-        if (!Directory.Exists(Application.dataPath + "/StreamingAssets/"+Constants.langDirectory))
+        if (!Directory.Exists(Application.streamingAssetsPath + Constants.langDirectory))
         {
-            Directory.CreateDirectory(Application.dataPath + "/StreamingAssets/"+Constants.langDirectory);
+            Directory.CreateDirectory(Application.streamingAssetsPath + Constants.langDirectory);
            print("Dossier existe pas");
         }
 
