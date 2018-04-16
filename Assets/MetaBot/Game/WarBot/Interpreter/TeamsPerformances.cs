@@ -7,7 +7,7 @@ public class TeamsPerformance {
     {
     }
 
-   public void WriteStats(string[] Teams, string Winner, int NbTeam)
+public void WriteStats(string[] Teams, string Winner, int NbTeam)
 {
     foreach (string Team in Teams)
     {
@@ -78,33 +78,33 @@ public class TeamsPerformance {
             i++;
         }
         i--;
-        if (!isInT0 && Team != Team[0])
+        if (!isInT0 && Team != Teams[0])
         {
             i++;
-            Stats = ResizeArray(Stats, new string[] { i });
-            if (Team == Winner) Stats[i] = Team[0] + "/1/1";
-            else Stats[i] = Team[0] + "/1/0";
+            Stats = (string[]) ResizeArray(Stats, new string[] { i });
+            if (Team == Winner) Stats[i] = Teams[0] + "/1/1";
+            else Stats[i] = Teams[0] + "/1/0";
         }
-        if (!isInT1 && Team != Team[1])
+        if (!isInT1 && Team != Teams[1])
         {
             i++;
-            Stats = ResizeArray(Stats, new string[] { i });
-            if (Team == Winner) Stats[i] = Team[1] + "/1/1";
-            else Stats[i] = Team[1] + "/1/0";
+            Stats = (string[]) ResizeArray(Stats, new string[] { i });
+            if (Team == Winner) Stats[i] = Teams[1] + "/1/1";
+            else Stats[i] = Teams[1] + "/1/0";
         }
-        if (NbTeam >= 3 && !isInT2 && Team != Team[2])
+        if (NbTeam >= 3 && !isInT2 && Team != Teams[2])
         {
             i++;
-            Stats = ResizeArray(Stats, new string[] { i });
-            if (Team == Winner) Stats[i] = Team[2] + "/1/1";
-            else Stats[i] = Team[2] + "/1/0";
+            Stats = (string[]) ResizeArray(Stats, new string[] { i });
+            if (Team == Winner) Stats[i] = Teams[2] + "/1/1";
+            else Stats[i] = Teams[2] + "/1/0";
         }
-        if (NbTeam >= 4 && !isInT3 && Team != Team[3])
+        if (NbTeam >= 4 && !isInT3 && Team != Teams[3])
         {
             i++;
-            Stats = ResizeArray(Stats, new string[] { i });
-            if (Team == Winner) Stats[i] = Team[3] + "/1/1";
-            else Stats[i] = Team[3] + "/1/0";
+            Stats = (string[]) ResizeArray(Stats, new string[] { i });
+            if (Team == Winner) Stats[i] = Teams[3] + "/1/1";
+            else Stats[i] = Teams[3] + "/1/0";
         }
 
         System.IO.File.WriteAllLines(Application.streamingAssetsPath + "/Stats/" + Team + ".stat", Stats);
