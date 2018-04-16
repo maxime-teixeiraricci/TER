@@ -81,28 +81,32 @@ public void WriteStats(string[] Teams, string Winner, int NbTeam)
         if (!isInT0 && Team != Teams[0])
         {
             i++;
-            Stats = (string[]) ResizeArray(Stats, new string[] { i });
+            Array.Resize(ref Stats, i);
+            //Stats = (string[]) ResizeArray(Stats, new string[] { i });
             if (Team == Winner) Stats[i] = Teams[0] + "/1/1";
             else Stats[i] = Teams[0] + "/1/0";
         }
         if (!isInT1 && Team != Teams[1])
         {
             i++;
-            Stats = (string[]) ResizeArray(Stats, new string[] { i });
+            Array.Resize(ref Stats, i);
+            //Stats = (string[]) ResizeArray(Stats, new string[] { i });
             if (Team == Winner) Stats[i] = Teams[1] + "/1/1";
             else Stats[i] = Teams[1] + "/1/0";
         }
         if (NbTeam >= 3 && !isInT2 && Team != Teams[2])
         {
             i++;
-            Stats = (string[]) ResizeArray(Stats, new string[] { i });
+            Array.Resize(ref Stats, i);
+            //Stats = (string[]) ResizeArray(Stats, new string[] { i });
             if (Team == Winner) Stats[i] = Teams[2] + "/1/1";
             else Stats[i] = Teams[2] + "/1/0";
         }
         if (NbTeam >= 4 && !isInT3 && Team != Teams[3])
         {
             i++;
-            Stats = (string[]) ResizeArray(Stats, new string[] { i });
+            Array.Resize(ref Stats, i);
+            //Stats = (string[]) ResizeArray(Stats, new string[] { i });
             if (Team == Winner) Stats[i] = Teams[3] + "/1/1";
             else Stats[i] = Teams[3] + "/1/0";
         }
