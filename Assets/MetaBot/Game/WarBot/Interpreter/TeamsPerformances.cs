@@ -7,33 +7,109 @@ public class TeamsPerformance {
     {
     }
 
-    public void WriteStats (string[] Teams, string Winner)
+   public void WriteStats(string[] Teams, string Winner, int NbTeam)
+{
+    foreach (string Team in Teams)
     {
-        foreach (string Team in Teams)
+        int i = 0;
+        string[] Stats = System.IO.File.ReadAllLines(Application.streamingAssetsPath + "/Stats/" + Team + ".stat");
+        bool isInT0 = false;
+        bool isInT1 = false;
+        bool isInT2 = false;
+        bool isInT3 = false;
+        foreach (string Stat in Stats)
         {
-            int i = 0;
-            string[] Stats = System.IO.File.ReadAllLines(Application.streamingAssetsPath + "/Stats/" + Team + ".stat");
-            foreach (string Stat in Stats) 
+            string[] DetailStat = Stat.Split('/');
+            if (DetailStat[0] == Teams[0])
             {
-                string[] DetailStat = Stat.Split('/');
-                if (DetailStat[0] == Teams[0] || DetailStat[0] == Teams[1] || DetailStat[0] == Teams[2] || DetailStat[0] == Teams[3])
+                isInT0 = true;
+                int numVal = int.Parse(DetailStat[1]);
+                numVal++;
+                DetailStat[1] = numVal.ToString(); //NbMatch
+                if (Team == Winner)
                 {
-                    int numVal = int.Parse(DetailStat[1]);
+                    numVal = int.Parse(DetailStat[2]);
                     numVal++;
-                    DetailStat[1] = numVal.ToString(); //NbMatch
-                    if (Team == Winner)
-                    {
-                        numVal = int.Parse(DetailStat[2]);
-                        numVal++;
-                        DetailStat[2] = numVal.ToString(); //NbVictoire
-                    }
+                    DetailStat[2] = numVal.ToString(); //NbVictoire
                 }
-                Stats[i] = DetailStat[0] + '/' + DetailStat[1] + '/' + DetailStat[2];
-                i++;
             }
-            System.IO.File.WriteAllLines(Application.streamingAssetsPath + "/Stats/" + Team + ".stat", Stats);
+            if (DetailStat[0] == Teams[1])
+            {
+                isInT1 = true;
+                int numVal = int.Parse(DetailStat[1]);
+                numVal++;
+                DetailStat[1] = numVal.ToString(); //NbMatch
+                if (Team == Winner)
+                {
+                    numVal = int.Parse(DetailStat[2]);
+                    numVal++;
+                    DetailStat[2] = numVal.ToString(); //NbVictoire
+                }
+            }
+            if (NbTeam >= 3 && DetailStat[0] == Teams[2])
+            {
+                isInT2 = true;
+                int numVal = int.Parse(DetailStat[1]);
+                numVal++;
+                DetailStat[1] = numVal.ToString(); //NbMatch
+                if (Team == Winner)
+                {
+                    numVal = int.Parse(DetailStat[2]);
+                    numVal++;
+                    DetailStat[2] = numVal.ToString(); //NbVictoire
+                }
+            }
+            if (NbTeam >= 4 && DetailStat[0] == Teams[3])
+            {
+                isInT3 = true;
+                int numVal = int.Parse(DetailStat[1]);
+                numVal++;
+                DetailStat[1] = numVal.ToString(); //NbMatch
+                if (Team == Winner)
+                {
+                    numVal = int.Parse(DetailStat[2]);
+                    numVal++;
+                    DetailStat[2] = numVal.ToString(); //NbVictoire
+                }
+            }
+
+            
+            Stats[i] = DetailStat[0] + '/' + DetailStat[1] + '/' + DetailStat[2];
+            i++;
         }
+        i--;
+        if (!isInT0 && Team != Team[0])
+        {
+            i++;
+            Stats = ResizeArray(Stats, new string[] { i });
+            if (Team == Winner) Stats[i] = Team[0] + "/1/1";
+            else Stats[i] = Team[0] + "/1/0";
+        }
+        if (!isInT1 && Team != Team[1])
+        {
+            i++;
+            Stats = ResizeArray(Stats, new string[] { i });
+            if (Team == Winner) Stats[i] = Team[1] + "/1/1";
+            else Stats[i] = Team[1] + "/1/0";
+        }
+        if (NbTeam >= 3 && !isInT2 && Team != Team[2])
+        {
+            i++;
+            Stats = ResizeArray(Stats, new string[] { i });
+            if (Team == Winner) Stats[i] = Team[2] + "/1/1";
+            else Stats[i] = Team[2] + "/1/0";
+        }
+        if (NbTeam >= 4 && !isInT3 && Team != Team[3])
+        {
+            i++;
+            Stats = ResizeArray(Stats, new string[] { i });
+            if (Team == Winner) Stats[i] = Team[3] + "/1/1";
+            else Stats[i] = Team[3] + "/1/0";
+        }
+
+        System.IO.File.WriteAllLines(Application.streamingAssetsPath + "/Stats/" + Team + ".stat", Stats);
     }
+}
     
     public KeyValuePair<string,List<Matchup>>  getStats(string team)
     {
