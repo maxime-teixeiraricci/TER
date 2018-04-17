@@ -85,32 +85,32 @@ public void WriteStats(string[] Teams, string Winner, int NbTeam)
             i++;
             System.Array.Resize(ref Stats, i);
             //Stats = (string[]) ResizeArray(Stats, new string[] { i });
-            if (Team == Winner) Stats[i] = Teams[0] + "/1/1";
-            else Stats[i] = Teams[0] + "/1/0";
+            if (Team == Winner) Stats[i-1] = Teams[0] + "/1/1";
+            else Stats[i-1] = Teams[0] + "/1/0";
         }
         if (!isInT1 && Team != Teams[1])
         {
             i++;
             System.Array.Resize(ref Stats, i);
             //Stats = (string[]) ResizeArray(Stats, new string[] { i });
-            if (Team == Winner) Stats[i] = Teams[1] + "/1/1";
-            else Stats[i] = Teams[1] + "/1/0";
+            if (Team == Winner) Stats[i-1] = Teams[1] + "/1/1";
+            else Stats[i-1] = Teams[1] + "/1/0";
         }
         if (NbTeam >= 3 && !isInT2 && Team != Teams[2])
         {
             i++;
             System.Array.Resize(ref Stats, i);
             //Stats = (string[]) ResizeArray(Stats, new string[] { i });
-            if (Team == Winner) Stats[i] = Teams[2] + "/1/1";
-            else Stats[i] = Teams[2] + "/1/0";
+            if (Team == Winner) Stats[i-1] = Teams[2] + "/1/1";
+            else Stats[i-1] = Teams[2] + "/1/0";
         }
         if (NbTeam >= 4 && !isInT3 && Team != Teams[3])
         {
             i++;
             System.Array.Resize(ref Stats, i);
             //Stats = (string[]) ResizeArray(Stats, new string[] { i });
-            if (Team == Winner) Stats[i] = Teams[3] + "/1/1";
-            else Stats[i] = Teams[3] + "/1/0";
+            if (Team == Winner) Stats[i-1] = Teams[3] + "/1/1";
+            else Stats[i-1] = Teams[3] + "/1/0";
         }
 
         System.IO.File.WriteAllLines(Application.streamingAssetsPath + "/Stats/" + Team + ".stat", Stats);
