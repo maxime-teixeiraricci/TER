@@ -11,6 +11,8 @@ public void WriteStats(string[] Teams, string Winner, int NbTeam)
 {
     foreach (string Team in Teams)
     {
+            if (!System.IO.File.Exists(Application.streamingAssetsPath + "/Stats/" + Team + ".stat"))
+                System.IO.File.Create(Application.streamingAssetsPath + "/Stats/" + Team + ".stat");
         int i = 0;
         string[] Stats = System.IO.File.ReadAllLines(Application.streamingAssetsPath + "/Stats/" + Team + ".stat");
         bool isInT0 = false;
