@@ -9,6 +9,7 @@ public class SubjectiveCamera : MonoBehaviour {
     public GameObject unit;
     public GameObject minimap;
     bool fps;
+    bool stuck;
     public GameObject _hudTextUnit;
     public GameObject _hudStatsUnit;
     public float speed = 5.0f;
@@ -71,23 +72,27 @@ public class SubjectiveCamera : MonoBehaviour {
                         Material m2 = rs2.material;
                         back = m2.color;
                         m2.color = Color.white;
+                        Camera.main.transform.position = (new Vector3(unit.gameObject.transform.position.x, unit.gameObject.transform.position.y + 35, unit.gameObject.transform.position.z - 18));
+                        stuck = true;
                     }
                     else
                     {
                         fps = true;
+                        stuck = true;
                         unit = hit.transform.gameObject;
                         minimap.gameObject.SetActive(true);
                         GameObject.Find("Main Camera").GetComponent<FollowCamera>().enabled = false;
                         //      Camera.main.transform.rotation = unit.gameObject.transform.rotation;
                         //      Camera.main.transform.eulerAngles += new Vector3(0, 90, 0);
-
+                        _hudTextUnit.GetComponent<Text>().text = "";
                         Renderer rs = unit.GetComponentInChildren<Renderer>();
                         Material m = rs.material;
                         back = m.color;
                         m.color = Color.white;
+                        Camera.main.transform.position = (new Vector3(unit.gameObject.transform.position.x, unit.gameObject.transform.position.y + 35, unit.gameObject.transform.position.z - 18));
                     }
+                    break;
                 }
-                break;
             }
             else
             {
@@ -97,9 +102,6 @@ public class SubjectiveCamera : MonoBehaviour {
 
         if (fps)
         {
-            if (_hudTextUnit.GetComponent<Text>().text != "")
-                _hudTextUnit.GetComponent<Text>().text = "";
-
             if (Input.GetMouseButtonDown(1) && unit != null)
             {
                 transform.SetPositionAndRotation(backPosition, backRotation);
@@ -111,33 +113,60 @@ public class SubjectiveCamera : MonoBehaviour {
                 unit = null;
                 GameObject.Find("Main Camera").GetComponent<FollowCamera>().enabled = true;
             }
-
-            Camera.main.transform.position = (new Vector3(unit.gameObject.transform.position.x, unit.gameObject.transform.position.y + 35, unit.gameObject.transform.position.z));
-
-            if (Input.GetMouseButtonDown(2))
+            if (!stuck)
             {
-                _DragOrigin = Input.mousePosition;
-                //return;
-            }
+                if (Input.mousePosition.x <= 2)
+                    Camera.main.transform.Translate(new Vector3(-DragSpeed * Time.deltaTime, 0));
+                if (Input.mousePosition.y <= 2)
+                    Camera.main.transform.Translate(new Vector3(0, -DragSpeed * Time.deltaTime));
 
-            if (!Input.GetMouseButton(2)) return;
+                if (Input.mousePosition.x >= Screen.width - 2)
+                    Camera.main.transform.Translate(new Vector3(DragSpeed * Time.deltaTime, 0));
+                if (Input.mousePosition.y >= Screen.height - 2)
+                    Camera.main.transform.Translate(new Vector3(0, DragSpeed * Time.deltaTime));
 
-            if (ReverseDrag)
-            {
-                Vector3 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition - _DragOrigin);
-                _Move = new Vector3(pos.x * DragSpeed, 0, pos.y * DragSpeed);
+                if (Input.GetMouseButtonDown(2))
+                    stuck = true;
             }
             else
             {
-                Vector3 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition - _DragOrigin);
-                _Move = new Vector3(pos.x * -DragSpeed, 0, pos.y * -DragSpeed);
+                Camera.main.transform.position = (new Vector3(unit.gameObject.transform.position.x, unit.gameObject.transform.position.y + 35, unit.gameObject.transform.position.z-18));
+                if (Input.GetMouseButtonDown(2))
+                    stuck = false;
             }
+            /* if (Input.GetButtonDown("y"))
+             {
+                 Camera.main.transform.position = (new Vector3(unit.gameObject.transform.position.x, unit.gameObject.transform.position.y + 35, unit.gameObject.transform.position.z));
+                 return;
+             }*/
 
-            Camera.main.transform.Translate(_Move, Space.World);
-            //Camera.main.transform.RotateAround(Camera.main.transform.position, new Vector3(0,Input.GetAxis("Mouse X")), speed * Time.deltaTime);
-            // Camera.main.transform.RotateAround(Camera.main.transform.position, new Vector3(Input.GetAxis("Mouse Y"),0), speed * Time.deltaTime);
+
+            /*           if (Input.GetMouseButtonDown(2))
+                       {
+                           _DragOrigin = Input.mousePosition;
+                           //return;
+                       }
+
+                       if (!Input.GetMouseButton(2)) return;
+
+                       if (ReverseDrag)
+                       {
+                           Vector3 pos = Camera.main.ScreenToViewportPoint(new Vector3(0,0,0) - _DragOrigin);
+                           _Move = new Vector3(pos.x * DragSpeed, 0, pos.y * DragSpeed);
+                       }
+                      else
+                       {
+                           Vector3 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition - _DragOrigin);
+                           _Move = new Vector3(pos.x * -DragSpeed, 0, pos.y * -DragSpeed);
+                       }
+
+                       Camera.main.transform.Translate(_Move, Space.World);
+                       //Camera.main.transform.RotateAround(Camera.main.transform.position, new Vector3(0,Input.GetAxis("Mouse X")), speed * Time.deltaTime);
+                       // Camera.main.transform.RotateAround(Camera.main.transform.position, new Vector3(Input.GetAxis("Mouse Y"),0), speed * Time.deltaTime);      */
 
         }
+
+        //Camera.main.transform.rotation.Set(0, 0, 0, unit.transform.rotation.w);
         //Camera.main.transform.position = (new Vector3(unit.gameObject.transform.position.x, unit.gameObject.transform.position.y + 35, unit.gameObject.transform.position.z));
     }
 
