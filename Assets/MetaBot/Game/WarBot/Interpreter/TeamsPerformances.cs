@@ -79,7 +79,7 @@ public void WriteStats(string[] Teams, string Winner, int NbTeam)
             Stats[i] = DetailStat[0] + '/' + DetailStat[1] + '/' + DetailStat[2];
             i++;
         }
-        i--;
+        if (i < 0) i--;
         if (!isInT0 && Team != Teams[0])
         {
             i++;
