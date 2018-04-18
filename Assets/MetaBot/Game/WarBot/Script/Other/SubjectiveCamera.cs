@@ -11,12 +11,15 @@ public class SubjectiveCamera : MonoBehaviour {
     bool fps;
     public GameObject _hudTextUnit;
     public GameObject _hudStatsUnit;
+    public float speed = 5.0f;
+    public float rotationX;
+    public float rotationY;
+    Color back;
 
     // Use this for initialization
     void Start () {
         backPosition = transform.position;
         backRotation = transform.rotation;
-        
     }
 
     GameObject GetClickedGameUnit()
@@ -27,6 +30,11 @@ public class SubjectiveCamera : MonoBehaviour {
             return hit.transform.gameObject;
         else
             return null;
+    }
+
+    bool isMouseOffScreen()
+    {
+        return (Input.mousePosition.x <= 2 || Input.mousePosition.y <= 2 || Input.mousePosition.x >= Screen.width - 2 || Input.mousePosition.y >= Screen.height - 2);
     }
 
 
@@ -44,37 +52,56 @@ public class SubjectiveCamera : MonoBehaviour {
             {
                 _hudTextUnit.transform.position = Camera.main.WorldToScreenPoint(hit.transform.position);
                 _hudTextUnit.GetComponent<Text>().text = hit.transform.name;
-                unit = hit.transform.gameObject;
                 if (Input.GetMouseButtonDown(0))
                 {
-                   // fps = true;
+                    unit = hit.transform.gameObject;
+                    fps = true;
                     minimap.gameObject.SetActive(true);
+                    GameObject.Find("Main Camera").GetComponent<FollowCamera>().enabled = false;
+                    //      Camera.main.transform.rotation = unit.gameObject.transform.rotation;
+                    //      Camera.main.transform.eulerAngles += new Vector3(0, 90, 0);
+
+                    Renderer rs = unit.GetComponentInChildren<Renderer>();
+                    Material m = rs.material;
+                    back = m.color;
+                    m.color = Color.white;
+
                 }
                 break;
             }
             else
             {
-                _hudTextUnit.GetComponent<Text>().text = "";
-                unit = null;
+                    _hudTextUnit.GetComponent<Text>().text = "";
             }
-           
         }
-        if (Input.GetMouseButtonDown(1) && unit != null)
+
+        if (fps)
         {
-            if (fps)
+            if (_hudTextUnit.GetComponent<Text>().text != "")
+                _hudTextUnit.GetComponent<Text>().text = ""; 
+
+            if (Input.GetMouseButtonDown(1) && unit != null)
             {
                 transform.SetPositionAndRotation(backPosition, backRotation);
                 fps = false;
                 minimap.gameObject.SetActive(false);
+                Renderer rs = unit.GetComponentInChildren<Renderer>();
+                Material m = rs.material;
+                m.color = back;
                 unit = null;
+                GameObject.Find("Main Camera").GetComponent<FollowCamera>().enabled = true;
             }
-        }
-        if (fps)
-        {
-              Camera.main.transform.SetPositionAndRotation(new Vector3(unit.gameObject.transform.position.x , unit.gameObject.transform.position.y + 2, unit.gameObject.transform.position.z), unit.gameObject.transform.rotation);
-            Camera.main.transform.eulerAngles += new Vector3(0,90,0);
-        }
 
-        
+
+            if (!isMouseOffScreen())
+            {
+                Camera.main.transform.RotateAround(Camera.main.transform.position, new Vector3(0,Input.GetAxis("Mouse X")), speed * Time.deltaTime);
+               // Camera.main.transform.RotateAround(Camera.main.transform.position, new Vector3(Input.GetAxis("Mouse Y"),0), speed * Time.deltaTime);
+                
+            }
+
+        }
+        Camera.main.transform.position = (new Vector3(unit.gameObject.transform.position.x, unit.gameObject.transform.position.y + 35, unit.gameObject.transform.position.z));
     }
+
 }
