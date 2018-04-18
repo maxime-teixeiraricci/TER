@@ -12,8 +12,11 @@ public class SubjectiveCamera : MonoBehaviour {
     public GameObject _hudTextUnit;
     public GameObject _hudStatsUnit;
     public float speed = 5.0f;
-    public float rotationX;
-    public float rotationY;
+    public float DragSpeed = 20f;
+    public bool ReverseDrag = true;
+
+    private Vector3 _DragOrigin;
+    private Vector3 _Move;
     Color back;
 
     // Use this for initialization
@@ -92,12 +95,33 @@ public class SubjectiveCamera : MonoBehaviour {
                 GameObject.Find("Main Camera").GetComponent<FollowCamera>().enabled = true;
             }
 
+            Camera.main.transform.position = (new Vector3(unit.gameObject.transform.position.x, unit.gameObject.transform.position.y + 35, unit.gameObject.transform.position.z));
 
-                Camera.main.transform.RotateAround(Camera.main.transform.position, new Vector3(0,Input.GetAxis("Mouse X")), speed * Time.deltaTime);
+            if (Input.GetMouseButtonDown(2))
+            {
+                _DragOrigin = Input.mousePosition;
+                //return;
+            }
+
+            if (!Input.GetMouseButton(2)) return;
+
+            if (ReverseDrag)
+            {
+                Vector3 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition - _DragOrigin);
+                _Move = new Vector3(pos.x * DragSpeed, 0, pos.y * DragSpeed);
+            }
+            else
+            {
+                Vector3 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition - _DragOrigin);
+                _Move = new Vector3(pos.x * -DragSpeed, 0, pos.y * -DragSpeed);
+            }
+
+            Camera.main.transform.Translate(_Move, Space.World);
+            //Camera.main.transform.RotateAround(Camera.main.transform.position, new Vector3(0,Input.GetAxis("Mouse X")), speed * Time.deltaTime);
                // Camera.main.transform.RotateAround(Camera.main.transform.position, new Vector3(Input.GetAxis("Mouse Y"),0), speed * Time.deltaTime);
 
         }
-        Camera.main.transform.position = (new Vector3(unit.gameObject.transform.position.x, unit.gameObject.transform.position.y + 35, unit.gameObject.transform.position.z));
+        //Camera.main.transform.position = (new Vector3(unit.gameObject.transform.position.x, unit.gameObject.transform.position.y + 35, unit.gameObject.transform.position.z));
     }
 
 }
