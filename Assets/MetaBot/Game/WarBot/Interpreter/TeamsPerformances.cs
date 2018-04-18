@@ -86,7 +86,7 @@ public void WriteStats(string[] Teams, string Winner, int NbTeam)
             System.Array.Resize(ref Stats, i);
             //Stats = (string[]) ResizeArray(Stats, new string[] { i });
             if (Team == Winner) Stats[i-1] = Teams[0] + "/1/1";
-            else Stats[i-1] = Teams[0] + "/1/0";
+            else Stats[i-1] = Teams[0] + "/1/0";//--------------------------------------------------------------------------------------
         }
         if (!isInT1 && Team != Teams[1])
         {
