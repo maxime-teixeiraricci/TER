@@ -55,20 +55,37 @@ public class SubjectiveCamera : MonoBehaviour {
             {
                 _hudTextUnit.transform.position = Camera.main.WorldToScreenPoint(hit.transform.position);
                 _hudTextUnit.GetComponent<Text>().text = hit.transform.name;
+
                 if (Input.GetMouseButtonDown(0))
                 {
-                    unit = hit.transform.gameObject;
-                    fps = true;
-                    minimap.gameObject.SetActive(true);
-                    GameObject.Find("Main Camera").GetComponent<FollowCamera>().enabled = false;
-                    //      Camera.main.transform.rotation = unit.gameObject.transform.rotation;
-                    //      Camera.main.transform.eulerAngles += new Vector3(0, 90, 0);
 
-                    Renderer rs = unit.GetComponentInChildren<Renderer>();
-                    Material m = rs.material;
-                    back = m.color;
-                    m.color = Color.white;
+                    if (fps)
+                    {
+                        Renderer rs = unit.GetComponentInChildren<Renderer>();
+                        Material m = rs.material;
+                        m.color = back;
 
+                        unit = hit.transform.gameObject;
+
+                        Renderer rs2 = unit.GetComponentInChildren<Renderer>();
+                        Material m2 = rs2.material;
+                        back = m2.color;
+                        m2.color = Color.white;
+                    }
+                    else
+                    {
+                        fps = true;
+                        unit = hit.transform.gameObject;
+                        minimap.gameObject.SetActive(true);
+                        GameObject.Find("Main Camera").GetComponent<FollowCamera>().enabled = false;
+                        //      Camera.main.transform.rotation = unit.gameObject.transform.rotation;
+                        //      Camera.main.transform.eulerAngles += new Vector3(0, 90, 0);
+
+                        Renderer rs = unit.GetComponentInChildren<Renderer>();
+                        Material m = rs.material;
+                        back = m.color;
+                        m.color = Color.white;
+                    }
                 }
                 break;
             }
@@ -81,7 +98,7 @@ public class SubjectiveCamera : MonoBehaviour {
         if (fps)
         {
             if (_hudTextUnit.GetComponent<Text>().text != "")
-                _hudTextUnit.GetComponent<Text>().text = ""; 
+                _hudTextUnit.GetComponent<Text>().text = "";
 
             if (Input.GetMouseButtonDown(1) && unit != null)
             {
@@ -118,7 +135,7 @@ public class SubjectiveCamera : MonoBehaviour {
 
             Camera.main.transform.Translate(_Move, Space.World);
             //Camera.main.transform.RotateAround(Camera.main.transform.position, new Vector3(0,Input.GetAxis("Mouse X")), speed * Time.deltaTime);
-               // Camera.main.transform.RotateAround(Camera.main.transform.position, new Vector3(Input.GetAxis("Mouse Y"),0), speed * Time.deltaTime);
+            // Camera.main.transform.RotateAround(Camera.main.transform.position, new Vector3(Input.GetAxis("Mouse Y"),0), speed * Time.deltaTime);
 
         }
         //Camera.main.transform.position = (new Vector3(unit.gameObject.transform.position.x, unit.gameObject.transform.position.y + 35, unit.gameObject.transform.position.z));
