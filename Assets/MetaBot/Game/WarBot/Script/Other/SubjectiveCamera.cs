@@ -134,6 +134,8 @@ public class SubjectiveCamera : MonoBehaviour {
                 if (Input.GetMouseButtonDown(2))
                     stuck = false;
             }
+
+
             /* if (Input.GetButtonDown("y"))
              {
                  Camera.main.transform.position = (new Vector3(unit.gameObject.transform.position.x, unit.gameObject.transform.position.y + 35, unit.gameObject.transform.position.z));
@@ -163,8 +165,13 @@ public class SubjectiveCamera : MonoBehaviour {
                        Camera.main.transform.Translate(_Move, Space.World);
                        //Camera.main.transform.RotateAround(Camera.main.transform.position, new Vector3(0,Input.GetAxis("Mouse X")), speed * Time.deltaTime);
                        // Camera.main.transform.RotateAround(Camera.main.transform.position, new Vector3(Input.GetAxis("Mouse Y"),0), speed * Time.deltaTime);      */
+        if (Input.GetAxis("Mouse ScrollWheel") != 0f) // forward
+        {
+                Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y - 10 * Input.GetAxis("Mouse ScrollWheel"), Camera.main.transform.position.z);
+        }
 
         }
+    
 
         //Camera.main.transform.rotation.Set(0, 0, 0, unit.transform.rotation.w);
         //Camera.main.transform.position = (new Vector3(unit.gameObject.transform.position.x, unit.gameObject.transform.position.y + 35, unit.gameObject.transform.position.z));
