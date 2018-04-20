@@ -8573,7 +8573,7 @@ GameObject:
   - component: {fileID: 1294629174}
   - component: {fileID: 1294629173}
   m_Layer: 5
-  m_Name: Dropdown
+  m_Name: MapDropdown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8647,8 +8647,6 @@ MonoBehaviour:
     - m_Text: Standard
       m_Image: {fileID: 0}
     - m_Text: Test
-      m_Image: {fileID: 0}
-    - m_Text: Option C
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -9281,7 +9279,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1366931128
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9350,6 +9348,7 @@ MonoBehaviour:
   - {r: 0.3803922, g: 0.82745105, b: 0.20784315, a: 1}
   - {r: 0.9333334, g: 0.85098046, b: 0.20784315, a: 1}
   nbPlayers: 2
+  mapChoice: {fileID: 0}
 --- !u!114 &1366931132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12545,7 +12544,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 623.54, y: -410}
+  m_AnchoredPosition: {x: 623.65, y: -337}
   m_SizeDelta: {x: 353.2, y: 66.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1754692050
@@ -13146,7 +13145,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1887193030}
         m_MethodName: StartGame
-        m_Mode: 3
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -13213,6 +13212,7 @@ MonoBehaviour:
   - {r: 0.3803922, g: 0.82745105, b: 0.20784315, a: 1}
   - {r: 0.9333334, g: 0.85098046, b: 0.20784315, a: 1}
   nbPlayers: 2
+  mapChoice: {fileID: 1294629173}
 --- !u!114 &1887193031
 MonoBehaviour:
   m_ObjectHideFlags: 0
