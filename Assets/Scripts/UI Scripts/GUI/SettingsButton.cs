@@ -26,33 +26,20 @@ public class SettingsButton : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        //oldValueExplo = explorer.value;
-        //oldValueHeavy = heavy.value;
-        //oldValueLight = warLight.value;
-        //nameMap = dropdown.captionText.text;
-        //Debug.Log("Value oldValueExplo = " + oldValueExplo);
-
+        oldValueExplo = explorer.maxValue / 2;
+        oldValueHeavy = heavy.maxValue / 2;
+        oldValueLight = warLight.maxValue / 2;
     }
 
     float getValueExplo()
     {
         return oldValueExplo;
     }
-	
-	// Update is called once per frame
-	void Update () {
-        Debug.Log("Value oldValueExplo = " + oldValueExplo);
-    }
 
     public void DisplaySettings()
     {
         setButtonInactive();
-        window.SetActive(true);
-        //oldValueExplo = explorer.value;
-        //oldValueHeavy = heavy.value;
-        //oldValueLight = warLight.value;
-        //nameMap = dropdown.captionText.text;
-        
+        window.SetActive(true);  
     }
 
     public void QuitSettings()
@@ -106,7 +93,15 @@ public class SettingsButton : MonoBehaviour {
         explorer.value = oldValueExplo;
         warLight.value = oldValueLight;
         heavy.value = oldValueHeavy;
-        dropdown.captionText.text = nameMap;
+        if(nameMap == null)
+        {
+            nameMap = "Standard";
+        }
+        else
+        {
+            dropdown.captionText.text = nameMap;
+        }
+        
     }
 
 }
