@@ -15,7 +15,6 @@ public class Settings : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Debug.Log("Value text = " + text);
         text.text = slider.value.ToString();
 	}
 }
