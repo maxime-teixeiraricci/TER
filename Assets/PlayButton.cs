@@ -11,6 +11,7 @@ public class PlayButton : MonoBehaviour
     public GameObject _numberplayerDropDown;
     public Color[] playerColor;
     public int nbPlayers;
+    public Dropdown mapChoice;
 
 
 	// Use this for initialization
@@ -24,8 +25,9 @@ public class PlayButton : MonoBehaviour
 		
 	}
 
-    public void StartGame(int id)
+    public void StartGame()
     {
+        string s = mapChoice.captionText.text;
         nbPlayers = int.Parse(_numberplayerDropDown.GetComponent<Dropdown>().captionText.text);
         XMLWarbotInterpreter interpreter = new XMLWarbotInterpreter();
         string gamePath = Application.streamingAssetsPath + "/teams/" + GameObject.Find("GameManager").GetComponent<GameManager>()._gameName + "/";
@@ -40,6 +42,14 @@ public class PlayButton : MonoBehaviour
             team._unitsBehaviour = interpreter.xmlToBehavior(gamePath + team._name, gamePath);
             gameManager.GetComponent<TeamManager>()._teams.Add(team);
         }
-        SceneManager.LoadScene(id);
+        if(s == "Standard")
+        {
+            SceneManager.LoadScene(1);
+        }
+        else
+        {
+            SceneManager.LoadScene(3);
+        }
+        //SceneManager.LoadScene(id);
     }
 }
