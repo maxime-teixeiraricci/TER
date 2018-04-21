@@ -34,6 +34,7 @@ TagManager:
   - FinishTest
   - HPBar
   - MessageLine
+  - HUDstats
   layers:
   - Default
   - TransparentFX

@@ -20,7 +20,6 @@ public class BaseUnitScript : MonoBehaviour {
                 if (unit.GetComponent<Stats>()._teamIndex == GetComponent<Stats>()._teamIndex)
                 {
                     unit.GetComponent<Stats>()._health = -10000;
-                    GameObject.Find("GameManager").GetComponent<TeamManager>().endGame();
                 }
             }
         }
