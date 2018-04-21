@@ -24,16 +24,30 @@ public class EndGameManager : MonoBehaviour {
     {
         _ends["TestBot"] = delegate ()
         {
-            GameObject.Find("Slider").SetActive(false);
-            GameObject.Find("Minimap Image").SetActive(false);
-            GameObject.FindGameObjectWithTag("HUDstats").SetActive(false);
-            GameObject.Find("MessageButton").SetActive(false);
-            GameObject.Find("StatsButton").SetActive(false);
-            GameObject.Find("Score (3)").SetActive(false);
-            GameObject.Find("TextWinnerTeam").GetComponent<Text>().text = "Winner team : " + winner;
-            GameObject.Find("TextWinnerTeam").SetActive(true);
-            GameObject.Find("TextGameOver").SetActive(true);
             Time.timeScale = 0;
+            GameObject.Find("Slider").SetActive(false);
+            print("after slider");
+            if (GameObject.Find("Minimap Image").active == true)
+                GameObject.Find("Minimap Image").SetActive(false);
+            print("after minimpa");
+            if (GameObject.Find("HUDStats").active == true)
+                GameObject.FindGameObjectWithTag("HUDstats").SetActive(false);
+            print("after HUD");
+            if (GameObject.Find("MessageButton").active == true)
+                GameObject.Find("MessageButton").SetActive(false);
+            print("after MsgButton");
+            if (GameObject.Find("StatsButton").active == true)
+                GameObject.Find("StatsButton").SetActive(false);
+            print("after StatsButton");
+            if (GameObject.Find("ScoreBar").active == true)
+                GameObject.Find("ScoreBar").SetActive(false);
+            print("after ScoreBar");
+            GameObject.Find("TextWinnerTeam").GetComponent<Text>().text = "Winner team : " + winner;
+            print("after Winnerteam");
+            GameObject.Find("TextWinnerTeam").SetActive(true);
+            print("after winnerteam2");
+            GameObject.Find("TextGameOver").SetActive(true);
+            print("after TextGO");
         };
 
         _ends["RessourceRace"] = delegate ()
