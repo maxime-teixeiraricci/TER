@@ -19,7 +19,7 @@ public class Brain : MonoBehaviour
     private string _currentAction;
     public MessageManager _messageManager;
     public int nbInstruction;
-
+    public bool turnEnd;
     public bool debugMessage;
 
     
@@ -59,12 +59,16 @@ public class Brain : MonoBehaviour
         }
 
         nbInstruction = _instructions.Count;
-        if (_instructions != null && _componentActions != null && _componentActions._actions.Count != 0)
+        if (!turnEnd)
         {
-            string _action = NextAction();
-            if (_componentActions._actions.ContainsKey(_action))
+            if (_instructions != null && _componentActions != null && _componentActions._actions.Count != 0)
             {
-                _componentActions._actions[_action]();
+                string _action = NextAction();
+                if (_componentActions._actions.ContainsKey(_action))
+                {
+                    _componentActions._actions[_action]();
+                    turnEnd = true;
+                }
             }
         }
     }
