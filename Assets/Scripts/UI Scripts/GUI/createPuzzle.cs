@@ -32,8 +32,6 @@ public class createPuzzle : MonoBehaviour {
             {
                 pieceIf.Add(puzzle);
             }
-            // ifPuzzleCreated = pieceIf.Count;
-            // Debug.Log("VAL LIST UPDATE = " + ifPuzzleCreated);
         }
         return pieceIf.Count;
     }
@@ -50,9 +48,6 @@ public class createPuzzle : MonoBehaviour {
         puzzleClone.GetComponent<RectTransform>().localPosition = new Vector3(puzzleClone.GetComponent<RectTransform>().localPosition.x, puzzleClone.GetComponent<RectTransform>().localPosition.y, 10);
         listPieces.Add(puzzleClone);
         cptObjects = listPieces.Count;
-        
-        //Debug.Log("Nombre piece IF a la création " + cptIfPuzzle);
-
     }
 
 
