@@ -47,9 +47,13 @@ public class PlayButton : MonoBehaviour
         {
             SceneManager.LoadScene(1);
         }
-        else
+        else if(s == "Test")
         {
             SceneManager.LoadScene(3);
+        }
+        else if (s == "Plaine")
+        {
+            SceneManager.LoadScene(4);
         }
         //SceneManager.LoadScene(id);
     }

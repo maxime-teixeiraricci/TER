@@ -17,3 +17,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MetaBot/Game/WarBot/Scene/MapBeta.unity
     guid: 97fbd0c9818a1f0469e05d8c54a9a4f6
+  - enabled: 1
+    path: Assets/MetaBot/Scenes/TestMapScene.unity
+    guid: 6fa8ce54a43079d4aaeee7f2230c7483
