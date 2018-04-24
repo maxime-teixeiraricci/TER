@@ -455,6 +455,7 @@ MonoBehaviour:
   _largeSmoke: {fileID: 100000, guid: ab1112643ee572748b01dede71158272, type: 2}
   _fire: {fileID: 100000, guid: 756d99540142b5e4a8d174e18a6310d9, type: 2}
   _explosion: {fileID: 191186, guid: 079954accd64b32419ec069129c81273, type: 2}
+  _dieSong: {fileID: 8300000, guid: cf269dbbb2ab2254a89152fe55b3c8f7, type: 3}
 --- !u!114 &114650775230158826
 MonoBehaviour:
   m_ObjectHideFlags: 1

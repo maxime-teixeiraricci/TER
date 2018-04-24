@@ -167,7 +167,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1517124188230958}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -18.7, y: 0.43, z: -27.7}
+  m_LocalPosition: {x: -23.9, y: 0.43, z: -21.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4608809123674540}
@@ -414,6 +414,7 @@ MonoBehaviour:
   _largeSmoke: {fileID: 100000, guid: ab1112643ee572748b01dede71158272, type: 2}
   _fire: {fileID: 100000, guid: 756d99540142b5e4a8d174e18a6310d9, type: 2}
   _explosion: {fileID: 191186, guid: 079954accd64b32419ec069129c81273, type: 2}
+  _dieSong: {fileID: 8300000, guid: e28ce664c6a4a5342a617b9bd36f2176, type: 3}
 --- !u!114 &114991993633843772
 MonoBehaviour:
   m_ObjectHideFlags: 1

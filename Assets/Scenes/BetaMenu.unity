@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.24647538, g: 0.28234535, b: 0.3457032, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -3136,53 +3136,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 82011188951612208, guid: f803624d2c783d54a99cd2d93a0527e0,
+        type: 2}
+      propertyPath: BypassListenerEffects
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f803624d2c783d54a99cd2d93a0527e0, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &397876371 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1361202898811600, guid: f803624d2c783d54a99cd2d93a0527e0,
-    type: 2}
-  m_PrefabInternal: {fileID: 397876370}
---- !u!114 &397876372
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 397876371}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e6d991c239194b4a82c285df21310ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  langues: []
-  conteneur: {fileID: 0}
-  language: 
---- !u!114 &397876373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 397876371}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 517c11061bc1a814784227066d426111, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  langue: 
-  textOriginal: 
-  traduction: 
---- !u!114 &397876378
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 397876371}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e291109aaaf659d40bb96bedfa953603, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &399640855
 GameObject:
   m_ObjectHideFlags: 0
@@ -12073,7 +12034,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 739205021}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.1913018
+  m_Size: 0.19130203
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

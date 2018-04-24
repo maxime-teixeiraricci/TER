@@ -13,11 +13,10 @@ public class PlayButton : MonoBehaviour
     public int nbPlayers;
     public Dropdown mapChoice;
 
-
-	// Use this for initialization
-	void Start () {
-		
-	}
+    // Use this for initialization
+    void Start () {
+        
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -27,6 +26,7 @@ public class PlayButton : MonoBehaviour
 
     public void StartGame()
     {
+        
         string s = mapChoice.captionText.text;
         nbPlayers = int.Parse(_numberplayerDropDown.GetComponent<Dropdown>().captionText.text);
         XMLWarbotInterpreter interpreter = new XMLWarbotInterpreter();
@@ -42,7 +42,8 @@ public class PlayButton : MonoBehaviour
             team._unitsBehaviour = interpreter.xmlToBehavior(gamePath + team._name, gamePath);
             gameManager.GetComponent<TeamManager>()._teams.Add(team);
         }
-        if(s == "Standard")
+        
+        if (s == "Standard")
         {
             SceneManager.LoadScene(1);
         }

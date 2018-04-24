@@ -29,8 +29,12 @@ public class Stats : MonoBehaviour
     public GameObject _fire;
     public GameObject _explosion;
 
+    public AudioClip _dieSong;
+
     private GameObject _currentEffect;
 
+    AudioSource audioSource;
+    GameObject gameManager;
 
     void Awake()
     {
@@ -39,6 +43,8 @@ public class Stats : MonoBehaviour
 
     void Start()
     {
+        gameManager = GameObject.Find("GameManager");
+        audioSource = gameManager.GetComponent<AudioSource>();
         _heading = Random.Range(0, 360);
         _smallSmoke.SetActive(true);
         _largeSmoke.SetActive(true);
@@ -109,6 +115,7 @@ public class Stats : MonoBehaviour
                 Destroy(_currentEffect);
             }
             _currentEffect = Instantiate(_explosion, transform.position, Quaternion.identity);
+            if (_dieSong != null) audioSource.PlayOneShot(_dieSong);
             Destroy(gameObject);
             Destroy(_currentEffect, 1.5f);
         }
