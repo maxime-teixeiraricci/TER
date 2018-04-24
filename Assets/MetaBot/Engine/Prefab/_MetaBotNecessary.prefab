@@ -515,6 +515,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!1 &1576346016789970
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4932402783219384}
+  - component: {fileID: 114443622106981342}
+  m_Layer: 0
+  m_Name: Item Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1587706491625926
 GameObject:
   m_ObjectHideFlags: 1
@@ -909,8 +925,22 @@ Transform:
   - {fileID: 4943623555875314}
   - {fileID: 4297528735171816}
   - {fileID: 224594943232305166}
+  - {fileID: 4932402783219384}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4932402783219384
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1576346016789970}
+  m_LocalRotation: {x: 0.53729963, y: -0, z: -0, w: 0.8433915}
+  m_LocalPosition: {x: -596.89954, y: -300.93533, z: 7.3429966}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4869373741131218}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4943623555875314
 Transform:
@@ -2043,6 +2073,17 @@ MonoBehaviour:
   langues: []
   conteneur: {fileID: 1162319135053726}
   language: 
+--- !u!114 &114443622106981342
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1576346016789970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fa4d16b7356e7942ab0110b5e77e459, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114449437432908528
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2870,6 +2911,7 @@ MonoBehaviour:
   button2: {fileID: 0}
   fond: {fileID: 0}
   canvashud: {fileID: 1349848265815604}
+  written: 0
 --- !u!114 &114875111504147938
 MonoBehaviour:
   m_ObjectHideFlags: 1
