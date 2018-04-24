@@ -9,6 +9,10 @@ public class SettingsButton : MonoBehaviour {
     Button editButton;
     Button quitButton;
     Button reloadButton;
+
+    public string language;
+    string langue;
+    ChangeLanguage changeLanguage;
     
     public GameObject window;
 
@@ -29,6 +33,7 @@ public class SettingsButton : MonoBehaviour {
         oldValueExplo = explorer.maxValue / 2;
         oldValueHeavy = heavy.maxValue / 2;
         oldValueLight = warLight.maxValue / 2;
+        changeLanguage = GetComponent<ChangeLanguage>();
     }
 
     float getValueExplo()
@@ -54,7 +59,19 @@ public class SettingsButton : MonoBehaviour {
         setButtonActive();
         applyChanges();
         window.SetActive(false);
+        changeLanguage.ChangementLangue(language);
     }
+
+    public void setLanguageFR()
+    {
+        language = "francais";
+    }
+
+    public void setLanguageEN()
+    {
+        language = "english";
+    }
+
 
     void setButtonActive()
     {
