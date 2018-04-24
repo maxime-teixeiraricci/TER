@@ -30,10 +30,9 @@ public class SettingsButton : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        oldValueExplo = explorer.maxValue / 2;
-        oldValueHeavy = heavy.maxValue / 2;
-        oldValueLight = warLight.maxValue / 2;
         changeLanguage = GetComponent<ChangeLanguage>();
+
+        //recoverValSlider();
     }
 
     float getValueExplo()
@@ -56,9 +55,13 @@ public class SettingsButton : MonoBehaviour {
 
     public void ApplySettings()
     {
+        // Met à jour les valeurs d'unités
+        //saveValSlider();
+
         setButtonActive();
         applyChanges();
         window.SetActive(false);
+        saveValSlider();
         changeLanguage.ChangementLangue(language);
     }
 
@@ -120,5 +123,26 @@ public class SettingsButton : MonoBehaviour {
         }
         
     }
+    
+    void saveValSlider()
+    { 
+        // On save les valeurs des sliders dans les variables du script "SaveSliderVal.cs" de GameManager
+        SaveSliderVal gameManager =  GameObject.Find("GameManager").GetComponent<SaveSliderVal>();
+        print("whes alors");
+        if( explorer != null &&  heavy != null && warLight != null)
+        {   
+            gameManager.valSliderExplorer = (int)explorer.value;
+            gameManager.valSliderHeavy = (int)heavy.value;
+            gameManager.valSliderLight = (int)warLight.value;
+        }
+    }
 
+    void recoverValSlider()
+    {
+        SaveSliderVal gameManager =  GameObject.Find("GameManager").GetComponent<SaveSliderVal>();
+
+        oldValueExplo = gameManager.valSliderExplorer;
+        oldValueHeavy = gameManager.valSliderHeavy;
+        oldValueLight = gameManager.valSliderLight;
+    }
 }
