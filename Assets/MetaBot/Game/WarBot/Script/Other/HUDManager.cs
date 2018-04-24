@@ -9,6 +9,7 @@ public class HUDManager : MonoBehaviour
 {
     public GameObject _HUDObject;
     public Image _StatsButton;
+    public Image _SightButton;
     public Image _MessageButton;
 
     private bool _isCreated;
@@ -16,6 +17,7 @@ public class HUDManager : MonoBehaviour
 
 
     public bool messageOn;
+    public bool sightOn;
     public bool statsOn;
 
 
@@ -31,6 +33,11 @@ public class HUDManager : MonoBehaviour
         {
             message.transform.gameObject.SetActive(messageOn);
         }
+
+        foreach (SightVisionScript sight in Resources.FindObjectsOfTypeAll<SightVisionScript>())
+        {
+            sight.transform.gameObject.SetActive(sightOn);
+        }
     }
 
     public void MessageButton()
@@ -44,7 +51,13 @@ public class HUDManager : MonoBehaviour
         statsOn = !statsOn;
         _StatsButton.color = (statsOn) ? Color.green : Color.red;
     }
-	
+
+    public void SightButton()
+    {
+        sightOn = !sightOn;
+        _SightButton.color = (sightOn) ? Color.green : Color.red;
+    }
+
 
     public void CreateHUD(GameObject unit)
     {

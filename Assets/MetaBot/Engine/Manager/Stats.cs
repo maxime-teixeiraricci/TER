@@ -21,7 +21,7 @@ public class Stats : MonoBehaviour
     public bool _isBlocked;
     public int _health;
     public int _maxHealth;
-    public float _reloadTime;
+    public int _reloadTime;
 
     void Awake()
     {

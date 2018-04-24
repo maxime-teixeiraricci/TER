@@ -35,6 +35,7 @@ TagManager:
   - HPBar
   - MessageLine
   - HUDstats
+  - Sight
   layers:
   - Default
   - TransparentFX
