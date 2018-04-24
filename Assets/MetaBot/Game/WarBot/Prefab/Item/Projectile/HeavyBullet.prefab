@@ -101,6 +101,8 @@ MonoBehaviour:
   _speed: 12
   _damage: 45
   Explosion: {fileID: 1845498863086158, guid: 4674881728130634893ae55c8fdd1524, type: 2}
+  _shotSongStart: {fileID: 8300000, guid: e05c9d76673371e4e97878a6ffe31acd, type: 3}
+  _shotSongFinish: {fileID: 8300000, guid: d2040c9fc11a2874092fd7532a227c39, type: 3}
 --- !u!135 &135128194527641266
 SphereCollider:
   m_ObjectHideFlags: 1

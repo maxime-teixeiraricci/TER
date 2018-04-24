@@ -512,6 +512,7 @@ MonoBehaviour:
   - MESSAGE_HELP
   - MESSAGE_POSITION
   - MESSAGE_ATTACK
+  - MESSAGE_POSITION_RESOURCE
   _messageLineObject: {fileID: 1570930958659960, guid: 369a6c66779f7494fbf20cd2d86e12f7,
     type: 2}
 --- !u!114 &114439792897233452
@@ -542,6 +543,7 @@ MonoBehaviour:
   _largeSmoke: {fileID: 100000, guid: ab1112643ee572748b01dede71158272, type: 2}
   _fire: {fileID: 100000, guid: 756d99540142b5e4a8d174e18a6310d9, type: 2}
   _explosion: {fileID: 191186, guid: 079954accd64b32419ec069129c81273, type: 2}
+  _dieSong: {fileID: 8300000, guid: 305a65321dd3fd94fb792248994556dd, type: 3}
 --- !u!114 &114808038850239514
 MonoBehaviour:
   m_ObjectHideFlags: 1

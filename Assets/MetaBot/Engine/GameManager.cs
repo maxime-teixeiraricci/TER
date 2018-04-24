@@ -20,6 +20,10 @@ public class GameManager : MonoBehaviour
     [Header("Debug")]
     public List<string> fileUnit = new List<string>();
 
+    [Header("Debug")]
+    public AudioClip audioMenu;
+    public AudioClip audioWarbot;
+
     static bool created = false;
 
     void Awake()

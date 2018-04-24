@@ -21,6 +21,16 @@ public class HUDManager : MonoBehaviour
     public bool statsOn;
 
 
+    AudioSource audioSource;
+    GameObject gameManager;
+
+    private void Start()
+    {
+        gameManager = GameObject.Find("GameManager");
+        audioSource = gameManager.GetComponent<AudioSource>();
+        audioSource.clip = gameManager.GetComponent<GameManager>().audioWarbot;
+        audioSource.Play();
+    }
 
     void Update()
     {
@@ -73,6 +83,8 @@ public class HUDManager : MonoBehaviour
     public void QuitToMenu()
     {
         SceneManager.LoadScene(0);
+        audioSource.clip = gameManager.GetComponent<GameManager>().audioMenu;
+        audioSource.Play();
     }
 
 

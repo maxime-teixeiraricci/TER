@@ -11,6 +11,15 @@ public class BulletScript : MonoBehaviour
     public int _damage;
     public GameObject Explosion;
 
+    public AudioClip _shotSongStart;
+    public AudioClip _shotSongFinish;
+    AudioSource audioSource;
+    void Start()
+    {
+        audioSource = GameObject.Find("GameManager").GetComponent<AudioSource>();
+        if (_shotSongStart != null) audioSource.PlayOneShot(_shotSongStart);
+    }
+
     void FixedUpdate ()
     {
         transform.position += _vect.normalized * Time.deltaTime * _speed;
@@ -18,8 +27,9 @@ public class BulletScript : MonoBehaviour
         if (_lifeTime < 0f)
         {
             GameObject explosion = Instantiate(Explosion, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            if (_shotSongFinish != null) audioSource.PlayOneShot(_shotSongFinish);
             Destroy(explosion, 1.5f);
+            Destroy(gameObject);
         }
 
     }
@@ -33,9 +43,9 @@ public class BulletScript : MonoBehaviour
             GameObject explosion = Instantiate(Explosion, transform.position, Quaternion.identity);
             other.GetComponent<Stats>()._health -= _damage;
             _damage = 0;
-
-            Destroy(gameObject, 0.25f);
+            if (_shotSongFinish != null) audioSource.PlayOneShot(_shotSongFinish);
             Destroy(explosion,1.5f);
+            Destroy(gameObject, 0.25f);
         }
     }
 }

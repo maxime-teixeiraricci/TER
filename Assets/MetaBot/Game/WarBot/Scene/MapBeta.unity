@@ -261,16 +261,6 @@ Prefab:
       propertyPath: m_Name
       value: WarExplorer (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 114806030400751272, guid: 8fcd7e5dbb0f10b49bfb219b83572151,
-        type: 2}
-      propertyPath: _teamIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 54652975731787500, guid: 8fcd7e5dbb0f10b49bfb219b83572151,
-        type: 2}
-      propertyPath: m_Constraints
-      value: 116
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8fcd7e5dbb0f10b49bfb219b83572151, type: 2}
   m_IsPrefabParent: 0
@@ -1131,6 +1121,7 @@ MonoBehaviour:
   button2: {fileID: 0}
   fond: {fileID: 0}
   canvashud: {fileID: 0}
+  written: 0
 --- !u!1 &325174084
 GameObject:
   m_ObjectHideFlags: 0
@@ -4071,6 +4062,7 @@ MonoBehaviour:
   button2: {fileID: 487375366}
   fond: {fileID: 1137284093}
   canvashud: {fileID: 536326435}
+  written: 0
 --- !u!1 &1069250266
 GameObject:
   m_ObjectHideFlags: 0
@@ -5488,10 +5480,11 @@ MonoBehaviour:
   _health: 100
   _maxHealth: 100
   _reloadTime: 0
-  _smallSmoke: {fileID: 0}
-  _largeSmoke: {fileID: 0}
-  _fire: {fileID: 0}
-  _explosion: {fileID: 0}
+  _smallSmoke: {fileID: 100000, guid: 5b6c2f68addb63847b151f0d41a9d3b1, type: 2}
+  _largeSmoke: {fileID: 100000, guid: ab1112643ee572748b01dede71158272, type: 2}
+  _fire: {fileID: 100000, guid: 756d99540142b5e4a8d174e18a6310d9, type: 2}
+  _explosion: {fileID: 191186, guid: 079954accd64b32419ec069129c81273, type: 2}
+  _dieSong: {fileID: 8300000, guid: e28ce664c6a4a5342a617b9bd36f2176, type: 3}
 --- !u!114 &1300771703
 MonoBehaviour:
   m_ObjectHideFlags: 0
