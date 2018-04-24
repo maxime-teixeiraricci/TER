@@ -34,20 +34,38 @@ public class DeleteTeam : MonoBehaviour
     {
         nameTeam = dropdown.captionText.text;
         string path = Application.streamingAssetsPath + "/teams/TestBot/"; //Application.dataPath + "/StreamingAssets/teams/TestBot/";
+        string pathStats = Application.streamingAssetsPath + "/Stats/";
         foreach (string file in Directory.GetFiles(path))
         {
-            string res = file.Replace(path + "\\", "");
-            if (res == nameTeam + ".wbt")
+            string res = file.Replace(path, "");
             Debug.Log("RES = " + res);
             Debug.Log("nameTeam = " + nameTeam);
+            if (res == nameTeam + ".wbt")
+            
             {
+                Debug.Log("FILE QUI VA ETRE DELETE = " + file);
                 string fileMeta = file + ".meta";
                 File.Delete(file);
                 File.Delete(fileMeta);
                 break;
             }
         }
-        Updating();
+
+        foreach (string file in Directory.GetFiles(pathStats))
+        {
+            string res = file.Replace(pathStats , "");
+            //Debug.Log("NAME FILE = " + res);
+            if (res == nameTeam + ".stat")
+            {
+                string fileMeta = file + ".meta";
+                File.Delete(file);
+                File.Delete(fileMeta);
+                break;
+            }
+
+        }
+
+            Updating();
         Window.SetActive(false);
     }
 
