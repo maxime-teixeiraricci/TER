@@ -357,6 +357,10 @@ MonoBehaviour:
   _health: 275
   _maxHealth: 275
   _reloadTime: 0
+  _smallSmoke: {fileID: 100000, guid: 5b6c2f68addb63847b151f0d41a9d3b1, type: 2}
+  _largeSmoke: {fileID: 100000, guid: ab1112643ee572748b01dede71158272, type: 2}
+  _fire: {fileID: 100000, guid: 756d99540142b5e4a8d174e18a6310d9, type: 2}
+  _explosion: {fileID: 191186, guid: 079954accd64b32419ec069129c81273, type: 2}
 --- !u!114 &114135927836566028
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -507,6 +511,7 @@ MonoBehaviour:
   - {fileID: 4584436217239334}
   - {fileID: 4537531416114584}
   _weapon: {fileID: 1296904110595814, guid: 45dc042a1363cc448889d82ba691d0d4, type: 2}
+  reloadTick: 0
 --- !u!135 &135022460162252836
 SphereCollider:
   m_ObjectHideFlags: 1
