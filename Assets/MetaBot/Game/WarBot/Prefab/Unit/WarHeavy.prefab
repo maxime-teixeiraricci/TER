@@ -471,6 +471,7 @@ MonoBehaviour:
   - MESSAGE_HELP
   - MESSAGE_POSITION
   - MESSAGE_ATTACK
+  - MESSAGE_POSITION_RESOURCE
   _messageLineObject: {fileID: 0}
 --- !u!114 &114614631316123548
 MonoBehaviour:
