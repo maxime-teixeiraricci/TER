@@ -3159,19 +3159,6 @@ MonoBehaviour:
   langue: 
   textOriginal: 
   traduction: 
---- !u!114 &397876374
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 397876371}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51ab93d6bb763304cb6ee55da5227002, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _gamename: 
-  winner: 0
 --- !u!114 &397876378
 MonoBehaviour:
   m_ObjectHideFlags: 0

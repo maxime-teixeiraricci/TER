@@ -11,6 +11,12 @@ public class EndGameManager : MonoBehaviour {
     public Dictionary<string, Ends> _ends = new Dictionary<string, Ends>();
     public string _gamename;
     public int winner;
+    public GameObject GO;
+    public GameObject textWinnerTeam;
+    public GameObject button1;
+    public GameObject button2;
+    public GameObject fond;
+    public GameObject canvashud;
 
     // Use this for initialization
     void Start () {
@@ -24,34 +30,16 @@ public class EndGameManager : MonoBehaviour {
     {
         _ends["TestBot"] = delegate ()
         {
-            print("TestENDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD");
-            GameObject slider = GameObject.Find("Slider");
-            slider.SetActive(false);
-            print("after slider");
-         /*   GameObject minimap = GameObject.Find("Minimap Image");
-            minimap.GetComponent<Image>().enabled = false;
-            //minimap.SetActive(false);
-            print("after minimpa");
-            GameObject stats = GameObject.FindGameObjectWithTag("HUDstats");
-            stats.GetComponent<Image>().enabled = false;
-            print("after HUD");
-            GameObject msgb = GameObject.Find("MessageButton");
-            msgb.GetComponent<Image>().enabled = false;
-            msgb.GetComponent<Text>().enabled = false;
-            print("after MsgButton");
-            GameObject msgbs = GameObject.Find("StatsButton");
-            msgbs.GetComponent<Image>().enabled = false;
-            msgbs.GetComponent<Text>().enabled = false;
-            print("after StatsButton");
-            GameObject scorebar = GameObject.Find("ScoreBar");
-            scorebar.GetComponent<Image>().enabled = false;
-            scorebar.GetComponent<Text>().enabled = false;
-            print("after ScoreBar");*/
-            GameObject.Find("TextWinnerTeam").GetComponent<Text>().text = "Winner team : " + winner;
-            print("after Winnerteam");
-            GameObject.Find("TextGameOver").GetComponent<Text>().text = "Game Over ! ";
-            print("after TextGO"); 
             Time.timeScale = 0;
+            textWinnerTeam.GetComponent<Text>().text = "Winner team : " + winner;
+            print("after Winnerteam");
+            GO.GetComponent<Text>().text = "Game is Over !";
+            canvashud.SetActive(false);
+            button1.SetActive(true);
+            button2.SetActive(true);
+            fond.SetActive(true);
+            
+            print("after TextGO");
         };
 
         _ends["RessourceRace"] = delegate ()
