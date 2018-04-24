@@ -1515,6 +1515,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 210440777183402604, guid: 8fcd7e5dbb0f10b49bfb219b83572151,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8fcd7e5dbb0f10b49bfb219b83572151, type: 2}
   m_IsPrefabParent: 0
@@ -32352,6 +32357,25 @@ Prefab:
     - target: {fileID: 1517124188230958, guid: 8fcd7e5dbb0f10b49bfb219b83572151, type: 2}
       propertyPath: m_Name
       value: WarExplorer (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 331681767561960510, guid: 8fcd7e5dbb0f10b49bfb219b83572151,
+        type: 2}
+      propertyPath: m_FrontSortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 331681767561960510, guid: 8fcd7e5dbb0f10b49bfb219b83572151,
+        type: 2}
+      propertyPath: m_MaskAlphaCutoff
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 212811380449739286, guid: 8fcd7e5dbb0f10b49bfb219b83572151,
+        type: 2}
+      propertyPath: m_MaskInteraction
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523268400319572, guid: 8fcd7e5dbb0f10b49bfb219b83572151, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8fcd7e5dbb0f10b49bfb219b83572151, type: 2}
