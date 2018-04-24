@@ -31,7 +31,7 @@ public class EndGameManager : MonoBehaviour {
         _ends["TestBot"] = delegate ()
         {
             Time.timeScale = 0;
-            textWinnerTeam.GetComponent<Text>().text = "Winner team : " + winner;
+            textWinnerTeam.GetComponent<Text>().text = "Winner : " + winner;
             print("after Winnerteam");
             GO.GetComponent<Text>().text = "Game is Over !";
             canvashud.SetActive(false);
