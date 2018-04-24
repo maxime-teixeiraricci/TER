@@ -106,8 +106,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1837564357218730}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.4211235, y: 1.01, z: -3.5933251}
-  m_LocalScale: {x: 0.51258105, y: 0.5125811, z: 0.5125811}
+  m_LocalPosition: {x: -17.587719, y: 0.24450684, z: -37.685127}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4400338860301782}
   - {fileID: 4147898957323632}
@@ -278,7 +278,6 @@ MonoBehaviour:
   _componentActionsNonTerminales: {fileID: 114120181410846064}
   _messageManager: {fileID: 114461914509928388}
   nbInstruction: 0
-  turnEnd: 0
   debugMessage: 0
 --- !u!114 &114529498503752388
 MonoBehaviour:
@@ -342,10 +341,6 @@ MonoBehaviour:
   _health: 125
   _maxHealth: 125
   _reloadTime: 0
-  _smallSmoke: {fileID: 100000, guid: 5b6c2f68addb63847b151f0d41a9d3b1, type: 2}
-  _largeSmoke: {fileID: 100000, guid: ab1112643ee572748b01dede71158272, type: 2}
-  _fire: {fileID: 100000, guid: 756d99540142b5e4a8d174e18a6310d9, type: 2}
-  _explosion: {fileID: 191186, guid: 079954accd64b32419ec069129c81273, type: 2}
 --- !u!114 &114650775230158826
 MonoBehaviour:
   m_ObjectHideFlags: 1

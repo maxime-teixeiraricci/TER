@@ -372,7 +372,6 @@ MonoBehaviour:
   _componentActionsNonTerminales: {fileID: 114228995306872970}
   _messageManager: {fileID: 114404676544177780}
   nbInstruction: 0
-  turnEnd: 0
   debugMessage: 0
 --- !u!114 &114375346082489782
 MonoBehaviour:
@@ -431,10 +430,6 @@ MonoBehaviour:
   _health: 1000
   _maxHealth: 1000
   _reloadTime: 0
-  _smallSmoke: {fileID: 100000, guid: 5b6c2f68addb63847b151f0d41a9d3b1, type: 2}
-  _largeSmoke: {fileID: 100000, guid: ab1112643ee572748b01dede71158272, type: 2}
-  _fire: {fileID: 100000, guid: 756d99540142b5e4a8d174e18a6310d9, type: 2}
-  _explosion: {fileID: 191186, guid: 079954accd64b32419ec069129c81273, type: 2}
 --- !u!114 &114808038850239514
 MonoBehaviour:
   m_ObjectHideFlags: 1
