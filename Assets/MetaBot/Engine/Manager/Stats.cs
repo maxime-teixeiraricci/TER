@@ -23,6 +23,14 @@ public class Stats : MonoBehaviour
     public int _maxHealth;
     public float _reloadTime;
 
+    [Header("Effects")]
+    public GameObject _smallSmoke;
+    public GameObject _largeSmoke;
+    public GameObject _fire;
+    public GameObject _explosion;
+
+    private GameObject _currentEffect;
+
     void Awake()
     {
         _id = Random.Range(0, int.MaxValue);
@@ -31,7 +39,10 @@ public class Stats : MonoBehaviour
     void Start()
     {
         _heading = Random.Range(0, 360);
-
+        _smallSmoke.SetActive(true);
+        _largeSmoke.SetActive(true);
+        _fire.SetActive(true);
+        _explosion.SetActive(true);
     }
 
     void Update()
@@ -56,13 +67,51 @@ public class Stats : MonoBehaviour
         {
             //_heading = Random.Range(0, 360);
         }
-
+        if (_currentEffect)
+        {
+            _currentEffect.GetComponent<Transform>().position.Set(transform.position.x, transform.position.y, transform.position.z);
+        }
+        if (_health >= _maxHealth * 0.75)
+        {
+            Destroy(_currentEffect);
+        }
+        else if(_health >= _maxHealth * 0.50)
+        {
+            if (_currentEffect)
+            {
+                Destroy(_currentEffect);
+            }
+            _currentEffect = Instantiate(_smallSmoke, transform.position, Quaternion.identity);
+        }
+        else if (_health >= _maxHealth * 0.25)
+        {
+            if (_currentEffect)
+            {
+                Destroy(_currentEffect);
+            }
+            _currentEffect = Instantiate(_largeSmoke, transform.position, Quaternion.identity);
+        }
+        else if (_health > 0)
+        {
+            if (_currentEffect)
+            {
+                Destroy(_currentEffect);
+            }
+            _currentEffect = Instantiate(_fire, transform.position, Quaternion.identity);
+        }
         if (_health <= 0)
         {
-          Destroy(gameObject);
+            if (_currentEffect)
+            {
+                Destroy(_currentEffect);
+            }
+            _currentEffect = Instantiate(_explosion, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+            Destroy(_currentEffect,1.5f);
         }
         if (transform.position.y < -5)
         {
+            Destroy(_currentEffect);
             Destroy(gameObject);
         }
     }

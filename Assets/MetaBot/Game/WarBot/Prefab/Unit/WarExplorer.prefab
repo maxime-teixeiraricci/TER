@@ -76,8 +76,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1517124188230958}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -49.5, y: 0.43, z: -22.5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -6.616447, y: 1.73, z: -3.4597278}
+  m_LocalScale: {x: 1.035786, y: 1.035786, z: 1.035786}
   m_Children:
   - {fileID: 4608809123674540}
   m_Father: {fileID: 0}
@@ -302,6 +302,10 @@ MonoBehaviour:
   _health: 100
   _maxHealth: 100
   _reloadTime: 0
+  _smallSmoke: {fileID: 100000, guid: 5b6c2f68addb63847b151f0d41a9d3b1, type: 2}
+  _largeSmoke: {fileID: 100000, guid: ab1112643ee572748b01dede71158272, type: 2}
+  _fire: {fileID: 100000, guid: 756d99540142b5e4a8d174e18a6310d9, type: 2}
+  _explosion: {fileID: 191186, guid: 079954accd64b32419ec069129c81273, type: 2}
 --- !u!114 &114991993633843772
 MonoBehaviour:
   m_ObjectHideFlags: 1
