@@ -31,5 +31,11 @@ public class ActionNonTerminalCommon : ActionNonTerminal
             GetComponent<MessageManager>().Send(message, _messageDestinataire);
             print("SEND ATTACK !");
         };
+        _actionsNT["ACTN_MESSAGE_POSITION_RESOURCE"] = delegate ()
+        {
+            Message message = new Message(gameObject, "MESSAGE_POSITION_RESOURCE");
+            GetComponent<MessageManager>().Send(message, _messageDestinataire);
+            print("SEND POSITION RESOURCE !");
+        };
     }
 }

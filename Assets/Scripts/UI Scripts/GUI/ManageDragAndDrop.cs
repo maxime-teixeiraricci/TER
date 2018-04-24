@@ -64,13 +64,13 @@ public class ManageDragAndDrop : MonoBehaviour, IPointerEnterHandler//, IPointer
             transform.parent = GameObject.Find("Editeur").transform;
             transform.position = objPosition;
             GetComponent<RectTransform>().localPosition = new Vector3(GetComponent<RectTransform>().localPosition.x, GetComponent<RectTransform>().localPosition.y, 10);
-            /*
+            
 
             float newX = Mathf.Min(Mathf.Max(GetComponent<RectTransform>().localPosition.x, -widthEditor / 2), widthEditor / 2);
             float newY = Mathf.Min(Mathf.Max(GetComponent<RectTransform>().localPosition.y, -heightEditor / 2), heightEditor / 2);
             Vector3 newPos = new Vector3(newX, newY, 10);
-            GetComponent<RectTransform>().localPosition = newPos;
-            */
+            // Vector3 newPos = new Vector3(newX + sizePuzzleX / 2, newY - sizePuzzleY / 2, 10);  => Limite coin supérieur gauche de l'éditeur
+            GetComponent<RectTransform>().localPosition = newPos;     
         }
 
     }
@@ -113,7 +113,9 @@ public class ManageDragAndDrop : MonoBehaviour, IPointerEnterHandler//, IPointer
 
         posGridX = (int)Mathf.Round(GetComponent<RectTransform>().localPosition.x / widthPuzzle);
         posGridY = (int)Mathf.Round(GetComponent<RectTransform>().localPosition.y / heightPuzzle);
+
         
+
     }
     public void setGridPosition(Vector2 p)
     {

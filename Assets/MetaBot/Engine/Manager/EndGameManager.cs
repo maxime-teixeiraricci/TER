@@ -17,6 +17,7 @@ public class EndGameManager : MonoBehaviour {
     public GameObject button2;
     public GameObject fond;
     public GameObject canvashud;
+    public bool written;
 
     // Use this for initialization
     void Start () {
@@ -24,22 +25,38 @@ public class EndGameManager : MonoBehaviour {
         InitEnds();
         winner = -1;
         _gamename = GameObject.FindObjectOfType<GameManager>()._gameName;
+        written = false;
 	}
 
     public void InitEnds()
     {
         _ends["TestBot"] = delegate ()
         {
+
+
             Time.timeScale = 0;
-            textWinnerTeam.GetComponent<Text>().text = "Winner team : " + winner;
+            textWinnerTeam.GetComponent<Text>().text = "Winner : " + winner;
             print("after Winnerteam");
             GO.GetComponent<Text>().text = "Game is Over !";
             canvashud.SetActive(false);
             button1.SetActive(true);
             button2.SetActive(true);
             fond.SetActive(true);
-            
             print("after TextGO");
+            if (!written)
+            {
+                TeamsPerformance p = new TeamsPerformance();
+                int size = GameObject.FindObjectOfType<GameManager>().GetComponent<TeamManager>()._teams.Count;
+                string[] teams = new string[size];
+                int cpt = 0;
+                foreach (Team t in GameObject.FindObjectOfType<GameManager>().GetComponent<TeamManager>()._teams)
+                {
+                    teams[cpt] = t._name;
+                    cpt++;
+                }
+                p.WriteStats(teams, teams[winner], size);
+                written = true;
+            }
         };
 
         _ends["RessourceRace"] = delegate ()

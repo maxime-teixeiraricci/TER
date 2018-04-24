@@ -36,6 +36,7 @@ TagManager:
   - MessageLine
   - HUDstats
   - Sight
+  - language
   layers:
   - Default
   - TransparentFX

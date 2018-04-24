@@ -8,6 +8,7 @@ public class ActionBase : ActionCommon
     void Start()
     {
         InitAction();
+        forTheStart();
     }
 
     public override void InitAction()
@@ -40,5 +41,21 @@ public class ActionBase : ActionCommon
                 GetComponent<CreatorUnit>().Create("Explorer");
             }
         };
+    }
+
+    public void forTheStart()
+    {
+        base.InitAction(); // IMPORTANT : Permet de recuperer les percepts de la classe mere
+        int explorer = GameObject.Find("GameManager").GetComponent<SaveSliderVal>().valSliderExplorer;
+        int heavy = GameObject.Find("GameManager").GetComponent<SaveSliderVal>().valSliderHeavy;
+        int light = GameObject.Find("GameManager").GetComponent<SaveSliderVal>().valSliderLight;
+
+        if( explorer < 0 ) explorer = 0;
+        if( heavy < 0 ) heavy = 0;
+        if( light < 0 ) light = 0;
+
+        for( int i = 0 ; i < explorer ; i++ ) GetComponent<CreatorUnit>().Create("Explorer");
+        for( int j = 0 ; j < heavy ; j++ ) GetComponent<CreatorUnit>().Create("Heavy");
+        for( int k = 0 ; k < light ; k++ ) GetComponent<CreatorUnit>().Create("Light");
     }
 }
