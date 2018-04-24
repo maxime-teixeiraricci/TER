@@ -24,34 +24,30 @@ public class EndGameManager : MonoBehaviour {
     {
         _ends["TestBot"] = delegate ()
         {
-            print("TestENDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD");
-            GameObject slider = GameObject.Find("Slider");
-            slider.SetActive(false);
+            Time.timeScale = 0;
+            GameObject.Find("Slider").SetActive(false);
             print("after slider");
-         /*   GameObject minimap = GameObject.Find("Minimap Image");
-            minimap.GetComponent<Image>().enabled = false;
-            //minimap.SetActive(false);
+            if (GameObject.Find("Minimap Image").active == true)
+                GameObject.Find("Minimap Image").SetActive(false);
             print("after minimpa");
-            GameObject stats = GameObject.FindGameObjectWithTag("HUDstats");
-            stats.GetComponent<Image>().enabled = false;
+            if (GameObject.Find("HUDStats").active == true)
+                GameObject.FindGameObjectWithTag("HUDstats").SetActive(false);
             print("after HUD");
-            GameObject msgb = GameObject.Find("MessageButton");
-            msgb.GetComponent<Image>().enabled = false;
-            msgb.GetComponent<Text>().enabled = false;
+            if (GameObject.Find("MessageButton").active == true)
+                GameObject.Find("MessageButton").SetActive(false);
             print("after MsgButton");
-            GameObject msgbs = GameObject.Find("StatsButton");
-            msgbs.GetComponent<Image>().enabled = false;
-            msgbs.GetComponent<Text>().enabled = false;
+            if (GameObject.Find("StatsButton").active == true)
+                GameObject.Find("StatsButton").SetActive(false);
             print("after StatsButton");
-            GameObject scorebar = GameObject.Find("ScoreBar");
-            scorebar.GetComponent<Image>().enabled = false;
-            scorebar.GetComponent<Text>().enabled = false;
-            print("after ScoreBar");*/
+            if (GameObject.Find("ScoreBar").active == true)
+                GameObject.Find("ScoreBar").SetActive(false);
+            print("after ScoreBar");
             GameObject.Find("TextWinnerTeam").GetComponent<Text>().text = "Winner team : " + winner;
             print("after Winnerteam");
-            GameObject.Find("TextGameOver").GetComponent<Text>().text = "Game Over ! ";
-            print("after TextGO"); 
-            Time.timeScale = 0;
+            GameObject.Find("TextWinnerTeam").SetActive(true);
+            print("after winnerteam2");
+            GameObject.Find("TextGameOver").SetActive(true);
+            print("after TextGO");
         };
 
         _ends["RessourceRace"] = delegate ()
