@@ -17,23 +17,25 @@ public class XMLWarbotInterpreter : XMLInterpreter
         */
     public override void generateEmptyFile(string teamName, string path)
     {
-        // Creating new xml document
+        // Necessaire pour le fonctionnement des Nodes
         XmlDocument l_doc = new XmlDocument();
 
-        // Creating root node
+        // Creation du noeud de base
         XmlNode l_root = l_doc.CreateElement(Constants.nodeContainer);
         l_doc.AppendChild(l_root);
 
-        // Appending team name
+        // Rajout du nom de l'equipe dans le fichier vide
         XmlNode l_node = l_doc.CreateElement(Constants.nodeTeam);
         l_node.InnerText = teamName;
         l_root.AppendChild(l_node);
 
+        //sauvegarde du fichier xml
         l_doc.Save(path + "/" + teamName + Constants.xmlExtension);
     }
 
     /**
-        * Retourne les conditions correspondants aux noeuds
+        * Retourne une instruction correspondants au noeud actuellement traité
+        * Une instruction est une liste de condition, une liste d'action non terminale/messages , ainsi que l'action temrinale
         */
     public override Instruction whichInstruction(string unitName, XmlNode ins)
     {
