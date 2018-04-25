@@ -164,6 +164,7 @@ GameObject:
   - component: {fileID: 114404676544177780}
   - component: {fileID: 114228995306872970}
   - component: {fileID: 64834784456306956}
+  - component: {fileID: 114192518917336672}
   m_Layer: 8
   m_Name: WarBase
   m_TagString: Unit
@@ -429,6 +430,18 @@ MonoBehaviour:
   maskL: {fileID: 1152431030169634}
   maskR: {fileID: 1241769356453600}
   done: 0
+--- !u!114 &114192518917336672
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1862762559995188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62845bc220e81b348af4c8e59311d420, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Unit: Base
 --- !u!114 &114228534123011052
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -440,7 +453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 213656213c4902c4f948b777f7075b8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxSize: 99999
+  _maxSize: 20
   _actualSize: 0
   _ressource: {fileID: 0}
 --- !u!114 &114228995306872970
