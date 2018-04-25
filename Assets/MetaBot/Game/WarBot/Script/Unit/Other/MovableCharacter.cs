@@ -28,7 +28,7 @@ public class MovableCharacter : MonoBehaviour
         if (true)
         {
             vectMov = Utility.vectorFromAngle(GetComponent<Stats>()._heading);
-            nextposition = transform.position + vectMov.normalized * speed * Time.deltaTime;
+            nextposition = transform.position + vectMov.normalized * speed *0.01f;// * Time.deltaTime;
 
             transform.position = nextposition;
         }
