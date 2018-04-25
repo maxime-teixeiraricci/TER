@@ -25,12 +25,12 @@ public class ManageDragAndDrop : MonoBehaviour, IPointerEnterHandler//, IPointer
     void Update()
     {
     }
-
+    
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("Here"); //This is never logging
+        //Debug.Log("Here"); //This is never logging
     }
-
+    
 
     private void OnMouseOver()
     {
@@ -40,7 +40,7 @@ public class ManageDragAndDrop : MonoBehaviour, IPointerEnterHandler//, IPointer
         }
     }
 
-
+    // Met à jour les coordonnées de la pièce courante, en fonction du positionnement de la souris
     public void OnMouseDrag()
     {
         if (Input.GetMouseButtonDown(0))
@@ -69,8 +69,8 @@ public class ManageDragAndDrop : MonoBehaviour, IPointerEnterHandler//, IPointer
 
     }
 
+    // Met à jour la position de la pièce, une fois le clic de la souris relâché
     public void OnMouseUp()
-
     {
         UpdateGridPosition();
         // UPDATE verify puzzle
@@ -85,6 +85,7 @@ public class ManageDragAndDrop : MonoBehaviour, IPointerEnterHandler//, IPointer
         GetComponent<RectTransform>().localPosition = newPos;
 
     }
+
 
     public bool isRight(GameObject other)
     {
@@ -117,6 +118,7 @@ public class ManageDragAndDrop : MonoBehaviour, IPointerEnterHandler//, IPointer
         posGridY = (int)p.y;
         GetComponent<RectTransform>().localPosition = new Vector3(posGridX * sizePuzzleX, posGridY * sizePuzzleY, 10);
     }
+
     public Vector2 getGridPosition()
     {
         return new Vector2(posGridX, posGridY);

@@ -20,7 +20,6 @@ public class NumberPlayers : MonoBehaviour {
 
     void Start()
     {
-        
         vs = GameObject.Find("VS");
         float x1 = Team1.transform.position.x;
         float y1 = Team1.transform.position.y;
@@ -28,18 +27,14 @@ public class NumberPlayers : MonoBehaviour {
         initialPos1 = new Vector3(Team1.transform.position.x, Team1.transform.position.y, Team1.transform.position.z);
         initialPos2 = new Vector3(Team2.transform.position.x, Team2.transform.position.y, Team2.transform.position.z);
         initialPos3 = new Vector3(Team3.transform.position.x, Team3.transform.position.y, Team3.transform.position.z);
-        //Vector3 initialPlaceT1 = new Vector3(Team1.transform.position.x, Team1.transform.position.y, Team1.transform.position.z);
-        //Vector3 initialPlaceT2 = new Vector3(Team2.transform.position.x, Team2.transform.position.y, Team2.transform.position.z);
-        //Vector3 initialPlaceT3 = Team3.transform.position;
-        //Vector3 initialPlaceT4 = Team4.transform.position;
     }
 
+    // Met à jour la position des cadres des équipes, en fonction du nombre d'équipes présentes
     private void Update()
     {
         nbrPlayers = dropdown.captionText.text;
         if (nbrPlayers == "2")
         {
-             
             Team1.transform.position = new Vector3(Team1.transform.position.x, vs.transform.position.y, Team1.transform.position.z);
             position1_2 = new Vector3(Team1.transform.position.x, vs.transform.position.y, Team1.transform.position.z);
             Team2.transform.position = new Vector3(Team2.transform.position.x, vs.transform.position.y, Team2.transform.position.z);

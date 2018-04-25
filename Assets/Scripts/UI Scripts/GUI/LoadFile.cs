@@ -29,84 +29,19 @@ public class LoadFile : MonoBehaviour
         createBehaviorFromXML();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-
+    // Réinitialise la position de la scrollbar de l'éditeur
     public void ResetScrollBarEditorPosition()
     {
         scrollEdit.value = 1;
     }
 
+    // Réinitialise la position de la scrollbar de la liste des pièces
     public void ResetScrollBarPiecesPosition()
     {
         scrollPieces.value = 1;
     }
-    /*
-    public void createBehaviorFromXML()
-    {
-
-        int placeIf = 75;
-        int nbrIf = 1;
-        clear = new NewFile();
-        clear.clearEditor();        // On clear l'editeur avant de charger un nouveau comportement
-
-        string teamName = team.captionText.text;
-        string unitName = unit.captionText.text;
-        string path = Constants.teamsDirectory + Constants.gameModeWarBot;
-        XMLWarbotInterpreter interpreter = new XMLWarbotInterpreter();
-
-        Dictionary<string, List<Instruction>> behavior = interpreter.xmlToBehavior(teamName, path);
-
-        if (behavior.ContainsKey(unitName))
-        {
-            List<Instruction> behaviorList = behavior[unitName];
-
-
-
-            foreach (Instruction instruction in behaviorList)
-            {
-                int nbrCond = 1;
-                // Création du bloc IF
-                GameObject puzzleIf = Instantiate(ifPuzzle, GameObject.Find("Editeur").transform);
-                puzzleIf.GetComponent<RectTransform>().anchoredPosition = new Vector3(startPuzzle.GetComponent<RectTransform>().anchoredPosition.x, startPuzzle.GetComponent<RectTransform>().anchoredPosition.y - placeIf, startPuzzle.GetComponent<RectTransform>().anchoredPosition.z);
-                puzzleIf.GetComponent<ManageDragAndDrop>().posGridX = startPuzzle.GetComponent<ManageDragAndDrop>().posGridX;
-                puzzleIf.GetComponent<ManageDragAndDrop>().posGridY = startPuzzle.GetComponent<ManageDragAndDrop>().posGridY - nbrIf;
-
-                placeIf += (int)puzzleIf.GetComponent<RectTransform>().rect.height;
-                nbrIf += 2;
-
-                int placeCond = (int)puzzleCond.GetComponent<RectTransform>().rect.height;
-                // Pour chaque percept associé au IF
-                for (int i = 0; i < instruction._listeStringPerceptsVoulus.Length; i++)
-                {
-                    GameObject puzzleCond = (GameObject)Instantiate(condPuzzle, GameObject.Find("Editeur").transform);
-                    puzzleCond.GetComponent<RectTransform>().position = new Vector3(puzzleIf.GetComponent<RectTransform>().position.x + placeCond, puzzleIf.GetComponent<RectTransform>().position.y, puzzleIf.GetComponent<RectTransform>().position.z);
-                    puzzleCond.GetComponent<ManageDragAndDrop>().posGridX = puzzleIf.GetComponent<ManageDragAndDrop>().posGridX + nbrCond;
-                    puzzleCond.GetComponent<ManageDragAndDrop>().posGridY = puzzleIf.GetComponent<ManageDragAndDrop>().posGridY;
-                    puzzleCond.GetComponent<CondPuzzleScript>().condName = instruction._listeStringPerceptsVoulus[i];
-                    placeCond += 150;
-                    nbrCond += 2;
-                }
-
-                int placeAction = 75;
-
-                GameObject puzzleAction = (GameObject)Instantiate(actionPuzzle, GameObject.Find("Editeur").transform);
-                puzzleAction.GetComponent<RectTransform>().position = new Vector3(puzzleIf.GetComponent<RectTransform>().position.x + placeAction, puzzleIf.GetComponent<RectTransform>().position.y - 75, puzzleIf.GetComponent<RectTransform>().position.z);
-                puzzleAction.GetComponent<ManageDragAndDrop>().posGridX = puzzleIf.GetComponent<ManageDragAndDrop>().posGridX + 1;
-                puzzleAction.GetComponent<ManageDragAndDrop>().posGridY = puzzleIf.GetComponent<ManageDragAndDrop>().posGridY - 1;
-                puzzleAction.GetComponent<ActionPuzzleScript>().actionName = instruction._stringAction;
-            }
-        }
-        else
-        {
-            print("Aucun comportement existant !");
-        }
-    }*/
-
+   
+    // Lit un fichier .xml, et crée le comportement correspondant
     public void createBehaviorFromXML()
     {
         clear = new NewFile();
@@ -165,22 +100,22 @@ public class LoadFile : MonoBehaviour
                         {
                             _messPuzzle = Instantiate(messagePuzzle, editeurTransform);
                         }
-                        print(s._intitule); 
+                        //print(s._intitule); 
                         if (_messPuzzle != null)
                         {
                             _messPuzzle.GetComponent<ManageDragAndDrop>().setGridPosition(currentAction.GetComponent<ManageDragAndDrop>().getGridPosition() + delta);
                             currentAction = _messPuzzle;
                             _messPuzzle.GetComponent<PuzzleScript>()._value = s._intitule;
-                            print("A Dest : " + s._destinataire);
+                            //print("A Dest : " + s._destinataire);
                             if (_messPuzzle.GetComponent<PuzzleScript>().messageDropDown)
                             {
                                 _messPuzzle.GetComponent<PuzzleScript>().DropDownUpdate();
                                 for (int i = 0; i < _messPuzzle.GetComponent<PuzzleScript>().messageDropDown.options.Count; i++)
                                 {
-                                    print("B " + _messPuzzle.GetComponent<PuzzleScript>().messageDropDown.options[i].text + " >< " + s._destinataire);
+                                   // print("B " + _messPuzzle.GetComponent<PuzzleScript>().messageDropDown.options[i].text + " >< " + s._destinataire);
                                     if (_messPuzzle.GetComponent<PuzzleScript>().messageDropDown.options[i].text == s._destinataire)
                                     {
-                                        print("B Dest : " + s._destinataire);
+                                        //print("B Dest : " + s._destinataire);
                                         _messPuzzle.GetComponent<PuzzleScript>().messageDropDown.value = i;
                                         _messPuzzle.GetComponent<PuzzleScript>().messageDropDown.Select();
                                         _messPuzzle.GetComponent<PuzzleScript>().messageDropDown.RefreshShownValue();
@@ -214,7 +149,6 @@ public class LoadFile : MonoBehaviour
 
     public void Updating()
     {
-        
         string gamePath = Application.dataPath + "/StreamingAssets/" + "teams/TestBot/";
         List<string> teams = new List<string>();
         string[] fileEntries = Directory.GetFiles(gamePath);
