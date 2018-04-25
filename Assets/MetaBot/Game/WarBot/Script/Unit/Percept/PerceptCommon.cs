@@ -49,7 +49,7 @@ public class PerceptCommon : Percept
                         //If the child was found.
                         if (canon != null)
                         {
-                            canon.eulerAngles = new Vector3(canon.eulerAngles.x, getAngle(gO), canon.eulerAngles.z);
+                            canon.eulerAngles = new Vector3(canon.eulerAngles.x, getAngle(gO)+180, canon.eulerAngles.z);
                            
                         }else GetComponent<Stats>()._heading = getAngle(gO);
                         return true;

@@ -9,6 +9,8 @@ public class SightVisionScript : MonoBehaviour
     public GameObject target;
     public GameObject maskL;
     public GameObject maskR;
+    public float angleR;
+    public float angleL;
     public bool done;
 
 	// Use this for initialization
@@ -27,10 +29,18 @@ public class SightVisionScript : MonoBehaviour
             if (angle > 180) { Destroy(maskL); Destroy(maskR); }
             GetComponent<SpriteRenderer>().color = GameObject.Find("GameManager").GetComponent<TeamManager>()._teams[target.GetComponent<Stats>()._teamIndex]._color;
             GetComponent<SpriteRenderer>().color *= new Color(1, 1, 1, 0.25f);
+            
+            angleR = -angle / 2;
+            angleL = angle / 2;
+            maskL.transform.localEulerAngles = new Vector3(maskL.transform.localEulerAngles.x, maskL.transform.localEulerAngles.y, angleL);
+            maskR.transform.localEulerAngles = new Vector3(maskR.transform.localEulerAngles.x, maskR.transform.localEulerAngles.y, angleR);
             transform.localScale = new Vector3(distance, distance, 1);
-            maskL.transform.eulerAngles = new Vector3(maskL.transform.eulerAngles.x, maskL.transform.eulerAngles.y, angle / 2);
-            maskR.transform.eulerAngles = new Vector3(maskR.transform.eulerAngles.x, maskR.transform.eulerAngles.y, -angle / 2);
             done = true;
         }
+       /* if (maskR.transform.eulerAngles.z != angleR || maskL.transform.eulerAngles.z != angleL)
+        {
+            maskL.transform.localEulerAngles = new Vector3(maskL.transform.localEulerAngles.x, maskL.transform.localEulerAngles.y, angleL);
+            maskR.transform.localEulerAngles = new Vector3(maskR.transform.localEulerAngles.x, maskR.transform.localEulerAngles.y, angleR);
+        }*/
 	}
 }

@@ -30,7 +30,7 @@ public class Shooter : MonoBehaviour
             //If the child was found.
             if (canon != null)
             {
-                weapon.GetComponent<BulletScript>()._vect = canon.forward;
+                weapon.GetComponent<BulletScript>()._vect = -canon.right;
             }
             else weapon.GetComponent<BulletScript>()._vect = Utility.vectorFromAngle(GetComponent<Stats>()._heading);
             reloadTick = GetComponent<Stats>()._reloadTime;
