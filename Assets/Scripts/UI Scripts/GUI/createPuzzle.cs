@@ -18,11 +18,7 @@ public class createPuzzle : MonoBehaviour {
     public static GameObject pieceToUndo;
     public static GameObject pieceToRedo;
 
-    private void Update()
-    {
-        
-    }
-
+    // Comptabilise le nombre total de pièces IF présentes sur l'éditeur, et le retourne
     public int numberIfPuzzle()
     {
         pieceIf = new ArrayList();
@@ -36,6 +32,7 @@ public class createPuzzle : MonoBehaviour {
         return pieceIf.Count;
     }
 
+    // Crée une pièce de puzzle, avec le label approprié
     public void create()
     {
         GameObject puzzleClone = (GameObject)Instantiate(puzzle, GameObject.Find("MaskEditeur").transform);
@@ -50,17 +47,16 @@ public class createPuzzle : MonoBehaviour {
         cptObjects = listPieces.Count;
     }
 
-
+    // Lorsqu'une pièce de puzzle est supprimée, on l'ajoute à une liste, pour en garder une trace
     public void Undo()
     {
         if( cptObjects > 0 )
         {
             pieceToUndo = (GameObject)listPieces[cptObjects - 1];
+            // Si la pièce supprimée est une pièce IF, on oublie pas de mettre à jour le compteur de pièces IF
             if (pieceToUndo.tag == "IfPuzzle")
             {
-                Debug.Log("Suppression piece IF n°" + cptIfPuzzle);
                 cptIfPuzzle = numberIfPuzzle() - 1;
-                Debug.Log("Il reste " + cptIfPuzzle + " pièces IF");
             }
             if(pieceToUndo.activeSelf == true)
             {
@@ -81,6 +77,7 @@ public class createPuzzle : MonoBehaviour {
         }
     }
 
+    // Ré instantie la dernière pièce de la liste recoverList
     public void Redo()
     {
         if( recoverList.Count > 0 )
@@ -88,9 +85,7 @@ public class createPuzzle : MonoBehaviour {
             GameObject pieceToRedo = (GameObject)recoverList[cptUndo - 1];
             if (pieceToRedo.tag == "IfPuzzle")
             {
-                Debug.Log("Recréation piece IF " + cptIfPuzzle);
                 cptIfPuzzle = numberIfPuzzle() + 1;
-                Debug.Log("Il y a maintenant " + cptIfPuzzle + " pièces IF");
             }
 
             pieceToRedo.SetActive(true);

@@ -14,26 +14,31 @@ public class CreateTeam : MonoBehaviour
     public InputField mainInputField;
     public GameObject errorText;
 
+    // Affiche la fenêtre pop-up pour créer une nouvelle équipe
     public void NameInput()
     {
         window.SetActive(true);
     }
 
+    // Masque la fenêtre pop-up
     public void disableWindow()
     {
         window.SetActive(false);
     }
 
+    // Vérifie le nom d'équipe entré par l'utilisateur, pour empêcher l'utilisation de caractères spéciaux
+    // Caractères acceptés : a-zA-Z0-9
     public void validateName()
     {
         string teamName = mainInputField.text;
         string path = Application.streamingAssetsPath + "/teams/TestBot/";
-            //Application.dataPath + "/StreamingAssets/teams/TestBot/";
+        string pathStats = Application.streamingAssetsPath + "/Stats/";
+        //Application.dataPath + "/StreamingAssets/teams/TestBot/";
 
         List<int> listInt = new List<int>();
         for (int i = 0; i < teamName.Length; i++)
         {
-            listInt.Add(System.Convert.ToInt32(teamName[i]));
+            listInt.Add(Convert.ToInt32(teamName[i]));
         }
 
         for (int i = 0; i < listInt.Count; i++)
@@ -41,7 +46,6 @@ public class CreateTeam : MonoBehaviour
             int result = listInt[i];
             if ((result > 90 && result < 97) || (result < 65 && result > 57) || result > 122)
             {
-                //Debug.Log("REASON ERROR = " + result);
                 errorText.SetActive(true);
                 Text error = errorText.GetComponentInChildren<Text>();
                 error.text = "Nom invalide ! (a-zA-Z0-9)";
@@ -51,10 +55,7 @@ public class CreateTeam : MonoBehaviour
 
         foreach (string file in Directory.GetFiles(path))
         {
-            //Debug.Log("VALUE FILE = " + file);
             string res = file.Replace(path, "");
-            //Debug.Log("VALUE RES =  " + file.Replace(path, ""));
-            //Debug.Log("VALUE TEAMNAME = " + teamName);
             if (res == teamName + ".wbt")
             {
                 errorText.SetActive(true);
@@ -70,6 +71,7 @@ public class CreateTeam : MonoBehaviour
         teamDropDown.AddOptions(dropOption);
         XMLWarbotInterpreter interpreter = new XMLWarbotInterpreter();
         interpreter.generateEmptyFile(teamName, path);
+        //interpreter.generateEmptyFile(teamName, pathStats);
         errorText.SetActive(false);
         window.SetActive(false);
     }

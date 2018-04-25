@@ -34,10 +34,6 @@ public class ManageDragAndDrop : MonoBehaviour, IPointerEnterHandler//, IPointer
 
     private void OnMouseOver()
     {
-        /*if (Input.GetMouseButtonDown(1) && !undestructible)
-        {
-           Destroy(gameObject);
-        }*/
         if (Input.GetMouseButtonDown(0))
         {
             _initialPosition = Input.mousePosition;
@@ -54,8 +50,6 @@ public class ManageDragAndDrop : MonoBehaviour, IPointerEnterHandler//, IPointer
         else if (Input.GetMouseButton(0) && Vector3.Distance(_initialPosition, Input.mousePosition ) > deltaDest)
         {
             // Largeur et hauteur de l'éditeur de comportement
-            /*float widthEditor = rendEditeur.bounds.size.x;
-            float heightEditor = rendEditeur.bounds.size.y;*/
             float widthEditor = GameObject.Find("Editeur").GetComponent<RectTransform>().rect.width;
             float heightEditor = GameObject.Find("Editeur").GetComponent<RectTransform>().rect.height;
 

@@ -15,7 +15,7 @@ public class DeleteTeam : MonoBehaviour
     string nameTeam;
     public string initialText = "Voulez vous supprimer ";
 
-
+    // Affiche la fenêtre pop-up de confirmation de suppression d'équipe
     public void DisplayWindow()
     {
         Window.SetActive(true);
@@ -25,11 +25,13 @@ public class DeleteTeam : MonoBehaviour
         windowText.text = windowText.text + nameTeam + " ?";
     }
 
+    // Masque la fenêtre pop-up
     public void DisableWindow()
     {
         Window.SetActive(false);
     }
 
+    // Supprime l'équipe selectionnée de la liste des équipes, ainsi que les fichiers .wbt et .meta associés
     public void Delete()
     {
         nameTeam = dropdown.captionText.text;
@@ -38,12 +40,12 @@ public class DeleteTeam : MonoBehaviour
         foreach (string file in Directory.GetFiles(path))
         {
             string res = file.Replace(path, "");
-            Debug.Log("RES = " + res);
-            Debug.Log("nameTeam = " + nameTeam);
+            //Debug.Log("RES = " + res);
+            //Debug.Log("nameTeam = " + nameTeam);
             if (res == nameTeam + ".wbt")
             
             {
-                Debug.Log("FILE QUI VA ETRE DELETE = " + file);
+                //Debug.Log("FILE QUI VA ETRE DELETE = " + file);
                 string fileMeta = file + ".meta";
                 File.Delete(file);
                 File.Delete(fileMeta);
