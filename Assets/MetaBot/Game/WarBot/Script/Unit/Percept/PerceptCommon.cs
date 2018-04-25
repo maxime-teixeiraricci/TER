@@ -36,7 +36,22 @@ public class PerceptCommon : Percept
                     if (gO.GetComponent<Stats>() && gO.GetComponent<Stats>()._teamIndex != GetComponent<Stats>()._teamIndex)
                     {
                         GetComponent<Stats>()._target = gO;
-                        GetComponent<Stats>()._heading = getAngle(gO);
+                        Transform canon = null;
+                        for (int i = 0; i < transform.childCount - 1; i++)
+                        {
+                            if (transform.GetChild(i).transform.CompareTag("Canon"))
+                            {
+                                canon = transform.GetChild(i);
+                            }
+                        }
+
+
+                        //If the child was found.
+                        if (canon != null)
+                        {
+                            canon.eulerAngles = new Vector3(canon.eulerAngles.x, getAngle(gO), canon.eulerAngles.z);
+                           
+                        }else GetComponent<Stats>()._heading = getAngle(gO);
                         return true;
                     }
                 }

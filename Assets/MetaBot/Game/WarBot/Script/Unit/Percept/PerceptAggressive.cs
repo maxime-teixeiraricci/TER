@@ -16,7 +16,6 @@ public class PerceptAggressive : PerceptUnit
     public override void InitPercept()
     {
         base.InitPercept();
-        print("AGGRESSIVE");
         _percepts["PERCEPT_IS_RELOADED"] = delegate () { return GetComponent<Shooter>().reloadTick <= 0; };
         _percepts["PERCEPT_BLOCKED"] = delegate () { return GetComponent<MovableCharacter>().isBlocked(); };
 

@@ -17,7 +17,22 @@ public class Shooter : MonoBehaviour
             _i = (_i + 1) % _listOfStartPoint.Length;
             weapon.transform.position = _listOfStartPoint[_i].position;
             weapon.GetComponent<BulletScript>()._owner = gameObject;
-            weapon.GetComponent<BulletScript>()._vect = Utility.vectorFromAngle(GetComponent<Stats>()._heading);
+            Transform canon = null;
+            for (int i = 0; i < transform.childCount - 1; i++)
+            {
+                if (transform.GetChild(i).transform.CompareTag("Canon"))
+                {
+                    canon = transform.GetChild(i);
+                }
+            }
+
+
+            //If the child was found.
+            if (canon != null)
+            {
+                weapon.GetComponent<BulletScript>()._vect = canon.forward;
+            }
+            else weapon.GetComponent<BulletScript>()._vect = Utility.vectorFromAngle(GetComponent<Stats>()._heading);
             reloadTick = GetComponent<Stats>()._reloadTime;
         }
     }
