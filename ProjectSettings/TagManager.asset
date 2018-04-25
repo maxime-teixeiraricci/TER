@@ -37,6 +37,7 @@ TagManager:
   - HUDstats
   - Sight
   - language
+  - Canon
   layers:
   - Default
   - TransparentFX
