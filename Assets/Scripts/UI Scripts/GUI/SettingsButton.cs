@@ -31,8 +31,7 @@ public class SettingsButton : MonoBehaviour {
     // Use this for initialization
     void Start () {
         changeLanguage = GetComponent<ChangeLanguage>();
-
-        //recoverValSlider();
+        recoverValSlider();
     }
 
     float getValueExplo()
@@ -55,9 +54,6 @@ public class SettingsButton : MonoBehaviour {
 
     public void ApplySettings()
     {
-        // Met à jour les valeurs d'unités
-        //saveValSlider();
-
         setButtonActive();
         applyChanges();
         window.SetActive(false);
@@ -137,7 +133,7 @@ public class SettingsButton : MonoBehaviour {
         }
     }
 
-    void recoverValSlider()
+    public void recoverValSlider()
     {
         SaveSliderVal gameManager =  GameObject.Find("GameManager").GetComponent<SaveSliderVal>();
 

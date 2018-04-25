@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028346, g: 0.22571373, b: 0.30692244, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -5460,6 +5460,28 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &696018211 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1361202898811600, guid: f803624d2c783d54a99cd2d93a0527e0,
+    type: 2}
+  m_PrefabInternal: {fileID: 397876370}
+--- !u!114 &696018212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 696018211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa457c07f6b58ad4d9135fb1375c1b09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  valSliderExplorer: 0
+  valSliderHeavy: 0
+  valSliderLight: 0
+  exploSlider: {fileID: 643281748}
+  heavySlider: {fileID: 1381973174}
+  lightSlider: {fileID: 69244416}
 --- !u!1 &708041329
 GameObject:
   m_ObjectHideFlags: 0
@@ -12041,7 +12063,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 739205021}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.19130203
+  m_Size: 0.19130199
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
