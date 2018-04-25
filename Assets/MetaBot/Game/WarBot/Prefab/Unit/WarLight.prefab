@@ -109,13 +109,14 @@ GameObject:
   - component: {fileID: 114610884672581336}
   - component: {fileID: 114952980359756910}
   - component: {fileID: 114937520848680130}
-  - component: {fileID: 54014400464731786}
   - component: {fileID: 135396562117327844}
   - component: {fileID: 114268845566462440}
   - component: {fileID: 114902426276640464}
   - component: {fileID: 114565466221491422}
   - component: {fileID: 114932620864123128}
   - component: {fileID: 64423190320421150}
+  - component: {fileID: 54502745028969666}
+  - component: {fileID: 114245209861344868}
   m_Layer: 8
   m_Name: WarLight
   m_TagString: Unit
@@ -319,7 +320,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1088197333815048}
   m_Mesh: {fileID: 4300002, guid: 988be6418a1140e42837842b30cb6e87, type: 3}
---- !u!54 &54014400464731786
+--- !u!54 &54502745028969666
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -327,13 +328,13 @@ Rigidbody:
   m_GameObject: {fileID: 1614182584709684}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_Drag: Infinity
+  m_AngularDrag: Infinity
+  m_UseGravity: 0
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 126
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!64 &64423190320421150
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -348,6 +349,18 @@ MeshCollider:
   m_CookingOptions: -1
   m_SkinWidth: 0.1
   m_Mesh: {fileID: 4300000, guid: 8f110f93e55149b4a941c36aef3c7809, type: 3}
+--- !u!114 &114245209861344868
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1614182584709684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62845bc220e81b348af4c8e59311d420, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Unit: 
 --- !u!114 &114268845566462440
 MonoBehaviour:
   m_ObjectHideFlags: 1

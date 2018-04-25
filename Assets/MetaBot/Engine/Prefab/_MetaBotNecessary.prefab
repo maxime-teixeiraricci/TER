@@ -1300,7 +1300,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1681865893248770}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2f55ff3db12050418224494f181fa46, type: 3}
   m_Name: 
@@ -2905,12 +2905,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gamename: 
   winner: 0
-  GO: {fileID: 0}
   textWinnerTeam: {fileID: 0}
-  button1: {fileID: 0}
-  button2: {fileID: 0}
-  fond: {fileID: 0}
-  canvashud: {fileID: 1349848265815604}
   written: 0
 --- !u!114 &114875111504147938
 MonoBehaviour:

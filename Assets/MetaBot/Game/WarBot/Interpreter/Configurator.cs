@@ -39,7 +39,12 @@ public class Configurator : MonoBehaviour {
         }
 
         if (GetComponent<Stats>())
-            GetComponent<Stats>()._maxHealth = (int) getStat("MaxHealth");
+        {
+            GetComponent<Stats>()._maxHealth = (int)getStat("MaxHealth");
+            GetComponent<Stats>()._health = (int)getStat("MaxHealth");
+            GetComponent<Stats>()._reloadTime = (int)getStat("Reload");
+            print("Reload : " + (int)getStat("Reload"));
+        }
 
         if (GetComponent<Inventory>())
             GetComponent<Inventory>()._maxSize = (int)getStat("InventorySize");
