@@ -27,7 +27,7 @@ public class ConfigLoader : MonoBehaviour {
                 UnitConfig u = new UnitConfig();
                 u.unit = tmp[1];
                 u.stats = new List<Stat>();
-                stats++;
+                //stats++;
                 while (!lines[stats].Contains(";"))
                 {
                     print("dans while");
