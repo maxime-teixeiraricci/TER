@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 114135927836566028}
   - component: {fileID: 54637856206010176}
   - component: {fileID: 64755770115321574}
+  - component: {fileID: 114343108468061062}
   m_Layer: 8
   m_Name: WarHeavy
   m_TagString: Unit
@@ -380,6 +381,18 @@ MonoBehaviour:
     _sender: {fileID: 0}
     _receiver: {fileID: 0}
     heading: 0
+--- !u!114 &114343108468061062
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1670267256757844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62845bc220e81b348af4c8e59311d420, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Unit: 
 --- !u!114 &114424686724352526
 MonoBehaviour:
   m_ObjectHideFlags: 1

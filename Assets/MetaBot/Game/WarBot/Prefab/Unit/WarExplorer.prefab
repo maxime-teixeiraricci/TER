@@ -83,6 +83,7 @@ GameObject:
   - component: {fileID: 114699229294144876}
   - component: {fileID: 114804970405907090}
   - component: {fileID: 64082610769355158}
+  - component: {fileID: 114565192048489288}
   m_Layer: 8
   m_Name: WarExplorer
   m_TagString: Unit
@@ -312,6 +313,18 @@ MonoBehaviour:
   maskL: {fileID: 1531181831746554}
   maskR: {fileID: 1364544247714468}
   done: 0
+--- !u!114 &114565192048489288
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1517124188230958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62845bc220e81b348af4c8e59311d420, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Unit: 
 --- !u!114 &114672049450424364
 MonoBehaviour:
   m_ObjectHideFlags: 1

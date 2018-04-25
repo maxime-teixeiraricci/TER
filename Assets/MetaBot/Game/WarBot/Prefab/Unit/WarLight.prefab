@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 114536579665419618}
   - component: {fileID: 114191992950110330}
   - component: {fileID: 64710116640878804}
+  - component: {fileID: 114495809164325524}
   m_Layer: 8
   m_Name: WarLight
   m_TagString: Unit
@@ -354,6 +355,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _materials:
   - {fileID: 23176756062021578}
+--- !u!114 &114495809164325524
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1837564357218730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62845bc220e81b348af4c8e59311d420, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Unit: 
 --- !u!114 &114512101346606798
 MonoBehaviour:
   m_ObjectHideFlags: 1
