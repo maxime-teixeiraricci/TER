@@ -99,8 +99,10 @@ public class ConditionEditorScript : MonoBehaviour
         {
             GameObject button = Instantiate(_labelControlButtonObject, GameObject.Find("ListPuzzle").transform);
             button.transform.parent = GameObject.Find("ListPuzzle").transform;
+            
             _buttonCreated.Add(button);
             button.GetComponent<RectTransform>().anchoredPosition += mov;
+            button.GetComponent<RectTransform>().anchoredPosition = new Vector2(button.GetComponent<RectTransform>().anchoredPosition.x, GameObject.Find("ListPuzzle").GetComponent<RectTransform>().rect.height / 2 - button.GetComponent<RectTransform>().rect.height);
             mov += new Vector2(0, -button.GetComponent<RectTransform>().rect.height) + deltaVect;
         }
 
