@@ -53,10 +53,6 @@ public class Brain : MonoBehaviour
     void FixedUpdate()
     {
         _messageManager.UpdateMessage();
-        if (debugMessage)
-        {
-            debugMessage = !debugMessage;
-        }
 
         nbInstruction = _instructions.Count;
         if (!turnEnd)

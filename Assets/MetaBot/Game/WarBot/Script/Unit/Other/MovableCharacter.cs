@@ -22,10 +22,13 @@ public class MovableCharacter : MonoBehaviour
 
     private Vector3 nextposition;
     	
+    public void Start()
+    {
+    }
 
     public void Move()
     {
-        if (true)
+        if (!GetComponent<Brain>().turnEnd)
         {
             vectMov = Utility.vectorFromAngle(GetComponent<Stats>()._heading);
             nextposition = transform.position + vectMov.normalized * speed *0.02f;// * Time.deltaTime;
@@ -33,6 +36,7 @@ public class MovableCharacter : MonoBehaviour
             transform.position = nextposition;
         }
     }
+
     public bool isBlocked()
     {
         return collisionObject != null;
