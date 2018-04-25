@@ -439,6 +439,8 @@ MonoBehaviour:
   target: {fileID: 1670267256757844}
   maskL: {fileID: 1404307934858602}
   maskR: {fileID: 1029640300478170}
+  angleR: 0
+  angleL: 0
   done: 0
 --- !u!114 &114515922954556768
 MonoBehaviour:
