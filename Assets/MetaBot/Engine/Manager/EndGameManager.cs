@@ -11,16 +11,13 @@ public class EndGameManager : MonoBehaviour {
     public Dictionary<string, Ends> _ends = new Dictionary<string, Ends>();
     public string _gamename;
     public int winner;
-    public GameObject GO;
+    Animator anim;
     public GameObject textWinnerTeam;
-    public GameObject button1;
-    public GameObject button2;
-    public GameObject fond;
-    public GameObject canvashud;
     public bool written;
 
     // Use this for initialization
     void Start () {
+        anim = GetComponent<Animator>();
         InitTests();
         InitEnds();
         winner = -1;
@@ -32,16 +29,14 @@ public class EndGameManager : MonoBehaviour {
     {
         _ends["TestBot"] = delegate ()
         {
-
-
-            Time.timeScale = 0;
             textWinnerTeam.GetComponent<Text>().text = "Winner : " + winner;
             print("after Winnerteam");
-            GO.GetComponent<Text>().text = "Game is Over !";
-            canvashud.SetActive(false);
-            button1.SetActive(true);
-            button2.SetActive(true);
-            fond.SetActive(true);
+            GameObject[] units = GameObject.FindGameObjectsWithTag("Unit");
+            foreach (GameObject u in units)
+            {
+                Destroy(u);
+            }
+            anim.SetTrigger("GameOver");
             print("after TextGO");
             if (!written)
             {
