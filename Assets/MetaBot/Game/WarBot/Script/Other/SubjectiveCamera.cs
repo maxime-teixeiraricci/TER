@@ -8,22 +8,81 @@ public class SubjectiveCamera : MonoBehaviour {
     Quaternion backRotation;
     public GameObject unit;
     public GameObject minimap;
-    bool fps;
-    bool stuck;
+    public bool fps;
+    public bool stuck;
     public GameObject _hudTextUnit;
+    public GameObject select;
     public GameObject _hudStatsUnit;
-    public float speed = 5.0f;
-    public float DragSpeed = 20f;
+    public float speed = 20.0f;
     public bool ReverseDrag = true;
+    public GameObject mainCam;
 
     private Vector3 _DragOrigin;
     private Vector3 _Move;
-    Color back;
+
+    public float speedH = 2.0f;
+    public float speedV = 2.0f;
+
+    private float yaw = 0.0f;
+    private float pitch = 0.0f;
+    private CursorLockMode back;
+
+    public bool removeFPS()
+    {
+        if (fps)
+        {
+            transform.SetPositionAndRotation(backPosition, backRotation);
+            fps = false;
+            removeStuck();
+            minimap.gameObject.SetActive(false);
+            unit = null;
+            mainCam.GetComponent<FollowCamera>().enabled = true;
+            select.GetComponent<SpriteRenderer>().color = new Color(select.GetComponent<SpriteRenderer>().color.r, select.GetComponent<SpriteRenderer>().color.g, select.GetComponent<SpriteRenderer>().color.b, 0);
+            return true;
+        }
+
+        return false;
+    }
+
+    public bool removeStuck()
+    {
+        if (stuck)
+        {
+            if (fps)
+            {
+                removeFPS();
+            }
+            transform.SetPositionAndRotation(backPosition, backRotation);
+            stuck = false;
+            mainCam.GetComponent<FollowCamera>().enabled = true;
+
+            return true;
+        }
+
+        return false;
+    }
+
+    public bool goStuck()
+    {
+        if (!stuck && !fps)
+        {
+            if (mainCam.GetComponent<FollowCamera>().enabled)
+                mainCam.GetComponent<FollowCamera>().enabled = false;
+            stuck = true;
+            fps = false;
+
+            return true;
+        }
+
+        return false;
+    }
 
     // Use this for initialization
     void Start () {
         backPosition = transform.position;
         backRotation = transform.rotation;
+        stuck = false;
+        back = Cursor.lockState;
     }
 
     GameObject GetClickedGameUnit()
@@ -57,40 +116,16 @@ public class SubjectiveCamera : MonoBehaviour {
                 _hudTextUnit.transform.position = Camera.main.WorldToScreenPoint(hit.transform.position);
                 _hudTextUnit.GetComponent<Text>().text = hit.transform.name;
 
-                if (Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButtonDown(0) && !stuck)
                 {
-
-                    if (fps)
-                    {
-                        Renderer rs = unit.GetComponentInChildren<Renderer>();
-                        Material m = rs.material;
-                        m.color = back;
-
-                        unit = hit.transform.gameObject;
-
-                        Renderer rs2 = unit.GetComponentInChildren<Renderer>();
-                        Material m2 = rs2.material;
-                        back = m2.color;
-                        m2.color = Color.white;
-                        Camera.main.transform.position = (new Vector3(unit.gameObject.transform.position.x, unit.gameObject.transform.position.y + 35, unit.gameObject.transform.position.z - 18));
-                        stuck = true;
-                    }
-                    else
-                    {
+                        Cursor.lockState = CursorLockMode.Confined;
                         fps = true;
-                        stuck = true;
                         unit = hit.transform.gameObject;
                         minimap.gameObject.SetActive(true);
-                        GameObject.Find("Main Camera").GetComponent<FollowCamera>().enabled = false;
-                        //      Camera.main.transform.rotation = unit.gameObject.transform.rotation;
-                        //      Camera.main.transform.eulerAngles += new Vector3(0, 90, 0);
+                        mainCam.GetComponent<FollowCamera>().enabled = false;
                         _hudTextUnit.GetComponent<Text>().text = "";
-                        Renderer rs = unit.GetComponentInChildren<Renderer>();
-                        Material m = rs.material;
-                        back = m.color;
-                        m.color = Color.white;
-                        Camera.main.transform.position = (new Vector3(unit.gameObject.transform.position.x, unit.gameObject.transform.position.y + 35, unit.gameObject.transform.position.z - 18));
-                    }
+                        Camera.main.transform.position = (new Vector3(unit.gameObject.transform.position.x, unit.gameObject.transform.position.y + 8, unit.gameObject.transform.position.z));
+                    select.GetComponent<SpriteRenderer>().color = new Color(select.GetComponent<SpriteRenderer>().color.r, select.GetComponent<SpriteRenderer>().color.g, select.GetComponent<SpriteRenderer>().color.b, 1);
                     break;
                 }
             }
@@ -100,79 +135,37 @@ public class SubjectiveCamera : MonoBehaviour {
             }
         }
 
+
+
         if (fps)
         {
-            if (Input.GetMouseButtonDown(1) && unit != null)
-            {
-                transform.SetPositionAndRotation(backPosition, backRotation);
-                fps = false;
-                minimap.gameObject.SetActive(false);
-                Renderer rs = unit.GetComponentInChildren<Renderer>();
-                Material m = rs.material;
-                m.color = back;
-                unit = null;
-                GameObject.Find("Main Camera").GetComponent<FollowCamera>().enabled = true;
-            }
-            if (!stuck)
-            {
-                if (Input.mousePosition.x <= 2)
-                    Camera.main.transform.Translate(new Vector3(-DragSpeed * Time.deltaTime, 0));
-                if (Input.mousePosition.y <= 2)
-                    Camera.main.transform.Translate(new Vector3(0, -DragSpeed * Time.deltaTime));
+            Camera.main.transform.position = new Vector3(unit.gameObject.transform.position.x, unit.gameObject.transform.position.y + 8, unit.gameObject.transform.position.z);
+            select.transform.position = new Vector3(unit.transform.position.x, unit.transform.position.y+2, unit.transform.position.z);
 
-                if (Input.mousePosition.x >= Screen.width - 2)
-                    Camera.main.transform.Translate(new Vector3(DragSpeed * Time.deltaTime, 0));
-                if (Input.mousePosition.y >= Screen.height - 2)
-                    Camera.main.transform.Translate(new Vector3(0, DragSpeed * Time.deltaTime));
+            yaw += speedH * Input.GetAxis("Mouse X");
+            pitch -= speedV * Input.GetAxis("Mouse Y");
+            transform.eulerAngles = new Vector3(+35.0f, yaw, 0.0f);
+        }
 
-                if (Input.GetMouseButtonDown(2))
-                    stuck = true;
-            }
-            else
-            {
-                Camera.main.transform.position = (new Vector3(unit.gameObject.transform.position.x, unit.gameObject.transform.position.y + 35, unit.gameObject.transform.position.z-18));
-                if (Input.GetMouseButtonDown(2))
-                    stuck = false;
-            }
-
-
-            /* if (Input.GetButtonDown("y"))
-             {
-                 Camera.main.transform.position = (new Vector3(unit.gameObject.transform.position.x, unit.gameObject.transform.position.y + 35, unit.gameObject.transform.position.z));
-                 return;
-             }*/
-
-
-            /*           if (Input.GetMouseButtonDown(2))
-                       {
-                           _DragOrigin = Input.mousePosition;
-                           //return;
-                       }
-
-                       if (!Input.GetMouseButton(2)) return;
-
-                       if (ReverseDrag)
-                       {
-                           Vector3 pos = Camera.main.ScreenToViewportPoint(new Vector3(0,0,0) - _DragOrigin);
-                           _Move = new Vector3(pos.x * DragSpeed, 0, pos.y * DragSpeed);
-                       }
-                      else
-                       {
-                           Vector3 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition - _DragOrigin);
-                           _Move = new Vector3(pos.x * -DragSpeed, 0, pos.y * -DragSpeed);
-                       }
-
-                       Camera.main.transform.Translate(_Move, Space.World);
-                       //Camera.main.transform.RotateAround(Camera.main.transform.position, new Vector3(0,Input.GetAxis("Mouse X")), speed * Time.deltaTime);
-                       // Camera.main.transform.RotateAround(Camera.main.transform.position, new Vector3(Input.GetAxis("Mouse Y"),0), speed * Time.deltaTime);      */
-        if (Input.GetAxis("Mouse ScrollWheel") != 0f) // forward
+        if (stuck)
         {
+
+            if (Input.GetAxis("Mouse ScrollWheel") != 0f) // forward
+            {
                 Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y - 10 * Input.GetAxis("Mouse ScrollWheel"), Camera.main.transform.position.z);
-        }
+            }
+
+            if (Input.mousePosition.x <= 2)
+                Camera.main.transform.Translate(new Vector3(-speed * Time.deltaTime, 0));
+            if (Input.mousePosition.y <= 2)
+                Camera.main.transform.Translate(new Vector3(0, -speed * Time.deltaTime));
+
+            if (Input.mousePosition.x >= Screen.width - 2)
+                Camera.main.transform.Translate(new Vector3(speed * Time.deltaTime, 0));
+            if (Input.mousePosition.y >= Screen.height - 2)
+                Camera.main.transform.Translate(new Vector3(0, speed * Time.deltaTime));
 
         }
-    
-
         //Camera.main.transform.rotation.Set(0, 0, 0, unit.transform.rotation.w);
         //Camera.main.transform.position = (new Vector3(unit.gameObject.transform.position.x, unit.gameObject.transform.position.y + 35, unit.gameObject.transform.position.z));
     }

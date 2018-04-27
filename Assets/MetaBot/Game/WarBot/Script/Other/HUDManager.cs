@@ -11,6 +11,8 @@ public class HUDManager : MonoBehaviour
     public Image _StatsButton;
     public Image _SightButton;
     public Image _MessageButton;
+    public Image _FPSCamButton;
+    public Image _freeCamButton;
 
     private bool _isCreated;
 
@@ -48,12 +50,44 @@ public class HUDManager : MonoBehaviour
         {
             sight.transform.gameObject.SetActive(sightOn);
         }
+
+        UpdateFreeCamColor();
+        UpdateFPSCamColor();
     }
 
     public void MessageButton()
     {
         messageOn = !messageOn;
         _MessageButton.color = (messageOn) ? Color.green : Color.red;
+    }
+
+    public void FreeCamButton()
+    {
+        if (GameObject.Find("Main Camera").GetComponent<SubjectiveCamera>().stuck)
+            GameObject.Find("Main Camera").GetComponent<SubjectiveCamera>().removeStuck();
+        else if (!GameObject.Find("Main Camera").GetComponent<SubjectiveCamera>().fps)
+            GameObject.Find("Main Camera").GetComponent<SubjectiveCamera>().goStuck();
+
+       
+    }
+
+    void UpdateFreeCamColor()
+    {
+        _freeCamButton.color = (GameObject.Find("Main Camera").GetComponent<SubjectiveCamera>().stuck) ? Color.red : Color.green;
+        if (GameObject.Find("Main Camera").GetComponent<SubjectiveCamera>().fps)
+            _freeCamButton.color = Color.grey;
+    }
+
+    void UpdateFPSCamColor()
+    {
+        _FPSCamButton.color = (GameObject.Find("Main Camera").GetComponent<SubjectiveCamera>().fps) ? Color.red : Color.grey;
+    }
+
+
+    public void FPSCamButton()
+    {
+        if (GameObject.Find("Main Camera").GetComponent<SubjectiveCamera>().fps)
+            GameObject.Find("Main Camera").GetComponent<SubjectiveCamera>().removeFPS(); 
     }
 
     public void StatsButton()

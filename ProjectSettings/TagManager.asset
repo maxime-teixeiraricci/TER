@@ -38,6 +38,7 @@ TagManager:
   - Sight
   - language
   - Canon
+  - Selector
   layers:
   - Default
   - TransparentFX
