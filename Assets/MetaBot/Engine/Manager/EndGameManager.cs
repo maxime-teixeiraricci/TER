@@ -11,6 +11,7 @@ public class EndGameManager : MonoBehaviour {
     public Dictionary<string, Ends> _ends = new Dictionary<string, Ends>();
     public string _gamename;
     public int winner;
+    public string winnername;
     Animator anim;
     public GameObject textWinnerTeam;
     public bool written;
@@ -23,13 +24,14 @@ public class EndGameManager : MonoBehaviour {
         winner = -1;
         _gamename = GameObject.FindObjectOfType<GameManager>()._gameName;
         written = false;
+        winnername = "";
 	}
 
     public void InitEnds()
     {
         _ends["TestBot"] = delegate ()
         {
-            textWinnerTeam.GetComponent<Text>().text = "Winner : " + winner;
+            textWinnerTeam.GetComponent<Text>().text = "Winner : " + winnername;
             print("after Winnerteam");
             GameObject[] units = GameObject.FindGameObjectsWithTag("Unit");
             foreach (GameObject u in units)
@@ -76,7 +78,12 @@ public class EndGameManager : MonoBehaviour {
             }
 
             if (teams.Count == 1)
+            {
                 winner = teams[0];
+                print("teamamanger : " + GameObject.Find("GameManager").GetComponent<TeamManager>()._teams[winner]._name);
+                winnername = GameObject.Find("GameManager").GetComponent<TeamManager>()._teams[winner]._name;
+            }
+            print("Winner name :" + winnername);
             print("teams count : " + teams.Count);
             return teams.Count <= 1;
         };
