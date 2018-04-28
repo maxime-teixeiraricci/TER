@@ -124,7 +124,7 @@ public class SubjectiveCamera : MonoBehaviour {
                         minimap.gameObject.SetActive(true);
                         mainCam.GetComponent<FollowCamera>().enabled = false;
                         _hudTextUnit.GetComponent<Text>().text = "";
-                        Camera.main.transform.position = (new Vector3(unit.gameObject.transform.position.x, unit.gameObject.transform.position.y + 8, unit.gameObject.transform.position.z));
+                        Camera.main.transform.position = (new Vector3(unit.gameObject.transform.position.x, unit.gameObject.transform.position.y + 3, unit.gameObject.transform.position.z+1));
                     select.GetComponent<SpriteRenderer>().color = new Color(select.GetComponent<SpriteRenderer>().color.r, select.GetComponent<SpriteRenderer>().color.g, select.GetComponent<SpriteRenderer>().color.b, 1);
                     break;
                 }
@@ -139,12 +139,12 @@ public class SubjectiveCamera : MonoBehaviour {
 
         if (fps)
         {
-            Camera.main.transform.position = new Vector3(unit.gameObject.transform.position.x, unit.gameObject.transform.position.y + 8, unit.gameObject.transform.position.z);
+            Camera.main.transform.position = new Vector3(unit.gameObject.transform.position.x, unit.gameObject.transform.position.y + 3, unit.gameObject.transform.position.z+1);
             select.transform.position = new Vector3(unit.transform.position.x, unit.transform.position.y+2, unit.transform.position.z);
 
             yaw += speedH * Input.GetAxis("Mouse X");
             pitch -= speedV * Input.GetAxis("Mouse Y");
-            transform.eulerAngles = new Vector3(+35.0f, yaw, 0.0f);
+            transform.eulerAngles = new Vector3(+25.0f, yaw, 0.0f);
         }
 
         if (stuck)
