@@ -26,7 +26,8 @@ public class StatsLoader : MonoBehaviour
         int statBase = 4;
         int statExplo = 5;
         int statHeavy = 6;
-        string fileName = "/properties.yml";
+        int statLight = 6;
+        string fileName = "/proprietes.cfg";
         TextReader reader;
         reader = new StreamReader(Application.streamingAssetsPath + fileName);
         string line;
@@ -39,7 +40,7 @@ public class StatsLoader : MonoBehaviour
             if (line == null) break;
 
             // Lecture des statistiques de la base
-            else if (unitName == "Base" && line.Contains("WarBase"))
+            else if (unitName == "Base" && line.Contains("Base"))
             {
                 readStatsFile(unitName, reader, statBase);
                 imageUnit.sprite = baseSprite.sprite;
@@ -70,20 +71,27 @@ public class StatsLoader : MonoBehaviour
 
             // Lecture des statistiques des explorateurs
 
-            else if (unitName == "Explorer" && line.Contains("WarExplorer"))
+            else if (unitName == "Explorer" && line.Contains("Explorer"))
             {
                 readStatsFile(unitName, reader, statExplo);
                 imageUnit.sprite = explorerSprite.sprite;
                 imageUnit.color = new Color(imageUnit.color.r, imageUnit.color.g, imageUnit.color.b, 255);
             }
 
-            else if (unitName == "Heavy" && line.Contains("WarHeavy"))
+            else if (unitName == "Heavy" && line.Contains("Heavy"))
             {
                 readStatsFile(unitName, reader, statHeavy);
                 imageUnit.sprite = heavySprite.sprite;
                 imageUnit.color = new Color(imageUnit.color.r, imageUnit.color.g, imageUnit.color.b, 255);
             }
 
+            else if(unitName == "Light" && line.Contains("Light"))
+            {
+                readStatsFile(unitName, reader, statLight);
+                imageUnit.sprite = lightSprite.sprite;
+                imageUnit.color = new Color(imageUnit.color.r, imageUnit.color.g, imageUnit.color.b, 255);
+            }
+            /*
             else if (unitName == "Light")
             {
                 Text t0 = GameObject.Find("Text1").GetComponent<Text>();
@@ -100,7 +108,7 @@ public class StatsLoader : MonoBehaviour
                 t5.text = "No data available";
                 imageUnit.sprite = lightSprite.sprite;
                 imageUnit.color = new Color(imageUnit.color.r, imageUnit.color.g, imageUnit.color.b, 255);
-            }
+            }*/
 
 
         }
@@ -127,7 +135,7 @@ public class StatsLoader : MonoBehaviour
         for (int i = 0; i < nbrStats; i++)
         {
             line = reader.ReadLine();
-            line = line.Replace("   ", "").Replace(" ", "");
+            line = line.Replace("   ", ""); //.Replace(" ", "");
             string[] splited = line.Split(':');
             string trad = splited[0];
             if (GameObject.Find("GameManager"))
