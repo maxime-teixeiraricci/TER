@@ -108,6 +108,12 @@
 	Annuler=Cancel
 	Carte=Map
 	Langue=Language
+	Entrez le nom de l'équipe=Enter Team name
+	Annuler=Cancel
+	Valider=Apply
+	Voulez-vous supprimer=Delete
+	Oui=Yes
+	Non=No
 # Properties
 	MaxHealth=Maximum health
 	MaxInventory=Inventory size

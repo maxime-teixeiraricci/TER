@@ -108,6 +108,12 @@
 	Annuler=Annuler
 	Carte=Carte
 	Langue=Langue
+	Entrez le nom de l'équipe=Entrez le nom de l'équipe
+	Annuler=Annuler
+	Valider=Valider
+	Voulez-vous supprimer=Voulez-vous supprimer
+	Oui=Oui
+	Non=Non
 # Properties
 	MaxHealth=Vie maximale
 	MaxInventory=Taille max de l'inventaire
