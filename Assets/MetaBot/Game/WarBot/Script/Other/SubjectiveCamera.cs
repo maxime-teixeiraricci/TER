@@ -153,7 +153,9 @@ public class SubjectiveCamera : MonoBehaviour {
 
             if (Input.GetAxis("Mouse ScrollWheel") != 0f) // forward
             {
-                Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y - 10 * Input.GetAxis("Mouse ScrollWheel"), Camera.main.transform.position.z);
+                float newPos = Camera.main.transform.position.y - 10 * Input.GetAxis("Mouse ScrollWheel");
+               // if (!(newPos > -200f && newPos < 1f))
+                    Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, newPos, Camera.main.transform.position.z);
             }
 
             if (Input.mousePosition.x <= 2)
