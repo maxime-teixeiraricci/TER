@@ -103,6 +103,11 @@
 	ACTION NON TERMINALE=NON-TERMINAL ACTION
 	SEND=Send
 	Not=NOT
+	Parametres=Settings
+	Appliquer=Apply
+	Annuler=Cancel
+	Carte=Map
+	Langue=Language
 # Properties
 	MaxHealth=Maximum health
 	MaxInventory=Inventory size
@@ -117,3 +122,12 @@
 	GiveCount=Quantity given
 	GiveDistance=Max distance to give
 	MaxRessources=Maximum ressource quantity
+# Engine
+	VISION=SIGHT
+	STATS=STATS
+	MESSAGE=MESSAGE
+	Game is Over=Game is Over
+	Cameras :=Cameras :
+	FPS=FPS
+	FREE=FREE
+	Winner=Winner

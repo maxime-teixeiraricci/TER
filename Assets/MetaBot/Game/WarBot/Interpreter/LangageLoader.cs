@@ -44,6 +44,7 @@ public class LangageLoader : MonoBehaviour {
         langues.Clear();
         langues.Add(readFile(s));
     }
+
     public Langage readFile(string Language)
     {
         Langage l_lang = new Langage();
@@ -89,11 +90,6 @@ public class LangageLoader : MonoBehaviour {
         langues.Add(readFile(language));
         if (conteneur != null)
             applyTradToscene(language);
-    }
-
-    void Update()
-    {
-
     }
 }
 [System.Serializable]

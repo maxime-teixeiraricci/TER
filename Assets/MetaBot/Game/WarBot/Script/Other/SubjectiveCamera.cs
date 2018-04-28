@@ -34,6 +34,7 @@ public class SubjectiveCamera : MonoBehaviour {
             transform.SetPositionAndRotation(backPosition, backRotation);
             fps = false;
             removeStuck();
+            Cursor.lockState = back;
             minimap.gameObject.SetActive(false);
             unit = null;
             mainCam.GetComponent<FollowCamera>().enabled = true;
@@ -140,7 +141,7 @@ public class SubjectiveCamera : MonoBehaviour {
         if (fps)
         {
             Camera.main.transform.position = new Vector3(unit.gameObject.transform.position.x, unit.gameObject.transform.position.y + 3, unit.gameObject.transform.position.z+1);
-            select.transform.position = new Vector3(unit.transform.position.x, unit.transform.position.y+2, unit.transform.position.z);
+            select.transform.position = new Vector3(unit.transform.position.x, unit.transform.position.y, unit.transform.position.z);
 
             yaw += speedH * Input.GetAxis("Mouse X");
             pitch -= speedV * Input.GetAxis("Mouse Y");
