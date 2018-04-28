@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayButton : MonoBehaviour
 {
+    public GameObject loadingScreenBar;
+    public Slider sliderLoad;
     public GameObject[] _DropDownList;
     public GameObject _numberplayerDropDown;
     public Color[] playerColor;
@@ -45,16 +47,49 @@ public class PlayButton : MonoBehaviour
         
         if (s == "Standard")
         {
-            SceneManager.LoadScene(1);
+            StartCoroutine(AsynchronousLoad(1));
+            //SceneManager.LoadScene(1);
         }
         else if(s == "Test")
         {
-            SceneManager.LoadScene(3);
+            Debug.Log("BEfore load");
+            StartCoroutine(AsynchronousLoad(3));
+            Debug.Log("After load");
+            //SceneManager.LoadScene(3);
         }
         else if (s == "Plaine")
         {
-            SceneManager.LoadScene(4);
+            StartCoroutine(AsynchronousLoad(4));
+            //SceneManager.LoadScene(4);
         }
         //SceneManager.LoadScene(id);
+    }
+
+    IEnumerator AsynchronousLoad(int scene)
+    {
+        loadingScreenBar.SetActive(true);
+        yield return null;
+        Debug.Log("Here !");
+
+        AsyncOperation ao = SceneManager.LoadSceneAsync(scene);
+        ao.allowSceneActivation = false;
+
+        while (!ao.isDone)
+        {
+            sliderLoad.value = ao.progress;
+            // [0, 0.9] > [0, 1]
+            //float progress = Mathf.Clamp01(ao.progress / 0.9f);
+            //Debug.Log("Loading progress: " + (progress * 100) + "%");
+
+            // Loading completed
+            if (ao.progress == 0.9f)
+            { 
+               sliderLoad.value = 1f;
+               ao.allowSceneActivation = true;
+
+            }
+
+            yield return null;
+        }
     }
 }
