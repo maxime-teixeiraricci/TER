@@ -150,13 +150,70 @@ public class SubjectiveCamera : MonoBehaviour {
 
         if (stuck)
         {
-
-            if (Input.GetAxis("Mouse ScrollWheel") != 0f) // forward
+            if (Input.GetAxis("Mouse ScrollWheel") < 0f) // backward
             {
-                float newPos = Camera.main.transform.position.y - 10 * Input.GetAxis("Mouse ScrollWheel");
-               // if (!(newPos > -200f && newPos < 1f))
-                    Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, newPos, Camera.main.transform.position.z);
+                GameObject ground = GameObject.FindGameObjectWithTag("Ground");
+                //Vector3 dist = new Vector3(ground.transform.position.x - Camera.main.transform.position.x, ground.transform.position.y - Camera.main.transform.position.y + 10 * Input.GetAxis("Mouse ScrollWheel"), ground.transform.position.z - Camera.main.transform.position.z);
+                Vector3 dist = Camera.main.transform.position - ground.transform.position;
+                if (!(dist.magnitude > 150))
+                {
+                    Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y - 10 * Input.GetAxis("Mouse ScrollWheel"), Camera.main.transform.position.z);
+                }
             }
+            else if (Input.GetAxis("Mouse ScrollWheel") > 0f) // forward
+            {
+                GameObject ground = GameObject.FindGameObjectWithTag("Ground");
+                //Vector3 dist = new Vector3(ground.transform.position.x - Camera.main.transform.position.x, ground.transform.position.y - Camera.main.transform.position.y + 10 * Input.GetAxis("Mouse ScrollWheel"), ground.transform.position.z - Camera.main.transform.position.z);
+                Ray ray2 = Camera.main.ScreenPointToRay(new Vector3(Screen.height / 2, Screen.width / 2, 0));
+                RaycastHit[] hits2;
+                hits2 = Physics.RaycastAll(ray2);
+                foreach (RaycastHit hit in hits2)
+                {
+                    if (hit.collider.tag == "Ground")
+                    {
+                        Vector3 dist = Camera.main.transform.position - new Vector3(hit.transform.position.x, hit.transform.position.y + 3, hit.transform.position.z) ;
+                        if (!(dist.magnitude < 30))
+                        {
+                            Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y - 10 * Input.GetAxis("Mouse ScrollWheel"), Camera.main.transform.position.z);
+                        }
+                        else
+                        {
+                            if (Input.GetAxis("Mouse ScrollWheel") < 0)//scroll arriere
+                                Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y - 10 * Input.GetAxis("Mouse ScrollWheel"), Camera.main.transform.position.z);
+                        }
+
+                        break;
+                    }
+                }
+            }
+            /*  else
+              {
+                  if (Input.GetAxis("Mouse ScrollWheel") > 0)//scroll arriere
+                      Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y - 10 * Input.GetAxis("Mouse ScrollWheel"), Camera.main.transform.position.z);
+              }
+
+          /  Ray ray2 = Camera.main.ScreenPointToRay(new Vector3(Screen.height / 2, Screen.width / 2, 0));
+              RaycastHit[] hits2;
+              hits2 = Physics.RaycastAll(ray2);
+              foreach (RaycastHit hit in hits2)
+              {
+                  if (hit.collider.tag == "Ground")
+                  {
+                      dist = Camera.main.transform.position - hit.transform.position;
+                      if (!(dist.magnitude < 1))
+                      {
+                          Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y - 10 * Input.GetAxis("Mouse ScrollWheel"), Camera.main.transform.position.z);
+                      }
+                      else
+                      {
+                          if (Input.GetAxis("Mouse ScrollWheel") < 0)//scroll arriere
+                              Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y - 10 * Input.GetAxis("Mouse ScrollWheel"), Camera.main.transform.position.z);
+                      }
+
+                      break;
+                  }
+              }*/
+
 
             if (Input.mousePosition.x <= 2)
                 Camera.main.transform.Translate(new Vector3(-speed * Time.deltaTime, 0));

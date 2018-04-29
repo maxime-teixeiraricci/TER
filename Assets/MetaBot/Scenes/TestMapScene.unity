@@ -2786,7 +2786,7 @@ GameObject:
   - component: {fileID: 188290189}
   m_Layer: 0
   m_Name: Cylinder (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6389,7 +6389,7 @@ GameObject:
   - component: {fileID: 433273018}
   m_Layer: 0
   m_Name: Capsule (2)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9586,7 +9586,7 @@ GameObject:
   - component: {fileID: 658946000}
   m_Layer: 0
   m_Name: Capsule (3)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13997,7 +13997,7 @@ GameObject:
   - component: {fileID: 903959543}
   m_Layer: 0
   m_Name: Capsule (7)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16824,7 +16824,7 @@ GameObject:
   - component: {fileID: 1043576350}
   m_Layer: 0
   m_Name: Capsule (10)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19735,7 +19735,7 @@ GameObject:
   - component: {fileID: 1255886424}
   m_Layer: 0
   m_Name: Capsule (9)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23338,7 +23338,7 @@ GameObject:
   - component: {fileID: 1467266272}
   m_Layer: 0
   m_Name: Cylinder
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24816,7 +24816,7 @@ GameObject:
   - component: {fileID: 1564104870}
   m_Layer: 0
   m_Name: Capsule (5)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26198,7 +26198,7 @@ GameObject:
   - component: {fileID: 1659187188}
   m_Layer: 0
   m_Name: Capsule (6)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27907,7 +27907,7 @@ GameObject:
   - component: {fileID: 1797091037}
   m_Layer: 0
   m_Name: Capsule (8)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32215,7 +32215,7 @@ GameObject:
   - component: {fileID: 2058457624}
   m_Layer: 0
   m_Name: Capsule (4)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33127,7 +33127,7 @@ GameObject:
   - component: {fileID: 2100159338}
   m_Layer: 0
   m_Name: Capsule (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
