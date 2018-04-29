@@ -16,11 +16,6 @@ public class Traducteur : MonoBehaviour {
         Traduction();
     }
 
-    public void applyTradToscene()
-    {
-        component.gameObject.GetComponent<Text>().text = traduction;
-    }
-
     public void Traduction()
     {
         foreach (Langage l in GameObject.Find("GameManager").GetComponent<LangageLoader>().langues)
@@ -47,17 +42,16 @@ public class Traducteur : MonoBehaviour {
         textOriginal = component.gameObject.GetComponent<Text>().text;
         basictext = textOriginal;
         Traduction();
-        applyTradToscene();
-	}
+        component.gameObject.GetComponent<Text>().text = traduction;
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        if (component.gameObject.GetComponent<Text>().text != basictext)
+        if (GameObject.Find("GameManager").GetComponent<LangageLoader>().language != langue)
         {
-            basictext = component.gameObject.GetComponent<Text>().text;
-            textOriginal = component.gameObject.GetComponent<Text>().text;
+            langue = GameObject.Find("GameManager").GetComponent<LangageLoader>().language;
             Traduction();
-            applyTradToscene();
+            component.gameObject.GetComponent<Text>().text = traduction;
         }
 	}
 }

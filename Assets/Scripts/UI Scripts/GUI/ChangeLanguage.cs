@@ -39,7 +39,6 @@ public class ChangeLanguage : MonoBehaviour {
             cpt++;
         }
         System.IO.File.WriteAllLines(Application.streamingAssetsPath+"/properties.yml", lines);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
     }
 
