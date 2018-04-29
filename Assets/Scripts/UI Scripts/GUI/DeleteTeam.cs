@@ -18,6 +18,10 @@ public class DeleteTeam : MonoBehaviour
     // Affiche la fenêtre pop-up de confirmation de suppression d'équipe
     public void DisplayWindow()
     {
+        Traducteur t = new Traducteur();
+        t.langue = GameObject.FindObjectOfType<GameManager>().GetComponent<LangageLoader>().language;
+        t.setTextOriginal(initialText);
+        initialText = t.traduction;
         Window.SetActive(true);
         windowText = windowDelete.GetComponentInChildren<Text>();
         windowText.text = initialText;

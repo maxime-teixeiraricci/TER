@@ -31,7 +31,12 @@ public class EndGameManager : MonoBehaviour {
     {
         _ends["TestBot"] = delegate ()
         {
-            textWinnerTeam.GetComponent<Text>().text = "Winner : " + winnername;
+            Traducteur t = new Traducteur();
+            string trad = "Winner";
+            t.langue = GameObject.FindObjectOfType<GameManager>().GetComponent<LangageLoader>().language;
+            t.setTextOriginal("Winner");
+            trad = t.traduction;
+            textWinnerTeam.GetComponent<Text>().text = trad + " : " + winnername;
             print("after Winnerteam");
             GameObject[] units = GameObject.FindGameObjectsWithTag("Unit");
             foreach (GameObject u in units)
@@ -46,9 +51,9 @@ public class EndGameManager : MonoBehaviour {
                 int size = GameObject.FindObjectOfType<GameManager>().GetComponent<TeamManager>()._teams.Count;
                 string[] teams = new string[size];
                 int cpt = 0;
-                foreach (Team t in GameObject.FindObjectOfType<GameManager>().GetComponent<TeamManager>()._teams)
+                foreach (Team t2 in GameObject.FindObjectOfType<GameManager>().GetComponent<TeamManager>()._teams)
                 {
-                    teams[cpt] = t._name;
+                    teams[cpt] = t2._name;
                     cpt++;
                 }
                 p.WriteStats(teams, teams[winner], size);

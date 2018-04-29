@@ -111,7 +111,8 @@
 	Entrez le nom de l'équipe=Enter Team name
 	Annuler=Cancel
 	Valider=Apply
-	Voulez-vous supprimer=Delete
+	Voulez-vous supprimer=Delete 
+	Voulez vous supprimer =Delete 
 	Oui=Yes
 	Non=No
 # Properties
