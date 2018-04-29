@@ -16,6 +16,7 @@ public class SubjectiveCamera : MonoBehaviour {
     public float speed = 20.0f;
     public bool ReverseDrag = true;
     public GameObject mainCam;
+    public GameObject terrain;
 
     private Vector3 _DragOrigin;
     private Vector3 _Move;
@@ -215,16 +216,36 @@ public class SubjectiveCamera : MonoBehaviour {
               }*/
 
 
-            if (Input.mousePosition.x <= 2)
-                Camera.main.transform.Translate(new Vector3(-speed * Time.deltaTime, 0));
-            if (Input.mousePosition.y <= 2)
-                Camera.main.transform.Translate(new Vector3(0, -speed * Time.deltaTime));
+            /*   if (Input.mousePosition.x <= 2 && Camera.main.transform.position.x > backPosition.x - terrain.GetComponent<Renderer>().bounds.size.x /4)
+                   Camera.main.transform.Translate(new Vector3(-speed * Time.deltaTime, 0));
+               if (Input.mousePosition.y <= 2 && Camera.main.transform.position.z > backPosition.y - terrain.GetComponent<Renderer>().bounds.size.y/4)
+                   Camera.main.transform.Translate(new Vector3(0, -speed * Time.deltaTime));
 
-            if (Input.mousePosition.x >= Screen.width - 2)
-                Camera.main.transform.Translate(new Vector3(speed * Time.deltaTime, 0));
-            if (Input.mousePosition.y >= Screen.height - 2)
-                Camera.main.transform.Translate(new Vector3(0, speed * Time.deltaTime));
+               if (Input.mousePosition.x >= Screen.width - 2 && Camera.main.transform.position.x < backPosition.x + terrain.GetComponent<Renderer>().bounds.size.x/4)
+                   Camera.main.transform.Translate(new Vector3(speed * Time.deltaTime, 0));
+               if (Input.mousePosition.y >= Screen.height - 2 && Camera.main.transform.position.z < backPosition.y + terrain.GetComponent<Renderer>().bounds.size.y/4)
+                   Camera.main.transform.Translate(new Vector3(0, speed * Time.deltaTime)); */
 
+            /*
+          if (Input.mousePosition.x <= 2 && Camera.main.transform.position.x > backPosition.x - terrain.GetComponent<Renderer>().bounds.size.x /4)
+               Camera.main.transform.Translate(new Vector3(-speed * Time.deltaTime, 0, 0));
+           if (Input.mousePosition.y <= 2 && Camera.main.transform.position.y > backPosition.y - terrain.GetComponent<Renderer>().bounds.size.y/4)
+               Camera.main.transform.Translate(new Vector3(0, -speed * Time.deltaTime,0));
+
+           if (Input.mousePosition.x >= Screen.width - 2 && Camera.main.transform.position.x < backPosition.x + terrain.GetComponent<Renderer>().bounds.size.x/4)
+               Camera.main.transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0));
+           if (Input.mousePosition.y >= Screen.height - 2 && Camera.main.transform.position.y < backPosition.z + terrain.GetComponent<Renderer>().bounds.size.y/4)
+               Camera.main.transform.Translate(new Vector3(0, speed * Time.deltaTime,0)); /* */
+
+            if (Input.mousePosition.x <= 2 && Camera.main.transform.position.x > backPosition.x - terrain.GetComponent<Renderer>().bounds.size.x / 4)
+                Camera.main.transform.position = new Vector3(Camera.main.transform.position.x - speed * Time.deltaTime, Camera.main.transform.position.y, Camera.main.transform.position.z);
+            if (Input.mousePosition.y <= 2 && Camera.main.transform.position.z > backPosition.z - terrain.GetComponent<Renderer>().bounds.size.z / 4)
+                Camera.main.transform.position = new Vector3(Camera.main.transform.position.x , Camera.main.transform.position.y , Camera.main.transform.position.z - speed * Time.deltaTime);
+
+            if (Input.mousePosition.x >= Screen.width - 2 && Camera.main.transform.position.x < backPosition.x + terrain.GetComponent<Renderer>().bounds.size.x / 4)
+                Camera.main.transform.position = new Vector3(Camera.main.transform.position.x + speed * Time.deltaTime, Camera.main.transform.position.y, Camera.main.transform.position.z);
+            if (Input.mousePosition.y >= Screen.height - 2 && Camera.main.transform.position.z < backPosition.z + terrain.GetComponent<Renderer>().bounds.size.z / 4)
+                Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y , Camera.main.transform.position.z + speed * Time.deltaTime);
         }
         //Camera.main.transform.rotation.Set(0, 0, 0, unit.transform.rotation.w);
         //Camera.main.transform.position = (new Vector3(unit.gameObject.transform.position.x, unit.gameObject.transform.position.y + 35, unit.gameObject.transform.position.z));

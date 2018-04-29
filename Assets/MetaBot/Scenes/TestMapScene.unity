@@ -22472,6 +22472,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114536748894065638, guid: c0f6da377ef5be04e9d750a3b2b6af6e,
+        type: 2}
+      propertyPath: terrain
+      value: 
+      objectReference: {fileID: 125146076}
     m_RemovedComponents:
     - {fileID: 114803340167335158, guid: c0f6da377ef5be04e9d750a3b2b6af6e, type: 2}
     - {fileID: 114597266335397840, guid: c0f6da377ef5be04e9d750a3b2b6af6e, type: 2}
