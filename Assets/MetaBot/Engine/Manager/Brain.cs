@@ -11,6 +11,7 @@ using UnityEngine;
 public class Brain : MonoBehaviour
 {
 
+    public int indexInstructionUsed;
     public List<Instruction> _instructions = new List<Instruction>();
     public List<InstructionEditor> _instructionsEditor = new List<InstructionEditor>();
     public Percept _componentPercepts;
@@ -63,19 +64,25 @@ public class Brain : MonoBehaviour
                 if (_componentActions._actions.ContainsKey(_action))
                 {
                     _componentActions._actions[_action]();
-                    turnEnd = true;
                 }
+                else
+                {
+                    _componentActions._actions["ACTION_IDLE"]();
+                }
+                turnEnd = true;
             }
         }
     }
 
     public string NextAction()
     {
+        indexInstructionUsed = 0;
         foreach (Instruction instruction in _instructions)
         {
+            
             if (Verify(instruction))
             {
-
+                
                 foreach (MessageStruct act in instruction._stringActionsNonTerminales)
                 {
                     _componentActionsNonTerminales._messageDestinataire = act._destinataire;
@@ -92,6 +99,7 @@ public class Brain : MonoBehaviour
                     return instruction._stringAction;
                 }
             }
+            indexInstructionUsed++;
         }
         return "ACTION_IDLE";
     }

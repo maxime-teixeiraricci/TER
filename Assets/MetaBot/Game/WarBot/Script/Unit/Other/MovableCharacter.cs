@@ -24,17 +24,29 @@ public class MovableCharacter : MonoBehaviour
     	
     public void Start()
     {
+        _isblocked = isBlocked();
     }
+
+    public void Update()
+    {
+        if (GetComponent<Brain>().turnEnd )
+        {
+            _isblocked = isBlocked();
+        }
+    }
+    
 
     public void Move()
     {
-        if (!GetComponent<Brain>().turnEnd)
+        if (!GetComponent<Brain>().turnEnd && !isBlocked())
         {
             vectMov = Utility.vectorFromAngle(GetComponent<Stats>()._heading);
             nextposition = transform.position + vectMov.normalized * speed *0.02f;// * Time.deltaTime;
 
             transform.position = nextposition;
+            
         }
+        
     }
 
     public bool isBlocked()
@@ -107,6 +119,7 @@ public class MovableCharacter : MonoBehaviour
 
     void OnCollisionStay(Collision other)
     {
+        collisionObject = null;
         if (other.gameObject.tag != "Ground")
         {
            /* RaycastHit[] hits;
@@ -118,9 +131,8 @@ public class MovableCharacter : MonoBehaviour
                 float b = GetComponent<Stats>()._heading;
                 float A = Mathf.Abs(a - b);
                 float B = Mathf.Abs( 360+ Mathf.Min(a,b) - Mathf.Max(a, b) ) ;
-                if (Mathf.Min(A, B) < 60f)
+                if (Mathf.Min(A, B) < 90f)
                 {
-                    Debug.DrawRay(contact.point, contact.normal, Color.white);
                     collisionObject = other.transform.gameObject;
                     break;
                 }

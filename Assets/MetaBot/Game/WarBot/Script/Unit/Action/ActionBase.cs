@@ -35,11 +35,27 @@ public class ActionBase : ActionCommon
 
         _actions["ACTION_CREATE_EXPLORER"] = delegate () {
             Objet o = GetComponent<Inventory>().find("Ressource");
-            if (GetComponent<Inventory>()._objets[o] >= 10)
+            if (GetComponent<Inventory>()._objets[o] >= 5)
             {
-                GetComponent<Inventory>()._objets[o] -= 10;
+                GetComponent<Inventory>()._objets[o] -= 5;
                 GetComponent<CreatorUnit>().Create("Explorer");
             }
+        };
+
+        _actions["ACTION_CREATE_LIFE_LIGHT"] = delegate ()
+        {
+            GetComponent<Stats>()._health -= 200;
+            GetComponent<CreatorUnit>().Create("Light");
+        };
+        _actions["ACTION_CREATE_LIFE_HEAVY"] = delegate () 
+        {
+            GetComponent<Stats>()._health -= 500;
+            GetComponent<CreatorUnit>().Create("Heavy");
+        };
+
+        _actions["ACTION_CREATE_LIFE_EXPLORER"] = delegate () {
+            GetComponent<Stats>()._health -= 100;
+            GetComponent<CreatorUnit>().Create("Explorer");
         };
     }
 
