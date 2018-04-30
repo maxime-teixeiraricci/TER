@@ -86,6 +86,7 @@
 	Equipe 4=Team 4
 	Nombre de joueurs :=Number of players :
 	WarBot MODE=WarBot game mode
+	Chargement en cours, veuillez patienter=Now loading, please wait
 # Editeur 
 	Start=Start
 	Propriétés=Properties
