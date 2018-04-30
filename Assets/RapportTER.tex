@@ -2,7 +2,9 @@
 % Comment the following line to NOT allow the usage of umlauts
 \usepackage[utf8]{inputenc}
 \usepackage[francais]{babel}
+\usepackage{listings}
 \pagestyle{plain}
+\lstset{language=xml,frame=single, breaklines=true, basicstyle=\ttfamily,backgroundcolor=\color{grey},basicstyle=\scriptsize, keywordstyle=\color{blue}, commentstyle=\color{vert}, stringstyle=\color{red}, identifierstyle=\color{blue}}
 
 
 \title{Rapport de TER}
@@ -55,9 +57,83 @@ Le langage et l'ensemble des instructions nécessaires est alimenté par l'équi
 Au départ, il a été nécessaire de remettre en place un outil permettant de récupérer un comportement, qui était uniquement graphique, dans l'éditeur afin de pouvoir le renvoyer à la partie Moteur, pour que l'ensemble des unités puissent l'exécuter.
 Nous avons pris connaissance de ce que l'ancien groupe avait mis en place et avons trié ce qui nous semblait correspondre à notre version du projet.
 Il était obligatoire d'écrire le comportement récupéré de l'éditeur dans un fichier, afin de le récupérer , pouvoir le modifier , le déplacer , et le conserver pour plusieurs parties.
-La solution mise en place par l'ancien groupe pour le stockage, qui était d'utiliser un fichier XML correspondait parfaitement à notre besoin, car la syntaxe et l'organisation en noeuds de ce genre de fichiers, permettait une récupération simple et claire des instructions. Nous avons ainsi pu récupérer une bonne partie de leur système d'écriture et de lecture de leur projet, tout en adaptant l'autre partie à nos besoins.
+La solution mise en place par l'ancien groupe pour le stockage, qui était d'utiliser un fichier XML correspondait parfaitement à notre besoin, car la syntaxe et l'organisation en nœuds de ce genre de fichiers, permettait une récupération simple et claire des instructions. Nous avons ainsi pu récupérer une bonne partie de leur système d'écriture et de lecture de leur projet, tout en adaptant l'autre partie à nos besoins.
 \paragraph{}
+\newpage
 La partie organisant les instructions à été complètement supprimée, et nous avons repensé un système plus générique et plus compréhensible pour les groupes qui vont récupérer ce projet plus tard.
+\section{Conception et implémentation}
+La construction des Instructions des unités dans la partie Interpréteur a grandement été facilitée et la liaison des instructions avec leur exécution a été décalée dans le moteur. Ainsi on ne manipule que des chaînes de caractères lors de l'accès dans le fichier, et le moteur effectue la liaison avec une structure de "Delegate" comme expliqué plus haut, rajoutant beaucoup de généricité au projet.
+D'un point de vue de la sécurité, celle-ci a été décalée dans l'éditeur du comportement, afin de ne pas traiter des comportements erronés , mais prévenir a l'avance et même empêcher les erreurs d'apparaitre.
+\paragraph{}
+Le but de l'interpréteur était de traiter des fichiers de ce type :
+\begin{lstlisting}
+<behavior>
+  <teamName>Default Team</teamName>
+  <unit name="Explorer">
+    <instruction>
+    </instruction>
+  </unit>
+  <unit name="Base">
+  </unit>
+  <unit name="Light">
+  </unit>
+  <unit name="Heavy">
+  </unit>
+</behavior>
+\end{lstlisting}
+Ainsi nous avons 1 fichier par équipe écrite par l'utilisateur, chacun détaillant le comportement de chaque unité sous la même forme :
+\begin{lstlisting}
+<behavior>
+  <teamName>Default Team</teamName>
+  <unit name="Explorer">
+ <instruction>
+      <parameters>
+        <PERCEPT_ENEMY />
+      </parameters>
+      <message>
+        <ACTN_MESSAGE_HELP>
+          <Light />
+        </ACTN_MESSAGE_HELP>
+      </message>
+      <actions>
+        <ACTION_MOVE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_BLOCKED />
+      </parameters>
+      <actions>
+        <ACTION_MOVE_UNTIL_UNBLOCKED />
+      </actions>
+    </instruction>
+  </unit>
+</behavior>
+\end{lstlisting}
+Le comportement d'une unité est une suite d'instructions, dont l'ordre est très important. La hiérarchie va déterminer la priorité qu'aura l'action sur le tick. Ainsi l'action la plus prioritaire dont les conditions sont acceptées sera l'action effectuée sur ce tick.
+Chaque instruction est toujours organisée de la même façon :
+- Une liste de conditions à remplir pour que l'instruction soit considéré comme acceptée
+- Une liste d'actions qui ne terminent pas l'action, appelées Actions non terminales, mais qui peuvent être les messages partagés entre les unités par exemple. Ces actions non terminales seront exécutés avant :
+- L'action terminale, qui va être exécutée à la fin du tick pour l'ensemble des unités et va être l'action qui va être "physiquement" fait par l'unité, par exemple : Avancer, Tirer, Récupérer ou donner une ressource,Se soigner , ...
+\paragraph{}
+Comme dit précédemment, l'interpréteur relie les 2 parties majeures du projet.
+Ainsi, une fonction permet de transformer un fichier ".wbt" (format des équipes WarBot) vers un comportement d'équipe utilisable par l'équipe moteur, et une fonction permettant la transformation d'un comportement récupéré de l'éditeur graphique vers un fichier XML, pour sa sauvegarde.
+\newpage
+\paragraph{}
+Un nouveau travail d'interprétation a vite été ressenti dans le projet. En effet, le jeu étant destiné à aider les jeunes à appréhender la programmation, une traduction française était nécessaire.
+Toujours dans l'idée de rester générique, un traducteur a été mis en place et attaché à l'ensemble des textes qui seront affichés à l'utilisateur.
+\paragraph{}
+//pas clair a changer
+La traduction fonctionne ainsi :
+Un premier script s'occupe de vérifier la langue qui doit être utilisée dans le fichier de configuration du jeu et va charger en mémoire un fichier  de traductions : 
+
+Le fichier va être parcouru, et un ensemble de couples clé,valeurs vont être récupérés , la clé correspondant à la valeur initiale d'un bouton/ texte affiché, la valeur étant la traduction qu'il faudra affiché à la place de la clé.
+
+Ce script est ainsi rattaché au "GameManager" , un objet Unity qui n'est pas détruit lorsque l'on change de scène. Ainsi les traductions sont conservées lorsqu'on passe de l'éditeur au menu principal , du menu principal aux cartes de jeu, ...
+\paragraph{}
+Un second script est lui attaché à tous les Objets du jeu qui vont devoir être traduits. Celui-ci va , à la création de l'objet auquel il est rattaché, chercher la langue actuellement affichée, récupérer comme clé le texte original de l'objet auquel le script est affilié, et va stocker la traduction, et l'afficher à l utilisateur.
+
+En Runtime, si la langue est changée dans les paramètres du jeu, les script de traduction des objets vont mettre à jour leur langue, et récupérer la nouvelle traduction dans le "GameManager".
 \newpage
 \chapter{Partie "Game Design"}
 
