@@ -25,13 +25,13 @@ public class PerceptCommon : Percept
 
         _percepts["PERCEPT_ENEMY"] = delegate ()
         {
-
-            Brain brain = GetComponent<Brain>();
-            Sight sight = brain.GetComponent<Sight>();
+            
+            Sight sight = GetComponent<Sight>();
             List<GameObject> _listOfUnitColl = new List<GameObject>();
+            GetComponent<Stats>()._target = null;
             foreach (GameObject gO in sight._listOfCollision)
             {
-                if (gO && !GetComponent<Stats>()._target)
+                if (gO )
                 {
                     if (gO.GetComponent<Stats>() && gO.GetComponent<Stats>()._teamIndex != GetComponent<Stats>()._teamIndex)
                     {

@@ -7,6 +7,8 @@ public class SpawnRessource : MonoBehaviour
     public float _rayon;
     public GameObject _ressource;
     public float _timer;
+    public int nbItem;
+    public int nbItemMax = 40;
 
     private float t;
 
@@ -20,7 +22,8 @@ public class SpawnRessource : MonoBehaviour
 	void Update ()
     {
         t -= Time.deltaTime;
-        if (t <= 0)
+        nbItem = GameObject.FindGameObjectsWithTag("Item").Length;
+        if (t <= 0 && nbItem < nbItemMax)
         {
             t = _timer * Random.Range(0.85f, 1.15f);
             GameObject g = Instantiate(_ressource);

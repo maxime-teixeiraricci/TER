@@ -32,8 +32,9 @@ public class PlayButton : MonoBehaviour
         string s = mapChoice.captionText.text;
         nbPlayers = int.Parse(_numberplayerDropDown.GetComponent<Dropdown>().captionText.text);
         XMLWarbotInterpreter interpreter = new XMLWarbotInterpreter();
-        string gamePath = Application.streamingAssetsPath + "/teams/" + GameObject.Find("GameManager").GetComponent<GameManager>()._gameName + "/";
         GameObject gameManager = GameObject.Find("GameManager");
+        string gamePath = Application.streamingAssetsPath + "/teams/" + gameManager.GetComponent<GameManager>()._gameName + "/";
+        
         gameManager.GetComponent<TeamManager>()._teams = new List<Team>();
 
         for (int i = 0; i < nbPlayers; i++)

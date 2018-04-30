@@ -10,6 +10,8 @@ public class Traducteur : MonoBehaviour {
     public string traduction;
     public GameObject component;
 
+    private GameObject gameManager;
+
     public void setTextOriginal(string s)
     {
         textOriginal = s;
@@ -18,7 +20,7 @@ public class Traducteur : MonoBehaviour {
 
     public void Traduction()
     {
-        foreach (Langage l in GameObject.Find("GameManager").GetComponent<LangageLoader>().langues)
+        foreach (Langage l in gameManager.GetComponent<LangageLoader>().langues)
         {
             if (l.langue.Equals(langue))
             {
@@ -38,7 +40,8 @@ public class Traducteur : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        langue = GameObject.Find("GameManager").GetComponent<LangageLoader>().language;
+        gameManager = GameObject.Find("GameManager");
+        langue = gameManager.GetComponent<LangageLoader>().language;
         textOriginal = component.gameObject.GetComponent<Text>().text;
         basictext = textOriginal;
         Traduction();
@@ -47,9 +50,9 @@ public class Traducteur : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (GameObject.Find("GameManager").GetComponent<LangageLoader>().language != langue)
+        if (gameManager.GetComponent<LangageLoader>().language != langue)
         {
-            langue = GameObject.Find("GameManager").GetComponent<LangageLoader>().language;
+            langue = gameManager.GetComponent<LangageLoader>().language;
             Traduction();
             component.gameObject.GetComponent<Text>().text = traduction;
         }

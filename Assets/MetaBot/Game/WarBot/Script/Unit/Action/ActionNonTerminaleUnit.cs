@@ -32,6 +32,11 @@ public class ActionNonTerminaleUnit : ActionNonTerminalCommon
             GetComponent<Stats>()._heading = 180;
         };
 
+        _actionsNT["ACTN_HEADING_RANDOM"] = delegate ()
+        {
+            GetComponent<Stats>()._heading = Random.Range(0f,360f);
+        };
+
         _actionsNT["ACTN_TURN_AROUND"] = delegate ()
         {
             GetComponent<Stats>()._heading += 180;
