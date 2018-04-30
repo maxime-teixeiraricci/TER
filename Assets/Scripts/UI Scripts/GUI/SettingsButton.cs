@@ -10,6 +10,8 @@ public class SettingsButton : MonoBehaviour {
     Button quitButton;
     Button reloadButton;
 
+    AudioSource gm;
+
     public string language;
     string langue;
     ChangeLanguage changeLanguage;
@@ -25,12 +27,16 @@ public class SettingsButton : MonoBehaviour {
     public Slider warLight;
     float oldValueLight;
 
+    public Slider music;
+
     public Dropdown dropdown;
     string nameMap;
 
     // Use this for initialization
     void Start () {
         changeLanguage = GetComponent<ChangeLanguage>();
+        gm = GameObject.Find("GameManager").GetComponent<AudioSource>();
+        language = GameObject.Find("GameManager").GetComponent<LangageLoader>().language;
         recoverValSlider();
     }
 
@@ -56,6 +62,7 @@ public class SettingsButton : MonoBehaviour {
     {
         setButtonActive();
         applyChanges();
+        manageVolume();
         window.SetActive(false);
         saveValSlider();
         changeLanguage.ChangementLangue(language);
@@ -71,6 +78,12 @@ public class SettingsButton : MonoBehaviour {
         language = "english";
     }
 
+    public void manageVolume()
+    {
+        float volume = music.value / 100;
+        Debug.Log("VOLUME = " + volume);
+        gm.volume = volume;
+    }
 
     void setButtonActive()
     {
@@ -130,6 +143,7 @@ public class SettingsButton : MonoBehaviour {
             gameManager.valSliderExplorer = (int)explorer.value;
             gameManager.valSliderHeavy = (int)heavy.value;
             gameManager.valSliderLight = (int)warLight.value;
+            gameManager.valSliderMusic = (int)music.value;
         }
     }
 
