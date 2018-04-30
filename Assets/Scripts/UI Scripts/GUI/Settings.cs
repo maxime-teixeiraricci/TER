@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Settings : MonoBehaviour {
 
-    public Slider slider;
+    public Slider sliderText;
     Text text;
 
 	// Use this for initialization
@@ -15,6 +15,6 @@ public class Settings : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        text.text = slider.value.ToString();
+        text.text = sliderText.value.ToString();
 	}
 }

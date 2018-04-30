@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.24647538, g: 0.28234535, b: 0.3457032, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -576,7 +576,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6945824a0871a564f83634a8fd715fe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 69244416}
+  sliderText: {fileID: 69244416}
 --- !u!114 &66325871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1939,6 +1939,7 @@ MonoBehaviour:
   oldValueExplo: 0
   heavy: {fileID: 1381973174}
   warLight: {fileID: 69244416}
+  music: {fileID: 1556919898}
   dropdown: {fileID: 1294629173}
 --- !u!114 &170701720
 MonoBehaviour:
@@ -3429,7 +3430,7 @@ Prefab:
     - target: {fileID: 82011188951612208, guid: f803624d2c783d54a99cd2d93a0527e0,
         type: 2}
       propertyPath: m_Volume
-      value: 0.171
+      value: 0.37
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f803624d2c783d54a99cd2d93a0527e0, type: 2}
@@ -6070,9 +6071,11 @@ MonoBehaviour:
   valSliderExplorer: 0
   valSliderHeavy: 0
   valSliderLight: 0
+  valSliderMusic: 0
   exploSlider: {fileID: 643281748}
   heavySlider: {fileID: 1381973174}
   lightSlider: {fileID: 69244416}
+  musicSlider: {fileID: 1556919898}
 --- !u!114 &696018213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10391,7 +10394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6945824a0871a564f83634a8fd715fe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 1972771174}
+  sliderText: {fileID: 1972771174}
 --- !u!114 &1336002628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10905,7 +10908,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6945824a0871a564f83634a8fd715fe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 1556919898}
+  sliderText: {fileID: 1556919898}
 --- !u!114 &1398129123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12883,7 +12886,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6945824a0871a564f83634a8fd715fe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 643281748}
+  sliderText: {fileID: 643281748}
 --- !u!114 &1638787292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17097,7 +17100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6945824a0871a564f83634a8fd715fe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 1381973174}
+  sliderText: {fileID: 1381973174}
 --- !u!114 &2125126666
 MonoBehaviour:
   m_ObjectHideFlags: 0
