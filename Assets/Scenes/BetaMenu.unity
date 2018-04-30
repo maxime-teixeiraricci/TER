@@ -949,6 +949,8 @@ GameObject:
   - component: {fileID: 87613732}
   - component: {fileID: 87613734}
   - component: {fileID: 87613733}
+  - component: {fileID: 87613736}
+  - component: {fileID: 87613735}
   m_Layer: 5
   m_Name: SoundControl
   m_TagString: Untagged
@@ -1009,6 +1011,36 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 87613731}
+--- !u!114 &87613735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 87613731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 517c11061bc1a814784227066d426111, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  langue: 
+  textOriginal: 
+  traduction: 
+  component: {fileID: 1921166554}
+--- !u!114 &87613736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 87613731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 517c11061bc1a814784227066d426111, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  langue: 
+  textOriginal: 
+  traduction: 
+  component: {fileID: 238149468}
 --- !u!1 &91424231
 GameObject:
   m_ObjectHideFlags: 0
@@ -13278,6 +13310,7 @@ GameObject:
   - component: {fileID: 1689175489}
   - component: {fileID: 1689175491}
   - component: {fileID: 1689175490}
+  - component: {fileID: 1689175492}
   m_Layer: 5
   m_Name: FriendlyFire
   m_TagString: Untagged
@@ -13337,6 +13370,21 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1689175488}
+--- !u!114 &1689175492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1689175488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 517c11061bc1a814784227066d426111, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  langue: 
+  textOriginal: 
+  traduction: 
+  component: {fileID: 91424231}
 --- !u!1 &1691749239
 GameObject:
   m_ObjectHideFlags: 0
