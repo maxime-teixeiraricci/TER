@@ -36,6 +36,7 @@ public class SettingsButton : MonoBehaviour {
     void Start () {
         changeLanguage = GetComponent<ChangeLanguage>();
         gm = GameObject.Find("GameManager").GetComponent<AudioSource>();
+        language = GameObject.Find("GameManager").GetComponent<LangageLoader>().language;
         recoverValSlider();
     }
 
