@@ -63,6 +63,11 @@ public class PlayButton : MonoBehaviour
             StartCoroutine(AsynchronousLoad(4));
             //SceneManager.LoadScene(4);
         }
+        else if (s == "Desolate")
+        {
+            StartCoroutine(AsynchronousLoad(5));
+            //SceneManager.LoadScene(4);
+        }
         //SceneManager.LoadScene(id);
     }
 
