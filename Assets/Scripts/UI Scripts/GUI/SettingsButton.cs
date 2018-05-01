@@ -30,7 +30,9 @@ public class SettingsButton : MonoBehaviour {
     public Slider music;
 
     public Dropdown dropdown;
+    public Dropdown gamemodeDrop;
     string nameMap;
+    string gamemode;
 
     // Use this for initialization
     void Start () {
@@ -66,8 +68,13 @@ public class SettingsButton : MonoBehaviour {
         window.SetActive(false);
         saveValSlider();
         changeLanguage.ChangementLangue(language);
+        changeGameMode();
     }
 
+    public void changeGameMode()
+    {
+        GameObject.Find("GameManager").GetComponent<GameManager>()._gameName = gamemode;
+    }
     public void setLanguageFR()
     {
         language = "francais";
@@ -115,6 +122,7 @@ public class SettingsButton : MonoBehaviour {
         oldValueLight = warLight.value;
         oldValueHeavy = heavy.value;
         nameMap = dropdown.captionText.text;
+        gamemode = gamemodeDrop.captionText.text;
     }
 
     void cancelChanges()
@@ -130,7 +138,14 @@ public class SettingsButton : MonoBehaviour {
         {
             dropdown.captionText.text = nameMap;
         }
-        
+        if (gamemode == null)
+        {
+            gamemode = "TestBot";
+        }
+        else
+        {
+            dropdown.captionText.text = gamemode;
+        }
     }
     
     void saveValSlider()

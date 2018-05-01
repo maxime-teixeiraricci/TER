@@ -1161,6 +1161,11 @@ Prefab:
       propertyPath: _teams.Array.data[2]._color.a
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114611912082327328, guid: f803624d2c783d54a99cd2d93a0527e0,
+        type: 2}
+      propertyPath: _gameName
+      value: TestBot
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f803624d2c783d54a99cd2d93a0527e0, type: 2}
   m_IsPrefabParent: 0
@@ -1183,7 +1188,10 @@ MonoBehaviour:
   _gamename: 
   winner: 0
   winnername: 
+  timer: {fileID: 0}
   textWinnerTeam: {fileID: 845137367}
+  ressourceLimit: 0
+  timeLimitSeconds: 0
   written: 0
 --- !u!1 &325174084
 GameObject:
@@ -2258,7 +2266,10 @@ MonoBehaviour:
   _gamename: 
   winner: 0
   winnername: 
+  timer: {fileID: 1088010928}
   textWinnerTeam: {fileID: 845137367}
+  ressourceLimit: 20
+  timeLimitSeconds: 0
   written: 0
 --- !u!224 &536326441
 RectTransform:
@@ -2628,7 +2639,7 @@ Prefab:
     - target: {fileID: 114315703064509460, guid: 7873bde9b2880c44ba8a03af71301d16,
         type: 2}
       propertyPath: speed
-      value: 120
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114676673056965152, guid: 7873bde9b2880c44ba8a03af71301d16,
         type: 2}
@@ -3800,7 +3811,10 @@ MonoBehaviour:
   _gamename: 
   winner: 0
   winnername: 
+  timer: {fileID: 0}
   textWinnerTeam: {fileID: 845137367}
+  ressourceLimit: 0
+  timeLimitSeconds: 0
   written: 0
 --- !u!1 &1069250266
 GameObject:

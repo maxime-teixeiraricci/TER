@@ -119,6 +119,7 @@
 	Voulez vous supprimer =Delete 
 	Oui=Yes
 	Non=No
+	Gamemode=Game Mode
 # Properties
 	MaxHealth=Maximum health
 	MaxInventory=Inventory size

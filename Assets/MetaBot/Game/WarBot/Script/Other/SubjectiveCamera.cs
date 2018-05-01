@@ -14,7 +14,7 @@ public class SubjectiveCamera : MonoBehaviour {
     public GameObject select;//fait apparaitre l'unit sur la minimap en caméra fps
     public GameObject _hudStatsUnit;//Panneau stat de l'unité
 
-    public float speed = 20.0f;
+    public float speed = 1f;
     public bool ReverseDrag = true;
     public GameObject mainCam;
 
@@ -170,14 +170,14 @@ public class SubjectiveCamera : MonoBehaviour {
             
 
             if (Input.mousePosition.x <= 2 && Camera.main.transform.position.x > backPosition.x - terrain.bounds.size.x / 4)
-                Camera.main.transform.position = new Vector3(Camera.main.transform.position.x - speed * Time.deltaTime, Camera.main.transform.position.y, Camera.main.transform.position.z);
+                Camera.main.transform.position = new Vector3(Camera.main.transform.position.x - speed, Camera.main.transform.position.y, Camera.main.transform.position.z);
             if (Input.mousePosition.y <= 2 && Camera.main.transform.position.z > backPosition.z - terrain.bounds.size.z / 4)
-                Camera.main.transform.position = new Vector3(Camera.main.transform.position.x , Camera.main.transform.position.y , Camera.main.transform.position.z - speed * Time.deltaTime);
+                Camera.main.transform.position = new Vector3(Camera.main.transform.position.x , Camera.main.transform.position.y , Camera.main.transform.position.z - speed);
 
             if (Input.mousePosition.x >= Screen.width - 2 && Camera.main.transform.position.x < backPosition.x + terrain.bounds.size.x / 4)
-                Camera.main.transform.position = new Vector3(Camera.main.transform.position.x + speed * Time.deltaTime, Camera.main.transform.position.y, Camera.main.transform.position.z);
+                Camera.main.transform.position = new Vector3(Camera.main.transform.position.x + speed, Camera.main.transform.position.y, Camera.main.transform.position.z);
             if (Input.mousePosition.y >= Screen.height - 2 && Camera.main.transform.position.z < backPosition.z + terrain.bounds.size.z / 4)
-                Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y , Camera.main.transform.position.z + speed * Time.deltaTime);
+                Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y , Camera.main.transform.position.z + speed);
         }
     }
 

@@ -90,6 +90,7 @@
 	Tir allié=Tir allié
 	Musique=Musique
 	Bruitages=Bruitages
+	Gamemode=Mode de jeu
 # Editeur 
 	Start=Debut
 	PropriÃ©tÃ©s=PropriÃ©tÃ©s
