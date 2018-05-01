@@ -13,10 +13,17 @@ public class EndGameManager : MonoBehaviour {
     public int winner;
     public string winnername;
     public GameObject timer;
+
+    public Text timeLimit;
+    public Text timedisplay;
+
+    public Text ressourceGoal;
+    public Text ressourceDisplay;
+
     Animator anim;
     public GameObject textWinnerTeam;
     public int ressourceLimit;
-    public int timeLimitSeconds;
+    public float timeLimitSeconds;
     public bool written;
 
     // Use this for initialization
@@ -28,7 +35,21 @@ public class EndGameManager : MonoBehaviour {
         _gamename = GameObject.FindObjectOfType<GameManager>()._gameName;
         written = false;
         winnername = "";
-	}
+
+        if (_gamename.Equals("RessourceRace"))
+        {
+            int mins = (int)(timeLimitSeconds / 60);
+            int secs = (int)(timeLimitSeconds % 60);
+            timeLimit.text = ("" + mins).PadLeft(2, '0') + ":" + ("" + secs).PadLeft(2, '0');
+            timedisplay.transform.localScale = new Vector3(1, 1, 1);
+            ressourceDisplay.transform.localScale = new Vector3(1, 1, 1);
+            ressourceGoal.text = ressourceLimit + "";
+        }
+        else
+        {
+            timeLimit.text = "";
+        }
+    }
 
     public void InitEnds()
     {
@@ -66,18 +87,16 @@ public class EndGameManager : MonoBehaviour {
 
         _ends["RessourceRace"] = delegate ()
         {
-            Traducteur t = new Traducteur();
-            string trad = "Winner";
-            t.langue = GameObject.FindObjectOfType<GameManager>().GetComponent<LangageLoader>().language;
-            t.setTextOriginal("Winner");
-            trad = t.traduction;
-            textWinnerTeam.GetComponent<Text>().text = trad + " : " + winnername;
+            print("DEBUG END RESSOURCERACE apres trad = traduction");
+            textWinnerTeam.GetComponent<Text>().text = "Winner " + " : " + winnername;
+            print("DEBUG END RESSOURCERACE apres changement texte");
             print("after Winnerteam");
             GameObject[] units = GameObject.FindGameObjectsWithTag("Unit");
             foreach (GameObject u in units)
             {
                 Destroy(u);
             }
+            print("DEBUG END RESSOURCERACE apres destrcution unités");
             anim.SetTrigger("GameOver");
             print("after TextGO");
             if (!written)
@@ -123,18 +142,15 @@ public class EndGameManager : MonoBehaviour {
 
         _tests["RessourceRace"] = delegate ()
         {
-            int nbRessources = 0;
-            List<int> teams = new List<int>();
+            int nbRessources = -1;
             GameObject[] units = GameObject.FindGameObjectsWithTag("Unit");
             foreach (GameObject u in units)
             {
                 if (u.GetComponent<Stats>()._unitType.Equals("Base"))
                 {
-                    if (!teams.Contains(u.GetComponent<Stats>()._teamIndex))
-                        teams.Add(u.GetComponent<Stats>()._teamIndex);
-
                     if (u.GetComponent<Inventory>()._actualSize > nbRessources)
                     {
+                        print("WinnerUpdated");
                         nbRessources = u.GetComponent<Inventory>()._actualSize;
                         winnername = GameObject.Find("GameManager").GetComponent<TeamManager>()._teams[u.GetComponent<Stats>()._teamIndex]._name;
                         winner = u.GetComponent<Stats>()._teamIndex;
@@ -142,19 +158,39 @@ public class EndGameManager : MonoBehaviour {
                 }
             }
 
-            if (teams.Count == 1)
-            {
-                winnername = GameObject.Find("GameManager").GetComponent<TeamManager>()._teams[teams[0]]._name;
-                winner = teams[0];
-            }
+            if (timer.GetComponent<TimerScriptHUD>().timePassed > timeLimitSeconds || nbRessources >= ressourceLimit)
+                print("Dans IF Test Reussi");
 
-            return (timer.GetComponent<TimerScriptHUD>().timePassed >= timeLimitSeconds || teams.Count <= 1 || nbRessources >= ressourceLimit);
+            return (timer.GetComponent<TimerScriptHUD>().timePassed > timeLimitSeconds || nbRessources >= ressourceLimit);
         };
     }
 
     // Update is called once per frame
-    void Update () {
-        if (_tests[_gamename]())
+    void Update()
+    {
+        if (_gamename != GameObject.FindObjectOfType<GameManager>()._gameName)
+        {
+            _gamename = GameObject.FindObjectOfType<GameManager>()._gameName;
+
+            if (_gamename.Equals("RessourceRace"))
+            {
+                int mins = (int)(timeLimitSeconds / 60);
+                int secs = (int)(timeLimitSeconds % 60);
+                timeLimit.text = ("" + mins).PadLeft(2, '0') + ":" + ("" + secs).PadLeft(2, '0');
+                timedisplay.transform.localScale = new Vector3(1, 1, 1);
+                ressourceDisplay.transform.localScale = new Vector3(1, 1, 1);
+                ressourceGoal.text = ressourceLimit + "";
+            }
+            else
+            {
+                timeLimit.text = "";
+            }
+        }
+
+            if (_tests[_gamename]())
+        {
+            print("Dans IF ");
             _ends[_gamename]();
-	}
+        }
+    }
 }
