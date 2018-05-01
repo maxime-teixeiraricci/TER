@@ -42,19 +42,22 @@ public class Traducteur : MonoBehaviour {
     void Start () {
         gameManager = GameObject.Find("GameManager");
         langue = gameManager.GetComponent<LangageLoader>().language;
-        textOriginal = component.gameObject.GetComponent<Text>().text;
+        if (component != null)
+            textOriginal = component.gameObject.GetComponent<Text>().text;
         Traduction();
-        component.gameObject.GetComponent<Text>().text = traduction;
+        if (component != null)
+            component.gameObject.GetComponent<Text>().text = traduction;
     }
 	
 	// Update is called once per frame
 	void Update () {
         //Si la langue est changée en runtime, mettre a jour le texte
-        if (gameManager.GetComponent<LangageLoader>().language != langue)
-        {
+            if (gameManager.GetComponent<LangageLoader>().language != langue)
+            {
             langue = gameManager.GetComponent<LangageLoader>().language;
             Traduction();
-            component.gameObject.GetComponent<Text>().text = traduction;
-        }
+            if (component != null)
+                component.gameObject.GetComponent<Text>().text = traduction;
+            }
 	}
 }

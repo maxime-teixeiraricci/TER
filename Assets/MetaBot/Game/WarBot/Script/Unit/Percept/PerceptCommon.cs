@@ -17,7 +17,10 @@ public class PerceptCommon : Percept
     {
         base.InitPercept();
         _percepts["PERCEPT_LIFE_MAX"] = delegate () { return GetComponent<Stats>()._maxHealth == GetComponent<Stats>()._health; };
-        
+        _percepts["PERCEPT_LIFE_75"] = delegate () { return GetComponent<Stats>()._health >= GetComponent<Stats>()._maxHealth * 0.75; };
+        _percepts["PERCEPT_LIFE_50"] = delegate () { return GetComponent<Stats>()._health >= GetComponent<Stats>()._maxHealth * 0.50; };
+        _percepts["PERCEPT_LIFE_25"] = delegate () { return GetComponent<Stats>()._health >= GetComponent<Stats>()._maxHealth * 0.25; };
+
         _percepts["PERCEPT_BAG_FULL"] = delegate () { return GetComponent<Inventory>()._maxSize == GetComponent<Inventory>()._actualSize; };
         _percepts["PERCEPT_BAG_EMPTY"] = delegate () { return GetComponent<Inventory>()._actualSize == 0; };
         _percepts["PERCEPT_BAG_10"] = delegate () { return GetComponent<Inventory>()._actualSize >= 10; };
