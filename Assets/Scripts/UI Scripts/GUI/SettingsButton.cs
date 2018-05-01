@@ -144,7 +144,7 @@ public class SettingsButton : MonoBehaviour {
         }
         else
         {
-            dropdown.captionText.text = gamemode;
+            gamemodeDrop.captionText.text = gamemode;
         }
     }
     
