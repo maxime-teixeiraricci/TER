@@ -16,14 +16,13 @@ public class SubjectiveCamera : MonoBehaviour {
     public float speed = 20.0f;
     public bool ReverseDrag = true;
     public GameObject mainCam;
-    public GameObject terrain;
 
     private Vector3 _DragOrigin;
     private Vector3 _Move;
 
     public float speedH = 2.0f;
     public float speedV = 2.0f;
-
+    Collider terrain;
     private float yaw = 0.0f;
     private float pitch = 0.0f;
     private CursorLockMode back;
@@ -85,6 +84,7 @@ public class SubjectiveCamera : MonoBehaviour {
         backRotation = transform.rotation;
         stuck = false;
         back = Cursor.lockState;
+        terrain = GameObject.FindGameObjectWithTag("Ground").GetComponent<Collider>();
     }
 
     GameObject GetClickedGameUnit()
@@ -156,30 +156,18 @@ public class SubjectiveCamera : MonoBehaviour {
                 GameObject ground = GameObject.FindGameObjectWithTag("Ground");
                 //Vector3 dist = new Vector3(ground.transform.position.x - Camera.main.transform.position.x, ground.transform.position.y - Camera.main.transform.position.y + 10 * Input.GetAxis("Mouse ScrollWheel"), ground.transform.position.z - Camera.main.transform.position.z);
                 Vector3 dist = Camera.main.transform.position - ground.transform.position;
-                if (!(dist.magnitude > 150))
+                if (!(dist.magnitude > backPosition.y + backPosition.y/2))
                 {
                     Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y - 10 * Input.GetAxis("Mouse ScrollWheel"), Camera.main.transform.position.z);
                 }
             }
             else if (Input.GetAxis("Mouse ScrollWheel") > 0f) // forward
             {
-                GameObject ground = GameObject.FindGameObjectWithTag("Ground");
-                //Vector3 dist = new Vector3(ground.transform.position.x - Camera.main.transform.position.x, ground.transform.position.y - Camera.main.transform.position.y + 10 * Input.GetAxis("Mouse ScrollWheel"), ground.transform.position.z - Camera.main.transform.position.z);
-                Ray ray2 = Camera.main.ViewportPointToRay(Camera.main.transform.forward);
-                RaycastHit[] hits2;
-                hits2 = Physics.RaycastAll(ray2);
-                foreach (RaycastHit hit2 in hits2)
-                {
-                    if (hit2.collider.tag == "Ground")
-                    {
-                        float dist = Vector3.Distance(Camera.main.transform.forward,hit2.transform.position);
-                        if (!(dist < 10))
+                        float dist = Camera.main.transform.position.y - terrain.bounds.size.y;
+                        if (!(dist < 1))
                         {
                             Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y - 10 * Input.GetAxis("Mouse ScrollWheel"), Camera.main.transform.position.z);
                         }
-                        break;
-                    }
-                }
             }
             /*  else
               {
@@ -231,14 +219,16 @@ public class SubjectiveCamera : MonoBehaviour {
            if (Input.mousePosition.y >= Screen.height - 2 && Camera.main.transform.position.y < backPosition.z + terrain.GetComponent<Renderer>().bounds.size.y/4)
                Camera.main.transform.Translate(new Vector3(0, speed * Time.deltaTime,0)); /* */
 
-            if (Input.mousePosition.x <= 2 && Camera.main.transform.position.x > backPosition.x - terrain.GetComponent<Renderer>().bounds.size.x / 4)
+            
+
+            if (Input.mousePosition.x <= 2 && Camera.main.transform.position.x > backPosition.x - terrain.bounds.size.x / 4)
                 Camera.main.transform.position = new Vector3(Camera.main.transform.position.x - speed * Time.deltaTime, Camera.main.transform.position.y, Camera.main.transform.position.z);
-            if (Input.mousePosition.y <= 2 && Camera.main.transform.position.z > backPosition.z - terrain.GetComponent<Renderer>().bounds.size.z / 4)
+            if (Input.mousePosition.y <= 2 && Camera.main.transform.position.z > backPosition.z - terrain.bounds.size.z / 4)
                 Camera.main.transform.position = new Vector3(Camera.main.transform.position.x , Camera.main.transform.position.y , Camera.main.transform.position.z - speed * Time.deltaTime);
 
-            if (Input.mousePosition.x >= Screen.width - 2 && Camera.main.transform.position.x < backPosition.x + terrain.GetComponent<Renderer>().bounds.size.x / 4)
+            if (Input.mousePosition.x >= Screen.width - 2 && Camera.main.transform.position.x < backPosition.x + terrain.bounds.size.x / 4)
                 Camera.main.transform.position = new Vector3(Camera.main.transform.position.x + speed * Time.deltaTime, Camera.main.transform.position.y, Camera.main.transform.position.z);
-            if (Input.mousePosition.y >= Screen.height - 2 && Camera.main.transform.position.z < backPosition.z + terrain.GetComponent<Renderer>().bounds.size.z / 4)
+            if (Input.mousePosition.y >= Screen.height - 2 && Camera.main.transform.position.z < backPosition.z + terrain.bounds.size.z / 4)
                 Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y , Camera.main.transform.position.z + speed * Time.deltaTime);
         }
         //Camera.main.transform.rotation.Set(0, 0, 0, unit.transform.rotation.w);
