@@ -4,15 +4,16 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class SubjectiveCamera : MonoBehaviour {
-    Vector3 backPosition;
-    Quaternion backRotation;
-    public GameObject unit;
-    public GameObject minimap;
-    public bool fps;
-    public bool stuck;
-    public GameObject _hudTextUnit;
-    public GameObject select;
-    public GameObject _hudStatsUnit;
+    Vector3 backPosition;//sauvegarde de la position de la caméra de base
+    Quaternion backRotation;//sauvegarde de la rotation de la caméra de base
+    public GameObject unit;//unit a laquelle on est accroché
+    public GameObject minimap;//minimap a activer en mode fps
+    public bool fps;//gestion de la caméra FPS
+    public bool stuck;//gestion de la caméra libre
+    public GameObject _hudTextUnit;//Text panneau stat de l'unité
+    public GameObject select;//fait apparaitre l'unit sur la minimap en caméra fps
+    public GameObject _hudStatsUnit;//Panneau stat de l'unité
+
     public float speed = 20.0f;
     public bool ReverseDrag = true;
     public GameObject mainCam;
@@ -22,11 +23,14 @@ public class SubjectiveCamera : MonoBehaviour {
 
     public float speedH = 2.0f;
     public float speedV = 2.0f;
-    Collider terrain;
+
+    Collider terrain;//Collider du terrain pour limiter la caméra libre
+
     private float yaw = 0.0f;
     private float pitch = 0.0f;
-    private CursorLockMode back;
+    private CursorLockMode back;//permet de lock le curseur en caméra fps
 
+    //Quitter le mode 1ere personne
     public bool removeFPS()
     {
         if (fps)
@@ -45,6 +49,7 @@ public class SubjectiveCamera : MonoBehaviour {
         return false;
     }
 
+    //Quitter le mode Caméra Libre
     public bool removeStuck()
     {
         if (stuck)
@@ -63,6 +68,7 @@ public class SubjectiveCamera : MonoBehaviour {
         return false;
     }
 
+    //Rentrer en mode Caméra Libre
     public bool goStuck()
     {
         if (!stuck && !fps)
@@ -87,16 +93,7 @@ public class SubjectiveCamera : MonoBehaviour {
         terrain = GameObject.FindGameObjectWithTag("Ground").GetComponent<Collider>();
     }
 
-    GameObject GetClickedGameUnit()
-    {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity) && hit.collider.tag == "Unit" )
-            return hit.transform.gameObject;
-        else
-            return null;
-    }
-
+    //Permet de tester si la souris est en dehors de l'écran
     bool isMouseOffScreen()
     {
         return (Input.mousePosition.x <= 2 || Input.mousePosition.y <= 2 || Input.mousePosition.x >= Screen.width - 2 || Input.mousePosition.y >= Screen.height - 2);
@@ -106,6 +103,7 @@ public class SubjectiveCamera : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
+        //Vérifie si on a cliqué sur une unité afin de passer en caméra FPS
         _hudStatsUnit.SetActive(unit != null);
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -138,7 +136,7 @@ public class SubjectiveCamera : MonoBehaviour {
         }
 
 
-
+        //traitement de la caméra fps
         if (fps)
         {
             Camera.main.transform.position = new Vector3(unit.gameObject.transform.position.x, unit.gameObject.transform.position.y + 3, unit.gameObject.transform.position.z+1);
@@ -149,19 +147,19 @@ public class SubjectiveCamera : MonoBehaviour {
             transform.eulerAngles = new Vector3(+25.0f, yaw, 0.0f);
         }
 
+        //traitement de la caméra libre
         if (stuck)
         {
-            if (Input.GetAxis("Mouse ScrollWheel") < 0f) // backward
+            if (Input.GetAxis("Mouse ScrollWheel") < 0f) // arriere
             {
                 GameObject ground = GameObject.FindGameObjectWithTag("Ground");
-                //Vector3 dist = new Vector3(ground.transform.position.x - Camera.main.transform.position.x, ground.transform.position.y - Camera.main.transform.position.y + 10 * Input.GetAxis("Mouse ScrollWheel"), ground.transform.position.z - Camera.main.transform.position.z);
                 Vector3 dist = Camera.main.transform.position - ground.transform.position;
                 if (!(dist.magnitude > backPosition.y + backPosition.y/2))
                 {
                     Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y - 10 * Input.GetAxis("Mouse ScrollWheel"), Camera.main.transform.position.z);
                 }
             }
-            else if (Input.GetAxis("Mouse ScrollWheel") > 0f) // forward
+            else if (Input.GetAxis("Mouse ScrollWheel") > 0f) // avant
             {
                         float dist = Camera.main.transform.position.y - terrain.bounds.size.y;
                         if (!(dist < 1))
@@ -169,56 +167,6 @@ public class SubjectiveCamera : MonoBehaviour {
                             Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y - 10 * Input.GetAxis("Mouse ScrollWheel"), Camera.main.transform.position.z);
                         }
             }
-            /*  else
-              {
-                  if (Input.GetAxis("Mouse ScrollWheel") > 0)//scroll arriere
-                      Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y - 10 * Input.GetAxis("Mouse ScrollWheel"), Camera.main.transform.position.z);
-              }
-
-          /  Ray ray2 = Camera.main.ScreenPointToRay(new Vector3(Screen.height / 2, Screen.width / 2, 0));
-              RaycastHit[] hits2;
-              hits2 = Physics.RaycastAll(ray2);
-              foreach (RaycastHit hit in hits2)
-              {
-                  if (hit.collider.tag == "Ground")
-                  {
-                      dist = Camera.main.transform.position - hit.transform.position;
-                      if (!(dist.magnitude < 1))
-                      {
-                          Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y - 10 * Input.GetAxis("Mouse ScrollWheel"), Camera.main.transform.position.z);
-                      }
-                      else
-                      {
-                          if (Input.GetAxis("Mouse ScrollWheel") < 0)//scroll arriere
-                              Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y - 10 * Input.GetAxis("Mouse ScrollWheel"), Camera.main.transform.position.z);
-                      }
-
-                      break;
-                  }
-              }*/
-
-
-            /*   if (Input.mousePosition.x <= 2 && Camera.main.transform.position.x > backPosition.x - terrain.GetComponent<Renderer>().bounds.size.x /4)
-                   Camera.main.transform.Translate(new Vector3(-speed * Time.deltaTime, 0));
-               if (Input.mousePosition.y <= 2 && Camera.main.transform.position.z > backPosition.y - terrain.GetComponent<Renderer>().bounds.size.y/4)
-                   Camera.main.transform.Translate(new Vector3(0, -speed * Time.deltaTime));
-
-               if (Input.mousePosition.x >= Screen.width - 2 && Camera.main.transform.position.x < backPosition.x + terrain.GetComponent<Renderer>().bounds.size.x/4)
-                   Camera.main.transform.Translate(new Vector3(speed * Time.deltaTime, 0));
-               if (Input.mousePosition.y >= Screen.height - 2 && Camera.main.transform.position.z < backPosition.y + terrain.GetComponent<Renderer>().bounds.size.y/4)
-                   Camera.main.transform.Translate(new Vector3(0, speed * Time.deltaTime)); */
-
-            /*
-          if (Input.mousePosition.x <= 2 && Camera.main.transform.position.x > backPosition.x - terrain.GetComponent<Renderer>().bounds.size.x /4)
-               Camera.main.transform.Translate(new Vector3(-speed * Time.deltaTime, 0, 0));
-           if (Input.mousePosition.y <= 2 && Camera.main.transform.position.y > backPosition.y - terrain.GetComponent<Renderer>().bounds.size.y/4)
-               Camera.main.transform.Translate(new Vector3(0, -speed * Time.deltaTime,0));
-
-           if (Input.mousePosition.x >= Screen.width - 2 && Camera.main.transform.position.x < backPosition.x + terrain.GetComponent<Renderer>().bounds.size.x/4)
-               Camera.main.transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0));
-           if (Input.mousePosition.y >= Screen.height - 2 && Camera.main.transform.position.y < backPosition.z + terrain.GetComponent<Renderer>().bounds.size.y/4)
-               Camera.main.transform.Translate(new Vector3(0, speed * Time.deltaTime,0)); /* */
-
             
 
             if (Input.mousePosition.x <= 2 && Camera.main.transform.position.x > backPosition.x - terrain.bounds.size.x / 4)
@@ -231,8 +179,6 @@ public class SubjectiveCamera : MonoBehaviour {
             if (Input.mousePosition.y >= Screen.height - 2 && Camera.main.transform.position.z < backPosition.z + terrain.bounds.size.z / 4)
                 Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y , Camera.main.transform.position.z + speed * Time.deltaTime);
         }
-        //Camera.main.transform.rotation.Set(0, 0, 0, unit.transform.rotation.w);
-        //Camera.main.transform.position = (new Vector3(unit.gameObject.transform.position.x, unit.gameObject.transform.position.y + 35, unit.gameObject.transform.position.z));
     }
 
 }

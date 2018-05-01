@@ -12,9 +12,8 @@ public class XMLWarbotInterpreter : XMLInterpreter
     {
     }
 
-    /**
-        * Genere un fichier XML contenant uniquement le nom de l'equipe
-        */
+
+    //Genere un fichier XML contenant uniquement le nom de l'equipe
     public override void generateEmptyFile(string teamName, string path)
     {
         // Necessaire pour le fonctionnement des Nodes
@@ -33,14 +32,9 @@ public class XMLWarbotInterpreter : XMLInterpreter
         l_doc.Save(path + "/" + teamName + Constants.xmlExtension);
     }
 
-    /**
-        * Retourne une instruction correspondants au noeud actuellement traité
-        * Une instruction est une liste de condition, une liste d'action non terminale/messages , ainsi que l'action temrinale
-        */
+    //Recupere l'instruction du noeud actuellement traité
     public override Instruction whichInstruction(string unitName, XmlNode ins)
     {
-        //if (ins.Name.Equals(typeof(Task).Name))
-        //{//cas d'un If"
         List<string> l_conditions = new List<string>();
         List<MessageStruct> l_MsgStruct = new List<MessageStruct>();
         List<string> l_actions = new List<string>();
@@ -48,63 +42,26 @@ public class XMLWarbotInterpreter : XMLInterpreter
         foreach (XmlNode x in ins.ChildNodes)
         {
 
-            if (x.Name.Contains("parameters"))
+            if (x.Name.Contains("parameters"))//Partie condition de l'instruction
             {
                 foreach (XmlNode c in x)
                     l_conditions.Add(c.Name);
             }
 
-            if (x.Name.Contains("message"))
+            if (x.Name.Contains("message"))//Partie action non temrinale de l'instruction
             {
                 foreach (XmlNode c in x)
                 {
                     l_MsgStruct.Add(new MessageStruct(c.Name, c.FirstChild.Name));
-                   // Debug.Log("c" + c.Name + " " + c.FirstChild.Name);
                 }
             }
 
-            if (x.Name.Contains("actions"))
+            if (x.Name.Contains("actions"))//Partie action terminale de l'instruction
             {
                 foreach (XmlNode c in x)
                     l_actions.Add(c.Name);
             }
         }
-        Instruction t;
-
-        /*
-        if (l_conditions.Count > 0)
-        {
-            string[] cond = new string[l_conditions.Count];
-            for (int i = 0; i < l_conditions.Count; i++)
-            {
-                cond[i] = l_conditions[i];
-            }
-
-            if (l_MsgStruct.Count > 0)
-            {
-                MessageStruct[] msgstruct = new MessageStruct[l_MsgStruct.Count];
-                for (int i = 0; i < l_MsgStruct.Count; i++)
-                {
-                    msgstruct[i] = l_MsgStruct[i];
-                }
-
-                t = new Instruction(cond, msgstruct, l_actions[0]);
-                Debug.Log("A1");
-            }
-            else
-            {
-                t = new Instruction(cond, l_actions[0]);
-                Debug.Log("A2");
-            }
-        }
-        else
-        {
-            t = new Instruction(l_actions[0]);
-            Debug.Log("A3");
-        }
-
-        Debug.Log(" T : " + t.ToString());
-        return t;*/
         if (l_actions.Count == 0)
         {
             return new Instruction(l_conditions.ToArray(), l_MsgStruct.ToArray());
@@ -114,9 +71,7 @@ public class XMLWarbotInterpreter : XMLInterpreter
     }
 
 
-    /**
-        * Renvoie le nom du noeud correspondant a l'equipe recherché , un string vide sinon
-        */
+    //recupere le nom du fichier correspondant a l'equipe
     public override string whichFileName(string teamName, string path)
     {
         string l_fileName = "";
@@ -136,23 +91,19 @@ public class XMLWarbotInterpreter : XMLInterpreter
                     }
                 }
 
-                if (!l_fileName.Equals("")) // if we found the right file
-                    break; // stop looking for other files
+                if (!l_fileName.Equals("")) 
+                    break;
             }
         }
 
         return l_fileName;
     }
 
-    /**
-        * Vas chercher un fichier XML et remplit un comportement 
-        **/
+    //Creer un comportement a partir d'un fichier xml
     public override Dictionary<string, List<Instruction>> xmlToBehavior(string teamName, string path)
     {
-        // Try to find an already existing file with this team name
         string l_fileName = whichFileName(teamName, path);
 
-        // If no file has been found, create a new one with the given team name
         if (l_fileName.Equals(""))
             l_fileName = teamName.Replace(".wbt", "") + Constants.xmlExtension;
 
@@ -176,16 +127,11 @@ public class XMLWarbotInterpreter : XMLInterpreter
         return behavior;
     }
 
-    /**
-        * -> Moteur
-        * Sous fonction qui va chercher le comportement d'une unite
-        **/
+    //Recupere le comportement d'une unité dans un fichier xml d'une equipe
     public List<Instruction> xmlToUnitBehavior(string teamName, string path, string unitName)
     {
-        // Try to find an already existing file with this team name
         string l_fileName = whichFileName(teamName, path);
 
-        // If no file has been found, create a new one with the given team name
         if (l_fileName.Equals(""))
             l_fileName = teamName;
 
@@ -196,15 +142,12 @@ public class XMLWarbotInterpreter : XMLInterpreter
         using (FileStream stream = new FileStream(l_fileName, FileMode.Open))
         {
             Load(stream);
-            // select the node containing the unit name
             XmlNode l_unitBehavior = SelectSingleNode("//" + Constants.nodeUnit + "[@" + Constants.attributeName + "='" + unitName + "']");
             if (l_unitBehavior != null && l_unitBehavior.HasChildNodes)
             {
                 foreach (XmlNode ins in l_unitBehavior.ChildNodes)
                 {
-                    System.Console.WriteLine(ins.Name);
                     l_behavior.Add(whichInstruction(unitName, ins));
-                    //System.Console.WriteLine(l_behavior[l_behavior.Count - 1].ToString());
                 }
 
             }
@@ -214,15 +157,12 @@ public class XMLWarbotInterpreter : XMLInterpreter
         return l_behavior;
     }
 
-    /**
-        * Vas creer un fichier XML correspondant au comportement passé en parametre
-        **/
+       //Cree un fichier XML d'equipe a partir d'un comportement et d'un nom d'equipe
     public override void behaviorToXml(string teamName, string path, string unitName, List<Instruction> behavior)
     {
-        // Try to find an already existing file with this team name
         System.Console.WriteLine(path);
         string l_fileName = whichFileName(teamName, path);
-        // If no file has been found, create a new one with the given team name
+
         if (l_fileName.Equals(""))
         {
             l_fileName = teamName + Constants.xmlExtension;
@@ -230,16 +170,12 @@ public class XMLWarbotInterpreter : XMLInterpreter
         }
 
         l_fileName = whichFileName(teamName, path);
-        // Load the file
-        //Load(path + "/" + fileName);
         Load(l_fileName);
 
-        // Get all nodes named "unit" if null , create it
         XmlNode l_node = SelectSingleNode("//" + Constants.nodeUnit + "[@" + Constants.attributeName + "='" + unitName + "']");
         if (l_node == null)
             l_node = CreateElement(Constants.nodeUnit);
 
-        //erase the old behavior to add the new one
         l_node.RemoveAll();
 
         XmlAttribute l_name = CreateAttribute(Constants.attributeName);
@@ -249,17 +185,13 @@ public class XMLWarbotInterpreter : XMLInterpreter
         foreach (Instruction i in behavior)
             l_node.AppendChild(ImportNode(i.xmlStructure(), true));
 
-        //Debug.Log(node.OuterXml);
         XmlNode l_embbed = FirstChild;
         l_embbed.AppendChild(l_node);
 
-        //Save(path + "/" + fileName);
         Save(l_fileName);
     }
 
-    /**
-        * Recupere la liste des equipes pour l'editeur
-        **/
+    //Recupere la liste des equipes dans le dossier
     public override List<string> allTeamsInXmlFiles(string path)
     {
         List<string> l_teams = new List<string>();

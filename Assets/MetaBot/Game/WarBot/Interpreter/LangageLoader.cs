@@ -5,21 +5,20 @@ using UnityEngine.UI;
 using System.IO;
 
 public class LangageLoader : MonoBehaviour {
-    public List<Langage> langues;
-    public GameObject conteneur;
-    public string language;
+    public List<Langage> langues;//langues avec leur traduction
+    public GameObject conteneur;//objet auquel est rattaché le script
+    public string language;//langue actuelle
 
+    //Verifie si le fichier existe
     public bool checkFile(string Language)
     {
         if (!Directory.Exists(Application.streamingAssetsPath + Constants.langDirectory))
         {
             Directory.CreateDirectory(Application.streamingAssetsPath + Constants.langDirectory);
-           print("Dossier existe pas");
         }
 
         foreach (string file in Directory.GetFiles(Application.dataPath + "/StreamingAssets/"+Constants.langDirectory))
         {
-         //  print("File : " + file);
             if (file.Contains(Language))
             {
                 return true;
@@ -28,6 +27,7 @@ public class LangageLoader : MonoBehaviour {
         return false;
     }
 
+    //applique la traduction a l'objet rattaché
     public void applyTradToscene(string Language)
     {
             Langage l = langues.Find(i => i.langue.Equals(Language));
@@ -38,6 +38,8 @@ public class LangageLoader : MonoBehaviour {
                 conteneur.gameObject.GetComponent<Text>().text = t.valeur;
             }
     }
+
+    //permet de changer la langue actuelle du programme
     public void changeLanguage(string s)
     {
         language = s;
@@ -45,6 +47,7 @@ public class LangageLoader : MonoBehaviour {
         langues.Add(readFile(s));
     }
 
+    //recupere les traductions de la langue actuelle
     public Langage readFile(string Language)
     {
         Langage l_lang = new Langage();
@@ -55,8 +58,6 @@ public class LangageLoader : MonoBehaviour {
             return new Langage();
             
         string[] lines = System.IO.File.ReadAllLines(Application.streamingAssetsPath + Constants.langDirectory + Language + ".txt");
-
-        //Debug.Log(Constants.langDirectory + Language + ".txt");
 
         foreach (string line in lines)
         {

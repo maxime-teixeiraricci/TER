@@ -4,11 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Traducteur : MonoBehaviour {
-    string basictext;
-    public string langue;
-    public string textOriginal;
-    public string traduction;
-    public GameObject component;
+    public string langue;//langue actuelle
+    public string textOriginal;//texte a traduire
+    public string traduction;//traduction recuperee
+    public GameObject component;//Objet a traduire
 
     private GameObject gameManager;
 
@@ -18,6 +17,7 @@ public class Traducteur : MonoBehaviour {
         Traduction();
     }
 
+    //Recupere la nouvelle traduction
     public void Traduction()
     {
         foreach (Langage l in gameManager.GetComponent<LangageLoader>().langues)
@@ -43,13 +43,13 @@ public class Traducteur : MonoBehaviour {
         gameManager = GameObject.Find("GameManager");
         langue = gameManager.GetComponent<LangageLoader>().language;
         textOriginal = component.gameObject.GetComponent<Text>().text;
-        basictext = textOriginal;
         Traduction();
         component.gameObject.GetComponent<Text>().text = traduction;
     }
 	
 	// Update is called once per frame
 	void Update () {
+        //Si la langue est changée en runtime, mettre a jour le texte
         if (gameManager.GetComponent<LangageLoader>().language != langue)
         {
             langue = gameManager.GetComponent<LangageLoader>().language;
