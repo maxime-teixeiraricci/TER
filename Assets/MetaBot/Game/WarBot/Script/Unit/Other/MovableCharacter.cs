@@ -29,16 +29,17 @@ public class MovableCharacter : MonoBehaviour
 
     public void Update()
     {
-        if (GetComponent<Brain>().turnEnd )
+       /* if (GetComponent<Brain>().turnEnd )
         {
             _isblocked = isBlocked();
-        }
+        }*/
     }
     
 
     public void Move()
     {
-        if (!GetComponent<Brain>().turnEnd && !isBlocked())
+        _isblocked = isBlocked();
+        if (!isBlocked())
         {
             vectMov = Utility.vectorFromAngle(GetComponent<Stats>()._heading);
             nextposition = transform.position + vectMov.normalized * speed *0.02f;// * Time.deltaTime;

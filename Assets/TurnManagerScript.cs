@@ -2,36 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TurnManagerScript : MonoBehaviour {
-
+public class TurnManagerScript : MonoBehaviour
+{
+    public float _timeTick;
+    public float _ticksPerSeconds;
 	// Use this for initialization
 	void Start () {
 		
 	}
 	
 	// Update is called once per frame
-	void Update ()
+	void FixedUpdate ()
     {
-        bool nextTurn = true;
-
-		foreach (GameObject unit in GameObject.FindGameObjectsWithTag("Unit"))
+        _timeTick += 0.02F * Time.timeScale;
+        _ticksPerSeconds = (1.0f / 0.02F) * Time.timeScale;
+        if (_timeTick >= 0.04f)
         {
-            if (unit.GetComponent<Brain>())
-            {
-                if (!unit.GetComponent<Brain>().turnEnd) { nextTurn = false; }
-            }
-        }
-
-        if (nextTurn)
-        {
+            _timeTick -= 0.04f;
             foreach (GameObject unit in GameObject.FindGameObjectsWithTag("Unit"))
             {
                 if (unit.GetComponent<Brain>())
                 {
-                    unit.GetComponent<Brain>().turnEnd = false; 
+                    unit.GetComponent<Brain>().UnitTurn();
                 }
             }
         }
+        
 
 	}
 

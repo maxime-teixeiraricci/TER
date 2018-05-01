@@ -20,8 +20,6 @@ public class Brain : MonoBehaviour
     private string _currentAction;
     public MessageManager _messageManager;
     public int nbInstruction;
-    public bool turnEnd;
-    public bool debugMessage;
 
     
     void Start()
@@ -51,14 +49,13 @@ public class Brain : MonoBehaviour
         //_messageManager = new MessageManager(this.gameObject);
         _messageManager = GetComponent<MessageManager>();
     }
-    void FixedUpdate()
+
+    public void UnitTurn()
     {
         _messageManager.UpdateMessage();
 
         nbInstruction = _instructions.Count;
-        if (!turnEnd)
-        {
-            if (_instructions != null && _componentActions != null && _componentActions._actions.Count != 0)
+        if (_instructions != null && _componentActions != null && _componentActions._actions.Count != 0)
             {
                 string _action = NextAction();
                 if (_componentActions._actions.ContainsKey(_action))
@@ -69,8 +66,6 @@ public class Brain : MonoBehaviour
                 {
                     _componentActions._actions["ACTION_IDLE"]();
                 }
-                turnEnd = true;
-            }
         }
     }
 

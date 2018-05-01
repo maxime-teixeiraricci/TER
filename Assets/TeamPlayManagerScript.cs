@@ -18,14 +18,10 @@ public class TeamPlayManagerScript : MonoBehaviour
         
     }
 	
-	// Update is called once per frame
-	void Update ()
-    {
-		
-	}
 
     public void UpdateUnit()
     {
+        id = 1;
         for (int i = 0; i < transform.childCount; i++)
         {
             GameObject child = transform.GetChild(i).gameObject;
@@ -34,7 +30,7 @@ public class TeamPlayManagerScript : MonoBehaviour
             statsChild._teamIndex = teamIndex;
             child.GetComponent<ColorChange>().ChangeColor();
             child.GetComponent<Brain>().LoadBehaviour();
-            child.name = "[" + teamIndex + "]" + statsChild._unitType + " #" + id;
+            child.name = "[" + (teamIndex+1) + "]" + statsChild._unitType + " #" + id;
             id++;
 
         }

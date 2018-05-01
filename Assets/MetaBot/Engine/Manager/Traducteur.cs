@@ -41,6 +41,8 @@ public class Traducteur : MonoBehaviour {
     // Use this for initialization
     void Start () {
         gameManager = GameObject.Find("GameManager");
+        if (!gameManager.GetComponent<LangageLoader>()) return;
+
         langue = gameManager.GetComponent<LangageLoader>().language;
         if (component != null)
             textOriginal = component.gameObject.GetComponent<Text>().text;
