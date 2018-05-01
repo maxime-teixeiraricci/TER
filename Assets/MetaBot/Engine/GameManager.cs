@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour
     public void SetSetting()
     {
         
-        _gameSettings = GameObject.Find("GameSettingHUD").GetComponent<GameSettingManager>().GetSettings(); ;
+        _gameSettings = GameObject.Find("GameSettingHUD").GetComponent<GameSettingManager>().GetSettings();
     }
 }
 
