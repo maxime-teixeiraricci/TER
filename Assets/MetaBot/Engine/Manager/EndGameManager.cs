@@ -13,8 +13,13 @@ public class EndGameManager : MonoBehaviour {
     public int winner;
     public string winnername;
     public GameObject timer;
+
     public Text timeLimit;
     public Text timedisplay;
+
+    public Text ressourceGoal;
+    public Text ressourceDisplay;
+
     Animator anim;
     public GameObject textWinnerTeam;
     public int ressourceLimit;
@@ -30,7 +35,21 @@ public class EndGameManager : MonoBehaviour {
         _gamename = GameObject.FindObjectOfType<GameManager>()._gameName;
         written = false;
         winnername = "";
-	}
+
+        if (_gamename.Equals("RessourceRace"))
+        {
+            int mins = (int)(timeLimitSeconds / 60);
+            int secs = (int)(timeLimitSeconds % 60);
+            timeLimit.text = ("" + mins).PadLeft(2, '0') + ":" + ("" + secs).PadLeft(2, '0');
+            timedisplay.transform.localScale = new Vector3(1, 1, 1);
+            ressourceDisplay.transform.localScale = new Vector3(1, 1, 1);
+            ressourceGoal.text = ressourceLimit + "";
+        }
+        else
+        {
+            timeLimit.text = "";
+        }
+    }
 
     public void InitEnds()
     {
@@ -149,7 +168,6 @@ public class EndGameManager : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-
         if (_gamename != GameObject.FindObjectOfType<GameManager>()._gameName)
         {
             _gamename = GameObject.FindObjectOfType<GameManager>()._gameName;
@@ -159,10 +177,13 @@ public class EndGameManager : MonoBehaviour {
                 int mins = (int)(timeLimitSeconds / 60);
                 int secs = (int)(timeLimitSeconds % 60);
                 timeLimit.text = ("" + mins).PadLeft(2, '0') + ":" + ("" + secs).PadLeft(2, '0');
+                timedisplay.transform.localScale = new Vector3(1, 1, 1);
+                ressourceDisplay.transform.localScale = new Vector3(1, 1, 1);
+                ressourceGoal.text = ressourceLimit + "";
             }
             else
             {
-                timeLimit.text = "N/A";
+                timeLimit.text = "";
             }
         }
 
