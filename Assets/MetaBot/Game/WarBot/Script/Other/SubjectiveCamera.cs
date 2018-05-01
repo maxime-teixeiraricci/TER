@@ -116,7 +116,7 @@ public class SubjectiveCamera : MonoBehaviour {
                 _hudTextUnit.transform.position = Camera.main.WorldToScreenPoint(hit.transform.position);
                 _hudTextUnit.GetComponent<Text>().text = hit.transform.name;
 
-                if (Input.GetMouseButtonDown(0) && !stuck)
+                if (Input.GetMouseButtonDown(0))
                 {
                         Cursor.lockState = CursorLockMode.Confined;
                         fps = true;

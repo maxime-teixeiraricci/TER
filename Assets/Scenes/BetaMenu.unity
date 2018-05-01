@@ -3679,6 +3679,11 @@ Prefab:
       propertyPath: _gameName
       value: TestBot
       objectReference: {fileID: 0}
+    - target: {fileID: 114529714125157390, guid: f803624d2c783d54a99cd2d93a0527e0,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f803624d2c783d54a99cd2d93a0527e0, type: 2}
   m_IsPrefabParent: 0

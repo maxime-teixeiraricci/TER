@@ -68,7 +68,7 @@ public class SettingsButton : MonoBehaviour {
         window.SetActive(false);
         saveValSlider();
         changeLanguage.ChangementLangue(language);
-        changeGameMode();
+       // changeGameMode();
     }
 
     public void changeGameMode()
@@ -122,7 +122,7 @@ public class SettingsButton : MonoBehaviour {
         oldValueLight = warLight.value;
         oldValueHeavy = heavy.value;
         nameMap = dropdown.captionText.text;
-        gamemode = gamemodeDrop.captionText.text;
+       // gamemode = gamemodeDrop.captionText.text;
     }
 
     void cancelChanges()
@@ -138,14 +138,14 @@ public class SettingsButton : MonoBehaviour {
         {
             dropdown.captionText.text = nameMap;
         }
-        if (gamemode == null)
+     /*   if (gamemode == null)
         {
             gamemode = "TestBot";
         }
         else
         {
             gamemodeDrop.captionText.text = gamemode;
-        }
+        }*/
     }
     
     void saveValSlider()
