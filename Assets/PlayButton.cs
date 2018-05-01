@@ -13,25 +13,13 @@ public class PlayButton : MonoBehaviour
     public GameObject _numberplayerDropDown;
     public Color[] playerColor;
     public int nbPlayers;
-    public Dropdown mapChoice;
-
-    // Use this for initialization
-    void Start () {
-        
-    }
-	
-	// Update is called once per frame
-	void Update ()
-    {
-		
-	}
 
     public void StartGame()
     {
         
-        string s = mapChoice.captionText.text;
         nbPlayers = int.Parse(_numberplayerDropDown.GetComponent<Dropdown>().captionText.text);
         XMLWarbotInterpreter interpreter = new XMLWarbotInterpreter();
+
         GameObject gameManager = GameObject.Find("GameManager");
         string gamePath = Application.streamingAssetsPath + "/teams/" + gameManager.GetComponent<GameManager>()._gameName + "/";
         
@@ -45,30 +33,12 @@ public class PlayButton : MonoBehaviour
             team._unitsBehaviour = interpreter.xmlToBehavior(gamePath + team._name, gamePath);
             gameManager.GetComponent<TeamManager>()._teams.Add(team);
         }
-        
-        if (s == "Standard")
-        {
-            StartCoroutine(AsynchronousLoad(1));
-            //SceneManager.LoadScene(1);
-        }
-        else if(s == "Test")
-        {
-            Debug.Log("BEfore load");
-            StartCoroutine(AsynchronousLoad(3));
-            Debug.Log("After load");
-            //SceneManager.LoadScene(3);
-        }
-        else if (s == "Plaine")
-        {
-            StartCoroutine(AsynchronousLoad(4));
-            //SceneManager.LoadScene(4);
-        }
-        else if (s == "Desolate")
-        {
-            StartCoroutine(AsynchronousLoad(5));
-            //SceneManager.LoadScene(4);
-        }
-        //SceneManager.LoadScene(id);
+
+        GameManager setting = gameManager.GetComponent<GameManager>();
+        setting.SetSetting();
+
+
+        StartCoroutine(AsynchronousLoad(setting._gameSettings._indexSceneMap));
     }
 
     IEnumerator AsynchronousLoad(int scene)

@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     public int _minNumberOfTeam;
     public int _maxNumberOfTeam;
 
+    public GameSettings _gameSettings;
+    public GameSettingManager _gameSettingObject;
+
     [Header("Units")]
     public List<GameObject> _listUnitGameObject;
 
@@ -39,28 +42,6 @@ public class GameManager : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-
-    public void Start()
-    {
-        /*if (!Directory.Exists("/teams/"))
-        {
-            //if it doesn't, create it
-            Directory.CreateDirectory("/teams/");
-            GetComponent<TestUnitBehaviour>().CreateDefaultBehaviour();
-
-        }
-        gamepath = "/teams/" + _gameName + "/";
-        if (!Directory.Exists(gamepath))
-        {
-            //if it doesn't, create it
-            Directory.CreateDirectory(gamepath);
-
-        }*/
-    } 
-
-
-
-
 
 
     public void SaveGameFile()
@@ -112,4 +93,18 @@ public class GameManager : MonoBehaviour
         print("Done !");
     }
 
+    public void SetSetting()
+    {
+        
+        _gameSettings = GameObject.Find("GameSettingHUD").GetComponent<GameSettingManager>().GetSettings(); ;
+    }
+}
+
+[System.Serializable()]
+public struct GameSettings
+{
+    public int _indexSceneMap;
+    public int _indexListMap;
+    public bool _friendlyFire;
+    public Dictionary<string, int> _initStartUnit;
 }
