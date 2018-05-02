@@ -107,6 +107,7 @@
 	Explorer=Explorateur
 	Ressource limit=Limite de ressources
 	Time(s)=Temps(s)
+	Êtes-vous sûr de vouloir quitter le jeu ?=Êtes-vous sûr de vouloir quitter le jeu ?
 # Editeur 
 	Start=Debut
 	PropriÃ©tÃ©s=PropriÃ©tÃ©s

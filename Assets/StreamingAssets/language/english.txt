@@ -106,6 +106,7 @@
 	Explorer=Explorer
 	Ressource limit=Ressource limit
 	Time(s)=Time(s)
+	Êtes-vous sûr de vouloir quitter le jeu ?=Are you sure you want to quit?
 # Editeur 
 	Start=Start
 	Propriétés=Properties

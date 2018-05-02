@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.1273174, g: 0.13414761, b: 0.12107885, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -14847,7 +14847,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 739205021}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.19130202
+  m_Size: 0.19130199
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -15756,6 +15756,7 @@ GameObject:
   - component: {fileID: 1886471862}
   - component: {fileID: 1886471861}
   - component: {fileID: 1886471860}
+  - component: {fileID: 1886471863}
   m_Layer: 5
   m_Name: LeaveGame
   m_TagString: Untagged
@@ -15830,6 +15831,21 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1886471858}
+--- !u!114 &1886471863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1886471858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 517c11061bc1a814784227066d426111, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  langue: 
+  textOriginal: 
+  traduction: 
+  component: {fileID: 178707357}
 --- !u!1 &1887193023
 GameObject:
   m_ObjectHideFlags: 0
