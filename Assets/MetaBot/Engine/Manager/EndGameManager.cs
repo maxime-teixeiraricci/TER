@@ -133,9 +133,10 @@ public class EndGameManager : MonoBehaviour {
                     cpt++;
                 }
                 p.WriteStats(teams, teams[winner], size);
-
+                print("apres write stats ");
                 if (teams.Length == 2  && !equals && scorewinner != -1)
                 {
+                    print("ComputeElo ");
                     p.ComputeELO(teams, teams[winner]);
                 }
                 written = true;
