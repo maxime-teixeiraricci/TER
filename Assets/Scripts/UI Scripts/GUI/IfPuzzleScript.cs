@@ -170,12 +170,12 @@ public class IfPuzzleScript : MonoBehaviour
 
         GameObject condObjectCurrent = puzzleCondObject;
         GameObject actionObjectCurrent = puzzleActionObject;
-        while (condObjectCurrent != null)
+        while (condObjectCurrent != null && condObjectCurrent.activeSelf == true)
         {
             percepts.Add(condObjectCurrent.GetComponent<PuzzleScript>()._value);
             condObjectCurrent = condObjectCurrent.GetComponent<PuzzleScript>().nextPuzzle;
         }
-        while (actionObjectCurrent != null)
+        while (actionObjectCurrent != null && actionObjectCurrent.activeSelf == true)
         {
             if (actionObjectCurrent.GetComponent<PuzzleScript>().type == PuzzleScript.Type.MESSAGE)
             {
