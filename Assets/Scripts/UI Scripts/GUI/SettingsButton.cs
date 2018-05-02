@@ -77,11 +77,6 @@ public class SettingsButton : MonoBehaviour {
         changeGameMode();
     }
 
-    void whichMode()
-    {
-        
-    }
-
     public void changeGameMode()
     {
         GameObject.Find("GameManager").GetComponent<GameManager>().wincondition = gamemodeDrop.captionText.text;
