@@ -19,6 +19,8 @@ public class EndGameManager : MonoBehaviour {
 
     public Text ressourceGoal;
     public Text ressourceDisplay;
+    public int scorewinner;
+    public GameObject Score;
 
     Animator anim;
     public GameObject textWinnerTeam;
@@ -88,9 +90,8 @@ public class EndGameManager : MonoBehaviour {
 
         _ends["RessourceRace"] = delegate ()
         {
-            print("DEBUG END RESSOURCERACE apres trad = traduction");
             textWinnerTeam.GetComponent<Text>().text = "Winner " + " : " + winnername;
-            print("DEBUG END RESSOURCERACE apres changement texte");
+            Score.GetComponent<Text>().text = "Score : " + scorewinner;
             print("after Winnerteam");
             GameObject[] units = GameObject.FindGameObjectsWithTag("Unit");
             foreach (GameObject u in units)
@@ -160,7 +161,10 @@ public class EndGameManager : MonoBehaviour {
             }
 
             if (timer.GetComponent<TimerScriptHUD>().timePassed > timeLimitSeconds || nbRessources >= ressourceLimit)
+            {
                 print("Dans IF Test Reussi");
+                scorewinner = nbRessources;
+            }
 
             return (timer.GetComponent<TimerScriptHUD>().timePassed > timeLimitSeconds || nbRessources >= ressourceLimit);
         };

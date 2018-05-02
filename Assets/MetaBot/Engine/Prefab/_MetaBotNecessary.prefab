@@ -5955,6 +5955,8 @@ MonoBehaviour:
   timedisplay: {fileID: 0}
   ressourceGoal: {fileID: 0}
   ressourceDisplay: {fileID: 0}
+  scorewinner: 0
+  Score: {fileID: 0}
   textWinnerTeam: {fileID: 1555427846500438}
   ressourceLimit: 0
   timeLimitSeconds: 0
@@ -6381,6 +6383,8 @@ MonoBehaviour:
   timedisplay: {fileID: 0}
   ressourceGoal: {fileID: 0}
   ressourceDisplay: {fileID: 0}
+  scorewinner: 0
+  Score: {fileID: 0}
   textWinnerTeam: {fileID: 0}
   ressourceLimit: 0
   timeLimitSeconds: 0
