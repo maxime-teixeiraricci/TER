@@ -86,6 +86,11 @@ public class EndGameManager : MonoBehaviour {
                     cpt++;
                 }
                 p.WriteStats(teams, teams[winner], size);
+                if (teams.Length == 2)
+                {
+                    p.ComputeELO(teams, teams[winner]);
+                }
+
                 written = true;
             }
         };
@@ -116,7 +121,7 @@ public class EndGameManager : MonoBehaviour {
             print("DEBUG END RESSOURCERACE apres destrcution unités");
             anim.SetTrigger("GameOver");
             print("after TextGO");
-            if (!written)
+            if (!written && !equals && scorewinner != -1)
             {
                 TeamsPerformance p = new TeamsPerformance();
                 int size = GameObject.FindObjectOfType<GameManager>().GetComponent<TeamManager>()._teams.Count;
@@ -128,6 +133,11 @@ public class EndGameManager : MonoBehaviour {
                     cpt++;
                 }
                 p.WriteStats(teams, teams[winner], size);
+
+                if (teams.Length == 2  && !equals && scorewinner != -1)
+                {
+                    p.ComputeELO(teams, teams[winner]);
+                }
                 written = true;
             }
         };

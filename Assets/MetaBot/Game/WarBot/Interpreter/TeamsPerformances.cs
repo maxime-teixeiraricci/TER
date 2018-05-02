@@ -117,7 +117,7 @@ public class TeamsPerformance {
         }
     }
     
-    public static void ComputeELO (string[] Teams, string Winner)
+    public void ComputeELO (string[] Teams, string Winner)
     {
         double[] ELOs = new double[2];
         double ProbaWinT1;
@@ -125,15 +125,26 @@ public class TeamsPerformance {
         double CoeffT1;
         double CoeffT2;
         int[] NewELOs = new int[2];
-        
-            
+
+        if (!System.IO.File.Exists(Application.streamingAssetsPath + "/ELO/" + Teams[0] + ".elo"))
+        {
+            System.IO.File.Create(Application.streamingAssetsPath + "/ELO/" + Teams[0] + ".elo");
+            System.IO.File.WriteAllLines(Application.streamingAssetsPath + "/ELO/" + Teams[0] + ".elo", new string[] { 2500 + "" });
+        }
+
+        if (!System.IO.File.Exists(Application.streamingAssetsPath + "/ELO/" + Teams[1] + ".elo"))
+        {
+            System.IO.File.Create(Application.streamingAssetsPath + "/ELO/" + Teams[1] + ".elo");
+            System.IO.File.WriteAllLines(Application.streamingAssetsPath + "/ELO/" + Teams[1] + ".elo", new string[] { 2500 + "" });
+        }
+
         string[] CurELOT1 = System.IO.File.ReadAllLines(Application.streamingAssetsPath + "/ELO/" + Teams[0] + ".elo");
         string[] CurELOT2 = System.IO.File.ReadAllLines(Application.streamingAssetsPath + "/ELO/" + Teams[1] + ".elo");
          
         ELOs[0] = double.Parse(CurELOT1[0]);
         ELOs[1] = double.Parse(CurELOT2[0]);
         
-        ProbaWinT1 = 1 / (1 + Mathf.Pow(10, (float)(ELOs[1] - ELOs[0]) / 400));
+        ProbaWinT1 = 1 / (1 + System.Math.Pow(10, (ELOs[1] - ELOs[0]) / 400));
         ProbaWinT2 = 1 - ProbaWinT1;
             
         if      (ELOs[0] <  1000)                    CoeffT1 = 80;
