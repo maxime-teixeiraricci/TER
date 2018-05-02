@@ -44,12 +44,21 @@ public class CreateTeam : MonoBehaviour
         for (int i = 0; i < listInt.Count; i++)
         {
             int result = listInt[i];
-            if ((result > 90 && result < 97) || (result < 65 && result > 57) || result > 122)
+            if ((result > 90 && result < 97) || (result < 65 && result > 57) || (result < 48 && result > 32) || result > 122)
             {
+                
                 errorText.SetActive(true);
                 Text error = errorText.GetComponentInChildren<Text>();
                 error.text = "Nom invalide ! (a-zA-Z0-9)";
                 return;
+            }
+            if (listInt.Count == 1 && result == 32)
+            {
+                errorText.SetActive(true);
+                Text errorSpace = errorText.GetComponentInChildren<Text>();
+                errorSpace.text = "Nom invalide ! (a-zA-Z0-9)";
+                return;
+
             }
         }
 
