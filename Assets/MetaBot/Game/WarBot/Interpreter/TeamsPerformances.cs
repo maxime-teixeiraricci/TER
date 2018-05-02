@@ -133,7 +133,7 @@ public class TeamsPerformance {
         ELOs[0] = double.Parse(CurELOT1[0]);
         ELOs[1] = double.Parse(CurELOT2[0]);
         
-        ProbaWinT1 = 1 / (1 + Math.Pow(10, (ELOs[1] - ELOs[0]) / 400));
+        ProbaWinT1 = 1 / (1 + Mathf.Pow(10, (float)(ELOs[1] - ELOs[0]) / 400));
         ProbaWinT2 = 1 - ProbaWinT1;
             
         if      (ELOs[0] <  1000)                    CoeffT1 = 80;
@@ -155,8 +155,8 @@ public class TeamsPerformance {
             NewELOs[1] = (int) (ELOs[1] + CoeffT2 * (1 - ProbaWinT2));
         }
                      
-        System.IO.File.WriteAllLines(Application.streamingAssetsPath + "/ELO/" + Teams[0] + ".elo", NewELOs[0]);
-        System.IO.File.WriteAllLines(Application.streamingAssetsPath + "/ELO/" + Teams[1] + ".elo", NewELOs[1]);
+        System.IO.File.WriteAllLines(Application.streamingAssetsPath + "/ELO/" + Teams[0] + ".elo", new string[] { NewELOs[0]+"" });
+        System.IO.File.WriteAllLines(Application.streamingAssetsPath + "/ELO/" + Teams[1] + ".elo", new string[] { NewELOs[1] + "" });
     }
     
     public KeyValuePair<string,List<Matchup>>  getStats(string team)
