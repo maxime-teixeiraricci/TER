@@ -27,6 +27,7 @@ public class EndGameManager : MonoBehaviour {
     public int ressourceLimit;
     public float timeLimitSeconds;
     public bool written;
+    public bool equals;
 
     // Use this for initialization
     void Start () {
@@ -34,6 +35,7 @@ public class EndGameManager : MonoBehaviour {
         InitTests();
         InitEnds();
         winner = -1;
+        equals = false;
         _gamename = GameObject.FindObjectOfType<GameManager>()._gameName;
         written = false;
         winnername = "";
@@ -93,13 +95,13 @@ public class EndGameManager : MonoBehaviour {
             string trad = "Winner";
             Traducteur t = new Traducteur();
 
-            if (scorewinner == -1)
+            if (equals || scorewinner == -1)
                 trad = "Egalite";
 
             t.langue = GameObject.FindObjectOfType<GameManager>().GetComponent<LangageLoader>().language;
             t.setTextOriginal(trad);
             trad = t.traduction;
-            if (scorewinner == -1)
+            if (equals || scorewinner == -1)
                 textWinnerTeam.GetComponent<Text>().text = trad +" ! ";
             else
                 textWinnerTeam.GetComponent<Text>().text = trad + " : " + winnername;
@@ -163,12 +165,18 @@ public class EndGameManager : MonoBehaviour {
             {
                 if (u.GetComponent<Stats>()._unitType.Equals("Base"))
                 {
+
+                    if (u.GetComponent<Inventory>()._actualSize == nbRessources && !GameObject.Find("GameManager").GetComponent<TeamManager>()._teams[u.GetComponent<Stats>()._teamIndex]._name.Equals(winnername))
+                    {
+                        equals = true;
+                    }
                     if (u.GetComponent<Inventory>()._actualSize > nbRessources)
                     {
                         print("WinnerUpdated");
-                        nbRessources = u.GetComponent<Inventory>()._actualSize;
                         winnername = GameObject.Find("GameManager").GetComponent<TeamManager>()._teams[u.GetComponent<Stats>()._teamIndex]._name;
                         winner = u.GetComponent<Stats>()._teamIndex;
+                        nbRessources = u.GetComponent<Inventory>()._actualSize;
+                        equals = false;
                     }
                 }
             }
