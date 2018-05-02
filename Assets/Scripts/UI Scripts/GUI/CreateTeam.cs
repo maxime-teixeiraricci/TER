@@ -99,6 +99,7 @@ public class CreateTeam : MonoBehaviour
         teamDropDown.AddOptions(dropOption);
         XMLWarbotInterpreter interpreter = new XMLWarbotInterpreter();
         interpreter.generateEmptyFile(teamName, path);
+        dropOption.Clear();
         errorText.SetActive(false);
         window.SetActive(false);
     }
