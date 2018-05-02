@@ -62,6 +62,14 @@ public class CreateTeam : MonoBehaviour
             }
         }
 
+        if(listInt.Count == 0)
+        {
+            errorText.SetActive(true);
+            Text errorSpace = errorText.GetComponentInChildren<Text>();
+            errorSpace.text = "Nom invalide ! (a-zA-Z0-9)";
+            return;
+        }
+
         foreach (string file in Directory.GetFiles(path))
         {
             string res = file.Replace(path, "");
