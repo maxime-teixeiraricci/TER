@@ -24,9 +24,12 @@ public class SettingsButton : MonoBehaviour {
     public InputField timeLimit;
     public InputField ressourceLimit;
 
+
     public Dropdown dropdown;
     public Dropdown gamemodeDrop;
     string gamemode;
+
+    GameObject ressourceGameMode;
 
     int time;
     int ressource;
@@ -35,9 +38,22 @@ public class SettingsButton : MonoBehaviour {
         changeLanguage = GetComponent<ChangeLanguage>();
         gm = GameObject.Find("GameManager").GetComponent<AudioSource>();
         language = GameObject.Find("GameManager").GetComponent<LangageLoader>().language;
+        ressourceGameMode = GameObject.Find("RessourceRaceControl");
     }
 
-  
+
+
+    void Update()
+    {
+        if (gamemodeDrop.captionText.text == "RessourceRace" && ressourceGameMode.activeSelf == false)
+        {
+            ressourceGameMode.SetActive(true);
+        }
+        else if(gamemodeDrop.captionText.text != "RessourceRace" && ressourceGameMode.activeSelf == true)
+        {
+            ressourceGameMode.SetActive(false);
+        }
+    }
 
     public void DisplaySettings()
     {
@@ -60,12 +76,15 @@ public class SettingsButton : MonoBehaviour {
         changeGameMode();
     }
 
+    void whichMode()
+    {
+        
+    }
+
     public void changeGameMode()
     {
         GameObject.Find("GameManager").GetComponent<GameManager>()._gameName = gamemodeDrop.captionText.text;
-        print("AA");
         ressource = int.Parse(ressourceLimit.text);
-        print("AAAAA");
         time = int.Parse(timeLimit.text);
         GameObject.Find("GameManager").GetComponent<GameManager>().ressourceLimit = ressource;
         GameObject.Find("GameManager").GetComponent<GameManager>().timeLimit = time;
@@ -86,6 +105,8 @@ public class SettingsButton : MonoBehaviour {
         Debug.Log("VOLUME = " + volume);
         gm.volume = volume;
     }
+
+   
 
     void setButtonActive()
     {
