@@ -19,7 +19,7 @@ public class DeleteTeam : MonoBehaviour
     public void DisplayWindow()
     {
         Traducteur t = new Traducteur();
-        t.langue = GameObject.FindObjectOfType<GameManager>().GetComponent<LangageLoader>().language;
+        t.langue = GameObject.Find("GameManager").GetComponent<LangageLoader>().language;
         t.setTextOriginal(initialText);
         initialText = t.traduction;
         Window.SetActive(true);

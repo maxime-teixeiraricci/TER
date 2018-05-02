@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
@@ -32,8 +33,7 @@ public class CreateTeam : MonoBehaviour
     {
         string teamName = mainInputField.text;
         string path = Application.streamingAssetsPath + "/teams/TestBot/";
-        string pathStats = Application.streamingAssetsPath + "/Stats/";
-        //Application.dataPath + "/StreamingAssets/teams/TestBot/";
+
 
         List<int> listInt = new List<int>();
         for (int i = 0; i < teamName.Length; i++)
@@ -64,14 +64,24 @@ public class CreateTeam : MonoBehaviour
                 return;
             }
         }
+        /*
+        if (File.Exists(Application.streamingAssetsPath + "/ELO/" + teamName + ".elo"))
+        {
+            File.Create(Application.streamingAssetsPath + "/ELO/" + teamName + ".elo");
+            File.WriteAllLines(Application.streamingAssetsPath + "/ELO/" + teamName + ".elo", new string[] { 2500 + "" });
+        }*/
 
-        
+        if (!System.IO.File.Exists(Application.streamingAssetsPath + "/ELO/" + teamName + ".elo"))
+        {
+            File.Create(Application.streamingAssetsPath + "/ELO/" + teamName + ".elo").Dispose();
+            File.WriteAllLines(Application.streamingAssetsPath + "/ELO/" + teamName + ".elo", new string[] { 2500 + "" });
+        }
+
 
         dropOption.Add(teamName);
         teamDropDown.AddOptions(dropOption);
         XMLWarbotInterpreter interpreter = new XMLWarbotInterpreter();
         interpreter.generateEmptyFile(teamName, path);
-        //interpreter.generateEmptyFile(teamName, pathStats);
         errorText.SetActive(false);
         window.SetActive(false);
     }
