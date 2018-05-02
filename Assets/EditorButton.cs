@@ -18,6 +18,6 @@ public class EditorButton : MonoBehaviour {
 
     public void ButtonEditor()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(1);
     }
 }

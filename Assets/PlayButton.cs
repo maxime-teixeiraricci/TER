@@ -36,8 +36,8 @@ public class PlayButton : MonoBehaviour
 
         GameManager setting = gameManager.GetComponent<GameManager>();
         setting.SetSetting();
-
-
+        print("Scene index : " + SceneManager.GetActiveScene().buildIndex);
+        //
         StartCoroutine(AsynchronousLoad(setting._gameSettings._indexSceneMap));
     }
 
@@ -46,7 +46,7 @@ public class PlayButton : MonoBehaviour
         loadingScreenBar.SetActive(true);
         yield return null;
         Debug.Log("Here !");
-
+        
         AsyncOperation ao = SceneManager.LoadSceneAsync(scene);
         ao.allowSceneActivation = false;
 

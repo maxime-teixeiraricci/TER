@@ -6,20 +6,20 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/BetaMenu.unity
+    path: Assets/Scenes/MetaBotMainMenu.unity
     guid: e19f907ea6c367241869dc8ce8ce9e1c
   - enabled: 1
-    path: Assets/MetaBot/Game/WarBot/Scene/TestInterpreter.unity
-    guid: 2d8f43048af84e9459829b55afd1cced
-  - enabled: 1
-    path: Assets/Scenes/InterfaceSquelette.unity
+    path: Assets/Scenes/BehaviourEditor.unity
     guid: 9f2c0f28b9254c142b8061cfab5f228d
   - enabled: 1
-    path: Assets/MetaBot/Game/WarBot/Scene/MapBeta.unity
-    guid: 97fbd0c9818a1f0469e05d8c54a9a4f6
+    path: Assets/MetaBot/Game/WarBot/Scene/MountainMap.unity
+    guid: 2d8f43048af84e9459829b55afd1cced
   - enabled: 1
-    path: Assets/MetaBot/Scenes/TestMapScene.unity
+    path: Assets/MetaBot/Scenes/PlainMap.unity
     guid: 6fa8ce54a43079d4aaeee7f2230c7483
+  - enabled: 1
+    path: Assets/MetaBot/Game/WarBot/Scene/SimpleMap.unity
+    guid: 97fbd0c9818a1f0469e05d8c54a9a4f6
   - enabled: 1
     path: Assets/MetaBot/Scenes/DesolateMap.unity
     guid: 86898fd40c45f4c499dfdcb2f94efd50
