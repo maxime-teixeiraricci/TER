@@ -13,6 +13,7 @@ public class DeleteTeam : MonoBehaviour
     public Dropdown dropdown;
     Text windowText;
     string nameTeam;
+    LoadFile loadfile;
     public string initialText = "Voulez vous supprimer ";
 
     // Affiche la fenêtre pop-up de confirmation de suppression d'équipe
@@ -88,5 +89,7 @@ public class DeleteTeam : MonoBehaviour
         }
         dropdown.ClearOptions();
         dropdown.AddOptions(teams);
+        loadfile = GameObject.Find("LoadFile").GetComponent<LoadFile>();
+        loadfile.createBehaviorFromXML();
     }
 }
