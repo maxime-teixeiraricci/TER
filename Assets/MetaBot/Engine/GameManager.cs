@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
 
     public int ressourceLimit;
     public int timeLimit;
+    public string wincondition;
 
     public GameSettings _gameSettings;
     public GameSettingManager _gameSettingObject;

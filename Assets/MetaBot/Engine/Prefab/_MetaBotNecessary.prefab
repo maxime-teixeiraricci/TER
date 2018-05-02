@@ -5948,6 +5948,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gamename: 
+  _wincondition: 
   winner: 0
   winnername: 
   timer: {fileID: 0}
@@ -6377,6 +6378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gamename: 
+  _wincondition: 
   winner: 0
   winnername: 
   timer: {fileID: 0}

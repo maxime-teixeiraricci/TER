@@ -636,6 +636,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gamename: 
+  _wincondition: 
   winner: 0
   winnername: 
   timer: {fileID: 0}
@@ -1434,7 +1435,8 @@ Prefab:
       propertyPath: Score
       value: 
       objectReference: {fileID: 1030197316}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114831950400263794, guid: c0f6da377ef5be04e9d750a3b2b6af6e, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: c0f6da377ef5be04e9d750a3b2b6af6e, type: 2}
   m_IsPrefabParent: 0
 --- !u!224 &1659448477 stripped

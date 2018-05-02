@@ -83,7 +83,7 @@ public class SettingsButton : MonoBehaviour {
 
     public void changeGameMode()
     {
-        GameObject.Find("GameManager").GetComponent<GameManager>()._gameName = gamemodeDrop.captionText.text;
+        GameObject.Find("GameManager").GetComponent<GameManager>().wincondition = gamemodeDrop.captionText.text;
         ressource = int.Parse(ressourceLimit.text);
         time = int.Parse(timeLimit.text);
         GameObject.Find("GameManager").GetComponent<GameManager>().ressourceLimit = ressource;

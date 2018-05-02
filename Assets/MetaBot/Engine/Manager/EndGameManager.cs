@@ -10,6 +10,7 @@ public class EndGameManager : MonoBehaviour {
     public Dictionary<string, Tests> _tests = new Dictionary<string, Tests>();
     public Dictionary<string, Ends> _ends = new Dictionary<string, Ends>();
     public string _gamename;
+    public string _wincondition;
     public int winner;
     public string winnername;
     public GameObject timer;
@@ -37,11 +38,12 @@ public class EndGameManager : MonoBehaviour {
         winner = -1;
         equals = false;
         _gamename = GameObject.FindObjectOfType<GameManager>()._gameName;
+        _wincondition = GameObject.FindObjectOfType<GameManager>().wincondition;
         written = false;
         winnername = "";
         ressourceLimit = GameObject.FindObjectOfType<GameManager>().ressourceLimit;
         timeLimitSeconds = GameObject.FindObjectOfType<GameManager>().timeLimit;
-        if (_gamename.Equals("RessourceRace"))
+        if (_wincondition.Equals("RessourceRace"))
         {
             int mins = (int)(timeLimitSeconds / 60);
             int secs = (int)(timeLimitSeconds % 60);
@@ -205,11 +207,11 @@ public class EndGameManager : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (_gamename != GameObject.FindObjectOfType<GameManager>()._gameName)
+        if (_wincondition != GameObject.FindObjectOfType<GameManager>().wincondition)
         {
-            _gamename = GameObject.FindObjectOfType<GameManager>()._gameName;
+            _wincondition = GameObject.FindObjectOfType<GameManager>().wincondition;
 
-            if (_gamename.Equals("RessourceRace"))
+            if (_wincondition.Equals("RessourceRace"))
             {
                 int mins = (int)(timeLimitSeconds / 60);
                 int secs = (int)(timeLimitSeconds % 60);
@@ -224,10 +226,10 @@ public class EndGameManager : MonoBehaviour {
             }
         }
 
-            if (_tests[_gamename]())
+            if (_tests[_wincondition]())
         {
             print("Dans IF ");
-            _ends[_gamename]();
+            _ends[_wincondition]();
         }
     }
 }
