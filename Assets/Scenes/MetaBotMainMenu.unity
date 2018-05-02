@@ -1910,8 +1910,8 @@ MonoBehaviour:
   language: 
   window: {fileID: 170701715}
   music: {fileID: 1556919898}
-  timeLimit: {fileID: 0}
-  ressourceLimit: {fileID: 0}
+  timeLimit: {fileID: 1010053940}
+  ressourceLimit: {fileID: 1724716949}
   dropdown: {fileID: 0}
   gamemodeDrop: {fileID: 1614809517}
 --- !u!114 &170701720

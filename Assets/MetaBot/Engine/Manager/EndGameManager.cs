@@ -35,7 +35,8 @@ public class EndGameManager : MonoBehaviour {
         _gamename = GameObject.FindObjectOfType<GameManager>()._gameName;
         written = false;
         winnername = "";
-
+        ressourceLimit = GameObject.FindObjectOfType<GameManager>().ressourceLimit;
+        timeLimitSeconds = GameObject.FindObjectOfType<GameManager>().timeLimit;
         if (_gamename.Equals("RessourceRace"))
         {
             int mins = (int)(timeLimitSeconds / 60);

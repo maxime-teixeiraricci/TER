@@ -28,6 +28,8 @@ public class SettingsButton : MonoBehaviour {
     public Dropdown gamemodeDrop;
     string gamemode;
 
+    int time;
+    int ressource;
     // Use this for initialization
     void Start () {
         changeLanguage = GetComponent<ChangeLanguage>();
@@ -61,8 +63,12 @@ public class SettingsButton : MonoBehaviour {
     public void changeGameMode()
     {
         GameObject.Find("GameManager").GetComponent<GameManager>()._gameName = gamemodeDrop.captionText.text;
-        GameObject.Find("GameManager").GetComponent<GameManager>().ressourceLimit = int.Parse(ressourceLimit.text);
-        GameObject.Find("GameManager").GetComponent<GameManager>().timeLimit = int.Parse(timeLimit.text);
+        print("AA");
+        ressource = int.Parse(ressourceLimit.text);
+        print("AAAAA");
+        time = int.Parse(timeLimit.text);
+        GameObject.Find("GameManager").GetComponent<GameManager>().ressourceLimit = ressource;
+        GameObject.Find("GameManager").GetComponent<GameManager>().timeLimit = time;
     }
     public void setLanguageFR()
     {
