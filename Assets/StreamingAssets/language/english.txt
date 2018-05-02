@@ -104,6 +104,8 @@
 	Light=Light
 	Heavy=Heavy
 	Explorer=Explorer
+	Ressource limit=Ressource limit
+	Time(s)=Time(s)
 # Editeur 
 	Start=Start
 	Propriétés=Properties
@@ -157,6 +159,6 @@
 	FPS=FPS
 	FREE=FREE
 	Winner=Winner
-	Time Limit :=Time Limit :
-	Ressource Limit :=Ressource Limit :
+	Time Limit :=Time Limit
+	Ressource Limit :=Ressource Limit
 	Egalite=It's a tie

@@ -6667,6 +6667,7 @@ GameObject:
   - component: {fileID: 777871949}
   - component: {fileID: 777871951}
   - component: {fileID: 777871950}
+  - component: {fileID: 777871952}
   m_Layer: 5
   m_Name: Ressource Control
   m_TagString: Untagged
@@ -6727,6 +6728,21 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 777871948}
+--- !u!114 &777871952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 777871948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 517c11061bc1a814784227066d426111, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  langue: 
+  textOriginal: 
+  traduction: 
+  component: {fileID: 842230062}
 --- !u!1 &785745764
 GameObject:
   m_ObjectHideFlags: 0
@@ -8338,6 +8354,7 @@ GameObject:
   - component: {fileID: 1006147894}
   - component: {fileID: 1006147896}
   - component: {fileID: 1006147895}
+  - component: {fileID: 1006147897}
   m_Layer: 5
   m_Name: Effect Control
   m_TagString: Untagged
@@ -8399,6 +8416,21 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1006147893}
+--- !u!114 &1006147897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1006147893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 517c11061bc1a814784227066d426111, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  langue: 
+  textOriginal: 
+  traduction: 
+  component: {fileID: 1921166554}
 --- !u!1 &1010053938
 GameObject:
   m_ObjectHideFlags: 0
@@ -8611,6 +8643,7 @@ GameObject:
   - component: {fileID: 1023405715}
   - component: {fileID: 1023405717}
   - component: {fileID: 1023405716}
+  - component: {fileID: 1023405718}
   m_Layer: 5
   m_Name: Music Control
   m_TagString: Untagged
@@ -8672,6 +8705,21 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1023405714}
+--- !u!114 &1023405718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1023405714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 517c11061bc1a814784227066d426111, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  langue: 
+  textOriginal: 
+  traduction: 
+  component: {fileID: 238149468}
 --- !u!1 &1023766889
 GameObject:
   m_ObjectHideFlags: 0
@@ -9166,6 +9214,7 @@ GameObject:
   - component: {fileID: 1139438333}
   - component: {fileID: 1139438335}
   - component: {fileID: 1139438334}
+  - component: {fileID: 1139438336}
   m_Layer: 5
   m_Name: Time
   m_TagString: Untagged
@@ -9230,6 +9279,21 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1139438332}
+--- !u!114 &1139438336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1139438332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 517c11061bc1a814784227066d426111, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  langue: 
+  textOriginal: 
+  traduction: 
+  component: {fileID: 1139438332}
 --- !u!1 &1163849105
 GameObject:
   m_ObjectHideFlags: 0
@@ -13464,6 +13528,7 @@ GameObject:
   - component: {fileID: 1689175489}
   - component: {fileID: 1689175491}
   - component: {fileID: 1689175490}
+  - component: {fileID: 1689175492}
   m_Layer: 5
   m_Name: FriendlyFire
   m_TagString: Untagged
@@ -13523,6 +13588,21 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1689175488}
+--- !u!114 &1689175492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1689175488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 517c11061bc1a814784227066d426111, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  langue: 
+  textOriginal: 
+  traduction: 
+  component: {fileID: 91424231}
 --- !u!1 &1691749239
 GameObject:
   m_ObjectHideFlags: 0

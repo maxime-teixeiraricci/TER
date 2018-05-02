@@ -105,6 +105,8 @@
 	Light=Char Léger
 	Heavy=Char Lourd
 	Explorer=Explorateur
+	Ressource limit=Limite de ressources
+	Time(s)=Temps(s)
 # Editeur 
 	Start=Debut
 	PropriÃ©tÃ©s=PropriÃ©tÃ©s
@@ -157,6 +159,6 @@
 	FPS=FPS
 	FREE=LIBRE
 	Winner=Gagnant
-	Time Limit :=Limite de temps :
-	Ressource Limit :=Limite de ressources :
+	Time Limit :=Limite de temps
+	Ressource Limit :=Limite de ressources
 	Egalite=Egalite
