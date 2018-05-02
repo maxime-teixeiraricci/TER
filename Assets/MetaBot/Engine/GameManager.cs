@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     public int _minNumberOfTeam;
     public int _maxNumberOfTeam;
 
+    public int ressourceLimit;
+    public int timeLimit;
+
     public GameSettings _gameSettings;
     public GameSettingManager _gameSettingObject;
 

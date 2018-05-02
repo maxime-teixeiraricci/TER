@@ -21,6 +21,8 @@ public class SettingsButton : MonoBehaviour {
  
 
     public Slider music;
+    public InputField timeLimit;
+    public InputField ressourceLimit;
 
     public Dropdown dropdown;
     public Dropdown gamemodeDrop;
@@ -53,12 +55,14 @@ public class SettingsButton : MonoBehaviour {
         manageVolume();
         window.SetActive(false);
         changeLanguage.ChangementLangue(language);
-       // changeGameMode();
+        changeGameMode();
     }
 
     public void changeGameMode()
     {
-        GameObject.Find("GameManager").GetComponent<GameManager>()._gameName = gamemode;
+        GameObject.Find("GameManager").GetComponent<GameManager>()._gameName = gamemodeDrop.captionText.text;
+        GameObject.Find("GameManager").GetComponent<GameManager>().ressourceLimit = int.Parse(ressourceLimit.text);
+        GameObject.Find("GameManager").GetComponent<GameManager>().timeLimit = int.Parse(timeLimit.text);
     }
     public void setLanguageFR()
     {
@@ -100,8 +104,4 @@ public class SettingsButton : MonoBehaviour {
         quitButton.interactable = false;
         reloadButton.interactable = false;
     }
-
-  
-    
-   
 }
