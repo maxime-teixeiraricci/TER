@@ -20,6 +20,7 @@ public class Traducteur : MonoBehaviour {
     //Recupere la nouvelle traduction
     public void Traduction()
     {
+        print(GetComponent<LangageLoader>().langues[0].langue);
         foreach (Langage l in GetComponent<LangageLoader>().langues)
         {
             if (l.langue.Equals(langue))
@@ -43,11 +44,9 @@ public class Traducteur : MonoBehaviour {
         gameManager = GameObject.Find("GameManager");
         if (!gameManager.GetComponent<LangageLoader>()) return;
 
-        langue = gameManager.GetComponent<LangageLoader>().language;
-        if (component != null)
+            langue = gameManager.GetComponent<LangageLoader>().language;
             textOriginal = component.gameObject.GetComponent<Text>().text;
-        Traduction();
-        if (component != null)
+            Traduction();
             component.gameObject.GetComponent<Text>().text = traduction;
     }
 	
@@ -58,7 +57,6 @@ public class Traducteur : MonoBehaviour {
             {
             langue = gameManager.GetComponent<LangageLoader>().language;
             Traduction();
-            if (component != null)
                 component.gameObject.GetComponent<Text>().text = traduction;
             }
 	}
