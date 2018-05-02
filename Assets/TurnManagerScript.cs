@@ -19,6 +19,7 @@ public class TurnManagerScript : MonoBehaviour
         if (_timeTick >= 0.04f)
         {
             _timeTick -= 0.04f;
+
             foreach (GameObject unit in GameObject.FindGameObjectsWithTag("Unit"))
             {
                 if (unit.GetComponent<Brain>())

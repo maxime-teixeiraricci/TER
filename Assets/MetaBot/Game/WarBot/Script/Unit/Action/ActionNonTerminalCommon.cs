@@ -27,7 +27,7 @@ public class ActionNonTerminalCommon : ActionNonTerminal
         };
         _actionsNT["ACTN_MESSAGE_ATTACK"] = delegate ()
         {
-            Message message = new Message(gameObject, "MESSAGE_ATTACK", GetComponent<Stats>()._target);
+            Message message = new Message(gameObject, "MESSAGE_ATTACK", GetComponent<Stats>().GetTarget());
             GetComponent<MessageManager>().Send(message, _messageDestinataire);
             print("SEND ATTACK !");
         };

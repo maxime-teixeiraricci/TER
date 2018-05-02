@@ -463,8 +463,6 @@ MonoBehaviour:
   _componentActionsNonTerminales: {fileID: 114120181410846064}
   _messageManager: {fileID: 114461914509928388}
   nbInstruction: 0
-  turnEnd: 0
-  debugMessage: 0
 --- !u!114 &114529498503752388
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -529,17 +527,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _unitType: Light
   _teamIndex: 0
-  _id: 0
-  _target: {fileID: 0}
-  distanceToTarget: 0
   _objectToUse: {fileID: 0}
   _bullet: {fileID: 0}
-  _targetContract: {fileID: 0}
-  _heading: 0
-  _isBlocked: 0
-  _health: 125
-  _maxHealth: 125
-  _reloadTime: 0
   _smallSmoke: {fileID: 100000, guid: 5b6c2f68addb63847b151f0d41a9d3b1, type: 2}
   _largeSmoke: {fileID: 100000, guid: ab1112643ee572748b01dede71158272, type: 2}
   _fire: {fileID: 100000, guid: 756d99540142b5e4a8d174e18a6310d9, type: 2}

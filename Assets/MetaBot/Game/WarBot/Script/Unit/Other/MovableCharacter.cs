@@ -26,14 +26,7 @@ public class MovableCharacter : MonoBehaviour
     {
         _isblocked = isBlocked();
     }
-
-    public void Update()
-    {
-       /* if (GetComponent<Brain>().turnEnd )
-        {
-            _isblocked = isBlocked();
-        }*/
-    }
+    
     
 
     public void Move()
@@ -41,8 +34,8 @@ public class MovableCharacter : MonoBehaviour
         _isblocked = isBlocked();
         if (!isBlocked())
         {
-            vectMov = Utility.vectorFromAngle(GetComponent<Stats>()._heading);
-            nextposition = transform.position + vectMov.normalized * speed *0.02f;// * Time.deltaTime;
+            vectMov = Utility.vectorFromAngle(GetComponent<Stats>().GetHeading());
+            nextposition = transform.position + vectMov.normalized * speed * 0.02f;
 
             transform.position = nextposition;
             
@@ -129,7 +122,7 @@ public class MovableCharacter : MonoBehaviour
             foreach (ContactPoint contact in other.contacts)
             {
                 float a = Utility.getAngle(gameObject.transform.position, contact.point);
-                float b = GetComponent<Stats>()._heading;
+                float b = GetComponent<Stats>().GetHeading();
                 float A = Mathf.Abs(a - b);
                 float B = Mathf.Abs( 360+ Mathf.Min(a,b) - Mathf.Max(a, b) ) ;
                 if (Mathf.Min(A, B) < 90f)

@@ -16,10 +16,10 @@ public class PerceptCommon : Percept
     public override void InitPercept()
     {
         base.InitPercept();
-        _percepts["PERCEPT_LIFE_MAX"] = delegate () { return GetComponent<Stats>()._maxHealth == GetComponent<Stats>()._health; };
-        _percepts["PERCEPT_LIFE_75"] = delegate () { return GetComponent<Stats>()._health >= GetComponent<Stats>()._maxHealth * 0.75; };
-        _percepts["PERCEPT_LIFE_50"] = delegate () { return GetComponent<Stats>()._health >= GetComponent<Stats>()._maxHealth * 0.50; };
-        _percepts["PERCEPT_LIFE_25"] = delegate () { return GetComponent<Stats>()._health >= GetComponent<Stats>()._maxHealth * 0.25; };
+        _percepts["PERCEPT_LIFE_MAX"] = delegate () { return GetComponent<Stats>().GetMaxHealth() == GetComponent<Stats>().GetHealth(); };
+        _percepts["PERCEPT_LIFE_75"] = delegate () { return GetComponent<Stats>().GetHealth() >= GetComponent<Stats>().GetMaxHealth() * 0.75; };
+        _percepts["PERCEPT_LIFE_50"] = delegate () { return GetComponent<Stats>().GetHealth() >= GetComponent<Stats>().GetMaxHealth() * 0.50; };
+        _percepts["PERCEPT_LIFE_25"] = delegate () { return GetComponent<Stats>().GetHealth() >= GetComponent<Stats>().GetMaxHealth() * 0.25; };
 
         _percepts["PERCEPT_BAG_FULL"] = delegate () { return GetComponent<Inventory>()._maxSize == GetComponent<Inventory>()._actualSize; };
         _percepts["PERCEPT_BAG_EMPTY"] = delegate () { return GetComponent<Inventory>()._actualSize == 0; };
@@ -31,14 +31,14 @@ public class PerceptCommon : Percept
             
             Sight sight = GetComponent<Sight>();
             List<GameObject> _listOfUnitColl = new List<GameObject>();
-            GetComponent<Stats>()._target = null;
+            GetComponent<Stats>().SetTarget(null);
             foreach (GameObject gO in sight._listOfCollision)
             {
                 if (gO )
                 {
                     if (gO.GetComponent<Stats>() && gO.GetComponent<Stats>()._teamIndex != GetComponent<Stats>()._teamIndex)
                     {
-                        GetComponent<Stats>()._target = gO;
+                        GetComponent<Stats>().SetTarget(gO);
                         Transform canon = null;
                         for (int i = 0; i < transform.childCount - 1; i++)
                         {
@@ -54,7 +54,7 @@ public class PerceptCommon : Percept
                         {
                             canon.eulerAngles = new Vector3(canon.eulerAngles.x, getAngle(gO)+180, canon.eulerAngles.z);
                            
-                        }else GetComponent<Stats>()._heading = getAngle(gO);
+                        }else GetComponent<Stats>().SetHeading(getAngle(gO));
                         return true;
                     }
                 }
@@ -72,13 +72,13 @@ public class PerceptCommon : Percept
 
             foreach (GameObject gO in sight._listOfCollision)
             {
-                if (gO && !GetComponent<Stats>()._target)
+                if (gO && !GetComponent<Stats>().GetTarget())
                 {
                     if (gO.GetComponent<Stats>() && gO.GetComponent<Stats>()._teamIndex == GetComponent<Stats>()._teamIndex)
                     {
-                        GetComponent<Stats>()._target = gO;
+                        GetComponent<Stats>().SetTarget(gO);
 
-                        GetComponent<Stats>()._heading = getAngle(gO);
+                        GetComponent<Stats>().SetHeading(getAngle(gO));
                         return true;
                     }
                 }

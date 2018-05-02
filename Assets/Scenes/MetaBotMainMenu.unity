@@ -2267,7 +2267,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -353.70007, y: -100.950005}
+  m_AnchoredPosition: {x: -384, y: -100.85}
   m_SizeDelta: {x: 238.28, y: 161.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &244228905
@@ -13366,7 +13366,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 739205021}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.19130199
+  m_Size: 0.19130202
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -14437,10 +14437,10 @@ MonoBehaviour:
   - {fileID: 1023766889}
   _numberplayerDropDown: {fileID: 884185682}
   playerColor:
-  - {r: 0.20392159, g: 0.45098042, b: 0.93725497, a: 1}
-  - {r: 0.93725497, g: 0.20392159, b: 0.20392159, a: 1}
-  - {r: 0.3803922, g: 0.82745105, b: 0.20784315, a: 1}
-  - {r: 0.9333334, g: 0.85098046, b: 0.20784315, a: 1}
+  - {r: 0.5326574, g: 0.20392165, b: 0.93725497, a: 1}
+  - {r: 0.93725497, g: 0.6742664, b: 0.20392165, a: 1}
+  - {r: 0.20784314, g: 0.82745105, b: 0.49414477, a: 1}
+  - {r: 0.5605536, g: 0.65777355, b: 0.7058823, a: 1}
   nbPlayers: 2
 --- !u!114 &1887193031
 MonoBehaviour:

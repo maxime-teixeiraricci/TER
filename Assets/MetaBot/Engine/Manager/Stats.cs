@@ -8,20 +8,19 @@ public class Stats : MonoBehaviour
     [Header("Unit type")]
     public string _unitType;
     public int _teamIndex;
-    public long _id;
-    public GameObject _target;
-    public float distanceToTarget;
+    private GameObject _target;
+    private float distanceToTarget;
     public Objet _objectToUse;
     public GameObject _bullet;
-    public Contract _contract;
-    public GameObject _targetContract;
+    private Contract _contract;
+    private GameObject _targetContract;
 
     [Header("Stats")]
-    public float _heading;
-    public bool _isBlocked;
-    public int _health;
-    public int _maxHealth;
-    public int _reloadTime;
+    private float _heading;
+    private int _health;
+    private int _maxHealth;
+    private int _reloadTime { get; set; }
+    
 
     [Header("Effects")]
     public GameObject _smallSmoke;
@@ -36,16 +35,12 @@ public class Stats : MonoBehaviour
     AudioSource audioSource;
     GameObject gameManager;
 
-    void Awake()
-    {
-        _id = Random.Range(0, int.MaxValue);
-    }
-
     void Start()
     {
         gameManager = GameObject.Find("GameManager");
+        _health = _maxHealth;
         audioSource = gameManager.GetComponent<AudioSource>();
-        _heading = Random.Range(0, 360);
+        SetHeading(Random.Range(0, 360));
         _smallSmoke.SetActive(true);
         _largeSmoke.SetActive(true);
         _fire.SetActive(true);
@@ -55,30 +50,124 @@ public class Stats : MonoBehaviour
 
     void Update()
     {
-        if (_contract != null)
+        if (_currentEffect)
         {
-            _targetContract = ((EliminationContract)_contract)._target;
+            _currentEffect.GetComponent<Transform>().position = transform.position;
         }
-        //_reloadTime -= Time.deltaTime;
+        
         if (_target != null)
         {
             distanceToTarget = Vector3.Distance(_target.transform.position, transform.position);
         }
-        _heading = (_heading + 360) % 360;
-        _health = Mathf.Min(_health, _maxHealth);
-        transform.eulerAngles = new Vector3(transform.eulerAngles.x, _heading , transform.eulerAngles.z);
-        if (GetComponent<MovableCharacter>())
-        {
-            _isBlocked = GetComponent<MovableCharacter>()._isblocked;
-        }
-        if (_isBlocked)
-        {
-            //_heading = Random.Range(0, 360);
-        }
 
+    }
+
+
+
+
+
+
+    public void AddContract(Contract contract)
+    {
+        _contract = contract;
+        _targetContract = ((EliminationContract)_contract)._target;
+    }
+
+    public bool HaveContrat()
+    {
+        return _contract != null;
+    }
+
+    public void SetHeading(float heading)
+    {
+        _heading = (heading + 360) % 360;
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x, _heading, transform.eulerAngles.z);
+    }
+
+    public float GetHeading()
+    {
+        return _heading;
+    }
+
+    public GameObject GetTarget()
+    {
+        return _target;
+    }
+
+    public Contract GetContract()
+    {
+        return _contract;
+    }
+
+    public void SetTarget(GameObject target)
+    {
+        _target = target;
+    }
+
+    public void SetMaxHealth(int value)
+    {
+        _maxHealth = value;
+    }
+
+    public int GetMaxHealth()
+    {
+        return _maxHealth;
+    }
+    public int GetHealth()
+    {
+        return _health;
+    }
+    public void SetHealth(int value)
+    {
+        _health = value;
+        if (_health > _maxHealth) _health = _maxHealth;
+        else if (_health <= 0)
+        {
+            if (_currentEffect)
+            {
+                Destroy(_currentEffect);
+            }
+            _currentEffect = Instantiate(_explosion, transform.position, Quaternion.identity);
+            if (_dieSong != null) audioSource.PlayOneShot(_dieSong);
+            Destroy(_currentEffect, 1.5f);
+            Destroy(gameObject);
+
+        }
+    }
+    
+    public void AddHealth(int value)
+    {
+        _health = _health + value;
+        if (_health > _maxHealth) _health = _maxHealth;
+        else if (_health <= 0)
+        {
+            if (_currentEffect)
+            {
+                Destroy(_currentEffect);
+            }
+            _currentEffect = Instantiate(_explosion, transform.position, Quaternion.identity);
+            if (_dieSong != null) audioSource.PlayOneShot(_dieSong);
+            Destroy(_currentEffect, 1.5f);
+            Destroy(gameObject);
+            
+        }
+    }
+
+    public void SetReloadTime(int value)
+    {
+        _reloadTime = value;
+    }
+
+    public int GetReloadTime()
+    {
+        return _reloadTime;
+    }
+
+    void SetSmoke()
+    {
         if (_currentEffect)
         {
-            _currentEffect.GetComponent<Transform>().position.Set(transform.position.x, transform.position.y, transform.position.z);
+            
         }
         if (_health > _maxHealth * 0.75)
         {
@@ -108,21 +197,6 @@ public class Stats : MonoBehaviour
             }
             _currentEffect = Instantiate(_fire, transform.position, Quaternion.identity);
         }
-        if (_health <= 0)
-        {
-            if (_currentEffect)
-            {
-                Destroy(_currentEffect);
-            }
-            _currentEffect = Instantiate(_explosion, transform.position, Quaternion.identity);
-            if (_dieSong != null) audioSource.PlayOneShot(_dieSong);
-            Destroy(gameObject);
-            Destroy(_currentEffect, 1.5f);
-        }
-        if (transform.position.y < -5)
-        {
-            Destroy(_currentEffect);
-            Destroy(gameObject);
-        }
     }
+
 }

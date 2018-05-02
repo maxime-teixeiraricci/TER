@@ -25,7 +25,7 @@ public class ScoreHUD : MonoBehaviour
         foreach (GameObject unit in GameObject.FindGameObjectsWithTag("Unit"))
         {
             int teamUnit = unit.GetComponent<Stats>()._teamIndex;
-            int scoreUnit = unit.GetComponent<Stats>()._health;
+            int scoreUnit = unit.GetComponent<Stats>().GetHealth();
             if (_score.ContainsKey(teamUnit))
             {
                 _score[teamUnit] += scoreUnit;

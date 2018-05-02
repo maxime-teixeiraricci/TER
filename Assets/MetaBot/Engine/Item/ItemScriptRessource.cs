@@ -6,6 +6,6 @@ public class ItemScriptRessource : ItemScript
 {
     public override void use(GameObject unit)
     {
-        unit.GetComponent<Stats>()._health += 20;
+        unit.GetComponent<Stats>().AddHealth(20);
     }
 }

@@ -24,7 +24,7 @@ public class HP_HUDManager : MonoBehaviour
     {
         if (_target)
         {
-            targetIcon.SetActive(_target.gameObject.GetComponent<Stats>()._contract != null);
+            targetIcon.SetActive(_target.gameObject.GetComponent<Stats>().HaveContrat());
         }
 
         if (!_target)
@@ -33,8 +33,8 @@ public class HP_HUDManager : MonoBehaviour
         }
         else
         {
-            _value = _target.gameObject.GetComponent<Stats>()._health;
-            _maxValue = _target.gameObject.GetComponent<Stats>()._maxHealth;
+            _value = _target.gameObject.GetComponent<Stats>().GetHealth();
+            _maxValue = _target.gameObject.GetComponent<Stats>().GetMaxHealth(); 
             _value = Mathf.Max(0, Mathf.Min(_maxValue, _value));
             _HPImage.fillAmount = (1.0f * _value) / _maxValue;
             _HPImage.color = HPColorUpdate(_HPImage.fillAmount);

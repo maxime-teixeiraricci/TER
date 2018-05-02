@@ -23,7 +23,7 @@ public class Sight : MonoBehaviour
     {
         for(int i = 0; i < 360; i += 10)
         {
-            float h = GetComponent<Stats>()._heading;
+            float h = GetComponent<Stats>().GetHeading();
             float j = i * Mathf.Deg2Rad;
             Vector3 A = Utility.vectorFromAngle(h).normalized * _distance;
             Vector3 B = new Vector3(Mathf.Cos(j), 0, Mathf.Sin(j)).normalized * _distance;
@@ -51,7 +51,7 @@ public class Sight : MonoBehaviour
         if ((other.isTrigger && other.GetComponent<ItemHeldler>()) || !other.isTrigger)
         {
 
-            float h = GetComponent<Stats>()._heading;
+            float h = GetComponent<Stats>().GetHeading();
             Vector3 A = Utility.vectorFromAngle(h).normalized * _distance;
             Vector3 B = (other.transform.position - transform.position).normalized * _distance;
 

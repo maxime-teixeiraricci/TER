@@ -32,8 +32,8 @@ public class Shooter : MonoBehaviour
             {
                 weapon.GetComponent<BulletScript>()._vect = -canon.right;
             }
-            else weapon.GetComponent<BulletScript>()._vect = Utility.vectorFromAngle(GetComponent<Stats>()._heading);
-            reloadTick = GetComponent<Stats>()._reloadTime;
+            else weapon.GetComponent<BulletScript>()._vect = Utility.vectorFromAngle(GetComponent<Stats>().GetHeading());
+            reloadTick = GetComponent<Stats>().GetReloadTime();
         }
     }
 }

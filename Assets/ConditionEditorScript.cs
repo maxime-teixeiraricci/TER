@@ -34,7 +34,7 @@ public class ConditionEditorScript : MonoBehaviour
     public void UpdateCondition()
     {
         ClearButton();
-        UnitDropDownScript dropDown = GameObject.Find("UnitDropdown").GetComponent<UnitDropDownScript>();
+
         UnitPerceptAction upa = GameObject.Find("EditorManager").GetComponent<EditorManagerScript>().find(_dropDown.captionText.text);
         Vector2 mov = Vector2.zero;
         foreach (string s in upa.percepts)
@@ -54,7 +54,7 @@ public class ConditionEditorScript : MonoBehaviour
     public void UpdateAction()
     {
         ClearButton();
-        UnitDropDownScript dropDown = GameObject.Find("UnitDropdown").GetComponent<UnitDropDownScript>();
+
         UnitPerceptAction upa = GameObject.Find("EditorManager").GetComponent<EditorManagerScript>().find(_dropDown.captionText.text);
         Vector2 mov = Vector2.zero;
         foreach (string s in upa.actions)
@@ -74,7 +74,7 @@ public class ConditionEditorScript : MonoBehaviour
     public void UpdateMessage()
     {
         ClearButton();
-        UnitDropDownScript dropDown = GameObject.Find("UnitDropdown").GetComponent<UnitDropDownScript>();
+
         UnitPerceptAction upa = GameObject.Find("EditorManager").GetComponent<EditorManagerScript>().find(_dropDown.captionText.text);
         Vector2 mov = Vector2.zero;
         foreach (string s in upa.message)
@@ -111,7 +111,7 @@ public class ConditionEditorScript : MonoBehaviour
     public void UpdateANT()
     {
         ClearButton();
-        UnitDropDownScript dropDown = GameObject.Find("UnitDropdown").GetComponent<UnitDropDownScript>();
+
         UnitPerceptAction upa = GameObject.Find("EditorManager").GetComponent<EditorManagerScript>().find(_dropDown.captionText.text);
         Vector2 mov = Vector2.zero;
         foreach (string s in upa.actionsNonTerminal)

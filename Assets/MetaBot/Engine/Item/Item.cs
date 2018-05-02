@@ -60,7 +60,7 @@ public class Item
 
     public Item clone()
     {
-        int value = _value;
+
         int size = _size;
         string name = _name;
         int cost = _cost;

@@ -27,12 +27,12 @@ public class UnitHUDStatScript : MonoBehaviour
         if (unit != null)
         {
             Stats unitStats = unit.GetComponent<Stats>();
-            _healthText.text = "" + unitStats._health + "/" + unitStats._maxHealth;
+            _healthText.text = "" + unitStats.GetHealth() + "/" + unitStats.GetMaxHealth();
             _itemText.text = "" + unitStats.GetComponent<Inventory>()._actualSize + "/" + unitStats.GetComponent<Inventory>()._maxSize;
-            _headingText.text = "" + (int)unitStats._heading + "°";
-            headingShower.angle = unitStats._heading;
+            _headingText.text = "" + (int)unitStats.GetHeading() + "°";
+            headingShower.angle = unitStats.GetHeading();
 
-            _healthFillImage.fillAmount = 1.0f * unitStats._health / unitStats._maxHealth;
+            _healthFillImage.fillAmount = 1.0f * unitStats.GetHealth() / unitStats.GetMaxHealth();
             _bagFillImage.fillAmount = 1.0f * unitStats.GetComponent<Inventory>()._actualSize / unitStats.GetComponent<Inventory>()._maxSize;
         }
     }

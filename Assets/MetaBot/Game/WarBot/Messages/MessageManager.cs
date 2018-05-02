@@ -39,11 +39,11 @@ public abstract class MessageManager : MonoBehaviour {
         }
     }
 
-    public void Send(Message message, int destID)
+    public void Send(Message message, GameObject dest)
     {
         foreach (GameObject unit in GameObject.FindGameObjectsWithTag("Unit"))
         {
-            if (unit.GetComponent<Stats>()._teamIndex == GetComponent<Stats>()._teamIndex && unit.GetComponent<Stats>()._id == destID)
+            if (unit.GetComponent<Stats>()._teamIndex == GetComponent<Stats>()._teamIndex && unit == dest)
             {
                 unit.GetComponent<MessageManager>()._waitingMessages.Add(message);
             }

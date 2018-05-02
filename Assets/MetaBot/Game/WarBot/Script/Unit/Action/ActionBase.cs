@@ -43,17 +43,17 @@ public class ActionBase : ActionCommon
 
         _actions["ACTION_CREATE_LIFE_LIGHT"] = delegate ()
         {
-            GetComponent<Stats>()._health -= 200;
+            GetComponent<Stats>().AddHealth(-200);
             GetComponent<CreatorUnit>().Create("Light");
         };
         _actions["ACTION_CREATE_LIFE_HEAVY"] = delegate () 
         {
-            GetComponent<Stats>()._health -= 500;
+            GetComponent<Stats>().AddHealth(-500);
             GetComponent<CreatorUnit>().Create("Heavy");
         };
 
         _actions["ACTION_CREATE_LIFE_EXPLORER"] = delegate () {
-            GetComponent<Stats>()._health -= 100;
+            GetComponent<Stats>().AddHealth(-100);
             GetComponent<CreatorUnit>().Create("Explorer");
         };
     }

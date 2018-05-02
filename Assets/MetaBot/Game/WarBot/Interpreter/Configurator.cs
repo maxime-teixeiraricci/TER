@@ -40,10 +40,9 @@ public class Configurator : MonoBehaviour {
 
         if (GetComponent<Stats>())
         {
-            GetComponent<Stats>()._maxHealth = (int)getStat("MaxHealth");
-            GetComponent<Stats>()._health = (int)getStat("MaxHealth");
-            GetComponent<Stats>()._reloadTime = (int)getStat("Reload");
-            print("Reload : " + (int)getStat("Reload"));
+            GetComponent<Stats>().SetMaxHealth((int)getStat("MaxHealth"));
+            GetComponent<Stats>().SetHealth((int)getStat("MaxHealth"));
+            GetComponent<Stats>().SetReloadTime((int)getStat("Reload"));
         }
 
         if (GetComponent<Inventory>())

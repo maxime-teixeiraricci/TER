@@ -16,27 +16,18 @@ public class ActionUnit : ActionCommon
         _actions["ACTION_MOVE"] = delegate () { GetComponent<MovableCharacter>().Move(); };
         _actions["ACTION_RANDOM_MOVE"] = delegate ()
         {
-            GetComponent<Stats>()._heading = Random.Range(0f, 360f);
+            GetComponent<Stats>().SetHeading(Random.Range(0f,360f));
             _actions["ACTION_MOVE"]();
         };
         _actions["ACTION_TURN_AROUND_MOVE"] = delegate ()
         {
-            GetComponent<Stats>()._heading += Random.Range(90f, 270f);
+            GetComponent<Stats>().SetHeading(Random.Range(90f, 270f) + GetComponent<Stats>().GetHeading());
             _actions["ACTION_MOVE"]();
-        };
-        _actions["ACTION_MOVE_UNTIL_UNBLOCKED"] = delegate ()
-        {
-            GetComponent<Stats>()._heading = Random.Range(0f, 360f);
-            if (!(GetComponent<Brain>()._componentPercepts._percepts["PERCEPT_BLOCKED"]()))
-            {
-                _actions["ACTION_MOVE"]();
-            }
-            
         };
         _actions["ACTION_HEAL"] = delegate () { GetComponent<Inventory>().use("Ressource"); };
         _actions["ACTION_IDLE"] = delegate () { };
         _actions["ACTION_PICK"] = delegate () {
-            GameObject target = GetComponent<Stats>()._target;
+            GameObject target = GetComponent<Stats>().GetTarget();
             if (target != null)
             {
                 Objet obj = target.GetComponent<ItemHeldler>()._heldObjet;
@@ -54,9 +45,9 @@ public class ActionUnit : ActionCommon
                 if (go.GetComponent<Stats>()._unitType == "Base" && go.GetComponent<Stats>()._teamIndex == GetComponent<Stats>()._teamIndex)
                 {
                     float a = Utility.getAngle(gameObject, go);
-                    GetComponent<Stats>()._heading = a;
+                    GetComponent<Stats>().SetHeading(a);
                     GetComponent<MovableCharacter>().Move();
-                    break;
+                    return;
                 }
             }
         };

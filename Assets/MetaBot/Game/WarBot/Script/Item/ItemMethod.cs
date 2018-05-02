@@ -12,6 +12,6 @@ public class ItemMethod : MonoBehaviour
 
     void Start()
     {
-        _effects["Ressource"] = delegate (GameObject unit) { unit.GetComponent<Stats>()._health += 20; };
+        _effects["Ressource"] = delegate (GameObject unit) { unit.GetComponent<Stats>().AddHealth(20); };
     }
 }

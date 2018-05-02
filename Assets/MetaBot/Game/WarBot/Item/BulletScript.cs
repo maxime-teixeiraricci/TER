@@ -41,7 +41,7 @@ public class BulletScript : MonoBehaviour
         {
             print(other + " Touched");
             GameObject explosion = Instantiate(Explosion, transform.position, Quaternion.identity);
-            other.GetComponent<Stats>()._health -= _damage;
+            other.GetComponent<Stats>().AddHealth(-_damage);
             _damage = 0;
             if (_shotSongFinish != null) audioSource.PlayOneShot(_shotSongFinish);
             Destroy(explosion,1.5f);

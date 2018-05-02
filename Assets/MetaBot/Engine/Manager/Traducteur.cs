@@ -20,7 +20,7 @@ public class Traducteur : MonoBehaviour {
     //Recupere la nouvelle traduction
     public void Traduction()
     {
-        foreach (Langage l in gameManager.GetComponent<LangageLoader>().langues)
+        foreach (Langage l in GetComponent<LangageLoader>().langues)
         {
             if (l.langue.Equals(langue))
             {

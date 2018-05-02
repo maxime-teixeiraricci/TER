@@ -18,13 +18,13 @@ public class PerceptUnit : PerceptCommon
 
         _percepts["PERCEPT_BASE_NEAR_ALLY"] = delegate ()
         {
-            GetComponent<Stats>()._target = null;
+            GetComponent<Stats>().SetTarget(null);
             foreach (GameObject gO in GetComponent<Sight>()._listOfCollision)
             {
                 if (gO && gO.GetComponent<Stats>() != null && gO.GetComponent<Stats>()._unitType == "Base" &&
                 Vector3.Distance(transform.position, gO.transform.position) < 8f && gO.GetComponent<Stats>()._teamIndex == GetComponent<Stats>()._teamIndex)
                 {
-                    GetComponent<Stats>()._target = gO;
+                    GetComponent<Stats>().SetTarget(gO);
                     return true;
                 }
             }
@@ -33,32 +33,32 @@ public class PerceptUnit : PerceptCommon
         /** PERCEPT **/
         _percepts["PERCEPT_CAN_GIVE"] = delegate ()
         {
-            GetComponent<Stats>()._target = null;
+            GetComponent<Stats>().SetTarget(null);
             foreach (GameObject gO in GetComponent<Sight>()._listOfCollision)
             {
                 if (gO && gO.GetComponent<Stats>() != null &&
                 Vector3.Distance(transform.position, gO.transform.position) < 8f && gO.GetComponent<Stats>()._teamIndex == GetComponent<Stats>()._teamIndex)
                 {
-                    GetComponent<Stats>()._target = gO;
+                    GetComponent<Stats>().SetTarget(gO);
                     return true;
                 }
             }
             return false;
         };
-        _percepts["PERCEPT_CONTRACT_ELIMINATION"] = delegate () { return GetComponent<Stats>()._contract != null && GetComponent<Stats>()._contract.type == "Elimination"; };
+        _percepts["PERCEPT_CONTRACT_ELIMINATION"] = delegate () { return GetComponent<Stats>().HaveContrat() && GetComponent<Stats>().GetContract().type == "Elimination"; };
         _percepts["PERCEPT_CONTRACT_ELIMINATION_TARGET_NEAR"] = delegate () {
             Brain brain = GetComponent<Brain>();
             Sight sight = brain.GetComponent<Sight>();
             List<GameObject> _listOfUnitColl = new List<GameObject>();
-            if (GetComponent<Stats>()._contract == null || GetComponent<Stats>()._contract.type != "Elimination") { return false; }
-            EliminationContract contract = (EliminationContract)GetComponent<Stats>()._contract;
+            if (!GetComponent<Stats>().HaveContrat() || (GetComponent<Stats>().HaveContrat() && GetComponent<Stats>().GetContract().type != "Elimination")) { return false; }
+            EliminationContract contract = (EliminationContract)GetComponent<Stats>().GetContract();
 
             foreach (GameObject gO in sight._listOfCollision)
             {
                 if (gO && contract._target == gO)
                 {
-                    GetComponent<Stats>()._target = gO;
-                    GetComponent<Stats>()._heading = getAngle(gO);
+                    GetComponent<Stats>().SetTarget(gO);
+                    GetComponent<Stats>().SetHeading(getAngle(gO));
                     return true;
                 }
             }
@@ -67,18 +67,18 @@ public class PerceptUnit : PerceptCommon
 
         _percepts["PERCEPT_FOOD_NEAR"] = delegate ()
         {
-            return (_percepts["PERCEPT_FOOD"]()) && (Vector3.Distance(GetComponent<Stats>()._target.transform.position, transform.position) < 4f);
+            return (_percepts["PERCEPT_FOOD"]()) && (Vector3.Distance(GetComponent<Stats>().GetTarget().transform.position, transform.position) < 4f);
         };
 
-        _percepts["PERCEPT_CONTRACT"] = delegate () { return GetComponent<Stats>()._contract != null; };
+        _percepts["PERCEPT_CONTRACT"] = delegate () { return GetComponent<Stats>().HaveContrat(); };
         _percepts["PERCEPT_FOOD"] = delegate ()
         {
-            GetComponent<Stats>()._target = null;
+            GetComponent<Stats>().SetTarget(null);
             foreach (GameObject gO in GetComponent<Sight>()._listOfCollision)
             {
                 if (gO && gO.tag == "Item")
                 {
-                    GetComponent<Stats>()._target = gO;
+                    GetComponent<Stats>().SetTarget(gO);
                     return true;
                 }
             }
