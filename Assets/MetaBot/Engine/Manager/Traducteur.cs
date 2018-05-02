@@ -44,8 +44,10 @@ public class Traducteur : MonoBehaviour {
         if (!gameManager.GetComponent<LangageLoader>()) return;
 
             langue = gameManager.GetComponent<LangageLoader>().language;
-            textOriginal = component.gameObject.GetComponent<Text>().text;
+            if (component)
+                textOriginal = component.gameObject.GetComponent<Text>().text;
             Traduction();
+        if (component)
             component.gameObject.GetComponent<Text>().text = traduction;
     }
 	
@@ -56,6 +58,7 @@ public class Traducteur : MonoBehaviour {
             {
             langue = gameManager.GetComponent<LangageLoader>().language;
             Traduction();
+            if (component)
                 component.gameObject.GetComponent<Text>().text = traduction;
             }
 	}

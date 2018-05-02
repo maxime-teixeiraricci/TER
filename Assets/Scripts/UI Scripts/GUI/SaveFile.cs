@@ -96,7 +96,7 @@ public class SaveFile : MonoBehaviour {
     {
         GameObject startPuzzle = GameObject.FindGameObjectWithTag("StartPuzzle");
         GameObject ifpuzzle = startPuzzle.GetComponent<StartPuzzleScript>().ifPuzzle;
-        while (ifpuzzle != null)
+        while (ifpuzzle != null && ifpuzzle.activeSelf == true)
         {
             listBehavior.Add(ifpuzzle.GetComponent<IfPuzzleScript>().createInstruction());
             ifpuzzle = ifpuzzle.GetComponent<IfPuzzleScript>().puzzleIfObject;

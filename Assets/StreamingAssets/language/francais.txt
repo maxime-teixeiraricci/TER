@@ -101,6 +101,10 @@
 	Musique=Musique
 	Bruitages=Bruitages
 	Gamemode=Mode de jeu
+	Map Selection=Choix de la carte
+	Light=Char Léger
+	Heavy=Char Lourd
+	Explorer=Explorateur
 # Editeur 
 	Start=Debut
 	PropriÃ©tÃ©s=PropriÃ©tÃ©s
