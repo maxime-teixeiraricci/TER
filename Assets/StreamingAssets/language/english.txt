@@ -153,3 +153,5 @@
 	FREE=FREE
 	Winner=Winner
 	Time Limit :=Time Limit :
+	Ressource Limit :=Ressource Limit :
+	Egalite=It's a tie

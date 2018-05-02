@@ -90,7 +90,20 @@ public class EndGameManager : MonoBehaviour {
 
         _ends["RessourceRace"] = delegate ()
         {
-            textWinnerTeam.GetComponent<Text>().text = "Winner " + " : " + winnername;
+            string trad = "Winner";
+            Traducteur t = new Traducteur();
+
+            if (scorewinner == -1)
+                trad = "Egalite";
+
+            t.langue = GameObject.FindObjectOfType<GameManager>().GetComponent<LangageLoader>().language;
+            t.setTextOriginal(trad);
+            trad = t.traduction;
+            if (scorewinner == -1)
+                textWinnerTeam.GetComponent<Text>().text = trad +" ! ";
+            else
+                textWinnerTeam.GetComponent<Text>().text = trad + " : " + winnername;
+
             Score.GetComponent<Text>().text = "Score : " + scorewinner;
             print("after Winnerteam");
             GameObject[] units = GameObject.FindGameObjectsWithTag("Unit");

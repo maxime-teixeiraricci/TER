@@ -153,3 +153,5 @@
 	FREE=LIBRE
 	Winner=Gagnant
 	Time Limit :=Limite de temps :
+	Ressource Limit :=Limite de ressources :
+	Egalite=Egalite
