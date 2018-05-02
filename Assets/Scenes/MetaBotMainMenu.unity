@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731725, g: 0.13414745, b: 0.12107873, a: 1}
+  m_IndirectSpecularColor: {r: 0.1273174, g: 0.13414761, b: 0.12107885, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -7527,6 +7527,7 @@ GameObject:
   - component: {fileID: 899368923}
   - component: {fileID: 899368922}
   - component: {fileID: 899368921}
+  - component: {fileID: 899368925}
   m_Layer: 5
   m_Name: MapSelection
   m_TagString: Untagged
@@ -7619,6 +7620,21 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 899368919}
+--- !u!114 &899368925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 899368919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 517c11061bc1a814784227066d426111, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  langue: 
+  textOriginal: 
+  traduction: 
+  component: {fileID: 899368919}
 --- !u!224 &905551753 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224018602816552244, guid: 94af63cb75d946b47ad3e26fe33112d4,
