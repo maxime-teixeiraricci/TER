@@ -112,9 +112,12 @@ public class SaveFile : MonoBehaviour {
         string teamName = team.captionText.text;
         string unitName = unit.captionText.text;
         string path = Application.dataPath + "/StreamingAssets/" + Constants.teamsDirectory + Constants.gameModeWarBot;
-
-        XMLWarbotInterpreter interpreter = new XMLWarbotInterpreter();
-        interpreter.behaviorToXml(teamName, path, unitName, listBehavior);
+        if(teamName != "")
+        {
+            XMLWarbotInterpreter interpreter = new XMLWarbotInterpreter();
+            interpreter.behaviorToXml(teamName, path, unitName, listBehavior);
+        }
+        
 
     }
 

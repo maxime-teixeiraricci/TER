@@ -7,8 +7,9 @@ using System.Threading;
 public class FadeText : MonoBehaviour {
 
 
-    
+    public Dropdown team;
     public GameObject objectSave;
+    public GameObject noTeam;
     public Text saveText;
     private Color startColor;
     private Color endColor;
@@ -19,10 +20,20 @@ public class FadeText : MonoBehaviour {
 
     public void DisplayText()
     {
-        objectSave.SetActive(true);
-        timeRemaining = countdown;
-        StartCoroutine("LoseTime");
-        Time.timeScale = 1; //Just making sure that the timeScale is right
+        if(team.captionText.text != "")
+        {
+            objectSave.SetActive(true);
+            timeRemaining = countdown;
+            StartCoroutine("LoseTime");
+            Time.timeScale = 1; //Just making sure that the timeScale is right
+        }
+        else
+        {
+            noTeam.SetActive(true);
+            timeRemaining = countdown;
+            StartCoroutine("LoseTime");
+            Time.timeScale = 1; //Just making sure that the timeScale is right
+        }
     }
 
     IEnumerator LoseTime()
@@ -34,6 +45,7 @@ public class FadeText : MonoBehaviour {
             if(timeRemaining <= 0)
             {
                 objectSave.SetActive(false);
+                noTeam.SetActive(false);
                 break;
             }
         }
