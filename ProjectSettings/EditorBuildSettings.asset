@@ -23,3 +23,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MetaBot/Scenes/DesolateMap.unity
     guid: 86898fd40c45f4c499dfdcb2f94efd50
+  - enabled: 1
+    path: Assets/GardenMap.unity
+    guid: 8cee35d1bc64cc9429d56d00ed31e180

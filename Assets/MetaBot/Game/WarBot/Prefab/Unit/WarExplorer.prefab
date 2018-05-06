@@ -81,16 +81,16 @@ GameObject:
   - component: {fileID: 114021536629099052}
   - component: {fileID: 114699229294144876}
   - component: {fileID: 114804970405907090}
-  - component: {fileID: 64082610769355158}
   - component: {fileID: 114565192048489288}
   - component: {fileID: 54473890420178266}
+  - component: {fileID: 65145219469663034}
   m_Layer: 8
   m_Name: WarExplorer
   m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1531181831746554
 GameObject:
   m_ObjectHideFlags: 1
@@ -168,7 +168,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1517124188230958}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -23.9, y: 0.43, z: -21.6}
+  m_LocalPosition: {x: -146.12854, y: 106.56511, z: -27.427359}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4608809123674540}
@@ -226,15 +226,15 @@ Rigidbody:
   m_GameObject: {fileID: 1517124188230958}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: Infinity
-  m_AngularDrag: Infinity
-  m_UseGravity: 0
+  m_Drag: 1
+  m_AngularDrag: 1
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 122
   m_CollisionDetection: 0
---- !u!64 &64082610769355158
-MeshCollider:
+--- !u!65 &65145219469663034
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -242,11 +242,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: -1
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 2ce30ced83d1454498fe449302f1cef2, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 2.7292175, y: 1.5523834, z: 1.6244392}
+  m_Center: {x: -0.096069336, y: 0.2761917, z: 0}
 --- !u!114 &114021536629099052
 MonoBehaviour:
   m_ObjectHideFlags: 1

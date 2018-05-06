@@ -12,7 +12,7 @@ public class CreatorUnit : MonoBehaviour
 	// Use this for initialization
 	void Awake () {
         angleSpawn = Random.Range(0f, 360f);
-        distanceSpawn = Random.Range(10, 13);
+        distanceSpawn = Random.Range(8, 15);
 
     }
 	
@@ -33,16 +33,18 @@ public class CreatorUnit : MonoBehaviour
         }
 
         Vector3 unitSpawnPosition = transform.position + distanceSpawn * new Vector3(Mathf.Cos(angleSpawn * Mathf.Deg2Rad), 0, Mathf.Sin(angleSpawn * Mathf.Deg2Rad));
-        angleSpawn += 30;
+        angleSpawn += 15;
         print("VECTOR : " + unitSpawnPosition);
         if( angleSpawn > 360)
         {
             angleSpawn = angleSpawn % 360;
-            distanceSpawn = ((distanceSpawn + 1) % 4) + 9;
+            distanceSpawn = ((distanceSpawn + 1) % 7) + 8;
         }
 
         // GameObject unit = Instantiate(target,transform.parent);
-        GameObject unit = Instantiate(target, unitSpawnPosition, Quaternion.identity, transform.parent);
+        //GameObject unit = Instantiate(target, unitSpawnPosition, Quaternion.identity, transform.parent);
+        GameObject unit = ObjectPool.Pick(name);
+        unit.transform.parent = gameObject.transform.parent;
         unit.transform.position = unitSpawnPosition;
         unit.transform.position = new Vector3(unit.transform.position.x, _spawnPoint[0].position.y, unit.transform.position.z);
         transform.parent.GetComponent<TeamPlayManagerScript>().UpdateUnit();
