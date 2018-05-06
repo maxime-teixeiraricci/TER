@@ -98,7 +98,6 @@ public class SettingsButton : MonoBehaviour {
     public void manageVolume()
     {
         float volume = music.value / 100;
-        Debug.Log("VOLUME = " + volume);
         gm.volume = volume;
     }
 
