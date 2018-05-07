@@ -26,25 +26,25 @@ public class EloUpdate : MonoBehaviour {
 		if (!TeamName1.GetComponent<Text>().text.Equals(oldName1))
         {
             oldName1 = TeamName1.GetComponent<Text>().text;
-            TeamElo1.GetComponent<Text>().text = "Elo : " + t.GetTeamElo(oldName1);
+            TeamElo1.GetComponent<Text>().text = "Elo : AAAH" + t.GetTeamElo(oldName1);
         }
 
         if (!TeamName2.GetComponent<Text>().text.Equals(oldName2))
         {
             oldName2 = TeamName2.GetComponent<Text>().text;
-            TeamElo2.GetComponent<Text>().text = "Elo : " + t.GetTeamElo(oldName2);
+            TeamElo2.GetComponent<Text>().text = "Elo : AAAH" + t.GetTeamElo(oldName2);
         }
 
         if (!TeamName3.GetComponent<Text>().text.Equals(oldName3))
         {
             oldName3 = TeamName3.GetComponent<Text>().text;
-            TeamElo3.GetComponent<Text>().text = "Elo : " + t.GetTeamElo(oldName3);
+            TeamElo3.GetComponent<Text>().text = "Elo : AAAH" + t.GetTeamElo(oldName3);
         }
 
         if (!TeamName4.GetComponent<Text>().text.Equals(oldName4))
         {
             oldName4 = TeamName4.GetComponent<Text>().text;
-            TeamElo4.GetComponent<Text>().text = "Elo : " + t.GetTeamElo(oldName4);
+            TeamElo4.GetComponent<Text>().text = "Elo : AAAH" + t.GetTeamElo(oldName4);
         }
     }
 }
