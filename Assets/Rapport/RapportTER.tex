@@ -3,9 +3,33 @@
 \usepackage[utf8]{inputenc}
 \usepackage[francais]{babel}
 \usepackage{listings}
+\usepackage{xcolor}
+\usepackage{textcomp}
 \pagestyle{plain}
-\lstset{language=xml,frame=single, breaklines=true, basicstyle=\ttfamily,backgroundcolor=\color{grey},basicstyle=\scriptsize, keywordstyle=\color{blue}, commentstyle=\color{vert}, stringstyle=\color{red}, identifierstyle=\color{blue}}
-
+\definecolor{listinggray}{gray}{0.9}
+\definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
+\lstset{
+ backgroundcolor=\color{lbcolor},
+ tabsize=4,
+ rulecolor=,
+ language=matlab,
+ basicstyle=\scriptsize,
+ upquote=true,
+ aboveskip={1.5\baselineskip},
+ columns=fixed,
+ showstringspaces=false,
+ extendedchars=true,
+ breaklines=true,
+ prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+ frame=single,
+ showtabs=false,
+ showspaces=false,
+ showstringspaces=false,
+ identifierstyle=\ttfamily,
+ keywordstyle=\color[rgb]{0,0,1},
+ commentstyle=\color[rgb]{0.133,0.545,0.133},
+ stringstyle=\color[rgb]{0.627,0.126,0.941},
+}
 
 \title{Rapport de TER}
 % Start the document
@@ -27,16 +51,35 @@ Le projet a donc pour unique prétention de communiquer notre amour du jeu vidé
 \newpage
 \chapter{MetaBot: Le mode par défaut}
 \section{Principe}
-Dans MetaBot, deux à quatre équipes se battent sur un terrain pour les ressources afin de survivre et d'éliminer les autres équipes afin d'etre la derniere ne vie. Des ressources apparaissent sur la carte et peuvent etre converti en unité ou en soin.
+Dans MetaBot, deux à quatre équipes se battent sur un terrain pour les ressources afin de survivre et d'éliminer les autres équipes afin d’être la dernière ne vie. Des ressources apparaissent sur la carte et peuvent etre converti en unité ou en soin.
 
 \newpage
 \part{Réalisation du projet}
 \newpage
+
+%%%
+% PARTIE MOTEUR
+%%%
 \chapter{Partie "Moteur"}
 \section{Phase de conception}
-Pour réaliser ce projet, nous avons réalisé une conception basé sur les 
-\section{De l'étude de l'ancien projet à la refonte totale du moteur}
+Pour réaliser ce projet, nous avons réalisé une conception basé sur nos connaissances
+\section{De l'étude de l'ancien projet à la refonte totale du moteur.}
+\subsection{État de l'art de l'ancien projet.}
+
+
+\subsection{Refont du noyau.}
+
 \section{Réalisation}
+\subsection{Sur les unités.}
+\subsubsection{Le corps}
+\subsubsection{L'esprit}
+Afin de pouvoir fonctionner, les unités possede 3 parties distinctes: La gestion des actions possibles, la gestion des perceptions et l'identité propre de l'unité.
+\paragraph{Actions.}
+Blablabla
+\paragraph{Perceptions.}
+Blablabla
+\paragraph{Identité.}
+Blablabla
 \section{Fonctionnalités}
 \section{Amélioration possible}
 
@@ -66,7 +109,7 @@ La construction des Instructions des unités dans la partie Interpréteur a gran
 D'un point de vue de la sécurité, celle-ci a été décalée dans l'éditeur du comportement, afin de ne pas traiter des comportements erronés , mais prévenir a l'avance et même empêcher les erreurs d'apparaitre.
 \paragraph{}
 Le but de l'interpréteur était de traiter des fichiers de ce type :
-\begin{lstlisting}
+\begin{lstlisting}[frame=single]
 <behavior>
   <teamName>Default Team</teamName>
   <unit name="Explorer">
@@ -82,7 +125,7 @@ Le but de l'interpréteur était de traiter des fichiers de ce type :
 </behavior>
 \end{lstlisting}
 Ainsi nous avons 1 fichier par équipe écrite par l'utilisateur, chacun détaillant le comportement de chaque unité sous la même forme :
-\begin{lstlisting}
+\begin{lstlisting}[frame=single]
 <behavior>
   <teamName>Default Team</teamName>
   <unit name="Explorer">
