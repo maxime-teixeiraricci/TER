@@ -22,7 +22,7 @@ public class EndGameManager : MonoBehaviour {
     public Text ressourceDisplay;
     public int scorewinner;
     public GameObject Score;
-
+    GameObject gm;
     Animator anim;
     public GameObject textWinnerTeam;
     public int ressourceLimit;
@@ -32,17 +32,18 @@ public class EndGameManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        gm = GameObject.Find("GameManager");
         anim = GetComponent<Animator>();
         InitTests();
         InitEnds();
         winner = -1;
         equals = false;
-        _gamename = GameObject.FindObjectOfType<GameManager>()._gameName;
-        _wincondition = GameObject.FindObjectOfType<GameManager>().wincondition;
+        _gamename = gm.GetComponent<GameManager>()._gameName;
+        _wincondition = gm.GetComponent<GameManager>().wincondition;
         written = false;
         winnername = "";
-        ressourceLimit = GameObject.FindObjectOfType<GameManager>().ressourceLimit;
-        timeLimitSeconds = GameObject.FindObjectOfType<GameManager>().timeLimit;
+        ressourceLimit = gm.GetComponent<GameManager>().ressourceLimit;
+        timeLimitSeconds = gm.GetComponent<GameManager>().timeLimit;
         if (_wincondition.Equals("RessourceRace"))
         {
             int mins = (int)(timeLimitSeconds / 60);
@@ -64,7 +65,7 @@ public class EndGameManager : MonoBehaviour {
         {
             Traducteur t = new Traducteur();
             string trad = "Winner";
-            t.langue = GameObject.FindObjectOfType<GameManager>().GetComponent<LangageLoader>().language;
+            t.langue = gm.GetComponent<LangageLoader>().language;
             t.setTextOriginal("Winner");
             trad = t.traduction;
             textWinnerTeam.GetComponent<Text>().text = trad + " : " + winnername;
@@ -79,10 +80,10 @@ public class EndGameManager : MonoBehaviour {
             if (!written)
             {
                 TeamsPerformance p = new TeamsPerformance();
-                int size = GameObject.FindObjectOfType<GameManager>().GetComponent<TeamManager>()._teams.Count;
+                int size = gm.GetComponent<TeamManager>()._teams.Count;
                 string[] teams = new string[size];
                 int cpt = 0;
-                foreach (Team t2 in GameObject.FindObjectOfType<GameManager>().GetComponent<TeamManager>()._teams)
+                foreach (Team t2 in gm.GetComponent<TeamManager>()._teams)
                 {
                     teams[cpt] = t2._name;
                     cpt++;
@@ -105,7 +106,7 @@ public class EndGameManager : MonoBehaviour {
             if (equals || scorewinner == -1)
                 trad = "Egalite";
 
-            t.langue = GameObject.FindObjectOfType<GameManager>().GetComponent<LangageLoader>().language;
+            t.langue = gm.GetComponent<LangageLoader>().language;
             t.setTextOriginal(trad);
             trad = t.traduction;
             if (equals || scorewinner == -1)
@@ -126,10 +127,10 @@ public class EndGameManager : MonoBehaviour {
             if (!written && !equals && scorewinner != -1)
             {
                 TeamsPerformance p = new TeamsPerformance();
-                int size = GameObject.FindObjectOfType<GameManager>().GetComponent<TeamManager>()._teams.Count;
+                int size =gm.GetComponent<TeamManager>()._teams.Count;
                 string[] teams = new string[size];
                 int cpt = 0;
-                foreach (Team t2 in GameObject.FindObjectOfType<GameManager>().GetComponent<TeamManager>()._teams)
+                foreach (Team t2 in gm.GetComponent<TeamManager>()._teams)
                 {
                     teams[cpt] = t2._name;
                     cpt++;
@@ -164,7 +165,7 @@ public class EndGameManager : MonoBehaviour {
             if (teams.Count == 1)
             {
                 winner = teams[0];
-                winnername = GameObject.Find("GameManager").GetComponent<TeamManager>()._teams[winner]._name;
+                winnername = gm.GetComponent<TeamManager>()._teams[winner]._name;
             }
 
             return teams.Count <= 1;
@@ -179,14 +180,14 @@ public class EndGameManager : MonoBehaviour {
                 if (u.GetComponent<Stats>()._unitType.Equals("Base"))
                 {
 
-                    if (u.GetComponent<Inventory>()._actualSize == nbRessources && !GameObject.Find("GameManager").GetComponent<TeamManager>()._teams[u.GetComponent<Stats>()._teamIndex]._name.Equals(winnername))
+                    if (u.GetComponent<Inventory>()._actualSize == nbRessources && !gm.GetComponent<TeamManager>()._teams[u.GetComponent<Stats>()._teamIndex]._name.Equals(winnername))
                     {
                         equals = true;
                     }
                     if (u.GetComponent<Inventory>()._actualSize > nbRessources)
                     {
                         print("WinnerUpdated");
-                        winnername = GameObject.Find("GameManager").GetComponent<TeamManager>()._teams[u.GetComponent<Stats>()._teamIndex]._name;
+                        winnername = gm.GetComponent<TeamManager>()._teams[u.GetComponent<Stats>()._teamIndex]._name;
                         winner = u.GetComponent<Stats>()._teamIndex;
                         nbRessources = u.GetComponent<Inventory>()._actualSize;
                         equals = false;
@@ -207,9 +208,9 @@ public class EndGameManager : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (_wincondition != GameObject.FindObjectOfType<GameManager>().wincondition)
+        if (_wincondition != gm.GetComponent<GameManager>().wincondition)
         {
-            _wincondition = GameObject.FindObjectOfType<GameManager>().wincondition;
+            _wincondition = gm.GetComponent<GameManager>().wincondition;
 
             if (_wincondition.Equals("RessourceRace"))
             {
