@@ -56,13 +56,33 @@ public class LoadFile : MonoBehaviour
         Vector2 delta = new Vector2(0, -1);
         if (behavior.ContainsKey(unitName) && behavior[unitName].Count != 0)
         {
+            GameObject.Find("StartPuzzle").GetComponent<ManageDragAndDrop>().UpdateGridPosition();
+            GameObject.Find("StartPuzzle").GetComponent<StartPuzzleScript>().UpdateAllValidPuzzles();
+            float widthPuzzle = GameObject.Find("StartPuzzle").GetComponent<ManageDragAndDrop>().sizePuzzleX;
+            float heightPuzzle = GameObject.Find("StartPuzzle").GetComponent<ManageDragAndDrop>().sizePuzzleY;
+            float newX = GameObject.Find("StartPuzzle").GetComponent<ManageDragAndDrop>().posGridX * widthPuzzle;
+            float newY = GameObject.Find("StartPuzzle").GetComponent<ManageDragAndDrop>().posGridY * heightPuzzle;
+            Vector3 newPos = new Vector3(newX, newY, 10);
+
+            GameObject.Find("StartPuzzle").GetComponent<RectTransform>().localPosition = newPos;
             GameObject currentIf = GameObject.Find("StartPuzzle");
             GameObject currentPercept = GameObject.Find("StartPuzzle");
             GameObject currentAction = GameObject.Find("StartPuzzle");
+
             foreach (Instruction I in behavior[unitName])
             {
+                
                 GameObject _ifPuzzle = Instantiate(ifPuzzle, editeurTransform);
                 _ifPuzzle.GetComponent<ManageDragAndDrop>().setGridPosition(currentIf.GetComponent<ManageDragAndDrop>().getGridPosition() + delta);
+                _ifPuzzle.GetComponent<ManageDragAndDrop>().UpdateGridPosition();
+                GameObject.Find("StartPuzzle").GetComponent<StartPuzzleScript>().UpdateAllValidPuzzles();
+                widthPuzzle = _ifPuzzle.GetComponent<ManageDragAndDrop>().sizePuzzleX;
+                heightPuzzle = _ifPuzzle.GetComponent<ManageDragAndDrop>().sizePuzzleY;
+                newX = _ifPuzzle.GetComponent<ManageDragAndDrop>().posGridX * widthPuzzle;
+                newY = _ifPuzzle.GetComponent<ManageDragAndDrop>().posGridY * heightPuzzle;
+                newPos = new Vector3(newX, newY, 10);
+
+                _ifPuzzle.GetComponent<RectTransform>().localPosition = newPos;
                 currentIf = _ifPuzzle;
 
                 // INSTRUCTION : public string[] _listeStringPerceptsVoulus; MessageStruct[] _stringActionsNonTerminales; public string _stringAction;
@@ -142,6 +162,7 @@ public class LoadFile : MonoBehaviour
             }
             
         }
+        GameObject.Find("StartPuzzle").GetComponent<StartPuzzleScript>().UpdateAllValidPuzzles();
         ResetScrollBarEditorPosition();
 
     }

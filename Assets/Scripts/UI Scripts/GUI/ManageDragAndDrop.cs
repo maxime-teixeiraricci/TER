@@ -106,8 +106,8 @@ public class ManageDragAndDrop : MonoBehaviour, IPointerEnterHandler//, IPointer
         float minY = -heightEditor / 2;
         float maxY = heightEditor / 2;
 
-        posGridX = (int)Mathf.Round(GetComponent<RectTransform>().localPosition.x / widthPuzzle);
-        posGridY = (int)Mathf.Round(GetComponent<RectTransform>().localPosition.y / heightPuzzle);
+        posGridX = Mathf.Max((int)GameObject.Find("Editeur").GetComponent<RectTransform>().rect.x / (int)widthPuzzle, (int)Mathf.Round(GetComponent<RectTransform>().localPosition.x / widthPuzzle));
+        posGridY = Mathf.Max((int)GameObject.Find("Editeur").GetComponent<RectTransform>().rect.y / (int)heightPuzzle, (int)Mathf.Round(GetComponent<RectTransform>().localPosition.y / heightPuzzle));
 
         
 
