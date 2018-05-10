@@ -6,15 +6,8 @@ using UnityEngine.UI;
 public class EquipeTeamSetup : MonoBehaviour {
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
         UpdateOptions();
-    }
-	
-	// Update is called once per frame
-	void Update ()
-    {
-        
-
     }
 
     public void UpdateOptions()

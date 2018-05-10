@@ -19,7 +19,7 @@ public class PerformanceWriter : MonoBehaviour {
         string team = change.captionText.text;
         team = team.Replace("_", " ");
         TeamsPerformance t = new TeamsPerformance();
-        KeyValuePair<string, List<Matchup>> stats = t.getStats(team);
+        KeyValuePair<string, List<Matchup>> stats = TeamsPerformance.getStats(team);
 
         foreach (Matchup m in stats.Value)
         {

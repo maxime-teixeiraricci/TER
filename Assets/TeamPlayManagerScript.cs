@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[ExecuteInEditMode]
 public class TeamPlayManagerScript : MonoBehaviour
 {
     public int teamIndex;
     int id = 0;
     // Use this for initialization
+
+
     void Start ()
     {
         UpdateUnit();
@@ -35,4 +38,16 @@ public class TeamPlayManagerScript : MonoBehaviour
 
         }
     }
+
+
+
+#if UNITY_EDITOR
+    void Update()
+    {
+        gameObject.transform.position = Vector3.zero;
+    }
+#endif
+
+
+
 }

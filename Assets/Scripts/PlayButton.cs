@@ -9,7 +9,7 @@ public class PlayButton : MonoBehaviour
 {
     public GameObject loadingScreenBar;
     public Slider sliderLoad;
-    public GameObject[] _DropDownList;
+    public TeamMenuHUD[] _DropDownList;
     public GameObject _numberplayerDropDown;
     public Color[] playerColor;
     public int nbPlayers;
@@ -28,8 +28,8 @@ public class PlayButton : MonoBehaviour
         for (int i = 0; i < nbPlayers; i++)
         {
             Team team = new Team();
-            team._color = playerColor[i];
-            team._name = _DropDownList[i].GetComponent<Dropdown>().captionText.text.Replace("_", " ");
+            team._color = _DropDownList[i]._teamColor;
+            team._name = _DropDownList[i]._teamName.Replace("_", " ");
             team._unitsBehaviour = interpreter.xmlToBehavior(gamePath + team._name, gamePath);
             gameManager.GetComponent<TeamManager>()._teams.Add(team);
         }

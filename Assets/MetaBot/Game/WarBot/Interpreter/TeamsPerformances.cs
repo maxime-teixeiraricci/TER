@@ -170,7 +170,11 @@ public class TeamsPerformance {
         System.IO.File.WriteAllLines(Application.streamingAssetsPath + "/ELO/" + Teams[1] + ".elo", new string[] { NewELOs[1] + "" });
     }
 
-    public int GetTeamElo(string team)
+
+
+
+
+    static public int GetTeamElo(string team)
     {
        /* string[] lines = System.IO.File.ReadAllLines(Application.streamingAssetsPath + "/ELO/" + team + ".elo");
         foreach (string line in lines)
@@ -183,13 +187,23 @@ public class TeamsPerformance {
         if (System.IO.File.Exists(Application.streamingAssetsPath + "/ELO/" + team + ".elo"))
         {
             string[] lines = System.IO.File.ReadAllLines(Application.streamingAssetsPath + "/ELO/" + team + ".elo");
+            if (lines.Length == 0)
+            {
+                System.IO.File.WriteAllText(Application.streamingAssetsPath + "/ELO/" + team + ".elo", "1000");
+                return 1000;
+            }
             return int.Parse(lines[0]);
         }
-
-        return -1;
+        else
+        {
+            System.IO.File.WriteAllText(Application.streamingAssetsPath + "/ELO/" + team + ".elo","1000");
+            string[] lines = System.IO.File.ReadAllLines(Application.streamingAssetsPath + "/ELO/" + team + ".elo");
+            return int.Parse(lines[0]);
+        }
+        
     }
     
-    public KeyValuePair<string,List<Matchup>>  getStats(string team)
+    static public KeyValuePair<string,List<Matchup>>  getStats(string team)
     {
         List<Matchup> matchs = new List<Matchup>();
 

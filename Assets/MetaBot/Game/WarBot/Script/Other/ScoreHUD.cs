@@ -18,6 +18,7 @@ public class ScoreHUD : MonoBehaviour
         for (int i = 0; i < GameObject.Find("GameManager").GetComponent<TeamManager>()._teams.Count; i ++)
         {
             _scores[i].color = GameObject.Find("GameManager").GetComponent<TeamManager>()._teams[i]._color;
+            _scores[i].color = new Color(_scores[i].color.r, _scores[i].color.g, _scores[i].color.b, 1);
             _score[i] = 0;
         }
 
