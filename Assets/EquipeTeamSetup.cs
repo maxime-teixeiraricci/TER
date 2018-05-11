@@ -18,7 +18,7 @@ public class EquipeTeamSetup : MonoBehaviour {
         List<string> customNames = new List<string>();
         for(int i = 0; i < nameTeams.Count; i++)
         {
-            string tmp = nameTeams[i].Replace(" ", "_");
+            string tmp = nameTeams[i];
             customNames.Add(tmp.Replace(".wbt", ""));
         }
         GetComponent<Dropdown>().AddOptions(customNames);

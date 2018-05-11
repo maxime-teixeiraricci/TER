@@ -34,7 +34,7 @@ public class CreatorUnit : MonoBehaviour
 
         Vector3 unitSpawnPosition = transform.position + distanceSpawn * new Vector3(Mathf.Cos(angleSpawn * Mathf.Deg2Rad), 0, Mathf.Sin(angleSpawn * Mathf.Deg2Rad));
         angleSpawn += 15;
-        print("VECTOR : " + unitSpawnPosition);
+
         if( angleSpawn > 360)
         {
             angleSpawn = angleSpawn % 360;

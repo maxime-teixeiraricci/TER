@@ -140,12 +140,13 @@ public class TeamsPerformance {
 
         string[] CurELOT1 = System.IO.File.ReadAllLines(Application.streamingAssetsPath + "/ELO/" + Teams[0] + ".elo");
         string[] CurELOT2 = System.IO.File.ReadAllLines(Application.streamingAssetsPath + "/ELO/" + Teams[1] + ".elo");
-         
+        Debug.Log("Equipe 1 : " + Teams[0]);
+        Debug.Log("Equipe 2 : " + Teams[1]);
         ELOs[0] = double.Parse(CurELOT1[0]);
         ELOs[1] = double.Parse(CurELOT2[0]);
         
-        ProbaWinT1 = 1 / (1 + System.Math.Pow(10, (ELOs[1] - ELOs[0]) / 400));
-        ProbaWinT2 = 1 - ProbaWinT1;
+        ProbaWinT1 = 1.0 / (1.0 + System.Math.Pow(10, (ELOs[1] - ELOs[0]) / 400.0));
+        ProbaWinT2 = 1.0 - ProbaWinT1;
             
         if      (ELOs[0] <  1000)                    CoeffT1 = 80;
         else if (ELOs[0] >= 1000 && ELOs[0] <  2000) CoeffT1 = 50;

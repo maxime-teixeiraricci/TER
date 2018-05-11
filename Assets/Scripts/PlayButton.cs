@@ -29,7 +29,7 @@ public class PlayButton : MonoBehaviour
         {
             Team team = new Team();
             team._color = _DropDownList[i]._teamColor;
-            team._name = _DropDownList[i]._teamName.Replace("_", " ");
+            team._name = _DropDownList[i]._teamName;//.Replace("_", " ");
             team._unitsBehaviour = interpreter.xmlToBehavior(gamePath + team._name, gamePath);
             gameManager.GetComponent<TeamManager>()._teams.Add(team);
         }

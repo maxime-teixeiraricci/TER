@@ -1,6 +1,6 @@
 
 #### FICHIER DE CONFIGURATION WARBOT ####
-Language=francais
+Language=english
 Units:
     WarBase:
         MaxHealth: 1000
