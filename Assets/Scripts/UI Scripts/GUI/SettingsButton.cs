@@ -1,25 +1,29 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SettingsButton : MonoBehaviour {
+public class SettingsButton : MonoBehaviour
+{
 
     Button playButton;
     Button editButton;
     Button quitButton;
     Button reloadButton;
     Button settingsButton;
+    public InputField nbrResources;
+    public GameObject errorText;
 
     AudioSource gm;
 
     public string language;
     string langue;
     ChangeLanguage changeLanguage;
-    
+
     public GameObject window;
 
- 
+
 
     public Slider music;
     public InputField timeLimit;
@@ -35,7 +39,8 @@ public class SettingsButton : MonoBehaviour {
     int time;
     int ressource;
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         changeLanguage = GetComponent<ChangeLanguage>();
         gm = GameObject.Find("GameManager").GetComponent<AudioSource>();
         language = GameObject.Find("GameManager").GetComponent<LangageLoader>().language;
@@ -50,7 +55,7 @@ public class SettingsButton : MonoBehaviour {
         {
             ressourceGameMode.SetActive(true);
         }
-        else if(gamemodeDrop.captionText.text != "RessourceRace" && ressourceGameMode.activeSelf == true)
+        else if (gamemodeDrop.captionText.text != "RessourceRace" && ressourceGameMode.activeSelf == true)
         {
             ressourceGameMode.SetActive(false);
         }
@@ -59,7 +64,7 @@ public class SettingsButton : MonoBehaviour {
     public void DisplaySettings()
     {
         setButtonInactive();
-        window.SetActive(true);  
+        window.SetActive(true);
     }
 
     public void QuitSettings()
@@ -72,9 +77,13 @@ public class SettingsButton : MonoBehaviour {
     {
         setButtonActive();
         manageVolume();
-        window.SetActive(false);
         changeLanguage.ChangementLangue(language);
         changeGameMode();
+        if (numberResources() == -1)
+        {
+            return;
+        }
+        window.SetActive(false);
     }
 
     public void changeGameMode()
@@ -101,7 +110,7 @@ public class SettingsButton : MonoBehaviour {
         gm.volume = volume;
     }
 
-   
+
 
     void setButtonActive()
     {
@@ -130,4 +139,33 @@ public class SettingsButton : MonoBehaviour {
         reloadButton.interactable = false;
         settingsButton.interactable = false;
     }
+
+    int numberResources()
+    {
+        string valueInput = nbrResources.text;
+        List<int> listInt = new List<int>();
+        for (int i = 0; i < valueInput.Length; i++)
+        {
+            listInt.Add(Convert.ToInt32(valueInput[i]));
+        }
+
+        for (int i = 0; i < listInt.Count; i++)
+        {
+            // La liste de caractères entrés par l'utilisateur
+            int result = listInt[i];
+            // Si le caractère courant n'est pas compris entre 0 et 9, ou s'il est égal à 0, et que la liste ne contient qu'un seul caractère
+            if ((result > 57) || (result < 48) || ((result == 48) && (valueInput.Length == 1)))
+            {
+                // On affiche un message d'erreur
+                errorText.SetActive(true);
+                Text error = errorText.GetComponentInChildren<Text>();
+                error.text = "Valeur incorrecte !";
+                return -1;
+            }
+        }
+
+        int max = int.Parse(nbrResources.text);
+        return max;
+    }
 }
+
