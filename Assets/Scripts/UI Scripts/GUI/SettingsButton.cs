@@ -108,7 +108,7 @@ public class SettingsButton : MonoBehaviour
     }
 
 
-
+    // Repasse les boutons inactifs en actifs. Ils reprennent donc leur comportement classique
     void setButtonActive()
     {
         playButton = GameObject.Find("PlayButton").GetComponent<Button>();
@@ -123,6 +123,7 @@ public class SettingsButton : MonoBehaviour
         settingsButton.interactable = true;
     }
 
+    // Rend les boutons en arrière plans "inactifs", ils ne réagissent donc plus si on clique dessus
     void setButtonInactive()
     {
         playButton = GameObject.Find("PlayButton").GetComponent<Button>();

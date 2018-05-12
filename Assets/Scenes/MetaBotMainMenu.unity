@@ -1582,6 +1582,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nbrResources: {fileID: 1118830687}
   errorText: {fileID: 965282022}
+  _maxResources: 0
   language: 
   window: {fileID: 170701715}
   music: {fileID: 1556919898}
@@ -3277,7 +3278,7 @@ Prefab:
     - target: {fileID: 82011188951612208, guid: f803624d2c783d54a99cd2d93a0527e0,
         type: 2}
       propertyPath: m_Volume
-      value: 0.171
+      value: 0.28
       objectReference: {fileID: 0}
     - target: {fileID: 114611912082327328, guid: f803624d2c783d54a99cd2d93a0527e0,
         type: 2}
