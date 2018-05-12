@@ -82,7 +82,14 @@ public class SettingsButton : MonoBehaviour
         manageVolume();
         changeLanguage.ChangementLangue(language);
         changeGameMode();
-        numberResources();
+        if(numberResources() == 0)
+        {
+            numberResources();
+        }
+        else
+        {
+            return;
+        }
         window.SetActive(false);
     }
 
@@ -141,7 +148,7 @@ public class SettingsButton : MonoBehaviour
         settingsButton.interactable = false;
     }
 
-    void numberResources()
+    int numberResources()
     {
        // GameSettings gs = GameObject.Find("GameSettingHUD").GetComponent<GameSettingManager>().GetSettings();
 
@@ -157,20 +164,21 @@ public class SettingsButton : MonoBehaviour
             // La liste de caractères entrés par l'utilisateur
             int result = listInt[i];
             // Si le caractère courant n'est pas compris entre 0 et 9, ou s'il est égal à 0, et que la liste ne contient qu'un seul caractère
-            if ((result > 57) || (result < 48) || ((result == 48) && (valueInput.Length == 1)))
+            if (((result == 52) && (listInt[i + 1] > 48)) ||(result > 57) || (result < 48) || ((result == 48) && (valueInput.Length == 1)) || ((result >52) && (valueInput.Length > 1)) )
             {
                 // On affiche un message d'erreur
                 errorText.SetActive(true);
                 Text error = errorText.GetComponentInChildren<Text>();
                 error.text = "Valeur incorrecte !";
                 _maxResources = -1;
-                return;
+                return -1;
             }
         }
 
         int max = int.Parse(nbrResources.text);
         _maxResources = max;
         GameObject.Find("GameManager").GetComponent<GameManager>()._maxResources = max;
+        return 0;
     }
 }
 
