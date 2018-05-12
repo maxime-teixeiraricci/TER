@@ -8,15 +8,16 @@ public class SpawnRessource : MonoBehaviour
     public GameObject _ressource;
     public float _timer;
     public int nbItem;
-    public int nbItemMax = 40;
+    public int nbItemMax;
 
     private float t;
 
 	// Use this for initialization
 	void Start ()
     {
-		
-	}
+        //nbItemMax = 40;
+        nbItemMax = GameObject.Find("GameManager").GetComponent<GameManager>()._maxResources;
+    }
 	
 	// Update is called once per frame
 	void Update ()

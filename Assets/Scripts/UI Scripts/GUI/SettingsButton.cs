@@ -17,18 +17,17 @@ public class SettingsButton : MonoBehaviour
 
     AudioSource gm;
 
+    public int _maxResources;
+
     public string language;
     string langue;
     ChangeLanguage changeLanguage;
 
     public GameObject window;
 
-
-
     public Slider music;
     public InputField timeLimit;
     public InputField ressourceLimit;
-
 
     public Dropdown dropdown;
     public Dropdown gamemodeDrop;
@@ -45,6 +44,7 @@ public class SettingsButton : MonoBehaviour
         gm = GameObject.Find("GameManager").GetComponent<AudioSource>();
         language = GameObject.Find("GameManager").GetComponent<LangageLoader>().language;
         ressourceGameMode = GameObject.Find("RessourceRaceControl");
+        _maxResources = GameObject.Find("GameManager").GetComponent<GameManager>()._maxResources;
     }
 
 
@@ -79,10 +79,7 @@ public class SettingsButton : MonoBehaviour
         manageVolume();
         changeLanguage.ChangementLangue(language);
         changeGameMode();
-        if (numberResources() == -1)
-        {
-            return;
-        }
+        numberResources();
         window.SetActive(false);
     }
 
@@ -140,8 +137,10 @@ public class SettingsButton : MonoBehaviour
         settingsButton.interactable = false;
     }
 
-    int numberResources()
+    void numberResources()
     {
+       // GameSettings gs = GameObject.Find("GameSettingHUD").GetComponent<GameSettingManager>().GetSettings();
+
         string valueInput = nbrResources.text;
         List<int> listInt = new List<int>();
         for (int i = 0; i < valueInput.Length; i++)
@@ -160,12 +159,14 @@ public class SettingsButton : MonoBehaviour
                 errorText.SetActive(true);
                 Text error = errorText.GetComponentInChildren<Text>();
                 error.text = "Valeur incorrecte !";
-                return -1;
+                _maxResources = -1;
+                return;
             }
         }
 
         int max = int.Parse(nbrResources.text);
-        return max;
+        _maxResources = max;
+        GameObject.Find("GameManager").GetComponent<GameManager>()._maxResources = max;
     }
 }
 
