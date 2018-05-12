@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public string gamepath;
     public int _minNumberOfTeam;
     public int _maxNumberOfTeam;
+    public int _maxResources;
 
     public int ressourceLimit;
     public int timeLimit;
