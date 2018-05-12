@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731725, g: 0.13414745, b: 0.12107873, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731713, g: 0.13414735, b: 0.1210785, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -3412,7 +3412,7 @@ Prefab:
     - target: {fileID: 82011188951612208, guid: f803624d2c783d54a99cd2d93a0527e0,
         type: 2}
       propertyPath: m_Volume
-      value: 0.28
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 114611912082327328, guid: f803624d2c783d54a99cd2d93a0527e0,
         type: 2}
@@ -15055,7 +15055,7 @@ Prefab:
     - target: {fileID: 224752772529200390, guid: 5364b43c29f49044a8b92b622f777355,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -0.49970055
+      value: -0.49970245
       objectReference: {fileID: 0}
     - target: {fileID: 224752772529200390, guid: 5364b43c29f49044a8b92b622f777355,
         type: 2}
@@ -15300,7 +15300,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.1964241, y: 0.5548124}
   m_AnchorMax: {x: 0.7755534, y: 1}
-  m_AnchoredPosition: {x: 1, y: 1.0999985}
+  m_AnchoredPosition: {x: 1, y: 1.1000061}
   m_SizeDelta: {x: -3.7, y: -2.1999998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2121206353

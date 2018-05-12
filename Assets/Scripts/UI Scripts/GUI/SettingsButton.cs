@@ -42,6 +42,8 @@ public class SettingsButton : MonoBehaviour
     {
         changeLanguage = GetComponent<ChangeLanguage>();
         gm = GameObject.Find("GameManager").GetComponent<AudioSource>();
+        music.value = gm.volume*100;
+        //manageVolume(); print("music.value == "+music.value);
         language = GameObject.Find("GameManager").GetComponent<LangageLoader>().language;
         ressourceGameMode = GameObject.Find("RessourceRaceControl");
         _maxResources = GameObject.Find("GameManager").GetComponent<GameManager>()._maxResources;
@@ -51,6 +53,7 @@ public class SettingsButton : MonoBehaviour
 
     void Update()
     {
+
         if (gamemodeDrop.captionText.text == "RessourceRace" && ressourceGameMode.activeSelf == false)
         {
             ressourceGameMode.SetActive(true);

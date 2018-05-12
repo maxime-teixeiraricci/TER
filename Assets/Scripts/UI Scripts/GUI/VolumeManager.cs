@@ -22,6 +22,7 @@ public class VolumeManager : MonoBehaviour {
     void Start ()
     {
         gm = GameObject.Find("GameManager").GetComponent<AudioSource>();
+        music.value = gm.volume*100;
     }
 
     // Ajuste la valeur du son (AudioSource) à la valeur du slider
