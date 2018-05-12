@@ -5,9 +5,16 @@ using UnityEngine.UI;
 
 public class VolumeManager : MonoBehaviour {
 
+    // La source audio
     AudioSource gm;
+
+    // Le slider qui gère la valeur du son
     public Slider music;
+
+    // La valeur du son avant que l'on ait mute le son
     float formerValue;
+
+    // Les sprites pour l'icone du son
     public Sprite muteSprite;
     public Sprite demuteSprite;
 
@@ -16,12 +23,8 @@ public class VolumeManager : MonoBehaviour {
     {
         gm = GameObject.Find("GameManager").GetComponent<AudioSource>();
     }
-	
-	// Update is called once per frame
-	void Update () {
-        
-    }
 
+    // Ajuste la valeur du son (AudioSource) à la valeur du slider
     public void AdjustSound()
     {
         if(music.value != 0)
@@ -38,10 +41,10 @@ public class VolumeManager : MonoBehaviour {
         
     }
 
+    // Met la valeur du son à 0 lorsqu'on clique sur l'icone haut parleur, la repasse à sa valeur précédente non nulle lors d'un nouveau clic
     public void MuteDemute()
     {
-        Debug.Log("Value gm Volume = " + gm.volume);
-        Debug.Log("Value former = " + formerValue);
+
         if(gm.volume == 0)
         {
             gm.volume = formerValue / 100;
@@ -55,10 +58,11 @@ public class VolumeManager : MonoBehaviour {
         }
     }
 
+    // Gère l'affichage du sprite de l'icone du son (Muted / not Muted)
     public void changeSprite()
     {
         Sprite currentSprite = GameObject.Find("MuteDemute").GetComponent<Image>().sprite;
-        //Debug.Log("Nom current sprite = " + currentSprite.name);
+
         if(currentSprite.name == "soundMuted")
         {
             GameObject.Find("MuteDemute").GetComponent<Image>().sprite = demuteSprite;
@@ -67,7 +71,5 @@ public class VolumeManager : MonoBehaviour {
         {
             GameObject.Find("MuteDemute").GetComponent<Image>().sprite = muteSprite;
         }
-
-        //Debug.Log("Name currenSrpite AFTER Modif = " + currentSprite.name);
     }
 }
