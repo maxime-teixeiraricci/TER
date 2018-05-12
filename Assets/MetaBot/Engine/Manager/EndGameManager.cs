@@ -70,11 +70,11 @@ public class EndGameManager : MonoBehaviour {
             trad = t.traduction;
             textWinnerTeam.GetComponent<Text>().text = trad + " : " + winnername;
             print("after Winnerteam");
-            GameObject[] units = GameObject.FindGameObjectsWithTag("Unit");
+           /* GameObject[] units = GameObject.FindGameObjectsWithTag("Unit");
             foreach (GameObject u in units)
             {
                 Destroy(u);
-            }
+            }*/
             anim.SetTrigger("GameOver");
             print("after TextGO");
             if (!written)
@@ -116,12 +116,12 @@ public class EndGameManager : MonoBehaviour {
 
             Score.GetComponent<Text>().text = "Score : " + scorewinner;
             print("after Winnerteam");
-            GameObject[] units = GameObject.FindGameObjectsWithTag("Unit");
+        /*    GameObject[] units = GameObject.FindGameObjectsWithTag("Unit");
             foreach (GameObject u in units)
             {
                 Destroy(u);
             }
-            print("DEBUG END RESSOURCERACE apres destrcution unités");
+            print("DEBUG END RESSOURCERACE apres destrcution unités");*/
             anim.SetTrigger("GameOver");
             print("after TextGO");
             if (!written && !equals && scorewinner != -1)
