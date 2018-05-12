@@ -81,7 +81,6 @@ public class Brain : MonoBehaviour
                 foreach (MessageStruct act in instruction._stringActionsNonTerminales)
                 {
                     _componentActionsNonTerminales._messageDestinataire = act._destinataire;
-                    print(gameObject + "    Action nt = " + act._intitule);
                     if (_componentActionsNonTerminales._actionsNT.ContainsKey(act._intitule))
                     {
                         
