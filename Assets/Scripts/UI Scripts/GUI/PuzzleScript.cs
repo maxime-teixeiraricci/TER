@@ -24,6 +24,7 @@ public class PuzzleScript : MonoBehaviour
     public Color currentColor;
     public Dropdown messageDropDown;
     public Vector2 deltaPosNextObject;
+    GameObject gamemanager;
 
     // Use this for initialization
     void Start ()
@@ -35,6 +36,8 @@ public class PuzzleScript : MonoBehaviour
         {
             DropDownUpdate();
         }
+
+        gamemanager = GameObject.Find("GameManager");
     }
 
     public void LockUpdate(bool value)
@@ -65,10 +68,10 @@ public class PuzzleScript : MonoBehaviour
     {
         string affiche = _value;
         affiche = affiche.Replace("NOT_", "FALSE_");
-        if (GameObject.Find("GameManager"))
+        if (gamemanager)
         {
-            GameObject.Find("GameManager").GetComponent<Traducteur>().setTextOriginal(affiche);
-            affiche = GameObject.Find("GameManager").GetComponent<Traducteur>().traduction;
+            gamemanager.GetComponent<Traducteur>().setTextOriginal(affiche);
+            affiche = gamemanager.GetComponent<Traducteur>().traduction;
         }
         print("Valeur finale affiche: " + affiche);
         if (type == Type.CONDITION)
@@ -82,10 +85,10 @@ public class PuzzleScript : MonoBehaviour
         if (type == Type.MESSAGE)
         {
             string verb = "SEND";
-            if (GameObject.Find("GameManager"))
+            if (gamemanager)
             {
-                GameObject.Find("GameManager").GetComponent<Traducteur>().setTextOriginal(verb);
-                verb = GameObject.Find("GameManager").GetComponent<Traducteur>().traduction;
+                gamemanager.GetComponent<Traducteur>().setTextOriginal(verb);
+                verb = gamemanager.GetComponent<Traducteur>().traduction;
             }
                 _label.GetComponent<Text>().text = verb +" \"" + affiche.Replace("ACTN_MESSAGE_", "").Replace("PERCEPT_", "").Replace("_", " ") + "\"";
         }

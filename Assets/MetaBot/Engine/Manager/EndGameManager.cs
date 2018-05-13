@@ -96,6 +96,7 @@ public class EndGameManager : MonoBehaviour {
 
                 written = true;
             }
+            Time.timeScale = 0;
         };
 
         _ends["RessourceRace"] = delegate ()
@@ -144,6 +145,7 @@ public class EndGameManager : MonoBehaviour {
                 }
                 written = true;
             }
+            Time.timeScale = 0;
         };
     }
 
