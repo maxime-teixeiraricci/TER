@@ -5,9 +5,7 @@
 \usepackage{listings}
 \usepackage{xcolor}
 \usepackage{textcomp}
-\usepackage{graphicx}
 \pagestyle{plain}
-\graphicspath{{DATA/}}
 \definecolor{listinggray}{gray}{0.9}
 \definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
 \lstset{
@@ -79,7 +77,7 @@ Le but de notre moteur de jeu est de permettre à des developpeur de pouvoir ré
 
 \section{Réalisation}
 \subsection{Sur les unités.}
-Chaque unité est composé de deux parties bien distinctes. Son enveloppe corporelle qui permet de representer visuellement l'unité sur la carte et son.
+
 \subsubsection{Le corps}
 \subsubsection{L'esprit}
 Afin de pouvoir fonctionner, les unités possede 3 parties distinctes: La gestion des actions possibles, la gestion des perceptions et l'identité propre de l'unité.
@@ -90,12 +88,110 @@ Blablabla
 \paragraph{Identité.}
 Blablabla
 
-\subsection{La liasion avec le comportement.}
+\subsection{La liaison avec le comportement.}
 \section{Fonctionnalités}
 \section{Amélioration possible}
 
 \newpage
-\chapter{Partie "Graphisme"}
+%%%
+% PARTIE Interface Graphique
+%%%
+\chapter{Partie Interface Graphique}
+\section{Présentation}
+La partie Interface Graphique comprend principalement l'habillage visuel des éléments avec lequel l'utilisateur va interagir pour jouer au jeu. MetaBot étant un jeu pour "programmeur", le joueur interagi surtout avec le menu principal et l'éditeur de comportement afin de créer des équipes pour pouvoir les faire s'affronter.
+\paragraph{}
+L'interface graphique que nous avons créé se décompose en quatre parties, le menu principal, le menu de paramètre, l'éditeur de comportement et des fonctionnalités directement en jeu.
+\section{Etude de l'ancienne interface}
+L'ancienne interface nous est tout de suite apparu comme plutôt vide et les actions y étaient très limitées, pour l'éditeur on pouvait seulement choisir une équipe, une unité et les Contrôle/Condition/Action basiques (Il y avait aussi plusieurs bugs présents mais on ne parle ici que de l'interface).
+\paragraph{}
+Le menu principal contenait un bouton de nouvelle partie, un bouton vers l'éditeur, un bouton pour quitter la partie et une case à cocher pour arrêter le son.
+\paragraph{}
+\paragraph{}
+Le premier choix a donc été de revoir totalement l'interface, ce que nous pouvions faire grâce aux nouveaux éléments apportés. En effet il fallait rajouter de nouvelles fonctionnalités basiques à cette interface qui en avait finalement très peu et ajouter un peu de couleurs à tout ça.
+\section{Nouvelle Interface}
+
+\subsection{Menu Principal}
+\subsubsection{Lancer une Partie}
+Ce bouton permet de lancer une partie du jeu MetaBot. Le lancement de la partie prend en compte les équipes choisies, le nombre de chaque unités en début de partie, le nombre de ressources maximum (nombre de ressource présentes en jeu au même moment), et la carte de jeu.
+\subsubsection{Bouton Editeur de Comportement}
+Ce bouton permet d'accéder à l'éditeur de comportement.
+\subsubsection{Bouton Paramètre}
+Ce bouton ouvre (révèle) le menu des Paramètres.
+\subsubsection{Choisir les équipes}
+Dans le carré de chaque équipe il y a un menu déroulant avec les noms de toutes les équipes présentes dans les fichiers du jeu. On peut donc en sélectionner une pour qu'elle participe à la prochaine bataille.
+De plus à coté du nom de l'équipe on retrouve aussi son score (ELO).
+\subsubsection{Choisir le nombre d'équipe}
+Au dessus de toute les équipes on peut choisir le nombre d'équipe participant à la partie. Les valeurs sont dans un menu déroulant et vont de 2 à 4.
+\subsubsection{Bouton "Reload Team"}
+Ce bouton permet de recharger les équipes.
+\subsubsection{Bouton des Scores}
+Le bouton en forme de couronne ouvre l'écran des scores. Chaque équipe a un score (ELO) qui indique son "niveau" et donc qu'elle est plus apte à gagner que les équipes avec un score plus faible.
+\subsubsection{Bouton pour quitter le jeu}
+Ce bouton ouvre une boite de dialogue demandant à l'utilisateur si il veut vraiment quitter le jeu. Il peut ainsi choisir de revenir sur le menu principal ou de fermer le jeu.
+\subsubsection{Choisir carte de jeu}
+On peut directement choisir le lieu de la partie en cliquant sur les flèches de part et d'autre de l’aperçu de la carte. Il existe pour le moment cinq cartes, Moutain, Plain, Simple, Desolate et Garden.
+\subsubsection{Choisir nombre de départ de chaque unités}
+En dessous de l’aperçu de la carte, il y a les noms des unités présente dans le jeu. Sous ces noms, le chiffre, indique le nombre de ce type d'unité présent au lancement de la partie. On peut incrémenter ou décrémenter ce chiffre à l'aide des boutons "+" et "-" à coté de celui-ci.
+\subsubsection{Barre de Chargement}
+Quand on lance une partie, une barre de chargement apparaît et indique l'avancement du chargement de la partie.
+
+\subsection{Menu des Paramètres}
+\subsubsection{Changer le Volume de la musique}
+Ce slider indique le niveau sonore de la musique, on peut le changer en cliquant dessus et en déplaçant la valeur de 0 jusqu’à 100. 0 correspond à un arrêt de la musique et 100 au volume maximal. De plus le volume sonore dans le menu est le même dans l'éditeur de comportement et dans le jeu lui même.
+\subsubsection{Activer/Désactiver le tir allié}
+Ce bouton permet d'activer ou désactiver le fait que les unités d'une équipe peuvent infliger des dégâts aux autre unités de la même équipe en jeu.
+\subsubsection{Choisir nombre de ressource maximum dans le jeu}
+Dans cette case on peut entrer un chiffre entier qui indiquera le nombre maximum de ressource présente, en même temps, à l'écran en jeu.
+\subsubsection{Choisir le mode de jeu}
+Ce menu déroulant permet de choisir le mode de jeu de la prochaine partie. Il y a actuellement deux modes, le mode TestBot et le mode RessourceRace. Si le mode choisi est RessourceRace alors deux autres paramètres apparaissent, le temps avant que la partie ne s’arrête et la limite de ressource à atteindre pour gagner.
+\subsubsection{Choisir la langue}
+Les boutons en forme de drapeau indiquent les langues disponibles pour le jeu. Pour changer de langue il suffit d'appuyer sur le drapeau voulut et de faire Valider les paramètres.
+\subsubsection{Bouton Retour}
+Ce bouton permet de retourner à l'écran du menu principal.
+\subsubsection{Bouton Valider}
+Ce bouton valide les paramètres définit au dessus et revient au menu principal en ayant appliquer ces paramètres.
+
+\subsection{Editeur de Comportement}
+% ToolBox %
+\subsubsection{Bouton Nouveau Comportement}
+Ce bouton permet de vider le comportement de l'unité de l'équipe courante. Si on veut tout effacer sur l'unité où on est on appuie dessus au lieu de tout supprimer à la main.
+\subsubsection{Bouton Chargement Comportement}
+Ce bouton permet de charger un comportement pour l'unité de l'équipe courante.
+\subsubsection{Bouton Sauvegarde du Comportement}
+Ce bouton sauvegarde le comportement de l'unité de l'équipe courante. Si on change d'unité dans la même équipe mais sans sauvegarder, alors le comportement de l'unité précédente sera perdu.
+\subsubsection{Bouton "Undo"}
+Ce bouton permet de ramener la dernière pièce supprimée là où elle était. C'est le bouton d'annulation de changement.
+\subsubsection{Bouton "Redo"}
+Ce bouton permet d'annuler le dernier "Undo" en annulant son action et ramenant l'état du comportement.
+\subsubsection{Bouton de retour au menu principal}
+Ce bouton ramène l'utilisateur au menu principal. Avant de cliquer dessus il faut penser à bien sauvegarder le comportement en cours pour ne pas le perdre.
+
+% Equipe + Unité %
+\subsubsection{Choix de l'équipe}
+Ce menu déroulant permet de choisir l'équipe sur laquelle on veut travailler.
+\subsubsection{Choix de l'unité}
+Ce menu déroulant permet de choisir l'unité de l'équipe sur laquelle on va opérer les changements de son comportement.
+\subsubsection{Bouton Création d'équipe}
+Juste à droite des équipes se trouve un bouton en forme de croix, il permet de créer un nouvelle équipe. Si on appuie une boite de dialogue s'ouvre et nous demande le nom de la nouvelle équipe. Après avoir validé le nom, la boite de dialogue se ferme et la nouvelle équipe est présente dans le menu déroulant des équipes.
+\subsubsection{Bouton Suppression d'équipe}
+Ce bouton permet de supprimer définitivement l'équipe courante. Une boite de dialogue demandera confirmation.
+\subsubsection{Affichage des statistiques de l'unité courante}
+Quand on choisit une unité, sur sa droite apparaît ses valeurs dans le cadre "Propriétés", cela correspond à ses statistiques.
+\subsubsection{Affichage du modèle 3D de l'unité courante}
+Dans le même cadre "Propriétés" apparaît aussi le modèle 3D de l'unité courante. C'est l'apparence qu'aura l'unité en jeu.
+
+% Zone de création des comportements
+\subsubsection{Boutons de choix de la catégorie de la pièce}
+Sur la gauche, de manière verticale, se trouve cinq noms de catégories qui sont les Contrôles, les Conditions, les Actions, les Messages et les Actions non terminale. En cliquant sur une de ses catégories on affiche la liste des éléments de cette catégorie dans la zone directement à droite.
+\subsubsection{Zone de sélection de la pièce suivant la catégorie}
+C'est dans cette zone qu’apparaît la liste des éléments des catégories de pièces de l'éditeur. Les éléments sont présents sous forme de case avec leur nom à l'intérieur (certain possède même des menus déroulant pour choisir la valeur voulue une fois dans la zone d'édition). La couleur des éléments dépend de leur catégorie.
+Les éléments peuvent être sélectionnés et déplacés dans la zone d'édition du comportement grâce au glissé/déposé (Drag & Drop).
+\subsubsection{Zone éditeur de comportement de l'unité et de l'équipe courante}
+Dans cette zone arrivent les pièces venant de la zone de sélection. Elles ce placent à l'aide du curseur de la souris sur un grille invisible. Si un pièce est valide alors elle est colorée sinon elle est grise. Les pièces "IF" possèdent un cadenas dans le coin supérieur droit, il permet de déplacer, en plus de la pièce IF, tout les éléments valides qui lui sont rattachés (hors IF). Les pièces de contrôle sont valide en dessous d'autre pièce du même type ou en dessous de la pièce "Start". Les autres pièces doivent se rattacher à des pièces de contrôle, en haut à droite pour les pièces Condition et en bas à droite pour les autres. Les pièces hors Contrôle sont ainsi valide lorsqu'elles sont au bon endroit, sur leur ligne collé au contrôle ou collé à une autre pièce valide. 
+
+\subsection{Element dans le jeu}
+\subsubsection{Réglage du volume du son}
+En bas à droite de la fenêtre de jeu il y a un icône de son et un slider. Le slider permet, comme dans le menu des paramètres, de changer le volume du son. L’icône lui sert de bouton, si on le presse le son passe à 0 et l’icône devient barré. Si on appuie de nouveau il devient normal et le son revient comme avant.
 
 \newpage
 \chapter{Partie "Interpreteur"}
@@ -154,6 +250,12 @@ Ainsi nous avons 1 fichier par équipe écrite par l'utilisateur, chacun détail
       </actions>
     </instruction>
     <instruction>
+      <parameters>
+        <PERCEPT_BLOCKED />
+      </parameters>
+      <actions>
+        <ACTION_MOVE_UNTIL_UNBLOCKED />
+      </actions>
     </instruction>
   </unit>
 </behavior>
@@ -180,54 +282,8 @@ Le fichier va être parcouru, et un ensemble de couples clé,valeurs vont être 
 Ce script est ainsi rattaché au "GameManager" , un objet Unity qui n'est pas détruit lorsque l'on change de scène. Ainsi les traductions sont conservées lorsqu'on passe de l'éditeur au menu principal , du menu principal aux cartes de jeu, ...
 \paragraph{}
 Un second script est lui attaché à tous les Objets du jeu qui vont devoir être traduits. Celui-ci va , à la création de l'objet auquel il est rattaché, chercher la langue actuellement affichée, récupérer comme clé le texte original de l'objet auquel le script est affilié, et va stocker la traduction, et l'afficher à l utilisateur.
-\includegraphics{traducteur2.png}
 
 En Runtime, si la langue est changée dans les paramètres du jeu, les script de traduction des objets vont mettre à jour leur langue, et récupérer la nouvelle traduction dans le "GameManager".
-\paragraph{}
-La traduction est aussi disponible sans rattacher un script "Traducteur" à un Objet de la scène.
-En effet, il y a beaucoup de situations ou on ne peut pas rattacher ce script. On peut récupérer la traduction via le champ "traduction" du traducteur après l'avoir instancié dans un script externe, et l'afficher ou l'utiliser à la place de ce qu'on l'on voulait traduire.
-\paragraph{}
-La récupération de la langue du projet se fait à travers un fichier paramètre à la création du Traducteur, que ce soit dans la scène ou dans un script. 
-Celle-ci est stockée en clair dans un fichier de paramétrage : 
-\includegraphics{fichierconfig.png}
-Mais ce fichier est caché, à moins de connaître sa position dans la hiérarchie et de devoir redémarrer le jeu pour changer la langue, 2 boutons sont dans les paramètres pour passer en Français ou en Anglais. Si le besoin de nouvelles langues se fait sentir dans le futur, il sera toujours possible de transformer ces boutons en un "DropDown" , un menu déroulant, afin de pouvoir sélectionner autant de langues que disponible.
-\paragraph{}
-L'ajout de traductions est externe au jeu. 
-Dans les fichiers du jeu , on retrouve un dossier contenant ces traductions,sous formes de fichier représentant chacun une langue.
-Une traduction est simplement une ligne du fichier mettant en relation une clé et sa traduction.
-Le rajout d'une langue est simple est totalement simple et générique :
-On ajoute un fichier ayant le nom de la langue que l'on souhaite, et qui doit obligatoirement implémenter l'ensemble des clés présentes dans les autres fichiers, ou dans le fichier "example" mis à disposition.
-
-Voici à quoi ressemble les fichiers de traduction :
-\begin{lstlisting}[language=XML]
-# Percepts
-	PERCEPT_ALLY=PERCEPT_ALLIE_A_PORTEE
-	FALSE_PERCEPT_ALLY=PERCEPT_AUCUN_ALLIE_A_PORTEE
-	PERCEPT_BLOCKED=PERCEPT_EST_BLOQUE
-	FALSE_PERCEPT_BLOCKED=PERCEPT_N'EST_PAS_BLOQUE
-	PERCEPT_IS_RELOADED=PERCEPT_EST_RECHARGE
-	FALSE_PERCEPT_IS_RELOADED=PERCEPT_N'EST_PAS_RECHARGE
-	PERCEPT_IS_NOT_RELOADED=PERCEPT_PAS_RECHARGE
-	FALSE_PERCEPT_IS_NOT_RELOADED=PERCEPT_EST_RECHARGE
-# Map en jeu 
-	Recommencer=Recommencer
-	Quitter=Quitter
-	Health : =Vie : 
-	Bag : =Sac : 
-	Heading : =Orientation : 
-	Contract :=Contrat :
-\end{lstlisting}
-
-On a donc ici bien le système de clé / valeur expliqué plus haut. 
-On peut voir que le caractère séparateur est le caractère ' = ' , au départ nous utilisions le caractère ' : ' , mais il y a eu des conflits puisque les textes affichés sur l'interface utilisateur contiennent aussi les ':'.
-Il est possible que le caractère ' = ' pose problème au bout d'un moment, si jamais des traductions ajoutées ultérieurement le contiennent. Il faudra donc simplement faire une recherche "Trouver et Remplacer" dans les fichiers de traduction, et changer un seul caractère dans le code du Parser des fichiers de traductions. 
-
-\paragraph{}
-
-La traduction dupliquée de chaque texte comme vue dans la partie "Percepts" de l'exemple plus haut à laquelle on rajoute un "FALSE_" provient du fait que les conditions et perceptions qui sont traitées dans le jeu peuvent être mises au négatif. Par exemple, si le comportement d'une unité de mon équipe cherche à savoir si cette unité à "un contrat d'élimination en cours" lorsqu'elle reçoit le message demandant de l'aide depuis la base, il est tout à fait possible que l'on cherche à vérifier que l'on a aucun contrat d'élimination pour pouvoir en accepter un nouveau.
-Au lieu de dupliquer les conditions dans le code , il a été préféré de pouvoir les rendre négatives.
-
-
 \newpage
 \chapter{Partie "Game Design"}
 
