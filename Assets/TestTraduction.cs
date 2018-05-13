@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
@@ -10,20 +8,32 @@ public class TestTraduction : MonoBehaviour
    
 
 
-    void Awake()
+
+    // called first
+    void OnEnable()
     {
-        
-        listOfObject = Resources.FindObjectsOfTypeAll<Text>();
+        Debug.Log("OnEnable called");
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
+    // called second
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         Debug.Log("OnSceneLoaded: " + scene.name);
         Debug.Log(mode);
+        listOfObject = Resources.FindObjectsOfTypeAll<Text>();
     }
 
-    private void OnSceneUnloaded(Scene current)
+    // called third
+    void Start()
     {
-        Debug.Log("OnSceneUnloaded: " + current);
+        Debug.Log("Start");
+    }
+
+    // called when the game is terminated
+    void OnDisable()
+    {
+        Debug.Log("OnDisable");
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }
