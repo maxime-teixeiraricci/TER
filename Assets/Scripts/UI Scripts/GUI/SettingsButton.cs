@@ -47,6 +47,7 @@ public class SettingsButton : MonoBehaviour
         language = GameObject.Find("GameManager").GetComponent<LangageLoader>().language;
         ressourceGameMode = GameObject.Find("RessourceRaceControl");
         _maxResources = GameObject.Find("GameManager").GetComponent<GameManager>()._maxResources;
+        nbrResources.text = Convert.ToString(GameObject.Find("GameManager").GetComponent<GameManager>()._maxResources);
     }
 
 
@@ -164,9 +165,28 @@ public class SettingsButton : MonoBehaviour
             // La liste de caractères entrés par l'utilisateur
             int result = listInt[i];
             // Si le caractère courant n'est pas compris entre 0 et 9, ou s'il est égal à 0, et que la liste ne contient qu'un seul caractère
-            if (((result == 52) && (listInt[i + 1] > 48)) ||(result > 57) || (result < 48) || ((result == 48) && (valueInput.Length == 1)) || ((result >52) && (valueInput.Length > 1)) )
+            
+            //Debug.Log("listInt = " + listInt[i + 1]);
+            
+            /*
+            if(listInt[0] == 52)
+            {
+                if(listInt[i+1] >48 )
+                {
+                    // On affiche un message d'erreur
+                    errorText.SetActive(true);
+                    Text error = errorText.GetComponentInChildren<Text>();
+                    error.text = "Valeur incorrecte !";
+                    _maxResources = -1;
+                    return -1;
+                }
+            }*/
+            if (valueInput.Length > 2 || ((listInt[0] == 52) && (listInt[1] > 48)) || (result > 57) || (result < 48) || ((result == 48) && (valueInput.Length == 1)) || ((listInt[0] >52) && (valueInput.Length > 1)) )
             {
                 // On affiche un message d'erreur
+                Debug.Log("index 0 = " + listInt[0]);
+                Debug.Log("index 1 = " + listInt[1]);
+                Debug.Log("TailleList = " + valueInput.Length);
                 errorText.SetActive(true);
                 Text error = errorText.GetComponentInChildren<Text>();
                 error.text = "Valeur incorrecte !";
@@ -178,6 +198,7 @@ public class SettingsButton : MonoBehaviour
         int max = int.Parse(nbrResources.text);
         _maxResources = max;
         GameObject.Find("GameManager").GetComponent<GameManager>()._maxResources = max;
+        errorText.SetActive(false);
         return 0;
     }
 }
