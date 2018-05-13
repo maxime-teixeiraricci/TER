@@ -34,7 +34,6 @@ public class Configurator : MonoBehaviour {
         if (GetComponent<Sight>())
         {
             GetComponent<Sight>()._angle = getStat("ViewAngle");
-            print(getStat("ViewAngle"));
             GetComponent<Sight>()._distance = getStat("ViewDistance");
         }
 
