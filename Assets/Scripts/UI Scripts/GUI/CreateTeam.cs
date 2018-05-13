@@ -52,7 +52,7 @@ public class CreateTeam : MonoBehaviour
                 error.text = "Nom invalide ! (a-zA-Z0-9)";
                 return;
             }
-            if (listInt.Count == 1 && result == 32)
+            if (listInt[0] == 32) //&& result == 32)
             {
                 errorText.SetActive(true);
                 Text errorSpace = errorText.GetComponentInChildren<Text>();
