@@ -81,12 +81,6 @@ public class CreateTeam : MonoBehaviour
                 return;
             }
         }
-        /*
-        if (File.Exists(Application.streamingAssetsPath + "/ELO/" + teamName + ".elo"))
-        {
-            File.Create(Application.streamingAssetsPath + "/ELO/" + teamName + ".elo");
-            File.WriteAllLines(Application.streamingAssetsPath + "/ELO/" + teamName + ".elo", new string[] { 2500 + "" });
-        }*/
 
         if (!System.IO.File.Exists(Application.streamingAssetsPath + "/ELO/" + teamName + ".elo"))
         {
