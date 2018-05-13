@@ -27,6 +27,15 @@ public class NumberPlayers : MonoBehaviour {
         initialPos1 = new Vector3(Team1.transform.position.x, Team1.transform.position.y, Team1.transform.position.z);
         initialPos2 = new Vector3(Team2.transform.position.x, Team2.transform.position.y, Team2.transform.position.z);
         initialPos3 = new Vector3(Team3.transform.position.x, Team3.transform.position.y, Team3.transform.position.z);
+
+        dropdown.value = 0;
+        for (int i = 0; i < dropdown.options.Count; i++)
+        {
+            if (dropdown.options[i].text.Equals(GameObject.Find("GameManager").GetComponent<TeamManager>()._teams.Count.ToString()))
+            {
+                dropdown.value = i;
+            }
+        }
     }
 
     // Met à jour la position des cadres des équipes, en fonction du nombre d'équipes présentes

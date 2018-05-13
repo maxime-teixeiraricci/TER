@@ -22,10 +22,6 @@ public abstract class Percept : MonoBehaviour
             _percepts["PERCEPT_"+messageType] = delegate () 
             {
                 GetComponent<ActionNonTerminal>()._tmpMessage = mm.ContainsType(messageType);
-                if (GetComponent<ActionNonTerminal>()._tmpMessage != null)
-                {
-                    print(gameObject + " MESSAGE : " + GetComponent<ActionNonTerminal>()._tmpMessage._sender + " >> "+ GetComponent<ActionNonTerminal>()._tmpMessage._receiver);
-                }
                 return GetComponent<ActionNonTerminal>()._tmpMessage != null;
             };
         }

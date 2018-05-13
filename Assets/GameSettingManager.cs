@@ -12,7 +12,6 @@ public class GameSettingManager : MonoBehaviour
     public GameSettings GetSettings()
     {
         GameSettings _settings = new GameSettings();
-
         _settings._friendlyFire = _friendlyFire;
         _settings._indexSceneMap = _mapSettings._selectedMap._indexScene;
         _settings._initStartUnit = new Dictionary<string, int>();

@@ -36,10 +36,9 @@ public class BulletScript : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        print(other + " Touched");
         if (!other.isTrigger && other.GetComponent<Stats>() && other.gameObject != _owner.gameObject)
         {
-            print(other + " Touched");
+
             GameObject explosion = Instantiate(Explosion, transform.position, Quaternion.identity);
             other.GetComponent<Stats>().AddHealth(-_damage);
             _damage = 0;

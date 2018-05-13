@@ -44,16 +44,21 @@
 
 \part{Présentation du projet}
 \chapter{Introduction}
+\section{But du projet}
 \paragraph{}
-L'objectif de ce projet est la réalisation d'un jeu basé sur un modèle multi-agent. L'idée générale du projet est dans la continuité du projet de l'année dernière sur le thème. L'outil utilisé est Unity 3D, un moteur de jeu utilisé dans un grand nombre de réalisation de hautes qualités. Notre projet est utilisable sur Windows et Mac et pourrais être porté sur Android.
+L'objectif de ce projet est la réalisation d'un jeu basé sur un modèle multi-agent. L'idée générale du projet est dans la continuité du projet de l'année dernière sur le même thème. L'outil utilisé est Unity 3D, un moteur de jeu utilisé dans un grand nombre de réalisations de hautes qualités. Notre projet est utilisable sur Windows et Mac et pourrais être porté sur Android.
 Ce projet consiste de réaliser un jeu que l'on peut qualifier de programmeur et de permettre, notamment, à de jeunes personnes de se familiariser avec le monde de la programmation. L'utilisateur pourra donc créer un comportement pour des robots appelé "unité" afin de remplir des objectifs du jeu.
 \paragraph{}
 Le projet Metabot est un projet modeste réalisé à partir du logiciel Unity 3D par un groupe d'étudiant débutant dans l'utilisation de cet outil. Malgré le peu d'expérience dans la création pure de ce genre de projet, le projet actuel est le fruit d'un travail important et d'une implication entière de toute l'équipe.
 Le projet a donc pour unique prétention de communiquer notre amour du jeu vidéo et de la programmation.
+\subsection{Cahier des charges}
+\section{Notion d'agent}
+\subsection{Système multi-agents}
+\subsection{Representation dans notre projet}
 \newpage
-\chapter{MetaBot: Le mode par défaut}
+\chapter{WarBot: Le mode par défaut}
 \section{Principe}
-Dans MetaBot, deux à quatre équipes se battent sur un terrain pour les ressources afin de survivre et d'éliminer les autres équipes afin d’être la dernière ne vie. Des ressources apparaissent sur la carte et peuvent etre converti en unité ou en soin.
+Dans WarBot, deux à quatre équipes se battent sur un terrain pour les ressources afin de survivre et d'éliminer les autres équipes afin d’être la dernière ne vie. Des ressources apparaissent sur la carte et peuvent etre converti en unité ou en soin.
 
 \newpage
 \part{Réalisation du projet}
@@ -64,15 +69,17 @@ Dans MetaBot, deux à quatre équipes se battent sur un terrain pour les ressour
 %%%
 \chapter{Partie "Moteur"}
 \section{Phase de conception}
-Pour réaliser ce projet, nous avons réalisé une conception basé sur nos connaissances
+Pour réaliser ce projet, nous avons réalisé une conception basé sur notre savoir en matiere de programation orientée agent et tout en gardant à l'esprit la notion de généricité qui est au coeur de notre projet.
+Le but de notre moteur de jeu est de permettre à des developpeur de pouvoir réaliser un mode de jeu orienté agent, de facon la plus simple possible.
 \section{De l'étude de l'ancien projet à la refonte totale du moteur.}
 \subsection{État de l'art de l'ancien projet.}
 
 
-\subsection{Refont du noyau.}
+\subsection{Refonte du noyau.}
 
 \section{Réalisation}
 \subsection{Sur les unités.}
+
 \subsubsection{Le corps}
 \subsubsection{L'esprit}
 Afin de pouvoir fonctionner, les unités possede 3 parties distinctes: La gestion des actions possibles, la gestion des perceptions et l'identité propre de l'unité.
@@ -82,6 +89,8 @@ Blablabla
 Blablabla
 \paragraph{Identité.}
 Blablabla
+
+\subsection{La liasion avec le comportement.}
 \section{Fonctionnalités}
 \section{Amélioration possible}
 
