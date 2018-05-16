@@ -40,6 +40,10 @@ public class MovableCharacter : MonoBehaviour
             transform.position = nextposition;
             
         }
+        else
+        {
+            transform.position *= 1;
+        }
         
     }
 

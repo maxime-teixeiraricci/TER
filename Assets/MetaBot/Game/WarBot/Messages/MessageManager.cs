@@ -10,6 +10,8 @@ public abstract class MessageManager : MonoBehaviour {
     public string[] _messageType;
     public GameObject _messageLineObject;
 
+    private Dictionary<GameObject,GameObject> _messageLineObjects = new Dictionary<GameObject, GameObject>();
+
     public abstract void Init();
 
     public void UpdateMessage()
@@ -27,15 +29,26 @@ public abstract class MessageManager : MonoBehaviour {
             if (!unit.Equals(this.gameObject) &&unit.GetComponent<Stats>()._teamIndex == GetComponent<Stats>()._teamIndex && 
                 ((unit.GetComponent<Stats>()._unitType == dest) || (dest == "All")))
             {
-                Message M = new Message(message);
 
-                GameObject messageLine = Instantiate(_messageLineObject);
-                messageLine.GetComponent<MessageLineScript>()._sender = this.gameObject;
-                messageLine.GetComponent<MessageLineScript>()._receiver = unit;
+
+                Message M = new Message(message);
+                CreateMessageLineObject(unit);
                 M._receiver = unit;
                 M.heading = Utility.getAngle(unit, gameObject);
                 unit.GetComponent<MessageManager>()._waitingMessages.Add(M);
             }
+        }
+    }
+
+
+    public void CreateMessageLineObject(GameObject unit)
+    {
+        if ((!_messageLineObjects.ContainsKey(unit)) || (_messageLineObjects.ContainsKey(unit) &&_messageLineObjects[unit] == null))
+        { 
+            GameObject messageLine = Instantiate(_messageLineObject);
+            messageLine.GetComponent<MessageLineScript>()._sender = this.gameObject;
+            messageLine.GetComponent<MessageLineScript>()._receiver = unit;
+            _messageLineObjects[unit] = messageLine;
         }
     }
 
