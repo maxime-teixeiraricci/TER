@@ -44,19 +44,23 @@
 \chapter{Introduction}
 \section{But du projet}
 \paragraph{}
-L'objectif de ce projet est la réalisation d'un jeu basé sur un modèle multi-agent. L'idée générale du projet est dans la continuité du projet de l'année dernière sur le même thème. L'outil utilisé est Unity 3D, un moteur de jeu utilisé dans un grand nombre de réalisations de hautes qualités. Notre projet est utilisable sur Windows et Mac et pourrais être porté sur Android.
-Ce projet consiste de réaliser un jeu que l'on peut qualifier de programmeur et de permettre, notamment, à de jeunes personnes de se familiariser avec le monde de la programmation. L'utilisateur pourra donc créer un comportement pour des robots appelé "unité" afin de remplir des objectifs du jeu.
+L'objectif de ce projet est la réalisation d'un jeu basé sur un modèle multi-agent. L'idée générale du projet est dans la continuité de celui de l'année dernière et sur le même thème. L'outil utilisé est Unity 3D, un moteur de jeu employé dans un grand nombre de réalisations de hautes qualités. Notre projet est opérationnel sur Windows et pourrait être porté sur Mac ou encore Android.
+Ce projet consiste de réaliser un jeu que l'on peut qualifier de programmeur et de permettre, notamment, à de jeunes personnes de se familiariser avec le monde de la programmation. L'utilisateur pourra donc créer un comportement pour des robots appelés "unité" afin de remplir des objectifs du jeu.
 \paragraph{}
-Le projet Metabot est un projet modeste réalisé à partir du logiciel Unity 3D par un groupe d'étudiant débutant dans l'utilisation de cet outil. Malgré le peu d'expérience dans la création pure de ce genre de projet, le projet actuel est le fruit d'un travail important et d'une implication entière de toute l'équipe.
-Le projet a donc pour unique prétention de communiquer notre amour du jeu vidéo et de la programmation.
-\subsection{Cahier des charges}
+Metabot est un projet modeste réalisé à partir du logiciel Unity 3D par un groupe d'étudiants débutants dans l'utilisation de cet outil. Malgré le peu d'expérience dans la création pure de ce genre d'applications, le projet actuel est le fruit d'un travail important et d'une implication entière de toute l'équipe.
+Il a donc pour unique prétention de communiquer notre amour du jeu vidéo et de la programmation.
+
 \section{Notion d'agent}
+
 \subsection{Système multi-agents}
+
 \subsection{Representation dans notre projet}
+
 \newpage
+
 \chapter{WarBot: Le mode par défaut}
 \section{Principe}
-Dans WarBot, deux à quatre équipes se battent sur un terrain pour les ressources afin de survivre et d'éliminer les autres équipes afin d’être la dernière ne vie. Des ressources apparaissent sur la carte et peuvent etre converti en unité ou en soin.
+Dans WarBot, deux à quatre équipes se battent sur un terrain pour les ressources afin de survivre et d'éliminer les autres équipes et d’être la dernière ne vie. Des ressources apparaissent sur la carte et peuvent être converties en unités ou en soin.
 
 \newpage
 \part{Réalisation du projet}
@@ -67,30 +71,145 @@ Dans WarBot, deux à quatre équipes se battent sur un terrain pour les ressourc
 %%%
 \chapter{Partie "Moteur"}
 \section{Phase de conception}
-Pour réaliser ce projet, nous avons réalisé une conception basé sur notre savoir en matiere de programation orientée agent et tout en gardant à l'esprit la notion de généricité qui est au coeur de notre projet.
-Le but de notre moteur de jeu est de permettre à des developpeur de pouvoir réaliser un mode de jeu orienté agent, de facon la plus simple possible.
+Notre conception est basée sur notre savoir en matiere de programation orientée agent tout en gardant à l'esprit la notion de généricité qui est au coeur de notre projet.
+Le but de notre moteur de jeu est de permettre à des développeurs de pouvoir réaliser un mode de jeu orienté agent, de facon simple.
 \section{De l'étude de l'ancien projet à la refonte totale du moteur.}
 \subsection{État de l'art de l'ancien projet.}
 
+Le Warbot Unity d'origine nous permettait de lancer une partie de jeu en mode standard, à deux équipes, celle-ci étant paramétrable.
+Le choix du nombre d'unité, per type (parmis : Base, Explorer, Ingenieur, Tourelle, Heavy) ainsi que du nombre de ressources généré par minute sont disponibles.
+Une carte de jeu, sans obstacle et rectangulaire est présente.
+Durant une partie, il est possible de cliquer sur une unité pour afficher
+ la vitesse du jeu est modifiable (accélération / déssélération).
+
+\subsection{Cahier des charges}
+
+Notre but était de modifier le programme existant afin qu'il devienne plus générique. C'est à dire qu'il ne se limite plus au simple jeu Warbot mais qu'il permette l'implémentation de différents jeux orientées agents facilement. 
+Pour cela il fallait donc généraliser la gestion des différentes unités et de leur comportement (action/perception/statistique). De plus, l'ajout d'actions et de moyens de perceptions doit se faire de façon intuitive de même pour les différentes exigeances de jeu (règles/conditions de victoire). 
 
 \subsection{Refonte du noyau.}
 
+Après nous être pencher en profondeur dans le code nécessaire au bon fonctionnement du jeu, nous nous sommes très vite rendu compte de ses limites en terme de généricité.
+Nous avons donc pris la décision en accord avec Mr Ferberr et malgré quelques réticences de sa part, de reprendre le "moteur de jeu" from scratch.
+
 \section{Réalisation}
-\subsection{Sur les unités.}
+
+\subsection{Gestion des unités.}
+
+La gestion des unités de manière générique nous a poussé à réfléchir aux éléments minimum définissant celle-ci.
+Elles nécessitent donc 6 scripts de base : 
+\begin{itemize}
+\item Brain
+\item Stats
+\item Percept
+\item Actions
+\item ActionNonTerminales
+\item Messages
+\end{itemize}
 
 \subsubsection{Le corps}
-\subsubsection{L'esprit}
-Afin de pouvoir fonctionner, les unités possede 3 parties distinctes: La gestion des actions possibles, la gestion des perceptions et l'identité propre de l'unité.
-\paragraph{Actions.}
-Blablabla
-\paragraph{Perceptions.}
-Blablabla
-\paragraph{Identité.}
-Blablabla
 
-\subsection{La liaison avec le comportement.}
+Le corps de l'unité correspond à son modèle 3D, et son GameObejct Collider associé.
+
+Pour le jeu warbot nous avons réaliser plusieurs modèles 3D.
+\begin{itemize}
+\item Base
+[Photo]
+[Descriptif]
+\item Explorer
+[Photo]
+[Descriptif]
+\item Light
+[Photo]
+[Descriptif]
+\item Heavy
+[Photo]
+[Descriptif]
+\end{itemize}
+
+\subsubsection{L'esprit}
+Afin de pouvoir fonctionner, les unités possede 3 parties distinctes: 
+\begin{itemize}
+\item La gestion des actions possibles.
+\item La gestion des perceptions.
+\item L'identité propre de l'unité.
+\end{itemize}
+
+\paragraph{Perceptions.}
+Concept de percept : qu'est ce qu'un percept?
+
+Un percept est condition nécessaire, dans l'architecture de subsomption, pour effectuer une action.
+
+Création d'un percept
+
+Gestion du percept de son appel à sa réalisation.
+
+Prenons par exemple le percept "PerceptAlly", pour celui-ci nous ....
+
+\paragraph{Actions.}
+
+\subparagraph{Non terminales.}
+
+Une action non terminale est une composante d'une action terminale, par exemple "se tourner vers un ennemi",celle-ci ne termine pas le tour de l'unité, 
+
+Création d'une action non terminale.
+
+Gestion de l'action non terminale de son appel à sa réalisation.
+
+Prenons par exemple l'action non terminale "ActionTurnEast", pour cellei-ci nous ....
+
+\subparagraph{Terminales.}
+
+Une action terminale est considérée comme un ordre donné à l'unité à chaque unité de temps, à la différence de l'action non terminale, celle-ci termine le tour de l'unité, 
+
+Création d'une action terminale.
+
+Gestion de l'action de son appel à sa réalisation.
+
+Prenons par exemple l'action "Fire", pour cellei-ci nous ....
+
+\subsection{Gestion des scènes.}
+Une scène, comme l'unité, détient elle aussi des composants minimums, ceux-ci ont été regroupé dans un GameObject appelé "MetabotNecessary".
+Ils se résument en 8 scripts:
+\begin{itemize}
+\item MainCamera : la caméra principale.
+\item TurnManager : s'occupe de la gestion des tours.
+\item RessourceGenerator : un générateur de ressource.
+\item MinimapCamera : camera permettant l'affichage de la minimap.
+\item ItemManager : gère le comportement des objets.
+\item HUD : canvas d'affichage tête haute.
+\item UnitManager : gestionnaire d'unité qui comporte les 4 equipes.
+\end{itemize}
+
+\subsection{Les différentes maps}
+
+Nous avons réaliser un ensemble de cinq maps chacune ayant son thème et ses particularités :
+\begin{itemize}
+\item Mountain
+[Photo]
+[Descriptif]
+\item Plain
+[Photo]
+[Descriptif]
+\item Desolate
+[Photo]
+[Descriptif]
+\item Garden
+[Photo]
+[Descriptif]
+\item Simple
+[Photo]
+[Descriptif]
+\end{itemize}
+
 \section{Fonctionnalités}
+
+
+
 \section{Amélioration possible}
+
+Malgré tous nos efforts, il persiste toujours un soucis d'optimisation ......
+
 
 \newpage
 %%%
@@ -185,7 +304,7 @@ Dans le même cadre "Propriétés" apparaît aussi le modèle 3D de l'unité cou
 Sur la gauche, de manière verticale, se trouve cinq noms de catégories qui sont les Contrôles, les Conditions, les Actions, les Messages et les Actions non terminale. En cliquant sur une de ses catégories on affiche la liste des éléments de cette catégorie dans la zone directement à droite.
 \subsubsection{Zone de sélection de la pièce suivant la catégorie}
 C'est dans cette zone qu’apparaît la liste des éléments des catégories de pièces de l'éditeur. Les éléments sont présents sous forme de case avec leur nom à l'intérieur (certain possède même des menus déroulant pour choisir la valeur voulue une fois dans la zone d'édition). La couleur des éléments dépend de leur catégorie.
-Les éléments peuvent être sélectionnés et déplacés dans la zone d'édition du comportement grâce au glissé/déposé (Drag & Drop).
+Les éléments peuvent être sélectionnés et déplacés dans la zone d'édition du comportement grâce au glissé/déposé (Drag \& Drop).
 \subsubsection{Zone éditeur de comportement de l'unité et de l'équipe courante}
 Dans cette zone arrivent les pièces venant de la zone de sélection. Elles ce placent à l'aide du curseur de la souris sur un grille invisible. Si un pièce est valide alors elle est colorée sinon elle est grise. Les pièces "IF" possèdent un cadenas dans le coin supérieur droit, il permet de déplacer, en plus de la pièce IF, tout les éléments valides qui lui sont rattachés (hors IF). Les pièces de contrôle sont valide en dessous d'autre pièce du même type ou en dessous de la pièce "Start". Les autres pièces doivent se rattacher à des pièces de contrôle, en haut à droite pour les pièces Condition et en bas à droite pour les autres. Les pièces hors Contrôle sont ainsi valide lorsqu'elles sont au bon endroit, sur leur ligne collé au contrôle ou collé à une autre pièce valide. 
 
