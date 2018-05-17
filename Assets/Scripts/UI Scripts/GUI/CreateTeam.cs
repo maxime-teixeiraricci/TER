@@ -85,7 +85,7 @@ public class CreateTeam : MonoBehaviour
         if (!System.IO.File.Exists(Application.streamingAssetsPath + "/ELO/" + teamName + ".elo"))
         {
             File.Create(Application.streamingAssetsPath + "/ELO/" + teamName + ".elo").Dispose();
-            File.WriteAllLines(Application.streamingAssetsPath + "/ELO/" + teamName + ".elo", new string[] { 2500 + "" });
+            File.WriteAllLines(Application.streamingAssetsPath + "/ELO/" + teamName + ".elo", new string[] { 1000 + "" });
         }
 
 

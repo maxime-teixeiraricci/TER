@@ -120,7 +120,7 @@ public class Stats : MonoBehaviour
     public void SetHealth(int value)
     {
         _health = value;
-        if (_health > _maxHealth) _health = _maxHealth;
+        if (_health > _maxHealth) { _health = _maxHealth; }
         else if (_health <= 0)
         {
             if (_currentEffect)
@@ -138,6 +138,7 @@ public class Stats : MonoBehaviour
     public void AddHealth(int value)
     {
         _health = _health + value;
+        SetSmoke();
         if (_health > _maxHealth) _health = _maxHealth;
         else if (_health <= 0)
         {
