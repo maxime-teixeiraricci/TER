@@ -264,29 +264,55 @@ La valeur de chaque percept de l'unité est mise à jour à chaque unité de tem
 \item On cherche s'il en existe un qui a un composant "ItemHandler" (ItemHandler est propre aux Prefab de type Ressource cela nous permet de vérifier que l'objet trouvé est bien une ressource).
 \item Si c'est le cas on modifie la valeur de la "target" de l'unité (la cible de l'unité pour ce tour de jeu) pour qu'elle soit égale à l'objet trouvé.
 \end{itemize}
-\paragraph{}
-AJOUTER LE CODE !
-\paragraph{}
+\begin{lstlisting}[language={[Sharp]C},label={lst:unitScript}, caption=  Extrait du code du script ActionPick.cs première version.]
+    public override void Do()
+    {
+        Objet obj = _target.GetComponent<Objet>();
+        Inventory unitInventory = GetComponent<UnitManager>().GetComponent<Inventory>();
+        unitInventory.add(obj);
+        obj.getPicked();
+    }
+\end{lstlisting}
 L'action de récupération d'un objet par une unité se déroule comme ceci :
 \begin{itemize}
 \item On récupère le composant Objet de la "target" de l'unité (ce composant est la valeur de l'objet à récupérer).
 \item On ajoute cet objet dans le composant inventaire de l'unité.
-\item On détruit le GameObjet "target" (on détruit la représentation physique de l'objet sur la scène).
+\item On détruit le GameObjet "target" en utilisant sa méthode getPicked(), qui applique la fonction Destroy(GameObject obj) de Unity (on détruit la représentation physique de l'objet sur la scène).
 \end{itemize}
 \paragraph{}
 Notre objectif était de simplifier l'ajout de percepts et d'actions à une unité. La définition d'une classe par action et par percept nous semblait donc assez coûteuse nous avons donc étudié l'une des spécificités du C\#. Les type "delegate" propre au C\# dont la déclaration est semblable à  une signature de méthode. Elle a une valeur de retour et un nombre quelconque de paramètres de type quelconque.
 Nous l'avons donc utilisé afin d'encapsuler les méthodes correspondant aux actions et aux percepts et ce afin d'éviter la crétion de multiple classes.
 A la suite de ce changement, la classe Percept s'est dotée d'un attribut dictionnaire[String,Listener], un percept étant définit par son nom et son Listener associé. Le Listener est un delegate représentant la fonction de calcul de valeur du percept. Le même mécanisme est mis en place pour les actions et est toujours d'actualité aujourd'hui.
-\begin{lstlisting}[language=[Sharp]C]
-for ( int i = 0; i < 5; i++)
-{
-System.out.println ("i : " + i);
-}
+\begin{lstlisting}[language={[Sharp]C},label={lst:unitScript}, caption=  Extrait du code du script PerceptUnit.cs]
+ _percepts["PERCEPT_FOOD"] = delegate ()
+        {
+            GetComponent<Stats>().SetTarget(null);
+            foreach (GameObject gO in GetComponent<Sight>()._listOfCollision)
+            {
+                if (gO && gO.tag == "Item")
+                {
+                    GetComponent<Stats>().SetTarget(gO);
+                    return true;
+                }
+            }
+            return false;
+        };
 \end{lstlisting}
-
-\paragraph{}
-AJOUTER LE CODE !
-\paragraph{}
+\begin{lstlisting}[language={[Sharp]C},label={lst:unitScript}, caption=  Extrait du code du script ActionUnit.cs]
+_actions["ACTION_PICK"] = delegate () {
+            GameObject target = GetComponent<Stats>().GetTarget();
+            if (target != null)
+            {
+                Objet obj = target.GetComponent<ItemHeldler>()._heldObjet;
+                Inventory unitInventory = GetComponent<Inventory>();
+                if (!unitInventory.isFull())
+                {
+                    unitInventory.add(obj);
+                    Destroy(target);
+                }
+            }
+        };
+\end{lstlisting}
 
 \paragraph{}
 \paragraph{}
