@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.5.12)  19 MAY 2018 21:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.5.12)  19 MAY 2018 21:47
 entering extended mode
 **./RapportTER.tex
 (RapportTER.tex
@@ -849,26 +849,37 @@ Overfull \hbox (1.86165pt too wide) in paragraph at lines 488--489
 iste Condi-
  []
 
-[23] [24]
+
+Underfull \hbox (badness 10000) in paragraph at lines 504--506
+
+ []
+
+[23]
+Overfull \hbox (5.58948pt too wide) in paragraph at lines 524--528
+\OT1/cmr/m/n/10 Cette fonc-tion, ap-pelee dans Ma-na-ge-Dra-gAnd-Drop.OnMouseU
+p()
+ []
+
+[24] [25]
 Chapitre 5.
-[25
+[26
 
-] [26] [27] [28] [29]
+] [27] [28] [29] [30]
 Chapitre 6.
-[30
+[31
 
-] [31
+] [32
 
 ]
 Chapitre 7.
-[32
+[33
 
 ] (RapportTER.aux) ) 
 Here is how much of TeX's memory you used:
- 6542 strings out of 493305
- 89996 string characters out of 3129802
+ 6550 strings out of 493305
+ 90113 string characters out of 3129802
  241960 words of memory out of 3000000
- 10014 multiletter control sequences out of 15000+200000
+ 10022 multiletter control sequences out of 15000+200000
  9911 words of font info for 35 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,8n,40p,1866b,2077s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -885,9 +896,9 @@ nts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/fumey/AppData/Local/Programs/M
 iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/fumey/AppData/Local
 /Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/fumey/A
 ppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on RapportTER.pdf (33 pages, 265905 bytes).
+Output written on RapportTER.pdf (34 pages, 270908 bytes).
 PDF statistics:
- 157 PDF objects out of 1000 (max. 8388607)
+ 160 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

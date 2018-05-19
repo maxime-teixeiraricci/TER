@@ -500,12 +500,57 @@ Les pièces peuvent être sélectionnées et déplacées dans la zone d'édition
 \end{enumerate}
 
 \subsubsection{Editeur}
-\subsubsection{Zone éditeur de comportement de l'unité et de l'équipe courante}
-Dans cette zone arrivent les pièces venant de la zone de sélection. Elles ce placent à l'aide du curseur de la souris sur un grille invisible. Si un pièce est valide alors elle est colorée sinon elle est grise. Les pièces "IF" possèdent un cadenas dans le coin supérieur droit, il permet de déplacer, en plus de la pièce IF, tout les éléments valides qui lui sont rattachés (hors IF). Les pièces de contrôle sont valide en dessous d'autre pièce du même type ou en dessous de la pièce "Start". Les autres pièces doivent se rattacher à des pièces de contrôle, en haut à droite pour les pièces Condition et en bas à droite pour les autres. Les pièces hors Contrôle sont ainsi valide lorsqu'elles sont au bon endroit, sur leur ligne collé au contrôle ou collé à une autre pièce valide. 
+\begin{enumerate}[label=\Alph*)]
+\item\textbf{Zone éditeur de comportement de l'unité et de l'équipe courante} \newline
+Dans cette zone arrivent les pièces venant de la zone de sélection. Elles se placent à l'aide du curseur de la souris sur une grille invisible. Si une pièce est valide, alors elle est colorée, sinon, elle est grise. Les pièces "IF" possèdent un cadenas dans le coin supérieur droit, il permet de déplacer, en plus de la pièce IF, tout les éléments valides qui lui sont rattachés (hors IF). Les pièces de contrôles sont considérées comme valides si elles sont placées en dessous d'autres pièces du même type ou en dessous de la pièce "Start".\newline
+Les autres pièces doivent se rattacher à des pièces de contrôle, en haut à droite pour les pièces Condition et en bas à droite pour les autres. Les pièces hors Contrôle sont ainsi valides lorsqu'elles sont au bon endroit, sur leur ligne, adjacente au contrôle, ou adjacente à une autre pièce du même type, valide. \newline \smallbreak
+
+Voyons les scripts permettant cette gestion.
+
+\begin{itemize}
+\item\textbf{ManageDrapAndDrop.cs} : \newline 
+Ce script s'occupe de la gestion du déplacement des pièces, ainsi que de leur placement, sur une grille aimantée.
+\begin{itemize}
+\item\textbf{OnMouseDrag()} : \newline
+Une fois qu'un clic a été fait sur une pièce, cette fonction s'occupe de mettre à jour les coordonnées de la pièce, de telle sorte qu'elles soient égales à celles du pointeur de la souris. Pour valider les nouvelles coordonnées de la pièce, il faut appeler la fonction OnMouseUp().
+\item\textbf{UpgradeGridPosition()} : 
+\item\textbf{OnMouseUp()} : \newline
+Cette fonction appelle la fonction UpdateGridPosition(), puis attribue à la pièce courante sa nouvelle position. Une fois cela fait, il faut vérifier que la nouvelle position de la pièce est toujours un emplacement valide, d'un point de vue comportement. La fonction appelle pour ça le script StartPuzzleScript.cs, que nous verrons plus bas.
+\end{itemize}
+\item\textbf{StartPuzzleScript.cs} : \newline
+Ce script va nous permettre de vérifier si une pièce "If" est bien placé en dessous de la pièce Start.
+
+\begin{itemize}
+\item\textbf{UpdateAllValidPuzzles()} : \newline
+Cette fonction, appelée dans ManageDragAndDrop.OnMouseUp() va nous servir à vérifier si la position de la pièce "If" est correcte. Pour commencer, nous passons la variable booléenne "isValid" de toutes les pièces à false, puis nous allons vérifier leur placement.\newline
+Pour se faire, nous allons appeler la fonction UpdatePuzzle() du script IfPuzzleScript.cs.\newline
+Ensuite, si la pièce Start a bel et bien une pièce "If" juste en dessous d'elle, alors on passe la valeur isValid du "If" à true.
+\end{itemize}
+
+\item\textbf{IfPuzzleScript.cs} : \newline
+Ce script s'occupe de vérifier le placement de toutes les pièces actuellement sur l'éditeur. Si leur positionnement n'est pas correct, leur couleur sera grise. Sinon, une pièce Contrôle sera verte, une pièce Condition sera bleue, une pièce Action Non Terminale sera orange, une pièce Action sera Rouge, et une pièce Message sera Jaune.
+\begin{itemize}
+\item\textbf{UpdateCondPuzzle()} : \newline
+Cette fonction parcours toutes les pièces présentes sur l'éditeur. Si la pièce observée est une pièce de type Condition, et qu'elle est placée à droite d'une pièce "If", au niveau de sa première ligne, alors on l'attribue à une variable.
+
+\begin{lstlisting}[frame=single]
+if (currentGridPos + new Vector2(1,0) == puzzleGridPos && typePuzzle == PuzzleScript.Type.CONDITION)
+\end{lstlisting}
+
+\smallbreak
+Cela nous permettra, dans UpdatePuzzle, de savoir que nous avons une pièce Condition placée à notre droite, sur la bonne ligne.
+Le comportement des fonctions UpdateIfPuzzle() et UpdateActPuzzle se comportent similairement. Le seul changement est la place dans l'éditeur. Une pièce "If" devra être située directement en dessous de notre "If" courant, et une pièce Action / Action non terminale / Message devra se trouver directement à droite de notre pièce "If", sur sa deuxième ligne.
+\item\textbf{UpdatePuzzle()} : \newline
+Cette fonction récupère les pièces adjacentes à notre pièce actuelle, à l'aide des scripts UpdateIfPuzzle(), UpdateCondPuzzle, UpdateActPuzzle(). Il met ensuite à jour les valeurs des pièces adjacentes, à savoir leur variable isValid, ainsi que leur variable NextPuzzle, qui leur permet de savoir quelle pièce leur est adjacente.
+
+\end{itemize}
+\end{itemize}
+\end{enumerate}
+
 
 \subsection{Element dans le jeu}
 \subsubsection{Réglage du volume du son}
-En bas à droite de la fenêtre de jeu il y a un icône de son et un slider. Le slider permet, comme dans le menu des paramètres, de changer le volume du son. L’icône lui sert de bouton, si on le presse le son passe à 0 et l’icône devient barré. Si on appuie de nouveau il devient normal et le son revient comme avant.
+En bas à droite de la fenêtre de jeu se trouve une icône de son et un slider. Le slider permet, comme dans le menu des paramètres, de modifier le volume du son. L’icône sert de bouton; si on le presse, le son passe à 0 et l’icône devient barrée. Si l'on appuie de nouveau, il redevient classique, et le son est restitué à sa valeur précédente.
 
 \newpage
 \chapter{Partie "Interpreteur"}
