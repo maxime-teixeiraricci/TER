@@ -239,7 +239,17 @@ Afin de mener à bien la création du moteur de jeu, et dans le but de ne pas g�
 
 Mais l'utilisation du NavMesh  ne convenait pas au jeu Warbot. En effet, dans le jeu l'utilisateur est libre du choix du comportement de l'unité mais doit aussi faire avec les alléa du terrain, il doit prendre en compte la possibilité que l'unité soit bloquée et doit donc changer de direction. Or, avec l'utilisation du NavMesh cette opération était faite de manière automatique, le NavMesh embarque un algoritme calculant automatiquement un chemin permettant rejoindre le but demandé, son utilisation a donc été rapidement abandonnée. Les zones restrictives ont elles aussi étaient annulées, leur conception sans NavMesh nous ayant parue bien trop complexe et chronophage à ce niveau du projet pour un élément non primordial. 
 \paragraph{}A partir de ce moment, nous avons donc simplement modifié la position du composant Transform (composant determinant la position, rotation et l'échelle de chaque objet dans la scène), du GameObject Unit en fonction du vecteur de mouvement voulu afin de déplacer l'unité.
-\paragraph{}Une fois ces premiers mouvements rendus possibles, nous nous sommes attarder sur la conception des instructions de l'unité. Celles-ci étant constituées d'une suite de conditions (les percepts) et d'une action terminant le tour de l'unité. La valeur d'un percept était donc calculée à partir d'une fonction booléenne vérifiant les conditions à remplir. Par exemple, le percept de ressource, devant vérifier si une ressource était à proximité. Nous avons commencé par créer la gestion de l'action de la manière suivante : pour créer une action il fallait hériter de la classe Action et surcharger sa méthode do() en créant l'action voulue.
+\paragraph{}Une fois ces premiers mouvements rendus possibles, on a enfin pu créer notre premier comportement qui consistait à dire à l'unité de bouger si elle n'était pas bloquée.
+\begin{lstlisting}[language={[Sharp]C},label={lst:unitScript}, caption=  Extrait du code du script Brain.cs première version.]
+    void Update()
+    {
+        PerceptStructure[] listePercepts = GetComponent<UnitManager>().GetComponent<PerceptManager>()._percepts;
+        if (!listePercepts[0]._percept._value) //Percept bloquée? faux
+            _actions[0].Do(); // Move
+    }
+
+\end{lstlisting}
+Mais on peut constater que cela nous obligé à écrire l'architecture de subsomption correspondant au comportement en brut, ce qui nuisait à notre besoin de généricité. On s'est donc attardé sur la conception des instructions de l'unité. Celles-ci furent constituées d'une suite de conditions (les percepts) et d'une action terminant le tour de l'unité. La valeur d'un percept était donc calculée à partir d'une fonction booléenne vérifiant les conditions à remplir. Par exemple, le percept de ressource, devant vérifier si une ressource était à proximité. Nous avons commencé par créer la gestion de l'action de la manière suivante : pour créer une action il fallait hériter de la classe Action et surcharger sa méthode do() en créant l'action voulue.
 \paragraph{}Avant de passer a un exemple concret de la gestion d'une instruction, on va expliquer comment fonctionnait le champs de vision d'une unité et le calcul des objets "vus" par celle-ci à ce moment du projet.
 Le GameObject Unit a un composant Collider sphérique, une sphère tout autour de lui. Ce Collider a son booléen IsTriggered actif, ce qui signifie que la sphère n'est pas un objet physique auquel on peut se heurter, mais que l'on peut détecter tout GameObject à l'intérieur de celle-ci. Dans cette sphère, on décide d'un angle fixe qui sera l'angle de champs de vision de l'unité.
 \begin{lstlisting}[language={[Sharp]C},label={lst:unitScript}, caption=  Extrait du code du script Sight.cs première version.]
@@ -387,19 +397,12 @@ _actions["ACTION_PICK"] = delegate () {
         };
 \end{lstlisting}
 
+\paragraph{}Afin de mener à bien le développement du comportement des unités, on a aussi dû créer une carte plus légère et plus petite que celle de l'ancienne génération nous permettant d'effectuer nos tests.
 \paragraph{}
+INSERER IMAGE DE LA PREMIERE MAP !!!!!
 \paragraph{}
-\paragraph{}
-\paragraph{}
-\paragraph{}
-percept agressive percept common actionUnit
+
 Cette phase a duré .....
-
-fonctionnalités finales
- 
-creation d'un jeu
-
-amélioration possibles avec maxime 
 
 \subsection{Intégration dans le projet.}
 Une fois qu'on a estimé que le moteur etait assez générique
@@ -548,6 +551,8 @@ public class MovableCharacter : MonoBehaviour
 
 
 \subsection{Fonctionalités finales.}
+creation d'un jeu
+
 Mehdi
 
 \section{Amélioration possible}
