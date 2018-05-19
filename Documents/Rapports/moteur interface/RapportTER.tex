@@ -235,9 +235,27 @@ Afin de mener à bien la création du moteur de jeu, et dans le but de ne pas g�
 \paragraph{}Une fois ces premiers mouvements rendus possibles, nous nous sommes attarder sur la conception des instructions de l'unité. Celles-ci étant constituées d'une suite de conditions (les percepts) et d'une action terminant le tour de l'unité. La valeur d'un percept était donc calculée à partir d'une fonction booléenne vérifiant les conditions à remplir. Par exemple, le percept de ressource, devant vérifier si une ressource était à proximité. Nous avons commencé par créer la gestion de l'action de la manière suivante : pour créer une action il fallait hériter de la classe Action et surcharger sa méthode do() en créant l'action voulue.
 \paragraph{}Avant de passer a un exemple concret de la gestion d'une instruction, on va expliquer comment fonctionnait le champs de vision d'une unité et le calcul des objets "vus" par celle-ci à ce moment du projet.
 Le GameObject Unit a un composant Collider sphérique, une sphère tout autour de lui. Ce Collider a son booléen IsTriggered actif, ce qui signifie que la sphère n'est pas un objet physique auquel on peut se heurter, mais que l'on peut détecter tout GameObject à l'intérieur de celle-ci. Dans cette sphère, on décide d'un angle fixe qui sera l'angle de champs de vision de l'unité.
-\paragraph{}
-AJOUTER LE CODE !
-\paragraph{}
+\begin{lstlisting}[language={[Sharp]C},label={lst:unitScript}, caption=  Extrait du code du script Sight.cs première version.]
+    void OnTriggerStay(Collider other)
+    {
+      
+
+        float h = GetComponent<UnitManager>()._stats._heading * Mathf.Deg2Rad;
+        Vector3 A = new Vector3(Mathf.Cos(h), 0, Mathf.Sin(h)).normalized * _distance;
+        Vector3 B = (other.transform.position - transform.position).normalized * _distance;
+
+        float angle = Vector3.Angle(A, B);
+        if (angle <= _angle && !_listOfCollision.Contains(other.gameObject))
+        {
+            
+            _listOfCollision.Add(other.gameObject);
+        }
+        else if (angle > _angle && _listOfCollision.Contains(other.gameObject))
+        {
+            _listOfCollision.Remove(other.gameObject);
+        }
+    }
+\end{lstlisting}
 Voici comment ce mets à jour la liste des objets "vus" par l'unité :
 \begin{itemize}
 \item On récupére la liste des objets présents dans la shpère.
@@ -245,9 +263,44 @@ Voici comment ce mets à jour la liste des objets "vus" par l'unité :
 \item Si celui-ci a son centre de gravité dans l'angle de champs de vision de l'unité, on l'ajoute à la liste des objets vus.
 \end{itemize}
 \paragraph{}Voici un exemple concret d'exécution d'une instruction "Si l'agent voit une ressource, il la récupère", symbolisée par les classes PerceptRessource et ActionPick :
-\paragraph{}
-AJOUTER LE CODE !
-\paragraph{}
+\begin{lstlisting}[language={[Sharp]C},label={lst:unitScript}, caption=  Classe Instruction du fichier Instruction.cs première version.]
+public class Instruction : MonoBehaviour {
+
+    [SerializeField]
+    PerceptStructure[] _listePerceptsVoulus;
+    [SerializeField]
+    Action _action;
+
+    public bool verify()
+    {
+        PerceptStructure[] listePerceptsUtilisables = GetComponent<UnitManager>().GetComponent<PerceptManager>()._percepts;
+        bool verifie = true;
+        foreach(PerceptStructure p in _listePerceptsVoulus)
+        {
+            foreach(PerceptStructure p2 in listePerceptsUtilisables)
+            {
+                if(p._name.Equals(p2._name))
+                {
+                    verifie = p2._percept._value;
+                }
+            }
+
+            if (!verifie)
+            {
+                break;
+            }
+        }
+        if (verifie)
+        {
+            _action.Do();
+            return true;
+        }
+
+
+        return false;
+    }
+}
+\end{lstlisting}
 Pour cette instruction on a donc accès à son percept et son action, la vérification des percepts se fait de la manière suivante :
 \begin{itemize}
 \item On récupére la liste des percepts nécessaires à l'instruction.
@@ -255,9 +308,22 @@ Pour cette instruction on a donc accès à son percept et son action, la vérifi
 \item On récupére la valeur de chaque percepts demandés.
 \item Si toutes leurs valeurs sont vrai on exécute l'action demandée.
 \end{itemize}
-\paragraph{}
-AJOUTER LE CODE !
-\paragraph{}
+\begin{lstlisting}[language={[Sharp]C},label={lst:unitScript}, caption=  Extrait du code du script PerceptRessource.cs première version.]
+    override public void update()
+    {
+        bool res = false;
+        foreach (GameObject gO in GetComponent<Sight>()._listOfCollision)
+        {
+            if (gO && gO.GetComponent<ItemHeldler>())
+            {
+                GetComponent<Stats>().SetTarget(gO);
+                res = true;
+                break;
+            }
+        }
+        _value = res;
+    }
+\end{lstlisting}
 La valeur de chaque percept de l'unité est mise à jour à chaque unité de temps, pour PerceptRessource cela se passe comme suit :
 \begin{itemize}
 \item Pour tous les objets présents dans la liste des objets vus de l'unité.
@@ -319,12 +385,8 @@ _actions["ACTION_PICK"] = delegate () {
 \paragraph{}
 \paragraph{}
 \paragraph{}
-delegate
-
 percept agressive percept common actionUnit
 Cette phase a duré .....
-
-retour aux bases
 
 fonctionnalités finales
  
