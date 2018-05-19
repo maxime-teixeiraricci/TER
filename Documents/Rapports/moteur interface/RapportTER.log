@@ -1,12 +1,12 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.5.13)  13 MAY 2018 22:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.5.12)  19 MAY 2018 21:32
 entering extended mode
 **./RapportTER.tex
 (RapportTER.tex
 LaTeX2e <2017-04-15>
 Babel <3.18> and hyphenation patterns for 75 language(s) loaded.
-(C:\Users\Benoit\Documents\MikTex\tex\latex\base\report.cls
+("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\report.cls"
 Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
-(C:\Users\Benoit\Documents\MikTex\tex\latex\base\size10.clo
+("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\size10.clo"
 File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -21,20 +21,19 @@ File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
-)
-(C:\Users\Benoit\Documents\MikTex\tex\latex\base\inputenc.sty
+) ("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\inputenc.st
+y"
 Package: inputenc 2015/03/17 v1.2c Input encoding file
 \inpenc@prehook=\toks14
 \inpenc@posthook=\toks15
-
-(C:\Users\Benoit\Documents\MikTex\tex\latex\base\utf8.def
+ ("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\utf8.def"
 File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
 Now handling font encoding OML ...
 ... no UTF-8 mapping file for font encoding OML
 Now handling font encoding T1 ...
 ... processing UTF-8 mapping file for font encoding T1
 
-(C:\Users\Benoit\Documents\MikTex\tex\latex\base\t1enc.dfu
+("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\t1enc.dfu"
 File: t1enc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
    defining Unicode char U+00A0 (decimal 160)
    defining Unicode char U+00A1 (decimal 161)
@@ -275,7 +274,7 @@ File: t1enc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
 Now handling font encoding OT1 ...
 ... processing UTF-8 mapping file for font encoding OT1
 
-(C:\Users\Benoit\Documents\MikTex\tex\latex\base\ot1enc.dfu
+("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ot1enc.dfu"
 File: ot1enc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
    defining Unicode char U+00A0 (decimal 160)
    defining Unicode char U+00A1 (decimal 161)
@@ -316,7 +315,7 @@ File: ot1enc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
 Now handling font encoding OMS ...
 ... processing UTF-8 mapping file for font encoding OMS
 
-(C:\Users\Benoit\Documents\MikTex\tex\latex\base\omsenc.dfu
+("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\omsenc.dfu"
 File: omsenc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
    defining Unicode char U+00A7 (decimal 167)
    defining Unicode char U+00B6 (decimal 182)
@@ -339,21 +338,23 @@ Now handling font encoding U ...
    defining Unicode char U+2026 (decimal 8230)
    defining Unicode char U+2122 (decimal 8482)
    defining Unicode char U+2423 (decimal 9251)
-))
-(C:\Users\Benoit\Documents\MikTex\tex\generic\babel\babel.sty
+)) ("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\generic\babel\babel.s
+ty"
 Package: babel 2018/02/14 3.18 The Babel package
 
-(C:\Users\Benoit\Documents\MikTex\tex\generic\babel\switch.def
+("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\generic\babel\switch.def
+"
 File: switch.def 2018/02/14 3.18 Babel switching mechanism
 )
 *************************************
 * Local config file bblopts.cfg used
 *
-(C:\Users\Benoit\Documents\MikTex\tex\latex\arabi\bblopts.cfg
+("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\arabi\bblopts.cfg"
 File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of
  babel
 )
-(C:\Users\Benoit\Documents\MikTex\tex\generic\babel-french\francais.ldf
+("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\generic\babel-french\fra
+ncais.ldf"
 Language: francais 2018/02/04 v3.4b French support from the babel system
 
 
@@ -361,15 +362,18 @@ Package francais.ldf Warning: Option `francais' for Babel is *deprecated*,
 (francais.ldf)                it might be removed sooner or later. Please
 (francais.ldf)                use `french' instead; reported on input line 31.
 
-(C:\Users\Benoit\Documents\MikTex\tex\generic\babel-french\french.ldf
+
+("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\generic\babel-french\fre
+nch.ldf"
 Language: french 2018/02/04 v3.4b French support from the babel system
 
-(C:\Users\Benoit\Documents\MikTex\tex\generic\babel\babel.def
+("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\generic\babel\babel.def"
 File: babel.def 2018/02/14 3.18 Babel common definitions
 \babel@savecnt=\count88
 \U@D=\dimen103
 
-(C:\Users\Benoit\Documents\MikTex\tex\generic\babel\txtbabel.def)
+("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\generic\babel\txtbabel.d
+ef")
 \bbl@dirlevel=\count89
 )
 \l@acadian = a dialect from \language\l@french 
@@ -394,12 +398,15 @@ Package babel Info: Making ? an active character on input line 414.
 \parindentFFN=\dimen105
 \FBfnindent=\skip47
 )))
-(C:\Users\Benoit\Documents\MikTex\tex\latex\carlisle\scalefnt.sty)
-(C:\Users\Benoit\Documents\MikTex\tex\latex\graphics\keyval.sty
+("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\carlisle\scalefnt.
+sty")
+("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\keyval.st
+y"
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks17
 )
-(C:\Users\Benoit\Documents\MikTex\tex\latex\listings\listings.sty
+("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\listings.
+sty"
 \lst@mode=\count98
 \lst@gtempboxa=\box26
 \lst@token=\toks18
@@ -413,26 +420,30 @@ Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \lst@lineno=\count103
 \lst@maxwidth=\dimen109
 
-(C:\Users\Benoit\Documents\MikTex\tex\latex\listings\lstmisc.sty
+("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\lstmisc.s
+ty"
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
 \c@lstnumber=\count104
 \lst@skipnumbers=\count105
 \lst@framebox=\box27
 )
-(C:\Users\Benoit\Documents\MikTex\tex\latex\listings\listings.cfg
+("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\listings.
+cfg"
 File: listings.cfg 2015/06/04 1.6 listings configuration
 ))
 Package: listings 2015/06/04 1.6 (Carsten Heinz)
 
-(C:\Users\Benoit\Documents\MikTex\tex\latex\xcolor\xcolor.sty
+("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty"
 Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
 
-(C:\Users\Benoit\Documents\MikTex\tex\latex\graphics-cfg\color.cfg
+("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-cfg\color
+.cfg"
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: pdftex.def on input line 225.
 
-(C:\Users\Benoit\Documents\MikTex\tex\latex\graphics-def\pdftex.def
+("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-def\pdfte
+x.def"
 File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 )
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
@@ -445,7 +456,7 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 )
-(C:\Users\Benoit\Documents\MikTex\tex\latex\base\textcomp.sty
+("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\textcomp.sty"
 Package: textcomp 2017/04/05 v2.0i Standard LaTeX package
 Package textcomp Info: Sub-encoding information:
 (textcomp)               5 = only ISO-Adobe without \textcurrency
@@ -459,13 +470,12 @@ Package textcomp Info: Sub-encoding information:
 (textcomp)             Family '?' is the default used for unknown fonts.
 (textcomp)             See the documentation for details.
 Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 79.
-
-(C:\Users\Benoit\Documents\MikTex\tex\latex\base\ts1enc.def
+("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ts1enc.def"
 File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
 Now handling font encoding TS1 ...
 ... processing UTF-8 mapping file for font encoding TS1
 
-(C:\Users\Benoit\Documents\MikTex\tex\latex\base\ts1enc.dfu
+("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ts1enc.dfu"
 File: ts1enc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
    defining Unicode char U+00A2 (decimal 162)
    defining Unicode char U+00A3 (decimal 163)
@@ -601,151 +611,283 @@ Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 407.
 Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 408.
 Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
 )
-(C:\Users\Benoit\Documents\MikTex\tex\latex\listings\lstlang1.sty
-File: lstlang1.sty 2015/06/04 1.6 listings language file
+("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphicx.
+sty"
+Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphics.
+sty"
+Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-No file RapportTER.aux.
+("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-cfg\graph
+ics.cfg"
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 99.
+)
+\Gin@req@height=\dimen110
+\Gin@req@width=\dimen111
+)
+("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\enumitem\enumitem.
+sty"
+Package: enumitem 2011/09/28 v3.5.2 Customized lists
+\labelindent=\skip48
+\enit@outerparindent=\dimen112
+\enit@toks=\toks19
+\enit@inbox=\box28
+\enitdp@description=\count106
+)
+("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\lstlang1.
+sty"
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+) (RapportTER.aux)
 \openout1 = `RapportTER.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 36.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 36.
-(C:\Users\Benoit\Documents\MikTex\tex\latex\base\ts1cmr.fd
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 39.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 39.
+
+("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Info: Redefining \degres on input line 36.
-LaTeX Info: Redefining \dots on input line 36.
-LaTeX Info: Redefining \up on input line 36.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Info: Redefining \degres on input line 39.
+LaTeX Info: Redefining \dots on input line 39.
+LaTeX Info: Redefining \up on input line 39.
 
 
 Package french.ldf Warning: OT1 encoding should not be used for French.
 (french.ldf)                Add \usepackage[T1]{fontenc} to the preamble
-(french.ldf)                of your document; reported on input line 36.
+(french.ldf)                of your document; reported on input line 39.
 
-\c@lstlisting=\count106
-(C:\Users\Benoit\Documents\MikTex\tex\context\base\supp-pdf.mkii
+\c@lstlisting=\count107
+
+("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\context\base\supp-pdf.mk
+ii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count107
-\scratchdimen=\dimen110
-\scratchbox=\box28
-\nofMPsegments=\count108
-\nofMParguments=\count109
-\everyMPshowfont=\toks19
-\MPscratchCnt=\count110
-\MPscratchDim=\dimen111
-\MPnumerator=\count111
-\makeMPintoPDFobject=\count112
-\everyMPtoPDFconversion=\toks20
+\scratchcounter=\count108
+\scratchdimen=\dimen113
+\scratchbox=\box29
+\nofMPsegments=\count109
+\nofMParguments=\count110
+\everyMPshowfont=\toks20
+\MPscratchCnt=\count111
+\MPscratchDim=\dimen114
+\MPnumerator=\count112
+\makeMPintoPDFobject=\count113
+\everyMPtoPDFconversion=\toks21
+)
+("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-
+base.sty"
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\infware
+rr.sty"
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+)
+("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\grfext.st
+y"
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+
+("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\kvdefin
+ekeys.sty"
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+
+("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds
+.sty"
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+)))
+("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\kvoptions
+.sty"
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+
+("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\kvsetke
+ys.sty"
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+
+("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\etexcmd
+s.sty"
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+
+("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ifluate
+x.sty"
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\pdftexc
+mds.sty"
+Package: pdftexcmds 2018/01/21 v0.26 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.s
+ty"
+Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
 )
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 37.
+(Font)              <12> on input line 40.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 37.
+(Font)              <8> on input line 40.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 37.
+(Font)              <6> on input line 40.
 
 
 LaTeX Warning: No \author given.
 
 [1
 
-{C:/Users/Benoit/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-No file RapportTER.toc.
+{C:/Users/fumey/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+(RapportTER.toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 4.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 4.
+ [1
+
+])
 \tf@toc=\write3
 \openout3 = `RapportTER.toc'.
 
-[1
-
-] [2
+ [2] [3
 
 ]
 Chapitre 1.
-[3
-
-]
-Chapitre 2.
 [4
 
-] [5
+] [5]
+Chapitre 2.
+[6
+
+] [7
 
 ]
 Chapitre 3.
-[6
-
-] [7]
-Chapitre 4.
 [8
 
-] [9] [10] [11]
-! Misplaced alignment tab character &.
-l.188 ...tement grâce au glissé/déposé (Drag &
-                                                   Drop).
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
+] [9] [10]
+Overfull \hbox (4.63942pt too wide) in paragraph at lines 135--137
+ [] \OT1/cmr/m/n/10 Pour cette ins-truc-tion on a donc acces a son per-cept e
+t son ac-tion, la verification
+ []
 
-[12] [13]
-Chapitre 5.
-[14
+[11] [12] [13] [14] [15]
+Chapitre 4.
+[16
 
-] [15]
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 220.
+]
+Overfull \hbox (8.30612pt too wide) in paragraph at lines 342--343
+[]\OT1/cmr/m/n/10 Ce bou-ton per-met d'acceder a l'editeur de com-por-te-men
+t, que nous detaillerons
+ []
 
- (C:\Users\Benoit\Documents\MikTex\tex\latex\base\omlcmr.fd
+[17] [18]
+<ConceptionGraphique1.jpg, id=68, 963.6pt x 722.7pt>
+File: ConceptionGraphique1.jpg Graphic file (type jpg)
+<use ConceptionGraphique1.jpg>
+Package pdftex.def Info: ConceptionGraphique1.jpg  used on input line 389.
+(pdftex.def)             Requested size: 240.89941pt x 180.67455pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 395--396
+
+ []
+
+[19 <./ConceptionGraphique1.jpg>]
+<ConceptionGraphique2.png, id=73, 963.6pt x 722.7pt>
+File: ConceptionGraphique2.png Graphic file (type png)
+<use ConceptionGraphique2.png>
+Package pdftex.def Info: ConceptionGraphique2.png  used on input line 402.
+(pdftex.def)             Requested size: 240.89941pt x 180.67455pt.
+ [20
+
+ <./ConceptionGraphique2.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 424--427
+
+ []
+
+[21] [22]
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 486.
+
+
+("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\omlcmr.fd"
 File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <7> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 220.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 220.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 220.
- [16]
-[17] [18]
-Chapitre 6.
-[19
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 486.
 
-] [20
+Overfull \hbox (1.86165pt too wide) in paragraph at lines 488--489
+\OT1/cmr/m/n/10 Dans cette fonc-tion, nous nous oc-cu-pons uni-que-ment de la l
+iste Condi-
+ []
+
+[23] [24]
+Chapitre 5.
+[25
+
+] [26] [27] [28] [29]
+Chapitre 6.
+[30
+
+] [31
 
 ]
 Chapitre 7.
-[21
+[32
 
 ] (RapportTER.aux) ) 
 Here is how much of TeX's memory you used:
- 5513 strings out of 493305
- 71216 string characters out of 3136739
- 231986 words of memory out of 3000000
- 9047 multiletter control sequences out of 15000+200000
- 9275 words of font info for 33 fonts, out of 3000000 for 9000
+ 6542 strings out of 493305
+ 89996 string characters out of 3129802
+ 241960 words of memory out of 3000000
+ 10014 multiletter control sequences out of 15000+200000
+ 9911 words of font info for 35 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 30i,6n,40p,841b,1855s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Users/Benoit/Documents/MikTex/fonts/type1/public/amsfon
-ts/cm/cmbx10.pfb><C:/Users/Benoit/Documents/MikTex/fonts/type1/public/amsfonts/
-cm/cmbx12.pfb><C:/Users/Benoit/Documents/MikTex/fonts/type1/public/amsfonts/cm/
-cmmi7.pfb><C:/Users/Benoit/Documents/MikTex/fonts/type1/public/amsfonts/cm/cmr1
-0.pfb><C:/Users/Benoit/Documents/MikTex/fonts/type1/public/amsfonts/cm/cmr12.pf
-b><C:/Users/Benoit/Documents/MikTex/fonts/type1/public/amsfonts/cm/cmr17.pfb><C
-:/Users/Benoit/Documents/MikTex/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Use
-rs/Benoit/Documents/MikTex/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on RapportTER.pdf (22 pages, 134782 bytes).
+ 41i,8n,40p,1866b,2077s stack positions out of 5000i,500n,10000p,200000b,50000s
+ <C:\Users\fumey\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\j
+knappen\ec\dpi600\tcrm1000.pk><C:/Users/fumey/AppData/Local/Programs/MiKTeX 2.9
+/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/fumey/AppData/Local/Progra
+ms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/fumey/AppData
+/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users
+/fumey/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.p
+fb><C:/Users/fumey/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfont
+s/cm/cmr10.pfb><C:/Users/fumey/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pu
+blic/amsfonts/cm/cmr12.pfb><C:/Users/fumey/AppData/Local/Programs/MiKTeX 2.9/fo
+nts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/fumey/AppData/Local/Programs/M
+iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/fumey/AppData/Local
+/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/fumey/A
+ppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
+Output written on RapportTER.pdf (33 pages, 265905 bytes).
 PDF statistics:
- 105 PDF objects out of 1000 (max. 8388607)
+ 157 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
