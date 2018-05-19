@@ -230,7 +230,14 @@ La réalisation du projet a été effectuée en suivant une méthode agile. Mr F
 
 Afin de mener à bien la création du moteur de jeu, et dans le but de ne pas géner l'avancer de nos camarades des autres équipes de ce projet, on a choisi de ne pas toucher directement au jeu original mais plutôt de repartir à zéro en créant un nouveau projet sur Unity tout en étant conscient de la difficulté futur que serait son intégration.
 
-\paragraph{}Suite à la décision de reprise du moteur de jeu from scratch, nous avons commencé à mettre en place les mécanisme de contrôle d'une unité, M. Ferber nous conseillant de repartir sur la base de la version Java de Warbot. Le premier pas a été de simplement faire bouger une unité. Pour cela, nous avons utilisé le coposant NavMesh que nous avons attaché au GameObject Unit représentant l'unité. Grâce à cela l'unité était capable de parcourir un chemin jusqu'à arriver à sa destination en évitant les différents obstacles avec lesquelles elle pourrait rentrer en collisions,cette dernière étant detecter grâce au composant Collider. M. Ferber nous avait demandé d'étudier la possibilité de créer des zones restrictives, sur lesquelles certaine unité ne seraient pas capables d'aller ou se déplaceraient à une vitesse différente. Cette opération fut simple à mettre en place avec le composant NavMesh, il suffisait d'indiquer à l'unité que si sa destination se trouvait à un emplacement interdit par exemple elle ne pouvait pas s'y rendre. Mais l'utilisation du NavMesh  ne convenait pas au jeu Warbot. En effet, dans le jeu l'utilisateur est libre du choix du comportement de l'unité mais doit aussi faire avec les alléa du terrain, il doit prendre en compte la possibilité que l'unité soit bloquée et doit donc changer de direction. Or, avec l'utilisation du NavMesh cette opération était faite de manière automatique, le NavMesh embarque un algoritme calculant automatiquement un chemin permettant rejoindre le but demandé, son utilisation a donc été rapidement abandonnée. Les zones restrictives ont elles aussi étaient annulées, leur conception sans NavMesh nous ayant parue bien trop complexe et chronophage à ce niveau du projet pour un élément non primordial. 
+\paragraph{}Suite à la décision de reprise du moteur de jeu from scratch, nous avons commencé à mettre en place les mécanisme de contrôle d'une unité, M. Ferber nous conseillant de repartir sur la base de la version Java de Warbot. Le premier pas a été de simplement faire bouger une unité. Pour cela, nous avons utilisé le coposant NavMesh que nous avons attaché au GameObject Unit représentant l'unité. Grâce à cela l'unité était capable de parcourir un chemin jusqu'à arriver à sa destination en évitant les différents obstacles avec lesquelles elle pourrait rentrer en collisions,cette dernière étant detecter grâce au composant Collider. M. Ferber nous avait demandé d'étudier la possibilité de créer des zones restrictives, sur lesquelles certaine unité ne seraient pas capables d'aller ou se déplaceraient à une vitesse différente. Cette opération fut simple à mettre en place avec le composant NavMesh, il suffisait d'indiquer à l'unité que si sa destination se trouvait à un emplacement interdit par exemple elle ne pouvait pas s'y rendre. 
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.6]{NavMeshImage}
+\caption{Exemple d'application du composant \textit{NavMesh} dans Unity. L'agent se déplace à l'intérieur de la zone bleue.}
+\end{figure}
+
+Mais l'utilisation du NavMesh  ne convenait pas au jeu Warbot. En effet, dans le jeu l'utilisateur est libre du choix du comportement de l'unité mais doit aussi faire avec les alléa du terrain, il doit prendre en compte la possibilité que l'unité soit bloquée et doit donc changer de direction. Or, avec l'utilisation du NavMesh cette opération était faite de manière automatique, le NavMesh embarque un algoritme calculant automatiquement un chemin permettant rejoindre le but demandé, son utilisation a donc été rapidement abandonnée. Les zones restrictives ont elles aussi étaient annulées, leur conception sans NavMesh nous ayant parue bien trop complexe et chronophage à ce niveau du projet pour un élément non primordial. 
 \paragraph{}A partir de ce moment, nous avons donc simplement modifié la position du composant Transform (composant determinant la position, rotation et l'échelle de chaque objet dans la scène), du GameObject Unit en fonction du vecteur de mouvement voulu afin de déplacer l'unité.
 \paragraph{}Une fois ces premiers mouvements rendus possibles, nous nous sommes attarder sur la conception des instructions de l'unité. Celles-ci étant constituées d'une suite de conditions (les percepts) et d'une action terminant le tour de l'unité. La valeur d'un percept était donc calculée à partir d'une fonction booléenne vérifiant les conditions à remplir. Par exemple, le percept de ressource, devant vérifier si une ressource était à proximité. Nous avons commencé par créer la gestion de l'action de la manière suivante : pour créer une action il fallait hériter de la classe Action et surcharger sa méthode do() en créant l'action voulue.
 \paragraph{}Avant de passer a un exemple concret de la gestion d'une instruction, on va expliquer comment fonctionnait le champs de vision d'une unité et le calcul des objets "vus" par celle-ci à ce moment du projet.
@@ -411,11 +418,30 @@ public struct Pool
 \end{lstlisting}
 
 Cette méthode permet de ne pas créer une unité directement, mais de juste prendre un objet Unit dans le bassin correspondant. Les bassins sont représentés par une structure définit au listing \ref{lst:structPoolScript}. Elle comporte un \textit{tag} représentant le nom du bassin, un  \textit{number} correspondant au nombre d'unités à créer dans ce bassin, et enfin un \textit{prefab} qui est l'objet qui servira de référence pour la copie des objets. Le script ObjectPoolScript.cs (Listing  \ref{lst:ObjectPoolScript}) permet la gestion de plusieurs \textit{Pools}, et dans notre cas, nous utilisons 3 \textit{Pools}:  \textit{Light},  \textit{Heavy} et  \textit{Explorer}.
+
+\begin{figure}[!h]
+\centering
+\includegraphics{ObjectPoolingImage}
+\caption{Visualisation dans l'\textit{Inspector} d'Unity des \textit{Pools} du script ObjectPool.cs}
+\end{figure}
+
 \subparagraph{} Cependant, le temps de chargement est sensiblement le même en utilisant ce principe. Le problème vient donc de la conception même des objets des unités. \newline
 Pour trouver d’où viens précisément le problème, on a donc décidé de créer 200 unités et de désactiver certain composant. En utilisant ce procédé, on a pu découvrir et comprendre l'origine du problème.
 
-\subparagraph{3. Simplification des collisions.} La gestion des collisions entre unités et leur environnement ce faisait avec un \textit{MeshCollider}. Le \textit{MeshCollider} est un composant de type \textit{Collider} qui permet la gestion des collisions notamment en envoyant des messages aux différents acteurs de la collision. Le \textit{MeshCollider} à la particularité d'épouser plus ou moins la forme du maillage de l'objet que l'on met en arguments [Image MeshCollider]. 
+\subparagraph{3. Simplification des collisions.} La gestion des collisions entre unités et leur environnement ce faisait avec un \textit{MeshCollider}. Le \textit{MeshCollider} est un composant de type \textit{Collider} qui permet la gestion des collisions notamment en envoyant des messages aux différents acteurs de la collision. Le \textit{MeshCollider} à la particularité d'épouser plus ou moins la forme du maillage de l'objet que l'on met en arguments.
+\begin{figure}[!h]
+\centering
+\includegraphics{MeshColliderImage}
+\caption{Un composant \textit{MeshCollider}}
+\end{figure}
 \subparagraph{}Néanmoins, le \textit{MeshCollider} est un composant gourmand en ressource pour calculer les potentiels collisions avec son environnement et, surtout, les maillages que nous utilisons comportent un nombre relativement conséquent de points et de faces. Nous avons résolu ce problème en supprimant les composants \textit{MeshCollider} des unités en les remplaçant par des  \textit{BoxColliders}. Les \textit{BoxColliders} sont des composants de type \textit{Collider}, qui permet la gestion des collision. Ce composant est définit par un pavé ce qui réduit considérablement les calculs pour connaître les éventuelles collisions avec celui-ci.
+
+\begin{figure}[!h]
+\centering
+\includegraphics{BoxColliderImage}
+\caption{Un composant \textit{BoxCollider}}
+\end{figure}
+
 \subparagraph{}Effectivement, le temps de chargement est considérablement réduis passant de plus de 4 minutes pour 500 unités à une poignée de secondes.
 
 
