@@ -6,12 +6,8 @@ public class TurnManagerScript : MonoBehaviour
 {
     public float _timeTick;
     public float _ticksPerSeconds;
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
+    
+    // Update is called once per frame
 	void FixedUpdate ()
     {
         _timeTick += 0.02F * Time.timeScale;
@@ -28,12 +24,5 @@ public class TurnManagerScript : MonoBehaviour
                 }
             }
         }
-        
-
 	}
-
-
-
-
-
 }
