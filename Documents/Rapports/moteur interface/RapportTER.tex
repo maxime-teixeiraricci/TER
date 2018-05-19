@@ -78,13 +78,25 @@ Dans WarBot, deux à quatre équipes se battent sur un terrain pour les ressourc
 
 \section{État de l'art de l'ancien projet.}
 
-Le Warbot Unity d'origine nous permettait de lancer une partie de jeu en mode standard, à deux équipes, celle-ci étant paramétrable.
-Le choix du nombre d'unité, per type (parmis : Base, Explorer, Ingenieur, Tourelle, Heavy) ainsi que du nombre de ressources généré par minute sont disponibles.
-Une carte de jeu, sans obstacle et rectangulaire est présente.
-Durant une partie, il est possible de cliquer sur une unité pour afficher
- la vitesse du jeu est modifiable (accélération / déssélération).
+Pour commencer, attardons nous un moment sur l'ancien projet. L'an dernier, l'objectif premier était de réussir à implémenter le jeu Warbot sous Unity. Le constat que l'on peut faire de ce logiciel est que l'équipe précédente à montrer qu'il est possible de créer un jeu multi-agent en se servant de ce moteur de jeu.
+En effet, le Warbot Unity d'origine doté de son menu principal, son interface de paramétrage de partie et sa scène de jeu a déjà pas mal d'atout visuellement parlant. Mais il n'est pas exempt de bugs et reste assez limité.
+Dans cette version, il nous est donc possible de lancer une partie à deux joueurs uniquement, de régler le nombre de ressources créées par minutes ainsi que la quantité d'unités souhaitées de chacun des cinq types disponibles : WarBase, WarExplorer, WarHeavy, WarEngineer et Warturret. Une seule carte de jeu rectangulaire et sans obstacles est présente. 
 
+\paragraph{}Durant une partie, le joueur peut effectuer plusieurs actions :
+\begin{itemize}
+\item Activer l'affichage d'un tableau indiquant le nombre de chaque unités détenue par les deux équipes.
+\item Modifier la vitesse du jeu (accélération / ralentissement / pause).
+\item Créer une unité pour l'une des deux équipes mais le nombre d'unités est mis à jour pour la mauvaise équipe.
+\item Supprimer une unité mais le nombre d'unités n'est pas mis à jour.
+\item Déplacer une unité.
+\item Activer l'affichage des stats d'une unité (vie,ressources détenues, type).
+\item Activer l'affichage du suivi visuel des envoies de message entre unités.
+\item Activer l'affichage du groupe auquel appartient une unité mais l'utilisation de groupe dans les comportements n'est pas fonctionnelle.
+\item Activer l'affichage de la barre de vie d'une unité.
+\item Activer l'affichage de la barre de ressource d'une unité.
+\end{itemize}
 
+A voir si a compléter
 
 \section{Refonte du noyau.}
 
@@ -93,9 +105,51 @@ Nous avons donc pris la décision en accord avec Mr Ferberr et malgré quelques 
 
 \section{Réalisation}
 
+La réalisation du projet a été effectuée en suivant une méthode agile. Mr Ferber avait pour cela le rôle à la fois de chef de projet et de client, le projet s'est donc découpé en plusieurs phases de rush entrecoupés par des réunions régulière avec lui. Il nous est donc paru pluq judicieux de vous expliquer le déroulement de notre travail de manière chronologique. Nous reviendrons plus en détail sur cette méthode et son application à notre situation dans la partie gestion de projet. 
+
 \subsection{Retour aux bases.}
 
+Afin de mener à bien la création du moteur de jeu, et dans le but de ne pas géner l'avancer de nos camarades des autres équipes de ce projet, nous avons choisi de ne pas toucher directement au jeu original mais plutôt de repartir à zéro en créant un nouveau projet sur Unity tout en étant conscient de la difficulté futur que serait son intégration.
 
+\paragraph{}Suite à la décision de reprise du moteur de jeu from scratch, nous avons commencé à mettre en place les mécanisme de contrôle d'une unité, M. Ferber nous conseillant de repartir sur la base de la version Java de Warbot. Le premier pas a été de simplement faire bouger une unité. Pour cela, nous avons utilisé le coposant NavMesh que nous avons attaché au GameObject Unit représentant l'unité. Grâce à cela l'unité était capable de parcourir un chemin jusqu'à arriver à sa destination en évitant les différents obstacles avec lesquelles elle pourrait rentrer en collisions,cette dernière étant detecter grâce au composant Collider. M. Ferber nous avait demandé d'étudier la possibilité de créer des zones restrictives, sur lesquelles certaine unité ne seraient pas capables d'aller ou se déplaceraient à une vitesse différente. Cette opération fut simple à mettre en place avec le composant NavMesh, il suffisait d'indiquer à l'unité que si sa destination se trouvait à un emplacement interdit par exemple elle ne pouvait pas s'y rendre. Mais l'utilisation du NavMesh  ne convenait pas au jeu Warbot. En effet, dans le jeu l'utilisateur est libre du choix du comportement de l'unité mais doit aussi faire avec les alléa du terrain, il doit prendre en compte la possibilité que l'unité soit bloquée et doit donc changer de direction. Or, avec l'utilisation du NavMesh cette opération était faite de manière automatique, le NavMesh embarque un algoritme calculant automatiquement un chemin permettant rejoindre le but demandé, son utilisation a donc été rapidement abandonnée. Les zones restrictives ont elles aussi étaient annulées, leur conception sans NavMesh nous ayant parue bien trop complexe et chronophage à ce niveau du projet pour un élément non primordial. 
+\paragraph{}A partir de ce moment, nous avons donc simplement modifié la position du composant Transform (composant determinant la position, rotation et l'échelle de chaque objet dans la scène), du GameObject Unit en fonction du vecteur de mouvement voulu afin de déplacer l'unité.
+\paragraph{}Une fois ces premiers mouvements rendus possibles, nous nous sommes attarder sur la conception des instructions de l'unité. Celles-ci étant constituées d'une suite de conditions (les percepts) et d'une action terminant le tour de l'unité. La valeur d'un percept était donc calculée à partir d'une fonction booléenne vérifiant les conditions à remplir. Par exemple, le percept de ressource, devant vérifier si une ressource était à proximité. Nous avons commencé par créer la gestion de l'action de la manière suivante : pour créer une action il fallait hériter de la classe Action et surcharger sa méthode do() en créant l'action voulue.
+\paragraph{}Prenons par exemple l'instruction "Si l'agent voit une ressource, il la récupère", symbolisée par les classes PerceptFood et ActionPick :
+\paragraph{}
+AJOUTER LE CODE !
+\paragraph{}
+Pour cette instruction nous avons donc accès à son percept et son action, la vérification des percepts se fait de la manière suivante :
+\begin{itemize}
+\item Nous récupérons la liste des percepts nécessaires à l'instruction.
+\item Nous récupérons la liste des percepts de l'unité.
+\item Nous récupérons la valeur de chaque percepts demandés.
+\item Si toutes leurs valeurs valent vrai on exécute l'action demandée.
+\end{itemize}
+
+La valeur de chaque percept de l'unité est mise à jour à chaque unité de temps 
+
+\paragraph{}
+\paragraph{}
+\paragraph{}
+\paragraph{}
+
+Notre objectif était de simplifier l'ajout de percepts et d'actions à une unité. Pour ce faire nous avons utiliser les type "delegate" propre à Unity dont la déclaration est semblable à  une signature de méthode. Elle a une valeur de retour et un nombre quelconque de paramètres de type quelconque.
+Nous l'avons donc utilisé afin d'encapsuler les méthodes correspondant aux actions et aux percepts.
+
+
+
+delegate
+
+percept agressive percept common actionUnit
+Cette phase a duré .....
+
+retour aux bases
+
+fonctionnalités finales
+ 
+creation d'un jeu
+
+amélioration possibles avec maxime 
 
 \subsection{Integration dans le projet.}
 
