@@ -157,7 +157,7 @@ A voir si a compléter
 \paragraph{}L'ancien projet est une adaptation du jeu Warbot crée en java en utilisant la librairie MadKit, permettant la conception et la simulation de système multi-agents. En utilisant comme base ce projet, et en utilisant la hiérarchie de classe proposé dans le code java dans un moteur de jeu relativement bien assisté comme Unity, de nombreux problèmes de conceptions peuvent apparaître.
 \paragraph{}Unity, pour rappel, est un moteur de jeu développé par Unity Technologies. Ce logiciel à la particularité d'etre "orienter assets". Les scripts associé à chaque objet (appellée GameObject) dérive de la classe "MonoBehaviour", ce qui permet d'avoir accées à un ensemble de méthodes et d'attribut nécessaire à la création de comportement et d'interaction.
 \paragraph{} Dans cette section, nous allons développer les problèmes que nous avons rencontrer dans la réalisation d'un moteur de jeu générique sur la base de l'ancien projet et de l'explication de la nécessiter de recréer un moteur à partir de zéro.
-\paragraph{} Nous avons donc remarqué des problèmes du faite de ce choix de conception. Tout abords les scripts en eux-même ne sont pas adaptés au développement d'un programme sur Unity et surtout ne sont pas générique.  En effet, les unités sont codés en dur dans le code, ne permettant pas l'ajout de nouvelles unités de façon simple. Ainsi pour rajouter de nouvelles unités, il faut créer de nouvelles classes correspondant a de nouvelles unités. Cette hiérarchie des classes est un parti-pris que l'équpe de l'année passée à choisi en se basant sur le code java de WarBot. Cependant, la problématique de notre sujet de TER ne nous permet pas d'avoir ce genre de conception dans l'idée de rendre l'ajout des unités plus simple. Ainsi, il fallait reprendre la conception des unités et voir les composants que l'on peut garder de façon unique et modulable pour toute les unités.
+\paragraph{} Nous avons donc remarqué des problèmes du faite de ce choix de conception. Tout abord, les scripts en eux-même ne sont pas adaptés au développement d'un programme sur Unity et surtout ne sont pas générique.  En effet, les unités sont codés en dur dans le code, ne permettant pas l'ajout de nouvelles unités de façon simple. Ainsi pour rajouter de nouvelles unités, il faut créer de nouvelles classes correspondant a de nouvelles unités. Cette hiérarchie des classes est un parti-pris que l'équpe de l'année passée à choisi en se basant sur le code java de WarBot. Cependant, la problématique de notre sujet de TER ne nous permet pas d'avoir ce genre de conception dans l'idée de rendre l'ajout des unités plus simple. Ainsi, il fallait reprendre la conception des unités et voir les composants que l'on peut garder de façon unique et modulable pour toute les unités.
 %% DEBUT CODE %%
 \begin{lstlisting}[language={[Sharp]C}, caption= Code du script AttackController.cs de l'ancien projet]
 using System.Collections;
@@ -929,6 +929,10 @@ En bas à droite de la fenêtre de jeu se trouve une icône de son et un slider.
 
 \section{MovableCharacter}
 \lstinputlisting[language={[Sharp]C},label={lst:MovableCharacterScript}]{MovableCharacter.cs}
+\newpage
+
+\section{Brain}
+\lstinputlisting[language={[Sharp]C},label={lst:BrainScript}]{Brain.cs}
 \newpage
 
 
