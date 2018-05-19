@@ -50,6 +50,11 @@ Ce projet consiste de réaliser un jeu que l'on peut qualifier de programmeur et
 Metabot est un projet modeste réalisé à partir du logiciel Unity 3D par un groupe d'étudiants débutants dans l'utilisation de cet outil. Malgré le peu d'expérience dans la création pure de ce genre d'applications, le projet actuel est le fruit d'un travail important et d'une implication entière de toute l'équipe.
 Il a donc pour unique prétention de communiquer notre amour du jeu vidéo et de la programmation.
 
+\section{Cahier des charges}
+
+Notre but était de modifier le programme existant afin qu'il devienne plus générique. C'est à dire qu'il ne se limite plus au simple jeu Warbot mais qu'il permette l'implémentation de différents jeux orientées agents facilement. 
+Pour cela il fallait donc généraliser la gestion des différentes unités et de leur comportement (action/perception/statistique). De plus, l'ajout d'actions et de moyens de perceptions doit se faire de façon intuitive de même pour les différentes exigeances de jeu (règles/conditions de victoire). 
+
 \section{Notion d'agent}
 
 \subsection{Système multi-agents}
@@ -70,11 +75,8 @@ Dans WarBot, deux à quatre équipes se battent sur un terrain pour les ressourc
 % PARTIE MOTEUR
 %%%
 \chapter{Partie "Moteur"}
-\section{Phase de conception}
-Notre conception est basée sur notre savoir en matiere de programation orientée agent tout en gardant à l'esprit la notion de généricité qui est au coeur de notre projet.
-Le but de notre moteur de jeu est de permettre à des développeurs de pouvoir réaliser un mode de jeu orienté agent, de facon simple.
-\section{De l'étude de l'ancien projet à la refonte totale du moteur.}
-\subsection{État de l'art de l'ancien projet.}
+
+\section{État de l'art de l'ancien projet.}
 
 Le Warbot Unity d'origine nous permettait de lancer une partie de jeu en mode standard, à deux équipes, celle-ci étant paramétrable.
 Le choix du nombre d'unité, per type (parmis : Base, Explorer, Ingenieur, Tourelle, Heavy) ainsi que du nombre de ressources généré par minute sont disponibles.
@@ -82,17 +84,30 @@ Une carte de jeu, sans obstacle et rectangulaire est présente.
 Durant une partie, il est possible de cliquer sur une unité pour afficher
  la vitesse du jeu est modifiable (accélération / déssélération).
 
-\subsection{Cahier des charges}
 
-Notre but était de modifier le programme existant afin qu'il devienne plus générique. C'est à dire qu'il ne se limite plus au simple jeu Warbot mais qu'il permette l'implémentation de différents jeux orientées agents facilement. 
-Pour cela il fallait donc généraliser la gestion des différentes unités et de leur comportement (action/perception/statistique). De plus, l'ajout d'actions et de moyens de perceptions doit se faire de façon intuitive de même pour les différentes exigeances de jeu (règles/conditions de victoire). 
 
-\subsection{Refonte du noyau.}
+\section{Refonte du noyau.}
 
 Après nous être pencher en profondeur dans le code nécessaire au bon fonctionnement du jeu, nous nous sommes très vite rendu compte de ses limites en terme de généricité.
 Nous avons donc pris la décision en accord avec Mr Ferberr et malgré quelques réticences de sa part, de reprendre le "moteur de jeu" from scratch.
 
 \section{Réalisation}
+
+\subsection{Retour aux bases.}
+
+
+
+\subsection{Integration dans le projet.}
+
+\subsubsection{La phase d'intégration.}
+\subsubsection{Problèmes liés à l'intégration.}
+\subsubsection{Résolution des problêmes.}
+
+\subsection{Améliorations des bases.}
+
+\subsection{Fonctionalités finales.}
+
+\section{Amélioration possible}
 
 \subsection{Gestion des unités.}
 
@@ -210,7 +225,9 @@ Nous avons réaliser un ensemble de cinq maps chacune ayant son thème et ses pa
 
 Malgré tous nos efforts, il persiste toujours un soucis d'optimisation ......
 
-
+\section{Phase de conception}
+Notre conception est basée sur notre savoir en matiere de programation orientée agent tout en gardant à l'esprit la notion de généricité qui est au coeur de notre projet.
+Le but de notre moteur de jeu est de permettre à des développeurs de pouvoir réaliser un mode de jeu orienté agent, de facon simple.
 \newpage
 %%%
 % PARTIE Interface Graphique
