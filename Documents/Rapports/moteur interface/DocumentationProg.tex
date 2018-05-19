@@ -198,8 +198,8 @@ Ce script s'occupe de charger le comportement de l'unité actuellement sélectio
 \begin{itemize}
 \item\textbf{createBehaviorFromXML()} : La première chose à faire est d'effacer le comportement actuellement chargé, s'il existe.
 A l'aide du path, et du nom de l'équipe, nous allons pouvoir appeler une méthode présente dans l’interpréteur, pour transformer le fichier .xml correspondant à l'équipe courante, en un comportement, qui sera stocké dans un dictionnaire.\newline
-Nous allons maintenant récupérer la position de la pièce StartPuzzle, pour pouvoir placer les pièces correctement dans l'éditeur. Nous avons donc notre point de départ.\newline 
-Il ne reste plus qu'à placer les pièces. Nous allons donc récupérer la liste d'instructions associé à chaque unité, et les placer dans leur ordre d'apparition. (Un "if" pour commencer, suivi de sa ou ses conditions, suivies d'une ou plusieurs actions)\newline
+Nous allons ensuite récupérer la position de la pièce StartPuzzle, pour pouvoir placer les pièces correctement dans l'éditeur. Nous avons donc notre point de départ.\newline 
+Il ne reste plus qu'à placer les pièces. Nous allons donc récupérer la liste d'instructions associée à chaque unité, et placer chaque instruction dans leur ordre d'apparition. (Un "if" pour commencer, suivi de sa ou ses conditions, suivies d'une ou plusieurs actions)\newline
 Pour finir, on réinitialisera la scrollbar de l'éditeur, pour permettre à l'utilisateur de voir directement le début du comportement.
 \smallbreak
 \end{itemize}
@@ -208,7 +208,7 @@ Pour finir, on réinitialisera la scrollbar de l'éditeur, pour permettre à l'u
 Ce script permet de sauvegarder le comportement de l'unité sélectionnée, créé et/ou modifié dans l'éditeur.\newline
 \smallbreak
 \begin{itemize}
-\item\textbf{createBehavior()} : Nous allons créer un comportement, copiant le comportement présent dans l'éditeur. Pour commencer, on va répertorier toutes les pièces "If" présentes. Ensuite, pour chaque pièce If de la liste, nous allons créer l'instruction comprenant les conditions et actions, grâce à l'interpréteur.\newline
+\item\textbf{createBehavior()} : Nous allons créer un comportement, copiant le comportement présent dans l'éditeur. Pour commencer, nous allons répertorier toutes les pièces "If" présentes. Ensuite, pour chaque pièce If de la liste, nous allons créer l'instruction comprenant les conditions et actions, grâce à l'interpréteur.\newline
 Une fois chaque instruction créée pour chaque "If", nous pouvons appeler la fonction createXML().\newline
 \item\textbf{createXML()} : Appelle la fonction behaviorToXml(), présente dans l'interpréteur, qui prend en paramètres le nom de l'équipe courante, le chemin où écrire le fichier .xml, le nom de l'unité, et la liste d'instructions correspondante.
 \end{itemize}
