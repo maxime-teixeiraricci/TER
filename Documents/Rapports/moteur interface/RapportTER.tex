@@ -157,8 +157,17 @@ L'action de récupération d'un objet par une unité se déroule comme ceci :
 \paragraph{}
 Notre objectif était de simplifier l'ajout de percepts et d'actions à une unité. La définition d'une classe par action et par percept nous semblait donc assez coûteuse nous avons donc étudié l'une des spécificités du C\#. Les type "delegate" propre au C\# dont la déclaration est semblable à  une signature de méthode. Elle a une valeur de retour et un nombre quelconque de paramètres de type quelconque.
 Nous l'avons donc utilisé afin d'encapsuler les méthodes correspondant aux actions et aux percepts et ce afin d'éviter la crétion de multiple classes.
-A la suite de ce changement, la classe Percept s'est dotée d'un attribut dictionnaire[String,Listener], un percept étant définit par son nom et son Listener associé. Le Listener étant un delegate représentant la fonction qui correspond à la fonction de calcul de sa valeur.
+A la suite de ce changement, la classe Percept s'est dotée d'un attribut dictionnaire[String,Listener], un percept étant définit par son nom et son Listener associé. Le Listener est un delegate représentant la fonction de calcul de valeur du percept. Le même mécanisme est mis en place pour les actions et est toujours d'actualité aujourd'hui.
+\begin{lstlisting}[language=[Sharp]C]
+for ( int i = 0; i < 5; i++)
+{
+System.out.println ("i : " + i);
+}
+\end{lstlisting}
 
+\paragraph{}
+AJOUTER LE CODE !
+\paragraph{}
 
 \paragraph{}
 \paragraph{}
