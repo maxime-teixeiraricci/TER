@@ -1,6 +1,7 @@
 \documentclass{report}
 % Comment the following line to NOT allow the usage of umlauts
 \usepackage[utf8]{inputenc}
+\usepackage[left=3cm,right=3cm,top=3.5cm,bottom=3.5cm]{geometry}
 \usepackage[francais]{babel}
 \usepackage{listings}
 \usepackage{xcolor}
@@ -8,27 +9,71 @@
 \pagestyle{plain}
 \definecolor{listinggray}{gray}{0.9}
 \definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
+\definecolor{darkWhite}{rgb}{0.94,0.94,0.94}
 \lstset{
- backgroundcolor=\color{lbcolor},
- tabsize=4,
- rulecolor=,
- language=matlab,
- basicstyle=\scriptsize,
- upquote=true,
- aboveskip={1.5\baselineskip},
- columns=fixed,
- showstringspaces=false,
- extendedchars=true,
- breaklines=true,
- prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
- frame=single,
- showtabs=false,
- showspaces=false,
- showstringspaces=false,
- identifierstyle=\ttfamily,
- keywordstyle=\color[rgb]{0,0,1},
- commentstyle=\color[rgb]{0.133,0.545,0.133},
- stringstyle=\color[rgb]{0.627,0.126,0.941},
+aboveskip=3mm,
+belowskip=3mm,
+backgroundcolor=\color{darkWhite},
+basicstyle=\footnotesize,
+breakatwhitespace=false,
+breaklines=true,
+captionpos=b,
+commentstyle=\color{red},
+deletekeywords={...},
+escapeinside={\%*}{*)},
+extendedchars=true,
+framexleftmargin=16pt,
+framextopmargin=3pt,
+framexbottommargin=6pt,
+frame=tb,
+keepspaces=true,
+keywordstyle=\color{blue},
+language=C,
+literate=
+{²}{{\textsuperscript{2}}}1
+{⁴}{{\textsuperscript{4}}}1
+{⁶}{{\textsuperscript{6}}}1
+{⁸}{{\textsuperscript{8}}}1
+{€}{{\euro{}}}1
+{é}{{\'e}}1
+{è}{{\`{e}}}1
+{ê}{{\^{e}}}1
+{ë}{{\¨{e}}}1
+{É}{{\'{E}}}1
+{Ê}{{\^{E}}}1
+{û}{{\^{u}}}1
+{ù}{{\`{u}}}1
+{â}{{\^{a}}}1
+{à}{{\`{a}}}1
+{á}{{\'{a}}}1
+{ã}{{\~{a}}}1
+{Á}{{\'{A}}}1
+{Â}{{\^{A}}}1
+{Ã}{{\~{A}}}1
+{ç}{{\c{c}}}1
+{Ç}{{\c{C}}}1
+{õ}{{\~{o}}}1
+{ó}{{\'{o}}}1
+{ô}{{\^{o}}}1
+{Õ}{{\~{O}}}1
+{Ó}{{\'{O}}}1
+{Ô}{{\^{O}}}1
+{î}{{\^{i}}}1
+{Î}{{\^{I}}}1
+{í}{{\'{i}}}1
+{Í}{{\~{Í}}}1,
+morekeywords={*,...},
+numbers=left,
+numbersep=10pt,
+numberstyle=\tiny\color{black},
+rulecolor=\color{black},
+showspaces=false,
+showstringspaces=false,
+showtabs=false,
+stepnumber=1,
+stringstyle=\color{gray},
+tabsize=4,
+title=\lstname,
 }
 
 \title{Rapport de TER}
@@ -53,7 +98,7 @@ Il a donc pour unique prétention de communiquer notre amour du jeu vidéo et de
 \section{Cahier des charges}
 
 Notre but était de modifier le programme existant afin qu'il devienne plus générique. C'est à dire qu'il ne se limite plus au simple jeu Warbot mais qu'il permette l'implémentation de différents jeux orientées agents facilement. 
-Pour cela il fallait donc généraliser la gestion des différentes unités et de leur comportement (action/perception/statistique). De plus, l'ajout d'actions et de moyens de perceptions doit se faire de façon intuitive de même pour les différentes exigeances de jeu (règles/conditions de victoire). 
+Pour cela il fallait donc généraliser la gestion des différentes unités et de leur comportement (action/perception/statistique). De plus, l'ajout d'actions et de moyens de perceptions doit se faire de façon intuitive de même pour les différentes exigences de jeu (règles/conditions de victoire). 
 
 \section{Notion d'agent}
 
@@ -76,39 +121,163 @@ Dans WarBot, deux à quatre équipes se battent sur un terrain pour les ressourc
 %%%
 \chapter{Partie "Moteur"}
 
-\section{État de l'art de l'ancien projet.}
-
-Le Warbot Unity d'origine nous permettait de lancer une partie de jeu en mode standard, à deux équipes, celle-ci étant paramétrable.
-Le choix du nombre d'unité, per type (parmis : Base, Explorer, Ingenieur, Tourelle, Heavy) ainsi que du nombre de ressources généré par minute sont disponibles.
-Une carte de jeu, sans obstacle et rectangulaire est présente.
-Durant une partie, il est possible de cliquer sur une unité pour afficher
- la vitesse du jeu est modifiable (accélération / déssélération).
-
-
+\section{État de l'art de l'ancien projet.} Mehdi
 
 \section{Refonte du noyau.}
+\paragraph{}L'ancien projet est une adaptation du jeu Warbot crée en java en utilisant la librairie MadKit, permettant la conception et la simulation de système multi-agents. En utilisant comme base ce projet, et en utilisant la hiérarchie de classe proposé dans le code java dans un moteur de jeu relativement bien assisté comme Unity, de nombreux problèmes de conceptions peuvent apparaître.
+\paragraph{}Unity, pour rappel, est un moteur de jeu développé par Unity Technologies. Ce logiciel à la particularité d'etre "orienter assets". Les scripts associé à chaque objet (appellée GameObject) dérive de la classe "MonoBehaviour", ce qui permet d'avoir accées à un ensemble de méthodes et d'attribut nécessaire à la création de comportement et d'interaction.
+\paragraph{} Dans cette section, nous allons développer les problèmes que nous avons rencontrer dans la réalisation d'un moteur de jeu générique sur la base de l'ancien projet et de l'explication de la nécessiter de recréer un moteur à partir de zéro.
+\paragraph{} Nous avons donc remarqué des problèmes du faite de ce choix de conception. Tout abords les scripts en eux-même ne sont pas adaptés au développement d'un programme sur Unity et surtout ne sont pas générique.  En effet, les unités sont codés en dur dans le code, ne permettant pas l'ajout de nouvelles unités de façon simple. Ainsi pour rajouter de nouvelles unités, il faut créer de nouvelles classes correspondant a de nouvelles unités. Cette hiérarchie des classes est un parti-pris que l'équpe de l'année passée à choisi en se basant sur le code java de WarBot. Cependant, la problématique de notre sujet de TER ne nous permet pas d'avoir ce genre de conception dans l'idée de rendre l'ajout des unités plus simple. Ainsi, il fallait reprendre la conception des unités et voir les composants que l'on peut garder de façon unique et modulable pour toute les unités.
+%% DEBUT CODE %%
+\begin{lstlisting}[language={[Sharp]C}, caption= Code du script AttackController.cs de l'ancien projet]
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System;
+using WarBotEngine.Projectiles;
+using System.Security.Cryptography;
 
-Après nous être pencher en profondeur dans le code nécessaire au bon fonctionnement du jeu, nous nous sommes très vite rendu compte de ses limites en terme de généricité.
-Nous avons donc pris la décision en accord avec Mr Ferberr et malgré quelques réticences de sa part, de reprendre le "moteur de jeu" from scratch.
+namespace WarBotEngine.WarBots {
+
+    public class AttackController : MonoBehaviour {
+[...]
+        public bool Reloaded()
+        {
+            return (this.reloading + this.reload_time < Time.time);
+        }
+
+        public bool Shoot()
+        {
+            if (!this.Reloaded())
+                return false;
+            this.Fire();
+            return true;
+        }
+[...]
+        public void Fire() {
+            SoundManager.Actual.PlayFire(this.gameObject);
+            Instantiate(this.projectile , this.warprojectile_emitter.transform.position , this.warprojectile_emitter.transform.rotation , this.transform);
+            Instantiate(this.muzzle_flash , this.warprojectile_emitter.transform.position , this.warprojectile_emitter.transform.rotation , this.transform);
+            this.reloading = Time.time;
+        }
+    }
+}
+\end{lstlisting}
+
+\paragraph{} La gestion des actions et des perceptions aussi est problématique. Le code de ces actions sont codés en dur dans des scripts correspondant a des unités d'un certain type, empêchant alors de rendre générique le fait de rajouter des actions sans devoir modifier tout les codes nécessitant le nom des actions tel que l’interpréteur. Le code ci-dessous montre le script "AttackController.cs" de l'ancien projet. Dans ce code, l'actions Shoot depend des fonction Reloaded et Fire. Reloaded peut être considérer comme une perception. Le fait que les actions et les perceptions ne sont pas clairement définie entant que tels posent des problèmes de compréhension du code et de faite le rajout de façon simple une nouvelle action et une nouvelle perception. De plus, cela pose le problème de la gestion des actions et des perceptions de l’interpréteur, car pour chaque action créer dans le script, il faut indiquer à l'interpreteur quelle fonction permet d'activer l'action du comportement en cours. 
+\paragraph{}Ainsi dans le code du listing \ref{lst:unitScript}, on peut voir que pour activer la fonction Shoot() du script AttackController, il faut créer une fonction du même nom, puis renseigner toutes les unités qui peuvent effectuer l'action. Le problème est qu'il faut, pour chaque action, créer une fonction dans le fichier Unit.cs, et ainsi le fichier Unit.cs est surchargé, atteignant les 2000 lignes de codes !
+
+\begin{lstlisting}[language={[Sharp]C},label={lst:unitScript}, caption=  Extrait du code du script Unit.cs]
+using ...;
+namespace WarBotEngine.Editeur
+{
+   [...]
+	public class Unit
+    {
+        /// <summary>
+        /// The unit shoot a projectile if is reloading
+        /// </summary>
+        /// <returns>Return true if action success and false otherwise</returns>
+        [PrimitiveType(PRIMITVE_TYPE.ACTION)]
+        [UnitAllowed(WarBots.BotType.WarHeavy)]
+        [UnitAllowed(WarBots.BotType.WarTurret)]
+        [PrimitiveDescription("Fait tirer l'unité (termine l'action si réussi)")]
+        public bool Shoot()
+        {
+            return this.agent.GetComponent<WarBots.AttackController>().Shoot();
+        }
+   }
+}
+
+\end{lstlisting}
+\paragraph{} La suite de l'examen du code de l'ancien projet et avec l'accord de notre encadrant en exposant les problèmes qu'engendre la reprise de l'ancien moteur, nous avons décider de recréer un nouveau moteur de jeu pour repartir sur des bases plus générique.
+
 
 \section{Réalisation}
 
-\subsection{Retour aux bases.}
+
+\subsection{Retour aux bases.} Mehdi
+\subsection{Intégration dans le projet.}
+\subsubsection{La phase d'intégration.} Maxime
+\subsubsection{Problèmes liés à l'intégration.} Maxime
+\subsubsection{Résolution des problèmes.} Maxime
 
 
 
-\subsection{Integration dans le projet.}
+\subsection{Améliorations des fonctionnalités.}
+\subsubsection{Optimisation du temps de chargement}
+\paragraph{} L'un des gros problèmes que l'on a rencontré est le fait que le temps de chargement lors d'une partie était beaucoup trop élevé et cela nuisait au bon déroulement de la partie, atteignant parfois deux minutes de temps de chargement lorsque l'on voulait générer 200 unités. Pour ce la nous avons étudier plusieurs pistes pour résoudre ce problème
+\subparagraph{La gestion des actions des unités.}La premier piste de recherche que l'on a étudié est d'essayer d'optimiser la gestion des actions des unités. Lorsque l'on a conçu les unités, elle faisaient leurs actions dans une fonction utilisé par Unity "Update" qui est appelé à chaque calcul d'image. Ainsi pour chaque unités présente sur la scène, Unity calcule l'action que l'unité doit faire. Cependant, certaine action nécessite plus de temps en fonction de sa complexité, ce qui pouvait engendré que des unités avaient des tours de retard par rapport à d'autres unités. \newline
+Pour palier à ce problème, nous avons donc délégué à un script  "TurnManagerScript.cs" (Listing \ref{lst:turnManagerScript}) la gestion des unités.\newline
+ \begin{lstlisting}[language={[Sharp]C},label={lst:turnManagerScript}, caption= Code du script TurnManagerScript.cs]
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-\subsubsection{La phase d'intégration.}
-\subsubsection{Problèmes liés à l'intégration.}
-\subsubsection{Résolution des problêmes.}
+public class TurnManagerScript : MonoBehaviour
+{
+    public float _timeTick;
+    public float _ticksPerSeconds;
+    
+    // Update is called once per frame
+	void FixedUpdate ()
+    {
+        _timeTick += 0.02F * Time.timeScale;
+        _ticksPerSeconds = (1.0f / 0.02F) * Time.timeScale;
+        if (_timeTick >= 0.04f) // Est-ce que 0.4 secondes ce sont écoulées ?
+        {
+            _timeTick -= 0.04f;
 
-\subsection{Améliorations des bases.}
+            foreach (GameObject unit in GameObject.FindGameObjectsWithTag("Unit"))
+            {
+                if (unit.GetComponent<Brain>()) // Comporte un "Brain"
+                {
+                    unit.GetComponent<Brain>().UnitTurn(); // Fait l'action de l'unité
+                }
+            }
+        }
+	}
+}
+\end{lstlisting}
+Ce script permet donc de controler que chaque unité ne commence pas un nouveau tour si d'autre unité n'ont pas fini ou fait le leur.
+Cependant, cette optimisation n'a pas permis de réduire le temps de chargement d'une partie, restant toujours à prés de deux minutes pour la génération de 200 unités.
+
+\subparagraph{\textit{ObjectPool}, les "bassins" d'objets.}Pour essayer de mieux localiser le problème, nous avons effectuer des tests sur le temps de chargement en fonction du nombre d'unités. Les résultats sont consignés dans le tableau ci-dessous. On peut donc voir que le nombre d'unité à générer influe directement le temps de chargement.\newline
+\begin{center}
+\begin{tabular}{c|c}
+  \hline
+  Nombre d'unités à générer & Temps de chargements (moyenne de 3 tests) \\
+  \hline
+  0 unités & 0.49 secondes \\
+  1 unités & 0.70 secondes \\
+  5 unités & 3.13 secondes \\
+  20 unités & 11.50 secondes \\
+  50 unités & 27.84 secondes \\
+  100 unités & 50.23 secondes \\
+  200 unités & 162.20 secondes \\
+  500 unités & 276.71 secondes \\
+  \hline
+\end{tabular}
+\end{center}
+Pour empêcher la génération des unités pendant lors du chargement, nous décidons d'utiliser une méthode dite "du bassins d'objets" (ou \textit{ObjectPooling}). Cette méthode consiste à créer un ensemble d'objet dans un objet appelé \textit{Pool}, puis de les rendre inactifs pour que les scripts contenu dans ces objets ne soient pas exécutés.
+
+%% CODE %%
+ \begin{lstlisting}[language={[Sharp]C},label={lst:structPoolScript}, caption= Code de la structure \textit{Pool} de ObjectPool.cs]
+public struct Pool
+{
+    public string tag; // Label du Pool
+    public int number; // Nombre d'objets
+    public GameObject prefab; //Objet de référence
+}
+\end{lstlisting}
+
+Cette méthode permet de ne pas créer une unité directement, mais de juste prendre un objet Unit dans le bassin correspondant. Les bassins sont représentes par une structure définit au listing \ref{lst:structPoolScript}. elle comporte un \textit{tag} représentant le nom du bassin, un  \textit{number} correspondant au nombre d'unités à créer dans ce bassin, et enfin un \textit{prefab} qui est l'objet qui servira de référence pour la copie des objets. Le script gérant le script (Listing  \ref{lst:ObjectPoolScript}) permet la gestion de plusieurs \textit{Pools}, et dans notre cas, nous utilisons 3 \textit{Pools}:  \textit{Light},  \textit{Heavy} et  \textit{Explorer}
+
 
 \subsection{Fonctionalités finales.}
-
+Mehdi
 \section{Amélioration possible}
-
+Mehdi et Maxime
 \subsection{Gestion des unités.}
 
 La gestion des unités de manière générique nous a poussé à réfléchir aux éléments minimum définissant celle-ci.
@@ -325,107 +494,90 @@ Les éléments peuvent être sélectionnés et déplacés dans la zone d'éditio
 \subsubsection{Zone éditeur de comportement de l'unité et de l'équipe courante}
 Dans cette zone arrivent les pièces venant de la zone de sélection. Elles ce placent à l'aide du curseur de la souris sur un grille invisible. Si un pièce est valide alors elle est colorée sinon elle est grise. Les pièces "IF" possèdent un cadenas dans le coin supérieur droit, il permet de déplacer, en plus de la pièce IF, tout les éléments valides qui lui sont rattachés (hors IF). Les pièces de contrôle sont valide en dessous d'autre pièce du même type ou en dessous de la pièce "Start". Les autres pièces doivent se rattacher à des pièces de contrôle, en haut à droite pour les pièces Condition et en bas à droite pour les autres. Les pièces hors Contrôle sont ainsi valide lorsqu'elles sont au bon endroit, sur leur ligne collé au contrôle ou collé à une autre pièce valide. 
 
-\subsection{Element dans le jeu}
+\subsection{Élément dans le jeu}
 \subsubsection{Réglage du volume du son}
 En bas à droite de la fenêtre de jeu il y a un icône de son et un slider. Le slider permet, comme dans le menu des paramètres, de changer le volume du son. L’icône lui sert de bouton, si on le presse le son passe à 0 et l’icône devient barré. Si on appuie de nouveau il devient normal et le son revient comme avant.
 
-\newpage
-\chapter{Partie "Interpreteur"}
-repasser sur le texte pour ajouter exemples et illustrations ! 
-\section{Présentation et Attente}
-La partie "Interpréteur" est la partie la moins visible du projet MetaBot,
-mais il s'agit de la partie du projet servant de clé de voute du jeu.
-Comme dit plus tôt, la particularité de MetaBot est que le joueur, qui pourra être considéré comme le programmeur, va préparer en amont une cohésion d'équipe à travers le comportement et va pouvoir lancer un match contre une autre équipe, afin d'évaluer quel comportement sera le meilleur.
-L'interpreteur permet de faire la liaison entre l'éditeur du comportement ou l'utilisateur va développer son comportement, en utilisant un ensemble de d'instructions que nous avons prédéfinies  et la partie moteur, ou le fonctionnement des unités est inscrit, ainsi que les différents modes de jeux.
-\paragraph{}
-Le langage et l'ensemble des instructions nécessaires est alimenté par l'équipe Game Design qui nous a donné des exemples de messages ou de spécificités du langage qui pourrait être nécessaire. On pouvait ensuite tous en discuter en pesant le pour et le contre, afin de définir si la fonctionnalité allait être mise en place , et de quelle façon.
-\section{Etude de l'ancien projet et récupération de ce qui est utile}
-Au départ, il a été nécessaire de remettre en place un outil permettant de récupérer un comportement, qui était uniquement graphique, dans l'éditeur afin de pouvoir le renvoyer à la partie Moteur, pour que l'ensemble des unités puissent l'exécuter.
-Nous avons pris connaissance de ce que l'ancien groupe avait mis en place et avons trié ce qui nous semblait correspondre à notre version du projet.
-Il était obligatoire d'écrire le comportement récupéré de l'éditeur dans un fichier, afin de le récupérer , pouvoir le modifier , le déplacer , et le conserver pour plusieurs parties.
-La solution mise en place par l'ancien groupe pour le stockage, qui était d'utiliser un fichier XML correspondait parfaitement à notre besoin, car la syntaxe et l'organisation en nœuds de ce genre de fichiers, permettait une récupération simple et claire des instructions. Nous avons ainsi pu récupérer une bonne partie de leur système d'écriture et de lecture de leur projet, tout en adaptant l'autre partie à nos besoins.
-\paragraph{}
-\newpage
-La partie organisant les instructions à été complètement supprimée, et nous avons repensé un système plus générique et plus compréhensible pour les groupes qui vont récupérer ce projet plus tard.
-\section{Conception et implémentation}
-La construction des Instructions des unités dans la partie Interpréteur a grandement été facilitée et la liaison des instructions avec leur exécution a été décalée dans le moteur. Ainsi on ne manipule que des chaînes de caractères lors de l'accès dans le fichier, et le moteur effectue la liaison avec une structure de "Delegate" comme expliqué plus haut, rajoutant beaucoup de généricité au projet.
-D'un point de vue de la sécurité, celle-ci a été décalée dans l'éditeur du comportement, afin de ne pas traiter des comportements erronés , mais prévenir a l'avance et même empêcher les erreurs d'apparaitre.
-\paragraph{}
-Le but de l'interpréteur était de traiter des fichiers de ce type :
-\begin{lstlisting}[frame=single]
-<behavior>
-  <teamName>Default Team</teamName>
-  <unit name="Explorer">
-    <instruction>
-    </instruction>
-  </unit>
-  <unit name="Base">
-  </unit>
-  <unit name="Light">
-  </unit>
-  <unit name="Heavy">
-  </unit>
-</behavior>
-\end{lstlisting}
-Ainsi nous avons 1 fichier par équipe écrite par l'utilisateur, chacun détaillant le comportement de chaque unité sous la même forme :
-\begin{lstlisting}[frame=single]
-<behavior>
-  <teamName>Default Team</teamName>
-  <unit name="Explorer">
- <instruction>
-      <parameters>
-        <PERCEPT_ENEMY />
-      </parameters>
-      <message>
-        <ACTN_MESSAGE_HELP>
-          <Light />
-        </ACTN_MESSAGE_HELP>
-      </message>
-      <actions>
-        <ACTION_MOVE />
-      </actions>
-    </instruction>
-    <instruction>
-      <parameters>
-        <PERCEPT_BLOCKED />
-      </parameters>
-      <actions>
-        <ACTION_MOVE_UNTIL_UNBLOCKED />
-      </actions>
-    </instruction>
-  </unit>
-</behavior>
-\end{lstlisting}
-Le comportement d'une unité est une suite d'instructions, dont l'ordre est très important. La hiérarchie va déterminer la priorité qu'aura l'action sur le tick. Ainsi l'action la plus prioritaire dont les conditions sont acceptées sera l'action effectuée sur ce tick.
-Chaque instruction est toujours organisée de la même façon :
-- Une liste de conditions à remplir pour que l'instruction soit considéré comme acceptée
-- Une liste d'actions qui ne terminent pas l'action, appelées Actions non terminales, mais qui peuvent être les messages partagés entre les unités par exemple. Ces actions non terminales seront exécutés avant :
-- L'action terminale, qui va être exécutée à la fin du tick pour l'ensemble des unités et va être l'action qui va être "physiquement" fait par l'unité, par exemple : Avancer, Tirer, Récupérer ou donner une ressource,Se soigner , ...
-\paragraph{}
-Comme dit précédemment, l'interpréteur relie les 2 parties majeures du projet.
-Ainsi, une fonction permet de transformer un fichier ".wbt" (format des équipes WarBot) vers un comportement d'équipe utilisable par l'équipe moteur, et une fonction permettant la transformation d'un comportement récupéré de l'éditeur graphique vers un fichier XML, pour sa sauvegarde.
-\newpage
-\paragraph{}
-Un nouveau travail d'interprétation a vite été ressenti dans le projet. En effet, le jeu étant destiné à aider les jeunes à appréhender la programmation, une traduction française était nécessaire.
-Toujours dans l'idée de rester générique, un traducteur a été mis en place et attaché à l'ensemble des textes qui seront affichés à l'utilisateur.
-\paragraph{}
-//pas clair a changer
-La traduction fonctionne ainsi :
-Un premier script s'occupe de vérifier la langue qui doit être utilisée dans le fichier de configuration du jeu et va charger en mémoire un fichier  de traductions : 
-
-Le fichier va être parcouru, et un ensemble de couples clé,valeurs vont être récupérés , la clé correspondant à la valeur initiale d'un bouton/ texte affiché, la valeur étant la traduction qu'il faudra affiché à la place de la clé.
-
-Ce script est ainsi rattaché au "GameManager" , un objet Unity qui n'est pas détruit lorsque l'on change de scène. Ainsi les traductions sont conservées lorsqu'on passe de l'éditeur au menu principal , du menu principal aux cartes de jeu, ...
-\paragraph{}
-Un second script est lui attaché à tous les Objets du jeu qui vont devoir être traduits. Celui-ci va , à la création de l'objet auquel il est rattaché, chercher la langue actuellement affichée, récupérer comme clé le texte original de l'objet auquel le script est affilié, et va stocker la traduction, et l'afficher à l utilisateur.
-
-En Runtime, si la langue est changée dans les paramètres du jeu, les script de traduction des objets vont mettre à jour leur langue, et récupérer la nouvelle traduction dans le "GameManager".
-\newpage
-\chapter{Partie "Game Design"}
 
 \newpage
 \part{L'avenir du projet}
 \chapter{Amélioration possible}
+\chapter{Bugs}
+\newpage
+\part{Annexe}
+\chapter{Scripts Remarquables}
+ \begin{lstlisting}[language={[Sharp]C},label={lst:ObjectPoolScript}, caption= Script ObjectPool.cs]
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ObjectPool : MonoBehaviour
+{
+    static public Dictionary<string, Queue<GameObject>> dictPools = new Dictionary<string, Queue<GameObject>>();
+    public Pool[] pools;
+
+    static bool created = false;
+
+    void Awake()
+    {
+        if (!created)
+        {
+            DontDestroyOnLoad(this.gameObject);
+            created = true;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+
+        foreach(Pool pool in pools)
+        {
+            pool.prefab.SetActive(false);
+            Queue<GameObject> queue = new Queue<GameObject>();
+            for (int i = 0; i < pool.number; i ++)
+            {
+                GameObject instance = Instantiate(pool.prefab);
+                instance.SetActive(false);
+                instance.transform.parent = transform;
+                queue.Enqueue(instance);
+            }
+            dictPools.Add(pool.tag, queue);
+        }
+
+    }
+
+    static public GameObject Pick(string tag, Vector3 position, Quaternion rotation)
+    {
+        GameObject obj = dictPools[tag].Dequeue();
+        if (obj)
+        {
+            obj.transform.position = position;
+            obj.transform.rotation = rotation;
+            obj.SetActive(true);
+            
+        }
+        return obj;
+    }
+
+    static public GameObject Pick(string tag, Vector3 position)
+    {
+        return Pick(tag, position, Quaternion.identity);
+    }
+
+    static public GameObject Pick(string tag)
+    {
+        return Pick(tag, Vector3.zero, Quaternion.identity);
+    }
+}
+\end{lstlisting}
+
+
+
+
+
+
+
 
 % Uncomment the following two lines if you want to have a bibliography
 %\bibliographystyle{alpha}
