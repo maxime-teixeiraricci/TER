@@ -25,7 +25,7 @@ basicstyle=\footnotesize,
 breakatwhitespace=false,
 breaklines=true,
 captionpos=b,
-commentstyle=\color{green},
+commentstyle=\color{red},
 deletekeywords={...},
 escapeinside={\%*}{*)},
 extendedchars=true,
@@ -132,7 +132,7 @@ Dans WarBot, deux à quatre équipes se battent sur un terrain pour les ressourc
 
 Pour commencer, attardons nous un moment sur l'ancien projet. L'an dernier, l'objectif premier était de réussir à implémenter le jeu Warbot sous Unity. Le constat que l'on peut faire de ce logiciel est que l'équipe précédente à montrer qu'il est possible de créer un jeu multi-agent en se servant de ce moteur de jeu.
 En effet, le Warbot Unity d'origine doté de son menu principal, son interface de paramétrage de partie et sa scène de jeu a déjà pas mal d'atout visuellement parlant. Mais il n'est pas exempt de bugs et reste assez limité.
-Dans cette version, il nous est donc possible de lancer une partie à deux joueurs uniquement, de régler le nombre de ressources créées par minutes ainsi que la quantité d'unités souhaitées de chacun des cinq types disponibles : WarBase, WarExplorer, WarHeavy, WarEngineer et Warturret. Une seule carte de jeu rectangulaire et sans obstacles est présente. 
+Dans cette version, il est donc possible de lancer une partie à deux joueurs uniquement, de régler le nombre de ressources créées par minutes ainsi que la quantité d'unités souhaitées de chacun des cinq types disponibles : WarBase, WarExplorer, WarHeavy, WarEngineer et Warturret. Une seule carte de jeu rectangulaire et sans obstacles est présente. 
 
 \paragraph{}Durant une partie, le joueur peut effectuer plusieurs actions :
 \begin{itemize}
@@ -219,40 +219,68 @@ namespace WarBotEngine.Editeur
 \end{lstlisting}
 \paragraph{} La suite de l'examen du code de l'ancien projet et avec l'accord de notre encadrant en exposant les problèmes qu'engendre la reprise de l'ancien moteur, nous avons décider de recréer un nouveau moteur de jeu pour repartir sur des bases plus générique.
 
-\section{Réalisation}
-La réalisation du projet a été effectuée en suivant une méthode agile. M. Ferber avait pour cela le rôle à la fois de chef de projet et de client, le projet s'est donc découpé en plusieurs phases de rush entrecoupés par des réunions régulière avec lui. Il nous est donc paru pluq judicieux de vous expliquer le déroulement de notre travail de manière chronologique. Nous reviendrons plus en détail sur cette méthode et son application à notre situation dans la partie gestion de projet. 
+
+La réalisation du projet a été effectuée en suivant une méthode agile. Mr Ferber avait pour cela le rôle à la fois de chef de projet et de client, le projet s'est donc découpé en plusieurs phases de rush entrecoupés par des réunions régulière avec lui. Il nous est donc paru pluq judicieux de vous expliquer le déroulement de notre travail de manière chronologique. On reviendra plus en détail sur cette méthode et son application à notre situation dans la partie gestion de projet. 
+
 
 \subsection{Retour aux bases.}
 
-Afin de mener à bien la création du moteur de jeu, et dans le but de ne pas géner l'avancer de nos camarades des autres équipes de ce projet, nous avons choisi de ne pas toucher directement au jeu original mais plutôt de repartir à zéro en créant un nouveau projet sur Unity tout en étant conscient de la difficulté futur que serait son intégration.
+Afin de mener à bien la création du moteur de jeu, et dans le but de ne pas géner l'avancer de nos camarades des autres équipes de ce projet, on a choisi de ne pas toucher directement au jeu original mais plutôt de repartir à zéro en créant un nouveau projet sur Unity tout en étant conscient de la difficulté futur que serait son intégration.
 
 \paragraph{}Suite à la décision de reprise du moteur de jeu from scratch, nous avons commencé à mettre en place les mécanisme de contrôle d'une unité, M. Ferber nous conseillant de repartir sur la base de la version Java de Warbot. Le premier pas a été de simplement faire bouger une unité. Pour cela, nous avons utilisé le coposant NavMesh que nous avons attaché au GameObject Unit représentant l'unité. Grâce à cela l'unité était capable de parcourir un chemin jusqu'à arriver à sa destination en évitant les différents obstacles avec lesquelles elle pourrait rentrer en collisions,cette dernière étant detecter grâce au composant Collider. M. Ferber nous avait demandé d'étudier la possibilité de créer des zones restrictives, sur lesquelles certaine unité ne seraient pas capables d'aller ou se déplaceraient à une vitesse différente. Cette opération fut simple à mettre en place avec le composant NavMesh, il suffisait d'indiquer à l'unité que si sa destination se trouvait à un emplacement interdit par exemple elle ne pouvait pas s'y rendre. Mais l'utilisation du NavMesh  ne convenait pas au jeu Warbot. En effet, dans le jeu l'utilisateur est libre du choix du comportement de l'unité mais doit aussi faire avec les alléa du terrain, il doit prendre en compte la possibilité que l'unité soit bloquée et doit donc changer de direction. Or, avec l'utilisation du NavMesh cette opération était faite de manière automatique, le NavMesh embarque un algoritme calculant automatiquement un chemin permettant rejoindre le but demandé, son utilisation a donc été rapidement abandonnée. Les zones restrictives ont elles aussi étaient annulées, leur conception sans NavMesh nous ayant parue bien trop complexe et chronophage à ce niveau du projet pour un élément non primordial. 
 \paragraph{}A partir de ce moment, nous avons donc simplement modifié la position du composant Transform (composant determinant la position, rotation et l'échelle de chaque objet dans la scène), du GameObject Unit en fonction du vecteur de mouvement voulu afin de déplacer l'unité.
 \paragraph{}Une fois ces premiers mouvements rendus possibles, nous nous sommes attarder sur la conception des instructions de l'unité. Celles-ci étant constituées d'une suite de conditions (les percepts) et d'une action terminant le tour de l'unité. La valeur d'un percept était donc calculée à partir d'une fonction booléenne vérifiant les conditions à remplir. Par exemple, le percept de ressource, devant vérifier si une ressource était à proximité. Nous avons commencé par créer la gestion de l'action de la manière suivante : pour créer une action il fallait hériter de la classe Action et surcharger sa méthode do() en créant l'action voulue.
-\paragraph{}Prenons par exemple l'instruction "Si l'agent voit une ressource, il la récupère", symbolisée par les classes PerceptFood et ActionPick :
+\paragraph{}Avant de passer a un exemple concret de la gestion d'une instruction, on va expliquer comment fonctionnait le champs de vision d'une unité et le calcul des objets "vus" par celle-ci à ce moment du projet.
+Le GameObject Unit a un composant Collider sphérique, une sphère tout autour de lui. Ce Collider a son booléen IsTriggered actif, ce qui signifie que la sphère n'est pas un objet physique auquel on peut se heurter, mais que l'on peut détecter tout GameObject à l'intérieur de celle-ci. Dans cette sphère, on décide d'un angle fixe qui sera l'angle de champs de vision de l'unité.
 \paragraph{}
 AJOUTER LE CODE !
 \paragraph{}
-Pour cette instruction nous avons donc accès à son percept et son action, la vérification des percepts se fait de la manière suivante :
+Voici comment ce mets à jour la liste des objets "vus" par l'unité :
 \begin{itemize}
-\item Nous récupérons la liste des percepts nécessaires à l'instruction.
-\item Nous récupérons la liste des percepts de l'unité.
-\item Nous récupérons la valeur de chaque percepts demandés.
-\item Si toutes leurs valeurs valent vrai on exécute l'action demandée.
+\item On récupére la liste des objets présents dans la shpère.
+\item Pour tous les objets présents dans la sphère.
+\item Si celui-ci a son centre de gravité dans l'angle de champs de vision de l'unité, on l'ajoute à la liste des objets vus.
 \end{itemize}
+\paragraph{}Voici un exemple concret d'exécution d'une instruction "Si l'agent voit une ressource, il la récupère", symbolisée par les classes PerceptRessource et ActionPick :
+\paragraph{}
+AJOUTER LE CODE !
+\paragraph{}
+Pour cette instruction on a donc accès à son percept et son action, la vérification des percepts se fait de la manière suivante :
+\begin{itemize}
+\item On récupére la liste des percepts nécessaires à l'instruction.
+\item On récupére la liste des percepts de l'unité.
+\item On récupére la valeur de chaque percepts demandés.
+\item Si toutes leurs valeurs sont vrai on exécute l'action demandée.
+\end{itemize}
+\paragraph{}
+AJOUTER LE CODE !
+\paragraph{}
+La valeur de chaque percept de l'unité est mise à jour à chaque unité de temps, pour PerceptRessource cela se passe comme suit :
+\begin{itemize}
+\item Pour tous les objets présents dans la liste des objets vus de l'unité.
+\item On cherche s'il en existe un qui a un composant "ItemHandler" (ItemHandler est propre aux Prefab de type Ressource cela nous permet de vérifier que l'objet trouvé est bien une ressource).
+\item Si c'est le cas on modifie la valeur de la "target" de l'unité (la cible de l'unité pour ce tour de jeu) pour qu'elle soit égale à l'objet trouvé.
+\end{itemize}
+\paragraph{}
+AJOUTER LE CODE !
+\paragraph{}
+L'action de récupération d'un objet par une unité se déroule comme ceci :
+\begin{itemize}
+\item On récupère le composant Objet de la "target" de l'unité (ce composant est la valeur de l'objet à récupérer).
+\item On ajoute cet objet dans le composant inventaire de l'unité.
+\item On détruit le GameObjet "target" (on détruit la représentation physique de l'objet sur la scène).
+\end{itemize}
+\paragraph{}
+Notre objectif était de simplifier l'ajout de percepts et d'actions à une unité. La définition d'une classe par action et par percept nous semblait donc assez coûteuse nous avons donc étudié l'une des spécificités du C\#. Les type "delegate" propre au C\# dont la déclaration est semblable à  une signature de méthode. Elle a une valeur de retour et un nombre quelconque de paramètres de type quelconque.
+Nous l'avons donc utilisé afin d'encapsuler les méthodes correspondant aux actions et aux percepts et ce afin d'éviter la crétion de multiple classes.
+A la suite de ce changement, la classe Percept s'est dotée d'un attribut dictionnaire[String,Listener], un percept étant définit par son nom et son Listener associé. Le Listener étant un delegate représentant la fonction qui correspond à la fonction de calcul de sa valeur.
 
-La valeur de chaque percept de l'unité est mise à jour à chaque unité de temps 
 
 \paragraph{}
 \paragraph{}
 \paragraph{}
 \paragraph{}
-
-Notre objectif était de simplifier l'ajout de percepts et d'actions à une unité. Pour ce faire nous avons utiliser les type "delegate" propre à Unity dont la déclaration est semblable à  une signature de méthode. Elle a une valeur de retour et un nombre quelconque de paramètres de type quelconque.
-Nous l'avons donc utilisé afin d'encapsuler les méthodes correspondant aux actions et aux percepts.
-
-
-
+\paragraph{}
 delegate
 
 percept agressive percept common actionUnit
@@ -267,8 +295,12 @@ creation d'un jeu
 amélioration possibles avec maxime 
 
 \subsection{Intégration dans le projet.}
+Une fois qu'on a estimé que le moteur etait assez générique
+
 \subsubsection{La phase d'intégration.} Maxime
+
 \subsubsection{Problèmes liés à l'intégration.} Maxime
+
 \subsubsection{Résolution des problèmes.} Maxime
 
 
