@@ -289,15 +289,17 @@ Suite à la décision de reprise du moteur de jeu de zéro, nous avons commencé
 \end{figure}
 
 \paragraph{}
- Le composant \textit{NavMesh} est un composant d'Unity permettant de déplacer des agents sur des zones (appelé \textit{Navigation Mesh}). Ces zones peuvent avoir différentes propriétés (comme le coût de déplacement) et un algorithme de recherche de plus court chemin est utilisé lorsqu'on demande l'orde à une unité de se déplacer dans le NavMesh.
+ Le composant \textit{NavMesh} est un composant d'Unity permettant de déplacer des agents sur des zones (appelé \textit{Navigation Mesh}). Ces zones peuvent avoir différentes propriétés (comme le coût de déplacement) et un algorithme de recherche de plus court chemin est utilisé lorsqu'on demande l'ordre à une unité de se déplacer dans le NavMesh.
 \paragraph{}
- Grâce à cela l'unité était capable de parcourir un chemin jusqu'à arriver à sa destination en évitant les différents obstacles avec lesquelles elle pourrait rentrer en collisions,cette dernière étant detecter grâce au composant Collider. M. Ferber nous avait demandé d'étudier la possibilité de créer des zones restrictives, sur lesquelles certaine unité ne seraient pas capables d'aller ou se déplaceraient à une vitesse différente. Cette opération fut simple à mettre en place avec le composant NavMesh, il suffisait d'indiquer à l'unité que si sa destination se trouvait à un emplacement interdit par exemple elle ne pouvait pas s'y rendre. 
-
-
-
-Mais l'utilisation du NavMesh  ne convenait pas au jeu Warbot. En effet, dans le jeu l'utilisateur est libre du choix du comportement de l'unité mais doit aussi faire avec les alléa du terrain, il doit prendre en compte la possibilité que l'unité soit bloquée et doit donc changer de direction. Or, avec l'utilisation du NavMesh cette opération était faite de manière automatique, le NavMesh embarque un algoritme calculant automatiquement un chemin permettant rejoindre le but demandé, son utilisation a donc été rapidement abandonnée. Les zones restrictives ont elles aussi étaient annulées, leur conception sans NavMesh nous ayant parue bien trop complexe et chronophage à ce niveau du projet pour un élément non primordial. 
-\paragraph{}A partir de ce moment, nous avons donc simplement modifié la position du composant Transform (composant determinant la position, rotation et l'échelle de chaque objet dans la scène), du GameObject Unit en fonction du vecteur de mouvement voulu afin de déplacer l'unité.
-\paragraph{}Une fois ces premiers mouvements rendus possibles, on a enfin pu créer notre premier comportement qui consistait à dire à l'unité de bouger si elle n'était pas bloquée.
+ Grâce à cela, l'unité était capable de parcourir un chemin jusqu'à arriver à sa destination en évitant les différents obstacles avec lesquelles elle pourrait entrer en collisions, ces dernières étant detectées grâce au composant Collider. M. Ferber nous avait demandé d'étudier la possibilité de créer des zones restrictives, sur lesquelles certaine unité ne seraient pas capables d'aller ou se déplaceraient à une vitesse différente. Cette opération fut simple à mettre en place avec le composant NavMesh, car l'unité peut se déplacer uniquement dans les zones qui lui sont autorisées.
+\paragraph{}
+Mais l'utilisation du NavMesh ne convenait pas au jeu Warbot. En effet, dans le jeu, l'utilisateur est libre du choix du comportement de l'unité mais doit aussi faire avec les alléa du terrain, et doit prendre en compte la possibilité que l'unité soit bloquée. De ce fait, l'utilisation du composant NavMesh n'est pas judicieux. En effet, ce composant permet de calculer le plus court chemin vers une destination. Cependant, si la destination n'est pas atteignable, le composant NavMesh calcule le point le plus proche dans les zones autorisées de l'unité. Or, cette opération était faite de manière automatique, son utilisation a donc été rapidement abandonnée. 
+\paragraph{}
+Les zones restrictives ont elles aussi étaient annulées, leur conception sans NavMesh nous ayant parue bien trop complexe et chronophage à ce niveau du projet pour un élément non primordial. 
+\paragraph{}
+A partir de ce moment, nous avons donc simplement modifié la position du composant Transform (composant determinant la position, rotation et l'échelle de chaque objet dans la scène), du GameObject Unit en fonction du vecteur de mouvement voulu afin de déplacer l'unité.
+\paragraph{}
+Une fois ces premiers mouvements rendus possibles, on a enfin pu créer notre premier comportement qui consistait à dire à l'unité de bouger si elle n'était pas bloquée.
 \begin{lstlisting}[language={[Sharp]C},label={lst:unitScript}, caption=  Extrait du code du script Brain.cs première version.]
     void Update()
     {
@@ -307,9 +309,12 @@ Mais l'utilisation du NavMesh  ne convenait pas au jeu Warbot. En effet, dans le
     }
 
 \end{lstlisting}
-Mais on peut constater que cela nous obligé à écrire l'architecture de subsomption correspondant au comportement en brut, ce qui nuisait à notre besoin de généricité. On s'est donc attardé sur la conception des instructions de l'unité. Celles-ci furent constituées d'une suite de conditions (les percepts) et d'une action terminant le tour de l'unité. La valeur d'un percept était donc calculée à partir d'une fonction booléenne vérifiant les conditions à remplir. Par exemple, le percept de ressource, devant vérifier si une ressource était à proximité. Nous avons commencé par créer la gestion de l'action de la manière suivante : pour créer une action il fallait hériter de la classe Action et surcharger sa méthode do() en créant l'action voulue.
-\paragraph{}Avant de passer a un exemple concret de la gestion d'une instruction, on va expliquer comment fonctionnait le champs de vision d'une unité et le calcul des objets "vus" par celle-ci à ce moment du projet.
-Le GameObject Unit a un composant Collider sphérique, une sphère tout autour de lui. Ce Collider a son booléen IsTriggered actif, ce qui signifie que la sphère n'est pas un objet physique auquel on peut se heurter, mais que l'on peut détecter tout GameObject à l'intérieur de celle-ci. Dans cette sphère, on décide d'un angle fixe qui sera l'angle de champs de vision de l'unité.
+\paragraph{}
+Mais on peut constater que cela nous obligé à écrire l'architecture de subsomption correspondant au comportement en brut, ce qui nuisait à notre besoin de généricité. On s'est donc attardé sur la conception des instructions de l'unité. 
+\paragraph{}
+Celles-ci furent constituées d'une suite de conditions (percepts) et d'une action terminant le tour de l'unité. La valeur d'un percept était donc calculée à partir d'une fonction booléenne vérifiant les conditions à remplir. Par exemple, le percept de ressource, devant vérifier si une ressource était à proximité. Nous avons commencé par créer la gestion de l'action de la manière suivante : pour créer une action, il fallait hériter de la classe Action et surcharger sa méthode do() en créant l'action voulue.
+\paragraph{}Avant de passer à un exemple concret de la gestion d'une instruction, nous allons expliquer comment fonctionnait le champ de vision d'une unité et le calcul des objets "vus" par celle-ci.
+Le GameObject Unit a un composant Collider sphérique, une sphère tout autour de lui. Ce Collider détecte tout GameObject à l'intérieur de celle-ci. Dans cette sphère, on décide d'un angle fixe qui sera l'angle de champs de vision de l'unité.
 \begin{lstlisting}[language={[Sharp]C},label={lst:unitScript}, caption=  Extrait du code du script Sight.cs première version.]
     void OnTriggerStay(Collider other)
     {
@@ -331,13 +336,12 @@ Le GameObject Unit a un composant Collider sphérique, une sphère tout autour d
         }
     }
 \end{lstlisting}
-Voici comment ce mets à jour la liste des objets "vus" par l'unité :
+Pour la mise à jour de la liste des objets vus par l'unité, on procède comme suit :
 \begin{itemize}
-\item On récupére la liste des objets présents dans la shpère.
-\item Pour tous les objets présents dans la sphère.
-\item Si celui-ci a son centre de gravité dans l'angle de champs de vision de l'unité, on l'ajoute à la liste des objets vus.
+\item On récupère la liste des objets présents dans la sphère.
+\item Pour tous les objets présents dans la sphère, si celui-ci a sa position dans l'angle de champ de vision de l'unité, on l'ajoute à la liste des objets vus.
 \end{itemize}
-\paragraph{}Voici un exemple d'exécution d'une instruction "Si l'agent voit une ressource, il la récupère", symbolisée par les classes PerceptRessource et ActionPick :
+
 \begin{lstlisting}[language={[Sharp]C},label={lst:unitScript}, caption=  Classe Instruction du fichier Instruction.cs première version.]
 public class Instruction : MonoBehaviour {
 
@@ -376,11 +380,13 @@ public class Instruction : MonoBehaviour {
     }
 }
 \end{lstlisting}
+
+\paragraph{}Cet exemple montre l'exécution d'une instruction demandant à un agent de récupérer une ressource s'il l'a perçoit, symbolisée par les classes PerceptRessource et ActionPick :
 Pour cette instruction on a donc accès à son percept et son action, la vérification des percepts se fait de la manière suivante :
 \begin{itemize}
-\item On récupére la liste des percepts nécessaires à l'instruction.
-\item On récupére la liste des percepts de l'unité.
-\item On récupére la valeur de chaque percepts demandés.
+\item On récupère la liste des percepts nécessaires à l'instruction.
+\item On récupère la liste des percepts de l'unité.
+\item On récupère la valeur de chaque percepts demandés.
 \item Si toutes leurs valeurs sont vrai on exécute l'action demandée.
 \end{itemize}
 \begin{lstlisting}[language={[Sharp]C},label={lst:unitScript}, caption=  Extrait du code du script PerceptRessource.cs première version.]
@@ -420,13 +426,11 @@ L'action de récupération d'un objet par une unité se déroule comme ceci :
 \item On ajoute cet objet dans le composant inventaire de l'unité.
 \item On détruit le GameObjet "target" en utilisant sa méthode getPicked(), qui applique la fonction Destroy(GameObject obj) de Unity (on détruit la représentation physique de l'objet sur la scène).
 \end{itemize}
-\paragraph{}On viens de voir la récupération d'une ressource par une unité, arrêtons nous un instant sur le concept et la représentation d'une ressource dans le jeu. Sur Unity, un Prefab est une sauvegarde d'un GameObject avec ses composants et ses propriétés afin que celui-ci puisse être utilisé autant de fois qu'on le souhaite sans avoir à le reconfigurer.
-\paragraph{}
-INSERER IMAGE RESSOURCE !!!!!!!!!!!!!!!!!!!!!!!!!!!
-\paragraph{}
-\paragraph{}Du point de vu de sa modélisation, une ressource est représentée par une sphère en contenant une autre plus petite en son centre. Elle détient égalument un système a particules permettant de générer ces dernières tournent autour de du centre de la shère la rendant plus dynamique. 
-\paragraph{} Pour sa représentation informatique, une ressource est un Prefab détenant un script ItemHandler, uniquement composé d'un attribut de type Objet, correspondant à la vision de l'objet ressource sans ses caractéristiques physiques. Cela nous permet de détruire la représentation de celle-ci sur la scène tout en conservant ses propriétés. 
-\paragraph{}Le script Objet représentant a donc plusieurs attributs cela pour rendre générique la création d'un Objet utilisable dans le gameplay :
+\paragraph{}On vient de voir la récupération d'une ressource par une unité, arrêtons-nous un instant sur le concept et la représentation d'une ressource dans le jeu. Sur Unity, un Prefab est une sauvegarde d'un GameObject avec ses composants et ses propriétés afin que celui-ci puisse être utilisé autant de fois qu'on le souhaite sans avoir à le reconfigurer.
+
+\paragraph{}Du point de vue de sa modélisation, une ressource est représentée par une sphère contenant une autre plus petite en son centre. Elle détient également un système à particules permettant de générer ces dernières, tournant autour du centre de la sphère la rendant plus dynamique. 
+\paragraph{} Pour sa représentation informatique, une ressource est un Prefab détenant un script ItemHandler, uniquement composé d'un attribut de type Objet.
+\paragraph{}Le script Objet a donc plusieurs attributs ce qui permet la création d'objet de façon générique utilisable dans le gameplay:
 \begin{itemize}
 \item Son nom : string \_name.
 \item Sa valeur : int \_value.
@@ -435,10 +439,25 @@ INSERER IMAGE RESSOURCE !!!!!!!!!!!!!!!!!!!!!!!!!!!
 \item Sa représentation physique : GameObject \_gameObject.
 \item Son script, contenant une unique fonction use(GameObject unit), qui permet de définir la manière dont celui-ci est utilisé par une unité : ItemScript \_itemScript.
 \end{itemize}
+
 \paragraph{}
-Notre objectif était de simplifier l'ajout de percepts et d'actions à une unité. La définition d'une classe par action et par percept nous semblait donc assez coûteuse nous avons donc étudié l'une des spécificités du C\#. Les type "delegate" propre au C\# dont la déclaration est semblable à  une signature de méthode. Elle a une valeur de retour et un nombre quelconque de paramètres de type quelconque.
-Nous l'avons donc utilisé afin d'encapsuler les méthodes correspondant aux actions et aux percepts et ce afin d'éviter la crétion de multiple classes.
-A la suite de ce changement, la classe Percept s'est dotée d'un attribut dictionnaire[String,Listener], un percept étant définit par son nom et son Listener associé. Le Listener est un delegate représentant la fonction de calcul de valeur du percept. Le même mécanisme est mis en place pour les actions et est toujours d'actualité aujourd'hui.
+Notre objectif était de simplifier l'ajout de percepts et d'actions à une unité. La définition d'une classe par action et par percept nous semblait donc assez coûteuse nous avons donc étudié l'une des spécificités du C\#.
+\paragraph{}
+Les types "delegate" propre au C\# ont une déclaration semblable à une signature de méthode.
+Elle a une valeur de retour et un nombre quelconque de paramètres de type quelconque.
+Nous les avons donc utilisées afin d'encapsuler les méthodes correspondant aux actions et aux percepts et ce afin d'éviter la création de multiple classes.
+
+\begin{lstlisting}[language={[Sharp]C},label={lst:PerceptScript}, caption=  Extrait du code du script Percept.cs]
+public abstract class Percept : MonoBehaviour
+{
+    public delegate bool Listener();
+    public Dictionary<string, Listener> _percepts = new Dictionary<string, Listener>();
+    [...]
+}
+\end{lstlisting}
+
+A la suite de ce changement, la classe Percept s'est dotée d'un dictionnaire composée d'une string comme clef et d'un Listener comme valeur. Le Listener est un delegate représentant la fonction de calcul de valeur du percept. Le même mécanisme est mis en place pour les actions et est toujours d'actualité aujourd'hui.
+
 \begin{lstlisting}[language={[Sharp]C},label={lst:unitScript}, caption=  Extrait du code du script PerceptUnit.cs]
  _percepts["PERCEPT_FOOD"] = delegate ()
         {
@@ -470,7 +489,8 @@ _actions["ACTION_PICK"] = delegate () {
         };
 \end{lstlisting}
 
-\paragraph{}Ci-dessous, voici la première représentation du cerveau de l'unité. Le "Brain" a pour but de gérer le comportement de l'unité, c'est à dire de vérifier les instructions de celle-ci et de lui donner l'ordre de faire l'action possible ce tour-ci s'il en existe une possible. On peut donc voir le mécanisme présenté plus haut, la confirmation de la présence d'une action dans l'instruction ainsi que la vérification des percepts nécessaires à son exécution.
+\paragraph{}Ci-dessous, voici la première représentation du cerveau de l'unité. Le "Brain" a pour but de gérer le comportement de l'unité, c'est-à-dire de vérifier les instructions de celle-ci et de lui donner l'ordre de faire l'action correspondante ce tour. On peut donc voir le mécanisme présenté plus haut, la confirmation de la présence d'une action dans l'instruction ainsi que la vérification des percepts nécessaires à son exécution.
+
 \begin{lstlisting}[language={[Sharp]C},label={lst:firstBrainScript}, caption=  Première version de la classe Brain.cs]
 public class Brain : MonoBehaviour
 {
@@ -506,7 +526,7 @@ public class Brain : MonoBehaviour
 }
 \end{lstlisting}
 
-\paragraph{}Afin de mener à bien le développement du comportement des unités, on a aussi dû créer une carte plus légère et plus petite que celle de l'ancienne génération nous permettant d'effectuer nos tests.
+\paragraph{}Afin de mener à bien le développement du comportement des unités, on a aussi dû créer une carte plus légère et plus petite que celle de l'ancienne génération nous permettant de faciliter nos tests.
 
 \begin{figure}[!h]
 \centering
@@ -514,12 +534,13 @@ public class Brain : MonoBehaviour
 \caption{Aperçu de la premier carte de test.}
 \end{figure}
 
-\paragraph{}Sur cette scène a été intruduit le déplacement de la camera principale (MainCamera) calculé en fonction de la position moyenne des unités. Cela permet de donner un effet dynamique à la scène.
-
-Cette phase de démarrage a duré environ un mois, durant lequel nous avons pu rendre compte chaque semaine à notre encadrant/client. Durant celle-ci on a donc aggrémenté notre moteur de jeu au gré de M. Ferber, en nous basant sur notre expérience d'utilisation de Unity pour valider les différents ajouts demandés.
+\paragraph{}
+Sur cette scène a été introduit le déplacement de la camera principale (MainCamera) calculé en fonction de la position moyenne des unités. Cela permet de donner un effet dynamique à la scène.
+\paragraph{}
+Cette phase de démarrage a duré environ un mois, durant lequel nous avons pu rendre compte chaque semaine à notre encadrant. Durant celle-ci, on a donc agrémenté notre moteur de jeu en suivant les directives de M. Ferber, en nous basant sur notre expérience d'utilisation de Unity pour valider les différents ajouts demandés.
 
 \subsection{Intégration dans le projet.}
-Lorsque le moteur nous paraissait complet, nous l'avons intégré au projet. Cette phase à était source de problème du fait que l'ancien projet etait encore present et que de nombreux conflit persister.
+Lorsque le moteur nous paraissait complet, nous l'avons intégré au projet. Cette phase a était source de problème du fait que l'ancien projet était encore présent et que de nombreux conflit persistait.
 
 \subsubsection{La phase d'intégration.} 
 \paragraph{Le lien avec l’interpréteur} Le plus grand défi de l’intégration était de rendre possible la liaison avec l’interpréteur en place, créer par l'équipe Interpréteur du projet. Nous avons donc travailler en étroite collaboration avec cette équipe afin qu'il nous explique le fonctionnement de l’interpréteur pour que nous puissions faire les modifications nécessaires.
@@ -543,7 +564,7 @@ public class Instruction {
 }
 \end{lstlisting}
 
-\paragraph{}Cette classe est composé de l'attribut \textit{\_listeStringPerceptsVoulus} correspondant à la liste des labels des perceptions de l'instruction, de l'attribut \textit{\_stringActionsNonTerminales} comportant la liste des labels des actions non terminales et d'une string \textit{\_stringAction} qui est le label de l'action à faire. Les actions non terminales ne sont, à ce stade, pas encore implémenté, nous décidons tout de même de les laisser pour les implémenter ultérieurement.
+\paragraph{}Cette classe est composé de l'attribut \textit{\_listeStringPerceptsVoulus} correspondant à la liste des labels des percepts de l'instruction, de l'attribut \textit{\_stringActionsNonTerminales} comportant la liste des labels des actions non terminales et d'une string \textit{\_stringAction} qui est le label de l'action à faire. Les actions non terminales ne sont, à ce stade, pas encore implémentées, nous décidons tout de même de les laisser pour les implémenter ultérieurement.
 \paragraph{}Lors de la lecture d'un comportement créer par l'éditeur de comportement intégré dans le jeu, l’interpréteur nous renvoies une instance de cette classe Instruction.
 
 \begin{lstlisting}[label={lst:InstructionExample}, caption=  Exemple d'une instruction d'un comportement que peut renvoyer l’interpréteur.]
@@ -558,8 +579,7 @@ Instruction (
 
 
 
-\subsubsection{Résolution des problèmes.} Maxime
-
+\subsubsection{Résolution des problèmes.} 
 
 
 \subsection{Améliorations des fonctionnalités.}
@@ -711,13 +731,13 @@ Cette méthode permet de ne pas créer une unité directement, mais de juste pre
 \subparagraph{} Cependant, le temps de chargement est sensiblement le même en utilisant ce principe. Le problème vient donc de la conception même des objets des unités. \newline
 Pour trouver d’où viens précisément le problème, on a donc décidé de créer 200 unités et de désactiver certain composant. En utilisant ce procédé, on a pu découvrir et comprendre l'origine du problème.
 
-\subparagraph{3. Simplification des collisions.} La gestion des collisions entre unités et leur environnement ce faisait avec un \textit{MeshCollider}. Le \textit{MeshCollider} est un composant de type \textit{Collider} qui permet la gestion des collisions notamment en envoyant des messages aux différents acteurs de la collision. Le \textit{MeshCollider} à la particularité d'épouser plus ou moins la forme du maillage de l'objet que l'on met en arguments.
+\subparagraph{3. Simplification des collisions.} La gestion des collisions entre unités et l'environnement se faisait avec un \textit{MeshCollider}. Le \textit{MeshCollider} est un composant de type \textit{Collider} qui permet la gestion des collisions notamment en envoyant des messages aux différents acteurs de la collision. Le \textit{MeshCollider} à la particularité d'épouser plus ou moins la forme du maillage de l'objet que l'on met en argument.
 \begin{figure}[!h]
 \centering
 \includegraphics{MeshColliderImage}
 \caption{Un composant \textit{MeshCollider}}
 \end{figure}
-\subparagraph{}Néanmoins, le \textit{MeshCollider} est un composant gourmand en ressource pour calculer les potentiels collisions avec son environnement et, surtout, les maillages que nous utilisons comportent un nombre relativement conséquent de points et de faces. Nous avons résolu ce problème en supprimant les composants \textit{MeshCollider} des unités en les remplaçant par des  \textit{BoxColliders}. Les \textit{BoxColliders} sont des composants de type \textit{Collider}, qui permet la gestion des collision. Ce composant est définit par un pavé ce qui réduit considérablement les calculs pour connaître les éventuelles collisions avec celui-ci.
+\subparagraph{}Néanmoins, le \textit{MeshCollider} est un composant gourmand en ressource pour calculer les potentiels collisions avec son environnement et, surtout, les maillages que nous utilisons comportent un nombre relativement conséquent de points et de faces. Nous avons résolu ce problème en supprimant les composants \textit{MeshCollider} des unités en les remplaçant par des  \textit{BoxColliders}. Les \textit{BoxColliders} sont des composants de type \textit{Collider}, qui permet la gestion des collisions. Ce composant est définit par un pavé ce qui réduit considérablement les calculs pour connaître les éventuelles collisions avec celui-ci.
 
 \begin{figure}[!h]
 \centering
@@ -725,15 +745,15 @@ Pour trouver d’où viens précisément le problème, on a donc décidé de cr�
 \caption{Un composant \textit{BoxCollider}}
 \end{figure}
 
-\subparagraph{}Effectivement, le temps de chargement est considérablement réduis passant de plus de 4 minutes pour 500 unités à une poignée de secondes.
+\subparagraph{}Effectivement, le temps de chargement est considérablement réduit, passant de plus de 4 minutes pour 500 unités à une poignée de secondes.
 
 
 
 \subsubsection{Amélioration des collisions.}
-\paragraph{} Après avoir découvert et réglé le problème de chargement des parties. Nous avons remarqué de nombreux bugs par rapport aux collisions des unités. En effet, certaines unités ne reconnaissait pas l'environnement et traversait le décor. Pour résoudre ce problème, nous avons donc définit certaines règles de collisions.
+\paragraph{} Après avoir découvert et réglé le problème de chargement des parties. Nous avons remarqué de nombreux bugs par rapport aux collisions des unités. En effet, certaines unités ne reconnaissaient pas l'environnement et traversaient le décor. Pour résoudre ce problème, nous avons donc définit certaines règles de collisions.
 \begin{enumerate}
 \item Une unité rentre en collision si un objet est devant lui. 
-\item Une unité rentre en collision si l'angle du point de collision par rapport a son axe frontal est inférieur à 90°.
+\item Une unité rentre en collision si l'angle du point de collision par rapport a un autre objet est inférieur à 90°.
 \end{enumerate}
 
  \begin{lstlisting}[language={[Sharp]C},label={lst:MovableCharacterCollisionScript}, caption= Extrait du code de MovableCharacter.cs]
@@ -849,14 +869,6 @@ Nous avons réaliser un ensemble de cinq maps chacune ayant son thème et ses pa
 [Photo]
 [Descriptif]
 \end{itemize}
-
-\section{Fonctionnalités}
-
-
-
-\section{Amélioration possible}
-
-Malgré tous nos efforts, il persiste toujours un soucis d'optimisation ......
 
 \newpage
 %%%
