@@ -20,7 +20,6 @@ public class Instruction {
         _stringAction = act;
         _listeStringPerceptsVoulus = ins;
         _stringActionsNonTerminales = actionsNonTerminales;
-        // _listeStringPerceptsOu = ou; ;
 
     }
 
@@ -29,8 +28,6 @@ public class Instruction {
         _stringAction = "";
         _listeStringPerceptsVoulus = ins;
         _stringActionsNonTerminales = actionsNonTerminales;
-        // _listeStringPerceptsOu = ou; ;
-
     }
 
     public Instruction(string[] ins, string act)
@@ -38,8 +35,6 @@ public class Instruction {
         _stringAction = act;
         _listeStringPerceptsVoulus = ins;
         _stringActionsNonTerminales = new MessageStruct[0];
-        // _listeStringPerceptsOu = ou; ;
-
     }
 
     public Instruction(string act)
@@ -47,8 +42,6 @@ public class Instruction {
         _stringAction = act;
         _listeStringPerceptsVoulus = new string[0];
         _stringActionsNonTerminales = new MessageStruct[0];
-        // _listeStringPerceptsOu = ou; ;
-
     }
 
     public XmlNode xmlStructure()
@@ -62,18 +55,7 @@ public class Instruction {
             XmlElement t = l_doc.CreateElement(c);
             paramNode.AppendChild(t);
         }
-        /*
-        if (_listeStringPerceptsOu.Length > 0)
-        {
-            XmlNode ouNode = l_doc.CreateElement("or");
-            foreach (string c2 in _listeStringPerceptsOu)
-            {
-                XmlElement t2 = l_doc.CreateElement(c2);
-                ouNode.AppendChild(t2);
-            }
-
-            paramNode.AppendChild(ouNode);
-        }*/
+       
         l_whenNode.AppendChild(paramNode);
 
         if (_stringActionsNonTerminales.Length > 0)
@@ -108,36 +90,6 @@ public class Instruction {
     {
         return _listeStringPerceptsVoulus.ToString() + _stringAction;
     }
-
-    /*
-    public bool verify()
-    {
-        Percept[] listePerceptsUtilisables = GetComponent<UnitManager>().GetComponent<PerceptManager>()._percepts;
-        bool verifie = true;
-        foreach(string s in _listeStringPerceptsVoulus)
-        {
-            foreach(Percept p2 in listePerceptsUtilisables)
-            {
-                if(s.Equals(p2._perceptName))
-                {
-                    verifie = p2._value;
-                }
-            }
-
-            if (!verifie)
-            {
-                break;
-            }
-        }
-        if (verifie)
-        {
-            return true;
-        }
-
-
-        return false;
-    }
-    */
 
     public string[] getListeStringPerceptsVoulus()
     {

@@ -1,7 +1,7 @@
 \documentclass{report}
 % Comment the following line to NOT allow the usage of umlauts
 \usepackage[utf8]{inputenc}
-\usepackage[left=3cm,right=3cm,top=3.5cm,bottom=3.5cm]{geometry}
+\usepackage[left=3.5cm,right=3.5cm,top=4cm,bottom=4cm]{geometry}
 \usepackage[francais]{babel}
 \usepackage{listings}
 \usepackage{xcolor}
@@ -223,7 +223,7 @@ namespace WarBotEngine.Editeur
 \paragraph{} La suite de l'examen du code de l'ancien projet et avec l'accord de notre encadrant en exposant les problèmes qu'engendre la reprise de l'ancien moteur, nous avons décider de recréer un nouveau moteur de jeu pour repartir sur des bases plus générique.
 
 
-La réalisation du projet a été effectuée en suivant une méthode agile. Mr Ferber avait pour cela le rôle à la fois de chef de projet et de client, le projet s'est donc découpé en plusieurs phases de rush entrecoupés par des réunions régulière avec lui. Il nous est donc paru pluq judicieux de vous expliquer le déroulement de notre travail de manière chronologique. On reviendra plus en détail sur cette méthode et son application à notre situation dans la partie gestion de projet. 
+La réalisation du projet a été effectuée en suivant une méthode agile. M. Ferber avait pour cela le rôle à la fois de chef de projet et de client, le projet s'est donc découpé en plusieurs phases de rush entrecoupés par des réunions régulière avec lui. Il nous est donc paru plus judicieux de vous expliquer le déroulement de notre travail de manière chronologique. On reviendra plus en détail sur cette méthode et son application à notre situation dans la partie gestion de projet. 
 
 
 \subsection{Retour aux bases.}
@@ -405,17 +405,81 @@ INSERER IMAGE DE LA PREMIERE MAP !!!!!
 Cette phase a duré .....
 
 \subsection{Intégration dans le projet.}
-Une fois qu'on a estimé que le moteur etait assez générique
+Lorsque le moteur nous paraissait complet, nous l'avons intégré au projet. Cette phase à était source de problème du fait que l'ancien projet etait encore present et que de nombreux conflit persister.
 
-\subsubsection{La phase d'intégration.} Maxime
+\subsubsection{La phase d'intégration.} 
+\paragraph{Le lien avec l’interpréteur} Le plus grand défi de l’intégration était de rendre possible la liaison avec l’interpréteur en place, créer par l'équipe Interpréteur du projet. Nous avons donc travailler en étroite collaboration avec cette équipe afin qu'il nous explique le fonctionnement de l’interpréteur pour que nous puissions faire les modifications nécessaires.
+\paragraph{}Suite à nos échanges, il a été convenue de créer une classe Instruction qui servira de pont entre l’interpréteur et le moteur.
 
-\subsubsection{Problèmes liés à l'intégration.} Maxime
+\begin{lstlisting}[language={[Sharp]C},label={lst:InstructionScript}, caption=  Extrait du code du script Instruction.cs]
+public class Instruction {
+    public string[] _listeStringPerceptsVoulus;
+    public MessageStruct[] _stringActionsNonTerminales;
+    public string _stringAction;
+    
+[...]
+   public Instruction(string[] ins, MessageStruct[] actionsNonTerminales, string act)
+    {
+        _stringAction = act;
+        _listeStringPerceptsVoulus = ins;
+        _stringActionsNonTerminales = actionsNonTerminales;
+
+    }
+[...]
+}
+\end{lstlisting}
+
+\paragraph{}Cette classe est composé de l'attribut \textit{\_listeStringPerceptsVoulus} correspondant à la liste des labels des perceptions de l'instruction, de l'attribut \textit{\_stringActionsNonTerminales} comportant la liste des labels des actions non terminales et d'une string \textit{\_stringAction} qui est le label de l'action à faire. Les actions non terminales ne sont, à ce stade, pas encore implémenté, nous décidons tout de même de les laisser pour les implémenter ultérieurement.
+\paragraph{}Lors de la lecture d'un comportement créer par l'éditeur de comportement intégré dans le jeu, l’interpréteur nous renvoies une instance de cette classe Instruction.
+
+\begin{lstlisting}[label={lst:InstructionExample}, caption=  Exemple d'une instruction d'un comportement que peut renvoyer l’interpréteur.]
+Instruction (
+	Percepts = [PERCEPT_ENEMY, PERCEPT_LIFE_MAX],
+	ActionNT = [],
+	Action = ACTION_FIRE )
+\end{lstlisting}
+
+\paragraph{}L'exemple montrer au listing \ref{lst:InstructionExample} correspond au comportement d'une unité et lui demandera de tirer si l'unité peut percevoir un ennemie, et que sa vie est au maximum. Les actions non-terminales n'étant pas pris en charge à ce moment du développement, la liste est donc vide. Un comportement n'est donc rien d'autres qu'une liste d'instruction.
+\paragraph{}Pour garder l'idée d'une structure de subsomption, la liste des instructions est ordonnée de tel sorte que la premiere instruction dans cette liste est la première à être examiner et exécute si ces perceptions sont activé.
+
+
 
 \subsubsection{Résolution des problèmes.} Maxime
 
 
 
 \subsection{Améliorations des fonctionnalités.}
+
+\subsubsection{Ajout de fonctionnalités des instructions.}
+
+\begin{lstlisting}[label={lst:BehaviorExample}, caption=  Exemple d'un comportement que peut renvoyer l’interpréteur.]
+Behavior [Light] = {
+1. Instruction (  Percepts = [PERCEPT_ENEMY, PERCEPT_LIFE_MAX],
+		ActionNT = [],
+		Action = ACTION_FIRE ),
+2. Instruction (  Percepts = [PERCEPT_ENEMY, NOT_PERCEPT_LIFE_MAX],
+		ActionNT = [MESSAGE_HELP(@ HEAVY)],
+		Action = none),
+3. Instruction (  Percepts = [ NOT_PERCEPT_LIFE_MAX],
+		ActionNT = [],
+		Action = ACTION_HEAL ),
+4. Instruction (  Percepts = [],
+		ActionNT = [],
+		Action = ACTION_MOVE ) }
+\end{lstlisting}
+Le comportement défini en listing \ref{lst:BehaviorExample}
+\subparagraph{1. Négation.}
+Instructions avec NOT\_.
+\subparagraph{2. Mouvement tactique.}
+Instructions sans actions.
+\subparagraph{3. Instruction par défaut.}
+Instructions sans percepts et sans actions non terminales.
+\subparagraph{4. Cas exceptionnel.}
+Instructions sans percepts et sans actions non terminales.
+
+
+
+
 \subsubsection{Optimisation du temps de chargement}
 \paragraph{} L'un des gros problèmes que l'on a rencontré est le fait que le temps de chargement lors d'une partie était beaucoup trop élevé et cela nuisait au bon déroulement de la partie, atteignant parfois deux minutes de temps de chargement lorsque l'on voulait générer 200 unités. Pour cela nous avons étudié plusieurs pistes pour résoudre ce problème.
 \subparagraph{1. La gestion des actions des unités.}La première piste de recherche que l'on a étudié est d'essayer d'optimiser la gestion des actions des unités. Lorsque l'on a conçu les unités, elles faisaient leurs actions dans une fonction utilisée par Unity ("Update") qui est appelée à chaque calcul d'image. Ainsi, pour chaque unité présente sur la scène, Unity calcule l'action que celle-ci doit faire. Cependant, certaine action nécessite plus de temps en fonction de sa complexité, ce qui pouvait engendrer que des unités avaient des tours de retard par rapport à d'autres unités. \newline
