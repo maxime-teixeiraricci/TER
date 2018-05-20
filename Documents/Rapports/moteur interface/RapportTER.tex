@@ -329,7 +329,7 @@ Voici comment ce mets à jour la liste des objets "vus" par l'unité :
 \item Pour tous les objets présents dans la sphère.
 \item Si celui-ci a son centre de gravité dans l'angle de champs de vision de l'unité, on l'ajoute à la liste des objets vus.
 \end{itemize}
-\paragraph{}Voici un exemple concret d'exécution d'une instruction "Si l'agent voit une ressource, il la récupère", symbolisée par les classes PerceptRessource et ActionPick :
+\paragraph{}Voici un exemple d'exécution d'une instruction "Si l'agent voit une ressource, il la récupère", symbolisée par les classes PerceptRessource et ActionPick :
 \begin{lstlisting}[language={[Sharp]C},label={lst:unitScript}, caption=  Classe Instruction du fichier Instruction.cs première version.]
 public class Instruction : MonoBehaviour {
 
@@ -412,6 +412,21 @@ L'action de récupération d'un objet par une unité se déroule comme ceci :
 \item On ajoute cet objet dans le composant inventaire de l'unité.
 \item On détruit le GameObjet "target" en utilisant sa méthode getPicked(), qui applique la fonction Destroy(GameObject obj) de Unity (on détruit la représentation physique de l'objet sur la scène).
 \end{itemize}
+\paragraph{}On viens de voir la récupération d'une ressource par une unité, arrêtons nous un instant sur le concept et la représentation d'une ressource dans le jeu. Sur Unity, un Prefab est une sauvegarde d'un GameObject avec ses composants et ses propriétés afin que celui-ci puisse être utilisé autant de fois qu'on le souhaite sans avoir à le reconfigurer.
+\paragraph{}
+INSERER IMAGE RESSOURCE !!!!!!!!!!!!!!!!!!!!!!!!!!!
+\paragraph{}
+\paragraph{}Du point de vu de sa modélisation, une ressource est représentée par une sphère en contenant une autre plus petite en son centre. Elle détient égalument un système a particules permettant de générer ces dernières tournent autour de du centre de la shère la rendant plus dynamique. 
+\paragraph{} Pour sa représentation informatique, une ressource est un Prefab détenant un script ItemHandler, uniquement composé d'un attribut de type Objet, correspondant à la vision de l'objet ressource sans ses caractéristiques physiques. Cela nous permet de détruire la représentation de celle-ci sur la scène tout en conservant ses propriétés. 
+\paragraph{}Le script Objet représentant a donc plusieurs attributs cela pour rendre générique la création d'un Objet utilisable dans le gameplay :
+\begin{itemize}
+\item Son nom : string \_name.
+\item Sa valeur : int \_value.
+\item Sa taille : int \_size.
+\item Son coût : int \_cost.
+\item Sa représentation physique : GameObject \_gameObject.
+\item Son script, contenant une unique fonction use(GameObject unit), qui permet de définir la manière dont celui-ci est utilisé par une unité : ItemScript \_itemScript.
+\end{itemize}
 \paragraph{}
 Notre objectif était de simplifier l'ajout de percepts et d'actions à une unité. La définition d'une classe par action et par percept nous semblait donc assez coûteuse nous avons donc étudié l'une des spécificités du C\#. Les type "delegate" propre au C\# dont la déclaration est semblable à  une signature de méthode. Elle a une valeur de retour et un nombre quelconque de paramètres de type quelconque.
 Nous l'avons donc utilisé afin d'encapsuler les méthodes correspondant aux actions et aux percepts et ce afin d'éviter la crétion de multiple classes.
@@ -447,6 +462,42 @@ _actions["ACTION_PICK"] = delegate () {
         };
 \end{lstlisting}
 
+\paragraph{}Ci-dessous, voici la première représentation du cerveau de l'unité. Le "Brain" a pour but de gérer le comportement de l'unité, c'est à dire de vérifier les instructions de celle-ci et de lui donner l'ordre de faire l'action possible ce tour-ci s'il en existe une possible. On peut donc voir le mécanisme présenté plus haut, la confirmation de la présence d'une action dans l'instruction ainsi que la vérification des percepts nécessaires à son exécution.
+\begin{lstlisting}[language={[Sharp]C},label={lst:firstBrainScript}, caption=  Première version de la classe Brain.cs]
+public class Brain : MonoBehaviour
+{
+    public ActionStructure[] _actions;
+    public InstructionScriptable[] _instructions;
+
+    void Update()
+    {
+        foreach(InstructionScriptable instr in _instructions)
+        {
+            Action actionPossible = this.actionPossible(instr._stringAction);
+            if (actionPossible != null && instr.verify(GetComponent<UnitManager>().GetComponent<PerceptManager>()._percepts))
+            {
+                actionPossible.Do();
+                break;
+            }
+        }
+    }
+
+    public Action actionPossible(string stringAct)
+    {
+        Action presence = null;
+        foreach (ActionStructure actStruc in _actions)
+        {
+            if (actStruc._name.Equals(stringAct))
+            {
+                presence = actStruc._action;
+            }
+        }
+        return presence;
+    }
+
+}
+\end{lstlisting}
+
 \paragraph{}Afin de mener à bien le développement du comportement des unités, on a aussi dû créer une carte plus légère et plus petite que celle de l'ancienne génération nous permettant d'effectuer nos tests.
 
 \begin{figure}[!h]
@@ -455,9 +506,9 @@ _actions["ACTION_PICK"] = delegate () {
 \caption{Aperçu de la premier carte de test.}
 \end{figure}
 
-\paragraph{}
+\paragraph{}Sur cette scène a été intruduit le déplacement de la camera principale (MainCamera) calculé en fonction de la position moyenne des unités. Cela permet de donner un effet dynamique à la scène.
 
-Cette phase a duré .....
+Cette phase de démarrage a duré environ un mois, durant lequel nous avons pu rendre compte chaque semaine à notre encadrant/client. Durant celle-ci on a donc aggrémenté notre moteur de jeu au gré de M. Ferber, en nous basant sur notre expérience d'utilisation de Unity pour valider les différents ajouts demandés.
 
 \subsection{Intégration dans le projet.}
 Lorsque le moteur nous paraissait complet, nous l'avons intégré au projet. Cette phase à était source de problème du fait que l'ancien projet etait encore present et que de nombreux conflit persister.
@@ -805,38 +856,184 @@ Malgré tous nos efforts, il persiste toujours un soucis d'optimisation ......
 %%%
 \chapter{Partie Interface Graphique}
 \section{Présentation}
-La partie Interface Graphique comprend principalement l'habillage visuel des éléments avec lequel l'utilisateur va interagir pour jouer au jeu. MetaBot étant un jeu pour "programmeur", le joueur interagit surtout avec le menu principal et l'éditeur de comportement afin de créer des équipes pour pouvoir les faire s'affronter.
-\paragraph{}
-L'interface graphique que nous avons créé se décompose en quatre parties: le menu principal, le menu de paramètres, l'éditeur de comportement et des fonctionnalités directement en jeu.
+La partie Interface Graphique fait le lien entre l'utilisateur, et toutes les fonctionnalités existantes dans le moteur. Elle comprend principalement l'habillage visuel des éléments avec lequel l'utilisateur va interagir pour jouer au jeu. MetaBot étant un jeu pour "programmeur", le joueur interagit surtout avec le menu principal et l'éditeur de comportement afin de créer des équipes pour pouvoir les faire s'affronter. \newline
+
+
 \section{Etude de l'ancienne interface}
-L'ancienne interface nous a semblé plutôt sommaire, et les actions y étaient limitées; pour l'éditeur on pouvait seulement choisir une équipe, une unité et les Contrôles/Conditions/Actions basiques (Il y avait aussi plusieurs bugs présents mais on ne parle ici que de l'interface).
+L'ancienne interface, sur laquelle nous avons du baser notre travail, se décomposait en trois parties.
+\begin{itemize}
+\item\textbf{Le menu principal}
+\item\textbf{L'éditeur de comportement}
+\item\textbf{La séléction d'équipes}
+\end{itemize}
+\subsection{Menu Principal}
+Le menu principal, à première vue, est assez classique. Quatre options s'offrent à nous :
+\begin{itemize}
+\item{Lancer une nouvelle partie}
+\item{Accéder à l'éditeur de comportement}
+\item{Quitter le jeu}
+\item{Activer / Désactiver le son}
+\end{itemize}
+L'aspect purement graphique est cohérent, puisque le fond d'écran représente une scène de jeu.
+
+\begin{figure}[!h]
+	\centering
+		\includegraphics[scale=0.50]{MainScreenOld}
+	\caption{Menu Principal, Ancienne Interface}
+\end{figure}
+
+\subsection{Editeur de comportement}
+L'éditeur de comportement se décompose en deux écrans distincts  : 
+\begin{enumerate}
+\item\textbf{Le menu Pause}
 \paragraph{}
-Le menu principal contenait un bouton de nouvelle partie, un bouton vers l'éditeur, un bouton pour quitter la partie et une case à cocher pour arrêter le son.
+Ce menu apparaît par défaut lors d'une tentative d'accès à l'éditeur de comportement si aucune équipe n'existe. Il permet donc de créer une nouvelle équipe, en entrant son nom.\newline
+De plus, il permet de revenir au menu principal, de lancer une nouvelle partie, de quitter le jeu, ou bien tout simplement de fermer ce menu pour accéder à l'éditeur de comportement.\newline
+
+\begin{figure}[!h]
+	\centering
+		\includegraphics[scale=0.30]{PauseMenuOld}
+	\caption{Menu Principal, Ancienne Interface}
+\end{figure}
+
+\item\textbf{L'éditeur en lui même}\newline
+Nous avons maintenant devant nous un éditeur sobre. En haut à gauche se trouvent le nom de l'équipe courante, ainsi que l'untié sur laquelle on va travailler.\newline
+Juste en dessous, une liste de primitives, utiles à la création de comportement.\newline
+Et enfin, à droite, la zone d'édition.
+
+\begin{figure}[!h]
+	\centering
+		\includegraphics[scale=0.35]{BehaviorScreenOld}
+	\caption{Editeur de Comportement, Ancienne Interface}
+\end{figure}
+
+\end{enumerate}
+
+
+\subsection{La séléction des équipes}
+Une fois le bouton "Nouvelle partie" cliqué, nous arrivons sur un nouvel écran, permettant de choisir les équipes qui vont participer, ainsi que le nombre de chacune de leurs unités qui commenceront directement en jeu.\newline
+Cet écran permet également de revenir au menu principal, ou bien tout simplement de lancer la partie. Cette étape supplémentaire demandé à l'utilisateur ne nous paraissait pas spécialement utile. L'écran ne propose rien d'autre que la gestion des paramètres de partie. L'espace utilisé est moindre pour justifier l'affichage d'un nouvel écran.
+
+\begin{figure}[!h]
+	\centering
+		\includegraphics[scale=0.40]{SettingsOld}
+	\caption{Sélection des équipes, Ancienne Interface}
+\end{figure}
+
+\subsection{Améliorations envisagées}
 \paragraph{}
-Notre première décision a été de revoir totalement l'interface, ce que nous pouvions faire grâce aux nouveaux éléments apportés. En effet il fallait rajouter de nouvelles fonctionnalités basiques à cette interface qui en proposait un nombre limité, et rendre l'aspect visuel moins austère.
+Les fonctionnalités primordiales au bon fonctionnement du jeu sont disponibles :
+\begin{itemize}
+\item La sélection de l’équipe et de toutes les unités 
+\item La liste des primitives concernant l’unité sélectionnée 
+\item La description et le placement des primitives 
+\item La création et l’édition de l’architecture de subsomption via l’aire de jeu
+\end{itemize}
+
+Ceci dit, nous souhaitions revoir quelques points. \newline
+Premièrement, nous voulions que tout soit le plus intuitif possible pour l'utilisateur. Il fallait que toutes les fonctionnalités proposées soient accessibles facilement. Par exemple, la création d'équipe n'est pas évidente à trouver. Il faut passer par un menu "caché" (appuyer sur la touche "ESC" depuis l'éditeur de comportement) pour pouvoir y accéder. Nous voulions éviter ce genre de problèmes. Des petits soucis d'optimisations étaient également présents, tel que la difficulté d'aimanter deux blocs facilement. Si on ne posait pas le bloc à un endroit précis, elle disparaissait. Il fallait alors la sélectionner à nouveau dans la liste de primitives, et retenter l'opération. A force, cela peut vite devenir redondant.
+\newline
+\smallbreak
+Bien que l'éditeur soit fonctionnel, il nous paraissait assez austère, pas suffisamment "User Friendly". L'utilisateur passe la majeur partie de son temps sur cet écran. Il fallait donc qu'il soit le plus agréable à l’œil possible, pour ne pas lasser l'utilisateur, et lui donner envie de passer du temps dessus.\newline \smallbreak
+Enfin, l'absence totale de paramètres nous a semblé dommage. On ne peut qu'activer ou désactiver le son, mais pas régler le volume. L'utilisateur ne sait pas comment gérer les équipes qui vont participer, ainsi que leur nombre d'unités, avant d'avoir cliqué sur Nouvelle Partie. Ce comportement ne parait pas intuitif. L'ajout d'une gestion des paramètres nous semblait donc indispensable.
+
+Nous avons donc décidés de revoir l'organisation de l'interface depuis le début. Adapter cette interface n'aurait pas été justifié, car trop de changements étaient à prévoir, tant sur le point technique que graphique.\newline
+Nous souhaitions proposer une cohésion graphique entre chaque écran, et le jeu lui-même.
 
 
 \section{Nouvelle Interface}
-
-
-
+Nous devions repartir d'une toute nouvelle interface, tout en s'insiprant de l'ancienne. Comme dit précédemment, nous voulions éviter au maximum les écrans intermédiaires qui n'étaient pas indispensables.
+Nous avons donc décidé de mettre en place deux écrans : le menu principal,  et l'éditeur de comportement. Dans le menu principal se trouve une fenêtre "pop-up" dédiée à la configuration des paramètres. D'autres fenêtres "pop-up" peuvent apparaître, mais elles n'ont pour but que d'effectuer une vérification de l'action émise par l'utilisateur. Par exemple, confirmer la suppression d'une équipe, confirmer la fermeture du jeu, etc...
 
 \subsection{Menu Principal}
-Le menu principal donne accès aux options majeures du jeu.
+Le menu principal donne accès aux options majeures du jeu. Ce menu doit contenir toutes les fonctionnalités dont l'utilisateur peut avoir besoin pour gérer le lancement d'une partie, sans avoir à accéder à l'éditeur de comportement.
+Cela comporte donc les paramètres de la partie, le choix des équipes, du nombre d'unités, de la carte, etc... \newline
+Passons en revue tous les éléments présents sur cet écran.
 \subsubsection{Lancer une Partie}
-Ce bouton permet de lancer une partie du jeu MetaBot. Le lancement de la partie prend en compte le mode de jeu sélectionné, les équipes choisies, le nombre de chaque unités en début de partie, le nombre de ressources maximum (nombre de ressource présentes en jeu au même moment), la carte de jeu.
+Ce bouton permet de lancer une partie du jeu MetaBot. Le lancement de la partie prend en compte le mode de jeu sélectionné, les équipes choisies, le nombre de chaque unités en début de partie, le nombre de ressources maximum (nombre de ressource présentes en jeu au même moment), la carte de jeu. Un script rattaché à ce bouton va donc se charger d'aller récupérer toutes ces informations stockées dans les différents "GameObject" de notre scène.
+
+\begin{lstlisting}[language={[Sharp]C},label={lst:StartGame()}, caption= Extrait du code de PlayButton.cs]
+
+public void StartGame()
+    {
+        
+        nbPlayers = int.Parse(_numberplayerDropDown.GetComponent<Dropdown>().captionText.text);
+        XMLWarbotInterpreter interpreter = new XMLWarbotInterpreter();
+
+        GameObject gameManager = GameObject.Find("GameManager");
+        string gamePath = Application.streamingAssetsPath + "/teams/" + gameManager.GetComponent<GameManager>()._gameName + "/";
+        
+        gameManager.GetComponent<TeamManager>()._teams = new List<Team>();
+
+        for (int i = 0; i < nbPlayers; i++)
+        {
+            Team team = new Team();
+            team._color = _DropDownList[i]._teamColor;
+            team._name = _DropDownList[i]._teamName;//.Replace("_", " ");
+            team._unitsBehaviour = interpreter.xmlToBehavior(gamePath + team._name, gamePath);
+            gameManager.GetComponent<TeamManager>()._teams.Add(team);
+        }
+
+        GameManager setting = gameManager.GetComponent<GameManager>();
+        setting.SetSetting();
+
+        //
+        StartCoroutine(AsynchronousLoad(setting._gameSettings._indexSceneMap));
+    }
+}
+\end{lstlisting}
+
+
 \subsubsection{Bouton Éditeur de Comportement}
-Ce bouton permet d'accéder à l'éditeur de comportement, que nous détaillerons plus loin.
+Ce bouton permet d'accéder à l'éditeur de comportement, qui permettra à l'utilisateur, entre autrex, de créer et/ou modifier le comportement de ses équipes.
 \subsubsection{Bouton Paramètres}
-Permet d'accéder aux paramètres du jeu, tels que le réglage du volume, le choix de mode de jeu, la langue, etc...
+Ce bouton va afficher la fenêtre "pop-up" qui contient tous les paramètres du jeu.
 \subsubsection{Choisir le nombre d'équipe}
-Nous avons la possibilité de choisir le nombre d'équipes participant à la partie. Les valeurs sont dans un menu déroulant et vont de 2 à 4.
+Nous avons la possibilité de choisir le nombre d'équipes participant à la partie. Les valeurs sont dans un menu déroulant et vont de 2 à 4. Sa valeur courante sera récupérée par le script StartGame() (cf Listing 4.1).\newline
+En fonction du nombre d'équipes choisi, le nombre de cadres d'équipe changera.
 \subsubsection{Choisir les équipes}
 Dans le cadre de chaque équipe se trouve un menu déroulant avec les noms de toutes les équipes présentes dans les fichiers du jeu. On peut donc en sélectionner une pour qu'elle participe à la prochaine bataille.
-De plus, à coté du nom de l'équipe, on retrouve aussi son score (ELO).
+Pour récupérer toutes les équipes existantes, nous allons chercher la liste comprenant le nom de toutes les équipes.
 
+\begin{lstlisting}[language={[Sharp]C},label={lst:Start()}, caption= Extrait du code de TeamMenuHUD.cs]
+[...]
+string team = GameObject.Find("GameManager").GetComponent<TeamManager>()._teams[_idPlayer]._name;
+            for (int i = 0; i < _teamDropDown.options.Count; i ++)
+            {
+                if (_teamDropDown.options[i].text.Equals(team))
+                {
+                    _teamDropDown.value = i;
+                }
+            }
+[...]
+\end{lstlisting}
+\smallbreak
+De plus, à coté du nom de l'équipe, on retrouve aussi son score (ELO). Pour son affichage, nous récupérons le score associé à l'équipe courante. La couleur du score dépendra de sa valeur (rouge = score faible, bleu = score élevé)
+
+\begin{lstlisting}[language={[Sharp]C},label={lst:Change()}, caption= Extrait du code de TeamMenuHUD.cs]
+public void Change()
+    {
+        _teamName = _teamDropDown.captionText.text;
+        _powerScoreText.text = TeamsPerformance.GetTeamElo(_teamName).ToString();
+        _powerScoreText.color = ColorElo(TeamsPerformance.GetTeamElo(_teamName));
+    }
+\end{lstlisting}
 \subsubsection{Bouton "Reload Team"}
-Ce bouton permet de recharger les équipes. L'intérêt est de permettre à l'utilisateur d'ajouter manuellement au dossier des équipes des nouevaux fichiers d'équipes, et les voir apparaître simplement en cliquant sur ce bouton, sans avoir à relancer le jeu.
+Ce bouton permet de recharger les équipes. L'intérêt est de permettre à l'utilisateur d'ajouter manuellement au dossier des équipes des nouveaux fichiers d'équipes, et de les voir apparaître en cliquant simplement sur ce bouton, sans avoir à relancer le jeu.
+Pour permettre cela, nous devons aller chercher le dossier contenant les fichiers des équipes, le parcourir, et mettre à jour notre liste d'équipes.
+
+\begin{lstlisting}[language={[Sharp]C},label={lst:Updating()}, caption= Extrait du code de GameSettingsScript.cs]
+teams = new List<string>();
+        string[] fileEntries = Directory.GetFiles(gamePath);
+        foreach (string s in fileEntries)
+        {
+            string team = stringDifference(s, gamePath);
+            if (team.Contains(".wbt") && !team.Contains(".meta"))
+            {
+                teams.Add(team);
+            }
+        }
+\end{lstlisting}
 
 \subsubsection{Choisir carte de jeu}
 On peut directement choisir le lieu de la partie en cliquant sur les flèches de part et d'autre de l’aperçu de la carte. Il existe pour le moment cinq cartes: Moutain, Plain, Simple, Desolate et Garden.
@@ -1073,3 +1270,4 @@ En bas à droite de la fenêtre de jeu se trouve une icône de son et un slider.
 %\bibliography{document}
 
 \end{document}
+
