@@ -112,12 +112,12 @@ title=\lstname,
 \date{}
 
 \author{\\[0.5cm] \textit{Equipe Interface Graphique}\\
-		FUMEY David \\
-	DOREY Benoit \\[0.5cm] \\
+		\textsc{Fumey} David \\
+	\textsc{Dorey} Benoit \\[0.15cm] \\
 	\textit{Equipe Moteur} \\	
-	BENLAMINE Mehdi \\
-	TEIXEIRA-RICCI Maxime \\ [0.5cm] \\
-	\textit{Supervisé par} M. FERBER Jacques\\ [2cm]\\
+	\textsc{BenLamine} Mehdi \\
+	\textsc{Teixeira-Ricci} Maxime \\ [0.15cm] \\
+	\textit{Supervisé par} M. \textsc{Ferber} Jacques\\ [2.5cm]\\
 	Université Montpellier - Master 1 Informatique}
 
 \maketitle
@@ -132,10 +132,10 @@ title=\lstname,
 \chapter{Introduction}
 \section{But du projet}
 \paragraph{}
-L'objectif de ce projet est la réalisation d'un jeu basé sur un modèle multi-agent. L'idée générale du projet est dans la continuité de celui de l'année dernière et sur le même thème. L'outil utilisé est Unity 3D, un moteur de jeu employé dans un grand nombre de réalisations de hautes qualités. Notre projet est opérationnel sur Windows et pourrait être porté sur Mac ou encore Android.
-Ce projet consiste de réaliser un jeu que l'on peut qualifier de programmeur et de permettre, notamment, à de jeunes personnes de se familiariser avec le monde de la programmation. L'utilisateur pourra donc créer un comportement pour des robots appelés "unité" afin de remplir des objectifs du jeu.
+L'objectif de ce projet est la réalisation d'un jeu basé sur un modèle multi-agent. L'idée générale du projet est dans la continuité de celui de l'année dernière et sur le même thème. L'outil utilisé est Unity 3D, un moteur de jeu employé dans un grand nombre de réalisations de hautes qualités. Notre projet fonctionne sur Windows et pourrait être porté sur Mac ou encore Android.
+Ce projet consiste de réaliser un jeu que l'on peut qualifier de programmeur et de permettre, notamment, à de jeunes personnes de se familiariser avec le monde de la programmation. L'utilisateur pourra donc créer un comportement pour des robots appelés "unités" afin de remplir des objectifs du jeu.
 \paragraph{}
-Metabot est un projet modeste réalisé à partir du logiciel Unity 3D par un groupe d'étudiants débutants dans l'utilisation de cet outil. Malgré le peu d'expérience dans la création pure de ce genre d'applications, le projet actuel est le fruit d'un travail important et d'une implication entière de toute l'équipe.
+\textsc{Metabot} est un projet modeste réalisé à partir du logiciel Unity 3D par un groupe d'étudiants débutants dans l'utilisation de cet outil. Malgré le peu d'expérience dans la création pure de ce genre d'applications, le projet actuel est le fruit d'un travail important et d'une implication entière de toute l'équipe.
 Il a donc pour unique prétention de communiquer notre amour du jeu vidéo et de la programmation.
 
 \section{Cahier des charges}
@@ -179,13 +179,13 @@ Dans WarBot, deux à quatre équipes se battent sur un terrain pour les ressourc
 %%%
 % PARTIE MOTEUR
 %%%
-\chapter{Partie "Moteur"}
+\chapter{Partie Moteur}
 
 \section{État de l'art de l'ancien projet.}
 
 Pour commencer, attardons nous un moment sur l'ancien projet. L'an dernier, l'objectif premier était de réussir à implémenter le jeu Warbot sous Unity. Le constat que l'on peut faire de ce logiciel est que l'équipe précédente à montrer qu'il est possible de créer un jeu multi-agent en se servant de ce moteur de jeu.
-En effet, le Warbot Unity d'origine doté de son menu principal, son interface de paramétrage de partie et sa scène de jeu a déjà pas mal d'atout visuellement parlant. Mais il n'est pas exempt de bugs et reste assez limité.
-Dans cette version, il est donc possible de lancer une partie à deux joueurs uniquement, de régler le nombre de ressources créées par minutes ainsi que la quantité d'unités souhaitées de chacun des cinq types disponibles : WarBase, WarExplorer, WarHeavy, WarEngineer et Warturret. Une seule carte de jeu rectangulaire et sans obstacles est présente. 
+En effet, le Warbot Unity d'origine doté de son menu principal, son interface de paramétrage de partie et sa scène de jeu a déjà pas mal d'atout visuels, mais il n'est pas exempt de bugs et reste assez limité.
+Dans cette version, il est donc possible de lancer une partie à deux joueurs uniquement, de régler le nombre de ressources créées par minutes ainsi que la quantité d'unités souhaitées de chacun des cinq types disponibles : WarBase, WarExplorer, WarHeavy, WarEngineer et WarTurret. Une seule carte de jeu rectangulaire et sans obstacles est présente. 
 
 \paragraph{}Durant une partie, le joueur peut effectuer plusieurs actions :
 \begin{itemize}
@@ -194,20 +194,19 @@ Dans cette version, il est donc possible de lancer une partie à deux joueurs un
 \item Créer une unité pour l'une des deux équipes mais le nombre d'unités est mis à jour pour la mauvaise équipe.
 \item Supprimer une unité mais le nombre d'unités n'est pas mis à jour.
 \item Déplacer une unité.
-\item Activer l'affichage des stats d'une unité (vie,ressources détenues, type).
-\item Activer l'affichage du suivi visuel des envoies de message entre unités.
+\item Activer l'affichage des statistiques d'une unité (vie, ressources détenues, type, ...).
+\item Activer l'affichage du suivi visuel des envoies de messages entre unités.
 \item Activer l'affichage du groupe auquel appartient une unité mais l'utilisation de groupe dans les comportements n'est pas fonctionnelle.
 \item Activer l'affichage de la barre de vie d'une unité.
 \item Activer l'affichage de la barre de ressource d'une unité.
 \end{itemize}
-
-A voir si a compléter
+%A voir si a compléter
 
 \section{Refonte du noyau.}
-\paragraph{}L'ancien projet est une adaptation du jeu Warbot crée en java en utilisant la librairie MadKit, permettant la conception et la simulation de système multi-agents. En utilisant comme base ce projet, et en utilisant la hiérarchie de classe proposé dans le code java dans un moteur de jeu relativement bien assisté comme Unity, de nombreux problèmes de conceptions peuvent apparaître.
-\paragraph{}Unity, pour rappel, est un moteur de jeu développé par Unity Technologies. Ce logiciel à la particularité d'etre "orienter assets". Les scripts associé à chaque objet (appellée GameObject) dérive de la classe "MonoBehaviour", ce qui permet d'avoir accées à un ensemble de méthodes et d'attribut nécessaire à la création de comportement et d'interaction.
-\paragraph{} Dans cette section, nous allons développer les problèmes que nous avons rencontrer dans la réalisation d'un moteur de jeu générique sur la base de l'ancien projet et de l'explication de la nécessiter de recréer un moteur à partir de zéro.
-\paragraph{} Nous avons donc remarqué des problèmes du faite de ce choix de conception. Tout abord, les scripts en eux-même ne sont pas adaptés au développement d'un programme sur Unity et surtout ne sont pas générique.  En effet, les unités sont codés en dur dans le code, ne permettant pas l'ajout de nouvelles unités de façon simple. Ainsi pour rajouter de nouvelles unités, il faut créer de nouvelles classes correspondant a de nouvelles unités. Cette hiérarchie des classes est un parti-pris que l'équpe de l'année passée à choisi en se basant sur le code java de WarBot. Cependant, la problématique de notre sujet de TER ne nous permet pas d'avoir ce genre de conception dans l'idée de rendre l'ajout des unités plus simple. Ainsi, il fallait reprendre la conception des unités et voir les composants que l'on peut garder de façon unique et modulable pour toute les unités.
+\paragraph{}L'ancien projet est une adaptation du jeu Warbot crée en Java en utilisant la librairie MadKit, permettant la conception et la simulation de système multi-agents. En utilisant comme base ce projet, et en utilisant la hiérarchie de classe proposée dans le code Java dans un moteur de jeu relativement bien assisté comme Unity, de nombreux problèmes de conceptions peuvent apparaître.
+\paragraph{}Unity, pour rappel, est un moteur de jeu développé par Unity Technologies. Ce logiciel à la particularité d'etre "orienter assets". Les scripts associés à chaque objet (appellé GameObject) dérive de la classe "MonoBehaviour", ce qui permet d'avoir accès à un ensemble de méthodes et d'attributs nécessaire à la création de comportements et d'interactions.
+\paragraph{} Dans cette section, nous allons développer les problèmes que nous avons rencontrer dans la réalisation d'un moteur de jeu générique sur la base de l'ancien projet et de l'explication de la nécessiter de recréer un nouveau moteur à partir de zéro.
+\paragraph{} Nous avons donc remarqué des problèmes du faite de ce choix de conception. Tout abord, les scripts en eux-même ne sont pas adaptés au développement d'un programme sur Unity et surtout ne sont pas générique.  En effet, les unités sont codées en dur dans le code, ne permettant pas l'ajout de nouvelles unités de façon simple et rapide. Ainsi pour rajouter de nouvelles unités, il faut créer de nouvelles classes correspondant a ces nouvelles unités. Cette hiérarchie des classes est un parti-pris que l’équipe de l'année passée à choisi en se basant sur le code java de WarBot. Cependant, la problématique de notre sujet de TER ne nous permettait pas d'avoir ce genre de conception dans l'idée de rendre l'ajout des unités plus simple. Ainsi, il fallait reprendre la conception des unités et voir les composants que l'on peut garder de façon unique et modulable pour toute les unités.
 %% DEBUT CODE %%
 \begin{lstlisting}[language={[Sharp]C}, caption= Code du script AttackController.cs de l'ancien projet]
 using System.Collections;
@@ -244,7 +243,7 @@ namespace WarBotEngine.WarBots {
 }
 \end{lstlisting}
 
-\paragraph{} La gestion des actions et des perceptions aussi est problématique. Le code de ces actions sont codés en dur dans des scripts correspondant a des unités d'un certain type, empêchant alors de rendre générique le fait de rajouter des actions sans devoir modifier tout les codes nécessitant le nom des actions tel que l’interpréteur. Le code ci-dessous montre le script "AttackController.cs" de l'ancien projet. Dans ce code, l'actions Shoot depend des fonctions Reloaded et Fire. Reloaded peut être considérer comme une perception. Le fait que les actions et les perceptions ne sont pas clairement définie entant que tels posent des problèmes de compréhension du code et de faite le rajout de façon simple une nouvelle action et une nouvelle perception. De plus, cela pose le problème de la gestion des actions et des perceptions de l’interpréteur, car pour chaque action créer dans le script, il faut indiquer à l'interpreteur quelle fonction permet d'activer l'action du comportement en cours. 
+\paragraph{} La gestion des actions et des perceptions aussi est problématique. Le code de ces actions sont codés en dur dans des scripts correspondant a des unités d'un certain type, empêchant alors de rendre générique le fait de rajouter des actions sans devoir modifier tout les codes nécessitant le nom des actions tel que l’interpréteur. Le code ci-dessous montre le script "AttackController.cs" de l'ancien projet. Dans ce code, l'actions Shoot depend des fonctions Reloaded et Fire. Reloaded peut être considérer comme une perception. Le fait que les actions et les perceptions ne sont pas clairement définies entant que tels posent des problèmes de compréhension du code et de faite le rajout de façon simple une nouvelle action et une nouvelle perception. De plus, cela pose le problème de la gestion des actions et des perceptions de l’interpréteur, car pour chaque action créer dans le script, il faut indiquer à l'interpreteur quelle fonction permet d'activer l'action du comportement en cours. 
 \paragraph{}Ainsi dans le code du listing \ref{lst:unitScript}, on peut voir que pour activer la fonction Shoot() du script AttackController, il faut créer une fonction du même nom, puis renseigner toutes les unités qui peuvent effectuer l'action. Le problème est qu'il faut, pour chaque action, créer une fonction dans le fichier Unit.cs, et ainsi le fichier Unit.cs est surchargé, atteignant les 2000 lignes de codes !
 
 \begin{lstlisting}[language={[Sharp]C},label={lst:unitScript}, caption=  Extrait du code du script Unit.cs]
@@ -273,19 +272,28 @@ namespace WarBotEngine.Editeur
 \paragraph{} La suite de l'examen du code de l'ancien projet et avec l'accord de notre encadrant en exposant les problèmes qu'engendre la reprise de l'ancien moteur, nous avons décider de recréer un nouveau moteur de jeu pour repartir sur des bases plus générique.
 
 
-La réalisation du projet a été effectuée en suivant une méthode agile. M. Ferber avait pour cela le rôle à la fois de chef de projet et de client, le projet s'est donc découpé en plusieurs phases de rush entrecoupés par des réunions régulière avec lui. Il nous est donc paru plus judicieux de vous expliquer le déroulement de notre travail de manière chronologique. On reviendra plus en détail sur cette méthode et son application à notre situation dans la partie gestion de projet. 
+La réalisation du projet a été effectuée en suivant une méthode agile. M. Ferber avait pour cela le rôle à la fois de chef de projet et de client, le projet s'est donc découpé en plusieurs phases de rush entrecoupés par des réunions régulière avec lui. On exposera le déroulement de notre travail de manière chronologique. On reviendra plus en détail sur cette méthode et son application à notre situation dans la partie gestion de projet. 
 
 
 \subsection{Retour aux bases.}
 
-Afin de mener à bien la création du moteur de jeu, et dans le but de ne pas géner l'avancer de nos camarades des autres équipes de ce projet, on a choisi de ne pas toucher directement au jeu original mais plutôt de repartir à zéro en créant un nouveau projet sur Unity tout en étant conscient de la difficulté futur que serait son intégration.
+Afin de mener à bien la création du moteur de jeu, et dans le but de ne pas géner l'avancer de nos camarades des autres équipes de ce projet, on a choisi de ne pas toucher directement au projet original mais plutôt de repartir à zéro en créant un nouveau projet sur Unity tout en étant conscient de la difficulté futur que serait son intégration.
 
-\paragraph{}Suite à la décision de reprise du moteur de jeu from scratch, nous avons commencé à mettre en place les mécanisme de contrôle d'une unité, M. Ferber nous conseillant de repartir sur la base de la version Java de Warbot. Le premier pas a été de simplement faire bouger une unité. Pour cela, nous avons utilisé le coposant NavMesh que nous avons attaché au GameObject Unit représentant l'unité. Grâce à cela l'unité était capable de parcourir un chemin jusqu'à arriver à sa destination en évitant les différents obstacles avec lesquelles elle pourrait rentrer en collisions,cette dernière étant detecter grâce au composant Collider. M. Ferber nous avait demandé d'étudier la possibilité de créer des zones restrictives, sur lesquelles certaine unité ne seraient pas capables d'aller ou se déplaceraient à une vitesse différente. Cette opération fut simple à mettre en place avec le composant NavMesh, il suffisait d'indiquer à l'unité que si sa destination se trouvait à un emplacement interdit par exemple elle ne pouvait pas s'y rendre. 
+\paragraph{}
+Suite à la décision de reprise du moteur de jeu de zéro, nous avons commencé à mettre en place les mécanismes de contrôle d'une unité, M. Ferber nous conseillant de repartir sur la base de la version Java de Warbot. Le premier pas a été de simplement faire bouger une unité. Pour cela, nous avons utilisé le coposant NavMesh que nous avons attaché au GameObject Unit représentant l'unité.
+
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.6]{NavMeshImage}
 \caption{Exemple d'application du composant \textit{NavMesh} dans Unity. L'agent se déplace à l'intérieur de la zone bleue.}
 \end{figure}
+
+\paragraph{}
+ Le composant \textit{NavMesh} est un composant d'Unity permettant de déplacer des agents sur des zones (appelé \textit{Navigation Mesh}). Ces zones peuvent avoir différentes propriétés (comme le coût de déplacement) et un algorithme de recherche de plus court chemin est utilisé lorsqu'on demande l'orde à une unité de se déplacer dans le NavMesh.
+\paragraph{}
+ Grâce à cela l'unité était capable de parcourir un chemin jusqu'à arriver à sa destination en évitant les différents obstacles avec lesquelles elle pourrait rentrer en collisions,cette dernière étant detecter grâce au composant Collider. M. Ferber nous avait demandé d'étudier la possibilité de créer des zones restrictives, sur lesquelles certaine unité ne seraient pas capables d'aller ou se déplaceraient à une vitesse différente. Cette opération fut simple à mettre en place avec le composant NavMesh, il suffisait d'indiquer à l'unité que si sa destination se trouvait à un emplacement interdit par exemple elle ne pouvait pas s'y rendre. 
+
+
 
 Mais l'utilisation du NavMesh  ne convenait pas au jeu Warbot. En effet, dans le jeu l'utilisateur est libre du choix du comportement de l'unité mais doit aussi faire avec les alléa du terrain, il doit prendre en compte la possibilité que l'unité soit bloquée et doit donc changer de direction. Or, avec l'utilisation du NavMesh cette opération était faite de manière automatique, le NavMesh embarque un algoritme calculant automatiquement un chemin permettant rejoindre le but demandé, son utilisation a donc été rapidement abandonnée. Les zones restrictives ont elles aussi étaient annulées, leur conception sans NavMesh nous ayant parue bien trop complexe et chronophage à ce niveau du projet pour un élément non primordial. 
 \paragraph{}A partir de ce moment, nous avons donc simplement modifié la position du composant Transform (composant determinant la position, rotation et l'échelle de chaque objet dans la scène), du GameObject Unit en fonction du vecteur de mouvement voulu afin de déplacer l'unité.
