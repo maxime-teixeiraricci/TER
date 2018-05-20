@@ -5,7 +5,7 @@
 \usepackage[francais]{babel}
 \usepackage{listings}
 \usepackage{xcolor}
-\usepackage{graphicx}
+\usepackage{graphicx, wrapfig, subcaption, setspace, booktabs}
 \frenchbsetup{StandardLists=true} % à inclure si on utilise \usepackage[french]{babel}
 \usepackage{enumitem}
 \usepackage{textcomp}
@@ -13,10 +13,7 @@
 \usepackage{fancyhdr}
 \renewcommand{\headrulewidth}{0.4pt}
 \pagestyle{fancy}
-\fancyhead[L]{Metabot : pour un jeu multi-agent générique}
-\fancyhead[C]{TER}
-\fancyhead[R]{Université de Montpellier}
-\fancyfoot[R]{\today}
+
 \definecolor{listinggray}{gray}{0.9}
 \definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
 \definecolor{darkWhite}{rgb}{0.94,0.94,0.94}
@@ -86,10 +83,46 @@ tabsize=4,
 title=\lstname,
 }
 
-\title{Rapport de TER}
-% Start the document
+
+\newcommand{\HRule}[1]{\rule{\linewidth}{#1}}
+\onehalfspacing
+
+%-------------------------------------------------------------------------------
+% HEADER & FOOTER
+%-------------------------------------------------------------------------------
+\pagestyle{plain}
+\fancyhf{}
+\setlength\headheight{15pt}
+\fancyhead[L]{Metabot : Un jeu multi-agent générique}
+\fancyhead[C]{TER}
+\fancyhead[R]{Université de Montpellier}
+\fancyfoot[R]{\today}
+
+%-------------------------------------------------------------------------------
+% TITLE PAGE
+%-------------------------------------------------------------------------------
+
 \begin{document}
+
+\title{\normalsize \textsc{Rapport de TER}
+		\\ [1.5cm]
+		\HRule{0.5pt} \\
+		\LARGE \textbf{\uppercase{Metabot\\Un jeu multi-agent générique}}\\\HRule{0.5pt} \\}
+
+\date{}
+
+\author{\\[0.5cm] \textit{Equipe Interface Graphique}\\
+		FUMEY David \\
+	DOREY Benoit \\[0.5cm] \\
+	\textit{Equipe Moteur} \\	
+	BENLAMINE Mehdi \\
+	TEIXEIRA-RICCI Maxime \\ [0.5cm] \\
+	\textit{Supervisé par} M. FERBER Jacques\\ [2cm]\\
+	Université Montpellier - Master 1 Informatique}
+
 \maketitle
+
+\newpage
 \newpage
 \tableofcontents
 \newpage
@@ -111,14 +144,31 @@ Notre but était de modifier le programme existant afin qu'il devienne plus gén
 Pour cela il fallait donc généraliser la gestion des différentes unités et de leur comportement (action/perception/statistique). De plus, l'ajout d'actions et de moyens de perceptions doit se faire de façon intuitive de même pour les différentes exigences de jeu (règles/conditions de victoire). 
 
 \section{Notion d'agent}
-
+Dans cette section, nous allons développer la notion d'agent dans un système multi-agent.
 \subsection{Système multi-agents}
+\paragraph{} Un agent dans un système multi-agents est une entité autonome définit par un comportement créer par son auteur. Les agents peuvent aussi interagir avec leur environnement grâce à des perceptions et qui lui permet de lui donner une représentation de ce dernier. 
 
-\subsection{Representation dans notre projet}
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.65]{NetLogoImage}
+\caption{NetLogo : Un logiciel de simulation multi-agents.}
+\end{figure}
+
+\paragraph{L'individualisme au service du collectif.}L’intérêt des agents est l'idée qu'une action individualiste et égoïste permet un comportement collectif d'un ensemble d'agents pour réaliser des actions qu'un individu seul ne pourrais pas accomplir. Pour permettre de réaliser des objectifs de groupe, les individues peuvent communiquer entre eux afin de permettre de déléguer ou de s'unir dans des tâches plus ardues.
+\paragraph{Représentation et simulation}Ce genre de système permet, en créant des comportements d'agents simple, la simulation de société plus complexe. Ainsi, on peut étudier les comportement globales des entités selon ce que l'on veut observer.
+\paragraph{Les système-multi agents dans de multiples domaines.} Les systèmes multi-agents sont utilisées dans de nombreux domaines, notamment dans les jeux vidéos et le cinéma. Dans ces domaines, les systèmes multi-agents  sont utilisées pour représenter des mouvement de foules avec des comportement très simples, ou, dans le cas du jeu vidéo, permettre de créer des comportements aux personnages non joueurs pour les rendre plus intéressant pour le joueurs.
+
+\subsection{Représentation dans le projet.}
 
 \newpage
 
 \chapter{WarBot: Le mode par défaut}
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.7]{interface-warbot3}
+\caption{WarBot, la version Java.}
+\end{figure}
+
 \section{Principe}
 Dans WarBot, deux à quatre équipes se battent sur un terrain pour les ressources afin de survivre et d'éliminer les autres équipes et d’être la dernière ne vie. Des ressources apparaissent sur la carte et peuvent être converties en unités ou en soin.
 
@@ -506,6 +556,8 @@ Instruction (
 
 \subsection{Améliorations des fonctionnalités.}
 
+\subsubsection{Actions non-terminales}
+
 \subsubsection{Ajout de fonctionnalités des instructions.}
 \paragraph{}Un des enjeux du moteur était de pouvoir rendre les instructions plus interessantes pour le joueurs. Il a donc fallu améliorer les instructions qui etait une simple liste de perceptions, d'actions non terminales et d'une action en rajoutant des fonctionnalité.\newline
 \begin{lstlisting}[label={lst:BehaviorExample}, caption=  Exemple d'un comportement que peut renvoyer l’interpréteur.]
@@ -530,23 +582,49 @@ Behavior [LIGHT] = {
 \paragraph{1. Négation.}
 La plus grande amélioration que l'équipe de Game Design nous avait demandé d'apporter au moteur sur le plan des instruction était de mettre en place la négation des percepts. 
 \subparagraph{} Pour rappel, un percept (ou perception) est une fonction anonyme qui renvoie un booléen. La composition de plusieurs perception donne l'illusion d'un tableau de bord, permettant à l'unité de se faire une idée de son environnement. Cependant, les instructions fonctionnent actuellement en utilisant une liste conjonctive de percept. En d'autres termes, tout les percepts d'une instruction doit être activé pour pouvoir exécuter l'action de l'instruction.
-\subparagraph{}Il nous fallait donc trouver un moyen pour rendre possible la négation des perceptions. Ainsi, et en travaillant de concert avec l'équipe Interpréteur, nous avons convenu d'un préfixe \textit{NOT\_} que l'on concatène au label des perceptions.
+\subparagraph{}Il nous fallait donc trouver un moyen pour rendre possible la négation des perceptions. Ainsi, et en travaillant de concert avec l'équipe Interpréteur, nous avons convenu d'un préfixe \textit{NOT\_} que l'on concatène au label des perceptions, comme vu à l'instruction 2. et 3. du listing \ref{lst:BehaviorExample}.
 \begin{lstlisting}[label={lst:BehaviorExampleNeg}, caption = Une perception et son inverse.]
 PERCEPT_LIFE_MAX; //Activé lorsque "TRUE"
 NOT_PERCEPT_LIFE_MAX; //Activé lorsque "FALSE"
 \end{lstlisting}
 
+\subparagraph{}En utilisant cette manière, on permet à l'éditeur de comportement de transcrire le choix du joueur (négation ou pas) via un fichier XML que l’interpréteur peut traduire en \textit{Instruction} pour notre moteur.
 
+\begin{lstlisting}[language={[Sharp]C},label={lst:VerifyBrainScript}, caption=  Extrait du code du script Brain.cs]
+public class Brain : MonoBehaviour
+{
+[...]
+bool Verify(Instruction instruction)
+    {
+        bool flag = true;
+        foreach (string percept in instruction._listeStringPerceptsVoulus)
+        {
+            if (!(_componentPercepts._percepts.ContainsKey(percept.Replace("NOT_", "")) && 
+                (percept.Contains("NOT_") ^ _componentPercepts._percepts[percept.Replace("NOT_", "")]())))  { flag = false; }
+        }
+        return flag;
+    }
+[...]
+}
+\end{lstlisting}
+
+\subparagraph{}Pour rendre le moteur compatible avec la négation des percepts, on a du modifier la fonction \textit{Verify} (listing \ref{lst:VerifyBrainScript}) du script Brain.cs. Cette fonction vérifie si une instruction donné en paramètre est activé. On regarde ainsi si tout les percept sont activés. \newline
+Ainsi, une instruction est activé si :
+\begin{itemize}
+\item Il existe le percept dans la liste des percepts de l'unité. (En enlevant le préfixe \textit{NOT\_}).
+\item Le percept ne contient pas le préfixe \textit{NOT\_} et le percept renvoie "TRUE".
+\item Le percept contient le préfixe \textit{NOT\_} et le percept renvoie "FALSE".
+\end{itemize}
 
 \paragraph{2. Mouvement tactique.}
-Instructions sans actions.
+Comme définie dans le listing \ref{lst:BehaviorExample}, l'instruction 2. permet de faire une action non-terminale même pas d'action terminale. Cela permet ainsi de pouvoir réaliser des mouvement plus tactique et de ne pas terminer le tour.
+\paragraph{}Lorsque les percepts de l'instruction 2 sont activé, cela déclenche l'action non terminale en ligne 6 qui envoie un message d'aide aux unité de type \textit{Heavy}. Mais comme il n'y a pas d'action terminant le tour, on continue à regarder les autres instructions tant qu'il n'y a pas d'action terminale à effectuer.
+
 \paragraph{3. Instruction par défaut.}
-Instructions sans percepts et sans actions non terminales.
+Lorsque une instruction ne comporte pas de percepts, cette instruction est, par définition toujours valide. Cela permet, entre autre, de créer des cas par défaut que l'on peut mettre à la fin d'un comportement. L'action de cette instruction est alors toujours exécuter si aucune autre action ne peut l'etre.
+
 \paragraph{4. Cas exceptionnel.}
-Instructions sans percepts et sans actions non terminales.
-
-\subsubsection{Actions non-terminales}
-
+Dans un comportement, il peut arriver que toutes les instructions ne soit pas vérifier. Dans ce cas précis, c'est le moteur lui même qui prends en charge l'action de l'unité. Actuellement, l'unité éxécute l'action \textit{ACTION\_IDLE} dans ce cas la.
 
 \subsubsection{Optimisation du temps de chargement}
 \paragraph{} L'un des gros problèmes que l'on a rencontré est le fait que le temps de chargement lors d'une partie était beaucoup trop élevé et cela nuisait au bon déroulement de la partie, atteignant parfois deux minutes de temps de chargement lorsque l'on voulait générer 200 unités. Pour cela nous avons étudié plusieurs pistes pour résoudre ce problème.
@@ -591,8 +669,8 @@ Cependant, cette optimisation n'a pas permis de réduire le temps de chargement 
   \hline
   Nombre d'unités à générer & Temps de chargements (moyenne de 3 tests) \\
   \hline
-  0 unités & 0.49 secondes \\
-  1 unités & 0.70 secondes \\
+  0 unité & 0.49 secondes \\
+  1 unité & 0.70 secondes \\
   5 unités & 3.13 secondes \\
   20 unités & 11.50 secondes \\
   50 unités & 27.84 secondes \\
@@ -1033,6 +1111,20 @@ Une fois chaque instruction créée pour chaque "If", nous pouvons appeler la fo
 \item\textbf{createXML()} :  \newline
 Appelle la fonction behaviorToXml(), présente dans l'interpréteur, qui prend en paramètres le nom de l'équipe courante, le chemin où écrire le fichier .xml, le nom de l'unité, et la liste d'instructions correspondante.
 \end{itemize}
+\begin{lstlisting}[frame=single]
+public void createXML()
+{
+    //recuperation de l'unité actuellement traitée et de l'equipe
+    string teamName = team.captionText.text;
+    string unitName = unit.captionText.text;
+    string path = Application.dataPath + "/StreamingAssets/" + Constants.teamsDirectory + Constants.gameModeWarBot;
+    if(teamName != "")
+    {
+        XMLWarbotInterpreter interpreter = new XMLWarbotInterpreter();
+        interpreter.behaviorToXml(teamName, path, unitName, listBehavior);
+    }        
+}
+\end{lstlisting}
 \item\textbf{Bouton "Undo"} \newline
 Va permettre d'annuler la création ou la suppression d'une pièce. Lors de la création d'une pièce, cette pièce sera ajoutée dans une liste "listPieces", qui nous permettra de garder une trace de l'ordre dans lequel les pièces ont été créées.
 \smallbreak
@@ -1044,8 +1136,52 @@ Si "pieceToUndo" est active, alors nous devons simuler sa suppression, en la pas
 Si, en revanche, la pièce est inactive, il faut alors la faire réapparaitre à l'écran, en la passant en active.
 
 \end{itemize}
+\begin{lstlisting}[frame=single]
+public void Undo()
+{
+
+    if( cptObjects > 0 ) {
+		
+        pieceToUndo = (GameObject)listPieces[cptObjects - 1];
+        // Si la pièce à undo supprimée est une pièce IF, on oublie pas de mettre à jour le compteur de pièces IF
+        if (pieceToUndo.tag == "IfPuzzle") {
+            cptIfPuzzle = numberIfPuzzle() - 1;
+        }
+            // Si la pièce à undo est active alors on la masque, on l'ajoute à la liste redo et on met a jour le compteur d'objet
+            if(pieceToUndo.activeSelf == true) {
+            recoverList.Add(pieceToUndo);
+            pieceToUndo.SetActive(false);
+            cptObjects--;
+        }
+        // Si la pièce à undo est inactive alors on l'active et on change sont ordre dans la liste des pièces
+        else if(pieceToUndo.activeSelf == false) {
+            pieceToUndo.SetActive(true);
+            listPieces.Remove(pieceToUndo);
+            listPieces.Insert(0,pieceToUndo);
+        }
+
+        cptUndo = recoverList.Count;
+    }
+}
+\end{lstlisting}	
 \item\textbf{Bouton "Redo"} \newline
 Permet de restituer une annulation préalablement faite. Lorsqu'on clique sur le bouton Annuler, on va conserver l'action annulée dans une liste, qui nous servira donc à la restituer lors d'un clic sur le bouton Redo.
+\begin{lstlisting}[frame=single]
+// Ré instantie la dernière pièce de la liste recoverList
+public void Redo()
+{
+    if( recoverList.Count > 0 ) {
+        GameObject pieceToRedo = (GameObject)recoverList[cptUndo - 1];
+        if (pieceToRedo.tag == "IfPuzzle") {
+            cptIfPuzzle = numberIfPuzzle() + 1;
+        }
+        pieceToRedo.SetActive(true);
+        recoverList.RemoveAt(cptUndo - 1);
+        cptObjects++;
+        cptUndo = recoverList.Count;        
+    }
+}
+\end{lstlisting}	
 \item\textbf{Bouton de retour au menu principal} \newline
 Ce bouton ramène l'utilisateur au menu principal. Avant de cliquer dessus il faut penser à bien sauvegarder le comportement en cours pour ne pas le perdre.
 \end{enumerate}
@@ -1100,6 +1236,13 @@ Nous plaçons ensuite la pièce créée
 \item\textbf{create()} : Lors d'un clic sur le modèle de pièce que l'on veut ajouter au comportement courant, cette fonction est appelée. Une position par défaut est définie dans l'éditeur, qui déterminera où la pièce sera placée lors de sa création.\newline
 A chaque pièce créée, nous l'ajoutons dans la liste listPieces, utilisée pour la fonction Annuler.
 \end{itemize}
+\begin{lstlisting}[frame=single]
+GameObject puzzleClone = (GameObject)Instantiate(puzzle, GameObject.Find("MaskEditeur").transform);
+if (puzzleClone.GetComponent<PuzzleScript>())
+{
+   puzzleClone.GetComponent<PuzzleScript>()._value = _label;
+}
+\end{lstlisting}
 
 Les pièces sont présentes sous forme de cases avec leur nom à l'intérieur (certaines possèdent même des menus déroulant pour choisir la valeur voulue une fois dans la zone d'édition). La couleur des pièces dépend de leur catégorie.
 Les pièces peuvent être sélectionnées et déplacées dans la zone d'édition du comportement grâce au glissé/déposé (Drag \& Drop).
@@ -1119,7 +1262,15 @@ Ce script s'occupe de la gestion du déplacement des pièces, ainsi que de leur 
 \begin{itemize}
 \item\textbf{OnMouseDrag()} : \newline
 Une fois qu'un clic a été fait sur une pièce, cette fonction s'occupe de mettre à jour les coordonnées de la pièce, de telle sorte qu'elles soient égales à celles du pointeur de la souris. Pour valider les nouvelles coordonnées de la pièce, il faut appeler la fonction OnMouseUp().
-\item\textbf{UpgradeGridPosition()} : 
+\item\textbf{UpgradeGridPosition()} : \newline
+Lorsque le clic de la souris est relâché (OnMouseUp) il faut mettre à jour la position de la pièce dans l'éditeur.
+\begin{lstlisting}[frame=single]
+posGridX = Mathf.Max((int)GameObject.Find("Editeur").GetComponent<RectTransform>().rect.x / 
+  (int)widthPuzzle, (int)Mathf.Round(GetComponent<RectTransform>().localPosition.x / widthPuzzle));
+
+posGridY = Mathf.Max((int)GameObject.Find("Editeur").GetComponent<RectTransform>().rect.y / 
+  (int)heightPuzzle, (int)Mathf.Round(GetComponent<RectTransform>().localPosition.y / heightPuzzle));
+\end{lstlisting}
 \item\textbf{OnMouseUp()} : \newline
 Cette fonction appelle la fonction UpdateGridPosition(), puis attribue à la pièce courante sa nouvelle position. Une fois cela fait, il faut vérifier que la nouvelle position de la pièce est toujours un emplacement valide, d'un point de vue comportement. La fonction appelle pour ça le script StartPuzzleScript.cs, que nous verrons plus bas.
 \end{itemize}
