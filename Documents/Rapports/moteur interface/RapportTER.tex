@@ -1111,6 +1111,20 @@ Une fois chaque instruction créée pour chaque "If", nous pouvons appeler la fo
 \item\textbf{createXML()} :  \newline
 Appelle la fonction behaviorToXml(), présente dans l'interpréteur, qui prend en paramètres le nom de l'équipe courante, le chemin où écrire le fichier .xml, le nom de l'unité, et la liste d'instructions correspondante.
 \end{itemize}
+\begin{lstlisting}[frame=single]
+public void createXML()
+{
+    //recuperation de l'unité actuellement traitée et de l'equipe
+    string teamName = team.captionText.text;
+    string unitName = unit.captionText.text;
+    string path = Application.dataPath + "/StreamingAssets/" + Constants.teamsDirectory + Constants.gameModeWarBot;
+    if(teamName != "")
+    {
+        XMLWarbotInterpreter interpreter = new XMLWarbotInterpreter();
+        interpreter.behaviorToXml(teamName, path, unitName, listBehavior);
+    }        
+}
+\end{lstlisting}
 \item\textbf{Bouton "Undo"} \newline
 Va permettre d'annuler la création ou la suppression d'une pièce. Lors de la création d'une pièce, cette pièce sera ajoutée dans une liste "listPieces", qui nous permettra de garder une trace de l'ordre dans lequel les pièces ont été créées.
 \smallbreak
@@ -1122,8 +1136,52 @@ Si "pieceToUndo" est active, alors nous devons simuler sa suppression, en la pas
 Si, en revanche, la pièce est inactive, il faut alors la faire réapparaitre à l'écran, en la passant en active.
 
 \end{itemize}
+\begin{lstlisting}[frame=single]
+public void Undo()
+{
+
+    if( cptObjects > 0 ) {
+		
+        pieceToUndo = (GameObject)listPieces[cptObjects - 1];
+        // Si la pièce à undo supprimée est une pièce IF, on oublie pas de mettre à jour le compteur de pièces IF
+        if (pieceToUndo.tag == "IfPuzzle") {
+            cptIfPuzzle = numberIfPuzzle() - 1;
+        }
+            // Si la pièce à undo est active alors on la masque, on l'ajoute à la liste redo et on met a jour le compteur d'objet
+            if(pieceToUndo.activeSelf == true) {
+            recoverList.Add(pieceToUndo);
+            pieceToUndo.SetActive(false);
+            cptObjects--;
+        }
+        // Si la pièce à undo est inactive alors on l'active et on change sont ordre dans la liste des pièces
+        else if(pieceToUndo.activeSelf == false) {
+            pieceToUndo.SetActive(true);
+            listPieces.Remove(pieceToUndo);
+            listPieces.Insert(0,pieceToUndo);
+        }
+
+        cptUndo = recoverList.Count;
+    }
+}
+\end{lstlisting}	
 \item\textbf{Bouton "Redo"} \newline
 Permet de restituer une annulation préalablement faite. Lorsqu'on clique sur le bouton Annuler, on va conserver l'action annulée dans une liste, qui nous servira donc à la restituer lors d'un clic sur le bouton Redo.
+\begin{lstlisting}[frame=single]
+// Ré instantie la dernière pièce de la liste recoverList
+public void Redo()
+{
+    if( recoverList.Count > 0 ) {
+        GameObject pieceToRedo = (GameObject)recoverList[cptUndo - 1];
+        if (pieceToRedo.tag == "IfPuzzle") {
+            cptIfPuzzle = numberIfPuzzle() + 1;
+        }
+        pieceToRedo.SetActive(true);
+        recoverList.RemoveAt(cptUndo - 1);
+        cptObjects++;
+        cptUndo = recoverList.Count;        
+    }
+}
+\end{lstlisting}	
 \item\textbf{Bouton de retour au menu principal} \newline
 Ce bouton ramène l'utilisateur au menu principal. Avant de cliquer dessus il faut penser à bien sauvegarder le comportement en cours pour ne pas le perdre.
 \end{enumerate}
@@ -1178,6 +1236,13 @@ Nous plaçons ensuite la pièce créée
 \item\textbf{create()} : Lors d'un clic sur le modèle de pièce que l'on veut ajouter au comportement courant, cette fonction est appelée. Une position par défaut est définie dans l'éditeur, qui déterminera où la pièce sera placée lors de sa création.\newline
 A chaque pièce créée, nous l'ajoutons dans la liste listPieces, utilisée pour la fonction Annuler.
 \end{itemize}
+\begin{lstlisting}[frame=single]
+GameObject puzzleClone = (GameObject)Instantiate(puzzle, GameObject.Find("MaskEditeur").transform);
+if (puzzleClone.GetComponent<PuzzleScript>())
+{
+   puzzleClone.GetComponent<PuzzleScript>()._value = _label;
+}
+\end{lstlisting}
 
 Les pièces sont présentes sous forme de cases avec leur nom à l'intérieur (certaines possèdent même des menus déroulant pour choisir la valeur voulue une fois dans la zone d'édition). La couleur des pièces dépend de leur catégorie.
 Les pièces peuvent être sélectionnées et déplacées dans la zone d'édition du comportement grâce au glissé/déposé (Drag \& Drop).
@@ -1197,7 +1262,15 @@ Ce script s'occupe de la gestion du déplacement des pièces, ainsi que de leur 
 \begin{itemize}
 \item\textbf{OnMouseDrag()} : \newline
 Une fois qu'un clic a été fait sur une pièce, cette fonction s'occupe de mettre à jour les coordonnées de la pièce, de telle sorte qu'elles soient égales à celles du pointeur de la souris. Pour valider les nouvelles coordonnées de la pièce, il faut appeler la fonction OnMouseUp().
-\item\textbf{UpgradeGridPosition()} : 
+\item\textbf{UpgradeGridPosition()} : \newline
+Lorsque le clic de la souris est relâché (OnMouseUp) il faut mettre à jour la position de la pièce dans l'éditeur.
+\begin{lstlisting}[frame=single]
+posGridX = Mathf.Max((int)GameObject.Find("Editeur").GetComponent<RectTransform>().rect.x / 
+  (int)widthPuzzle, (int)Mathf.Round(GetComponent<RectTransform>().localPosition.x / widthPuzzle));
+
+posGridY = Mathf.Max((int)GameObject.Find("Editeur").GetComponent<RectTransform>().rect.y / 
+  (int)heightPuzzle, (int)Mathf.Round(GetComponent<RectTransform>().localPosition.y / heightPuzzle));
+\end{lstlisting}
 \item\textbf{OnMouseUp()} : \newline
 Cette fonction appelle la fonction UpdateGridPosition(), puis attribue à la pièce courante sa nouvelle position. Une fois cela fait, il faut vérifier que la nouvelle position de la pièce est toujours un emplacement valide, d'un point de vue comportement. La fonction appelle pour ça le script StartPuzzleScript.cs, que nous verrons plus bas.
 \end{itemize}
