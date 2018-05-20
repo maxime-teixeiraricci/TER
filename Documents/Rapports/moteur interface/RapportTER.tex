@@ -279,7 +279,7 @@ Voici comment ce mets à jour la liste des objets "vus" par l'unité :
 \item Pour tous les objets présents dans la sphère.
 \item Si celui-ci a son centre de gravité dans l'angle de champs de vision de l'unité, on l'ajoute à la liste des objets vus.
 \end{itemize}
-\paragraph{}Voici un exemple concret d'exécution d'une instruction "Si l'agent voit une ressource, il la récupère", symbolisée par les classes PerceptRessource et ActionPick :
+\paragraph{}Voici un exemple d'exécution d'une instruction "Si l'agent voit une ressource, il la récupère", symbolisée par les classes PerceptRessource et ActionPick :
 \begin{lstlisting}[language={[Sharp]C},label={lst:unitScript}, caption=  Classe Instruction du fichier Instruction.cs première version.]
 public class Instruction : MonoBehaviour {
 
@@ -362,6 +362,21 @@ L'action de récupération d'un objet par une unité se déroule comme ceci :
 \item On ajoute cet objet dans le composant inventaire de l'unité.
 \item On détruit le GameObjet "target" en utilisant sa méthode getPicked(), qui applique la fonction Destroy(GameObject obj) de Unity (on détruit la représentation physique de l'objet sur la scène).
 \end{itemize}
+\paragraph{}On viens de voir la récupération d'une ressource par une unité, arrêtons nous un instant sur le concept et la représentation d'une ressource dans le jeu. Sur Unity, un Prefab est une sauvegarde d'un GameObject avec ses composants et ses propriétés afin que celui-ci puisse être utilisé autant de fois qu'on le souhaite sans avoir à le reconfigurer.
+\paragraph{}
+INSERER IMAGE RESSOURCE !!!!!!!!!!!!!!!!!!!!!!!!!!!
+\paragraph{}
+\paragraph{}Du point de vu de sa modélisation, une ressource est représentée par une sphère en contenant une autre plus petite en son centre. Elle détient égalument un système a particules permettant de générer ces dernières tournent autour de du centre de la shère la rendant plus dynamique. 
+\paragraph{} Pour sa représentation informatique, une ressource est un Prefab détenant un script ItemHandler, uniquement composé d'un attribut de type Objet, correspondant à la vision de l'objet ressource sans ses caractéristiques physiques. Cela nous permet de détruire la représentation de celle-ci sur la scène tout en conservant ses propriétés. 
+\paragraph{}Le script Objet représentant a donc plusieurs attributs cela pour rendre générique la création d'un Objet utilisable dans le gameplay :
+\begin{itemize}
+\item Son nom : string \_name.
+\item Sa valeur : int \_value.
+\item Sa taille : int \_size.
+\item Son coût : int \_cost.
+\item Sa représentation physique : GameObject \_gameObject.
+\item Son script, contenant une unique fonction use(GameObject unit), qui permet de définir la manière dont celui-ci est utilisé par une unité : ItemScript \_itemScript.
+\end{itemize}
 \paragraph{}
 Notre objectif était de simplifier l'ajout de percepts et d'actions à une unité. La définition d'une classe par action et par percept nous semblait donc assez coûteuse nous avons donc étudié l'une des spécificités du C\#. Les type "delegate" propre au C\# dont la déclaration est semblable à  une signature de méthode. Elle a une valeur de retour et un nombre quelconque de paramètres de type quelconque.
 Nous l'avons donc utilisé afin d'encapsuler les méthodes correspondant aux actions et aux percepts et ce afin d'éviter la crétion de multiple classes.
@@ -397,6 +412,42 @@ _actions["ACTION_PICK"] = delegate () {
         };
 \end{lstlisting}
 
+\paragraph{}Ci-dessous, voici la première représentation du cerveau de l'unité. Le "Brain" a pour but de gérer le comportement de l'unité, c'est à dire de vérifier les instructions de celle-ci et de lui donner l'ordre de faire l'action possible ce tour-ci s'il en existe une possible. On peut donc voir le mécanisme présenté plus haut, la confirmation de la présence d'une action dans l'instruction ainsi que la vérification des percepts nécessaires à son exécution.
+\begin{lstlisting}[language={[Sharp]C},label={lst:firstBrainScript}, caption=  Première version de la classe Brain.cs]
+public class Brain : MonoBehaviour
+{
+    public ActionStructure[] _actions;
+    public InstructionScriptable[] _instructions;
+
+    void Update()
+    {
+        foreach(InstructionScriptable instr in _instructions)
+        {
+            Action actionPossible = this.actionPossible(instr._stringAction);
+            if (actionPossible != null && instr.verify(GetComponent<UnitManager>().GetComponent<PerceptManager>()._percepts))
+            {
+                actionPossible.Do();
+                break;
+            }
+        }
+    }
+
+    public Action actionPossible(string stringAct)
+    {
+        Action presence = null;
+        foreach (ActionStructure actStruc in _actions)
+        {
+            if (actStruc._name.Equals(stringAct))
+            {
+                presence = actStruc._action;
+            }
+        }
+        return presence;
+    }
+
+}
+\end{lstlisting}
+
 \paragraph{}Afin de mener à bien le développement du comportement des unités, on a aussi dû créer une carte plus légère et plus petite que celle de l'ancienne génération nous permettant d'effectuer nos tests.
 
 \begin{figure}[!h]
@@ -405,7 +456,7 @@ _actions["ACTION_PICK"] = delegate () {
 \caption{Aperçu de la premier carte de test.}
 \end{figure}
 
-\paragraph{}
+\paragraph{}Sur cette scène a été intruduit le déplacement de la camera principale (MainCamera) calculé en fonction de la position moyenne des unités. Cela permet de donner un effet dynamique à la scène.
 
 Cette phase a duré .....
 
