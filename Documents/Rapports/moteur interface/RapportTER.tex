@@ -789,16 +789,10 @@ public class MovableCharacter : MonoBehaviour
 
 
 \subsection{Fonctionalités finales.}
-creation d'un jeu
-
 Mehdi
-
-\section{Amélioration possible}
-Mehdi et Maxime
-\subsection{Gestion des unités.}
-
-La gestion des unités de manière générique nous a poussé à réfléchir aux éléments minimum définissant celle-ci.
-Elles nécessitent donc 6 scripts de base : 
+\subsubsection{Création d'un jeu.}
+\paragraph{Création des unités.}
+La création des unités nécessite 6 scripts au minimum : 
 \begin{itemize}
 \item Brain
 \item Stats
@@ -807,8 +801,22 @@ Elles nécessitent donc 6 scripts de base :
 \item ActionNonTerminales
 \item Messages
 \end{itemize}
+\paragraph{Gestion des scènes.}
+Une scène, comme l'unité, détient elle aussi des composants minimums, ceux-ci ont été regroupé dans un GameObject appelé "MetabotNecessary".
+Ils se résument en 8 scripts:
+\begin{itemize}
+\item MainCamera : la caméra principale.
+\item TurnManager : s'occupe de la gestion des tours.
+\item RessourceGenerator : un générateur de ressource.
+\item MinimapCamera : camera permettant l'affichage de la minimap.
+\item ItemManager : gère le comportement des objets.
+\item HUD : canvas d'affichage tête haute.
+\item UnitManager : gestionnaire d'unité qui comporte les 4 equipes.
+\end{itemize}
 
-\subsubsection{Le corps}
+\section{Modélisation 3D, sons et animation.}
+
+\subsection{Les unités Warbot.}
 
 Le corps de l'unité correspond à son modèle 3D, et son GameObejct Collider associé.
 
@@ -827,30 +835,7 @@ Pour le jeu warbot nous avons réaliser plusieurs modèles 3D.
 [Photo]
 [Descriptif]
 \end{itemize}
-
-\subsubsection{L'esprit}
-Afin de pouvoir fonctionner, les unités possede 3 parties distinctes: 
-\begin{itemize}
-\item La gestion des actions possibles.
-\item La gestion des perceptions.
-\item L'identité propre de l'unité.
-\end{itemize}
-
-\subsection{Gestion des scènes.}
-Une scène, comme l'unité, détient elle aussi des composants minimums, ceux-ci ont été regroupé dans un GameObject appelé "MetabotNecessary".
-Ils se résument en 8 scripts:
-\begin{itemize}
-\item MainCamera : la caméra principale.
-\item TurnManager : s'occupe de la gestion des tours.
-\item RessourceGenerator : un générateur de ressource.
-\item MinimapCamera : camera permettant l'affichage de la minimap.
-\item ItemManager : gère le comportement des objets.
-\item HUD : canvas d'affichage tête haute.
-\item UnitManager : gestionnaire d'unité qui comporte les 4 equipes.
-\end{itemize}
-
-\subsection{Les différentes maps}
-
+\subsection{Les différentes maps.}
 Nous avons réaliser un ensemble de cinq maps chacune ayant son thème et ses particularités :
 \begin{itemize}
 \item Mountain
@@ -868,6 +853,18 @@ Nous avons réaliser un ensemble de cinq maps chacune ayant son thème et ses pa
 \item Simple
 [Photo]
 [Descriptif]
+\end{itemize}
+
+\section{Amélioration possible}
+L’objectif de ce projet était de refaire rendre générique la version Warbot Unity réalisée l'an dernier.
+Le but étant de facilité la création sur le moteur de jeu Unity, de jeux de stratégie basés sur le paradigme de  la programmation orientée agent afin de permettre un véritable apprentissage de ses différentes notions. En ce sens, notre objectif a été rempli, mais les améliorations possibles pour les années à
+venir sont multiples :
+\begin{itemize}
+\item perfectionner la gestion des collisions des unités.
+\item ajouter de nouvelles unités au mode Warbot (Tourelles, Ingénieur et RocketLauncher).
+\item créer de nouveaux percepts, de nouvelles actions terminales et non terminales.
+\item ajouter la possibilité de créer et supprimer des unités directement en jeu.
+\item 
 \end{itemize}
 
 \newpage
