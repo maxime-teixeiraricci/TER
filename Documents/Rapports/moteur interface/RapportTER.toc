@@ -15,7 +15,7 @@
 \contentsline {chapter}{\numberline {2}WarBot: Le mode par d\IeC {\'e}faut}{7}
 \contentsline {section}{\numberline {2.1}Principe}{7}
 \contentsline {part}{II\hspace {1em}R\IeC {\'e}alisation du projet}{8}
-\contentsline {chapter}{\numberline {3}Partie "Moteur"}{9}
+\contentsline {chapter}{\numberline {3}Partie Moteur}{9}
 \contentsline {section}{\numberline {3.1}\IeC {\'E}tat de l'art de l'ancien projet.}{9}
 \contentsline {paragraph}{}{9}
 \contentsline {section}{\numberline {3.2}Refonte du noyau.}{10}
@@ -28,35 +28,41 @@
 \contentsline {paragraph}{}{12}
 \contentsline {subsection}{\numberline {3.2.1}Retour aux bases.}{13}
 \contentsline {paragraph}{}{13}
+\contentsline {paragraph}{}{13}
+\contentsline {paragraph}{}{14}
+\contentsline {paragraph}{}{14}
+\contentsline {paragraph}{}{14}
 \contentsline {paragraph}{}{14}
 \contentsline {paragraph}{}{14}
 \contentsline {paragraph}{}{14}
 \contentsline {paragraph}{}{15}
-\contentsline {paragraph}{}{18}
-\contentsline {paragraph}{}{18}
+\contentsline {paragraph}{}{15}
+\contentsline {paragraph}{}{16}
 \contentsline {paragraph}{}{18}
 \contentsline {paragraph}{}{18}
 \contentsline {paragraph}{}{18}
 \contentsline {paragraph}{}{18}
 \contentsline {paragraph}{}{19}
-\contentsline {paragraph}{}{20}
+\contentsline {paragraph}{}{19}
 \contentsline {paragraph}{}{20}
 \contentsline {paragraph}{}{21}
-\contentsline {subsection}{\numberline {3.2.2}Int\IeC {\'e}gration dans le projet.}{21}
-\contentsline {subsubsection}{La phase d'int\IeC {\'e}gration.}{21}
-\contentsline {paragraph}{Le lien avec l\IeC {\textquoteright }interpr\IeC {\'e}teur}{21}
+\contentsline {paragraph}{}{21}
+\contentsline {paragraph}{}{21}
+\contentsline {subsection}{\numberline {3.2.2}Int\IeC {\'e}gration dans le projet.}{22}
+\contentsline {subsubsection}{La phase d'int\IeC {\'e}gration.}{22}
+\contentsline {paragraph}{Le lien avec l\IeC {\textquoteright }interpr\IeC {\'e}teur}{22}
 \contentsline {paragraph}{}{22}
 \contentsline {paragraph}{}{22}
-\contentsline {paragraph}{}{22}
-\contentsline {paragraph}{}{22}
+\contentsline {paragraph}{}{23}
+\contentsline {paragraph}{}{23}
 \contentsline {paragraph}{}{23}
 \contentsline {subsubsection}{R\IeC {\'e}solution des probl\IeC {\`e}mes.}{23}
 \contentsline {subsection}{\numberline {3.2.3}Am\IeC {\'e}liorations des fonctionnalit\IeC {\'e}s.}{23}
 \contentsline {subsubsection}{Actions non-terminales}{23}
 \contentsline {subsubsection}{Ajout de fonctionnalit\IeC {\'e}s des instructions.}{23}
 \contentsline {paragraph}{}{23}
-\contentsline {paragraph}{}{23}
-\contentsline {paragraph}{1. N\IeC {\'e}gation.}{23}
+\contentsline {paragraph}{}{24}
+\contentsline {paragraph}{1. N\IeC {\'e}gation.}{24}
 \contentsline {subparagraph}{}{24}
 \contentsline {subparagraph}{}{24}
 \contentsline {subparagraph}{}{24}
@@ -65,26 +71,24 @@
 \contentsline {paragraph}{}{25}
 \contentsline {paragraph}{3. Instruction par d\IeC {\'e}faut.}{25}
 \contentsline {paragraph}{4. Cas exceptionnel.}{25}
-\contentsline {subsubsection}{Optimisation du temps de chargement}{25}
-\contentsline {paragraph}{}{25}
-\contentsline {subparagraph}{1. La gestion des actions des unit\IeC {\'e}s.}{25}
+\contentsline {subsubsection}{Optimisation du temps de chargement}{26}
+\contentsline {paragraph}{}{26}
+\contentsline {subparagraph}{1. La gestion des actions des unit\IeC {\'e}s.}{26}
 \contentsline {subparagraph}{2. \textit {ObjectPool}, les "bassins" d'objets.}{27}
-\contentsline {subparagraph}{}{27}
+\contentsline {subparagraph}{}{28}
 \contentsline {subparagraph}{3. Simplification des collisions.}{28}
 \contentsline {subparagraph}{}{29}
 \contentsline {subparagraph}{}{29}
-\contentsline {subsubsection}{Am\IeC {\'e}lioration des collisions.}{29}
-\contentsline {paragraph}{}{29}
+\contentsline {subsubsection}{Am\IeC {\'e}lioration des collisions.}{30}
+\contentsline {paragraph}{}{30}
 \contentsline {subparagraph}{}{30}
-\contentsline {subsection}{\numberline {3.2.4}Fonctionalit\IeC {\'e}s finales.}{30}
-\contentsline {section}{\numberline {3.3}Am\IeC {\'e}lioration possible}{30}
-\contentsline {subsection}{\numberline {3.3.1}Gestion des unit\IeC {\'e}s.}{30}
+\contentsline {subsection}{\numberline {3.2.4}Fonctionalit\IeC {\'e}s finales.}{31}
+\contentsline {section}{\numberline {3.3}Am\IeC {\'e}lioration possible}{31}
+\contentsline {subsection}{\numberline {3.3.1}Gestion des unit\IeC {\'e}s.}{31}
 \contentsline {subsubsection}{Le corps}{31}
 \contentsline {subsubsection}{L'esprit}{31}
-\contentsline {subsection}{\numberline {3.3.2}Gestion des sc\IeC {\`e}nes.}{31}
+\contentsline {subsection}{\numberline {3.3.2}Gestion des sc\IeC {\`e}nes.}{32}
 \contentsline {subsection}{\numberline {3.3.3}Les diff\IeC {\'e}rentes maps}{32}
-\contentsline {section}{\numberline {3.4}Fonctionnalit\IeC {\'e}s}{32}
-\contentsline {section}{\numberline {3.5}Am\IeC {\'e}lioration possible}{32}
 \contentsline {chapter}{\numberline {4}Partie Interface Graphique}{33}
 \contentsline {section}{\numberline {4.1}Pr\IeC {\'e}sentation}{33}
 \contentsline {section}{\numberline {4.2}Etude de l'ancienne interface}{33}
@@ -103,32 +107,34 @@
 \contentsline {subsubsection}{Choisir les \IeC {\'e}quipes}{39}
 \contentsline {subsubsection}{Bouton "Reload Team"}{40}
 \contentsline {subsubsection}{Choisir carte de jeu}{40}
-\contentsline {subsubsection}{Choisir nombre de d\IeC {\'e}part de chaque unit\IeC {\'e}}{40}
+\contentsline {subsubsection}{Choisir nombre de d\IeC {\'e}part de chaque unit\IeC {\'e}}{41}
 \contentsline {subsubsection}{Barre de Chargement}{41}
-\contentsline {subsection}{\numberline {4.3.2}Menu des Param\IeC {\`e}tres}{41}
-\contentsline {subsubsection}{Changer le Volume de la musique}{41}
-\contentsline {subsubsection}{Choisir nombre de ressource maximum dans le jeu}{41}
-\contentsline {subsubsection}{Choisir le mode de jeu}{41}
-\contentsline {subsubsection}{Choisir la langue}{41}
-\contentsline {subsubsection}{Bouton Retour}{41}
-\contentsline {subsubsection}{Bouton Valider}{41}
-\contentsline {subsubsection}{Bouton Quitter}{42}
-\contentsline {subsection}{\numberline {4.3.3}Editeur de Comportement}{42}
-\contentsline {paragraph}{}{42}
-\contentsline {paragraph}{}{42}
-\contentsline {subsubsection}{ToolBox}{43}
-\contentsline {subsubsection}{S\IeC {\'e}lection des \IeC {\'e}quipes / unit\IeC {\'e}s}{46}
-\contentsline {subsubsection}{Informations sur l'unit\IeC {\'e}}{47}
-\contentsline {subsubsection}{Liste des pi\IeC {\`e}ces}{47}
-\contentsline {subsubsection}{Editeur}{48}
-\contentsline {subsection}{\numberline {4.3.4}\IeC {\'E}l\IeC {\'e}ment dans le jeu}{50}
-\contentsline {subsubsection}{R\IeC {\'e}glage du volume du son}{50}
-\contentsline {part}{III\hspace {1em}L'avenir du projet}{52}
-\contentsline {chapter}{\numberline {5}Am\IeC {\'e}lioration possible}{53}
-\contentsline {chapter}{\numberline {6}Bugs}{54}
-\contentsline {part}{IV\hspace {1em}Annexe}{55}
-\contentsline {chapter}{\numberline {7}Scripts Remarquables}{56}
-\contentsline {section}{\numberline {7.1}ObjectPool}{57}
-\contentsline {section}{\numberline {7.2}MovableCharacter}{59}
-\contentsline {section}{\numberline {7.3}Brain}{61}
-\contentsline {section}{\numberline {7.4}PerceptUnit}{65}
+\contentsline {subsection}{\numberline {4.3.2}Menu des Param\IeC {\`e}tres}{42}
+\contentsline {subsubsection}{Changer le Volume de la musique}{42}
+\contentsline {subsubsection}{Choisir le nombre de ressource maximales dans le jeu}{42}
+\contentsline {subsubsection}{Choisir le mode de jeu}{42}
+\contentsline {subsubsection}{Choisir la langue}{43}
+\contentsline {subsubsection}{Bouton Retour}{44}
+\contentsline {subsubsection}{Bouton Valider}{44}
+\contentsline {subsubsection}{Bouton Quitter}{45}
+\contentsline {subsection}{\numberline {4.3.3}Editeur de Comportement}{45}
+\contentsline {paragraph}{}{45}
+\contentsline {paragraph}{}{45}
+\contentsline {paragraph}{}{47}
+\contentsline {subsubsection}{ToolBox}{48}
+\contentsline {subsubsection}{S\IeC {\'e}lection des \IeC {\'e}quipes / unit\IeC {\'e}s}{52}
+\contentsline {subsubsection}{Informations sur l'unit\IeC {\'e}}{52}
+\contentsline {subsubsection}{Liste des pi\IeC {\`e}ces}{52}
+\contentsline {subsubsection}{Editeur}{54}
+\contentsline {subsection}{\numberline {4.3.4}\IeC {\'E}l\IeC {\'e}ment dans le jeu}{56}
+\contentsline {subsubsection}{R\IeC {\'e}glage du volume du son}{56}
+\contentsline {part}{III\hspace {1em}L'avenir du projet}{57}
+\contentsline {chapter}{\numberline {5}Am\IeC {\'e}lioration possible}{58}
+\contentsline {chapter}{\numberline {6}Bugs}{59}
+\contentsline {part}{IV\hspace {1em}Annexe}{60}
+\contentsline {chapter}{\numberline {7}Scripts Remarquables}{61}
+\contentsline {section}{\numberline {7.1}ObjectPool}{62}
+\contentsline {section}{\numberline {7.2}MovableCharacter}{64}
+\contentsline {section}{\numberline {7.3}Brain}{66}
+\contentsline {section}{\numberline {7.4}PerceptUnit}{70}
+\contentsline {section}{\numberline {7.5}LoadFile}{73}
