@@ -856,7 +856,7 @@ Malgré tous nos efforts, il persiste toujours un soucis d'optimisation ......
 %%%
 \chapter{Partie Interface Graphique}
 \section{Présentation}
-La partie Interface Graphique fait le lien entre l'utilisateur, et toutes les fonctionnalités existantes dans le moteur. Elle comprend principalement l'habillage visuel des éléments avec lequel l'utilisateur va interagir pour jouer au jeu. MetaBot étant un jeu pour "programmeur", le joueur interagit surtout avec le menu principal et l'éditeur de comportement afin de créer des équipes pour pouvoir les faire s'affronter. \newline
+La partie Interface Graphique fait le lien entre l'utilisateur, et toutes les fonctionnalités existantes dans le moteur. Elle comprend principalement l'habillage visuel des éléments avec lequel l'utilisateur va interagir pour jouer au jeu. MetaBot étant un jeu pour "programmeur", le joueur interagit surtout avec le menu principal et l'éditeur de comportement, afin de créer des équipes pour pouvoir les faire s'affronter. \newline
 
 
 \section{Etude de l'ancienne interface}
@@ -864,7 +864,7 @@ L'ancienne interface, sur laquelle nous avons du baser notre travail, se décomp
 \begin{itemize}
 \item\textbf{Le menu principal}
 \item\textbf{L'éditeur de comportement}
-\item\textbf{La séléction d'équipes}
+\item\textbf{La sélection d'équipes}
 \end{itemize}
 \subsection{Menu Principal}
 Le menu principal, à première vue, est assez classique. Quatre options s'offrent à nous :
@@ -897,7 +897,7 @@ De plus, il permet de revenir au menu principal, de lancer une nouvelle partie, 
 \end{figure}
 
 \item\textbf{L'éditeur en lui même}\newline
-Nous avons maintenant devant nous un éditeur sobre. En haut à gauche se trouvent le nom de l'équipe courante, ainsi que l'untié sur laquelle on va travailler.\newline
+Nous avons maintenant devant nous un éditeur sobre. En haut à gauche se trouve le nom de l'équipe courante, ainsi que l’unité sur laquelle on va travailler.\newline
 Juste en dessous, une liste de primitives, utiles à la création de comportement.\newline
 Et enfin, à droite, la zone d'édition.
 
@@ -931,26 +931,26 @@ Les fonctionnalités primordiales au bon fonctionnement du jeu sont disponibles 
 \end{itemize}
 
 Ceci dit, nous souhaitions revoir quelques points. \newline
-Premièrement, nous voulions que tout soit le plus intuitif possible pour l'utilisateur. Il fallait que toutes les fonctionnalités proposées soient accessibles facilement. Par exemple, la création d'équipe n'est pas évidente à trouver. Il faut passer par un menu "caché" (appuyer sur la touche "ESC" depuis l'éditeur de comportement) pour pouvoir y accéder. Nous voulions éviter ce genre de problèmes. Des petits soucis d'optimisations étaient également présents, tel que la difficulté d'aimanter deux blocs facilement. Si on ne posait pas le bloc à un endroit précis, elle disparaissait. Il fallait alors la sélectionner à nouveau dans la liste de primitives, et retenter l'opération. A force, cela peut vite devenir redondant.
+Premièrement, nous voulions que tout soit le plus intuitif possible pour l'utilisateur. Il fallait que toutes les fonctionnalités proposées soient accessibles facilement. Par exemple, la création d'équipe n'est pas évidente à trouver. Il faut passer par un menu "caché" (appuyer sur la touche "ESC" depuis l'éditeur de comportement) pour pouvoir y accéder. Nous voulions éviter ce genre de problèmes. Des petits soucis d'optimisations étaient également présents, tel que la difficulté d'aimanter deux blocs. Si on ne posait pas le bloc à un endroit précis, il disparaissait. Il fallait alors le sélectionner à nouveau dans la liste de primitives, et retenter l'opération. A force, cela peut vite devenir redondant.
 \newline
 \smallbreak
-Bien que l'éditeur soit fonctionnel, il nous paraissait assez austère, pas suffisamment "User Friendly". L'utilisateur passe la majeur partie de son temps sur cet écran. Il fallait donc qu'il soit le plus agréable à l’œil possible, pour ne pas lasser l'utilisateur, et lui donner envie de passer du temps dessus.\newline \smallbreak
+Bien que l'éditeur soit fonctionnel, il nous paraissait assez austère, pas suffisamment "User Friendly". L'utilisateur passe la majeur partie de son temps sur cet écran. Il fallait donc qu'il soit le plus agréable  possible à l’œil, pour ne pas lasser l'utilisateur, et lui donner envie de passer du temps dessus.\newline \smallbreak
 Enfin, l'absence totale de paramètres nous a semblé dommage. On ne peut qu'activer ou désactiver le son, mais pas régler le volume. L'utilisateur ne sait pas comment gérer les équipes qui vont participer, ainsi que leur nombre d'unités, avant d'avoir cliqué sur Nouvelle Partie. Ce comportement ne parait pas intuitif. L'ajout d'une gestion des paramètres nous semblait donc indispensable.
 
 Nous avons donc décidés de revoir l'organisation de l'interface depuis le début. Adapter cette interface n'aurait pas été justifié, car trop de changements étaient à prévoir, tant sur le point technique que graphique.\newline
-Nous souhaitions proposer une cohésion graphique entre chaque écran, et le jeu lui-même.
+Nous souhaitions également proposer une cohésion graphique entre chaque écran, et le jeu lui-même.
 
 
 \section{Nouvelle Interface}
-Nous devions repartir d'une toute nouvelle interface, tout en s'insiprant de l'ancienne. Comme dit précédemment, nous voulions éviter au maximum les écrans intermédiaires qui n'étaient pas indispensables.
-Nous avons donc décidé de mettre en place deux écrans : le menu principal,  et l'éditeur de comportement. Dans le menu principal se trouve une fenêtre "pop-up" dédiée à la configuration des paramètres. D'autres fenêtres "pop-up" peuvent apparaître, mais elles n'ont pour but que d'effectuer une vérification de l'action émise par l'utilisateur. Par exemple, confirmer la suppression d'une équipe, confirmer la fermeture du jeu, etc...
+Nous devions repartir d'une toute nouvelle interface, tout en s'inspirant de l'ancienne. Comme dit précédemment, nous voulions éviter au maximum les écrans intermédiaires qui n'étaient pas indispensables.
+Nous avons donc décidé de mettre en place deux écrans : le menu principal,  et l'éditeur de comportement. Dans le menu principal se trouve une fenêtre "pop-up" dédiée à la configuration des paramètres. D'autres fenêtres "pop-up" peuvent apparaître, mais elles n'ont que pour but d'effectuer une vérification de l'action émise par l'utilisateur. Par exemple, confirmer la suppression d'une équipe, confirmer la fermeture du jeu, etc...
 
 \subsection{Menu Principal}
 Le menu principal donne accès aux options majeures du jeu. Ce menu doit contenir toutes les fonctionnalités dont l'utilisateur peut avoir besoin pour gérer le lancement d'une partie, sans avoir à accéder à l'éditeur de comportement.
 Cela comporte donc les paramètres de la partie, le choix des équipes, du nombre d'unités, de la carte, etc... \newline
 Passons en revue tous les éléments présents sur cet écran.
 \subsubsection{Lancer une Partie}
-Ce bouton permet de lancer une partie du jeu MetaBot. Le lancement de la partie prend en compte le mode de jeu sélectionné, les équipes choisies, le nombre de chaque unités en début de partie, le nombre de ressources maximum (nombre de ressource présentes en jeu au même moment), la carte de jeu. Un script rattaché à ce bouton va donc se charger d'aller récupérer toutes ces informations stockées dans les différents "GameObject" de notre scène.
+Ce bouton permet de lancer une partie du jeu MetaBot. Le lancement de la partie prend en compte le mode de jeu sélectionné, les équipes choisies, le nombre de chaque unités en début de partie, le nombre de ressources maximum (nombre de ressource présentes en jeu au même moment), et la carte de jeu. Un script rattaché à ce bouton va donc se charger d'aller récupérer toutes ces informations stockées dans les différents "GameObject" de notre scène.
 
 \begin{lstlisting}[language={[Sharp]C},label={lst:StartGame()}, caption= Extrait du code de PlayButton.cs]
 
@@ -985,12 +985,12 @@ public void StartGame()
 
 
 \subsubsection{Bouton Éditeur de Comportement}
-Ce bouton permet d'accéder à l'éditeur de comportement, qui permettra à l'utilisateur, entre autrex, de créer et/ou modifier le comportement de ses équipes.
+Ce bouton permet d'accéder à l'éditeur de comportement, qui permettra à l'utilisateur, entre autres, de créer et/ou modifier le comportement de ses équipes.
 \subsubsection{Bouton Paramètres}
 Ce bouton va afficher la fenêtre "pop-up" qui contient tous les paramètres du jeu.
 \subsubsection{Choisir le nombre d'équipe}
 Nous avons la possibilité de choisir le nombre d'équipes participant à la partie. Les valeurs sont dans un menu déroulant et vont de 2 à 4. Sa valeur courante sera récupérée par le script StartGame() (cf Listing 4.1).\newline
-En fonction du nombre d'équipes choisi, le nombre de cadres d'équipe changera.
+En fonction du nombre d'équipes choisies, le nombre de cadres d'équipe changera.
 \subsubsection{Choisir les équipes}
 Dans le cadre de chaque équipe se trouve un menu déroulant avec les noms de toutes les équipes présentes dans les fichiers du jeu. On peut donc en sélectionner une pour qu'elle participe à la prochaine bataille.
 Pour récupérer toutes les équipes existantes, nous allons chercher la liste comprenant le nom de toutes les équipes.
@@ -1008,7 +1008,7 @@ string team = GameObject.Find("GameManager").GetComponent<TeamManager>()._teams[
 [...]
 \end{lstlisting}
 \smallbreak
-De plus, à coté du nom de l'équipe, on retrouve aussi son score (ELO). Pour son affichage, nous récupérons le score associé à l'équipe courante. La couleur du score dépendra de sa valeur (rouge = score faible, bleu = score élevé)
+De plus, à coté du nom de l'équipe, on retrouve aussi son score (ELO). Pour son affichage, nous récupérons le score associé à l'équipe courante. La couleur du score dépendra de sa valeur. (rouge = score faible, bleu = score élevé)
 
 \begin{lstlisting}[language={[Sharp]C},label={lst:Change()}, caption= Extrait du code de TeamMenuHUD.cs]
 public void Change()
@@ -1036,7 +1036,7 @@ teams = new List<string>();
 \end{lstlisting}
 
 \subsubsection{Choisir carte de jeu}
-On peut directement choisir le lieu de la partie en cliquant sur les flèches de part et d'autre de l’aperçu de la carte. Il existe pour le moment cinq cartes: Moutain, Plain, Simple, Desolate et Garden.
+On peut directement choisir le lieu de la partie en cliquant sur les flèches de part et d'autre de l’aperçu de la carte. Il existe pour le moment cinq cartes: Moutain, Plain, Simple, Desolate et Garden. Chaque changement de carte mettra à jour le nom affiché, ainsi que le visuel de l'aperçu de la carte. Pour cela, il suffit de récupérer le nom de la carte sélectionnée, ainsi que son viseul associé, puis de les afficher.
 \subsubsection{Choisir nombre de départ de chaque unité}
 En dessous de l’aperçu de la carte, il y a les noms des unités existantes. Sous ces noms, le chiffre indique le nombre de ce type d'unité présent au lancement de la partie. On peut incrémenter ou décrémenter ce chiffre à l'aide des boutons "+" et "-" à coté de celui-ci.
 \subsubsection{Barre de Chargement}
@@ -1046,7 +1046,7 @@ Quand on lance une partie, une barre de chargement apparaît et indique l'avance
 \subsubsection{Changer le Volume de la musique}
 Ce slider indique le niveau sonore de la musique. On peut le modifier en cliquant dessus et en déplaçant la valeur de 0 jusqu’à 100. 0 correspond à un arrêt de la musique et 100 au volume maximal. De plus, le volume sonore dans le menu est le même dans l'éditeur de comportement et dans le jeu lui même.
 \subsubsection{Choisir nombre de ressource maximum dans le jeu}
-Dans cette case on peut entrer un chiffre entier qui indiquera le nombre maximum de ressource présentes simultanément en jeu.
+Dans cette case, on peut entrer un chiffre entier qui indiquera le nombre maximum de ressources présentes simultanément en jeu.
 \subsubsection{Choisir le mode de jeu}
 Ce menu déroulant permet de choisir le mode de jeu de la prochaine partie. Il y a actuellement deux modes, le mode MetaBot et le mode RessourceRace. Si le mode choisi est RessourceRace alors deux autres paramètres apparaissent:
 \begin{itemize}
@@ -1054,11 +1054,11 @@ Ce menu déroulant permet de choisir le mode de jeu de la prochaine partie. Il y
 \item le nombre de ressources à atteindre pour gagner.
 \end{itemize}
 \subsubsection{Choisir la langue}
-Les boutons en forme de drapeau indiquent les langues disponibles pour le jeu. Pour changer de langue il suffit d'appuyer sur le drapeau voulut et de faire Valider les paramètres.
+Les boutons en forme de drapeau indiquent les langues disponibles pour le jeu. Pour changer de langue, il suffit d'appuyer sur le drapeau voulu et de cliquer sur "Valider".
 \subsubsection{Bouton Retour}
 Ce bouton permet de retourner à l'écran du menu principal.
 \subsubsection{Bouton Valider}
-Ce bouton valide les paramètres définit au dessus et revient au menu principal en ayant appliquer ces paramètres.
+Ce bouton valide les paramètres définis précédemment et revient au menu principal en ayant appliqué ces paramètres.
 \subsubsection{Bouton Quitter}
 Ce bouton ouvre une boite de dialogue demandant à l'utilisateur s'il veut vraiment quitter le jeu. Il peut ainsi choisir de revenir sur le menu principal ou fermer le jeu.
 
@@ -1070,7 +1070,7 @@ Pour la refonte de l'éditeur de comportement, ce qui nous a paru le plus optima
 Nous avons commencé par schématiser deux interfaces potentielles.
 \begin{figure}[!h]
 	\centering
-		\includegraphics[scale=0.25]{ConceptionGraphique1}
+		\includegraphics[scale=0.35]{ConceptionGraphique1}
 	\caption{Première ébauche}
 \end{figure}
 
@@ -1083,7 +1083,7 @@ Nous avons donc décidé de partir sur ce modèle.
 
 \begin{figure}[!h]
 	\centering
-		\includegraphics[scale=0.25]{ConceptionGraphique2}
+		\includegraphics[scale=0.35]{ConceptionGraphique2}
 	\caption{Seconde ébauche}
 \end{figure}
 
@@ -1093,16 +1093,16 @@ Nous avons donc décidé de partir sur ce modèle.
 \subsubsection{ToolBox}
 \begin{enumerate}[label=\Alph*)]
 \item\textbf{Bouton Nouveau Comportement} \newline
-Ce bouton permet de vider le comportement de l'unité de l'équipe courante. Si on veut tout effacer sur l'unité où on est on appuie dessus au lieu de tout supprimer à la main.
+Ce bouton permet de commencer la création d'un nouveau comportement pour l'unité de l'équipe courante. Cela permet de repartir à zéro, lorsque notre comportement courant ne nous satisfait pas, et nous évite de devoir retirer chaque pièce manuellement.
 \item\textbf{Bouton Chargement Comportement} \newline
 Ce bouton permet de charger le comportement de l'unité actuellement sélectionnée dans le DropDown prévu à cet effet.
 La première chose à faire est d'effacer le comportement actuellement chargé, s'il existe.
 A l'aide du path, et du nom de l'équipe, nous allons pouvoir appeler une méthode présente dans l’interpréteur, pour transformer le fichier .xml correspondant à l'équipe courante, en un comportement, qui sera stocké dans un dictionnaire.\newline
-Nous allons ensuite récupérer la position de la pièce StartPuzzle, pour pouvoir placer les pièces correctement dans l'éditeur. Nous avons donc notre point de départ.\newline 
+Nous allons ensuite récupérer la position de la pièce "StartPuzzle", pour pouvoir placer les pièces correctement dans l'éditeur. Nous avons donc notre point de départ.\newline 
 Il ne reste plus qu'à placer les pièces. Nous allons donc récupérer la liste d'instructions associée à chaque unité, et placer chaque instruction dans leur ordre d'apparition. (Un "if" pour commencer, suivi de sa ou ses conditions, suivies d'une ou plusieurs actions)\newline
 Pour finir, on réinitialisera la scrollbar de l'éditeur, pour permettre à l'utilisateur de voir directement le début du comportement.
 \item\textbf{Bouton Sauvegarde du Comportement} \newline
-Ce bouton sauvegarde le comportement de l'unité de l'équipe courante. Si on change d'unité dans la même équipe mais sans sauvegarder, alors le comportement de l'unité précédente sera perdu.\newline
+Ce bouton sauvegarde le comportement de l'unité de l'équipe courante. Si l'on change d'unité dans la même équipe sans sauvegarder, alors le comportement de l'unité précédente sera perdu.\newline
 Voyons de plus près deux de ses fonctions primordiales au bon fonctionnement du script :
 \begin{itemize}
 \item\textbf{createBehavior()} :  \newline
@@ -1114,7 +1114,7 @@ Appelle la fonction behaviorToXml(), présente dans l'interpréteur, qui prend e
 \begin{lstlisting}[frame=single]
 public void createXML()
 {
-    //recuperation de l'unité actuellement traitée et de l'equipe
+    //récupération de l'unité actuellement traitée et de l'équipe
     string teamName = team.captionText.text;
     string unitName = unit.captionText.text;
     string path = Application.dataPath + "/StreamingAssets/" + Constants.teamsDirectory + Constants.gameModeWarBot;
@@ -1143,17 +1143,17 @@ public void Undo()
     if( cptObjects > 0 ) {
 		
         pieceToUndo = (GameObject)listPieces[cptObjects - 1];
-        // Si la pièce à undo supprimée est une pièce IF, on oublie pas de mettre à jour le compteur de pièces IF
+        // Si la pièce à "undo" est une pièce IF, on oublie pas de mettre à jour le compteur de pièces IF
         if (pieceToUndo.tag == "IfPuzzle") {
             cptIfPuzzle = numberIfPuzzle() - 1;
         }
-            // Si la pièce à undo est active alors on la masque, on l'ajoute à la liste redo et on met a jour le compteur d'objet
+            // Si la pièce à "undo" est active, alors on la masque, on l'ajoute à la liste redo et on met a jour le compteur d'objet
             if(pieceToUndo.activeSelf == true) {
             recoverList.Add(pieceToUndo);
             pieceToUndo.SetActive(false);
             cptObjects--;
         }
-        // Si la pièce à undo est inactive alors on l'active et on change sont ordre dans la liste des pièces
+        // Si la pièce à "undo" est inactive, alors on l'active et on change son ordre dans la liste des pièces
         else if(pieceToUndo.activeSelf == false) {
             pieceToUndo.SetActive(true);
             listPieces.Remove(pieceToUndo);
@@ -1167,7 +1167,7 @@ public void Undo()
 \item\textbf{Bouton "Redo"} \newline
 Permet de restituer une annulation préalablement faite. Lorsqu'on clique sur le bouton Annuler, on va conserver l'action annulée dans une liste, qui nous servira donc à la restituer lors d'un clic sur le bouton Redo.
 \begin{lstlisting}[frame=single]
-// Ré instantie la dernière pièce de la liste recoverList
+// Restitue la dernière pièce de la liste recoverList
 public void Redo()
 {
     if( recoverList.Count > 0 ) {
@@ -1183,7 +1183,7 @@ public void Redo()
 }
 \end{lstlisting}	
 \item\textbf{Bouton de retour au menu principal} \newline
-Ce bouton ramène l'utilisateur au menu principal. Avant de cliquer dessus il faut penser à bien sauvegarder le comportement en cours pour ne pas le perdre.
+Ce bouton ramène l'utilisateur au menu principal. Avant de cliquer dessus, il faut penser à bien sauvegarder le comportement en cours pour ne pas le perdre.
 \end{enumerate}
 
 
@@ -1197,7 +1197,7 @@ Ce menu déroulant permet de choisir l'équipe sur laquelle on veut travailler.
 \item\textbf{Choix de l'unité} \newline
 Ce menu déroulant permet de choisir l'unité de l'équipe sur laquelle on va opérer les changements de son comportement.
 \item\textbf{Bouton Création d'équipe} \newline
-Juste à droite des équipes se trouve un bouton en forme de croix, il permet de créer un nouvelle équipe. Si on appuie une boite de dialogue s'ouvre et nous demande le nom de la nouvelle équipe. Après avoir validé le nom, la boite de dialogue se ferme et la nouvelle équipe est présente dans le menu déroulant des équipes.
+Juste à droite des équipes se trouve un bouton en forme de "+", il permet de créer un nouvelle équipe. Si l'on clique dessus, une boite de dialogue s'ouvre et nous demande le nom de la nouvelle équipe. Après avoir validé le nom, la boite de dialogue se ferme et la nouvelle équipe est présente dans le menu déroulant des équipes.
 \item\textbf{Bouton Suppression d'équipe} \newline
 Ce bouton permet de supprimer définitivement l'équipe courante. Une boite de dialogue demandera confirmation.
 \end{enumerate}
@@ -1222,14 +1222,14 @@ C'est dans cette zone qu’apparaît la liste des éléments des catégories de 
 Un script contenant une méthode pour chaque type de pièces disponibles (Conditions, Actions, etc...), permet ce dynamisme. Voyons de plus près la gestion d'une des catégories de pièces (leur comportement est semblable).
 \begin{itemize}
 \item\textbf{UpdateCondition()} : Nous commençons par récupérer une structure UnitPerceptAction, contenant le nom d'une unité, ainsi que toutes les conditions, actions, et messages inhérents à l'unité.\newline
-A partir de là, nous pouvons créer, à l'aide du prefab correspondant, une pièce, avec le label contenu dans notre strucutre.
+A partir de là, nous pouvons créer, à l'aide du prefab correspondant, une pièce, avec le label contenu dans notre structure.
 Nous allons parcourir la structure pour créer toutes les pièces disponibles pour l'unité, et modifier leur placement, en leur ajoutant un vecteur, pour qu'elles ne se superposent pas.
 \begin{lstlisting}[frame=single]
 new Vector2(0, -button.GetComponent<RectTransform>().rect.height)+ deltaVect;
 \end{lstlisting}
 Dans cette fonction, nous nous occupons uniquement de la liste Conditions présente dans notre structure. Il y a une fonction pour chaque liste de la structure.
 \end{itemize}
-\item\textbf{createPuzzle.cs} : Lors de l'appel à ce script, nous récupérons le prefab et le label associé au type de pièce concerné. Par exemple, pour une pièce "Conditions", nous récupérerons le prefab des pièces "<Conditions">, ainsi qu'un label nommé "PERCEPT". Le traitement de ce label se fait dans le script ConditionEditorScript.cs.\newline
+\item\textbf{createPuzzle.cs} : Lors de l'appel à ce script, nous récupérons le prefab et le label associé au type de pièce concernée. Par exemple, pour une pièce "Conditions", nous récupérerons le prefab des pièces "<Conditions">, ainsi qu'un label nommé "PERCEPT". Le traitement de ce label se fait dans le script ConditionEditorScript.cs.\newline
 Nous plaçons ensuite la pièce créée 
 
 \begin{itemize}
@@ -1244,15 +1244,15 @@ if (puzzleClone.GetComponent<PuzzleScript>())
 }
 \end{lstlisting}
 
-Les pièces sont présentes sous forme de cases avec leur nom à l'intérieur (certaines possèdent même des menus déroulant pour choisir la valeur voulue une fois dans la zone d'édition). La couleur des pièces dépend de leur catégorie.
+Les pièces sont présentes sous forme de cases avec leur nom à l'intérieur (certaines possèdent des menus déroulant pour choisir la valeur voulue une fois dans la zone d'édition). La couleur des pièces dépend de leur catégorie.
 Les pièces peuvent être sélectionnées et déplacées dans la zone d'édition du comportement grâce au glissé/déposé (Drag \& Drop).
 \end{enumerate}
 
 \subsubsection{Editeur}
 \begin{enumerate}[label=\Alph*)]
 \item\textbf{Zone éditeur de comportement de l'unité et de l'équipe courante} \newline
-Dans cette zone arrivent les pièces venant de la zone de sélection. Elles se placent à l'aide du curseur de la souris sur une grille invisible. Si une pièce est valide, alors elle est colorée, sinon, elle est grise. Les pièces "IF" possèdent un cadenas dans le coin supérieur droit, il permet de déplacer, en plus de la pièce IF, tout les éléments valides qui lui sont rattachés (hors IF). Les pièces de contrôles sont considérées comme valides si elles sont placées en dessous d'autres pièces du même type ou en dessous de la pièce "Start".\newline
-Les autres pièces doivent se rattacher à des pièces de contrôle, en haut à droite pour les pièces Condition et en bas à droite pour les autres. Les pièces hors Contrôle sont ainsi valides lorsqu'elles sont au bon endroit, sur leur ligne, adjacente au contrôle, ou adjacente à une autre pièce du même type, valide. \newline \smallbreak
+Dans cette zone arrivent les pièces venant de la zone de sélection. Elles se placent à l'aide du curseur de la souris sur une grille invisible. Si une pièce est valide, alors elle est colorée, sinon, elle est grise. Les pièces "IF" possèdent un cadenas dans le coin supérieur droit. Il permet de déplacer, en plus de la pièce IF, tout les éléments valides qui lui sont rattachés (hors IF). Les pièces de contrôles sont considérées comme valides si elles sont placées en dessous d'autres pièces du même type ou en dessous de la pièce "Start".\newline
+Les autres pièces doivent se rattacher à des pièces de contrôle, en haut à droite pour les pièces Condition et en bas à droite pour les autres. Les pièces hors Contrôle sont ainsi valides lorsqu'elles sont au bon endroit, sur leur ligne, adjacentes au contrôle, ou adjacentes à une autre pièce du même type, valide. \newline \smallbreak
 
 Voyons les scripts permettant cette gestion.
 
@@ -1263,7 +1263,7 @@ Ce script s'occupe de la gestion du déplacement des pièces, ainsi que de leur 
 \item\textbf{OnMouseDrag()} : \newline
 Une fois qu'un clic a été fait sur une pièce, cette fonction s'occupe de mettre à jour les coordonnées de la pièce, de telle sorte qu'elles soient égales à celles du pointeur de la souris. Pour valider les nouvelles coordonnées de la pièce, il faut appeler la fonction OnMouseUp().
 \item\textbf{UpgradeGridPosition()} : \newline
-Lorsque le clic de la souris est relâché (OnMouseUp) il faut mettre à jour la position de la pièce dans l'éditeur.
+Lorsque le clic de la souris est relâché (OnMouseUp), il faut mettre à jour la position de la pièce dans l'éditeur.
 \begin{lstlisting}[frame=single]
 posGridX = Mathf.Max((int)GameObject.Find("Editeur").GetComponent<RectTransform>().rect.x / 
   (int)widthPuzzle, (int)Mathf.Round(GetComponent<RectTransform>().localPosition.x / widthPuzzle));
@@ -1275,11 +1275,11 @@ posGridY = Mathf.Max((int)GameObject.Find("Editeur").GetComponent<RectTransform>
 Cette fonction appelle la fonction UpdateGridPosition(), puis attribue à la pièce courante sa nouvelle position. Une fois cela fait, il faut vérifier que la nouvelle position de la pièce est toujours un emplacement valide, d'un point de vue comportement. La fonction appelle pour ça le script StartPuzzleScript.cs, que nous verrons plus bas.
 \end{itemize}
 \item\textbf{StartPuzzleScript.cs} : \newline
-Ce script va nous permettre de vérifier si une pièce "If" est bien placé en dessous de la pièce Start.
+Ce script va nous permettre de vérifier si une pièce "If" est bien placée en dessous de la pièce Start.
 
 \begin{itemize}
 \item\textbf{UpdateAllValidPuzzles()} : \newline
-Cette fonction, appelée dans ManageDragAndDrop.OnMouseUp() va nous servir à vérifier si la position de la pièce "If" est correcte. Pour commencer, nous passons la variable booléenne "isValid" de toutes les pièces à false, puis nous allons vérifier leur placement.\newline
+Cette fonction, appelée dans ManageDragAndDrop.OnMouseUp(), va nous servir à vérifier si la position de la pièce "If" est correcte. Pour commencer, nous passons la variable booléenne "isValid" de toutes les pièces à false, puis nous allons vérifier leur placement.\newline
 Pour se faire, nous allons appeler la fonction UpdatePuzzle() du script IfPuzzleScript.cs.\newline
 Ensuite, si la pièce Start a bel et bien une pièce "If" juste en dessous d'elle, alors on passe la valeur isValid du "If" à true.
 \end{itemize}
@@ -1296,7 +1296,7 @@ if (currentGridPos + new Vector2(1,0) == puzzleGridPos && typePuzzle == PuzzleSc
 
 \smallbreak
 Cela nous permettra, dans UpdatePuzzle, de savoir que nous avons une pièce Condition placée à notre droite, sur la bonne ligne.
-Le comportement des fonctions UpdateIfPuzzle() et UpdateActPuzzle se comportent similairement. Le seul changement est la place dans l'éditeur. Une pièce "If" devra être située directement en dessous de notre "If" courant, et une pièce Action / Action non terminale / Message devra se trouver directement à droite de notre pièce "If", sur sa deuxième ligne.
+Le comportement des fonctions UpdateIfPuzzle() et UpdateActPuzzle est similaire. Le seul changement est la place dans l'éditeur. Une pièce "If" devra être située directement en dessous de notre "If" courant, et une pièce Action / Action non terminale / Message devra se trouver directement à droite de notre pièce "If", sur sa deuxième ligne.
 \item\textbf{UpdatePuzzle()} : \newline
 Cette fonction récupère les pièces adjacentes à notre pièce actuelle, à l'aide des scripts UpdateIfPuzzle(), UpdateCondPuzzle, UpdateActPuzzle(). Il met ensuite à jour les valeurs des pièces adjacentes, à savoir leur variable isValid, ainsi que leur variable NextPuzzle, qui leur permet de savoir quelle pièce leur est adjacente.
 
@@ -1307,7 +1307,7 @@ Cette fonction récupère les pièces adjacentes à notre pièce actuelle, à l'
 
 \subsection{Élément dans le jeu}
 \subsubsection{Réglage du volume du son}
-En bas à droite de la fenêtre de jeu se trouve une icône de son et un slider. Le slider permet, comme dans le menu des paramètres, de modifier le volume du son. L’icône sert de bouton; si on le presse, le son passe à 0 et l’icône devient barrée. Si l'on appuie de nouveau, il redevient classique, et le son est restitué à sa valeur précédente.
+En bas à droite de la fenêtre de jeu se trouve une icône de son et un slider. Le slider permet, comme dans le menu des paramètres, de modifier le volume du son. L’icône sert de bouton; si on le presse, le son passe à 0 et l’icône devient barrée. Si l'on appuie de nouveau, elle redevient classique, et le son est restitué à sa valeur précédente.
 
 
 \newpage
