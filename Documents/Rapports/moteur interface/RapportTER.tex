@@ -158,20 +158,32 @@ Dans cette section, nous allons développer la notion d'agent dans un système m
 \paragraph{Représentation et simulation}Ce genre de système permet, en créant des comportements d'agents simple, la simulation de société plus complexe. Ainsi, on peut étudier les comportement globales des entités selon ce que l'on veut observer.
 \paragraph{Les système-multi agents dans de multiples domaines.} Les systèmes multi-agents sont utilisées dans de nombreux domaines, notamment dans les jeux vidéos et le cinéma. Dans ces domaines, les systèmes multi-agents  sont utilisées pour représenter des mouvement de foules avec des comportement très simples, ou, dans le cas du jeu vidéo, permettre de créer des comportements aux personnages non joueurs pour les rendre plus intéressant pour le joueurs.
 
-\subsection{Représentation dans le projet.}
-\paragraph{}Les systèmes multi-agents sont utilisées dans de nombreux domaines, notamment dans les jeux vidéos et le cinéma. Dans ces domaines, les systèmes multi-agents  sont utilisées pour représenter des mouvement de foules avec des comportement très simples, ou, dans le cas du jeu vidéo, permettre de créer des comportements aux personnages non joueurs pour les rendre plus intéressant pour le joueurs.
 
-\newpage
+\subsection{Représentation dans le projet}
 
-\chapter{WarBot: Le mode par défaut}
+\paragraph{WarBot: Le mode par défaut}
+\paragraph{}
 \begin{figure}[h]
-\centering
-\includegraphics[scale=0.7]{interface-warbot3}
-\caption{WarBot, la version Java.}
+    \begin{minipage}[c]{.46\linewidth}
+        \centering
+        \includegraphics[scale=0.45]{interface-warbot3}
+        \caption{WarBot, la version Java.}
+    \end{minipage}
+    \hfill%
+    \begin{minipage}[c]{.46\linewidth}
+        \centering
+        \includegraphics[scale=0.45]{interface-warbot3}
+        \caption{WarBot, la version Unity.}
+    \end{minipage}
 \end{figure}
+\paragraph{}
+\subsubsection{Warbot Java en quelques mots}
+Dans WarBot, deux équipes se battent sur un terrain pour les ressources afin de survivre, d'éliminer l'autre équipe et d’être la dernière en vie. Des ressources apparaissent sur la carte et peuvent être converties en unités ou en soin.
+\newline Une équipe est composé d'un ensemble de sept unités :  la WarBase (base), le WarExplorer (explorateur), le WarEngineer (ingénieur), le WarLight (char léger), le WarHeavy (char lourd), le RocketLauncher (lance-missile) et la Turret (tourelle). 
+\newline Le joueur doit programmé le comportement de son équipe, en particulier une architecture de subsomption ou une machine à état finie peuvent être développées dans ce but.
 
-\section{Principe}
-Dans WarBot, deux à quatre équipes se battent sur un terrain pour les ressources afin de survivre et d'éliminer les autres équipes et d’être la dernière ne vie. Des ressources apparaissent sur la carte et peuvent être converties en unités ou en soin.
+\subsubsection{Différences avec Warbot Unity}
+Sur notre version actuelle de Warbot Unity, jusqu'à quatre équipes peuvent combattre ensemble pour leur survie. Quatre unités sont disponibles : la Base, l'Explorer, le Light et le Heavy, pour ce qui est de la définition du comportement, seule l'architecture de subsomption est disponible.
 
 \newpage
 \part{Réalisation du projet}
@@ -545,6 +557,7 @@ public class ActionUnit : ActionCommon
 Les listings \ref{lst:ActionScript}, \ref{lst:ActionCommonScript} et \ref{lst:ActionUnitScript} font references à des listes d'actions dans differentes scripts. Lorsqu'on attache le script \textit{ActionUnit} à une unité, les actions possibles pour cette derniere sont toutes les actions qui sont dans la hierachie.
 \paragraph{}
 Ainsi, les actions \textit{"ACTION\_IDLE"}, \textit{"ACTION\_GIVE\_RESSOURCE"} et \textit{"ACTION\_HEAL"} sont disponibles ayant pour script \textit{ActionUnit} et pour toutes les classes dérivant de celle-ci.
+
 \paragraph{}
 Ci-dessous, voici la première représentation du cerveau de l'unité. Le "Brain" a pour but de gérer le comportement de l'unité, c'est-à-dire de vérifier les instructions de celle-ci et de lui donner l'ordre de faire l'action correspondante ce tour. On peut donc voir le mécanisme présenté plus haut, la confirmation de la présence d'une action dans l'instruction ainsi que la vérification des percepts nécessaires à son exécution.
 
@@ -632,6 +645,22 @@ Instruction (
 
 \paragraph{}L'exemple montrer au listing \ref{lst:InstructionExample} correspond au comportement d'une unité et lui demandera de tirer si l'unité peut percevoir un ennemi, et que sa vie est au maximum. Les actions non-terminales n'étant pas prises en charge à ce moment du développement, la liste est vide. Un comportement n'est donc rien d'autres qu'une liste d'instructions.
 \paragraph{}Pour garder l'idée d'une structure de subsomption, la liste des instructions est ordonnée de telle sorte que la première instruction dans cette liste est la première à être examinée et son action est exécutée si ces percepts sont activés.
+\subsubsection{Le lien avec l'éditeur de comportement.}
+Pour permettre au joueur de faire un comportement avec des elements autorisées pour l'unité en question, il nous a fallu transmettre à l'équipe s'occupant de l'editeur graphique les actions et percepts autorisés pour chaque type d'unités.
+\paragraph{Les clefs des dictionnaires.} Ainsi chaque unité doit contenir une classe dérivant d'\textit{Action} et de \textit{Percept}
+
+
+\begin{figure}[!h]
+\centering
+\includegraphics{GameManagerImage}
+\caption{Visualisation dans l'\textit{Inspector} d'Unity des unités presente dans le GameManager.cs}
+\end{figure}
+
+
+
+
+
+
 
 \subsection{Améliorations des fonctionnalités.}
 
@@ -865,12 +894,7 @@ public class MovableCharacter : MonoBehaviour
 \end{lstlisting}
 \subparagraph{} Dans l'extrait du code ci-dessus, on peut voir que l'objet qui est en collision avec l'objet est mis à jour seulement si l'angle est inférieur à 90°. Pour éviter de rentrer en collision avec le sol, l'objet ne doit pas comporter le \textit{tag} "Ground".
 
-
-
-
-
 \subsection{Fonctionalités finales.}
-Mehdi
 \subsubsection{Création d'un jeu.}
 \paragraph{Création des unités.}
 La création des unités nécessite 6 scripts au minimum : 
