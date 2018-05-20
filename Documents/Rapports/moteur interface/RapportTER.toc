@@ -83,12 +83,13 @@
 \contentsline {paragraph}{}{30}
 \contentsline {subparagraph}{}{30}
 \contentsline {subsection}{\numberline {3.2.4}Fonctionalit\IeC {\'e}s finales.}{31}
-\contentsline {section}{\numberline {3.3}Am\IeC {\'e}lioration possible}{31}
-\contentsline {subsection}{\numberline {3.3.1}Gestion des unit\IeC {\'e}s.}{31}
-\contentsline {subsubsection}{Le corps}{31}
-\contentsline {subsubsection}{L'esprit}{31}
-\contentsline {subsection}{\numberline {3.3.2}Gestion des sc\IeC {\`e}nes.}{32}
-\contentsline {subsection}{\numberline {3.3.3}Les diff\IeC {\'e}rentes maps}{32}
+\contentsline {subsubsection}{Cr\IeC {\'e}ation d'un jeu.}{31}
+\contentsline {paragraph}{Cr\IeC {\'e}ation des unit\IeC {\'e}s.}{31}
+\contentsline {paragraph}{Gestion des sc\IeC {\`e}nes.}{31}
+\contentsline {section}{\numberline {3.3}Mod\IeC {\'e}lisation 3D, sons et animation.}{31}
+\contentsline {subsection}{\numberline {3.3.1}Les unit\IeC {\'e}s Warbot.}{31}
+\contentsline {subsection}{\numberline {3.3.2}Les diff\IeC {\'e}rentes maps.}{32}
+\contentsline {section}{\numberline {3.4}Am\IeC {\'e}lioration possible}{32}
 \contentsline {chapter}{\numberline {4}Partie Interface Graphique}{33}
 \contentsline {section}{\numberline {4.1}Pr\IeC {\'e}sentation}{33}
 \contentsline {section}{\numberline {4.2}Etude de l'ancienne interface}{33}
@@ -123,18 +124,18 @@
 \contentsline {paragraph}{}{47}
 \contentsline {subsubsection}{ToolBox}{48}
 \contentsline {subsubsection}{S\IeC {\'e}lection des \IeC {\'e}quipes / unit\IeC {\'e}s}{52}
-\contentsline {subsubsection}{Informations sur l'unit\IeC {\'e}}{52}
-\contentsline {subsubsection}{Liste des pi\IeC {\`e}ces}{52}
-\contentsline {subsubsection}{Editeur}{54}
-\contentsline {subsection}{\numberline {4.3.4}\IeC {\'E}l\IeC {\'e}ment dans le jeu}{56}
-\contentsline {subsubsection}{R\IeC {\'e}glage du volume du son}{56}
-\contentsline {part}{III\hspace {1em}L'avenir du projet}{57}
-\contentsline {chapter}{\numberline {5}Am\IeC {\'e}lioration possible}{58}
-\contentsline {chapter}{\numberline {6}Bugs}{59}
-\contentsline {part}{IV\hspace {1em}Annexe}{60}
-\contentsline {chapter}{\numberline {7}Scripts Remarquables}{61}
-\contentsline {section}{\numberline {7.1}ObjectPool}{62}
-\contentsline {section}{\numberline {7.2}MovableCharacter}{64}
-\contentsline {section}{\numberline {7.3}Brain}{66}
-\contentsline {section}{\numberline {7.4}PerceptUnit}{70}
-\contentsline {section}{\numberline {7.5}LoadFile}{73}
+\contentsline {subsubsection}{Informations sur l'unit\IeC {\'e}}{55}
+\contentsline {subsubsection}{Liste des pi\IeC {\`e}ces}{55}
+\contentsline {subsubsection}{Editeur}{56}
+\contentsline {subsection}{\numberline {4.3.4}\IeC {\'E}l\IeC {\'e}ment dans le jeu}{58}
+\contentsline {subsubsection}{R\IeC {\'e}glage du volume du son}{58}
+\contentsline {part}{III\hspace {1em}L'avenir du projet}{59}
+\contentsline {chapter}{\numberline {5}Am\IeC {\'e}lioration possible}{60}
+\contentsline {chapter}{\numberline {6}Bugs}{61}
+\contentsline {part}{IV\hspace {1em}Annexe}{62}
+\contentsline {chapter}{\numberline {7}Scripts Remarquables}{63}
+\contentsline {section}{\numberline {7.1}ObjectPool}{64}
+\contentsline {section}{\numberline {7.2}MovableCharacter}{66}
+\contentsline {section}{\numberline {7.3}Brain}{68}
+\contentsline {section}{\numberline {7.4}PerceptUnit}{72}
+\contentsline {section}{\numberline {7.5}LoadFile}{75}
