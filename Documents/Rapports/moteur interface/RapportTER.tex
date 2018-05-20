@@ -864,26 +864,98 @@ Nous souhaitions proposer une cohésion graphique entre chaque écran, et le jeu
 
 
 \section{Nouvelle Interface}
-
-L'interface graphique que nous avons créé se décompose en quatre parties: le menu principal, le menu de paramètres, l'éditeur de comportement et des fonctionnalités directement en jeu.
-
+Nous devions repartir d'une toute nouvelle interface, tout en s'insiprant de l'ancienne. Comme dit précédemment, nous voulions éviter au maximum les écrans intermédiaires qui n'étaient pas indispensables.
+Nous avons donc décidé de mettre en place deux écrans : le menu principal,  et l'éditeur de comportement. Dans le menu principal se trouve une fenêtre "pop-up" dédiée à la configuration des paramètres. D'autres fenêtres "pop-up" peuvent apparaître, mais elles n'ont pour but que d'effectuer une vérification de l'action émise par l'utilisateur. Par exemple, confirmer la suppression d'une équipe, confirmer la fermeture du jeu, etc...
 
 \subsection{Menu Principal}
-Le menu principal donne accès aux options majeures du jeu.
+Le menu principal donne accès aux options majeures du jeu. Ce menu doit contenir toutes les fonctionnalités dont l'utilisateur peut avoir besoin pour gérer le lancement d'une partie, sans avoir à accéder à l'éditeur de comportement.
+Cela comporte donc les paramètres de la partie, le choix des équipes, du nombre d'unités, de la carte, etc... \newline
+Passons en revue tous les éléments présents sur cet écran.
 \subsubsection{Lancer une Partie}
-Ce bouton permet de lancer une partie du jeu MetaBot. Le lancement de la partie prend en compte le mode de jeu sélectionné, les équipes choisies, le nombre de chaque unités en début de partie, le nombre de ressources maximum (nombre de ressource présentes en jeu au même moment), la carte de jeu.
+Ce bouton permet de lancer une partie du jeu MetaBot. Le lancement de la partie prend en compte le mode de jeu sélectionné, les équipes choisies, le nombre de chaque unités en début de partie, le nombre de ressources maximum (nombre de ressource présentes en jeu au même moment), la carte de jeu. Un script rattaché à ce bouton va donc se charger d'aller récupérer toutes ces informations stockées dans les différents "GameObject" de notre scène.
+
+\begin{lstlisting}[language={[Sharp]C},label={lst:StartGame()}, caption= Extrait du code de PlayButton.cs]
+
+public void StartGame()
+    {
+        
+        nbPlayers = int.Parse(_numberplayerDropDown.GetComponent<Dropdown>().captionText.text);
+        XMLWarbotInterpreter interpreter = new XMLWarbotInterpreter();
+
+        GameObject gameManager = GameObject.Find("GameManager");
+        string gamePath = Application.streamingAssetsPath + "/teams/" + gameManager.GetComponent<GameManager>()._gameName + "/";
+        
+        gameManager.GetComponent<TeamManager>()._teams = new List<Team>();
+
+        for (int i = 0; i < nbPlayers; i++)
+        {
+            Team team = new Team();
+            team._color = _DropDownList[i]._teamColor;
+            team._name = _DropDownList[i]._teamName;//.Replace("_", " ");
+            team._unitsBehaviour = interpreter.xmlToBehavior(gamePath + team._name, gamePath);
+            gameManager.GetComponent<TeamManager>()._teams.Add(team);
+        }
+
+        GameManager setting = gameManager.GetComponent<GameManager>();
+        setting.SetSetting();
+
+        //
+        StartCoroutine(AsynchronousLoad(setting._gameSettings._indexSceneMap));
+    }
+}
+\end{lstlisting}
+
+
 \subsubsection{Bouton Éditeur de Comportement}
-Ce bouton permet d'accéder à l'éditeur de comportement, que nous détaillerons plus loin.
+Ce bouton permet d'accéder à l'éditeur de comportement, qui permettra à l'utilisateur, entre autrex, de créer et/ou modifier le comportement de ses équipes.
 \subsubsection{Bouton Paramètres}
-Permet d'accéder aux paramètres du jeu, tels que le réglage du volume, le choix de mode de jeu, la langue, etc...
+Ce bouton va afficher la fenêtre "pop-up" qui contient tous les paramètres du jeu.
 \subsubsection{Choisir le nombre d'équipe}
-Nous avons la possibilité de choisir le nombre d'équipes participant à la partie. Les valeurs sont dans un menu déroulant et vont de 2 à 4.
+Nous avons la possibilité de choisir le nombre d'équipes participant à la partie. Les valeurs sont dans un menu déroulant et vont de 2 à 4. Sa valeur courante sera récupérée par le script StartGame() (cf Listing 4.1).\newline
+En fonction du nombre d'équipes choisi, le nombre de cadres d'équipe changera.
 \subsubsection{Choisir les équipes}
 Dans le cadre de chaque équipe se trouve un menu déroulant avec les noms de toutes les équipes présentes dans les fichiers du jeu. On peut donc en sélectionner une pour qu'elle participe à la prochaine bataille.
-De plus, à coté du nom de l'équipe, on retrouve aussi son score (ELO).
+Pour récupérer toutes les équipes existantes, nous allons chercher la liste comprenant le nom de toutes les équipes.
 
+\begin{lstlisting}[language={[Sharp]C},label={lst:Start()}, caption= Extrait du code de TeamMenuHUD.cs]
+[...]
+string team = GameObject.Find("GameManager").GetComponent<TeamManager>()._teams[_idPlayer]._name;
+            for (int i = 0; i < _teamDropDown.options.Count; i ++)
+            {
+                if (_teamDropDown.options[i].text.Equals(team))
+                {
+                    _teamDropDown.value = i;
+                }
+            }
+[...]
+\end{lstlisting}
+\smallbreak
+De plus, à coté du nom de l'équipe, on retrouve aussi son score (ELO). Pour son affichage, nous récupérons le score associé à l'équipe courante. La couleur du score dépendra de sa valeur (rouge = score faible, bleu = score élevé)
+
+\begin{lstlisting}[language={[Sharp]C},label={lst:Change()}, caption= Extrait du code de TeamMenuHUD.cs]
+public void Change()
+    {
+        _teamName = _teamDropDown.captionText.text;
+        _powerScoreText.text = TeamsPerformance.GetTeamElo(_teamName).ToString();
+        _powerScoreText.color = ColorElo(TeamsPerformance.GetTeamElo(_teamName));
+    }
+\end{lstlisting}
 \subsubsection{Bouton "Reload Team"}
-Ce bouton permet de recharger les équipes. L'intérêt est de permettre à l'utilisateur d'ajouter manuellement au dossier des équipes des nouevaux fichiers d'équipes, et les voir apparaître simplement en cliquant sur ce bouton, sans avoir à relancer le jeu.
+Ce bouton permet de recharger les équipes. L'intérêt est de permettre à l'utilisateur d'ajouter manuellement au dossier des équipes des nouveaux fichiers d'équipes, et de les voir apparaître en cliquant simplement sur ce bouton, sans avoir à relancer le jeu.
+Pour permettre cela, nous devons aller chercher le dossier contenant les fichiers des équipes, le parcourir, et mettre à jour notre liste d'équipes.
+
+\begin{lstlisting}[language={[Sharp]C},label={lst:Updating()}, caption= Extrait du code de GameSettingsScript.cs]
+teams = new List<string>();
+        string[] fileEntries = Directory.GetFiles(gamePath);
+        foreach (string s in fileEntries)
+        {
+            string team = stringDifference(s, gamePath);
+            if (team.Contains(".wbt") && !team.Contains(".meta"))
+            {
+                teams.Add(team);
+            }
+        }
+\end{lstlisting}
 
 \subsubsection{Choisir carte de jeu}
 On peut directement choisir le lieu de la partie en cliquant sur les flèches de part et d'autre de l’aperçu de la carte. Il existe pour le moment cinq cartes: Moutain, Plain, Simple, Desolate et Garden.
