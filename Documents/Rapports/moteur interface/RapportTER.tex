@@ -194,7 +194,7 @@ namespace WarBotEngine.WarBots {
 }
 \end{lstlisting}
 
-\paragraph{} La gestion des actions et des perceptions aussi est problématique. Le code de ces actions sont codés en dur dans des scripts correspondant a des unités d'un certain type, empêchant alors de rendre générique le fait de rajouter des actions sans devoir modifier tout les codes nécessitant le nom des actions tel que l’interpréteur. Le code ci-dessous montre le script "AttackController.cs" de l'ancien projet. Dans ce code, l'actions Shoot depend des fonction Reloaded et Fire. Reloaded peut être considérer comme une perception. Le fait que les actions et les perceptions ne sont pas clairement définie entant que tels posent des problèmes de compréhension du code et de faite le rajout de façon simple une nouvelle action et une nouvelle perception. De plus, cela pose le problème de la gestion des actions et des perceptions de l’interpréteur, car pour chaque action créer dans le script, il faut indiquer à l'interpreteur quelle fonction permet d'activer l'action du comportement en cours. 
+\paragraph{} La gestion des actions et des perceptions aussi est problématique. Le code de ces actions sont codés en dur dans des scripts correspondant a des unités d'un certain type, empêchant alors de rendre générique le fait de rajouter des actions sans devoir modifier tout les codes nécessitant le nom des actions tel que l’interpréteur. Le code ci-dessous montre le script "AttackController.cs" de l'ancien projet. Dans ce code, l'actions Shoot depend des fonctions Reloaded et Fire. Reloaded peut être considérer comme une perception. Le fait que les actions et les perceptions ne sont pas clairement définie entant que tels posent des problèmes de compréhension du code et de faite le rajout de façon simple une nouvelle action et une nouvelle perception. De plus, cela pose le problème de la gestion des actions et des perceptions de l’interpréteur, car pour chaque action créer dans le script, il faut indiquer à l'interpreteur quelle fonction permet d'activer l'action du comportement en cours. 
 \paragraph{}Ainsi dans le code du listing \ref{lst:unitScript}, on peut voir que pour activer la fonction Shoot() du script AttackController, il faut créer une fonction du même nom, puis renseigner toutes les unités qui peuvent effectuer l'action. Le problème est qu'il faut, pour chaque action, créer une fonction dans le fichier Unit.cs, et ainsi le fichier Unit.cs est surchargé, atteignant les 2000 lignes de codes !
 
 \begin{lstlisting}[language={[Sharp]C},label={lst:unitScript}, caption=  Extrait du code du script Unit.cs]
@@ -398,8 +398,13 @@ _actions["ACTION_PICK"] = delegate () {
 \end{lstlisting}
 
 \paragraph{}Afin de mener à bien le développement du comportement des unités, on a aussi dû créer une carte plus légère et plus petite que celle de l'ancienne génération nous permettant d'effectuer nos tests.
-\paragraph{}
-INSERER IMAGE DE LA PREMIERE MAP !!!!!
+
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.3]{FirstMapImage}
+\caption{Aperçu de la premier carte de test.}
+\end{figure}
+
 \paragraph{}
 
 Cette phase a duré .....
@@ -409,7 +414,7 @@ Lorsque le moteur nous paraissait complet, nous l'avons intégré au projet. Cet
 
 \subsubsection{La phase d'intégration.} 
 \paragraph{Le lien avec l’interpréteur} Le plus grand défi de l’intégration était de rendre possible la liaison avec l’interpréteur en place, créer par l'équipe Interpréteur du projet. Nous avons donc travailler en étroite collaboration avec cette équipe afin qu'il nous explique le fonctionnement de l’interpréteur pour que nous puissions faire les modifications nécessaires.
-\paragraph{}Suite à nos échanges, il a été convenue de créer une classe Instruction qui servira de pont entre l’interpréteur et le moteur.
+\paragraph{}Suite à nos échanges, il a été convenue de modifier la classe Instruction qui servira de pont entre l’interpréteur et le moteur.
 
 \begin{lstlisting}[language={[Sharp]C},label={lst:InstructionScript}, caption=  Extrait du code du script Instruction.cs]
 public class Instruction {
@@ -451,9 +456,9 @@ Instruction (
 \subsection{Améliorations des fonctionnalités.}
 
 \subsubsection{Ajout de fonctionnalités des instructions.}
-
+\paragraph{}Un des enjeux du moteur était de pouvoir rendre les instructions plus interessantes pour le joueurs. Il a donc fallu améliorer les instructions qui etait une simple liste de perceptions, d'actions non terminales et d'une action en rajoutant des fonctionnalité.\newline
 \begin{lstlisting}[label={lst:BehaviorExample}, caption=  Exemple d'un comportement que peut renvoyer l’interpréteur.]
-Behavior [Light] = {
+Behavior [LIGHT] = {
 1. Instruction (  Percepts = [PERCEPT_ENEMY, PERCEPT_LIFE_MAX],
 		ActionNT = [],
 		Action = ACTION_FIRE ),
@@ -467,17 +472,29 @@ Behavior [Light] = {
 		ActionNT = [],
 		Action = ACTION_MOVE ) }
 \end{lstlisting}
-Le comportement défini en listing \ref{lst:BehaviorExample}
-\subparagraph{1. Négation.}
-Instructions avec NOT\_.
-\subparagraph{2. Mouvement tactique.}
+
+
+\paragraph{}Le comportement défini en listing \ref{lst:BehaviorExample} comporte plusieurs instructions, résumant les possibilités du moteur
+
+\paragraph{1. Négation.}
+La plus grande amélioration que l'équipe de Game Design nous avait demandé d'apporter au moteur sur le plan des instruction était de mettre en place la négation des percepts. 
+\subparagraph{} Pour rappel, un percept (ou perception) est une fonction anonyme qui renvoie un booléen. La composition de plusieurs perception donne l'illusion d'un tableau de bord, permettant à l'unité de se faire une idée de son environnement. Cependant, les instructions fonctionnent actuellement en utilisant une liste conjonctive de percept. En d'autres termes, tout les percepts d'une instruction doit être activé pour pouvoir exécuter l'action de l'instruction.
+\subparagraph{}Il nous fallait donc trouver un moyen pour rendre possible la négation des perceptions. Ainsi, et en travaillant de concert avec l'équipe Interpréteur, nous avons convenu d'un préfixe \textit{NOT\_} que l'on concatène au label des perceptions.
+\begin{lstlisting}[label={lst:BehaviorExampleNeg}, caption = Une perception et son inverse.]
+PERCEPT_LIFE_MAX; //Activé lorsque "TRUE"
+NOT_PERCEPT_LIFE_MAX; //Activé lorsque "FALSE"
+\end{lstlisting}
+
+
+
+\paragraph{2. Mouvement tactique.}
 Instructions sans actions.
-\subparagraph{3. Instruction par défaut.}
+\paragraph{3. Instruction par défaut.}
 Instructions sans percepts et sans actions non terminales.
-\subparagraph{4. Cas exceptionnel.}
+\paragraph{4. Cas exceptionnel.}
 Instructions sans percepts et sans actions non terminales.
 
-
+\subsubsection{Actions non-terminales}
 
 
 \subsubsection{Optimisation du temps de chargement}
@@ -968,6 +985,9 @@ En bas à droite de la fenêtre de jeu se trouve une icône de son et un slider.
 \lstinputlisting[language={[Sharp]C},label={lst:BrainScript}]{Brain.cs}
 \newpage
 
+\section{PerceptUnit}
+\lstinputlisting[language={[Sharp]C},label={lst:PerceptUnit}]{PerceptUnit.cs}
+\newpage
 
 
 % Uncomment the following two lines if you want to have a bibliography
