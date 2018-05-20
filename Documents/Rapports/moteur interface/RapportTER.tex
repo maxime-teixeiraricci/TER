@@ -159,6 +159,7 @@ Dans cette section, nous allons développer la notion d'agent dans un système m
 \paragraph{Les système-multi agents dans de multiples domaines.} Les systèmes multi-agents sont utilisées dans de nombreux domaines, notamment dans les jeux vidéos et le cinéma. Dans ces domaines, les systèmes multi-agents  sont utilisées pour représenter des mouvement de foules avec des comportement très simples, ou, dans le cas du jeu vidéo, permettre de créer des comportements aux personnages non joueurs pour les rendre plus intéressant pour le joueurs.
 
 \subsection{Représentation dans le projet.}
+\paragraph{}Les systèmes multi-agents sont utilisées dans de nombreux domaines, notamment dans les jeux vidéos et le cinéma. Dans ces domaines, les systèmes multi-agents  sont utilisées pour représenter des mouvement de foules avec des comportement très simples, ou, dans le cas du jeu vidéo, permettre de créer des comportements aux personnages non joueurs pour les rendre plus intéressant pour le joueurs.
 
 \newpage
 
@@ -445,7 +446,7 @@ Notre objectif était de simplifier l'ajout de percepts et d'actions à une unit
 \paragraph{}
 Les types "delegate" propre au C\# ont une déclaration semblable à une signature de méthode.
 Elle a une valeur de retour et un nombre quelconque de paramètres de type quelconque.
-Nous les avons donc utilisées afin d'encapsuler les méthodes correspondant aux actions et aux percepts et ce afin d'éviter la création de multiple classes.
+Nous les avons donc utilisées afin d'encapsuler les méthodes correspondant aux actions et aux percepts et ce afin d'éviter la création de multiples classes.
 
 \begin{lstlisting}[language={[Sharp]C},label={lst:PerceptScript}, caption=  Extrait du code du script Percept.cs]
 public abstract class Percept : MonoBehaviour
@@ -456,7 +457,8 @@ public abstract class Percept : MonoBehaviour
 }
 \end{lstlisting}
 
-A la suite de ce changement, la classe Percept s'est dotée d'un dictionnaire composée d'une string comme clef et d'un Listener comme valeur. Le Listener est un delegate représentant la fonction de calcul de valeur du percept. Le même mécanisme est mis en place pour les actions et est toujours d'actualité aujourd'hui.
+A la suite de ce changement, la classe Percept s'est dotée d'un dictionnaire composée d'une string comme clef et d'un \textit{Listener} comme valeur. Le \textit{Listener} est un delegate représentant la fonction de calcul de valeur du percept. Le même mécanisme est mis en place pour les actions et est toujours d'actualité aujourd'hui.
+\paragraph{}L’intérêt d'avoir mis en place un dictionnaire comportant des strings en clefs permet notamment d'obtenir la liste des actions possible de l'unité.
 
 \begin{lstlisting}[language={[Sharp]C},label={lst:unitScript}, caption=  Extrait du code du script PerceptUnit.cs]
  _percepts["PERCEPT_FOOD"] = delegate ()
@@ -477,8 +479,7 @@ A la suite de ce changement, la classe Percept s'est dotée d'un dictionnaire co
 _actions["ACTION_PICK"] = delegate () {
             GameObject target = GetComponent<Stats>().GetTarget();
             if (target != null)
-            {
-                Objet obj = target.GetComponent<ItemHeldler>()._heldObjet;
+                  Objet obj = target.GetComponent<ItemHeldler>()._heldObjet;
                 Inventory unitInventory = GetComponent<Inventory>();
                 if (!unitInventory.isFull())
                 {
@@ -486,10 +487,66 @@ _actions["ACTION_PICK"] = delegate () {
                     Destroy(target);
                 }
             }
-        };
+        };       {
+   
+\end{lstlisting}
+\subparagraph{Hiérarchisation des actions et des percepts.}
+Pour permettre d'éviter la surcharge des classes \textit{Actions} et \textit{Percepts} à destination de plusieurs type d'unités mais comportant plusieurs éléments en commun, nous avons mis en place une hiérarchisation de ces classes. 
+
+\begin{lstlisting}[language={[Sharp]C},label={lst:ActionScript}, caption=  Code du script Action.cs]
+public abstract class Action : MonoBehaviour
+{
+    /*
+     * Cette classe abstraite permet de créer de nouvelle action.
+     * Pour cela, créer une classe qui dérive de celle-ci.
+     */
+    public delegate void Act();
+    public Dictionary<string, Act> _actions = new Dictionary<string, Act>();
+    public abstract void InitAction(); // 
+}
 \end{lstlisting}
 
-\paragraph{}Ci-dessous, voici la première représentation du cerveau de l'unité. Le "Brain" a pour but de gérer le comportement de l'unité, c'est-à-dire de vérifier les instructions de celle-ci et de lui donner l'ordre de faire l'action correspondante ce tour. On peut donc voir le mécanisme présenté plus haut, la confirmation de la présence d'une action dans l'instruction ainsi que la vérification des percepts nécessaires à son exécution.
+\begin{lstlisting}[language={[Sharp]C},label={lst:ActionCommonScript}, caption=  Code du script ActionCommon.cs dérivant de la classe Action.cs]
+public class ActionCommon : Action
+{
+
+    void Start(){      
+    InitAction();
+    }
+
+    public override void InitAction()
+    {
+        _actions["ACTION_IDLE"] = delegate () { [...] };
+        _actions["ACTION_GIVE_RESSOURCE"] = delegate () { [...] };
+        _actions["ACTION_HEAL"] = delegate ()  { [...] };
+    }
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language={[Sharp]C},label={lst:ActionUnitScript}, caption=  Code du script ActionUnit.cs dérivant de la classe ActionCommon.cs]
+public class ActionUnit : ActionCommon
+{
+    void Start() {
+        InitAction();
+    }
+
+    public override void InitAction() {
+        base.InitAction(); // IMPORTANT : Permet de récupérer les percepts de la classe mère
+        _actions["ACTION_MOVE"] = delegate () { [...] };
+        _actions["ACTION_RANDOM_MOVE"] = delegate () { [...] };
+        _actions["ACTION_TURN_AROUND_MOVE"] = delegate () { [...] };
+        _actions["ACTION_PICK"] = delegate () { [...] };
+        _actions["ACTION_BACK_TO_BASE"] = delegate () { [...] };
+    }
+}
+\end{lstlisting}
+
+\paragraph{}
+Les listings \ref{lst:ActionScript}, \ref{lst:ActionCommonScript} et \ref{lst:ActionUnitScript} font references à des listes d'actions dans differentes scripts. Lorsqu'on attache le script \textit{ActionUnit} à une unité, les actions possibles pour cette derniere sont toutes les actions qui sont dans la hierachie.
+\paragraph{}
+Ainsi, les actions \textit{"ACTION\_IDLE"}, \textit{"ACTION\_GIVE\_RESSOURCE"} et \textit{"ACTION\_HEAL"} sont disponibles ayant pour script \textit{ActionUnit} et pour toutes les classes dérivant de celle-ci.
+\paragraph{}
+Ci-dessous, voici la première représentation du cerveau de l'unité. Le "Brain" a pour but de gérer le comportement de l'unité, c'est-à-dire de vérifier les instructions de celle-ci et de lui donner l'ordre de faire l'action correspondante ce tour. On peut donc voir le mécanisme présenté plus haut, la confirmation de la présence d'une action dans l'instruction ainsi que la vérification des percepts nécessaires à son exécution.
 
 \begin{lstlisting}[language={[Sharp]C},label={lst:firstBrainScript}, caption=  Première version de la classe Brain.cs]
 public class Brain : MonoBehaviour
@@ -542,8 +599,8 @@ Cette phase de démarrage a duré environ un mois, durant lequel nous avons pu r
 \subsection{Intégration dans le projet.}
 Lorsque le moteur nous a paru complet, nous l'avons intégré au projet. Cette phase a été source de problèmes du fait que l'ancien projet était encore présent et que de nombreux conflits persistés.
 
-\subsubsection{La phase d'intégration.} 
-\paragraph{Le lien avec l’interpréteur} Le plus grand défi de l’intégration était de rendre possible la liaison avec l’interpréteur en place, créé par l'équipe Interpréteur du projet. Nous avons donc travaillé en étroite collaboration avec cette équipe afin de comprendre le fonctionnement de l’interpréteur pour que nous puissions faire les modifications nécessaires.
+\subsubsection{Le lien avec l’interpréteur} 
+Le plus grand défi de l’intégration était de rendre possible la liaison avec l’interpréteur en place, créé par l'équipe Interpréteur du projet. Nous avons donc travaillé en étroite collaboration avec cette équipe afin de comprendre le fonctionnement de l’interpréteur pour que nous puissions faire les modifications nécessaires.
 \paragraph{}Suite à nos échanges, il a été convenu de modifier la classe Instruction qui servira de pont entre l’interpréteur et le moteur.
 
 \begin{lstlisting}[language={[Sharp]C},label={lst:InstructionScript}, caption=  Extrait du code du script Instruction.cs]
@@ -576,14 +633,8 @@ Instruction (
 \paragraph{}L'exemple montrer au listing \ref{lst:InstructionExample} correspond au comportement d'une unité et lui demandera de tirer si l'unité peut percevoir un ennemi, et que sa vie est au maximum. Les actions non-terminales n'étant pas prises en charge à ce moment du développement, la liste est vide. Un comportement n'est donc rien d'autres qu'une liste d'instructions.
 \paragraph{}Pour garder l'idée d'une structure de subsomption, la liste des instructions est ordonnée de telle sorte que la première instruction dans cette liste est la première à être examinée et son action est exécutée si ces percepts sont activés.
 
-
-
-\subsubsection{Résolution des problèmes.} 
-
-
 \subsection{Améliorations des fonctionnalités.}
 
-\subsubsection{Actions non-terminales}
 
 \subsubsection{Ajout de fonctionnalités des instructions.}
 \paragraph{}Un des enjeux du moteur était de pouvoir rendre les instructions plus intéressantes pour le joueur. Il a donc fallu améliorer les instructions qui étaient composées d'une simple liste de percepts, d'actions non terminales et d'une action en rajoutant des fonctionnalités.\newline
@@ -642,16 +693,46 @@ Ainsi, une instruction est activé si :
 \item Le percept ne contient pas le préfixe \textit{NOT\_} et le percept renvoie "TRUE".
 \item Le percept contient le préfixe \textit{NOT\_} et le percept renvoie "FALSE".
 \end{itemize}
+\paragraph{2. Actions non-terminales.}
+Pour permettre une plus grande liberté dans la conception des comportements des unités, il a était rapidement nécessaire de rajouter des actions dites \textit{non-terminales}. Ces actions sont effectuées au même titre que les actions terminales à la différence près que celle-ci n’empêche pas d’exécuter une autre instruction située hiérarchiquement plus bas dans l'architecture de subsomption si l'instruction ne comporte pas d'action terminant le tour de l'unité.
 
-\paragraph{2. Mouvement tactique.}
+\begin{lstlisting}[language={[Sharp]C},label={lst:ActionNonTerminalScript}, caption=Code du script ActionNonTerminal.cs]
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public abstract class ActionNonTerminal : MonoBehaviour
+{
+    public delegate void ActNonTerm();
+    public Dictionary<string, ActNonTerm> _actionsNT = new Dictionary<string, ActNonTerm>();
+    public abstract void InitActionNonTerminal();
+    public string _messageDestinataire;
+    public Message _tmpMessage;
+}
+
+\end{lstlisting}
+\paragraph{}
+Comme pour les actions terminales et les percepts, les actions non-terminales sont constituées d'un dictionnaire composé de chaîne de caractères comme clef et un delegate \textit{ActNonTerm} correspondant à la méthode anonyme de l'action non-terminal.
+
+\begin{lstlisting}[language={[Sharp]C},label={lst:ActionNonTerminalExempleScript}, caption=Exemple d'une action non-terminale]
+        _actionsNT["ACTN_HEADING_RANDOM"] = delegate ()
+        {
+            GetComponent<Stats>().SetHeading(Random.Range(0f,360f));
+        };
+\end{lstlisting}
+
+\paragraph{}
+Dans le listing \ref{lst:ActionNonTerminalExempleScript}, on peut voir l'exemple d'une action non-terminale. Fonctionnant comme une action classique, l'action non-terminale \textit{"ACTN\_HEADING\_RANDOM"} permet à une unité de faire une rotation aléatoire.
+
+\paragraph{3. Mouvement tactique.}
 Comme définie dans le listing \ref{lst:BehaviorExample}, l'instruction 2. permet de faire une action non-terminale même sans d'action terminale.
 Ainsi on a la possibilité de réaliser des mouvements plus tactiques sans terminer le tour.
 \paragraph{}Lorsque les percepts de l'instruction 2 sont activés, cela déclenche l'action non terminale en ligne 6 qui envoie un message d'aide aux unités de type \textit{Heavy}. Mais comme il n'y a pas d'action terminant le tour, on continue à regarder les autres instructions tant qu'il n'y a pas d'action terminale à effectuer.
 
-\paragraph{3. Instruction par défaut.}
+\paragraph{4. Instruction par défaut.}
 Lorsqu'une instruction ne comporte pas de percepts, cette instruction est, par définition toujours valide. Cela permet, entre autre, de créer des cas par défaut que l'on peut mettre à la fin d'un comportement. L'action de cette instruction est alors toujours exécutée si aucune autre action ne peut l'être.
 
-\paragraph{4. Cas exceptionnel.}
+\paragraph{5. Cas exceptionnel.}
 Dans un comportement, il peut arriver que les conditions de toutes les instructions soient fausse, empêchant ainsi l'exécution d'une action. Dans ce cas précis, c'est le moteur qui choisi l'action à effectuer. Actuellement, l'unité exécute l'action \textit{ACTION\_IDLE}.
 
 \subsubsection{Optimisation du temps de chargement}

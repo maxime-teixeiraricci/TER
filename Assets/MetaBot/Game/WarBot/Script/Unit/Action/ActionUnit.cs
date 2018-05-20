@@ -24,8 +24,6 @@ public class ActionUnit : ActionCommon
             GetComponent<Stats>().SetHeading(Random.Range(90f, 270f) + GetComponent<Stats>().GetHeading());
             _actions["ACTION_MOVE"]();
         };
-        _actions["ACTION_HEAL"] = delegate () { GetComponent<Inventory>().use("Ressource"); };
-        _actions["ACTION_IDLE"] = delegate () { };
         _actions["ACTION_PICK"] = delegate () {
             GameObject target = GetComponent<Stats>().GetTarget();
             if (target != null)
