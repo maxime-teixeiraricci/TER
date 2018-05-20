@@ -647,14 +647,18 @@ Instruction (
 \paragraph{}Pour garder l'idée d'une structure de subsomption, la liste des instructions est ordonnée de telle sorte que la première instruction dans cette liste est la première à être examinée et son action est exécutée si ces percepts sont activés.
 \subsubsection{Le lien avec l'éditeur de comportement.}
 Pour permettre au joueur de faire un comportement avec des elements autorisées pour l'unité en question, il nous a fallu transmettre à l'équipe s'occupant de l'editeur graphique les actions et percepts autorisés pour chaque type d'unités.
-\paragraph{Les clefs des dictionnaires.} Ainsi chaque unité doit contenir une classe dérivant d'\textit{Action} et de \textit{Percept}
-
-
+\paragraph{Les clefs des dictionnaires.} Ainsi chaque unité doit contenir une classe dérivant d'\textit{Action} et de \textit{Percept}.
+Ainsi dans l'objet \textit{GameManager}, on renseigne les unités dans la section "List Unit Game Object". Cette section permet de capturer les différentes actions et percepts des différents unités et de les consigner dans un fichier.
 \begin{figure}[!h]
 \centering
 \includegraphics{GameManagerImage}
 \caption{Visualisation dans l'\textit{Inspector} d'Unity des unités presente dans le GameManager.cs}
 \end{figure}
+
+
+
+\paragraph{}
+Ce fichier est repris par l'éditeur de comportement pour créer les pièces de puzzles en fonction des unités.
 
 
 
@@ -922,43 +926,75 @@ Ils se résument en 8 scripts:
 \section{Modélisation 3D, sons et animation.}
 
 \subsection{Les unités Warbot.}
+Afin de pouvoir tester les fonctionnalités que nous avons mis en place, nous avons créer des unités. On a ainsi du concevoir des modèles 3D pour les unités en utilisant le logiciel libre de droit \textit{Blender}.
 
-Le corps de l'unité correspond à son modèle 3D, et son GameObejct Collider associé.
+\begin{figure}[h]
+    \begin{minipage}[c]{.46\linewidth}
+        \centering
+        \includegraphics[scale=0.25]{WarBaseImage}
+        \caption{L'unité Base de WarBot.}
+    \end{minipage}
+    \hfill%
+    \begin{minipage}[c]{.46\linewidth}
+        \centering
+        \includegraphics[scale=0.25]{WarExplorerImage}
+        \caption{L'unité Explorer de WarBot.}
+    \end{minipage}
+\end{figure}
+\begin{figure}[h]
+    \begin{minipage}[c]{.46\linewidth}
+        \centering
+		\includegraphics[scale=0.25]{WarLightImage}
+	\caption{L'unité Light de WarBot.}
+    \end{minipage}
+    \hfill%
+    \begin{minipage}[c]{.46\linewidth}
+        \centering
+		\includegraphics[scale=0.25]{WarHeavyImage}
+	\caption{L'unité Heavy de WarBot.}
+    \end{minipage}
+\end{figure}
 
-Pour le jeu warbot nous avons réaliser plusieurs modèles 3D.
+\newpage
+\subsection{Les différentes cartes.}
+Pour tester les unités, nous avons conçu 5 différentes cartes.
 \begin{itemize}
-\item Base
-[Photo]
-[Descriptif]
-\item Explorer
-[Photo]
-[Descriptif]
-\item Light
-[Photo]
-[Descriptif]
-\item Heavy
-[Photo]
-[Descriptif]
+\item \textit{Simple}: Carte basique ne comportant pas d'obstacle. C'est une île rectangulaire entourée d'eau.
+\item \textit{Mountain}: Une île plus élaboré ayant des bords plus irréguliers comportant une chaîne de montagne au sud-est de la carte.
+\item \textit{Desolate}: Un désert avec des obstacles au centre et des limites de cartes plus anguleux. C'est une carte utilisé pour tester les collisions avec les objets.
+\item \textit{Plain}: Une carte de taille plus petite entouré de barrière surveillé par des collines aux grands yeux noires.
+\item \textit{Garden}: Une île flottante aux dessus des nuages. La zone de jeu est entourée par de grandes pierres et un parterre de fleurs aux centre.
 \end{itemize}
-\subsection{Les différentes maps.}
-Nous avons réaliser un ensemble de cinq maps chacune ayant son thème et ses particularités :
-\begin{itemize}
-\item Mountain
-[Photo]
-[Descriptif]
-\item Plain
-[Photo]
-[Descriptif]
-\item Desolate
-[Photo]
-[Descriptif]
-\item Garden
-[Photo]
-[Descriptif]
-\item Simple
-[Photo]
-[Descriptif]
-\end{itemize}
+
+\begin{figure}[h]
+        \centering
+		\includegraphics[scale=0.5]{MapSimpleImage}
+	\caption{L'unité Light de WarBot.}
+\end{figure}
+\begin{figure}[!p]
+        \centering
+		\includegraphics[scale=0.5]{MapMountainImage}
+	\caption{L'unité Light de WarBot.}
+\end{figure}
+\begin{figure}[!p]
+        \centering
+		\includegraphics[scale=0.5]{MapDesolateImage}
+	\caption{L'unité Light de WarBot.}
+\end{figure}
+\begin{figure}[!p]
+        \centering
+		\includegraphics[scale=0.5]{MapPlainImage}
+	\caption{L'unité Light de WarBot.}
+\end{figure}
+\begin{figure}[!p]
+        \centering
+		\includegraphics[scale=0.5]{MapGardenImage}
+	\caption{L'unité Light de WarBot.}
+\end{figure}
+
+\newpage
+
+
 \subsection{Animations.}
 Différentes animations ont été réalisées à l'aide de systèmes à particules afin d'améliorer le rendu visuel durant les combats entre unités.
 \paragraph{Les projectiles.}
