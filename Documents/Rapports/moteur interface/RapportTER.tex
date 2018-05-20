@@ -861,7 +861,24 @@ Nous avons réaliser un ensemble de cinq maps chacune ayant son thème et ses pa
 [Photo]
 [Descriptif]
 \end{itemize}
-
+\subsection{Animations.}
+Différentes animations ont été réalisées à l'aide de systèmes à particules afin d'améliorer le rendu visuel durant les combats entre unités.
+\paragraph{Les projectiles.}
+Au moment de la destruction d'un projectile, qui intervient lorsque celui-ci touche une unité ou après un laps de temps suivant son lancement, celui-ci provoque une explosion de particules. Les Prefab "HeavyBullet" et "LightBullet" possède pour ce faire un script "BulletScript.cs". Celui-ci instancie le GameObject d'animation correspondant au projectile au moment souhaité. Ce GameObject peut bien sûr être modifier facilement.
+\paragraph{Les unités.}
+Les autres animations concernent les unités qui détiennent toutes quatre animations différentes :
+\begin{itemize}
+\item La voiture se met à fumer légèrement lorsque ses points de vie sont entre 75\% et 100\%.
+\item Une fumée plus épaisse se déclenche lorsque ses points de vie sont entre 50\% et 75\%.
+\item La voiture est en feu lorsque ses points de vie sont entre 25\% et 50\%.
+\item Pour finir elle explose en un amas de particule lorsque ses points de vies atteignent 0.
+Les GameObject concernant ces différentes animations sont présents au sein des stats de chaque unité et peuvent être modifié simplement.
+\end{itemize}
+\subsection{Sons.}
+Différents fonds musicaux et effets sonores sont audibles tout au long de l'utilisation du jeu.
+\paragraph{Les fond sonores.}
+\paragraph{Les projectiles.}
+\paragraph{Les unités.}
 \section{Amélioration possible}
 L’objectif de ce projet était de refaire rendre générique la version Warbot Unity réalisée l'an dernier.
 Le but étant de facilité la création sur le moteur de jeu Unity, de jeux de stratégie basés sur le paradigme de  la programmation orientée agent afin de permettre un véritable apprentissage de ses différentes notions. En ce sens, notre objectif a été rempli, mais les améliorations possibles pour les années à
