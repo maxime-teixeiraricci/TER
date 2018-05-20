@@ -1295,17 +1295,14 @@ public void createXML()
 \end{lstlisting}
 
 \item\textbf{Bouton "Undo"} \newline
-Va permettre d'annuler la création ou la suppression d'une pièce. Lors de la création d'une pièce, cette pièce sera ajoutée dans une liste "listPieces", qui nous permettra de garder une trace de l'ordre dans lequel les pièces ont été créées.
+Ce bouton va permettre d'annuler la création ou la suppression d'une pièce. Lors de la création d'une pièce, cette pièce sera ajoutée dans une liste "listPieces", qui nous permettra de garder une trace de l'ordre dans lequel les pièces ont été créées.
 \smallbreak
-\begin{itemize}
-\item\textbf{Undo()} :  \newline
 Cette fonction requiert une liste de pièces non vide pour fonctionner, c'est donc ce que l'on va vérifier en premier. Si la liste "listPieces" n'est pas vide, alors on stocke la dernière pièce de cette liste dans une variable "pieceToUndo".\newline
 Maintenant, il faut déterminer quelle action utilisateur nous devons annuler (création ou suppression).\newline
 Si "pieceToUndo" est active, alors nous devons simuler sa suppression, en la passant inactive. Il faudra également l'ajouter dans la liste "recoverList", qui a un comportement similaire à "listPieces", pour reconstituer une annulation.\newline
 Si, en revanche, la pièce est inactive, il faut alors la faire réapparaitre à l'écran, en la passant en active.
 
-\end{itemize}
-\begin{lstlisting}[frame=single]
+\begin{lstlisting}[language={[Sharp]C},label={lst:Undo()()}, caption= Extrait du code de createPuzzle.cs]
 public void Undo()
 {
 
@@ -1334,8 +1331,8 @@ public void Undo()
 }
 \end{lstlisting}	
 \item\textbf{Bouton "Redo"} \newline
-Permet de restituer une annulation préalablement faite. Lorsqu'on clique sur le bouton Annuler, on va conserver l'action annulée dans une liste, qui nous servira donc à la restituer lors d'un clic sur le bouton Redo.
-\begin{lstlisting}[frame=single]
+Ce bouton permet de restituer une annulation préalablement faite. Lorsqu'on clique sur le bouton Annuler, on va conserver l'action annulée dans une liste, qui nous servira donc à la restituer lors d'un clic sur le bouton Redo.
+\begin{lstlisting}[language={[Sharp]C},label={lst:Redo()}, caption= Extrait du code de createPuzzle.cs]
 // Restitue la dernière pièce de la liste recoverList
 public void Redo()
 {
@@ -1362,13 +1359,100 @@ Ce bouton ramène l'utilisateur au menu principal. Avant de cliquer dessus, il f
 \subsubsection{Sélection des équipes / unités}
 \begin{enumerate}[label=\Alph*)]
 \item\textbf{Choix de l'équipe} \newline
-Ce menu déroulant permet de choisir l'équipe sur laquelle on veut travailler.
+Ce menu déroulant permet de choisir l'équipe sur laquelle on veut travailler. Un clic sur le menu déroule la liste, qui comprend le nom de toutes les équipes.
+Cette liste est tenue à jour, dès que l'on ajoute une équipe, supprime une équipe, ou bien que l'on ajoute un fichier équipe à la main, et que l'on appuie sur le bouton "Reload team" du menu principal.
 \item\textbf{Choix de l'unité} \newline
 Ce menu déroulant permet de choisir l'unité de l'équipe sur laquelle on va opérer les changements de son comportement.
+Lorsqu'une unité est sélectionnée, son comportement, s'il existe, sera dynamiquement chargé dans l'éditeur, grâce à la fonction createBehaviorFromXML() du script LoadFile (détaillé en annexe).\newline
+Il faut aussi charger les statistiques et le modèle e l'unité sélectionnée, toujours dynamiquement. Pour ça, nous allons faire appel à la méthode ReadStats() du script StatsLoader.cs, qui nous permettra à la fois d'afficher les statistiques de l'unité sélectionnée, mais aussi son modèle 3D.
+Voici un exemple qui concerne l'unité "Base" :
+
+\begin{lstlisting}[language={[Sharp]C},label={lst:ReadStats()()}, caption= Extrait du code de StatsLoader.cs]
+[...]
+// Lecture des statistiques de la base
+            else if (unitName == "Base" && line.Contains("Base"))
+            {
+                readStatsFile(unitName, reader, statBase);
+                imageUnit.sprite = baseSprite.sprite;
+                imageUnit.color = new Color(imageUnit.color.r, imageUnit.color.g, imageUnit.color.b, 255);
+            }
+[...]
+\end{lstlisting}	
 \item\textbf{Bouton Création d'équipe} \newline
-Juste à droite des équipes se trouve un bouton en forme de "+", il permet de créer un nouvelle équipe. Si l'on clique dessus, une boite de dialogue s'ouvre et nous demande le nom de la nouvelle équipe. Après avoir validé le nom, la boite de dialogue se ferme et la nouvelle équipe est présente dans le menu déroulant des équipes.
+Juste à droite des équipes se trouve un bouton en forme de "+", il permet de créer un nouvelle équipe. Si l'on clique dessus, une boite de dialogue s'ouvre et nous demande le nom de la nouvelle équipe. Pour qu'une équipe soit créée, il faut vérifier plusieurs choses. D'abord, il faut s'assurer que son nom ne contient que des caractères contenus dans a-zA-Z0-9. Nous empêchons également la création d'équipe dont le nom commence par le caractère "Espace". Ensuite, si le nom est valide, il faut que l'on vérifie si cette équipe n'existe pas déjà dans le dossier des équipes.\newline
+Enfin, lorsque ces deux conditions sont respectées, alors il faut mettre à jour la liste des équipes, ainsi que le menu déroulant de sélection d'équipes.
+\begin{lstlisting}[language={[Sharp]C},label={lst:validateName()}, caption= Extrait du code de CreateTeam.cs]
+// Vérifie le nom d'équipe entré par l'utilisateur, pour empêcher l'utilisation de caractères spéciaux
+    // Caractères acceptés : a-zA-Z0-9
+    public void validateName()
+    {
+        string teamName = mainInputField.text;
+        string path = Application.streamingAssetsPath + "/teams/TestBot/";
+
+        List<int> listInt = new List<int>();
+        for (int i = 0; i < teamName.Length; i++)
+        {
+            listInt.Add(Convert.ToInt32(teamName[i]));
+        }
+
+        for (int i = 0; i < listInt.Count; i++)
+        {
+            int result = listInt[i];
+            if ((result > 90 && result < 97) || (result < 65 && result > 57) || (result < 48 && result > 32) || result > 122)
+            {
+                errorText.SetActive(true);
+                Text error = errorText.GetComponentInChildren<Text>();
+                error.text = "Nom invalide ! (a-zA-Z0-9)";
+                return;
+            }
+            if (listInt[0] == 32) //&& result == 32)
+            {
+                errorText.SetActive(true);
+                Text errorSpace = errorText.GetComponentInChildren<Text>();
+                errorSpace.text = "Nom invalide ! (a-zA-Z0-9)";
+                return;
+            }
+        }
+
+        if(listInt.Count == 0)
+        {
+            errorText.SetActive(true);
+            Text errorSpace = errorText.GetComponentInChildren<Text>();
+            errorSpace.text = "Nom invalide ! (a-zA-Z0-9)";
+            return;
+        }
+
+        foreach (string file in Directory.GetFiles(path))
+        {
+            string res = file.Replace(path, "");
+            if (res == teamName + ".wbt")
+            {
+                errorText.SetActive(true);
+                Text error = errorText.GetComponentInChildren<Text>();
+                error.text = "L'équipe existe déjà !";
+                return;
+            }
+        }
+
+        if (!System.IO.File.Exists(Application.streamingAssetsPath + "/ELO/" + teamName + ".elo"))
+        {
+            File.Create(Application.streamingAssetsPath + "/ELO/" + teamName + ".elo").Dispose();
+            File.WriteAllLines(Application.streamingAssetsPath + "/ELO/" + teamName + ".elo", new string[] { 1000 + "" });
+        }
+
+        dropOption.Add(teamName);
+        teamDropDown.AddOptions(dropOption);
+        XMLWarbotInterpreter interpreter = new XMLWarbotInterpreter();
+        interpreter.generateEmptyFile(teamName, path);
+        dropOption.Clear();
+        errorText.SetActive(false);
+        window.SetActive(false);
+    }
+\end{lstlisting}	
+
 \item\textbf{Bouton Suppression d'équipe} \newline
 Ce bouton permet de supprimer définitivement l'équipe courante. Une boite de dialogue demandera confirmation.
+Pour supprimer une équipe, il nous suffit de supprimer les fichiers qui lui sont associés, dans le dossier contenant toutes les équipes. Il ne faut pas oublier de mettre à jour le menu déroulant de sélection des équipes, pour qu'elle cesse d'y apparaître.
 \end{enumerate}
 
 

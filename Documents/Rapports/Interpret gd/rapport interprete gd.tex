@@ -956,9 +956,31 @@ Ce problème était particulièrement dérangeant lorsque l’on souhaitait util
 \subsection{Création d’équipe sous la version actuelle}
 \section{Test logiciel}
 \subsection{Procédé}
+\paragraph{}
+Même si nous arrivions à trouver des bugs lors d’une utilisation normale du logiciel, ce n’est pas suffisant pour trouver tous les bugs présents sous WarBot. \newline
+En effet, dans le domaine de tests logiciels il existe plusieurs familles de tests. Il est important de préciser que nous avons effectué les tests en boîte noire, c’est-à-dire en ayant très peu, voire pas du tout, de connaissance du code du logiciel. La première est le test des nouvelles fonctionnalités dont le but est de se focaliser sur les nouveautés de la version pour vérifier qu’elles marchent bien. Pour effectuer ces tests, nous avons créé des équipes très simples n’utilisant presque qu’une seule primitive à savoir celle que l’on voulait tester. Nous lancions ensuite une partie et observions le comportement des unités pour déterminer si les ajouts étaient bien opérationnelles.
+\paragraph{}
+  Une fois les tests des nouvelles fonctionnalités terminé, nous faisions des tests combinatoires dont le but était de vérifier que de mêler plusieurs primitives dans un même comportement ne posait pas de problème. Pour cela, nous complexifiions les équipes créés pour tester des primitives à part en rajoutant de nouvelles primitives dans leur comportement.
+ \paragraph{}
+  Une autre famille de test très important est la famille des tests de non régression. Le but de ces tests est de tester toutes les anciennes fonctionnalités pour vérifier si elles fonctionnent toujours de la même manière que dans la version précédente. Pour cela, nous lancions une partie avec des équipes créés lors des versions précédentes et nous vérifions que les agents n’avaient pas de comportement étranges ou non désirés.
+\paragraph{}
+  La dernière famille de test que nous avons effectué sont les test aux limites. Ces tests consistaient à pousser WarBot dans ses retranchements en essayant des choses qui étaient susceptibles de ne pas avoir été pensé par les développeurs. Par exemple, nous avons essayé de créer des équipes dont le nom contenaient des caractère spéciaux, de lancer des parties avec énorméments d’unités, de constamment changer la vitesse en jeu...
+
 \subsection{Organisation et communication}
-\section{Game Design}
+\paragraph{}
+  Une fois qu’un bug était trouvé, nous tentions de le reproduire plusieurs fois afin de comprendre comment le déclencher. Une fois que le déclenchement du bug était compris, nous l’ajoution à la liste de bugs.
+\paragraph{}
+  Cette liste étant un Google Document partagé, n’importe qui possédant le lien vers ce document étaient capable de le voir et de l’éditer. Le but était donc de centraliser tout le processus de communication des bugs : n’importe qui pouvait ajouter à la liste un bug qu’il avait découvert, indiquer que le bug a été corrigé ou si certains sont réapparus.
+\paragraph{}
+  Ce document possède plusieurs tableaux : un pour les bugs non traités, un pour ceux qui sont réapparus après une correction, un pour les bugs patchés (non corrigé mais un compromis a été réalisé pour que ça ne pose plus de problème), un pour les bugs à vérifier et un dernier pour les bugs corrigés.
+\paragraph{}
+Il nous arrivait également de rajouter des liens vers des vidéos des bugs enregistrés lors de nos sessions de recherche de bugs ou bien des captures d’écrans, rendant ainsi plus explicite les problèmes qu’apportent le bug ou la manière de le réaliser.
+\paragraph{}
+Lorsqu’un bug était plus important comme l’impossibilité de lancer une partie ou de créer un comportement, nous en informions directement l’équipe via notre serveur Discord qui permet d’effectuer des conversations instantanées avec tous les membres du groupe. Ces conversations peuvent être aussi bien textuelles que vocales. L’intérêt de passer directement par Discord était de provoquer une situation d’urgence où toute l’équipe était mise au courant du problème sans qu’ils aient besoin de passer sur le Google Documents. 
+
 \newpage
+\section{Game Design}
+
 \subsection{Amélioration demandés}
 \paragraph{}
   Deux semaines après le début du projet, il nous a été demandé de rédiger un document expliquant comment nous voulions le langage. Nous avons donc commencé à imaginer comment améliorer le langage de l’éditeur de l’ancienne version.
@@ -1075,18 +1097,18 @@ Le principe de la boucle de gameplay est que  pour un objectif donné, il existe
   \caption{Boucle macro}
   \label{fig:sfig3}
 \end{subfigure}
-\caption{Boucle de gameplay d'une RPG}
+\caption{Boucle de gameplay d'un RPG}
 \label{fig:fig}
 \end{adjustwidth}
 \end{figure}
 \paragraph{}
-
+\newpage
 Seulement, avec WarBot, nous devons supprimer les boucles micro et moyenne pour ne conserver qu’une boucle macro :
 
 \paragraph{}
 \begin{center}
 \includegraphics[scale=0.7]{DATA/macroWarBot.png}
-\captionof{figure} {Boucle degameplay de Warbot}
+\captionof{figure} {Boucle de gameplay de Warbot}
 \end{center}
 \paragraph{}
 
@@ -1110,7 +1132,7 @@ Le problème avec WarBot est alors évident : le joueur ne contrôle pas ses uni
 \paragraph{}
 
 Cette carte est la carte la plus simple. Les bases sont dans des espaces clos assez difficile d’accès pour centraliser l’action dans une seule zone : le centre. La zone centrale est en forme d’octogone afin de limiter les zones où il n’y a rien d’intéressant toujours dans l’intention de focaliser l’attention des agents sur la zone d’apparition des ressources.
-
+\newpage
 \paragraph{}
 \begin{center}
 \includegraphics[scale=0.2]{DATA/carteX.png}
@@ -1170,7 +1192,7 @@ Pour cette dernière carte, le but était de séparer les affrontements dans plu
 \end{figure}
 \paragraph{}
 
-  Les autres cartes n’ont pas été conçu par notre équipe car l’équipe moteur s’en ai occupé sans nous solliciter. Nous n’étions donc même pas au courant qu’ils étaient en train de travailler sur de nouvelles cartes avant de les voir arriver dans le projet dans leur version jouable. La carte Simple était au départ la carte qui servait à faire nos tests. Les cartes montagne et Desolate ont été conçus pour avoir plus de possibilité de collision avec le décor.
+  L’équipe moteur s’en occupé de la création des cartes atuellement présentent dans le projet. La carte Simple était au départ la carte qui servait à faire nos tests. Les cartes montagne et Desolate ont été conçus pour avoir plus de possibilité de collision avec le décor. Quand à la carte garden, c'est un model 3D trouvé sur Inernet qui a été ajouté pour vérifier la possibilité d'ajouter des cartes n'étant pas prévu spécifiquement pour notre moteur au départ.
 
 \subsection{Equilibrage}
 \paragraph{}
