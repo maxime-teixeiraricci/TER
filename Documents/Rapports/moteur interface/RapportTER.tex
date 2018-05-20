@@ -511,11 +511,11 @@ public class Brain : MonoBehaviour
 Cette phase de démarrage a duré environ un mois, durant lequel nous avons pu rendre compte chaque semaine à notre encadrant/client. Durant celle-ci on a donc aggrémenté notre moteur de jeu au gré de M. Ferber, en nous basant sur notre expérience d'utilisation de Unity pour valider les différents ajouts demandés.
 
 \subsection{Intégration dans le projet.}
-Lorsque le moteur nous paraissait complet, nous l'avons intégré au projet. Cette phase à était source de problème du fait que l'ancien projet etait encore present et que de nombreux conflit persister.
+Lorsque le moteur nous a paru complet, nous l'avons intégré au projet. Cette phase a été source de problèmes du fait que l'ancien projet était encore présent et que de nombreux conflits persistés.
 
 \subsubsection{La phase d'intégration.} 
-\paragraph{Le lien avec l’interpréteur} Le plus grand défi de l’intégration était de rendre possible la liaison avec l’interpréteur en place, créer par l'équipe Interpréteur du projet. Nous avons donc travailler en étroite collaboration avec cette équipe afin qu'il nous explique le fonctionnement de l’interpréteur pour que nous puissions faire les modifications nécessaires.
-\paragraph{}Suite à nos échanges, il a été convenue de modifier la classe Instruction qui servira de pont entre l’interpréteur et le moteur.
+\paragraph{Le lien avec l’interpréteur} Le plus grand défi de l’intégration était de rendre possible la liaison avec l’interpréteur en place, créé par l'équipe Interpréteur du projet. Nous avons donc travaillé en étroite collaboration avec cette équipe afin de comprendre le fonctionnement de l’interpréteur pour que nous puissions faire les modifications nécessaires.
+\paragraph{}Suite à nos échanges, il a été convenu de modifier la classe Instruction qui servira de pont entre l’interpréteur et le moteur.
 
 \begin{lstlisting}[language={[Sharp]C},label={lst:InstructionScript}, caption=  Extrait du code du script Instruction.cs]
 public class Instruction {
@@ -535,8 +535,8 @@ public class Instruction {
 }
 \end{lstlisting}
 
-\paragraph{}Cette classe est composé de l'attribut \textit{\_listeStringPerceptsVoulus} correspondant à la liste des labels des perceptions de l'instruction, de l'attribut \textit{\_stringActionsNonTerminales} comportant la liste des labels des actions non terminales et d'une string \textit{\_stringAction} qui est le label de l'action à faire. Les actions non terminales ne sont, à ce stade, pas encore implémenté, nous décidons tout de même de les laisser pour les implémenter ultérieurement.
-\paragraph{}Lors de la lecture d'un comportement créer par l'éditeur de comportement intégré dans le jeu, l’interpréteur nous renvoies une instance de cette classe Instruction.
+\paragraph{}Cette classe est composée de l'attribut \textit{\_listeStringPerceptsVoulus} correspondant à la liste des labels des percepts de l'instruction, de l'attribut \textit{\_stringActionsNonTerminales} comportant la liste des labels des actions non terminales et d'une string \textit{\_stringAction} qui est le label de l'action à faire. Les actions non terminales ne sont, à ce stade, pas encore implémentées, nous décidons tout de même de les laisser pour les implémenter ultérieurement.
+\paragraph{}Lors de la lecture d'un comportement créé par l'éditeur de comportement intégré dans le jeu, l’interpréteur nous renvoie une instance de cette classe Instruction.
 
 \begin{lstlisting}[label={lst:InstructionExample}, caption=  Exemple d'une instruction d'un comportement que peut renvoyer l’interpréteur.]
 Instruction (
@@ -545,8 +545,8 @@ Instruction (
 	Action = ACTION_FIRE )
 \end{lstlisting}
 
-\paragraph{}L'exemple montrer au listing \ref{lst:InstructionExample} correspond au comportement d'une unité et lui demandera de tirer si l'unité peut percevoir un ennemie, et que sa vie est au maximum. Les actions non-terminales n'étant pas pris en charge à ce moment du développement, la liste est donc vide. Un comportement n'est donc rien d'autres qu'une liste d'instruction.
-\paragraph{}Pour garder l'idée d'une structure de subsomption, la liste des instructions est ordonnée de tel sorte que la premiere instruction dans cette liste est la première à être examiner et exécute si ces perceptions sont activé.
+\paragraph{}L'exemple montrer au listing \ref{lst:InstructionExample} correspond au comportement d'une unité et lui demandera de tirer si l'unité peut percevoir un ennemi, et que sa vie est au maximum. Les actions non-terminales n'étant pas prises en charge à ce moment du développement, la liste est vide. Un comportement n'est donc rien d'autres qu'une liste d'instructions.
+\paragraph{}Pour garder l'idée d'une structure de subsomption, la liste des instructions est ordonnée de telle sorte que la première instruction dans cette liste est la première à être examinée et son action est exécutée si ces percepts sont activés.
 
 
 
@@ -559,7 +559,7 @@ Instruction (
 \subsubsection{Actions non-terminales}
 
 \subsubsection{Ajout de fonctionnalités des instructions.}
-\paragraph{}Un des enjeux du moteur était de pouvoir rendre les instructions plus interessantes pour le joueurs. Il a donc fallu améliorer les instructions qui etait une simple liste de perceptions, d'actions non terminales et d'une action en rajoutant des fonctionnalité.\newline
+\paragraph{}Un des enjeux du moteur était de pouvoir rendre les instructions plus intéressantes pour le joueur. Il a donc fallu améliorer les instructions qui étaient composées d'une simple liste de percepts, d'actions non terminales et d'une action en rajoutant des fonctionnalités.\newline
 \begin{lstlisting}[label={lst:BehaviorExample}, caption=  Exemple d'un comportement que peut renvoyer l’interpréteur.]
 Behavior [LIGHT] = {
 1. Instruction (  Percepts = [PERCEPT_ENEMY, PERCEPT_LIFE_MAX],
@@ -577,13 +577,13 @@ Behavior [LIGHT] = {
 \end{lstlisting}
 
 
-\paragraph{}Le comportement défini en listing \ref{lst:BehaviorExample} comporte plusieurs instructions, résumant les possibilités du moteur
+\paragraph{}Le comportement défini en listing \ref{lst:BehaviorExample} comporte plusieurs instructions  résumant les possibilités du moteur.
 
 \paragraph{1. Négation.}
-La plus grande amélioration que l'équipe de Game Design nous avait demandé d'apporter au moteur sur le plan des instruction était de mettre en place la négation des percepts. 
-\subparagraph{} Pour rappel, un percept (ou perception) est une fonction anonyme qui renvoie un booléen. La composition de plusieurs perception donne l'illusion d'un tableau de bord, permettant à l'unité de se faire une idée de son environnement. Cependant, les instructions fonctionnent actuellement en utilisant une liste conjonctive de percept. En d'autres termes, tout les percepts d'une instruction doit être activé pour pouvoir exécuter l'action de l'instruction.
-\subparagraph{}Il nous fallait donc trouver un moyen pour rendre possible la négation des perceptions. Ainsi, et en travaillant de concert avec l'équipe Interpréteur, nous avons convenu d'un préfixe \textit{NOT\_} que l'on concatène au label des perceptions, comme vu à l'instruction 2. et 3. du listing \ref{lst:BehaviorExample}.
-\begin{lstlisting}[label={lst:BehaviorExampleNeg}, caption = Une perception et son inverse.]
+La plus grande amélioration que l'équipe de Game Design nous avait demandé d'apporter au moteur sur le plan des instructions était de mettre en place la négation des percepts.
+\subparagraph{} Pour rappel, un percept est une fonction anonyme qui renvoie un booléen. La composition de plusieurs percepts donne l'illusion d'un tableau de bord, permettant à l'unité de se faire une idée de son environnement. Cependant, les instructions fonctionnent actuellement en utilisant une liste conjonctive de percepts. En d'autres termes, tout les percepts d'une instruction doivent être activés pour pouvoir exécuter l'action de l'instruction.
+\subparagraph{}Il nous fallait donc trouver un moyen pour rendre possible la négation des percepts. Ainsi, en travaillant de concert avec l'équipe Interpréteur, nous avons convenu d'un préfixe \textit{NOT\_} que l'on concatène au label des percepts, comme vu aux instructions 2. et 3. du listing \ref{lst:BehaviorExample}.
+\begin{lstlisting}[label={lst:BehaviorExampleNeg}, caption = Un percept et son inverse.]
 PERCEPT_LIFE_MAX; //Activé lorsque "TRUE"
 NOT_PERCEPT_LIFE_MAX; //Activé lorsque "FALSE"
 \end{lstlisting}
@@ -617,18 +617,19 @@ Ainsi, une instruction est activé si :
 \end{itemize}
 
 \paragraph{2. Mouvement tactique.}
-Comme définie dans le listing \ref{lst:BehaviorExample}, l'instruction 2. permet de faire une action non-terminale même pas d'action terminale. Cela permet ainsi de pouvoir réaliser des mouvement plus tactique et de ne pas terminer le tour.
-\paragraph{}Lorsque les percepts de l'instruction 2 sont activé, cela déclenche l'action non terminale en ligne 6 qui envoie un message d'aide aux unité de type \textit{Heavy}. Mais comme il n'y a pas d'action terminant le tour, on continue à regarder les autres instructions tant qu'il n'y a pas d'action terminale à effectuer.
+Comme définie dans le listing \ref{lst:BehaviorExample}, l'instruction 2. permet de faire une action non-terminale même sans d'action terminale.
+Ainsi on a la possibilité de réaliser des mouvements plus tactiques sans terminer le tour.
+\paragraph{}Lorsque les percepts de l'instruction 2 sont activés, cela déclenche l'action non terminale en ligne 6 qui envoie un message d'aide aux unités de type \textit{Heavy}. Mais comme il n'y a pas d'action terminant le tour, on continue à regarder les autres instructions tant qu'il n'y a pas d'action terminale à effectuer.
 
 \paragraph{3. Instruction par défaut.}
-Lorsque une instruction ne comporte pas de percepts, cette instruction est, par définition toujours valide. Cela permet, entre autre, de créer des cas par défaut que l'on peut mettre à la fin d'un comportement. L'action de cette instruction est alors toujours exécuter si aucune autre action ne peut l'etre.
+Lorsqu'une instruction ne comporte pas de percepts, cette instruction est, par définition toujours valide. Cela permet, entre autre, de créer des cas par défaut que l'on peut mettre à la fin d'un comportement. L'action de cette instruction est alors toujours exécutée si aucune autre action ne peut l'être.
 
 \paragraph{4. Cas exceptionnel.}
-Dans un comportement, il peut arriver que toutes les instructions ne soit pas vérifier. Dans ce cas précis, c'est le moteur lui même qui prends en charge l'action de l'unité. Actuellement, l'unité éxécute l'action \textit{ACTION\_IDLE} dans ce cas la.
+Dans un comportement, il peut arriver que les conditions de toutes les instructions soient fausse, empêchant ainsi l'exécution d'une action. Dans ce cas précis, c'est le moteur qui choisi l'action à effectuer. Actuellement, l'unité exécute l'action \textit{ACTION\_IDLE}.
 
 \subsubsection{Optimisation du temps de chargement}
-\paragraph{} L'un des gros problèmes que l'on a rencontré est le fait que le temps de chargement lors d'une partie était beaucoup trop élevé et cela nuisait au bon déroulement de la partie, atteignant parfois deux minutes de temps de chargement lorsque l'on voulait générer 200 unités. Pour cela nous avons étudié plusieurs pistes pour résoudre ce problème.
-\subparagraph{1. La gestion des actions des unités.}La première piste de recherche que l'on a étudié est d'essayer d'optimiser la gestion des actions des unités. Lorsque l'on a conçu les unités, elles faisaient leurs actions dans une fonction utilisée par Unity ("Update") qui est appelée à chaque calcul d'image. Ainsi, pour chaque unité présente sur la scène, Unity calcule l'action que celle-ci doit faire. Cependant, certaine action nécessite plus de temps en fonction de sa complexité, ce qui pouvait engendrer que des unités avaient des tours de retard par rapport à d'autres unités. \newline
+\paragraph{} L'un des gros problèmes que l'on a rencontré est le fait que le temps de chargement lors d'une partie était beaucoup trop élevé. Cela nuisait au bon déroulement de la partie, atteignant parfois deux minutes de temps de chargement lorsque l'on voulait générer 200 unités. Pour résoudre ce problème, nous avons étudié plusieurs pistes.
+\subparagraph{1. La gestion des actions des unités.}La première piste de recherche que l'on a étudié est d'essayer d'optimiser la gestion des actions des unités. Lorsque l'on a conçu les unités, elles faisaient leurs actions dans une fonction propre à Unity ("Update") qui est appelée à chaque calcul d'image. Ainsi, pour chaque unité présente sur la scène, Unity calcule l'action qu'elle doit faire. Cependant, certaines actions nécessitent plus de temps en fonction de leur complexité, ce qui pouvait engendrer que des unités avaient des tours de retard par rapport à d'autres unités. \newline
 Pour palier à ce problème, nous avons donc délégué la gestion des tours des unités à un script  "TurnManagerScript.cs" (Listing \ref{lst:turnManagerScript}).\newline
  \begin{lstlisting}[language={[Sharp]C},label={lst:turnManagerScript}, caption= Code du script TurnManagerScript.cs]
 using System.Collections;
@@ -660,7 +661,7 @@ public class TurnManagerScript : MonoBehaviour
 	}
 }
 \end{lstlisting}
-Ce script permet donc de contrôler le fait que chaque unité ne commence pas un nouveau tour si d'autres unités n'ont pas fini ou fait le leurs.
+Ce script permet de contrôler le fait que chaque unité ne commence pas un nouveau tour si d'autres unités n'ont pas fini ou fait le leurs.
 Cependant, cette optimisation n'a pas permis de réduire le temps de chargement d'une partie, restant toujours à prés de deux minutes pour la génération de 200 unités.
 
 \subparagraph{2. \textit{ObjectPool}, les "bassins" d'objets.}Pour essayer de mieux localiser le problème, nous avons effectué des tests sur le temps de chargement en fonction du nombre d'unités. Les résultats sont consignés dans le tableau ci-dessous. On peut donc voir que le nombre d'unité à générer influe directement sur le temps de chargement.\newline
@@ -701,7 +702,7 @@ Cette méthode permet de ne pas créer une unité directement, mais de juste pre
 \end{figure}
 
 \subparagraph{} Cependant, le temps de chargement est sensiblement le même en utilisant ce principe. Le problème vient donc de la conception même des objets des unités. \newline
-Pour trouver d’où viens précisément le problème, on a donc décidé de créer 200 unités et de désactiver certain composant. En utilisant ce procédé, on a pu découvrir et comprendre l'origine du problème.
+Pour trouver d’où viens précisément le problème, on a donc décidé de créer 200 unités et de désactiver certains composants. En utilisant ce procédé, on a pu découvrir et comprendre l'origine du problème.
 
 \subparagraph{3. Simplification des collisions.} La gestion des collisions entre unités et leur environnement ce faisait avec un \textit{MeshCollider}. Le \textit{MeshCollider} est un composant de type \textit{Collider} qui permet la gestion des collisions notamment en envoyant des messages aux différents acteurs de la collision. Le \textit{MeshCollider} à la particularité d'épouser plus ou moins la forme du maillage de l'objet que l'on met en arguments.
 \begin{figure}[!h]
