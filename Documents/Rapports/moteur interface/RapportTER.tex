@@ -597,15 +597,30 @@ public class Brain : MonoBehaviour
 \end{lstlisting}
 
 \paragraph{}Afin de mener à bien le développement du comportement des unités, on a aussi dû créer une carte plus légère et plus petite que celle de l'ancienne génération nous permettant de faciliter nos tests.
-
-\begin{figure}[!h]
-\centering
-\includegraphics[scale=0.3]{FirstMapImage}
-\caption{Aperçu de la premier carte de test.}
+\newpage
+\begin{figure}[h!]
+        	\centering
+	\includegraphics[scale=0.35]{FirstMapImage}
+	\caption{Aperçu de la premier carte de test.}
 \end{figure}
 
 \paragraph{}
-Sur cette scène a été introduit le déplacement de la camera principale (MainCamera) calculé en fonction de la position moyenne des unités. Cela permet de donner un effet dynamique à la scène.
+Sur cette scène a été introduit le déplacement de la camera principale (MainCamera) calculé en fonction de la position moyenne des unités. Cela permet de donner un effet dynamique à la scène. Ce mécanisme est présent dans le scipt "FollowCamera.cs" attaché à la caméra principale et est toujours d'actualité pour chacune de nos MainCamera de scène de jeu.
+\begin{lstlisting}[language={[Sharp]C},label={lst:FollowCamera}, caption=  Extrait du code du script  FollowCamera.cs]
+void FixedUpdate ()
+    {
+        Vector3 res = Vector3.zero;
+        GameObject[] units = GameObject.FindGameObjectsWithTag("Unit");
+
+        foreach (GameObject go in units)
+        {
+            res += go.transform.position;
+        }
+        res *= 1f / (units.Length + 1);
+        currentTarget += (res - currentTarget) * Time.deltaTime * _speed;
+        transform.LookAt(currentTarget);
+    }
+\end{lstlisting}
 \paragraph{}
 Cette phase de démarrage a duré environ un mois, durant lequel nous avons pu rendre compte chaque semaine à notre encadrant. Durant celle-ci, on a donc agrémenté notre moteur de jeu en suivant les directives de M. Ferber, en nous basant sur notre expérience d'utilisation de Unity pour valider les différents ajouts demandés.
 
@@ -1009,10 +1024,60 @@ Les autres animations concernent les unités qui détiennent toutes quatre anima
 Les GameObject concernant ces différentes animations sont présents au sein des stats de chaque unité et peuvent être modifié simplement.
 \end{itemize}
 \subsection{Sons.}
-Différents fonds musicaux et effets sonores sont audibles tout au long de l'utilisation du jeu.
+Les différents sons et bruitages présents dans le jeu ont été récupérés à partir de banques de sons libres de droit sur internet.
+\newline Différents fonds musicaux et effets sonores sont audibles tout au long de l'utilisation du jeu.
+\paragraph{Fonctionnement.}
+Pour utiliser le son dans le moteur de jeu Unity, il faut passer par deux composants :
+\begin{itemize}
+\item Audiosource : un AudioSource est attaché a un GameObject pour lire les sons dans un environnement 3D, on peut lire un seul clip audio en utilisant Lecture, Pause et Stop. On peut également ajuster son volume pendant la lecture en utilisant la propriété de volume (expliqué plus en détail dans la partie Interface Graphique). Plusieurs sons peuvent être lus sur une source audio en utilisant PlayOneShot.
+\item AudioListener :un AudioListener agit comme un périphérique de type microphone. Il reçoit une entrée de n'importe quelle AudioSource dans la scène et joue des sons à travers les haut-parleurs de l'ordinateur. Pour la plupart des applications, il est plus logique d'attacher l'AudioListener à la caméra principale. Il ne peut y avoir qu'un seul AudioListener par scène.
+\end{itemize}
 \paragraph{Les fond sonores.}
+Deux ambiances musicales sont proposés sur l'ensemble du jeu.
+\newline La première est activée dès le démarrage du jeu. Elle est jouée en boucle sur l'écran principal ainsi que sur l'éditeur sans interruption au passage de scène en scène.
+\newline  La seconde est la musique en cours de jeu, elle démarre à chaque nouveau lancement de partie et est elle aussi jouée en boucle.
+\newline Pour ce faire, le composant AudioSource utilisé est attaché au GameManager dont le script "GameManager.cs" a en attribut les deux AudioClip correspondant aux fonds sonores. Un AudioClip contient les données audio utilisées par un AudioSource.
+ \begin{lstlisting}[language={[Sharp]C},label={lst:GameManagerSound}, caption= Extrait du code de GameManager.cs]
+    public AudioClip audioMenu;
+    public AudioClip audioWarbot;
+\end{lstlisting}
+Ci-dessous un exemple de changement de piste audio par appuie sur le bouton "Quit" sur l'écran de jeu. La piste audio correspondant aux menu est jouée.
+\begin{lstlisting}[language={[Sharp]C},label={lst:HUDmanagerQuit}, caption= Extrait du code de HUDmanager.cs ]
+    public void QuitToMenu()
+    {
+        SceneManager.LoadScene(0);
+        audioSource.clip = gameManager.GetComponent<GameManager>().audioMenu;
+        audioSource.Play();
+    }
+\end{lstlisting}
 \paragraph{Les projectiles.}
+Les deux projectiles, celui lancé par les chars légers et par les chars lourd produisent des sons lors de leur création et de leur destruction.
+Ils ont chacun leur propre duo de sons et utilise l'AudioSource du GameManager pour les jouer. Comme se sont des sont ponctuels, on utilise la fonction PlayOneShot de l'AudioSource afin de les jouer.
+\begin{lstlisting}[language={[Sharp]C},label={lst:bulletAudio}, caption= Extrait du code de BulletScript.cs ]
+    public AudioClip _shotSongStart;
+    public AudioClip _shotSongFinish;
+    AudioSource audioSource;
+    void Start()
+    {
+        audioSource = GameObject.Find("GameManager").GetComponent<AudioSource>();
+        if (_shotSongStart != null) audioSource.PlayOneShot(_shotSongStart);
+    }
+\end{lstlisting}
 \paragraph{Les unités.}
+Chaque unité a un son correspondant à sa destruction, ceux-ci sont donc jouer à la mort de l'unité. Ces sons sont gérés de manière identique à celle utilisée pour les projectiles. Leurs lecture se fait dans le script "Stats.cs", en même temps que la mise à jour des points de vies. 
+\begin{lstlisting}[language={[Sharp]C},label={lst:bulletAudio}, caption= Extrait du code de Stats.cs ]
+if (_health <= 0)
+        {
+            if (_currentEffect)
+            {
+                Destroy(_currentEffect);
+            }
+            _currentEffect = Instantiate(_explosion, transform.position, Quaternion.identity);
+            if (_dieSong != null) audioSource.PlayOneShot(_dieSong);
+            Destroy(_currentEffect, 1.5f);
+            Destroy(gameObject);
+        }
+\end{lstlisting}
 \section{Amélioration possible}
 L’objectif de ce projet était de refaire rendre générique la version Warbot Unity réalisée l'an dernier.
 Le but étant de facilité la création sur le moteur de jeu Unity, de jeux de stratégie basés sur le paradigme de  la programmation orientée agent afin de permettre un véritable apprentissage de ses différentes notions. En ce sens, notre objectif a été rempli, mais les améliorations possibles pour les années à
