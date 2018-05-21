@@ -1152,6 +1152,15 @@ venir sont multiples :
 \item 
 \end{itemize}
 
+
+
+
+
+
+
+
+
+
 \newpage
 %%%
 % PARTIE Interface Graphique
@@ -1177,6 +1186,7 @@ Le menu principal, à première vue, est assez classique. Quatre options s'offre
 \item{Activer / Désactiver le son}
 \end{itemize}
 L'aspect purement graphique est cohérent, puisque le fond d'écran représente une scène de jeu.
+Nous pouvons donc apercevoir deux modèles 3D d'unités présentes en jeu, ainsi qu'une partie du décor sur mequel se déroulera le combat.
 
 \begin{figure}[!h]
 	\centering
@@ -1191,21 +1201,23 @@ L'éditeur de comportement se décompose en deux écrans distincts  :
 \paragraph{}
 Ce menu apparaît par défaut lors d'une tentative d'accès à l'éditeur de comportement si aucune équipe n'existe. Il permet donc de créer une nouvelle équipe, en entrant son nom.\newline
 De plus, il permet de revenir au menu principal, de lancer une nouvelle partie, de quitter le jeu, ou bien tout simplement de fermer ce menu pour accéder à l'éditeur de comportement.\newline
-
-\begin{figure}[!h]
+Ce menu est toutefois "caché". Pour y accéder, il faut appuyer sur la touche "ECHAP" du clavier pour le voir s'afficher.
+\clearpage
+\begin{figure}[h]
 	\centering
-		\includegraphics[scale=0.30]{PauseMenuOld}
-	\caption{Menu Principal, Ancienne Interface}
+		\includegraphics[scale=0.50]{PauseMenuOld}
+	\caption{Menu Pause, Ancienne Interface}
 \end{figure}
+
 
 \item\textbf{L'éditeur en lui même}\newline
 Nous avons maintenant devant nous un éditeur sobre. En haut à gauche se trouve le nom de l'équipe courante, ainsi que l’unité sur laquelle on va travailler.\newline
 Juste en dessous, une liste de primitives, utiles à la création de comportement.\newline
 Et enfin, à droite, la zone d'édition.
 
-\begin{figure}[!h]
+\begin{figure}[h]
 	\centering
-		\includegraphics[scale=0.35]{BehaviorScreenOld}
+		\includegraphics[scale=0.50]{BehaviorScreenOld}
 	\caption{Editeur de Comportement, Ancienne Interface}
 \end{figure}
 
@@ -1218,7 +1230,7 @@ Cet écran permet également de revenir au menu principal, ou bien tout simpleme
 
 \begin{figure}[!h]
 	\centering
-		\includegraphics[scale=0.40]{SettingsOld}
+		\includegraphics[scale=0.50]{SettingsOld}
 	\caption{Sélection des équipes, Ancienne Interface}
 \end{figure}
 
@@ -1250,9 +1262,14 @@ Nous avons donc décidé de mettre en place deux écrans : le menu principal,  e
 \subsection{Menu Principal}
 Le menu principal donne accès aux options majeures du jeu. Ce menu doit contenir toutes les fonctionnalités dont l'utilisateur peut avoir besoin pour gérer le lancement d'une partie, sans avoir à accéder à l'éditeur de comportement.
 Cela comporte donc les paramètres de la partie, le choix des équipes, du nombre d'unités, de la carte, etc... \newline
+\begin{figure}[!h]
+	\centering
+		\includegraphics[scale=0.50]{MenuPrincipal}
+	\caption{Menu Principal, Nouvelle Interface}
+\end{figure}
 Passons en revue tous les éléments présents sur cet écran.
 \subsubsection{Lancer une Partie}
-Ce bouton permet de lancer une partie du jeu MetaBot. Le lancement de la partie prend en compte le mode de jeu sélectionné, les équipes choisies, le nombre de chaque unités en début de partie, le nombre de ressources maximum (nombre de ressource présentes en jeu au même moment), et la carte de jeu. Un script rattaché à ce bouton va donc se charger d'aller récupérer toutes ces informations stockées dans les différents "GameObject" de notre scène.
+Le bouton "Jouer" permet de lancer une partie du jeu MetaBot. Le lancement de la partie prend en compte le mode de jeu sélectionné, les équipes choisies, le nombre de chaque unités en début de partie, le nombre de ressources maximum (nombre de ressource présentes en jeu au même moment), et la carte de jeu. Un script rattaché à ce bouton va donc se charger d'aller récupérer toutes ces informations stockées dans les différents "GameObject" de notre scène.
 
 \begin{lstlisting}[language={[Sharp]C},label={lst:StartGame()}, caption= Extrait du code de PlayButton.cs]
 
@@ -1287,9 +1304,9 @@ public void StartGame()
 
 
 \subsubsection{Bouton Éditeur de Comportement}
-Ce bouton permet d'accéder à l'éditeur de comportement, qui permettra à l'utilisateur, entre autres, de créer et/ou modifier le comportement de ses équipes.
+Le bouton "Editer" permet d'accéder à l'éditeur de comportement, qui permettra à l'utilisateur, entre autres, de créer et/ou modifier le comportement de ses équipes.
 \subsubsection{Bouton Paramètres}
-Ce bouton va afficher la fenêtre "pop-up" qui contient tous les paramètres du jeu.
+L'icône en forme d'engrenage représente le bouton paramètres. Il va permettre d'afficher la fenêtre "pop-up" qui contient tous les paramètres du jeu.
 \subsubsection{Choisir le nombre d'équipe}
 Nous avons la possibilité de choisir le nombre d'équipes participant à la partie. Les valeurs sont dans un menu déroulant et vont de 2 à 4. Sa valeur courante sera récupérée par le script StartGame() (cf Listing 4.1).\newline
 En fonction du nombre d'équipes choisies, le nombre de cadres d'équipe changera.
@@ -1345,7 +1362,6 @@ On peut directement choisir le lieu de la partie en cliquant sur les flèches de
 		\includegraphics[scale=0.80]{ChoiceMap}
 	\caption{Aperçu de la sélection de carte}
 \end{figure}
-\break
 \subsubsection{Choisir nombre de départ de chaque unité}
 En dessous de l’aperçu de la carte, il y a les noms des unités existantes. Sous ces noms, le chiffre indique le nombre de ce type d'unité présent au lancement de la partie. On peut incrémenter ou décrémenter ce chiffre à l'aide des boutons "+" et "-" à coté de celui-ci. A chaque clic sur le bouton "+", on incrémente la variable "number" associée à l'unité, et inversement avec "-", dans la limite du possible ( c'est-à-dire tout en vérifiant que la valeur maximale du nombre d'unités possible ne soit pas dépassé).
 
@@ -1395,18 +1411,19 @@ Ce menu regroupe les paramètres de jeu.
 \subsubsection{Changer le Volume de la musique}
 Ce slider indique le niveau sonore de la musique. On peut le modifier en cliquant dessus et en déplaçant la valeur de 0 jusqu’à 100. 0 correspond à un arrêt de la musique et 100 au volume maximal. De plus, le volume sonore dans le menu est le même dans l'éditeur de comportement et dans le jeu lui même.
 La valeur de notre slider affectera directement la valeur de notre AudioSource.
-
+\smallbreak
 \begin{figure}[!h]
 	\centering
-		\includegraphics[scale=0.40]{AudioSource}
+		\includegraphics[scale=0.60]{AudioSource}
 	\caption{Aperçu de l'AudioSource, dans l'Inspector}
 \end{figure}
 
 \subsubsection{Choisir le nombre de ressource maximales dans le jeu}
 Dans cette case, on peut entrer un chiffre entier qui indiquera le nombre maximum de ressources présentes simultanément en jeu.
+\smallbreak
 \begin{figure}[!h]
 	\centering
-		\includegraphics[scale=0.40]{RessourcesMax}
+		\includegraphics[scale=0.80]{RessourcesMax}
 	\caption{Choix du nombre maximal de ressources}
 \end{figure}
 \subsubsection{Choisir le mode de jeu}
@@ -1420,7 +1437,7 @@ Si le mode choisi est RessourceRace alors deux autres paramètres apparaissent:
 
 \begin{figure}[!h]
 	\centering
-		\includegraphics[scale=0.40]{ManuelJeu/ModeJeuRessourceRace}
+		\includegraphics[scale=0.80]{ManuelJeu/ModeJeuRessourceRace}
 	\caption{Paramètres RessourceRace}
 \end{figure}
 
@@ -1499,7 +1516,6 @@ Nous avons commencé par faire un croquis de deux interfaces potentielles.
 
 \paragraph{}
 Le premier modèle s'appuie sur l'esprit de l'ancienne interface, avec le panneau de contrôles fortement similaire. Cependant, après concertation lors d'une réunion, nous avons écarté ce modèle, car il ne semblait pas optimisé. La barre d'outils paraissait bien trop importante, et la zone d'édition de comportement s'en voyait restreinte.\newline
-\clearpage
 Quant au second modèle, il nous semblait organisé de manière plus logique, et intuitive. Toutes les options et choix se trouvent à gauche de la fenêtre, alors que la partie droite se consacre à l'édition du comportement.\newline
 Nous avons donc décidé de partir sur ce modèle.
 
@@ -1522,6 +1538,13 @@ En voici un aperçu :
 % ToolBox %
 \subsubsection{ToolBox}
 La ToolBox est le panneau en haut à gauche de l'interface, regroupant des actions classiques, telles que la sauvegarde de fichier, la création d'un nouveau comportement, etc...
+
+\begin{figure}[!h]
+	\centering
+		\includegraphics[scale=0.50]{ToolBox}
+	\caption{ToolBox, Editeur de comportement}
+\end{figure}
+
 \begin{enumerate}[label=\Alph*)]
 \item\textbf{Bouton Nouveau Comportement} \newline
 Ce bouton permet de commencer la création d'un nouveau comportement pour l'unité de l'équipe courante. Cela permet de repartir à zéro, lorsque notre comportement courant ne nous satisfait pas, et nous évite de devoir retirer chaque pièce manuellement.
@@ -1635,6 +1658,14 @@ Ce bouton ramène l'utilisateur au menu principal. Avant de cliquer dessus, il f
 
 % Equipe + Unité %
 \subsubsection{Sélection des équipes / unités}
+Ce cadre nous permet de sélectionner l'équipe et l'unité sur lesquels nous souhaitons travailler.
+Chaque équipe est composée du même type d'unités. Deux boutons sont également disponibles, permettant de créer ou supprimer l'équipe couramment sélectionnée.
+\begin{figure}[!h]
+	\centering
+		\includegraphics[scale=1]{SelectionTeamUnit}
+	\caption{Sélection des équipes / unités}
+\end{figure}
+
 \begin{enumerate}[label=\Alph*)]
 \item\textbf{Choix de l'équipe} \newline
 Ce menu déroulant permet de choisir l'équipe sur laquelle on veut travailler. Un clic sur le menu déroule la liste, qui comprend le nom de toutes les équipes.
@@ -1735,9 +1766,19 @@ Pour supprimer une équipe, il nous suffit de supprimer les fichiers qui lui son
 
 
 \subsubsection{Informations sur l'unité}
+Ce cadre a un but purement informatif. Diverses informations concernant notre unité sont affichées. Ces informations sont chargées en temps réel.\newline
+Si l'utilisateur sélectionne une nouvelle unité, sa représentation 3D ainsi que ses statistiques seront immédiatement affichées dans ce cadre.
+\clearpage
+\begin{figure}[h]
+	\centering
+		\includegraphics[scale=1]{StatsModel}
+	\caption{Informations sur l'unité}
+\end{figure}
+
 \begin{enumerate}[label=\Alph*)]
 \item\textbf{Affichage des statistiques de l'unité courante} \newline
-Quand on choisit une unité, sur sa droite apparaît ses valeurs dans un cadre, cela correspond à ses statistiques.
+Quand on choisit une unité, sur sa droite apparaît ses valeurs dans un cadre, cela correspond à ses statistiques. Cela va permettre à l'utilisateur d'adapter ses stratégies en fonction des statistiques de chaque unité.
+Ces statistiques ne changent pas d'une équipe à l'autre, elles sont inhérentes à l'unité.
 \item\textbf{Affichage du modèle 3D de l'unité courante} \newline
 Dans le même cadre apparaît aussi le modèle 3D de l'unité courante. C'est l'apparence qu'aura l'unité en jeu.
 \end{enumerate}
@@ -1780,6 +1821,16 @@ Les pièces peuvent être sélectionnées et déplacées dans la zone d'édition
 \end{enumerate}
 
 \subsubsection{Editeur}
+C'est dans cette zone de l'éditeur que l’utilisateur pourra créer et modifier les comportements des untiés de ses équipes.
+Nous voulions cette zone la plus grande possible, et la plus épurée possible, pour rendre le processus de création vraiment optimal.
+\clearpage
+\begin{figure}[h]
+	\centering
+		\includegraphics[scale=0.7]{ZoneEdition}
+	\caption{Zone d'édition}
+\end{figure}
+
+
 \begin{enumerate}[label=\Alph*)]
 \item\textbf{Zone éditeur de comportement de l'unité et de l'équipe courante} \newline
 Dans cette zone arrivent les pièces venant de la zone de sélection. Elles se placent à l'aide du curseur de la souris sur une grille invisible. Si une pièce est valide, alors elle est colorée, sinon, elle est grise. Les pièces "IF" possèdent un cadenas dans le coin supérieur droit. Il permet de déplacer, en plus de la pièce IF, tout les éléments valides qui lui sont rattachés (hors IF). Les pièces de contrôles sont considérées comme valides si elles sont placées en dessous d'autres pièces du même type ou en dessous de la pièce "Start".\newline
