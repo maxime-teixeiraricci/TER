@@ -44,7 +44,7 @@
 \contentsline {paragraph}{}{17}
 \contentsline {paragraph}{}{17}
 \contentsline {paragraph}{}{17}
-\contentsline {paragraph}{}{17}
+\contentsline {paragraph}{}{18}
 \contentsline {paragraph}{}{18}
 \contentsline {paragraph}{}{18}
 \contentsline {paragraph}{}{18}
@@ -150,8 +150,8 @@
 \contentsline {subsubsection}{Cam\IeC {\'e}ras}{69}
 \contentsline {subsubsection}{Contr\IeC {\^o}les}{70}
 \contentsline {subsubsection}{Gestion de partie}{70}
-\contentsline {section}{\numberline {3.4}Am\IeC {\'e}lioration possible}{71}
-\contentsline {subsection}{\numberline {3.4.1}Fonctionnalit\IeC {\'e}}{71}
+\contentsline {section}{\numberline {3.4}Am\IeC {\'e}liorations possibles}{71}
+\contentsline {subsection}{\numberline {3.4.1}Fonctionnalit\IeC {\'e}s}{71}
 \contentsline {part}{III\hspace {1em}L'avenir du projet}{73}
 \contentsline {chapter}{\numberline {4}Am\IeC {\'e}lioration possible}{74}
 \contentsline {chapter}{\numberline {5}Bugs}{75}
