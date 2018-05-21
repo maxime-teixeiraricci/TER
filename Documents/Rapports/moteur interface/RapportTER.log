@@ -1,12 +1,12 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.5.12)  21 MAY 2018 22:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.5.13)  21 MAY 2018 23:41
 entering extended mode
 **./RapportTER.tex
 (RapportTER.tex
 LaTeX2e <2017-04-15>
 Babel <3.18> and hyphenation patterns for 75 language(s) loaded.
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\report.cls"
+(C:\Users\Benoit\Documents\MikTex\tex\latex\base\report.cls
 Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\size10.clo"
+(C:\Users\Benoit\Documents\MikTex\tex\latex\base\size10.clo
 File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -21,19 +21,20 @@ File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
-) ("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\inputenc.st
-y"
+)
+(C:\Users\Benoit\Documents\MikTex\tex\latex\base\inputenc.sty
 Package: inputenc 2015/03/17 v1.2c Input encoding file
 \inpenc@prehook=\toks14
 \inpenc@posthook=\toks15
- ("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\utf8.def"
+
+(C:\Users\Benoit\Documents\MikTex\tex\latex\base\utf8.def
 File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
 Now handling font encoding OML ...
 ... no UTF-8 mapping file for font encoding OML
 Now handling font encoding T1 ...
 ... processing UTF-8 mapping file for font encoding T1
 
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\t1enc.dfu"
+(C:\Users\Benoit\Documents\MikTex\tex\latex\base\t1enc.dfu
 File: t1enc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
    defining Unicode char U+00A0 (decimal 160)
    defining Unicode char U+00A1 (decimal 161)
@@ -274,7 +275,7 @@ File: t1enc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
 Now handling font encoding OT1 ...
 ... processing UTF-8 mapping file for font encoding OT1
 
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ot1enc.dfu"
+(C:\Users\Benoit\Documents\MikTex\tex\latex\base\ot1enc.dfu
 File: ot1enc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
    defining Unicode char U+00A0 (decimal 160)
    defining Unicode char U+00A1 (decimal 161)
@@ -315,7 +316,7 @@ File: ot1enc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
 Now handling font encoding OMS ...
 ... processing UTF-8 mapping file for font encoding OMS
 
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\omsenc.dfu"
+(C:\Users\Benoit\Documents\MikTex\tex\latex\base\omsenc.dfu
 File: omsenc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
    defining Unicode char U+00A7 (decimal 167)
    defining Unicode char U+00B6 (decimal 182)
@@ -339,26 +340,21 @@ Now handling font encoding U ...
    defining Unicode char U+2122 (decimal 8482)
    defining Unicode char U+2423 (decimal 9251)
 ))
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\geometry\geometry.
-sty"
+(C:\Users\Benoit\Documents\MikTex\tex\latex\geometry\geometry.sty
 Package: geometry 2010/09/12 v5.6 Page Geometry
 
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\keyval.st
-y"
+(C:\Users\Benoit\Documents\MikTex\tex\latex\graphics\keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks16
 )
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.s
-ty"
+(C:\Users\Benoit\Documents\MikTex\tex\generic\oberdiek\ifpdf.sty
 Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
 )
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.
-sty"
+(C:\Users\Benoit\Documents\MikTex\tex\generic\oberdiek\ifvtex.sty
 Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
 )
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.
-sty"
+(C:\Users\Benoit\Documents\MikTex\tex\generic\ifxetex\ifxetex.sty
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
 \Gm@cnth=\count88
@@ -374,23 +370,21 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layoutvoffset=\dimen110
 \Gm@dimlist=\toks17
 
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\geometry\geometry.
-cfg"))
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\generic\babel\babel.sty"
+(C:\Users\Benoit\Documents\MikTex\tex\latex\geometry\geometry.cfg))
+(C:\Users\Benoit\Documents\MikTex\tex\generic\babel\babel.sty
 Package: babel 2018/02/14 3.18 The Babel package
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\generic\babel\switch.def
-"
+
+(C:\Users\Benoit\Documents\MikTex\tex\generic\babel\switch.def
 File: switch.def 2018/02/14 3.18 Babel switching mechanism
 )
 *************************************
 * Local config file bblopts.cfg used
 *
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\arabi\bblopts.cfg"
+(C:\Users\Benoit\Documents\MikTex\tex\latex\arabi\bblopts.cfg
 File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of
  babel
 )
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\generic\babel-french\fra
-ncais.ldf"
+(C:\Users\Benoit\Documents\MikTex\tex\generic\babel-french\francais.ldf
 Language: francais 2018/02/04 v3.4b French support from the babel system
 
 
@@ -398,18 +392,15 @@ Package francais.ldf Warning: Option `francais' for Babel is *deprecated*,
 (francais.ldf)                it might be removed sooner or later. Please
 (francais.ldf)                use `french' instead; reported on input line 31.
 
-
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\generic\babel-french\fre
-nch.ldf"
+(C:\Users\Benoit\Documents\MikTex\tex\generic\babel-french\french.ldf
 Language: french 2018/02/04 v3.4b French support from the babel system
 
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\generic\babel\babel.def"
+(C:\Users\Benoit\Documents\MikTex\tex\generic\babel\babel.def
 File: babel.def 2018/02/14 3.18 Babel common definitions
 \babel@savecnt=\count91
 \U@D=\dimen111
 
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\generic\babel\txtbabel.d
-ef")
+(C:\Users\Benoit\Documents\MikTex\tex\generic\babel\txtbabel.def)
 \bbl@dirlevel=\count92
 )
 \l@acadian = a dialect from \language\l@french 
@@ -434,10 +425,8 @@ Package babel Info: Making ? an active character on input line 414.
 \parindentFFN=\dimen113
 \FBfnindent=\skip47
 )))
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\carlisle\scalefnt.
-sty")
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\listings.
-sty"
+(C:\Users\Benoit\Documents\MikTex\tex\latex\carlisle\scalefnt.sty)
+(C:\Users\Benoit\Documents\MikTex\tex\latex\listings\listings.sty
 \lst@mode=\count101
 \lst@gtempboxa=\box26
 \lst@token=\toks19
@@ -451,30 +440,26 @@ sty"
 \lst@lineno=\count106
 \lst@maxwidth=\dimen117
 
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\lstmisc.s
-ty"
+(C:\Users\Benoit\Documents\MikTex\tex\latex\listings\lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
 \c@lstnumber=\count107
 \lst@skipnumbers=\count108
 \lst@framebox=\box27
 )
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\listings.
-cfg"
+(C:\Users\Benoit\Documents\MikTex\tex\latex\listings\listings.cfg
 File: listings.cfg 2015/06/04 1.6 listings configuration
 ))
 Package: listings 2015/06/04 1.6 (Carsten Heinz)
 
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty"
+(C:\Users\Benoit\Documents\MikTex\tex\latex\xcolor\xcolor.sty
 Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
 
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-cfg\color
-.cfg"
+(C:\Users\Benoit\Documents\MikTex\tex\latex\graphics-cfg\color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: pdftex.def on input line 225.
 
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-def\pdfte
-x.def"
+(C:\Users\Benoit\Documents\MikTex\tex\latex\graphics-def\pdftex.def
 File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 )
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
@@ -487,19 +472,16 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 )
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphicx.
-sty"
+(C:\Users\Benoit\Documents\MikTex\tex\latex\graphics\graphicx.sty
 Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
 
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphics.
-sty"
+(C:\Users\Benoit\Documents\MikTex\tex\latex\graphics\graphics.sty
 Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
 
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+(C:\Users\Benoit\Documents\MikTex\tex\latex\graphics\trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-cfg\graph
-ics.cfg"
+(C:\Users\Benoit\Documents\MikTex\tex\latex\graphics-cfg\graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 99.
@@ -507,8 +489,7 @@ Package graphics Info: Driver file: pdftex.def on input line 99.
 \Gin@req@height=\dimen118
 \Gin@req@width=\dimen119
 )
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\wrapfig\wrapfig.st
-y"
+(C:\Users\Benoit\Documents\MikTex\tex\latex\wrapfig\wrapfig.sty
 \wrapoverhang=\dimen120
 \WF@size=\dimen121
 \c@WF@wrappedlines=\count109
@@ -516,16 +497,13 @@ y"
 \WF@everypar=\toks20
 Package: wrapfig 2003/01/31  v 3.6
 )
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\subcaption
-.sty"
+(C:\Users\Benoit\Documents\MikTex\tex\latex\caption\subcaption.sty
 Package: subcaption 2016/05/22 v1.1-161 Sub-captions (AR)
 
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\caption.st
-y"
+(C:\Users\Benoit\Documents\MikTex\tex\latex\caption\caption.sty
 Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
 
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\caption3.s
-ty"
+(C:\Users\Benoit\Documents\MikTex\tex\latex\caption\caption3.sty
 Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 67.
 \captionmargin=\dimen122
@@ -543,12 +521,10 @@ Package caption Info: wrapfig package is loaded.
 \c@subfigure=\count111
 \c@subtable=\count112
 )
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\setspace\setspace.
-sty"
+(C:\Users\Benoit\Documents\MikTex\tex\latex\setspace\setspace.sty
 Package: setspace 2011/12/19 v6.7a set line spacing
 )
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\booktabs\booktabs.
-sty"
+(C:\Users\Benoit\Documents\MikTex\tex\latex\booktabs\booktabs.sty
 Package: booktabs 2005/04/14 v1.61803 publication quality tables
 \heavyrulewidth=\dimen129
 \lightrulewidth=\dimen130
@@ -568,8 +544,7 @@ Package: booktabs 2005/04/14 v1.61803 publication quality tables
 \@lastruleclass=\count116
 \@thisrulewidth=\dimen141
 )
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\enumitem\enumitem.
-sty"
+(C:\Users\Benoit\Documents\MikTex\tex\latex\enumitem\enumitem.sty
 Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \labelindent=\skip48
 \enit@outerparindent=\dimen142
@@ -577,7 +552,7 @@ Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \enit@inbox=\box29
 \enitdp@description=\count117
 )
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\textcomp.sty"
+(C:\Users\Benoit\Documents\MikTex\tex\latex\base\textcomp.sty
 Package: textcomp 2017/04/05 v2.0i Standard LaTeX package
 Package textcomp Info: Sub-encoding information:
 (textcomp)               5 = only ISO-Adobe without \textcurrency
@@ -591,12 +566,13 @@ Package textcomp Info: Sub-encoding information:
 (textcomp)             Family '?' is the default used for unknown fonts.
 (textcomp)             See the documentation for details.
 Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 79.
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ts1enc.def"
+
+(C:\Users\Benoit\Documents\MikTex\tex\latex\base\ts1enc.def
 File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
 Now handling font encoding TS1 ...
 ... processing UTF-8 mapping file for font encoding TS1
 
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ts1enc.dfu"
+(C:\Users\Benoit\Documents\MikTex\tex\latex\base\ts1enc.dfu
 File: ts1enc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
    defining Unicode char U+00A2 (decimal 162)
    defining Unicode char U+00A3 (decimal 163)
@@ -732,8 +708,7 @@ Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 407.
 Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 408.
 Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
 )
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\fancyhdr\fancyhdr.
-sty"
+(C:\Users\Benoit\Documents\MikTex\tex\latex\fancyhdr\fancyhdr.sty
 Package: fancyhdr 2017/06/30 v3.9a Extensive control of page headers and footer
 s
 \f@nch@headwidth=\skip49
@@ -746,10 +721,10 @@ s
 \f@nch@O@olf=\skip56
 \f@nch@O@orf=\skip57
 )
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\lstlang1.
-sty"
+(C:\Users\Benoit\Documents\MikTex\tex\latex\listings\lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
-) (RapportTER.aux
+)
+(RapportTER.aux
 
 LaTeX Warning: Label `lst:unitScript' multiply defined.
 
@@ -801,10 +776,11 @@ LaTeX Font Info:    ... okay on input line 105.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 105.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 105.
 
- ("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
+ (C:\Users\Benoit\Documents\MikTex\tex\latex\base\ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 105.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -848,9 +824,7 @@ Package french.ldf Warning: OT1 encoding should not be used for French.
 (french.ldf)                of your document; reported on input line 105.
 
 \c@lstlisting=\count118
-
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\context\base\supp-pdf.mk
-ii"
+(C:\Users\Benoit\Documents\MikTex\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count119
 \scratchdimen=\dimen143
@@ -863,41 +837,31 @@ ii"
 \MPnumerator=\count123
 \makeMPintoPDFobject=\count124
 \everyMPtoPDFconversion=\toks23
-)
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-
-base.sty"
+) (C:\Users\Benoit\Documents\MikTex\tex\latex\oberdiek\epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\infware
-rr.sty"
+(C:\Users\Benoit\Documents\MikTex\tex\generic\oberdiek\infwarerr.sty
 Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
 )
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\grfext.st
-y"
+(C:\Users\Benoit\Documents\MikTex\tex\latex\oberdiek\grfext.sty
 Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
 
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\kvdefin
-ekeys.sty"
+(C:\Users\Benoit\Documents\MikTex\tex\generic\oberdiek\kvdefinekeys.sty
 Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
 
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds
-.sty"
+(C:\Users\Benoit\Documents\MikTex\tex\generic\oberdiek\ltxcmds.sty
 Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
 )))
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\kvoptions
-.sty"
+(C:\Users\Benoit\Documents\MikTex\tex\latex\oberdiek\kvoptions.sty
 Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\kvsetke
-ys.sty"
+(C:\Users\Benoit\Documents\MikTex\tex\generic\oberdiek\kvsetkeys.sty
 Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
 
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\etexcmd
-s.sty"
+(C:\Users\Benoit\Documents\MikTex\tex\generic\oberdiek\etexcmds.sty
 Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
 
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ifluate
-x.sty"
+(C:\Users\Benoit\Documents\MikTex\tex\generic\oberdiek\ifluatex.sty
 Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
 )
@@ -906,8 +870,7 @@ Package etexcmds Info: Could not find \expanded.
 (etexcmds)             that some package has redefined \expanded.
 (etexcmds)             In the latter case, load this package earlier.
 )))
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\pdftexc
-mds.sty"
+(C:\Users\Benoit\Documents\MikTex\tex\generic\oberdiek\pdftexcmds.sty
 Package: pdftexcmds 2018/01/21 v0.26 Utility functions of pdfTeX for LuaTeX (HO
 )
 Package pdftexcmds Info: LuaTeX not detected.
@@ -930,10 +893,11 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 123.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 123.
- [1
 
-{C:/Users/fumey/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] (RapportTER
-.toc
+[1
+
+{C:/Users/Benoit/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+(RapportTER.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 4.
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -985,7 +949,7 @@ Chapitre 2.
 ]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 232.
 
- ("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+ (C:\Users\Benoit\Documents\MikTex\tex\latex\base\omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <8> not available
@@ -994,13 +958,12 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <8> not available
 LaTeX Font Info:    Try loading font information for OML+cmr on input line 238.
 
 
-("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\omlcmr.fd"
+(C:\Users\Benoit\Documents\MikTex\tex\latex\base\omlcmr.fd
 File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <8> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 238.
-
-[11]
+ [11]
 <NavMeshImage.png, id=54, 609.02531pt x 413.29407pt>
 File: NavMeshImage.png Graphic file (type png)
 <use NavMeshImage.png>
@@ -1132,257 +1095,254 @@ Package pdftex.def Info: MapGardenImage.png  used on input line 1013.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [35 <./MapSimpleImage.png> <./MapMountainImage.png> <./MapDesolateImage.png> <.
-/MapPlainImage.png>] [36 <./MapGardenImage.png>] [37] [38] [39] [40]
+/MapPlainImage.png>] [36 <./MapGardenImage.png>] [37] [38] [39] [40] [41]
 Chapitre 3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1173--1174
+Underfull \hbox (badness 10000) in paragraph at lines 1205--1206
 
  []
 
-[41
+[42
 
 ]
-<MainScreenOld.png, id=167, 788.9475pt x 404.26031pt>
+<MainScreenOld.png, id=171, 788.9475pt x 404.26031pt>
 File: MainScreenOld.png Graphic file (type png)
 <use MainScreenOld.png>
-Package pdftex.def Info: MainScreenOld.png  used on input line 1196.
+Package pdftex.def Info: MainScreenOld.png  used on input line 1228.
 (pdftex.def)             Requested size: 394.47278pt x 202.12965pt.
- [42 <./MainScreenOld.png>]
-<PauseMenuOld.png, id=173, 636.12656pt x 353.06906pt>
+ [43 <./MainScreenOld.png>]
+<PauseMenuOld.png, id=176, 636.12656pt x 353.06906pt>
 File: PauseMenuOld.png Graphic file (type png)
 <use PauseMenuOld.png>
-Package pdftex.def Info: PauseMenuOld.png  used on input line 1211.
+Package pdftex.def Info: PauseMenuOld.png  used on input line 1243.
 (pdftex.def)             Requested size: 318.0625pt x 176.53409pt.
-<BehaviorScreenOld.png, id=174, 875.52094pt x 415.5525pt>
+<BehaviorScreenOld.png, id=177, 875.52094pt x 415.5525pt>
 File: BehaviorScreenOld.png Graphic file (type png)
 <use BehaviorScreenOld.png>
-Package pdftex.def Info: BehaviorScreenOld.png  used on input line 1223.
+Package pdftex.def Info: BehaviorScreenOld.png  used on input line 1255.
 (pdftex.def)             Requested size: 437.7594pt x 207.77574pt.
- [43
+ [44
 
  <./PauseMenuOld.png> <./BehaviorScreenOld.png>]
-<SettingsOld.png, id=180, 873.2625pt x 444.91219pt>
+<SettingsOld.png, id=183, 873.2625pt x 444.91219pt>
 File: SettingsOld.png Graphic file (type png)
 <use SettingsOld.png>
-Package pdftex.def Info: SettingsOld.png  used on input line 1236.
+Package pdftex.def Info: SettingsOld.png  used on input line 1268.
 (pdftex.def)             Requested size: 436.63017pt x 222.45554pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1250--1253
+Underfull \hbox (badness 10000) in paragraph at lines 1282--1285
 
  []
 
-[44 <./SettingsOld.png>]
-Overfull \hbox (1.33891pt too wide) in paragraph at lines 1254--1254
+[45 <./SettingsOld.png>]
+Overfull \hbox (1.33891pt too wide) in paragraph at lines 1286--1286
 []\OT1/cmr/m/n/10 Bien que l'editeur soit fonc-tion-nel, il nous pa-rais-sait 
 as-sez austere, pas suf-fi-sam-ment "User Friendly".
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1254--1254
+Underfull \hbox (badness 10000) in paragraph at lines 1286--1286
 
  []
 
-<MenuPrincipal.png, id=185, 795.72281pt x 447.17062pt>
+<MenuPrincipal.png, id=188, 795.72281pt x 447.17062pt>
 File: MenuPrincipal.png Graphic file (type png)
 <use MenuPrincipal.png>
-Package pdftex.def Info: MenuPrincipal.png  used on input line 1270.
+Package pdftex.def Info: MenuPrincipal.png  used on input line 1302.
 (pdftex.def)             Requested size: 397.86043pt x 223.58476pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[45] [46 <./MenuPrincipal.png>] [47] [48]
-<ChoiceMap.png, id=200, 220.57407pt x 173.89969pt>
+[46] [47 <./MenuPrincipal.png>] [48] [49]
+<ChoiceMap.png, id=203, 220.57407pt x 173.89969pt>
 File: ChoiceMap.png Graphic file (type png)
 <use ChoiceMap.png>
-Package pdftex.def Info: ChoiceMap.png  used on input line 1365.
+Package pdftex.def Info: ChoiceMap.png  used on input line 1397.
 (pdftex.def)             Requested size: 176.45947pt x 139.11992pt.
-<NumberUnits.png, id=201, 345.54094pt x 82.05656pt>
+<NumberUnits.png, id=204, 345.54094pt x 82.05656pt>
 File: NumberUnits.png Graphic file (type png)
 <use NumberUnits.png>
-Package pdftex.def Info: NumberUnits.png  used on input line 1378.
+Package pdftex.def Info: NumberUnits.png  used on input line 1410.
 (pdftex.def)             Requested size: 276.43312pt x 65.64532pt.
- [49 <./ChoiceMap.png> <./NumberUnits.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1413--1414
+ [50 <./ChoiceMap.png> <./NumberUnits.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1445--1446
 
  []
 
-<MenuParametres.png, id=207, 740.0147pt x 462.22687pt>
+<MenuParametres.png, id=210, 740.0147pt x 462.22687pt>
 File: MenuParametres.png Graphic file (type png)
 <use MenuParametres.png>
-Package pdftex.def Info: MenuParametres.png  used on input line 1418.
+Package pdftex.def Info: MenuParametres.png  used on input line 1450.
 (pdftex.def)             Requested size: 444.01225pt x 277.33826pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<RessourcesMax.png, id=208, 280.79906pt x 30.1125pt>
+<RessourcesMax.png, id=211, 280.79906pt x 30.1125pt>
 File: RessourcesMax.png Graphic file (type png)
 <use RessourcesMax.png>
-Package pdftex.def Info: RessourcesMax.png  used on input line 1426.
+Package pdftex.def Info: RessourcesMax.png  used on input line 1458.
 (pdftex.def)             Requested size: 224.63954pt x 24.09001pt.
-[50
+[51
 
 ]
-<ManuelJeu/ModeJeuRessourceRace.png, id=212, 318.43968pt x 87.32625pt>
+<ManuelJeu/ModeJeuRessourceRace.png, id=215, 318.43968pt x 87.32625pt>
 File: ManuelJeu/ModeJeuRessourceRace.png Graphic file (type png)
 <use ManuelJeu/ModeJeuRessourceRace.png>
 Package pdftex.def Info: ManuelJeu/ModeJeuRessourceRace.png  used on input line
- 1440.
+ 1472.
 (pdftex.def)             Requested size: 254.75209pt x 69.86108pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[51 <./MenuParametres.png> <./RessourcesMax.png>]
-<AudioSource.png, id=218, 292.09125pt x 268.75406pt>
+[52 <./MenuParametres.png> <./RessourcesMax.png>]
+<AudioSource.png, id=221, 292.09125pt x 268.75406pt>
 File: AudioSource.png Graphic file (type png)
 <use AudioSource.png>
-Package pdftex.def Info: AudioSource.png  used on input line 1451.
+Package pdftex.def Info: AudioSource.png  used on input line 1483.
 (pdftex.def)             Requested size: 292.09052pt x 268.7534pt.
- [52 <./ManuelJeu/ModeJeuRessourceRace.png> <./AudioSource.png>] [53]
-<ConceptionGraphique1.jpg, id=227, 963.6pt x 722.7pt>
+ [53 <./ManuelJeu/ModeJeuRessourceRace.png> <./AudioSource.png>] [54]
+<ConceptionGraphique1.jpg, id=231, 963.6pt x 722.7pt>
 File: ConceptionGraphique1.jpg Graphic file (type jpg)
 <use ConceptionGraphique1.jpg>
-Package pdftex.def Info: ConceptionGraphique1.jpg  used on input line 1522.
+Package pdftex.def Info: ConceptionGraphique1.jpg  used on input line 1554.
 (pdftex.def)             Requested size: 337.26506pt x 252.94878pt.
- [54 <./ConceptionGraphique1.jpg>]
-<ConceptionGraphique2.png, id=232, 963.6pt x 722.7pt>
+ [55 <./ConceptionGraphique1.jpg>]
+<ConceptionGraphique2.png, id=235, 963.6pt x 722.7pt>
 File: ConceptionGraphique2.png Graphic file (type png)
 <use ConceptionGraphique2.png>
-Package pdftex.def Info: ConceptionGraphique2.png  used on input line 1534.
+Package pdftex.def Info: ConceptionGraphique2.png  used on input line 1566.
 (pdftex.def)             Requested size: 337.26506pt x 252.94878pt.
 
-[55 <./ConceptionGraphique2.png>]
-<InterfaceFinale.png, id=237, 850.67813pt x 476.53032pt>
+[56 <./ConceptionGraphique2.png>]
+<InterfaceFinale.png, id=240, 850.67813pt x 476.53032pt>
 File: InterfaceFinale.png Graphic file (type png)
 <use InterfaceFinale.png>
-Package pdftex.def Info: InterfaceFinale.png  used on input line 1545.
+Package pdftex.def Info: InterfaceFinale.png  used on input line 1577.
 (pdftex.def)             Requested size: 425.33803pt x 238.26457pt.
-<ToolBox.png, id=238, 485.56406pt x 41.4047pt>
+<ToolBox.png, id=241, 485.56406pt x 41.4047pt>
 File: ToolBox.png Graphic file (type png)
 <use ToolBox.png>
-Package pdftex.def Info: ToolBox.png  used on input line 1554.
+Package pdftex.def Info: ToolBox.png  used on input line 1586.
 (pdftex.def)             Requested size: 242.78143pt x 20.70229pt.
- [56
+ [57
 
  <./InterfaceFinale.png> <./ToolBox.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1573--1574
+Underfull \hbox (badness 10000) in paragraph at lines 1605--1606
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1590--1591
+Underfull \hbox (badness 10000) in paragraph at lines 1622--1623
 
  []
 
-[57] [58]
-<SelectionTeamUnit.png, id=250, 359.09157pt x 33.87656pt>
+[58] [59]
+<SelectionTeamUnit.png, id=253, 359.09157pt x 33.87656pt>
 File: SelectionTeamUnit.png Graphic file (type png)
 <use SelectionTeamUnit.png>
-Package pdftex.def Info: SelectionTeamUnit.png  used on input line 1675.
+Package pdftex.def Info: SelectionTeamUnit.png  used on input line 1707.
 (pdftex.def)             Requested size: 359.09068pt x 33.87646pt.
- [59] [60 <./SelectionTeamUnit.png>] [61] [62]
-<StatsModel.png, id=265, 436.63126pt x 62.48344pt>
+ [60] [61 <./SelectionTeamUnit.png>] [62] [63]
+<StatsModel.png, id=268, 436.63126pt x 62.48344pt>
 File: StatsModel.png Graphic file (type png)
 <use StatsModel.png>
-Package pdftex.def Info: StatsModel.png  used on input line 1784.
+Package pdftex.def Info: StatsModel.png  used on input line 1816.
 (pdftex.def)             Requested size: 436.63019pt x 62.48328pt.
- [63
+ [64
 
- <./StatsModel.png>] [64]
-<ZoneEdition.png, id=273, 654.94687pt x 402.75468pt>
+ <./StatsModel.png>] [65]
+<ZoneEdition.png, id=276, 654.94687pt x 402.75468pt>
 File: ZoneEdition.png Graphic file (type png)
 <use ZoneEdition.png>
-Package pdftex.def Info: ZoneEdition.png  used on input line 1837.
+Package pdftex.def Info: ZoneEdition.png  used on input line 1869.
 (pdftex.def)             Requested size: 458.45969pt x 281.92635pt.
 
-Overfull \hbox (14.88121pt too wide) in paragraph at lines 1837--1838
+Overfull \hbox (14.88121pt too wide) in paragraph at lines 1869--1870
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1843--1845
+Underfull \hbox (badness 10000) in paragraph at lines 1875--1877
 
  []
 
-[65
+[66
 
- <./ZoneEdition.png>] [66] [67] [68]
-Overfull \hbox (2.36665pt too wide) in paragraph at lines 1977--1980
+ <./ZoneEdition.png>] [67] [68] [69]
+Overfull \hbox (2.36665pt too wide) in paragraph at lines 2009--2012
 \OT1/cmr/m/n/10 presentes en jeu. Cela nous per-met de bas-cu-ler entre un af-
 fi-chage detaille, pour bien voir l'evolution
  []
 
-<OptionButtons.png, id=288, 193.47281pt x 24.84282pt>
+<OptionButtons.png, id=291, 193.47281pt x 24.84282pt>
 File: OptionButtons.png Graphic file (type png)
 <use OptionButtons.png>
-Package pdftex.def Info: OptionButtons.png  used on input line 1990.
+Package pdftex.def Info: OptionButtons.png  used on input line 2022.
 (pdftex.def)             Requested size: 193.47234pt x 24.84274pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[69]
-<SpeedSlider.png, id=292, 264.23718pt x 36.135pt>
+[70]
+<SpeedSlider.png, id=295, 264.23718pt x 36.135pt>
 File: SpeedSlider.png Graphic file (type png)
 <use SpeedSlider.png>
-Package pdftex.def Info: SpeedSlider.png  used on input line 2000.
+Package pdftex.def Info: SpeedSlider.png  used on input line 2032.
 (pdftex.def)             Requested size: 264.23653pt x 36.13489pt.
-<ManuelJeu/SoundIG.png, id=293, 213.04594pt x 29.35968pt>
+<ManuelJeu/SoundIG.png, id=296, 213.04594pt x 29.35968pt>
 File: ManuelJeu/SoundIG.png Graphic file (type png)
 <use ManuelJeu/SoundIG.png>
-Package pdftex.def Info: ManuelJeu/SoundIG.png  used on input line 2010.
+Package pdftex.def Info: ManuelJeu/SoundIG.png  used on input line 2042.
 (pdftex.def)             Requested size: 213.04541pt x 29.35959pt.
- [70 <./OptionButtons.png> <./SpeedSlider.png> <./ManuelJeu/SoundIG.png>]
-[71
+ [71 <./OptionButtons.png> <./SpeedSlider.png> <./ManuelJeu/SoundIG.png>]
+[72] [73
 
 ]
 Chapitre 4.
-[72
+[74
 
 ]
 Chapitre 5.
-[73
+[75
 
-] [74
+] [76
 
 ]
 Chapitre 6.
-[75
+[77
 
-] (ObjectPool.cs [76]) [77] (MovableCharacter.cs [78]) [79] (Brain.cs
-[80] [81]) [82] (PerceptUnit.cs [83] [84]) [85] (LoadFile.cs [86] [87] [88])
-[89] (RapportTER.aux)
+] (ObjectPool.cs [78]) [79] (MovableCharacter.cs [80]) [81] (Brain.cs
+[82] [83]) [84] (PerceptUnit.cs [85] [86]) [87] (LoadFile.cs [88] [89] [90])
+[91] (RapportTER.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 8716 strings out of 493305
- 128964 string characters out of 3129802
+ 8731 strings out of 493305
+ 127066 string characters out of 3136739
  548391 words of memory out of 3000000
- 12091 multiletter control sequences out of 15000+200000
+ 12106 multiletter control sequences out of 15000+200000
  11740 words of font info for 40 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,9n,43p,1063b,1844s stack positions out of 5000i,500n,10000p,200000b,50000s
- <C:\Users\fumey\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\
-tcrm0800.pk> <C:\Users\fumey\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\
-ec\dpi600\tcrm1000.pk><C:/Users/fumey/AppData/Local/Programs/MiKTeX 2.9/fonts/t
-ype1/public/amsfonts/cm/cmbx10.pfb><C:/Users/fumey/AppData/Local/Programs/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/fumey/AppData/Local/P
-rograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Users/fumey/
-AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C
-:/Users/fumey/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
-cmmi8.pfb><C:/Users/fumey/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/
-amsfonts/cm/cmr10.pfb><C:/Users/fumey/AppData/Local/Programs/MiKTeX 2.9/fonts/t
-ype1/public/amsfonts/cm/cmr12.pfb><C:/Users/fumey/AppData/Local/Programs/MiKTeX
- 2.9/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/fumey/AppData/Local/Prog
-rams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/fumey/AppData
-/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/f
-umey/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pf
-b><C:/Users/fumey/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts
-/cm/cmti12.pfb>
-Output written on RapportTER.pdf (90 pages, 9186724 bytes).
+ <C:\Users\Benoit\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600
+\tcrm0800.pk> <C:\Users\Benoit\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappe
+n\ec\dpi600\tcrm1000.pk><C:/Users/Benoit/Documents/MikTex/fonts/type1/public/am
+sfonts/cm/cmbx10.pfb><C:/Users/Benoit/Documents/MikTex/fonts/type1/public/amsfo
+nts/cm/cmbx12.pfb><C:/Users/Benoit/Documents/MikTex/fonts/type1/public/amsfonts
+/cm/cmbxti10.pfb><C:/Users/Benoit/Documents/MikTex/fonts/type1/public/amsfonts/
+cm/cmcsc10.pfb><C:/Users/Benoit/Documents/MikTex/fonts/type1/public/amsfonts/cm
+/cmmi8.pfb><C:/Users/Benoit/Documents/MikTex/fonts/type1/public/amsfonts/cm/cmr
+10.pfb><C:/Users/Benoit/Documents/MikTex/fonts/type1/public/amsfonts/cm/cmr12.p
+fb><C:/Users/Benoit/Documents/MikTex/fonts/type1/public/amsfonts/cm/cmr5.pfb><C
+:/Users/Benoit/Documents/MikTex/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Use
+rs/Benoit/Documents/MikTex/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/B
+enoit/Documents/MikTex/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/Beno
+it/Documents/MikTex/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on RapportTER.pdf (92 pages, 9192396 bytes).
 PDF statistics:
- 410 PDF objects out of 1000 (max. 8388607)
+ 417 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  191 words of extra memory for PDF output out of 10000 (max. 10000000)
 
