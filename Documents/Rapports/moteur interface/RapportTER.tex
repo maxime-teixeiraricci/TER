@@ -802,11 +802,14 @@ public class MessageStruct {
     }
 }
 \end{lstlisting}
+
 \paragraph{}
-Cette structure est composé simplement de deux attributs string \textit{\_intitule} correspondant au titre ou au contenu du message et string \textit{\_destinataire}
-
-
-
+Cette structure est composé simplement de deux attributs string \textit{\_intitule} correspondant au titre ou au contenu du message et string \textit{\_destinataire} qui correspond à/aux unité(s) dont le message est destiné. Les destinataires peuvent etre :
+\begin{itemize}
+\item La cible courante.
+\item A tous.
+\item A un type d'unité en particulier.
+\end{itemize}
 
 \paragraph{3. Mouvement tactique.}
 Comme définie dans le listing \ref{lst:BehaviorExample}, l'instruction 2. permet de faire une action non-terminale même sans d'action terminale.
@@ -819,7 +822,32 @@ Lorsqu'une instruction ne comporte pas de percepts, cette instruction est, par d
 \paragraph{5. Cas exceptionnels.}
 Dans un comportement, il peut arriver que les conditions de toutes les instructions soient fausse, empêchant ainsi l'exécution d'une action. Dans ce cas précis, c'est le moteur qui choisi l'action à effectuer. Actuellement, l'unité exécute l'action \textit{ACTION\_IDLE}.
 
-\subsubsection{Optimisation du temps de chargement}
+\subsubsection{Gestion des messages.}
+L'une des fonctionnalités importantes liées aux systèmes multi-agents est le fait que les agents puissent s'envoyer des signaux (représenter dans notre projet par des messages) entre eux afin de réaliser des tâches de plus grandes importance où la cohérence de groupe est nécessaire. Nous avons donc mis en place un système de messagerie entre robot que l'utilisateur peut utiliser pour créer des comportement plus évolués.
+
+\paragraph{Messagerie individualisée.} 
+Afin de permettre une gestion des messages, nous nous sommes tout naturellement tourné vers une messagerie individualisée.
+ \begin{lstlisting}[language={[Sharp]C},label={lst:MessageManagerScript}, caption= Code du script MessageManager.cs]
+public abstract class MessageManager : MonoBehaviour
+{
+	[...]
+    public List<Message> _waitingMessages = new List<Message>();
+    public List<Message> _currentMessages = new List<Message>();
+	[...]
+    public void UpdateMessage()
+    {
+        _currentMessages = _waitingMessages;
+        _waitingMessages = new List<Message>();
+    }
+	[...]
+}
+\end{lstlisting}
+\paragraph{}
+Lorsqu'un message est envoyé à une unité, ce message est recuperé dans le \textit{MessageManager} de l'unité et est réceptionné dans la liste de messages \textit{\_waitingMessages}. Cette liste reçoit tous les messages du tour en cours de l'unité. Ce système a été mis en place pour éviter que certaines unités reçoivent des messages avant d'autres.
+\paragraph{}
+Dans le script (listing \ref{lst:BrainScript})
+
+\subsubsection{Optimisation du temps de chargement.}
 \paragraph{} L'un des gros problèmes que l'on a rencontré est le fait que le temps de chargement lors d'une partie était beaucoup trop élevé. Cela nuisait au bon déroulement de la partie, atteignant parfois deux minutes de temps de chargement lorsque l'on voulait générer 200 unités. Pour résoudre ce problème, nous avons étudié plusieurs pistes.
 \subparagraph{1. La gestion des actions des unités.}La première piste de recherche que l'on a étudié est d'essayer d'optimiser la gestion des actions des unités. Lorsque l'on a conçu les unités, elles faisaient leurs actions dans une fonction propre à Unity ("Update") qui est appelée à chaque calcul d'image. Ainsi, pour chaque unité présente sur la scène, Unity calcule l'action qu'elle doit faire. Cependant, certaines actions nécessitent plus de temps en fonction de leur complexité, ce qui pouvait engendrer que des unités avaient des tours de retard par rapport à d'autres unités. \newline
 Pour palier à ce problème, nous avons donc délégué la gestion des tours des unités à un script  "TurnManagerScript.cs" (Listing \ref{lst:turnManagerScript}).\newline
@@ -1182,22 +1210,25 @@ if (_health <= 0)
         }
 \end{lstlisting}
 \section{Amélioration possible}
-L’objectif de ce projet était de refaire rendre générique la version Warbot Unity réalisée l'an dernier.
+L’objectif de ce projet était de rendre générique la version Warbot Unity réalisée l'an dernier.
 Le but étant de facilité la création sur le moteur de jeu Unity, de jeux de stratégie basés sur le paradigme de  la programmation orientée agent afin de permettre un véritable apprentissage de ses différentes notions. En ce sens, notre objectif a été rempli, mais les améliorations possibles pour les années à
 venir sont multiples :
 \begin{itemize}
+\item corriger le problème provoquant la rotation des bases lors de la transmission de message..
+\item corriger le positionnement sur l'axe z des unités.
+\item corriger le positionnement du cercle des scores qui est trop haut sur certaines maps. 
+\item améliorer les modèles 3D.
+\item implémenter de nouvelles maps.
 \item perfectionner la gestion des collisions des unités.
 \item ajouter de nouvelles unités au mode Warbot (Tourelles, Ingénieur et RocketLauncher).
 \item créer de nouveaux percepts, de nouvelles actions terminales et non terminales.
-\item ajouter la possibilité de créer et supprimer des unités directement en jeu.
-\item 
+\item ajouter la possibilité de créer, supprimer et déplacer des unités directement en jeu.
+\item implémenter de nouveaux modes de jeux possédant leurs propres types d'unités, de comportement et d'élément de gameplay.
+\item permettre la sauvegarde d'une partie en cours de jeu et la reprise de celle-ci ultérieurement.
+\item permettre la création de comportements sous forme de machine à état finie en plus de l'architecture de subsomption actuellement présente.
+\item de manière générale corriger l'ensemble des bugs présents dans la partie dédiée.
+\item
 \end{itemize}
-
-
-
-
-
-
 
 
 
