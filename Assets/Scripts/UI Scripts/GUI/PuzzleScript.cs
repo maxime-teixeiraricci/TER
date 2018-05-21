@@ -73,7 +73,6 @@ public class PuzzleScript : MonoBehaviour
             gamemanager.GetComponent<Traducteur>().setTextOriginal(affiche);
             affiche = gamemanager.GetComponent<Traducteur>().traduction;
         }
-        print("Valeur finale affiche: " + affiche);
         if (type == Type.CONDITION)
         {
             _label.GetComponent<Text>().text = affiche.Replace("PERCEPT_", "").Replace("_", " ") + "?";
