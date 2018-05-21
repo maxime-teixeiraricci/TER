@@ -182,7 +182,7 @@ Dans cette section, nous allons développer la notion d'agent dans un système m
         \caption{WarBot, la version Unity.}
     \end{minipage}
 \end{figure}
-\paragraph{}
+
 \subsubsection{Warbot Java en quelques mots}
 Dans WarBot, deux équipes se battent sur un terrain pour les ressources afin de survivre, d'éliminer l'autre équipe et d’être la dernière en vie. Des ressources apparaissent sur la carte et peuvent être converties en unités ou en soin.
 \newline Une équipe est composé d'un ensemble de sept unités :  la WarBase (base), le WarExplorer (explorateur), le WarEngineer (ingénieur), le WarLight (char léger), le WarHeavy (char lourd), le RocketLauncher (lance-missile) et la Turret (tourelle). 
@@ -604,6 +604,7 @@ public class Brain : MonoBehaviour
 
 \paragraph{}Afin de mener à bien le développement du comportement des unités, on a aussi dû créer une carte plus légère et plus petite que celle de l'ancienne génération nous permettant de faciliter nos tests.
 \newpage
+
 \begin{figure}[h!]
         	\centering
 	\includegraphics[scale=0.35]{FirstMapImage}
@@ -627,6 +628,7 @@ void FixedUpdate ()
         transform.LookAt(currentTarget);
     }
 \end{lstlisting}
+
 \paragraph{}
 Cette phase de démarrage a duré environ un mois, durant lequel nous avons pu rendre compte chaque semaine à notre encadrant. Durant celle-ci, on a donc agrémenté notre moteur de jeu en suivant les directives de M. Ferber, en nous basant sur notre expérience d'utilisation de Unity pour valider les différents ajouts demandés.
 
@@ -666,7 +668,7 @@ Instruction (
 
 \paragraph{}L'exemple montrer au listing \ref{lst:InstructionExample} correspond au comportement d'une unité et lui demandera de tirer si l'unité peut percevoir un ennemi, et que sa vie est au maximum. Les actions non-terminales n'étant pas prises en charge à ce moment du développement, la liste est vide. Un comportement n'est donc rien d'autres qu'une liste d'instructions.
 \paragraph{}Pour garder l'idée d'une structure de subsomption, la liste des instructions est ordonnée de telle sorte que la première instruction dans cette liste est la première à être examinée et son action est exécutée si ces percepts sont activés.
-\subsubsection{Le lien avec l'éditeur de comportement.}
+\subsubsection{Lien avec l'éditeur de comportement.}
 Pour permettre au joueur de faire un comportement avec des elements autorisées pour l'unité en question, il nous a fallu transmettre à l'équipe s'occupant de l'editeur graphique les actions et percepts autorisés pour chaque type d'unités.
 \paragraph{Les clefs des dictionnaires.} Ainsi chaque unité doit contenir une classe dérivant d'\textit{Action} et de \textit{Percept}.
 Ainsi dans l'objet \textit{GameManager}, on renseigne les unités dans la section "List Unit Game Object". Cette section permet de capturer les différentes actions et percepts des différents unités et de les consigner dans un fichier.
@@ -777,6 +779,34 @@ Comme pour les actions terminales et les percepts, les actions non-terminales so
 
 \paragraph{}
 Dans le listing \ref{lst:ActionNonTerminalExempleScript}, on peut voir l'exemple d'une action non-terminale. Fonctionnant comme une action classique, l'action non-terminale \textit{"ACTN\_HEADING\_RANDOM"} permet à une unité de faire une rotation aléatoire.
+\subparagraph{Messages.}
+Les messages sont des actions non-terminales particulieres. En effet, ces actions possedent un argument correspondant au destinataire du message.
+
+\begin{figure}[!h]
+       \centering
+	\includegraphics[scale=0.55]{PuzzleMessageImage}
+	\caption{Representation des messages dans l'éditeur.}
+\end{figure}
+
+\subparagraph{} 
+Pour representer les messages dans le moteur, nous avons créé une liste de la struct \textit{MessageStruct}.
+
+ \begin{lstlisting}[language={[Sharp]C},label={lst:MessageStructScript}, caption= Code du script MessageStruct.cs]
+public class MessageStruct {
+    public string _intitule;
+    public string _destinataire;
+    public MessageStruct(string intitule, string destinataire)
+    {
+        _intitule = intitule;
+        _destinataire = destinataire;
+    }
+}
+\end{lstlisting}
+\paragraph{}
+Cette structure est composé simplement de deux attributs string \textit{\_intitule} correspondant au titre ou au contenu du message et string \textit{\_destinataire}
+
+
+
 
 \paragraph{3. Mouvement tactique.}
 Comme définie dans le listing \ref{lst:BehaviorExample}, l'instruction 2. permet de faire une action non-terminale même sans d'action terminale.
@@ -786,13 +816,14 @@ Ainsi on a la possibilité de réaliser des mouvements plus tactiques sans termi
 \paragraph{4. Instruction par défaut.}
 Lorsqu'une instruction ne comporte pas de percepts, cette instruction est, par définition toujours valide. Cela permet, entre autre, de créer des cas par défaut que l'on peut mettre à la fin d'un comportement. L'action de cette instruction est alors toujours exécutée si aucune autre action ne peut l'être.
 
-\paragraph{5. Cas exceptionnel.}
+\paragraph{5. Cas exceptionnels.}
 Dans un comportement, il peut arriver que les conditions de toutes les instructions soient fausse, empêchant ainsi l'exécution d'une action. Dans ce cas précis, c'est le moteur qui choisi l'action à effectuer. Actuellement, l'unité exécute l'action \textit{ACTION\_IDLE}.
 
 \subsubsection{Optimisation du temps de chargement}
 \paragraph{} L'un des gros problèmes que l'on a rencontré est le fait que le temps de chargement lors d'une partie était beaucoup trop élevé. Cela nuisait au bon déroulement de la partie, atteignant parfois deux minutes de temps de chargement lorsque l'on voulait générer 200 unités. Pour résoudre ce problème, nous avons étudié plusieurs pistes.
 \subparagraph{1. La gestion des actions des unités.}La première piste de recherche que l'on a étudié est d'essayer d'optimiser la gestion des actions des unités. Lorsque l'on a conçu les unités, elles faisaient leurs actions dans une fonction propre à Unity ("Update") qui est appelée à chaque calcul d'image. Ainsi, pour chaque unité présente sur la scène, Unity calcule l'action qu'elle doit faire. Cependant, certaines actions nécessitent plus de temps en fonction de leur complexité, ce qui pouvait engendrer que des unités avaient des tours de retard par rapport à d'autres unités. \newline
 Pour palier à ce problème, nous avons donc délégué la gestion des tours des unités à un script  "TurnManagerScript.cs" (Listing \ref{lst:turnManagerScript}).\newline
+
  \begin{lstlisting}[language={[Sharp]C},label={lst:turnManagerScript}, caption= Code du script TurnManagerScript.cs]
 using System.Collections;
 using System.Collections.Generic;
@@ -928,7 +959,7 @@ Le sujet de notre projet est de permettre à des programmeurs de pouvoir concevo
 \paragraph{}De nombreux exemples et tutoriels sont disponible sur internet, notamment sur le site du développeurs. Pour plus d'informations, nous vous conseillons les sites:
 \begin{itemize}
 \item Le site officiel d'Unity 3D : https://unity3d.com/fr
-\item La page de télécharge d'Unity : https://store.unity.com/
+\item La page de téléchargement d'Unity : https://store.unity.com/
 \item La documentation officielle d'Unity : https://docs.unity3d.com/Manual/index.html
 \end{itemize}
 
@@ -1915,7 +1946,7 @@ En bas à droite de la fenêtre de jeu se trouve une icône de son et un slider.
 
 \newpage
 \part{L'avenir du projet}
-\chapter{Amélioration possible}
+\chapter{Pistes envisageable.}
 \chapter{Bugs}
 
 
@@ -1923,26 +1954,28 @@ En bas à droite de la fenêtre de jeu se trouve une icône de son et un slider.
 \part{Annexe}
 \chapter{Scripts Remarquables}
 
+
 \newpage
-\section{ObjectPool}
-\lstinputlisting[language={[Sharp]C},label={lst:ObjectPoolScript}]{ObjectPool.cs}
+\section{ObjectPool.cs}
+\lstinputlisting[language={[Sharp]C},label={lst:ObjectPoolScript}, caption=ObjectPool.cs]{ObjectPool.cs}
 \newpage
 
-\section{MovableCharacter}
-\lstinputlisting[language={[Sharp]C},label={lst:MovableCharacterScript}]{MovableCharacter.cs}
+\section{MovableCharacter.cs}
+\lstinputlisting[language={[Sharp]C},label={lst:MovableCharacterScript}, caption=MovableCharacter.cs]{MovableCharacter.cs}
 \newpage
 
-\section{Brain}
-\lstinputlisting[language={[Sharp]C},label={lst:BrainScript}]{Brain.cs}
+\section{Brain.cs}
+\lstinputlisting[language={[Sharp]C},label={lst:BrainScript}, caption=Brain.cs]{Brain.cs}
 \newpage
 
-\section{PerceptUnit}
-\lstinputlisting[language={[Sharp]C},label={lst:PerceptUnit}]{PerceptUnit.cs}
+\section{PerceptUnit.cs}
+\lstinputlisting[language={[Sharp]C},label={lst:PerceptUnit}, caption=PerceptUnit.cs]{PerceptUnit.cs}
 \newpage
 
-\section{LoadFile}
-\lstinputlisting[language={[Sharp]C},label={lst:LoadFile}]{LoadFile.cs}
+\section{LoadFile.cs}
+\lstinputlisting[language={[Sharp]C},label={lst:LoadFile}, caption=LoadFile.cs]{LoadFile.cs}
 \newpage
+
 
 % Uncomment the following two lines if you want to have a bibliography
 %\bibliographystyle{alpha}
