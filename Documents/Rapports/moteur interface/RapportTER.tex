@@ -1,9 +1,12 @@
 \documentclass{report}
 % Comment the following line to NOT allow the usage of umlauts
+
+
 \usepackage[utf8]{inputenc}
-\usepackage[left=3cm,right=3cm,top=3.5cm,bottom=3.5cm]{geometry}
+\usepackage[left=3.5cm,right=3.5cm,top=4cm,bottom=4cm]{geometry}
 \usepackage[francais]{babel}
 \usepackage{listings}
+
 \usepackage{xcolor}
 \usepackage{graphicx, wrapfig, subcaption, setspace, booktabs}
 \frenchbsetup{StandardLists=true} % à inclure si on utilise \usepackage[french]{babel}
@@ -11,6 +14,9 @@
 \usepackage{textcomp}
 %\pagestyle{plain}
 \usepackage{fancyhdr}
+
+
+
 \renewcommand{\headrulewidth}{0.4pt}
 \pagestyle{fancy}
 
@@ -913,30 +919,34 @@ public class MovableCharacter : MonoBehaviour
 \end{lstlisting}
 \subparagraph{} Dans l'extrait du code ci-dessus, on peut voir que l'objet qui est en collision avec l'objet est mis à jour seulement si l'angle est inférieur à 90°. Pour éviter de rentrer en collision avec le sol, l'objet ne doit pas comporter le \textit{tag} "Ground".
 
-\subsection{Fonctionalités finales.}
-\subsubsection{Création d'un jeu.}
-\paragraph{Création des unités.}
-La création des unités nécessite 6 scripts au minimum : 
+
+
+\section{Usage.}
+Le sujet de notre projet est de permettre à des programmeurs de pouvoir concevoir un jeu orienté multi-agents en fournissant des outils générique. Dans cette section, nous allons décrire les opérations nécessaires pour réaliser un jeu multi-agents dans le moteur de jeu Unity.
+\subsection{Prérequis.}
+\paragraph{Le moteur Unity.}Pour permettre la création d'un jeu orienté-agents, nous avons utilisé le moteur de jeu Unity. Comme dit précédemment, le moteur Unity 3D est un logiciel de création de jeu. Il est convenable d'avoir des notions sur ce moteur de jeu. En effet, Unity nécessite appréhender des notions qui lui sont propres.
+\paragraph{}De nombreux exemples et tutoriels sont disponible sur internet, notamment sur le site du développeurs. Pour plus d'informations, nous vous conseillons les sites:
 \begin{itemize}
-\item Brain
-\item Stats
-\item Percept
-\item Actions
-\item ActionNonTerminales
-\item Messages
+\item Le site officiel d'Unity 3D : https://unity3d.com/fr
+\item La page de télécharge d'Unity : https://store.unity.com/
+\item La documentation officielle d'Unity : https://docs.unity3d.com/Manual/index.html
 \end{itemize}
-\paragraph{Gestion des scènes.}
-Une scène, comme l'unité, détient elle aussi des composants minimums, ceux-ci ont été regroupé dans un GameObject appelé "MetabotNecessary".
-Ils se résument en 8 scripts:
+
+
+\subsection{Création d'unité.}
+Pour pouvoir créer une unité simplement, nous avons 
+\subsection{Création de carte.}
 \begin{itemize}
 \item MainCamera : la caméra principale.
 \item TurnManager : s'occupe de la gestion des tours.
 \item RessourceGenerator : un générateur de ressource.
-\item MinimapCamera : camera permettant l'affichage de la minimap.
+\item MinimapCamera : camera permettant l'affichage de la mini-carte.
 \item ItemManager : gère le comportement des objets.
 \item HUD : canvas d'affichage tête haute.
-\item UnitManager : gestionnaire d'unité qui comporte les 4 equipes.
+\item UnitManager : gestionnaire d'unité qui comporte les 4 équipes.
 \end{itemize}
+\subsection{Gestion des comportements.}
+
 
 \section{Modélisation 3D, sons et animation.}
 
@@ -986,32 +996,32 @@ Pour tester les unités, nous avons conçu 5 différentes cartes.
     \begin{minipage}[c]{.46\linewidth}
         \centering
         \includegraphics[scale=0.25]{MapSimpleImage}
-        \caption{L'unité Base de WarBot.}
+        \caption{La carte Simple de Warbot.}
     \end{minipage}
     \hfill%
     \begin{minipage}[c]{.46\linewidth}
         \centering
         \includegraphics[scale=0.25]{MapMountainImage}
-        \caption{L'unité Explorer de WarBot.}
+       \caption{La carte Mountain de Warbot.}
     \end{minipage}
 \end{figure}
 \begin{figure}[h]
     \begin{minipage}[c]{.46\linewidth}
         \centering
 	\includegraphics[scale=0.25]{MapDesolateImage}
-	\caption{L'unité Light de WarBot.}
+	\caption{La carte Desolate de Warbot.}
     \end{minipage}
     \hfill%
     \begin{minipage}[c]{.46\linewidth}
         \centering
 	\includegraphics[scale=0.25]{MapPlainImage}
-	\caption{L'unité Heavy de WarBot.}
+	\caption{La carte Plain de Warbot.}
     \end{minipage}
 \end{figure}
 \begin{figure}[!h]
         \centering
-		\includegraphics[scale=0.5]{MapGardenImage}
-	\caption{L'unité Light de WarBot.}
+		\includegraphics[scale=0.25]{MapGardenImage}
+	\caption{La carte Garden de Warbot.}
 \end{figure}
 \newpage
 \newpage
