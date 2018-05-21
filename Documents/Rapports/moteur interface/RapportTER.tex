@@ -1041,16 +1041,39 @@ Donne la possibilité à une unité de stocker des objets. L'inventaire est cara
 
 \subsection{Création de carte.}
 \paragraph{Modélisation 3D.}
-\paragraph{Le nécessaire MetaBot.}
+\paragraph{Le nécessaire MetaBot.} Pour simplifier la création d'une scène dans MetaBot, nous avons rassembler les scripts et GameObject important dans un seul est même contenant. \textit{\_MetaBotNecessary}.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.85]{MetaBotNecessaryImage}
+\caption{Hierarchie des \textit{GameObjects} de la scène \textit{Simple}}
+\end{figure}
 
 \begin{itemize}
-\item MainCamera : la caméra principale.
-\item TurnManager : s'occupe de la gestion des tours.
-\item RessourceGenerator : un générateur de ressource.
-\item MinimapCamera : camera permettant l'affichage de la mini-carte.
-\item ItemManager : gère le comportement des objets.
-\item HUD : canvas d'affichage tête haute.
-\item UnitManager : gestionnaire d'unité qui comporte les 4 équipes.
+\item \textit{MainCamera.} La caméra principale où est affichée les éléments de l'interface graphique lors d'une partie.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.5]{Screenshot001}
+\caption{Rendu de la caméra principale lors d'une partie}
+\end{figure}
+
+\item \textit{TurnManager.} S'occupe de la gestion des tours des unité.
+
+
+\item \textit{RessourceGenerator.} Cet objet permets
+
+
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.85]{RessourceGeneratorImage}
+\caption{Script \textit{SpawnRessource.cs} dans l'éditeur d'Unity}
+\end{figure}
+
+\item \textit{MinimapCamera.} Caméra permettant l'affichage de la mini-carte.
+\item \textit{ItemManager.} gère le comportement des objets.
+\item \textit{HUD.} canvas d'affichage tête haute.
+\item \textit{UnitManager.} gestionnaire d'unité qui comporte les 4 équipes.
 \end{itemize}
 \subsection{Gestion des comportements.}
 
@@ -2232,9 +2255,6 @@ Quand on essaye de placer une condition à côté d'un IF qui est verrouillé, a
 \item\textbf{Bug de collision des unités}\newline
 Il arrive parfois que les unités sortent des limites de la zone de jeu et partent hors de portée de la caméra.
 \end{enumerate}
-
-\end{enumerate}
-
 
 \newpage
 \part{Annexe}
