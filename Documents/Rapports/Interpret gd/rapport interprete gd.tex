@@ -55,6 +55,10 @@ stringstyle=\color[rgb]{0.627,0.126,0.941},
     \HRule \\[0.4cm]
     { \huge \bfseries Warbot : Extension de la version Unity\\[0.4cm] }
 
+\HRule \\[2cm]
+    \includegraphics[scale=0.5]{DATA/warbotactuel.png}
+    \\[2cm]
+
     \vfill
     \begin{minipage}{0.4\textwidth}
       \begin{flushleft} \large
@@ -708,7 +712,7 @@ L’animateur dans Unity va récupérer des objets de la scène et on va pouvoir
 
 Sur la photo ci-dessus, nous voyons sur la gauche les différents objet impliqués dans l’animation , et l’écoulement du temps sur le milieu. 
 Il est possible d’ajouter des images clés sur la timeline, et définir les valeurs qu’auront les  propriétés des objets à chaque image clé. Par exemple, si à 10 secondes je veux que la taille de mon texte soit à 100\% je vais simplement mettre une frame sur 10 sec, et mettre la valeur 1 dans la propriété “Scale” du texte. Unity va donc augmenter linéairement la taille de mon texte entre 0 et 10 secondes.\newline
-L’animation ici correspond à l’apparition d’un fond coloré , avec une interpolation de sa transparence sur le temps de l’animation. Par dessus, on va voir 2 textes content le mot “Game Over” et aussi le nom de l’équipe gagnante. Ces 2 textes vont grossir de 0 à 1.2x leur taille initiale pour ensuite revenir à 1x la taille initiale, pour ajouter un peu de dynamique à l’animation.
+L’animation ici correspond à l’apparition d’un fond coloré , avec une augmentation linéaire de sa transparence sur le temps de l’animation. Par dessus, on va voir 2 textes contenant le mot “Game Over” et aussi le nom de l’équipe gagnante. Ces 2 textes vont grossir de 0 à 1.2x leur taille initiale pour ensuite revenir à 1x la taille initiale, pour ajouter un peu de dynamique à l’animation.
 \paragraph{}
 Une fois l’animation terminée, il faut déterminer quand a t-on besoin de jouer cette animation et certains paramètres (doit elle boucler ? , …)
 Ici , il ne fallait absolument pas que l’animation boucle, l’écran doit rester fixe lorsque le jeu est fini. Il est donc indispensable de simplement jouer l’animation dès qu’on détecte la fin du jeu. 
@@ -756,8 +760,8 @@ Pour cette mise à jour, pour chaque équipe adverse, 2 cas sont possible :
 \newline
 \begin{itemize}
 \item
-les équipes se sont déjà affronté ulterieurment
-on recherche, dans la liste d'équipe affronté, l'équipe adverse affronté lors de ce match et on incrémente MatchCount. Si l'équipe actuelle est l'équipe gagnante, on incrémente aussi WinCount
+les équipes se sont déjà affronté avant
+on recherche, dans la liste des équipes affrontées, l'équipe adverse actuelle et on incrémente MatchCount. Si l'équipe actuelle est l'équipe gagnante, on incrémente aussi WinCount
 \begin{lstlisting}[frame=single]
 int numVal = int.Parse(DetailStat[1]);
 numVal++;
@@ -782,7 +786,7 @@ else
 \end{lstlisting}
 \paragraph{}
 \end{itemize}
-Les match-up étaient affichés sur l'écran d'accueil. Cependant, prenant trop de place, ils ont été effacés de l'écran d'accueil et seront ensuite afficher dans une fenêtre à part.
+Les match-up étaient affichés sur l'écran d'accueil. Cependant, prenants trop de place, ils ont été effacés de l'écran d'accueil et pourraient être affichés sur une fenêtre à part si l’équipe qui va récupérer le projet le souhaite.
 
 
 \subsection{Système de points ELO}
@@ -885,7 +889,7 @@ Voici un exemple
 \section{Nouvelle condition de victoire}
 A la fin du projet , après avoir intégré la gestion de la fin du jeu, Mr Ferber nous a donné l’idée de mettre en place un second mode de jeu pour montrer les possibilités de généricité du projet. Le temps étant assez court, l’idée de mettre en place un mode de jeu entier était impossible , et nous avons mis en place une condition de victoire différente, mais toujours basée sur le mode de jeu WarBot.
 \paragraph{}
-Reprenant l’idée d’un mode réfléchi par l’équipe Game Design, la possibilité de passer en “Course aux ressources” a été rajoutée dans les paramètres. Si ce mode est sélectionné , l’utilisateur va pouvoir définir un temps limite en secondes avant l’arrêt de la partie, ainsi qu’une limite de ressource à atteindre. Le jeu s’arrête si le temps imparti est atteint, ou si l’une des équipes à atteint le nombre de ressources spécifié dans l’inventaire de leur base. Dans le cas où le temps est atteint, c’est l’équipe ayant le plus de ressources dans sa base qui a gagnée. 
+Reprenant l’idée d’un mode réfléchi par l’équipe Game Design, la possibilité de passer en “Course aux ressources” a été rajoutée dans les paramètres. Si ce mode est sélectionné , l’utilisateur va pouvoir définir un temps limité en secondes avant l’arrêt de la partie, ainsi qu’une limite de ressource à atteindre. Le jeu s’arrête si le temps imparti est atteint, ou si l’une des équipes à atteint le nombre de ressources spécifié dans l’inventaire de leur base. Dans le cas où le temps est atteint, c’est l’équipe ayant le plus de ressources dans sa base qui a gagnée. 
 
 \paragraph{}
 \begin{center}
@@ -914,11 +918,11 @@ Lors de l’affichage de l’animation , on va afficher le terme “Égalité”
 \section{Expérience utilisateur}
 \subsection{Ancienne version de Warbot}
 \paragraph{}
-    Les premières semaines de ce projet ont été l’occasion pour toute l’équipe de se familiariser avec la version de WarBot qui avait été créé par les étudiants de l’année précédente. Nous avons donc immédiatement essayé de créer des équipes pour tenter d’apprivoiser son éditeur de comportement.
+    Les premières semaines de ce projet ont étées l’occasion pour toute l’équipe de se familiariser avec la version de WarBot qui fut créée par les étudiants de l’année précédente. Nous avons donc immédiatement essayé de créer des équipes pour tenter d’apprivoiser son éditeur de comportement.
 \paragraph{}
-\begin{adjustwidth}{-3em}{}
+\begin{adjustwidth}{-2.5em}{}
 \includegraphics[scale=0.4]{DATA/oldEditor.png}
-\captionof{figure} {Aperçu de l'éditeur}
+\captionof{figure} {Aperçu de l'ancien éditeur}
 \end{adjustwidth}
 \paragraph{}
     Nous nous sommes très vite rendu compte de plusieurs problèmes d’ergonomie qui rendait la création d’équipe difficile.
@@ -926,18 +930,18 @@ Tout d’abord, pour placer un bloc, il fallait :
 \begin{itemize}
 \item Cliquer sur le nom d’une primitive dans le menu de gauche
 \item Maintenir le clic de la souris et déplacer le pointeur de la souris sur un bloc déjà placé
-\item Le bloc est ensuite placé en-dessous du bloc où se trouve le pointeur de la souris
+\item La primitive est ensuite placée en-dessous du bloc où se trouve le pointeur de la souris
 \end{itemize}
 Si cela semble simple sur le papier, en pratique c’est une tout autre histoire car le moindre faux mouvement positionnait le bloc au mauvais endroit ou le faisait disparaître.
 En effet, si le curseur de la souris ne se trouvait sur aucun bloc au moment où on relâchait le clic, le bloc était tout simplement supprimé. \newline
-Dans le cas où l’on avait mal positionné le bloc il fallait alors le déplacer. Cependant, cliquer sur un bloc déjà existant pour le déplacer entraînait également le déplacement des blocs situés en-dessous de celui que l’on souhaitait déplacer. Il fallait donc, dans un premier temps, sélectionner les blocs en-dessous de la primitive mal placée pour les positionner au-dessus de cette dernière pour pouvoir déplacer la primitive mal placée sans modifier le reste du comportement.
+Dans le cas où l’on avait mal positionné le bloc il fallait alors le déplacer. Cependant, cliquer sur un bloc déjà existant pour le bouger entraînait également le déplacement des blocs situés en-dessous de celui dont nous voulions modifier la position. Il fallait donc, dans un premier temps, sélectionner les blocs en-dessous de la primitive mal placée pour les positionner au-dessus de cette dernière pour pouvoir déplacer la primitive mal placée sans modifier le reste du comportement.
 \paragraph{}
-    Supprimer un bloc s’il n’est attaché à aucun autre bloc semble être une bonne idée car cette technique permet de ne pas avoir trop de blocs inutiles qui traînent dans l’interface. Seulement, un simple clic sur une primitive supprimait cette dernière ainsi que toutes celles placées en dessous de la primitive supprimé. Ceci s’explique par le fait que lors du clic sur une primitive, l’éditeur estime que nous somme en train de la déplacer. Or, comme on relâche la souris sans la bouger cette dernière est déplacé à un endroit où il n’y a aucun bloc entraînant ainsi sa suppression. \newline
-Ce problème était particulièrement dérangeant lorsque l’on souhaitait utiliser WarBot avec un pavé tactile car une simple pression sur ce dernier est compté comme un clic, il n’était pas rare de supprimer une grosse partie de notre comportement en voulant repositionner son doigt sur le pavé tactile.
+    Supprimer un bloc s’il n’est attaché à aucun autre bloc semble être une bonne idée car cette technique permet de ne pas avoir trop de blocs inutiles qui traînent dans l’interface. Seulement, un simple clic sur une primitive supprimait cette dernière ainsi que toutes celles placées en dessous de la primitive supprimée. Ceci s’explique par le fait que lors du clic sur une primitive, l’éditeur estime que nous somme en train de la déplacer. Or, comme on relâche la souris sans la bouger cette dernière est déplacé à un endroit où il n’y a aucun bloc entraînant ainsi la suppression des primitives. \newline
+Ce problème était particulièrement dérangeant lorsque l’on souhaitait utiliser WarBot avec un pavé tactile car une simple pression sur ce dernier est compté comme un clic. Il n’était donc pas rare de supprimer une grosse partie de notre comportement en voulant repositionner son doigt sur le pavé tactile.
 \paragraph{}
-    A ceci s’ajoute l’absence de certaines fonctionnalité comme la possibilité d’annuler une modification ou de choisir quand sauvegarder le fichier, ce qui implique que chaque erreur était sauvegardé et la seule manière de la corriger était de replacer de nouveaux blocs pour revenir au comportement voulu.
+    A ceci s’ajoute l’absence de certaines fonctionnalités comme la possibilité d’annuler une modification ou de choisir quand sauvegarder le fichier, ce qui implique que chaque erreur était sauvegardée et la seule manière de la corriger était de replacer de nouveaux blocs pour revenir au comportement voulu.
 \paragraph{}
-    Cette version de WarBot possédait plusieurs types de primitives : les primitives de contrôle if et task, les conditions et les actions. Parmis les actions, certaines terminaient le tour de l’unité (tirer, bouger, se soigner…) alors que d’autres permettaient à l’unité de continuer son tour (Rejoindre un groupe, changer l’orientation de l’unité…). Il était difficile de savoir lesquelles terminent le tour ou non car il n’y avait aucune différence visuelle entre ces deux types de primitives. Le seul moyen de savoir si une primitive permettait de continuer son tour était donc de passer sa souris sur le nom d’une primitive dans le menu à gauche pour avoir une description de la primitive dans laquelle il était précisé si cette action terminait le tour de l’unité. Dans le cas où l’action n’était pas terminale, aucune précision n’était rajouté.
+    Cette version de WarBot possédait plusieurs types de primitives : les primitives de contrôle if et task, les conditions et les actions. Parmis les actions, certaines terminaient le tour de l’unité (tirer, bouger, se soigner…) alors que d’autres permettaient à l’unité de continuer son tour (Rejoindre un groupe, changer l’orientation de l’unité…). Il était difficile de savoir lesquelles terminaient le tour ou non car il n’y avait aucune différence visuelle entre ces deux types de primitives. Le seul moyen de savoir si une primitive permettait de continuer son tour était donc de passer sa souris sur le nom d’une primitive dans le menu à gauche pour avoir une description de la primitive dans laquelle il était précisé si cette action terminait le tour de l’unité. Dans le cas où l’action n’était pas terminale, aucune précision n’était rajoutée.
 \paragraph{}
 \begin{center}
 \includegraphics[scale=1]{DATA/terminale1.png}
@@ -945,7 +949,7 @@ Ce problème était particulièrement dérangeant lorsque l’on souhaitait util
 \captionof{figure} {Comparaison descriptions}
 \end{center}
 \paragraph{}
-    Un dernier problème d’ergonomie important est l’emplacement des boutons dans cet éditeur. En effet, il était possible de revenir au menu principal, de créer une nouvelle partie, de quitter le jeu et de créer une nouvelle équipe depuis l’éditeur. Cependant, les boutons qui permettaient ces actions étaient cachés dans le menu pause de l’éditeur. Le simple fait de pouvoir mettre en pause en écran qui n’en a pas besoin est déjà suffisamment contre-intuitive pour privilégier le fait de placer des boutons directement dans l’interface de l’éditeur plutôt que dans un menu accessible uniquement via la pression de la touche échap du clavier.
+    Un dernier problème d’ergonomie important est l’emplacement des boutons dans cet éditeur. En effet, il était possible de revenir au menu principal, de créer une nouvelle partie, de quitter le jeu et de créer une nouvelle équipe depuis l’éditeur. Cependant, les boutons qui permettaient ces actions étaient cachés dans le menu pause de l’éditeur. Le simple fait de pouvoir mettre en pause un écran qui n’en a pas besoin est déjà suffisamment contre-intuitive pour privilégier le fait de placer des boutons directement dans l’interface de l’éditeur plutôt que dans un menu accessible uniquement via la pression de la touche échap du clavier.
 \paragraph{}
 \begin{center}
 \includegraphics[scale=1]{DATA/oldPause.png}
@@ -960,37 +964,36 @@ Ce problème était particulièrement dérangeant lorsque l’on souhaitait util
 Même si nous arrivions à trouver des bugs lors d’une utilisation normale du logiciel, ce n’est pas suffisant pour trouver tous les bugs présents sous WarBot. \newline
 En effet, dans le domaine de tests logiciels il existe plusieurs familles de tests. Il est important de préciser que nous avons effectué les tests en boîte noire, c’est-à-dire en ayant très peu, voire pas du tout, de connaissance du code du logiciel. La première est le test des nouvelles fonctionnalités dont le but est de se focaliser sur les nouveautés de la version pour vérifier qu’elles marchent bien. Pour effectuer ces tests, nous avons créé des équipes très simples n’utilisant presque qu’une seule primitive à savoir celle que l’on voulait tester. Nous lancions ensuite une partie et observions le comportement des unités pour déterminer si les ajouts étaient bien opérationnelles.
 \paragraph{}
-  Une fois les tests des nouvelles fonctionnalités terminé, nous faisions des tests combinatoires dont le but était de vérifier que de mêler plusieurs primitives dans un même comportement ne posait pas de problème. Pour cela, nous complexifiions les équipes créés pour tester des primitives à part en rajoutant de nouvelles primitives dans leur comportement.
+  Une fois les tests des nouvelles fonctionnalités terminés, nous faisions des tests combinatoires dont le but était de vérifier que de mêler plusieurs primitives dans un même comportement ne posait pas de problème. Pour cela, nous complexifiions les équipes créés pour tester des primitives à part en rajoutant de nouvelles primitives dans leur comportement.
  \paragraph{}
-  Une autre famille de test très important est la famille des tests de non régression. Le but de ces tests est de tester toutes les anciennes fonctionnalités pour vérifier si elles fonctionnent toujours de la même manière que dans la version précédente. Pour cela, nous lancions une partie avec des équipes créés lors des versions précédentes et nous vérifions que les agents n’avaient pas de comportement étranges ou non désirés.
+  Une autre famille de test très importante est la famille des tests de non régression. Le but de ces tests est de tester toutes les anciennes fonctionnalités pour vérifier si elles fonctionnent toujours de la même manière que dans la version précédente. Pour cela, nous lancions une partie avec des équipes créés lors des versions précédentes et nous vérifions que les agents n’avaient pas de comportement étranges ou non désirés.
 \paragraph{}
-  La dernière famille de test que nous avons effectué sont les test aux limites. Ces tests consistaient à pousser WarBot dans ses retranchements en essayant des choses qui étaient susceptibles de ne pas avoir été pensé par les développeurs. Par exemple, nous avons essayé de créer des équipes dont le nom contenaient des caractère spéciaux, de lancer des parties avec énorméments d’unités, de constamment changer la vitesse en jeu...
+  Lest derniers tests que nous avons effectués sont les tests aux limites. Ces tests consistaient à pousser WarBot dans ses retranchements en essayant des choses qui étaient susceptibles de ne pas avoir été pensé par les développeurs. Par exemple, nous avons essayé de créer des équipes dont le nom contenaient des caractère spéciaux, de lancer des parties avec énorméments d’unités, de constamment changer la vitesse en jeu...
 
 \subsection{Organisation et communication}
 \paragraph{}
   Une fois qu’un bug était trouvé, nous tentions de le reproduire plusieurs fois afin de comprendre comment le déclencher. Une fois que le déclenchement du bug était compris, nous l’ajoution à la liste de bugs.
 \paragraph{}
-  Cette liste étant un Google Document partagé, n’importe qui possédant le lien vers ce document étaient capable de le voir et de l’éditer. Le but était donc de centraliser tout le processus de communication des bugs : n’importe qui pouvait ajouter à la liste un bug qu’il avait découvert, indiquer que le bug a été corrigé ou si certains sont réapparus.
+  Cette liste étant un Google Document partagé, n’importe qui possédant le lien vers ce document étaient capable de le voir et de l’éditer. Le but était donc de centraliser tout le processus de communication des bugs : n’importe qui pouvait ajouter à la liste un bug qu’il avait découvert, indiquer la correction d'un bug ou la réapparition de certains bugs que l'on croyait corrigés.
 \paragraph{}
   Ce document possède plusieurs tableaux : un pour les bugs non traités, un pour ceux qui sont réapparus après une correction, un pour les bugs patchés (non corrigé mais un compromis a été réalisé pour que ça ne pose plus de problème), un pour les bugs à vérifier et un dernier pour les bugs corrigés.
 \paragraph{}
-Il nous arrivait également de rajouter des liens vers des vidéos des bugs enregistrés lors de nos sessions de recherche de bugs ou bien des captures d’écrans, rendant ainsi plus explicite les problèmes qu’apportent le bug ou la manière de le réaliser.
+Il nous arrivait également de rajouter des liens vers des vidéos des bugs enregistrées lors de nos sessions de recherche de bugs ou bien des captures d’écrans, rendant ainsi plus explicite les problèmes qu’apportent le bug ou la manière de le réaliser.
 \paragraph{}
-Lorsqu’un bug était plus important comme l’impossibilité de lancer une partie ou de créer un comportement, nous en informions directement l’équipe via notre serveur Discord qui permet d’effectuer des conversations instantanées avec tous les membres du groupe. Ces conversations peuvent être aussi bien textuelles que vocales. L’intérêt de passer directement par Discord était de provoquer une situation d’urgence où toute l’équipe était mise au courant du problème sans qu’ils aient besoin de passer sur le Google Documents. 
+Lorsqu’un bug était plus important, comme l’impossibilité de lancer une partie ou de créer un comportement, nous en informions directement l’équipe via notre serveur Discord qui permet d’effectuer des conversations instantanées avec tous les membres du groupe. Ces conversations peuvent être aussi bien textuelles que vocales. L’intérêt de passer directement par Discord était de provoquer une situation d’urgence où toute l’équipe était mise au courant du problème sans qu’ils aient besoin de passer sur le Google Document. 
 
-\newpage
 \section{Game Design}
 
 \subsection{Amélioration demandés}
 \paragraph{}
-  Deux semaines après le début du projet, il nous a été demandé de rédiger un document expliquant comment nous voulions le langage. Nous avons donc commencé à imaginer comment améliorer le langage de l’éditeur de l’ancienne version.
+  Deux semaines après le début du projet, il nous a été demandé de rédiger un document expliquant comment nous voulions voir langage évoluer. Nous avons donc commencé à imaginer comment améliorer le langage de l’éditeur de l’ancienne version.
 \paragraph{}
-  Tout d’abord, nous voulions introduire une nouvelle fonctionnalité : l’objectif. Au vu de la nature d’une Finish-State Machine qui est le concept sur lequel se base le comportement des agents de WarBot, il est très dur de réaliser des stratégie car la moindre réponse à un réflexe nous fait perdre notre trajectoire. \newline
-L’objectif est donc un objet contenant simplement des coordonnées qui se conserve au fil des tours, contrairement à la cible. Il a été conçu notamment pour se diriger vers des messages. Le but est de conserver la position de l’émission d’un message d’un message pour pouvoir se diriger vers ce dernier à tout moment. \newline
-Ainsi, il est possible de réagir à des réflexes sur un tour puis de changer son orientation vers l’objectif pour reprendre le chemin vers l’objectif aux tours suivants. Cette objectif permet également de tirer vers une position en dehors de notre champ de vision, possibilité imposé par M. Ferber qui veut que les WarHeavy ai une distance de vue très faible pour que les autres unités soient obligés de les guider.
+  Tout d’abord, nous voulions introduire une nouvelle fonctionnalité : l’objectif. Au vu de la nature d’une Finish-State Machine qui est le concept sur lequel se base le comportement des agents de WarBot, il est très dur de réaliser des stratégie car la moindre réponse à un réflexe nous fait perdre notre trajectoire car l'orientation de l'unité est modifiée. \newline
+L’objectif est donc un objet contenant simplement des coordonnées qui se conserve au fil des tours, contrairement à la cible. Il a été conçu notamment pour se diriger vers des messages. Le but est de conserver la position de l’émission d’un message pour pouvoir se diriger vers ce dernier à tout moment. \newline
+Ainsi, il est possible de réagir à des réflexes sur un tour puis de modifier son orientation en direction de l’objectif pour reprendre le chemin vers ce dernier aux tours suivants. Cette fonctionnalité permet également de tirer vers une position en dehors de notre champ de vision, possibilité imposé par M. Ferber qui veut que les WarHeavy aient une distance de vue très faible pour que les autres unités soient obligés de les guider.
 \newpage
 \paragraph{}
-  Le gros problème de l’ancien éditeur venait de son ergonomie. Pour l’améliorer, nous avons proposé un système de code couleur et de forme de pièces, réalisé à l’aide de photoshop pour servir de référence à l’équipe interface :
+  Le gros problème de l’ancien éditeur venait de son ergonomie. Pour l’améliorer, nous avons proposé un système de code couleur et de forme de pièces, réalisé à l’aide d'un logiciel de traitement d'image pour servir de référence à l’équipe interface :
 
 \paragraph{}
 \begin{center}
@@ -999,9 +1002,9 @@ Ainsi, il est possible de réagir à des réflexes sur un tour puis de changer s
 \end{center}
 \paragraph{}
 
-Ici, toutes les structures de conditions sont en jaunes, toutes les actions en violettes et toutes conditions en verte. \newline
+Ici, toutes les structures de conditions sont en jaunes, toutes les actions en violettes et toutes les conditions en vertes. \newline
 Le système de forme de bloc permettait également de comprendre immédiatement où on pouvait placer des blocs. Les actions peuvent être positionné sous les blocs possédant un creux ovale alors que les conditions ne peuvent être positionnées qu’en-dessous des blocs possédant des creux triangulaires.
-Les actions terminales ne possèdent pas de reux en bas du bloc pour exprimer le fait qu’il est impossible de positionner d’autres blocs à leur suite. \newline
+Les actions terminales ne possèdent pas de creux en bas du bloc pour exprimer le fait qu’il est impossible de positionner d’autres blocs à leur suite. \newline
 Les conditions ont également des “!” en haut à gauche de leur bloc. Un clic sur ce dernier changeait la couleur du bloc exprimant ainsi que nous ne testions plus si la condition est vraie mais si la condition est fausse.
 
 \paragraph{}
@@ -1018,65 +1021,79 @@ Les conditions ont également des “!” en haut à gauche de leur bloc. Un cli
 \item Porté de tir qui donne la porté de l’arme de l’unité
 \item Distance objectif qui donne la distance entre l’unité actuelle et son objectif
 \item Distance cible qui donne la distance entre l’unité actuelle et sa cible
-\item Nombre membre qui donne le nombre de membre au sein d’un groupe
-\item Lancé de dé qui retourne un nombre aléatoire entre 1 et la borne maximum passé en paramètre
-\item Constante qui permet d’écrire n’importe quelle donnée.
+\item Nombre membre qui donne le nombre de membre au sein d’un groupe précisé en paramètre
+\item Lancé de dé qui retourne un nombre aléatoire entre 1 et la borne maximale passée en paramètre
+\item Constante qui permet d’écrire n’importe quelle donnée
 \end{itemize}
 \paragraph{}
   Ces variables servaient surtout à utiliser les opérateurs de comparaison ( inférieur, supérieur, égale) qui est l’une des conditions que nous voulions ajouter : 
 
 \paragraph{}
-\begin{adjustwidth}{-8em}{}
+\begin{adjustwidth}{-6em}{}
 \includegraphics[scale=1]{DATA/comparaison.png}
 \captionof{figure} {Condition de comparaison}
 \end{adjustwidth}
 \paragraph{}
 
-Les blocs bleu cyan sont les blocs représentant les variables qui sont de simples rectangles pour exprimer le fait qu’on ne peux les positionner qu’ici. \newline
+Les blocs bleus cyans représentent les variables qui sont de simples rectangles pour exprimer le fait qu’on ne peux les positionner qu’ici. \newline
 Les autres conditions que nous voulions ajouter sont :
 \begin{itemize}
 \item A un objectif qui retourne true si l’unité à un objectif
-\item Niveau de vie qui prend un double entre 0 et 100 et qui renvoie true si la vie de l’unité > vieMax*param
-\item Niveau de ressource qui prend un double entre 0 et 100 et qui renvoie true si nbRessource > tailleInventaire*param
+\item Niveau de vie qui prend un double entre 0 et 1 comme paramètre et qui renvoie true si 
+\[
+vie Atuelle De L’unite > vie Maximale De L'unite * parametre
+\]
+\item Niveau de ressource qui prend un double entre 0 et 1 et qui renvoie true si 
+\[
+nombre Ressource De L'unite > taille Inventaire De L'unite * parametre
+\]
 \end{itemize}
 \paragraph{}
   Pour les derniers ajouts de primitives, il nous fallait deux primitives pour gérer la notion d’objectif :
   \begin{itemize}
-\item Définir objectif qui crée un objet possédant les coordonnées de la cible actuelle
+\item Définir objectif qui affecte à cette variable un objet possédant les coordonnées de la cible actuelle
 \item Supprimer objectif qui permet de libérer l’unité de son objectif.
 \end{itemize}
 \paragraph{}
 
-  Dernièrement, nous avons ensuite lister quelles primitives n’était pas intéressantes et celles qu’il fallait modifier :
+  Dernièrement, nous avons listé quelles primitives n’était pas intéressantes et celles qu’il fallait modifier :
 \begin{itemize}
-\item Task car c’est une primitive qui ne se différencie pas assez de la primitive if pour être conservé
+\item Task car c’est une primitive qui ne se différencie pas assez de la primitive if pour être conservée
 \item Not full et not empty car la possibilité d’exprimer la négation d’une condition les rends redondantes avec les négations de full et empty
-\item SelectUnite ne servait qu’à créer des unités.en effet, il fallait sélectionner le type d’unité que nous voulions créer puis appeler la primitive create unit. Le fait d’appeler simplement create unit et de sélectionner l’unité voulu via un menu déroulant était donc suffisant.
+\item SelectUnite ne servait qu’à créer des unités. En effet, il fallait sélectionner le type d’unité que nous voulions créer puis appeler la primitive create unit. Le fait d’appeler simplement create unit et de sélectionner l’unité voulu via un menu déroulant était donc suffisant.
+\paragraph{}
+\begin{center}
+\includegraphics[scale=1]{DATA/deroulant.png}
+\captionof{figure} {Le menu déroulant déroulé}
+\end{center}
+\paragraph{}
 \item TargetNearest existait en plusieurs exemplaire (un pour chaque type d’unité, le tout multiplié par deux pour différencier les ennemis des alliés). Nous voulions les remplacer par une variable “Cible” que l’on aurait affecté via une primitive qui aurait eu un menu déroulant pour sélectionner ce qu’on voulait cibler (ennemi, allié, message, ressources…)
 \item Near avait les mêmes problèmes que TargetNearest. Nous voulions donc utiliser une solution similaire en créant une primitive “proche de” ayant le même système de menu déroulant.
 \end{itemize}
+\newpage
 \subsection{Game Document}
 \paragraph{}
   L’un des deux buts majeurs de notre équipe lors de ce projet a été de créer de nouveaux modes de jeu, différent de WarBot.
 \paragraph{}
-  Il existe deux approches créatrices majeures en conception de jeu. L’approche bottom-up où l’on part d’un ou plusieurs éléments de gameplay auquel on tente d’appliquer un contexte. C’est par exemple le cas du jeu Splatoon de Nintendo qui n’était au départ qu’un prototype qui utilisait le gyroscope de la console Nintendo Wii U afin de repeindre un cube. A partir de cette idée principale d’autres éléments comme le fait de se déplacer dans sa peinture ont été rajouté puis il a été décidé du contexte et du scénario du jeu à la toute fin. \newline
-L’autre approche est l’approche top-down dans laquelle on commence par déterminer le scénario ou une intention de jeu pour lesquels on crée des mécaniques qui s’inscrivent dans l’expérience voulu. C’est l’approche qui est choisi pour des jeux à licence comme les Batman Arkham où il faut créer des mécaniques qui s’appuient sur la personnalité de Batman et du monde décrit dans ses comix.D’autres jeux comme Journey partent d’une envie de créer une certaine expérience de jeu qui dans le cas présent était de créer un jeu social se basant sur le partage d’émotions. \newline
+  Il existe deux approches créatrices majeures en conception de jeu. L’approche bottom-up où l’on part d’un ou plusieurs éléments de gameplay auquel on tente d’appliquer un contexte est l'une d'entre elles. C’est par exemple le cas du jeu Splatoon de Nintendo qui n’était au départ qu’un prototype qui utilisait le gyroscope de la console Nintendo Wii U afin de repeindre un cube. A partir de cette idée principale d’autres éléments comme le fait de se déplacer dans sa peinture ont été rajouté puis il a été décidé du contexte et du scénario du jeu à la toute fin. \newline
+L’autre approche est l’approche top-down dans laquelle on commence par déterminer le scénario ou une intention de jeu pour lesquels on crée des mécaniques qui s’inscrivent dans l’expérience voulue. C’est l’approche qui est choisi pour des jeux à licence comme les Batman Arkham où il faut créer des mécaniques qui s’appuient sur la personnalité de Batman et du monde décrit dans ses comics. D’autres jeux comme Journey partent d’une envie de créer une certaine expérience de jeu qui dans le cas présent était de créer un jeu social se basant sur le partage d’émotions. \newline
 Nous avons choisi l’approche top-down car notre but dans la création de nouveau mode était de créer des modes se différenciant du mode WarBot. Il était donc plus logique de partir d’une intention de jeu précise suffisamment différente de ce qui est demandé dans le mode WarBot pour se détacher de ce dernier.
 \paragraph{}
 
   Nous avons donc commencé à chercher des idées en ayant eu pour consigne la très vague instruction “faire quelque chose de différent de WarBot sans trop s’en éloigner”. Parmis ces idées, nous avons décidé de développer celles que nous trouvions les plus pertinentes à savoir un jeu en coopération basé sur la collecte de ressources, un simili RPG où les agents devaient accepter des quêtes de personnages non joueur et un jeu d’énigme. \newline
 Au final, seulement l’idée du jeu de coopération a été accepté par le reste de l’équipe mais il a été jugé trop complexe et il nous a donc été demandé de retravailler ce mode. On nous a également demandé de travailler sur la conception d’un mode de jeu de capture de drapeau car implémenter un mode de jeu qui partage un grand nombre de primitives avec WarBot semblait bien plus faisable que la création d’un mode de coopération qui demandait de plus amples réflexions afin de le faire fonctionner sous le moteur de jeu développé cette année.
  \paragraph{}
+ \newpage
   Après avoir sélectionné les idées à développer, nous avons commencé à penser la conception des modes. En partant de l’idée générale, nous avons définis quel genre d’objectifs nous voulions imposer aux joueurs pour rendre le mode intéressant. Par exemple, pour le mode de capture de drapeau, nous voulions obliger le joueur à créer une équipe capable de défendre une zone. \newline
-Une fois cet objectif défini, nous réfléchissions aux problèmes éventuels que l’idée allait impliqué et nous ajoutions de nouvelles règles et mécaniques dans le but de diriger le mode de jeu dans la direction voulu. Toujours pour la capture de drapeau, nous avions peur que les parties soient trop passives car dans la version la plus courante de ce mode de jeu, chaque équipe possède un drapeau à défendre et doit en plus récupérer celui de l’adversaire. Nous avions peur que l’attaque ne soit pas une priorité, ce qui aurait entraîné de nombreuses parties interminables où aucune des deux équipes n’arrive à récupérer le drapeau adverse. Pour résoudre ce problème, il a été décidé qu’il n’y aurait qu’un seul drapeau n’appartenant à aucune équipe et que l’équipe qui le ramènerait à sa base remporterait le match.
+Une fois cet objectif défini, nous réfléchissions aux problèmes éventuels que l’idée allait impliquer et nous ajoutions de nouvelles règles et mécaniques dans le but de diriger le mode de jeu dans la direction voulue. Toujours pour la capture de drapeau, nous avions peur que les parties soient trop passives car dans la version la plus courante de ce mode de jeu, chaque équipe possède un drapeau à défendre et doit en plus récupérer celui de l’adversaire. Nos craintes se basaient sur l'hypothèse que l’attaque serait moins intéressant que la défense, ce qui aurait entraîné de nombreuses parties interminables où aucune des deux équipes n’arrive à récupérer le drapeau adverse. Pour résoudre ce problème, il a été décidé qu’il n’y aurait qu’un seul drapeau n’appartenant à aucune équipe et que l’équipe qui le ramènerait à sa base remporterait le match.
 \paragraph{}
 
   Une fois toutes les mécaniques définis nous passions à la rédaction du game document dans lequel nous expliquons les règles du mode (objectifs, interaction entre agents…), les éléments de jeu dont nous avons besoin, les intentions du mode et en quoi il se sépare de WarBot, une liste des primitives nécessaire pour ce mode ainsi qu’une ébauche de direction artistique qui sert de contexte pour justifier les éléments de gameplay.
 \paragraph{}
 
-  La grande difficulté de cette partie était le fait que le joueur n’intervient pas au cour de la partie : son seul but est de créer des comportements pour une équipe qui jouera toute seule. Ce problème devient double parce que nous n’étions pas particulièrement au courant des méthodes de conception de jeu classique ce qui nous a donc demandé à la fois d’apprendre la méthodologie et de l’adapter à un jeu où il n’y a pas de joueur. \newline
+  La grande difficulté de cette partie était le fait que le joueur n’intervient pas au cours de la partie : son seul but est de créer des comportements pour une équipe qui jouera toute seule. Ce problème devient double parce que nous n’étions pas particulièrement au courant des méthodes utilisées lors de conception d'un jeu ce qui nous a donc demandé à la fois d’apprendre la méthodologie et de l’adapter à un jeu où il n’y a pas de joueur. \newline
 En effet le simple fait de ne plus prendre le joueur en compte dans l’équation enlève des principes fondamentaux de la conception de jeu comme la boucle de gameplay ou le game feel. 
-Le principe de la boucle de gameplay est que  pour un objectif donné, il existe un challenge et une récompense qui doit être proportionnelle à la difficulté qui lui ai associé. Il existe des boucles de gameplay à plusieurs niveau : micro, moyen et macro. Voici ce que des boucles de gameplay dans un RPG pourrait être.
+Le principe de la boucle de gameplay est que  pour un objectif donné, il existe un challenge et une récompense qui doit être proportionnelle à la difficulté qui lui ai associé. Il existe des boucles de gameplay à plusieurs niveaux : micro, moyen et macro. Voici ce que des boucles de gameplay dans un RPG pourrait être.
 \paragraph{}
 \begin{figure}
 \begin{adjustwidth}{-8em}{-7em}
@@ -1112,7 +1129,7 @@ Seulement, avec WarBot, nous devons supprimer les boucles micro et moyenne pour 
 \end{center}
 \paragraph{}
 
-Normalement, nous devrions posséder des boucles moyennes elles mêmes composés de boucles micros au sein de la boucle macro pour stimuler l’intérêt du joueur au cours de la partie, chose impossible avec WarBot car même si l’on peut définir des objectifs au niveau moyen (défendre la base, lancer une attaque…) et micro (détruire une unité, créer une nouvelle unité…) il est impossible de créer du challenge au sein de la partie. Ce challenge est néanmoins présent lors de la conception d’une équipe mais comme il est impossible d’avoir une récompense directement après avoir surmonté le challenge car il faut lancer une partie pour obtenir cette récompense, l’effet de la résolution d’un objectif est amoindri. Le fait que le challenge soit toujours le même pour un objectif différent peut également entraîner l’ennui chez le joueur qui l’amènera à se désintéresser du jeu.
+Normalement, nous devrions posséder des boucles moyennes elles mêmes composés de boucles micros au sein de la boucle macro pour stimuler l’intérêt du joueur au cours de la partie, chose impossible avec WarBot car même si l’on peut définir des objectifs au niveau moyen (défendre la base, lancer une attaque…) et micro (détruire une unité, créer une nouvelle unité…) il est impossible de créer du challenge au sein de la partie pour le joueur. Ce challenge est néanmoins présent lors de la conception d’une équipe mais comme il est impossible d’avoir une récompense directement après avoir surmonté le challenge car il faut lancer une partie pour obtenir cette récompense, l’effet de la résolution d’un objectif est amoindri. Le fait que le challenge soit toujours le même pour un objectif différent peut également entraîner l’ennui chez le joueur qui l’amènera à se désintéresser du jeu.
 \paragraph{}
 
 
@@ -1122,7 +1139,7 @@ Le problème avec WarBot est alors évident : le joueur ne contrôle pas ses uni
 \newpage
 \subsection{Design des cartes de jeu}
 \paragraph{}
-  Lors de la décision d’ajouter un mode de jeu où la condition de victoire était le nombre de ressources récoltés, nous avons conçu trois nouvelles cartes. Dans ces trois cartes, on retrouve une zone violette qui représente la zone où les ressources apparaîtront et des maisons de différentes couleurs représentant les positions des différentes bases.
+  Lors de la décision d’ajouter un mode de jeu où la condition de victoire était le nombre de ressources récoltées, nous avons conçu trois nouvelles cartes. Dans ces trois cartes, on retrouve une zone violette qui représente la zone où les ressources apparaîtront et des maisons de différentes couleurs représentant les positions des différentes bases.
 
 \paragraph{}
 \begin{center}
@@ -1149,7 +1166,7 @@ Ici, on tente de séparer les zones d’intérêt en ajoutant deux zones d’app
 \end{center}
 \paragraph{}
 
-Pour cette dernière carte, le but était de séparer les affrontements dans plusieurs zones pour obliger les affrontements en entre deux équipes plutôt que les plus brouillons où toutes les équipes s’affrontent au même endroit, d’où la zone centrale inaccessible.
+Pour cette dernière carte, le but était de séparer les affrontements dans plusieurs zones pour obliger les affrontements entre deux équipes pour trancher avec les autres cartes où les quatres équipes s'affrontent au même endroit, d’où la zone centrale inaccessible.
 
 \paragraph{}
 \begin{figure}
@@ -1192,12 +1209,12 @@ Pour cette dernière carte, le but était de séparer les affrontements dans plu
 \end{figure}
 \paragraph{}
 
-  L’équipe moteur s’en occupé de la création des cartes atuellement présentent dans le projet. La carte Simple était au départ la carte qui servait à faire nos tests. Les cartes montagne et Desolate ont été conçus pour avoir plus de possibilité de collision avec le décor. Quand à la carte garden, c'est un model 3D trouvé sur Inernet qui a été ajouté pour vérifier la possibilité d'ajouter des cartes n'étant pas prévu spécifiquement pour notre moteur au départ.
+  L’équipe moteur s’est occupée de la création des cartes atuellement présentent dans le projet. La carte Simple était au départ la carte qui servait à faire nos tests dans un environnement où peut d'éléments risquaient de perturber le comportement des agents. Les cartes montagne et Desolate ont été conçues pour permettre plus de possibilités de collision avec le décor. Quand à la carte garden, c'est un model 3D trouvé sur Inernet qui a été ajouté pour vérifier la possibilité d'ajouter des cartes n'étant pas prévues spécifiquement pour notre moteur au départ.
 
 \subsection{Equilibrage}
 \paragraph{}
     L’équilibrage est la phase où on ajuste les caractéristiques de chaque unité afin que chacune d’elles possède ses forces et ses faiblesses. Si une unité est trop forte, les joueurs la privilégierons alors que si une unité est trop faible, les joueurs ne voudront pas perdre leur temps à créer un comportement pour une unité qui ne rivalise pas contre ses adversaires. La diversité de comportements possibles serait alors amoindri. \newline
-    Dans le cas de WarBot, les statistiques se modifie via un fichier texte sous ce format :
+    Dans le cas de WarBot, les statistiques se modifient via un fichier texte sous ce format :
 \begin{lstlisting}[frame=single]
 Units:
     WarBase:
@@ -1243,7 +1260,7 @@ Ressources:
 Pour rendre le calcul des statistiques plus simples, nous avons créé un tableur. Pour se faire, nous nous sommes servi de la configuration de la version Java et nous avons calculé un ratio pour chaque statistique de chaque unité en prenant l’explorateur comme référence :
 
 \paragraph{}
-\begin{adjustwidth}{-3em}{}
+\begin{adjustwidth}{-2em}{}
 \includegraphics[scale=0.5]{DATA/ratio.png}
 \captionof{figure} {Tableau des ratio}
 \end{adjustwidth}
@@ -1252,15 +1269,15 @@ Nous modifions ensuite les valeurs dans le tableau “valeur par défaut”, ce 
 
 \paragraph{}
 \begin{adjustwidth}{-3em}{}
-\includegraphics[scale=0.45]{DATA/equilibrage.png}
+\includegraphics[scale=0.55]{DATA/equilibrage.png}
 \captionof{figure} {Calcul des statistiques}
 \end{adjustwidth}
 \paragraph{}
 
-    La seule unité pour laquelle nous ne calculons pas statistiques est le WarLight. En effet, cette unité s’est vu rajoutée au cours du projet et n’était donc pas présente lors de la création du tableur. Ses caractéristiques sont donc choisies de manière subjective en se basant sur les statistiques des autres unités. Nous souhaitons que cette unité soit un peu plus lente que les explorateurs. Elle doit également être de résistance moyenne, faire peu de dégâts mais avoir une cadence de tir élevée. \newline
+    La seule unité pour laquelle nous ne calculons pas les statistiques est le WarLight. En effet, cette unité s’est vu rajoutée au cours du projet et n’était donc pas présente lors de la création du tableur. Ses caractéristiques sont donc choisies de manière subjective en se basant sur les statistiques des autres unités. Nous souhaitons que cette unité soit un peu plus lente que les explorateurs. Elle doit également être de résistance moyenne, faire peu de dégâts mais avoir une cadence de tir élevée. \newline
 Une fois les unités modifiées, des tests avec des équipes adoptant des stratégies différentes sont effectués. Lors de nos test, nous nous somme rendu compte que l’ajout d’une nouvelle unité rendaient l’équilibrage délicat car cela demande de reconsidérer le rôle de toutes les autres unités. Le fait de ne pas disposer de toutes les possibilités disponibles dans la version Java rend également l’équilibrage difficile car nous ne pouvons pas réellement nous servir d’elle comme référence.
 \paragraph{}
-Tout d’abord, le WarHeavy semblait presque inutile. En effet, la particularité de cette unité dans la version Java était de pouvoir tirer au-delà de son champs de vision. Ses coéquipiers pouvaient lui transmettre des coordonnées. L’unité s’orientait alors dans cette direction et faisait feu sur une cible qu’elle ne distinguait pas. Cependant, cette fonctionnalité n’étant pas présent dans notre version, le WarHeavy possédait des caractéristiques trop faibles pour justifier son coût de création. Le plus gros ennui était sa distance de vue trop petite. En augmentant simplement cette caractéristique, on risquait de créer une unité trop forte qui rendait les WarLight inutiles. \newline
+Au départ, le WarHeavy semblait presque inutile. En effet, la particularité de cette unité dans la version Java était de pouvoir tirer au-delà de son champs de vision grâce à ses coéquipiers qui pouvaient lui transmettre des coordonnées. L’unité s’orientait alors dans cette direction et faisait feu sur une cible qu’elle ne distinguait pas. Cependant, cette fonctionnalité n’étant pas présente dans notre version, le WarHeavy possédait des caractéristiques trop faibles pour justifier son coût de création. Le plus gros ennui était sa distance de vue trop petite mais en augmentant simplement cette caractéristique, on risquait de créer une unité trop forte qui rendait les WarLight inutiles. \newline
 Nous avons donc décidé de réduire l’angle de perception et d’augmenter la portée de son champs de vision. Ainsi, les WarHeavy détectent mieux les ennemis mais sont plus vulnérables aux attaques qui arrivent de côté.
 \paragraph{}
 Les autres réglages ont plus été des règlements mineurs sur les autres unités pour obtenir des parties plus dynamique. On a par exemple légèrement augmenté les dégâts des unités offensives pour que les parties se terminent plus rapidement.
@@ -1275,5 +1292,7 @@ Les autres réglages ont plus été des règlements mineurs sur les autres unit�
 %\bibliography{document}
 
 \end{document}
+
+
 
 
