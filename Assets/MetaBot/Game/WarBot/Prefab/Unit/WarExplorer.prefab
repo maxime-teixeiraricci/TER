@@ -436,11 +436,6 @@ MonoBehaviour:
   _offsetObstacle: 2
   _edgeDistance: 2
   _obstacleEncounter: 0
-  a: 0
-  b: 0
-  c: 0
-  d: 0
-  B: {fileID: 0}
   collisionObject: {fileID: 0}
 --- !u!135 &135434769475321970
 SphereCollider:

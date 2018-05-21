@@ -48,8 +48,6 @@ public class StartPuzzleScript : MonoBehaviour
             puzzle.GetComponent<IfPuzzleScript>().isValid = false;
         }
 
-        
-        
         if (ifPuzzle && ifPuzzle.GetComponent<IfPuzzleScript>().isValid == false)
         {
             ifPuzzle.GetComponent<IfPuzzleScript>().isValid = true;
