@@ -980,33 +980,42 @@ Pour tester les unités, nous avons conçu 5 différentes cartes.
 \item \textit{Plain}: Une carte de taille plus petite entouré de barrière surveillé par des collines aux grands yeux noires.
 \item \textit{Garden}: Une île flottante aux dessus des nuages. La zone de jeu est entourée par de grandes pierres et un parterre de fleurs aux centre.
 \end{itemize}
-
+\newpage
+\newpage
 \begin{figure}[h]
+    \begin{minipage}[c]{.46\linewidth}
         \centering
-		\includegraphics[scale=0.5]{MapSimpleImage}
-	\caption{L'unité Light de WarBot.}
-\end{figure}
-\begin{figure}[!p]
+        \includegraphics[scale=0.25]{MapSimpleImage}
+        \caption{L'unité Base de WarBot.}
+    \end{minipage}
+    \hfill%
+    \begin{minipage}[c]{.46\linewidth}
         \centering
-		\includegraphics[scale=0.5]{MapMountainImage}
-	\caption{L'unité Light de WarBot.}
+        \includegraphics[scale=0.25]{MapMountainImage}
+        \caption{L'unité Explorer de WarBot.}
+    \end{minipage}
 \end{figure}
-\begin{figure}[!p]
+\begin{figure}[h]
+    \begin{minipage}[c]{.46\linewidth}
         \centering
-		\includegraphics[scale=0.5]{MapDesolateImage}
+	\includegraphics[scale=0.25]{MapDesolateImage}
 	\caption{L'unité Light de WarBot.}
-\end{figure}
-\begin{figure}[!p]
+    \end{minipage}
+    \hfill%
+    \begin{minipage}[c]{.46\linewidth}
         \centering
-		\includegraphics[scale=0.5]{MapPlainImage}
-	\caption{L'unité Light de WarBot.}
+	\includegraphics[scale=0.25]{MapPlainImage}
+	\caption{L'unité Heavy de WarBot.}
+    \end{minipage}
 \end{figure}
-\begin{figure}[!p]
+\begin{figure}[!h]
         \centering
 		\includegraphics[scale=0.5]{MapGardenImage}
 	\caption{L'unité Light de WarBot.}
 \end{figure}
-
+\newpage
+\newpage
+\newpage
 \newpage
 
 
@@ -1017,12 +1026,65 @@ Au moment de la destruction d'un projectile, qui intervient lorsque celui-ci tou
 \paragraph{Les unités.}
 Les autres animations concernent les unités qui détiennent toutes quatre animations différentes :
 \begin{itemize}
-\item La voiture se met à fumer légèrement lorsque ses points de vie sont entre 75\% et 100\%.
+\item L'unité se met à fumer légèrement lorsque ses points de vie sont entre 75\% et 100\%.
 \item Une fumée plus épaisse se déclenche lorsque ses points de vie sont entre 50\% et 75\%.
-\item La voiture est en feu lorsque ses points de vie sont entre 25\% et 50\%.
+\item L'unité est en feu lorsque ses points de vie sont entre 25\% et 50\%.
 \item Pour finir elle explose en un amas de particule lorsque ses points de vies atteignent 0.
-Les GameObject concernant ces différentes animations sont présents au sein des stats de chaque unité et peuvent être modifié simplement.
+Les GameObject concernant ces différentes animations sont présents au sein des statistiques de chaque unité et peuvent être remplacés simplement.
 \end{itemize}
+ \begin{lstlisting}[language={[Sharp]C},label={lst:statsAnimation}, caption= Extrait du code de Stats.cs]
+    [Header("Effects")]
+    public GameObject _smallSmoke;
+    public GameObject _largeSmoke;
+    public GameObject _fire;
+    public GameObject _explosion;
+
+    private GameObject _currentEffect;
+    void Start()
+    {
+        [...]
+        _smallSmoke.SetActive(true);
+        _largeSmoke.SetActive(true);
+        _fire.SetActive(true);
+        _explosion.SetActive(true);
+    }
+ [...]
+void SetSmoke()
+    {
+        if (_currentEffect)
+        {
+            
+        }
+        if (_health > _maxHealth * 0.75)
+        {
+            Destroy(_currentEffect);
+        }
+        else if (_health > _maxHealth * 0.50)
+        {
+            if (_currentEffect)
+            {
+                Destroy(_currentEffect);
+            }
+            _currentEffect = Instantiate(_smallSmoke, transform.position, Quaternion.identity);
+        }
+        else if (_health > _maxHealth * 0.25)
+        {
+            if (_currentEffect)
+            {
+                Destroy(_currentEffect);
+            }
+            _currentEffect = Instantiate(_largeSmoke, transform.position, Quaternion.identity);
+        }
+        else if (_health > 0)
+        {
+            if (_currentEffect)
+            {
+                Destroy(_currentEffect);
+            }
+            _currentEffect = Instantiate(_fire, transform.position, Quaternion.identity);
+        }
+    }
+\end{lstlisting}
 \subsection{Sons.}
 Les différents sons et bruitages présents dans le jeu ont été récupérés à partir de banques de sons libres de droit sur internet.
 \newline Différents fonds musicaux et effets sonores sont audibles tout au long de l'utilisation du jeu.
