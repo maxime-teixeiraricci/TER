@@ -143,7 +143,6 @@ Dans WarBot, deux à quatre équipes se battent sur un terrain pour les ressourc
 
 \newpage
 \chapter{Partie "Interpreteur"}
-repasser sur le texte pour ajouter exemples et illustrations !
 \section{Présentation et Attente}
 La partie "Interpréteur" est la partie la moins visible du projet MetaBot,
 mais il s'agit de la partie du projet servant de clé de voûte du jeu.
@@ -502,10 +501,10 @@ Il est théoriquement possible de stocker plusieurs langues à la fois dans le �
  Ce script est rattaché à un objet des scènes Unity appelé le Game Manager,qui a été mis en place par l’équipe moteur et n’est pas détruit au changement des scènes.Le fait que cet objet soit conservé à travers les scènes provient d’utilisation de l’appel “DontDestroyOnLoad()” . Ainsi, si il y a besoin de partager des ressources entre les scènes tel que des configurations , ont peut utiliser le GameManager. 
 
 \paragraph{}
-\begin{adjustwidth}{-3em}{}
+\begin{center}
 \includegraphics[scale=0.7]{DATA/traducteur2.png}
 \captionof{figure} {Intéraction Traducteur/Objet - GameManager}
-\end{adjustwidth}
+\end{center}
 \paragraph{}
 
 
@@ -882,8 +881,6 @@ Voici un exemple
 \end{center}
 \paragraph{}
 
-\subsection{Matchups entre équipes}
-
 % Ressource Race
 \newpage
 \section{Nouvelle condition de victoire}
@@ -958,7 +955,6 @@ Voici une image de l’état de la carte :
 
 
 
-
 \newpage
 \chapter{Partie "Game Design"}
 \section{Expérience utilisateur}
@@ -1013,7 +1009,7 @@ Pour créer une équipe nous partions d’une stratégie générale et nous dév
 Au vu de notre expérience, il y a une seule chose qui sépare ces deux genres d’équipes : l’ordre dans lequel on veut gérer les actions. Une équipe défensive va préférer mettre ses primitives pour se soigner au plus haut de sa hiérarchie pour que ce soit une action prioritaire, assurant la survie alors qu’une équipe offensive va préférer placer les actions de tirs et de rechargement avant les soins pour s’assurer d’effectuer des dégâts plus souvents. 
 \paragraph{}
 De manière générale,il y a quelques astuces importantes à prendre en compte pour optimiser le comportement d’une équipe. La première est de placer toutes les actions qui ne terminent pas le tour d’une unité comme les envois de message tout en haut de la hiérarchie pour s’assurer que ces actions soit effectués. On fait ensuite suivre les actions qui ont le moins de chances de se produire qui s’avèrent être les actions qui se font alors que l’unité est immobile (tirer, ramasser une ressource…) en les plaçant dans un ordre en particulier suivant la stratégie d’équipe que l’on souhaite appliquer. \newline
-La deuxième est de préférer le système de création d’unité à l’aide de la vie car ce procédé permet de créer des unités dès le début de partie alors qu’une équipe qui crée des unités à partir des ressources devra attendre beaucoup plus longtemps avant de voir ses premières unités se former. Les ressources ramenées à la base sert alors à la soigner, ce qui permet de créer de nouvelles unités. L’avantage numérique étant très important dans le mode de jeu WarBot, il vaut mieux s’assurer de posséder beaucoup d’unités dès le départ si nous ne voulons pas nous mettre dans une situation de laquelle il est presque impossible de reprendre l’avantage. L’inconvénient de cette technique est le fait de ne pas avoir beaucoup de vie mais l’avantage numérique nous semble beaucoup trop important pour arriver à former une équipe efficace qui préfère utiliser les ressources pour créer ses agents. \newline
+La deuxième est de préférer le système de création d’unité à l’aide de la vie car ce procédé permet de créer des unités dès le début de partie alors qu’une équipe qui crée des unités à partir des ressources devra attendre beaucoup plus longtemps avant de voir ses premières unités se former. Les ressources ramenées à la base sert alors à la soigner, ce qui permet de créer de nouvelles unités. L’avantage numérique étant très important dans le mode de jeu WarBot, il vaut mieux s’assurer de posséder beaucoup d’unités dès le départ si nous ne voulons pas nous mettre dans une situation dans laquelle il est presque impossible de reprendre l’avantage. L’inconvénient de cette technique est le fait de ne pas avoir beaucoup de vie mais l’avantage numérique nous semble beaucoup trop important pour arriver à former une équipe efficace qui préfère utiliser les ressources pour créer ses agents. \newline
 Dernièrement, il vaut mieux respecter ce genre de comportement pour les déplacements :
 \begin{lstlisting}[frame=single]
 if(blocked) {
@@ -1029,9 +1025,9 @@ De cette manière, le fait de se débloquer est prioritaire à tout déplacement
 \paragraph{}
   Lors de la création des équipes, nous avons pu apprécier les améliorations ergonomiques par rapport à l’ancienne version de WarBot. Le code est bien plus facile à lire grâce au code couleur qui différencie bien les différents types de blocs. De plus, le système de suppression de blocs a été changé : il faut maintenant faire un clic droit sur un bloc. Cette méthode permet de placer des blocs sans les rattacher aux blocs du comportement ce qui rend le déplacement de primitives plus simples et agréables. \newline
 L’ajout d’un système de grille est également très agréable car les blocs sont naturellement attirés les un les autres ce qui permet de ne pas avoir besoin d’être précis lorsque que l’on place des blocs. \newline
-Il est très facile de comprendre si nos blocs sont pris en compte dans le comportement grâe au système de coloralisation des pièces qui sont grisées si elles ne sont pas prises en compte et colorées si la primitive fait parti du omportement. \newline  
-L’ajout de boutons de sauvegarde et de retour arrière et restauration rende également la partie conception bien plus agréable car il est possible de corriger ses erreurs bien plus simplement qu’avec la version de l’éditeur développé l’année dernière.\newline
-La seule chose qui nous dérange encore sur la version actuelle est l’impossibilité d’utiliser la molette de la souris pour agir sur la partie de la fenêtre où l’on construit le comportement d’une unité ce qui demande de déplacer l’ascenseur avec sa souris, chose qui nous éloigne de l’endroit où se situe les primitives du comportement. Comme on utilise cet ascenseur pour pouvoir déplacer les blocs, il est dommage de devoir s’en éloigner avant de pouvoir faire les déplacer.\newline
+Il est très facile de comprendre si nos blocs sont pris en compte dans le comportement grâce au système de coloralisation des pièces qui sont grisées si elles ne sont pas prises en compte et colorées si la primitive fait parti du comportement. \newline  
+L’ajout de boutons de sauvegarde, de retour arrière et restauration rende également la partie conception bien plus agréable car il est possible de corriger ses erreurs bien plus simplement qu’avec la version de l’éditeur développé l’année dernière.\newline
+La seule chose qui nous dérange encore sur la version actuelle est l’impossibilité d’utiliser la molette de la souris pour agir sur la partie de la fenêtre où l’on construit le comportement d’une unité ce qui demande de déplacer l’ascenseur avec sa souris, chose qui nous éloigne de l’endroit où se situe les primitives du comportement. Comme on utilise cet ascenseur pour pouvoir déplacer les blocs, il est dommage de devoir s’en éloigner avant de pouvoir effectuer le déplacement.\newline
 La partie propriétés, bien qu’elle demande à être revu graphiquement fait son travail et permet de se donner une idée de l’intérêt de chaque unité qui permettra aux nouveaux joueurs de rapidement saisir les atouts et les faiblesses de chaques unités. Chose qui leur permettra de concevoir plus rapidement des équipes qui exploitent toutes les unités de manière optimale.
 \paragraph{}
 \begin{adjustwidth}{-5.5em}{-5.5em}
@@ -1044,6 +1040,13 @@ La partie propriétés, bien qu’elle demande à être revu graphiquement fait 
 \section{Test logiciel}
 \subsection{Procédé}
 \paragraph{}
+
+Malheureusement, les groupes ne sont plus présents dans cette version, ce qui rend le nombre d’option bien plus limité.\newline
+La disparition des unités WarEngineer et WarTurret rend également le jeu moins complet. Les tourelles étant des outils très intéressant pour les stratégie défensive, ces équipes sont bien moins fortes que dans la version faite l’année dernière.
+\section{Test logiciel}
+\subsection{Procédé}
+\paragraph{}
+
 Même si nous arrivions à trouver des bugs lors d’une utilisation normale du logiciel, ce n’est pas suffisant pour trouver tous les bugs présents sous WarBot. \newline
 En effet, dans le domaine de tests logiciels il existe plusieurs familles de tests. Il est important de préciser que nous avons effectué les tests en boîte noire, c’est-à-dire en ayant très peu, voire pas du tout, de connaissance du code du logiciel. La première est le test des nouvelles fonctionnalités dont le but est de se focaliser sur les nouveautés de la version pour vérifier qu’elles marchent bien. Pour effectuer ces tests, nous avons créé des équipes très simples n’utilisant presque qu’une seule primitive à savoir celle que l’on voulait tester. Nous lancions ensuite une partie et observions le comportement des unités pour déterminer si les ajouts étaient bien opérationnelles.
 \paragraph{}
@@ -1367,9 +1370,34 @@ Les autres réglages ont plus été des règlements mineurs sur les autres unit�
 
 
 \newpage
+
 \part{L'avenir du projet}
 \chapter{Amélioration possible}
+\section{Interpreter}
+Bien sûr de nombreuses choses restent à mettre en place et à améliorer dans ce projet. Maintenant que les développeurs ont une base permettant d’ajouter facilement des modes de jeux, des cartes et des unités, les possibilités d’améliorations de MetaBot très grandes. 
+\paragraph{}
+Au sein du travail de l’équipe interpréteur, de grosses modifications sur la condition de victoire “Course aux ressources” sont possibles, afin de le transformer comme un vrai mode de jeu, et pas simplement un changement rattaché au mode de jeu Warbot. 
+\paragraph{}
+L’ajout de nouvelles caméras est bien sûr faisable si l’imagination des groupes suivant trouve une caméra intéressante. 
+\paragraph{}
+L’interpréteur devra lui être mis à jour avec l’ajout de possibilités dans le langage, mais il suffira pour l’ajout de primitives telles qu’elles sont dans le projet actuel.
+\paragraph{}
+Il sera aussi nécessaire comme indiqué plus haut, de remettre en place une fenêtre pour afficher les matchups entre équipes, de manière à ne pas surcharger l’affichage. Il serait aussi bien d’étendre le fonctionnement des ELO point pour le faire fonctionner à 3 ou 4 joueurs, ce qui est pas forcément dans l’idée initiale du système ELO, mais qui sera plus cohérent par rapport au projet
+\paragraph{}
+Enfin, le maintien à jour des traductions sera nécessaire au fur et à mesure du développement, et bien sûr l’ajout de nouvelles langues facilement dès que cela est nécessaire.
+\paragraph{}
+Pour la gestion de la fin du jeu, un travail restera nécessaire pour rendre l’initialisation des éléments d’interfaces plus propre. De plus,actuellement la fin du jeu fonctionne sur la condition de victoire car nous n’avons pas deux modes différents, mais il faudra juste changer l’appel au test et à l'exécution de la fin de jeu dans l’ “Update” du script.
 
+\section{Game Design}
+
+Bien sûr de nombreux bugs vont subsister lors de la modification et l’ajout de fonctionnalités que nous ne voyons pas encore, mais nous pourrons répondre aux questions des prochaines équipes travaillant sur le projet si besoin.
+
+\chapter{Conclusion}
+
+\part{Annexe}
+\section{Code important}
+
+\section{Documents}
 % Uncomment the following two lines if you want to have a bibliography
 %\bibliographystyle{alpha}
 %\bibliography{document}
