@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.5.12)  21 MAY 2018 13:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.5.12)  21 MAY 2018 22:08
 entering extended mode
 **./RapportTER.tex
 (RapportTER.tex
@@ -777,6 +777,12 @@ LaTeX Warning: Label `lst:bulletAudio' multiply defined.
 
 LaTeX Warning: Label `lst:Add()' multiply defined.
 
+
+LaTeX Warning: Label `lst:Update()' multiply defined.
+
+
+LaTeX Warning: Label `lst:Update()' multiply defined.
+
 )
 \openout1 = `RapportTER.aux'.
 
@@ -1129,7 +1135,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 /MapPlainImage.png>] [36 <./MapGardenImage.png>] [37] [38] [39] [40]
 Chapitre 3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1170--1171
+Underfull \hbox (badness 10000) in paragraph at lines 1173--1174
 
  []
 
@@ -1139,18 +1145,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 1170--1171
 <MainScreenOld.png, id=167, 788.9475pt x 404.26031pt>
 File: MainScreenOld.png Graphic file (type png)
 <use MainScreenOld.png>
-Package pdftex.def Info: MainScreenOld.png  used on input line 1193.
+Package pdftex.def Info: MainScreenOld.png  used on input line 1196.
 (pdftex.def)             Requested size: 394.47278pt x 202.12965pt.
  [42 <./MainScreenOld.png>]
 <PauseMenuOld.png, id=173, 636.12656pt x 353.06906pt>
 File: PauseMenuOld.png Graphic file (type png)
 <use PauseMenuOld.png>
-Package pdftex.def Info: PauseMenuOld.png  used on input line 1208.
+Package pdftex.def Info: PauseMenuOld.png  used on input line 1211.
 (pdftex.def)             Requested size: 318.0625pt x 176.53409pt.
 <BehaviorScreenOld.png, id=174, 875.52094pt x 415.5525pt>
 File: BehaviorScreenOld.png Graphic file (type png)
 <use BehaviorScreenOld.png>
-Package pdftex.def Info: BehaviorScreenOld.png  used on input line 1220.
+Package pdftex.def Info: BehaviorScreenOld.png  used on input line 1223.
 (pdftex.def)             Requested size: 437.7594pt x 207.77574pt.
  [43
 
@@ -1158,28 +1164,28 @@ Package pdftex.def Info: BehaviorScreenOld.png  used on input line 1220.
 <SettingsOld.png, id=180, 873.2625pt x 444.91219pt>
 File: SettingsOld.png Graphic file (type png)
 <use SettingsOld.png>
-Package pdftex.def Info: SettingsOld.png  used on input line 1233.
+Package pdftex.def Info: SettingsOld.png  used on input line 1236.
 (pdftex.def)             Requested size: 436.63017pt x 222.45554pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1247--1250
+Underfull \hbox (badness 10000) in paragraph at lines 1250--1253
 
  []
 
 [44 <./SettingsOld.png>]
-Overfull \hbox (1.33891pt too wide) in paragraph at lines 1251--1251
+Overfull \hbox (1.33891pt too wide) in paragraph at lines 1254--1254
 []\OT1/cmr/m/n/10 Bien que l'editeur soit fonc-tion-nel, il nous pa-rais-sait 
 as-sez austere, pas suf-fi-sam-ment "User Friendly".
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1251--1251
+Underfull \hbox (badness 10000) in paragraph at lines 1254--1254
 
  []
 
 <MenuPrincipal.png, id=185, 795.72281pt x 447.17062pt>
 File: MenuPrincipal.png Graphic file (type png)
 <use MenuPrincipal.png>
-Package pdftex.def Info: MenuPrincipal.png  used on input line 1267.
+Package pdftex.def Info: MenuPrincipal.png  used on input line 1270.
 (pdftex.def)             Requested size: 397.86043pt x 223.58476pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -1188,22 +1194,22 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <ChoiceMap.png, id=200, 220.57407pt x 173.89969pt>
 File: ChoiceMap.png Graphic file (type png)
 <use ChoiceMap.png>
-Package pdftex.def Info: ChoiceMap.png  used on input line 1362.
+Package pdftex.def Info: ChoiceMap.png  used on input line 1365.
 (pdftex.def)             Requested size: 176.45947pt x 139.11992pt.
 <NumberUnits.png, id=201, 345.54094pt x 82.05656pt>
 File: NumberUnits.png Graphic file (type png)
 <use NumberUnits.png>
-Package pdftex.def Info: NumberUnits.png  used on input line 1375.
+Package pdftex.def Info: NumberUnits.png  used on input line 1378.
 (pdftex.def)             Requested size: 276.43312pt x 65.64532pt.
  [49 <./ChoiceMap.png> <./NumberUnits.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1410--1411
+Underfull \hbox (badness 10000) in paragraph at lines 1413--1414
 
  []
 
 <MenuParametres.png, id=207, 740.0147pt x 462.22687pt>
 File: MenuParametres.png Graphic file (type png)
 <use MenuParametres.png>
-Package pdftex.def Info: MenuParametres.png  used on input line 1415.
+Package pdftex.def Info: MenuParametres.png  used on input line 1418.
 (pdftex.def)             Requested size: 444.01225pt x 277.33826pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -1211,7 +1217,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 <RessourcesMax.png, id=208, 280.79906pt x 30.1125pt>
 File: RessourcesMax.png Graphic file (type png)
 <use RessourcesMax.png>
-Package pdftex.def Info: RessourcesMax.png  used on input line 1423.
+Package pdftex.def Info: RessourcesMax.png  used on input line 1426.
 (pdftex.def)             Requested size: 224.63954pt x 24.09001pt.
 [50
 
@@ -1220,7 +1226,7 @@ Package pdftex.def Info: RessourcesMax.png  used on input line 1423.
 File: ManuelJeu/ModeJeuRessourceRace.png Graphic file (type png)
 <use ManuelJeu/ModeJeuRessourceRace.png>
 Package pdftex.def Info: ManuelJeu/ModeJeuRessourceRace.png  used on input line
- 1437.
+ 1440.
 (pdftex.def)             Requested size: 254.75209pt x 69.86108pt.
 
 
@@ -1230,41 +1236,41 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <AudioSource.png, id=218, 292.09125pt x 268.75406pt>
 File: AudioSource.png Graphic file (type png)
 <use AudioSource.png>
-Package pdftex.def Info: AudioSource.png  used on input line 1448.
+Package pdftex.def Info: AudioSource.png  used on input line 1451.
 (pdftex.def)             Requested size: 292.09052pt x 268.7534pt.
  [52 <./ManuelJeu/ModeJeuRessourceRace.png> <./AudioSource.png>] [53]
 <ConceptionGraphique1.jpg, id=227, 963.6pt x 722.7pt>
 File: ConceptionGraphique1.jpg Graphic file (type jpg)
 <use ConceptionGraphique1.jpg>
-Package pdftex.def Info: ConceptionGraphique1.jpg  used on input line 1519.
+Package pdftex.def Info: ConceptionGraphique1.jpg  used on input line 1522.
 (pdftex.def)             Requested size: 337.26506pt x 252.94878pt.
  [54 <./ConceptionGraphique1.jpg>]
 <ConceptionGraphique2.png, id=232, 963.6pt x 722.7pt>
 File: ConceptionGraphique2.png Graphic file (type png)
 <use ConceptionGraphique2.png>
-Package pdftex.def Info: ConceptionGraphique2.png  used on input line 1531.
+Package pdftex.def Info: ConceptionGraphique2.png  used on input line 1534.
 (pdftex.def)             Requested size: 337.26506pt x 252.94878pt.
 
 [55 <./ConceptionGraphique2.png>]
-<InterfaceFinale.png, id=237, 843.15pt x 476.53032pt>
+<InterfaceFinale.png, id=237, 850.67813pt x 476.53032pt>
 File: InterfaceFinale.png Graphic file (type png)
 <use InterfaceFinale.png>
-Package pdftex.def Info: InterfaceFinale.png  used on input line 1542.
-(pdftex.def)             Requested size: 421.57396pt x 238.26457pt.
+Package pdftex.def Info: InterfaceFinale.png  used on input line 1545.
+(pdftex.def)             Requested size: 425.33803pt x 238.26457pt.
 <ToolBox.png, id=238, 485.56406pt x 41.4047pt>
 File: ToolBox.png Graphic file (type png)
 <use ToolBox.png>
-Package pdftex.def Info: ToolBox.png  used on input line 1551.
+Package pdftex.def Info: ToolBox.png  used on input line 1554.
 (pdftex.def)             Requested size: 242.78143pt x 20.70229pt.
  [56
 
  <./InterfaceFinale.png> <./ToolBox.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1570--1571
+Underfull \hbox (badness 10000) in paragraph at lines 1573--1574
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1587--1588
+Underfull \hbox (badness 10000) in paragraph at lines 1590--1591
 
  []
 
@@ -1272,63 +1278,88 @@ Underfull \hbox (badness 10000) in paragraph at lines 1587--1588
 <SelectionTeamUnit.png, id=250, 359.09157pt x 33.87656pt>
 File: SelectionTeamUnit.png Graphic file (type png)
 <use SelectionTeamUnit.png>
-Package pdftex.def Info: SelectionTeamUnit.png  used on input line 1672.
+Package pdftex.def Info: SelectionTeamUnit.png  used on input line 1675.
 (pdftex.def)             Requested size: 359.09068pt x 33.87646pt.
  [59] [60 <./SelectionTeamUnit.png>] [61] [62]
 <StatsModel.png, id=265, 436.63126pt x 62.48344pt>
 File: StatsModel.png Graphic file (type png)
 <use StatsModel.png>
-Package pdftex.def Info: StatsModel.png  used on input line 1781.
+Package pdftex.def Info: StatsModel.png  used on input line 1784.
 (pdftex.def)             Requested size: 436.63019pt x 62.48328pt.
  [63
 
  <./StatsModel.png>] [64]
-<ZoneEdition.png, id=273, 608.2725pt x 373.395pt>
+<ZoneEdition.png, id=273, 654.94687pt x 402.75468pt>
 File: ZoneEdition.png Graphic file (type png)
 <use ZoneEdition.png>
-Package pdftex.def Info: ZoneEdition.png  used on input line 1834.
-(pdftex.def)             Requested size: 425.78786pt x 261.37471pt.
+Package pdftex.def Info: ZoneEdition.png  used on input line 1837.
+(pdftex.def)             Requested size: 458.45969pt x 281.92635pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1840--1842
+Overfull \hbox (14.88121pt too wide) in paragraph at lines 1837--1838
+ [][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1843--1845
 
  []
 
 [65
 
- <./ZoneEdition.png>] [66]
-<ManuelJeu/SoundIG.png, id=282, 213.04594pt x 29.35968pt>
+ <./ZoneEdition.png>] [66] [67] [68]
+Overfull \hbox (2.36665pt too wide) in paragraph at lines 1977--1980
+\OT1/cmr/m/n/10 presentes en jeu. Cela nous per-met de bas-cu-ler entre un af-
+fi-chage detaille, pour bien voir l'evolution
+ []
+
+<OptionButtons.png, id=288, 193.47281pt x 24.84282pt>
+File: OptionButtons.png Graphic file (type png)
+<use OptionButtons.png>
+Package pdftex.def Info: OptionButtons.png  used on input line 1990.
+(pdftex.def)             Requested size: 193.47234pt x 24.84274pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[69]
+<SpeedSlider.png, id=292, 264.23718pt x 36.135pt>
+File: SpeedSlider.png Graphic file (type png)
+<use SpeedSlider.png>
+Package pdftex.def Info: SpeedSlider.png  used on input line 2000.
+(pdftex.def)             Requested size: 264.23653pt x 36.13489pt.
+<ManuelJeu/SoundIG.png, id=293, 213.04594pt x 29.35968pt>
 File: ManuelJeu/SoundIG.png Graphic file (type png)
 <use ManuelJeu/SoundIG.png>
-Package pdftex.def Info: ManuelJeu/SoundIG.png  used on input line 1901.
+Package pdftex.def Info: ManuelJeu/SoundIG.png  used on input line 2010.
 (pdftex.def)             Requested size: 213.04541pt x 29.35959pt.
- [67 <./ManuelJeu/SoundIG.png>] [68
+ [70 <./OptionButtons.png> <./SpeedSlider.png> <./ManuelJeu/SoundIG.png>]
+[71
 
 ]
 Chapitre 4.
-[69
+[72
 
 ]
 Chapitre 5.
-[70
+[73
 
-] [71
+] [74
 
 ]
 Chapitre 6.
-[72
+[75
 
-] (ObjectPool.cs [73]) [74] (MovableCharacter.cs [75]) [76] (Brain.cs
-[77] [78]) [79] (PerceptUnit.cs [80] [81]) [82] (LoadFile.cs [83] [84] [85])
-[86] (RapportTER.aux)
+] (ObjectPool.cs [76]) [77] (MovableCharacter.cs [78]) [79] (Brain.cs
+[80] [81]) [82] (PerceptUnit.cs [83] [84]) [85] (LoadFile.cs [86] [87] [88])
+[89] (RapportTER.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 8687 strings out of 493305
- 128514 string characters out of 3129802
+ 8716 strings out of 493305
+ 128964 string characters out of 3129802
  548391 words of memory out of 3000000
- 12064 multiletter control sequences out of 15000+200000
+ 12091 multiletter control sequences out of 15000+200000
  11740 words of font info for 40 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,9n,43p,1063b,1844s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1349,9 +1380,9 @@ rams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/fumey/AppData
 umey/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pf
 b><C:/Users/fumey/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts
 /cm/cmti12.pfb>
-Output written on RapportTER.pdf (87 pages, 9126083 bytes).
+Output written on RapportTER.pdf (90 pages, 9185931 bytes).
 PDF statistics:
- 397 PDF objects out of 1000 (max. 8388607)
+ 410 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 181 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 191 words of extra memory for PDF output out of 10000 (max. 10000000)
 

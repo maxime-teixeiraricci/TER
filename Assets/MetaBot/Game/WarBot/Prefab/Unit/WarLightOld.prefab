@@ -479,11 +479,6 @@ MonoBehaviour:
   _offsetObstacle: 1.5
   _edgeDistance: 1.5
   _obstacleEncounter: 0
-  a: 0
-  b: 0
-  c: 0
-  d: 0
-  B: {fileID: 0}
   collisionObject: {fileID: 0}
 --- !u!114 &114536579665419618
 MonoBehaviour:
