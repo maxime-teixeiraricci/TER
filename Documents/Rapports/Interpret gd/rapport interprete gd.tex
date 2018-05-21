@@ -135,7 +135,19 @@ Une architecture de subsomption se décompose comme un ensemble de cas que pourr
 
 \section{Principe}
 Dans WarBot, deux à quatre équipes se battent sur un terrain pour les ressources afin de survivre et d'éliminer les autres équipes afin d’être la dernière en vie. Des ressources apparaissent sur la carte et peuvent être converti en unité ou en soin.
- Faire le Détails des unités !
+
+\section{Liste des unités}
+De nombreuses unités existent dans la dernière version Java de Warbot, mais nous n’avons pas pu implémenter le tout , mais nous nous sommes limités aux plus importantes, de manière à ce que le mode de jeu Warbot fonctionne.
+\paragraph{}
+La base :\newline
+La base est l’unité la plus importante de chaque équipe. Tant qu’elle est en vie, la partie continu pour l’équipe. \newline
+Elle ne peut pas se déplacer, mais elle possède un inventaire bien plus gros que les autres unités. Elle peut se soigner en utilisant les ressources que lui apporte les autres unités et peut aussi se servir de ces ressources pour créer de nouvelles unités. Il est aussi possible de créer des unités en utilisant la vie de la base.
+\paragraph{}
+Les explorers:\newline
+Les explorers sont des unités pacifiques dans le jeu. Elles peuvent se déplacer et récupérer les ressources mais ne peuvent pas se battre.\newline
+Les explorers sont la clé de la communication du jeu, car leur vitesse de déplacement élevée leur permet d’explorer, comme leur nom l’indique, la carte rapidement.
+\paragraph{}
+Les heavy:\newline
 \newpage
 \part{Réalisation du projet}
 \newpage
@@ -167,16 +179,17 @@ Il a donc été décidé de séparer tout cela.
 \paragraph{}
 Le comportement d'une unité est une suite d'instructions, dont l'ordre est très important. La hiérarchie va déterminer la priorité qu'aura l'action sur le tick. Ainsi l'action la plus prioritaire dont les conditions sont acceptées sera l'action effectuée sur ce tick.
 Chaque instruction est toujours organisée de la même façon :
-- Une liste de conditions à remplir pour que l'instruction soit considéré comme acceptée
-- Une liste d'actions qui ne terminent pas le tour
-- L'action terminale
+- Une liste de conditions à remplir pour que l'instruction soit considéré comme acceptée\newline
+- Une liste d'actions qui ne terminent pas le tour\newline
+- L'action terminale\newline
 
 Ce sont ces variables qui seront utilisées lors du déroulement du jeu pour exécuter les primitives correspondantes.
 
-La gestion des différentes parties à était déplacée dans la conception du moteur, pour favoriser la généricité du jeu.
+La gestion des différentes primitives (actions,...) à était déplacée dans la conception du moteur, pour favoriser la généricité du jeu.
 \paragraph{}
+Voici comment ceci a été réalisé : 
 
-Les actions ont été représentées à part, et leur fonctionnement est simple. On utilise comme base une fonction anonyme, et les différentes actions sont implémentées dans un Dictionnaire, mettant en relation un “String” correspondant au nom de l’action qu’il faut exécuter, et une fonction anonyme qui sera effectivement exécutée en jeu. Ensuite, un ensemble d’actions communes à toutes les unités seront écrites dans un script “ActionCommon” et celles-ci seront bien partagées par toutes les unités. 
+Les actions ont été représentées à part, et leur fonctionnement est simple. La base une fonction anonyme, et les différentes actions sont implémentées dans un Dictionnaire, mettant en relation un “String” correspondant au nom de l’action qu’il faut exécuter, et une fonction anonyme qui sera effectivement exécutée en jeu. Ensuite, un ensemble d’actions communes à toutes les unités seront écrites dans un script “ActionCommon” et celles-ci seront bien partagées par toutes les unités. 
 
 \begin{lstlisting}[frame=single]
 public abstract class Action : MonoBehaviour
@@ -188,7 +201,7 @@ public abstract class Action : MonoBehaviour
 }
 \end{lstlisting}
 
-Les différences entres unités vont se faire en fonction de leur type. A partir de cet ensemble d’action commune on va spécifier les actions spécifiques ,des unités qui se déplacent, de la base qui est une unité assez spéciale puisqu’elle a la possibilité de créer de nouvelles unités,  un groupe d’unités qui peuvent tirer , à travers des sous classes de cette classe commune.
+Les différences entres unités vont se faire en fonction de leur type. A partir de cet ensemble d’action commune il y a une différenciation des actions spécifiques ,des unités qui se déplacent, de la base qui est une unité assez spéciale puisqu’elle a la possibilité de créer de nouvelles unités,  un groupe d’unités qui peuvent tirer , à travers des sous classes de cette classe commune.
 
 \begin{lstlisting}[frame=single]
 public class ActionCommon : Action
@@ -230,7 +243,7 @@ _percepts["PERCEPT_ENEMY"] = delegate ()
         };
 \end{lstlisting}
 
-Vers le milieu du projet, il a été nécessaire de mettre en place des actions non terminales au sein du comportement des unités, puisqu’on ne pouvait plus se limiter à des actions telles que tirer ou avancer. 
+Vers le milieu du projet, le moteur a mis en place des actions non terminales au sein du comportement des unités, puisqu’on ne pouvait plus se limiter à des actions telles que tirer ou avancer. 
 WarBot étant une plate-forme multi-agents, il n’était pas concevable de ne pas mettre en place des messages entre les unités, afin de donner la possibilité au joueur d’exploiter pleinement les possibilités de coordination entre agents.
 
 La structure des Action non terminales est la même que les Actions initiales, mais l’équipe moteur a pu installer un système permettant de les exécuter au cours de la partie, sans qu’elles ne mettent fin au tour de l’unité comme les actions “classiques”.
@@ -257,7 +270,7 @@ public abstract class MessageManager : MonoBehaviour {
 La gestion des messages dans les unités est réalisée sous forme d’une boite au lettre. Les messages qui arrivent à l’unité pendant le tick  de jeu sont stockés dans une boite “Attente” , et les messages que peuvent traiter l’unité pendant ce tick sont dans une boite “Courante”. A chaque début de tick , on va charger la boîte courante avec les messages de la boite “Attente” et on va vider la boite d’attente. Ainsi les messages ne vont pas traîner dans les boîtes de réception et ralentir le jeu. Cela implique par contre que les messages qui ne sont pas traités sont perdus, ce qui correspond bien à ce que l’on souhaite, puisqu’ainsi si toutes les ressources à un endroit ont été récupérées entre le moment où une unité envoie le message “Ressource” et que le destinataire le traite, le message n’emmenera pas l’unité à un endroit ou il n’y aura plus de ressources. De plus , il est très important que les unités ne puissent pas stocker des positions telles que la base adverse, donc pouvoir garder un message contenant la position de la base adversaire et l’utiliser alors que plus aucune unité ne se trouve près de la base adversaire est contraire à l’idée de la coordination en multi agents.
 \paragraph{}
 
-L’ensemble de ces représentations permet la séparation de l’interpréteur et de l'exécution des primitives en jeu , l’interpréteur sera donc totalement externe et n’aura pas besoin d’être touché lors d’ajout d’actions, conditions, messages…
+L’ensemble de ces représentations permet la séparation de l’interpréteur et de l'exécution des primitives en jeu dans le moteur, l’interpréteur sera donc totalement externe et n’aura pas besoin d’être touché lors d’ajout d’actions, conditions, messages…
 De plus , cette structure utilisant les fonctions anonymes permet d'être totalement générique puisque l’ajout se fait simplement en ajoutant une entrée dans l’initialisation du tableau correspondant.
 \paragraph{}
 
@@ -356,18 +369,25 @@ XmlNodeList l_units = GetElementsByTagName(Constants.nodeUnit);
 \end{lstlisting}
 
 Ici on récupère les listes des noeuds par unité, ainsi que tous les noeuds fils que l’on devra lire.
-Pour chacun des noeuds d'unités, on va faire appel à la fonction clé de l'interpréteur.
+Pour chacun des noeuds d'unités, on va faire appel une fonction intermédiaire, “xmlToUnitBehavior”, qui va renvoyer le comportement de cette unité, dans le fichier que traite la fonction principale.
+Celle-ci va renvoyer une liste d’instructions correspondante à l’unité passée en paramètres, en faisant appel à la fonction coeur de l’interpréteur.
 
 \begin{lstlisting}[frame=single]
 public override Instruction whichInstruction(string unitName, XmlNode ins)
 \end{lstlisting}
 
-Cette fonction va récupérer le noeud qu'on va lui passer dans la fonction "xmlToBehavior", et va aller construire le comportement grâce à l'ensemble des fils du noeud "ins".
+Cette fonction va récupérer le noeud qu'on va lui passer dans la fonction "xmlToUnitBehavior", et va aller construire chaque instruction grâce à l'ensemble des fils du noeud "ins".
 Il est très avantageux de pouvoir utiliser un noeud pour contenir tout le comportement pour une unité précise ici, puisque le parcours de ces fils est simple et formaté en XML. 
-On va ainsi parcourir tous les cas qui nous intéressent  et remplir une Instruction qui sera renvoyée à la fonction “xmlToBehavior”.
-Celle-ci n’aura plus qu'à construire une liste de ces instructions au fur et à mesure du parcours des noeuds , et mettre en relation la clé , le nom de l’unité , et la valeur , la liste d’instructions, dans le Dictionnaire résultat.
+On va ainsi parcourir tous les cas qui nous intéressent  et remplir une Instruction qui sera renvoyée à la fonction “xmlToUnitBehavior”.
+Les cas sont les suivants :\newline
+Parcours de l’ensemble des noeud ayant comme intitulé “parameters”, qui correspondent au conditions de l’instruction, et stockage du nom du noeud, qui sera la clé du tableau du moteur pour exécuter la condition.\newline
+Parcours de l’ensemble des noeud ayant comme intitulé “message”, qui correspondent au actions non terminale et messages l’instruction, et stockage du nom du noeud, qui sera la le type de message. On va aussi conserver le nom du noeud enfant de ce message, qui correspond au destinataire du message. Dans le cas d’une action non terminale, ce noeud sera inutilisé\newline
+Ce message ne sera pas traité comme un “String”, mais comme une structure “MessageStruct” du moteur.\newline
+Parcours du noeud ayant comme intitulé “action”, qui correspondent à l’action qui terminera l’instruction, et stockage du nom du noeud, qui sera la clé du tableau du moteur pour exécuter l’action.\newline
+
+ La fonction “xmlToUnitBehavior” n’aura plus qu'à construire une liste de ces instructions au fur et à mesure du parcours des noeuds , et mettre en relation la clé , le nom de l’unité , et la valeur , la liste d’instructions, dans le Dictionnaire résultat.
 \paragraph{}
-Vous pourrez retrouver cette fonctionne en annexe, à la figure XX
+Vous pourrez retrouver cette fonctionne en annexe, à la figure 6.1
 \paragraph{}
 Nous avons vu ici le traitement du cas ou on souhaitait récupérer des comportements depuis un fichier pour le renvoyer sous une suite d’instructions. Cette fonction est vitale pour le fonctionnement du moteur, mais elle sert aussi du côté de l’éditeur de comportement pour pouvoir charger un fichier dans la zone des pièces de puzzle.
 
@@ -378,6 +398,7 @@ Il est donc bien sûr important de pouvoir faire le chemin inverse, et donc d’
 Cette partie sera plus facile à réaliser que la précédente 
 L’idée ici est de stocker la structure XML de chaque instruction dans la classe Instruction même , mais pas dans une variable , plutôt dans une fonction qui va nous renvoyer le noeud XML correspond à ladite instruction. Ainsi il faudra juste ajouter ce noeud au reste du fichier de l’équipe puis le sauvegarder.
 
+Pour chaque unité, on va créer un nouveau noeud , ou vider l’ancien si le noeud existait déjà, puis on va construire la structure de l’unité grâce à la fonction renvoyant un noeud XML de chaque instruction. 
 Voici à quoi ressemble cette fonction renvoyant la structure XML :
 \begin{lstlisting}[frame=single]
  public XmlNode xmlStructure()
@@ -1390,14 +1411,1823 @@ Pour la gestion de la fin du jeu, un travail restera nécessaire pour rendre l�
 
 \section{Game Design}
 
-Bien sûr de nombreux bugs vont subsister lors de la modification et l’ajout de fonctionnalités que nous ne voyons pas encore, mais nous pourrons répondre aux questions des prochaines équipes travaillant sur le projet si besoin.
+\paragraph{}
+  Evidemment, la partie test de MetaBot va subir d’importante amélioration dans l’avenir car les prochains étudiants qui travailleront sur ce projet trouveront de nouveaux bugs.
+\paragraph{}
+Il reste à implémenter les unités manquantes de la version actuelles comme les Tourelles ou les Kamikazes qui demanderont alors de revoir l’équilibrage pour que chaque unité possède une force et un intérêt stratégique similaire à ceux des autres unités.
+\paragraph{}
+ Le système de groupe et d’objectif ainsi que l’ajout des primitives évoqués dans la partie “Améliorations demandées” permettraient d’augmenter le nombre de possibilité des joueurs ce qui permettra de commencer à voir des équipes radicalement différentes.
+\paragraph{}
+Bien sûr, il est toujours possible de concevoir de nouveaux modes de jeu et de nouvelles cartes. Il pourrait être intéressant que le mode de course aux ressources soit poussé plus loin pour former un mode à part car les unités offensives sont beaucoup moins intéressantes dans ce mode de jeu.
+
 
 \chapter{Conclusion}
+\section{Bugs}
+Bien sûr de nombreux bugs vont subsister lors de la modification et l’ajout de fonctionnalités que nous ne voyons pas encore, mais nous pourrons répondre aux questions des prochaines équipes travaillant sur le projet si besoin.
 
+\section{Point final}
 \part{Annexe}
-\section{Code important}
+\section{Point importants du code}
 
+\begin{lstlisting}[frame=single]
+ public override Instruction whichInstruction(string unitName, XmlNode ins)
+    {
+        List<string> l_conditions = new List<string>();
+        List<MessageStruct> l_MsgStruct = new List<MessageStruct>();
+        List<string> l_actions = new List<string>();
+
+        foreach (XmlNode x in ins.ChildNodes)
+        {
+
+            if (x.Name.Contains("parameters"))#Partie condition de l'instruction
+            {
+                foreach (XmlNode c in x)
+                    l_conditions.Add(c.Name);
+            }
+
+            if (x.Name.Contains("message"))#Partie action non temrinale de l'instruction
+            {
+                foreach (XmlNode c in x)
+                {
+                    l_MsgStruct.Add(new MessageStruct(c.Name, c.FirstChild.Name));
+                }
+            }
+
+            if (x.Name.Contains("actions"))#Partie action terminale de l'instruction
+            {
+                foreach (XmlNode c in x)
+                    l_actions.Add(c.Name);
+            }
+        }
+        if (l_actions.Count == 0)
+        {
+            return new Instruction(l_conditions.ToArray(), l_MsgStruct.ToArray());
+        }
+        return new Instruction(l_conditions.ToArray(), l_MsgStruct.ToArray(), l_actions[0]);
+
+    }
+\end{lstlisting}
+\captionof{figure} {Fonction qui extrait les instructions des noeud des unités}
+
+\begin{lstlisting}[frame=single]
+   #Creer un comportement a partir d'un fichier xml
+    public override Dictionary<string, List<Instruction>> xmlToBehavior(string teamName, string path)
+    {
+        string l_fileName = whichFileName(teamName, path);
+
+        if (l_fileName.Equals(""))
+            l_fileName = teamName.Replace(".wbt", "") + Constants.xmlExtension;
+
+        Dictionary<string, List<Instruction>> behavior = new Dictionary<string, List<Instruction>>();
+
+        string pathtmp = path;
+        l_fileName = path +"/" +  l_fileName.Replace(path, "");
+        using (var stream = new FileStream(l_fileName, FileMode.Open))
+        {
+            Load(stream);
+            XmlNodeList l_units = GetElementsByTagName(Constants.nodeUnit);
+            stream.Close();
+
+            for (int i = 0; i < l_units.Count; i++)
+            {
+                string l_unitName = l_units.Item(i).Attributes.Item(0).Value;
+                behavior.Add(l_unitName, xmlToUnitBehavior(teamName, path, l_unitName));
+            }
+        }
+
+        return behavior;
+    }
+
+\end{lstlisting}
+\captionof{figure} {Transformation d’un fichier XML en comportement}
+
+\begin{lstlisting}[frame=single]
+  #Recupere le comportement d'une unite dans un fichier xml d'une equipe
+    public List<Instruction> xmlToUnitBehavior(string teamName, string path, string unitName)
+    {
+        string l_fileName = whichFileName(teamName, path);
+
+        if (l_fileName.Equals(""))
+            l_fileName = teamName;
+
+        List<Instruction> l_behavior = new List<Instruction>();
+        l_fileName = teamName.Replace(".wbt", "") + Constants.xmlExtension;
+        l_fileName = path + "/" + l_fileName.Replace(path, "");
+
+        using (FileStream stream = new FileStream(l_fileName, FileMode.Open))
+        {
+            Load(stream);
+            XmlNode l_unitBehavior = SelectSingleNode("//" + Constants.nodeUnit + "[@" + Constants.attributeName + "='" + unitName + "']");
+            if (l_unitBehavior != null && l_unitBehavior.HasChildNodes)
+            {
+                foreach (XmlNode ins in l_unitBehavior.ChildNodes)
+                {
+                    l_behavior.Add(whichInstruction(unitName, ins));
+                }
+
+            }
+
+            stream.Close();
+        }
+        return l_behavior;
+    }
+\end{lstlisting}
+\captionof{figure} {Fonction support de la transformation de XML en comportement}
+
+\begin{lstlisting}[frame=single]
+  public override void behaviorToXml(string teamName, string path, string unitName, List<Instruction> behavior)
+    {
+        string l_fileName = whichFileName(teamName, path);
+
+        if (l_fileName.Equals(""))
+        {
+            l_fileName = teamName + Constants.xmlExtension;
+            generateEmptyFile(teamName, path);
+        }
+
+        l_fileName = whichFileName(teamName, path);
+        Load(l_fileName);
+
+        XmlNode l_node = SelectSingleNode("//" + Constants.nodeUnit + "[@" + Constants.attributeName + "='" + unitName + "']");
+        if (l_node == null)
+            l_node = CreateElement(Constants.nodeUnit);
+
+        l_node.RemoveAll();
+
+        XmlAttribute l_name = CreateAttribute(Constants.attributeName);
+        l_name.Value = unitName;
+        l_node.Attributes.Append(l_name);
+
+        foreach (Instruction i in behavior)
+            l_node.AppendChild(ImportNode(i.xmlStructure(), true));
+
+        XmlNode l_embbed = FirstChild;
+        l_embbed.AppendChild(l_node);
+
+        Save(l_fileName);
+    }
+\end{lstlisting}
+\captionof{figure} {Transformation d’un comportement en fichier XML}
+
+
+
+\begin{lstlisting}[frame=single]
+ public bool removeFPS()
+    {
+        if (fps)
+        {
+            transform.SetPositionAndRotation(backPosition, backRotation);
+            fps = false;
+            removeStuck();
+            Cursor.lockState = back;
+            minimap.gameObject.SetActive(false);
+            unit = null;
+            mainCam.GetComponent<FollowCamera>().enabled = true;
+            select.GetComponent<SpriteRenderer>().color = new Color(select.GetComponent<SpriteRenderer>().color.r, select.GetComponent<SpriteRenderer>().color.g, select.GetComponent<SpriteRenderer>().color.b, 0);
+            return true;
+        }
+
+        return false;
+    }
+
+    #Quitter le mode Camera Libre
+    public bool removeStuck()
+    {
+        if (stuck)
+        {
+            if (fps)
+            {
+                removeFPS();
+            }
+            transform.SetPositionAndRotation(backPosition, backRotation);
+            stuck = false;
+            mainCam.GetComponent<FollowCamera>().enabled = true;
+
+            return true;
+        }
+
+        return false;
+    }
+
+   #Rentrer en mode Camera Libre
+    public bool goStuck()
+    {
+        if (!stuck && !fps)
+        {
+            if (mainCam.GetComponent<FollowCamera>().enabled)
+                mainCam.GetComponent<FollowCamera>().enabled = false;
+            stuck = true;
+            fps = false;
+            Camera.main.transform.rotation = Quaternion.Euler(80, 0, 0);
+            return true;
+        }
+
+        return false;
+    }
+
+\end{lstlisting}
+\captionof{figure} {Fonctions de transition d’une caméra à l’autre}
+
+\begin{lstlisting}[frame=single]
+ #traitement de la camera fps
+        if (fps)
+        {
+            Camera.main.transform.position = new Vector3(unit.gameObject.transform.position.x, unit.gameObject.transform.position.y + 3, unit.gameObject.transform.position.z+1);
+            select.transform.position = new Vector3(unit.transform.position.x, unit.transform.position.y, unit.transform.position.z);
+
+            yaw += speedH * Input.GetAxis("Mouse X");
+            pitch -= speedV * Input.GetAxis("Mouse Y");
+            transform.eulerAngles = new Vector3(+25.0f, yaw, 0.0f);
+        }
+
+       #traitement de la camera libre
+        if (stuck)
+        {
+            if (Input.GetAxis("Mouse ScrollWheel") < 0f) #arriere
+            {
+                GameObject ground = GameObject.FindGameObjectWithTag("Ground");
+                Vector3 dist = Camera.main.transform.position - ground.transform.position;
+                if (!(dist.magnitude > backPosition.y + backPosition.y/2))
+                {
+                    Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y - 10 * Input.GetAxis("Mouse ScrollWheel"), Camera.main.transform.position.z);
+                }
+            }
+            else if (Input.GetAxis("Mouse ScrollWheel") > 0f) // avant
+            {
+                        float dist = Camera.main.transform.position.y - terrain.bounds.size.y;
+                        if (!(dist < 1))
+                        {
+                            Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y - 10 * Input.GetAxis("Mouse ScrollWheel"), Camera.main.transform.position.z);
+                        }
+            }
+            
+
+            if (Input.mousePosition.x <= 2 && Camera.main.transform.position.x > backPosition.x - terrain.bounds.size.x / 4)
+                Camera.main.transform.position = new Vector3(Camera.main.transform.position.x - speed, Camera.main.transform.position.y, Camera.main.transform.position.z);
+            if (Input.mousePosition.y <= 2 && Camera.main.transform.position.z > backPosition.z - terrain.bounds.size.z / 4)
+                Camera.main.transform.position = new Vector3(Camera.main.transform.position.x , Camera.main.transform.position.y , Camera.main.transform.position.z - speed);
+
+            if (Input.mousePosition.x >= Screen.width - 2 && Camera.main.transform.position.x < backPosition.x + terrain.bounds.size.x / 4)
+                Camera.main.transform.position = new Vector3(Camera.main.transform.position.x + speed, Camera.main.transform.position.y, Camera.main.transform.position.z);
+            if (Input.mousePosition.y >= Screen.height - 2 && Camera.main.transform.position.z < backPosition.z + terrain.bounds.size.z / 4)
+                Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y , Camera.main.transform.position.z + speed);
+        }
+    }
+
+\end{lstlisting}
+\captionof{figure} {Traitement des 2 caméras}
+
+\begin{lstlisting}[frame=single]
+    public void Traduction()
+    {
+        foreach (Langage l in GameObject.Find("GameManager").GetComponent<LangageLoader>().langues)
+        {
+            if (l.langue.Equals(langue))
+            {
+                foreach (Traduction t in l.trads)
+                {
+                    if (textOriginal.Equals(t.cle))
+                    {
+                        traduction = t.valeur;
+                        return;
+                    }
+                }
+            }
+        }
+
+        traduction = textOriginal;
+    }
+
+\end{lstlisting}
+\captionof{figure} {Fonction de traduction}
+
+\begin{lstlisting}[frame=single]
+  public Langage readFile(string Language)
+    {
+        Langage l_lang = new Langage();
+        l_lang.langue = Language;
+        l_lang.trads = new List<Traduction>();
+
+        if (!checkFile(Language))
+            return new Langage();
+            
+        string[] lines = System.IO.File.ReadAllLines(Application.streamingAssetsPath + Constants.langDirectory + Language + ".txt");
+
+        foreach (string line in lines)
+        {
+            if (!(line.Contains("#")))
+            {
+                string [] tmp = line.Split('=');
+                Traduction l_tmp = new Traduction();
+                l_tmp.cle = tmp[0].Replace("\t","") ;
+                l_tmp.valeur = tmp[1];
+                l_lang.trads.Add(l_tmp);
+            }
+        }
+
+        return l_lang;
+    }
+
+\end{lstlisting}
+\captionof{figure} {Lecture des traductions dans les fichiers}
+
+\begin{lstlisting}[frame=single]
+[System.Serializable]
+public struct Langage
+{
+    public string langue;
+    public List<Traduction> trads;
+}
+
+[System.Serializable]
+public struct Traduction
+{
+    public string cle;
+    public string valeur;
+
+
+\end{lstlisting}
+\captionof{figure} {Structure des traductions}
+
+\begin{lstlisting}[frame=single]
+    public void WriteStats(string[] Teams, string Winner, int NbTeam)
+    {
+        foreach (string Team in Teams)
+        {
+                if (!System.IO.File.Exists(Application.streamingAssetsPath + "/Stats/" + Team + ".stat"))
+                    System.IO.File.Create(Application.streamingAssetsPath + "/Stats/" + Team + ".stat");
+            int i = 0;
+            string[] Stats = System.IO.File.ReadAllLines(Application.streamingAssetsPath + "/Stats/" + Team + ".stat");
+            bool isInT0 = false;
+            bool isInT1 = false;
+            bool isInT2 = false;
+            bool isInT3 = false;
+            foreach (string Stat in Stats)
+            {
+                string[] DetailStat = Stat.Split('/');
+                if (DetailStat[0] == Teams[0])
+                {
+                    isInT0 = true;
+                    int numVal = int.Parse(DetailStat[1]);
+                    numVal++;
+                    DetailStat[1] = numVal.ToString(); //NbMatch
+                    if (Team == Winner)
+                    {
+                        numVal = int.Parse(DetailStat[2]);
+                        numVal++;
+                        DetailStat[2] = numVal.ToString(); #NbVictoire
+                    }
+                }
+                if (DetailStat[0] == Teams[1])
+                {
+                    isInT1 = true;
+                    int numVal = int.Parse(DetailStat[1]);
+                    numVal++;
+                    DetailStat[1] = numVal.ToString(); //NbMatch
+                    if (Team == Winner)
+                    {
+                        numVal = int.Parse(DetailStat[2]);
+                        numVal++;
+                        DetailStat[2] = numVal.ToString(); #NbVictoire
+                    }
+                }
+                if (NbTeam >= 3 && DetailStat[0] == Teams[2])
+                {
+                    isInT2 = true;
+                    int numVal = int.Parse(DetailStat[1]);
+                    numVal++;
+                    DetailStat[1] = numVal.ToString(); #NbMatch
+                    if (Team == Winner)
+                    {
+                        numVal = int.Parse(DetailStat[2]);
+                        numVal++;
+                        DetailStat[2] = numVal.ToString(); #NbVictoire
+                    }
+                }
+                if (NbTeam >= 4 && DetailStat[0] == Teams[3])
+                {
+                    isInT3 = true;
+                    int numVal = int.Parse(DetailStat[1]);
+                    numVal++;
+                    DetailStat[1] = numVal.ToString(); #NbMatch
+                    if (Team == Winner)
+                    {
+                        numVal = int.Parse(DetailStat[2]);
+                        numVal++;
+                        DetailStat[2] = numVal.ToString(); #NbVictoire
+                    }
+                }
+    
+                
+                Stats[i] = DetailStat[0] + '/' + DetailStat[1] + '/' + DetailStat[2];
+                i++;
+            }
+            if (i > 0) i--;
+            if (!isInT0 && Team != Teams[0])
+            {
+                i++;
+                System.Array.Resize(ref Stats, i);
+                //Stats = (string[]) ResizeArray(Stats, new string[] { i });
+                if (Team == Winner) Stats[i-1] = Teams[0] + "/1/1";
+                else Stats[i-1] = Teams[0] + "/1/0";//--------------------------------------------------------------------------------------
+            }
+            if (!isInT1 && Team != Teams[1])
+            {
+                i++;
+                System.Array.Resize(ref Stats, i);
+                //Stats = (string[]) ResizeArray(Stats, new string[] { i });
+                if (Team == Winner) Stats[i-1] = Teams[1] + "/1/1";
+                else Stats[i-1] = Teams[1] + "/1/0";
+            }
+            if (NbTeam >= 3 && !isInT2 && Team != Teams[2])
+            {
+                i++;
+                System.Array.Resize(ref Stats, i);
+                //Stats = (string[]) ResizeArray(Stats, new string[] { i });
+                if (Team == Winner) Stats[i-1] = Teams[2] + "/1/1";
+                else Stats[i-1] = Teams[2] + "/1/0";
+            }
+            if (NbTeam >= 4 && !isInT3 && Team != Teams[3])
+            {
+                i++;
+                System.Array.Resize(ref Stats, i);
+                //Stats = (string[]) ResizeArray(Stats, new string[] { i });
+                if (Team == Winner) Stats[i-1] = Teams[3] + "/1/1";
+                else Stats[i-1] = Teams[3] + "/1/0";
+            }
+    
+            System.IO.File.WriteAllLines(Application.streamingAssetsPath + "/Stats/" + Team + ".stat", Stats);
+        }
+    }
+\end{lstlisting}
+\captionof{figure} {Traitement et écriture des matchups entre équipes}
+
+\begin{lstlisting}[frame=single]
+   public void ComputeELO (string[] Teams, string Winner)
+    {
+        double[] ELOs = new double[2];
+        double ProbaWinT1;
+        double ProbaWinT2;
+        double CoeffT1;
+        double CoeffT2;
+        int[] NewELOs = new int[2];
+
+        if (!System.IO.File.Exists(Application.streamingAssetsPath + "/ELO/" + Teams[0] + ".elo"))
+        {
+            System.IO.File.Create(Application.streamingAssetsPath + "/ELO/" + Teams[0] + ".elo");
+            System.IO.File.WriteAllLines(Application.streamingAssetsPath + "/ELO/" + Teams[0] + ".elo", new string[] { 2500 + "" });
+        }
+
+        if (!System.IO.File.Exists(Application.streamingAssetsPath + "/ELO/" + Teams[1] + ".elo"))
+        {
+            System.IO.File.Create(Application.streamingAssetsPath + "/ELO/" + Teams[1] + ".elo");
+            System.IO.File.WriteAllLines(Application.streamingAssetsPath + "/ELO/" + Teams[1] + ".elo", new string[] { 2500 + "" });
+        }
+
+        string[] CurELOT1 = System.IO.File.ReadAllLines(Application.streamingAssetsPath + "/ELO/" + Teams[0] + ".elo");
+        string[] CurELOT2 = System.IO.File.ReadAllLines(Application.streamingAssetsPath + "/ELO/" + Teams[1] + ".elo");
+        Debug.Log("Equipe 1 : " + Teams[0]);
+        Debug.Log("Equipe 2 : " + Teams[1]);
+        ELOs[0] = double.Parse(CurELOT1[0]);
+        ELOs[1] = double.Parse(CurELOT2[0]);
+        
+        ProbaWinT1 = 1.0 / (1.0 + System.Math.Pow(10, (ELOs[1] - ELOs[0]) / 400.0));
+        ProbaWinT2 = 1.0 - ProbaWinT1;
+            
+        if      (ELOs[0] <  1000)                    CoeffT1 = 80;
+        else if (ELOs[0] >= 1000 && ELOs[0] <  2000) CoeffT1 = 50;
+        else if (ELOs[0] >= 2000 && ELOs[0] <= 2400) CoeffT1 = 30;
+        else                                         CoeffT1 = 20;
+                
+        if      (ELOs[1] <  1000)                    CoeffT2 = 80;
+        else if (ELOs[1] >= 1000 && ELOs[0] <  2000) CoeffT2 = 50;
+        else if (ELOs[1] >= 2000 && ELOs[0] <= 2400) CoeffT2 = 30;
+        else                                         CoeffT2 = 20;
+            
+        if (Teams[0] == Winner) {
+            NewELOs[0] = (int) (ELOs[0] + CoeffT1 * (1 - ProbaWinT1));
+            NewELOs[1] = (int) (ELOs[1] + CoeffT2 * (0 - ProbaWinT2));
+        }
+        else {
+            NewELOs[0] = (int) (ELOs[0] + CoeffT1 * (0 - ProbaWinT1));
+            NewELOs[1] = (int) (ELOs[1] + CoeffT2 * (1 - ProbaWinT2));
+        }
+                     
+        System.IO.File.WriteAllLines(Application.streamingAssetsPath + "/ELO/" + Teams[0] + ".elo", new string[] { NewELOs[0]+"" });
+        System.IO.File.WriteAllLines(Application.streamingAssetsPath + "/ELO/" + Teams[1] + ".elo", new string[] { NewELOs[1] + "" });
+    }
+
+\end{lstlisting}
+\captionof{figure} {Traitement et écriture du ELO après un match}
+
+\begin{lstlisting}[frame=single]
+ public void InitEnds()
+    {
+        _ends["TestBot"] = delegate ()
+        {
+            Traducteur t = new Traducteur();
+            string trad = "Winner";
+            t.langue = gm.GetComponent<LangageLoader>().language;
+            t.setTextOriginal("Winner");
+            trad = t.traduction;
+            textWinnerTeam.GetComponent<Text>().text = trad + " : " + winnername;
+            anim.SetTrigger("GameOver");
+            if (!written)
+            {
+                TeamsPerformance p = new TeamsPerformance();
+                int size = gm.GetComponent<TeamManager>()._teams.Count;
+                string[] teams = new string[size];
+                int cpt = 0;
+                foreach (Team t2 in gm.GetComponent<TeamManager>()._teams)
+                {
+                    teams[cpt] = t2._name;
+                    cpt++;
+                }
+                p.WriteStats(teams, teams[winner], size);
+                if (teams.Length == 2)
+                {
+                    p.ComputeELO(teams, teams[winner]);
+                }
+
+                written = true;
+            }
+            Time.timeScale = 0;
+        };
+
+        _ends["RessourceRace"] = delegate ()
+        {
+            string trad = "Winner";
+            Traducteur t = new Traducteur();
+
+            if (equals || scorewinner == -1)
+                trad = "Egalite";
+
+            t.langue = gm.GetComponent<LangageLoader>().language;
+            t.setTextOriginal(trad);
+            trad = t.traduction;
+            if (equals || scorewinner == -1)
+                textWinnerTeam.GetComponent<Text>().text = trad +" ! ";
+            else
+                textWinnerTeam.GetComponent<Text>().text = trad + " : " + winnername;
+
+            Score.GetComponent<Text>().text = "Score : " + scorewinner;
+            anim.SetTrigger("GameOver");
+            if (!written && !equals && scorewinner != -1)
+            {
+                TeamsPerformance p = new TeamsPerformance();
+                int size =gm.GetComponent<TeamManager>()._teams.Count;
+                string[] teams = new string[size];
+                int cpt = 0;
+                foreach (Team t2 in gm.GetComponent<TeamManager>()._teams)
+                {
+                    teams[cpt] = t2._name;
+                    cpt++;
+                }
+                p.WriteStats(teams, teams[winner], size);
+                if (teams.Length == 2  && !equals && scorewinner != -1)
+                {
+                    p.ComputeELO(teams, teams[winner]);
+                }
+                written = true;
+            }
+            Time.timeScale = 0;
+        };
+    }
+
+\end{lstlisting}
+\captionof{figure} {Initialisation des 2 fins du jeu actuelles}
+
+\begin{lstlisting}[frame=single]
+ public void InitTests()
+    {
+        _tests["TestBot"] = delegate ()
+        {
+            List<int> teams = new List<int>();
+            GameObject[] units = GameObject.FindGameObjectsWithTag("Unit");
+            foreach (GameObject u in units)
+            {
+                if (u.GetComponent<Stats>()._unitType.Equals("Base"))
+                {
+                    if (!teams.Contains(u.GetComponent<Stats>()._teamIndex))
+                        teams.Add(u.GetComponent<Stats>()._teamIndex);
+                }
+            }
+
+            if (teams.Count == 1)
+            {
+                winner = teams[0];
+                winnername = gm.GetComponent<TeamManager>()._teams[winner]._name;
+            }
+
+            return teams.Count <= 1;
+        };
+
+        _tests["RessourceRace"] = delegate ()
+        {
+            int nbRessources = -1;
+            GameObject[] units = GameObject.FindGameObjectsWithTag("Unit");
+            foreach (GameObject u in units)
+            {
+                if (u.GetComponent<Stats>()._unitType.Equals("Base"))
+                {
+
+                    if (u.GetComponent<Inventory>()._actualSize == nbRessources && !gm.GetComponent<TeamManager>()._teams[u.GetComponent<Stats>()._teamIndex]._name.Equals(winnername))
+                    {
+                        equals = true;
+                    }
+                    if (u.GetComponent<Inventory>()._actualSize > nbRessources)
+                    {
+                        winnername = gm.GetComponent<TeamManager>()._teams[u.GetComponent<Stats>()._teamIndex]._name;
+                        winner = u.GetComponent<Stats>()._teamIndex;
+                        nbRessources = u.GetComponent<Inventory>()._actualSize;
+                        equals = false;
+                    }
+                }
+            }
+
+            if (timer.GetComponent<TimerScriptHUD>().timePassed > timeLimitSeconds || nbRessources >= ressourceLimit)
+            {
+                scorewinner = nbRessources;
+            }
+
+            return (timer.GetComponent<TimerScriptHUD>().timePassed > timeLimitSeconds || nbRessources >= ressourceLimit);
+        };
+    }
+
+\end{lstlisting}
+\captionof{figure} {Initialisation des 2 tests de fin}
+
+\section{Comportements équipes}
+\begin{lstlisting}[frame=single]
+<behavior>
+  <teamName>ressource</teamName>
+  <unit name="Light">
+    <instruction>
+      <parameters>
+        <PERCEPT_ENEMY />
+      </parameters>
+      <message>
+        <ACTN_MESSAGE_ATTACK>
+          <Heavy />
+        </ACTN_MESSAGE_ATTACK>
+        <ACTN_MESSAGE_ATTACK>
+          <Light />
+        </ACTN_MESSAGE_ATTACK>
+      </message>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_IS_RELOADED />
+        <NOT_PERCEPT_LIFE_MAX />
+        <NOT_PERCEPT_BAG_EMPTY />
+      </parameters>
+      <actions>
+        <ACTION_HEAL />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_ENEMY />
+        <PERCEPT_IS_RELOADED />
+      </parameters>
+      <actions>
+        <ACTION_FIRE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <NOT_PERCEPT_IS_RELOADED />
+      </parameters>
+      <actions>
+        <ACTION_RELOAD />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_FOOD />
+        <NOT_PERCEPT_BAG_FULL />
+      </parameters>
+      <actions>
+        <ACTION_PICK />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_BLOCKED />
+      </parameters>
+      <message>
+        <ACTN_HEADING_RANDOM>
+          <NONE />
+        </ACTN_HEADING_RANDOM>
+      </message>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_MESSAGE_ATTACK />
+      </parameters>
+      <message>
+        <ACTN_TOWARD_MESSAGE_SENDER>
+          <NONE />
+        </ACTN_TOWARD_MESSAGE_SENDER>
+      </message>
+    </instruction>
+    <instruction>
+      <parameters />
+      <actions>
+        <ACTION_MOVE />
+      </actions>
+    </instruction>
+  </unit>
+  <unit name="Heavy">
+    <instruction>
+      <parameters>
+        <PERCEPT_ENEMY />
+      </parameters>
+      <message>
+        <ACTN_MESSAGE_ATTACK>
+          <Heavy />
+        </ACTN_MESSAGE_ATTACK>
+        <ACTN_MESSAGE_ATTACK>
+          <Light />
+        </ACTN_MESSAGE_ATTACK>
+      </message>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_IS_RELOADED />
+        <NOT_PERCEPT_LIFE_MAX />
+        <NOT_PERCEPT_BAG_EMPTY />
+      </parameters>
+      <actions>
+        <ACTION_HEAL />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_ENEMY />
+        <PERCEPT_IS_RELOADED />
+      </parameters>
+      <actions>
+        <ACTION_FIRE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <NOT_PERCEPT_IS_RELOADED />
+      </parameters>
+      <actions>
+        <ACTION_RELOAD />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_FOOD />
+        <NOT_PERCEPT_BAG_FULL />
+      </parameters>
+      <actions>
+        <ACTION_PICK />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_BLOCKED />
+      </parameters>
+      <message>
+        <ACTN_HEADING_RANDOM>
+          <NONE />
+        </ACTN_HEADING_RANDOM>
+      </message>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_MESSAGE_ATTACK />
+      </parameters>
+      <message>
+        <ACTN_TOWARD_MESSAGE_SENDER>
+          <NONE />
+        </ACTN_TOWARD_MESSAGE_SENDER>
+      </message>
+    </instruction>
+    <instruction>
+      <parameters />
+      <actions>
+        <ACTION_MOVE />
+      </actions>
+    </instruction>
+  </unit>
+  <unit name="Explorer">
+    <instruction>
+      <parameters>
+        <PERCEPT_ENEMY />
+        <NOT_PERCEPT_BAG_FULL />
+      </parameters>
+      <message>
+        <ACTN_MESSAGE_ATTACK>
+          <Heavy />
+        </ACTN_MESSAGE_ATTACK>
+        <ACTN_MESSAGE_ATTACK>
+          <Light />
+        </ACTN_MESSAGE_ATTACK>
+        <ACTN_TURN_AROUND>
+          <NONE />
+        </ACTN_TURN_AROUND>
+      </message>
+    </instruction>
+    <instruction>
+      <parameters>
+        <NOT_PERCEPT_BAG_FULL />
+        <PERCEPT_FOOD />
+      </parameters>
+      <message>
+        <ACTN_MESSAGE_POSITION_RESOURCE>
+          <Explorer />
+        </ACTN_MESSAGE_POSITION_RESOURCE>
+      </message>
+      <actions>
+        <ACTION_PICK />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <NOT_PERCEPT_BAG_EMPTY />
+        <PERCEPT_BASE_NEAR_ALLY />
+      </parameters>
+      <actions>
+        <ACTION_GIVE_RESSOURCE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <NOT_PERCEPT_LIFE_MAX />
+        <NOT_PERCEPT_BAG_EMPTY />
+      </parameters>
+      <actions>
+        <ACTION_HEAL />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_BLOCKED />
+      </parameters>
+      <message>
+        <ACTN_HEADING_RANDOM>
+          <NONE />
+        </ACTN_HEADING_RANDOM>
+      </message>
+      <actions>
+        <ACTION_MOVE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_MESSAGE_POSITION_RESOURCE />
+      </parameters>
+      <message>
+        <ACTN_TOWARD_MESSAGE_SENDER>
+          <NONE />
+        </ACTN_TOWARD_MESSAGE_SENDER>
+      </message>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_BAG_FULL />
+      </parameters>
+      <actions>
+        <ACTION_BACK_TO_BASE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters />
+      <actions>
+        <ACTION_MOVE />
+      </actions>
+    </instruction>
+  </unit>
+  <unit name="Base">
+    <instruction>
+      <parameters>
+        <PERCEPT_ENEMY />
+      </parameters>
+      <message>
+        <ACTN_MESSAGE_ATTACK>
+          <Light />
+        </ACTN_MESSAGE_ATTACK>
+        <ACTN_MESSAGE_ATTACK>
+          <Heavy />
+        </ACTN_MESSAGE_ATTACK>
+      </message>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_LIFE_75 />
+      </parameters>
+      <actions>
+        <ACTION_CREATE_LIFE_EXPLORER />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_LIFE_50 />
+      </parameters>
+      <actions>
+        <ACTION_CREATE_LIFE_LIGHT />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <NOT_PERCEPT_LIFE_50 />
+        <NOT_PERCEPT_BAG_EMPTY />
+      </parameters>
+      <actions>
+        <ACTION_HEAL />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_BAG_10 />
+      </parameters>
+      <actions>
+        <ACTION_CREATE_EXPLORER />
+      </actions>
+    </instruction>
+  </unit>
+</behavior>
+\end{lstlisting}
+\captionof{figure} {Equipe Toream}
+
+\begin{lstlisting}[frame=single]
+<behavior>
+  <teamName>All In</teamName>
+  <unit name="Explorer">
+    <instruction>
+      <parameters>
+        <NOT_PERCEPT_LIFE_50 />
+        <NOT_PERCEPT_BAG_EMPTY />
+      </parameters>
+      <actions>
+        <ACTION_HEAL />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_BLOCKED />
+      </parameters>
+      <actions>
+        <ACTION_TURN_AROUND_MOVE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_BASE_NEAR_ALLY />
+        <NOT_PERCEPT_BAG_EMPTY />
+      </parameters>
+      <actions>
+        <ACTION_GIVE_RESSOURCE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <NOT_PERCEPT_BAG_FULL />
+        <PERCEPT_FOOD_NEAR />
+      </parameters>
+      <message>
+        <ACTN_MESSAGE_POSITION_RESOURCE>
+          <Explorer />
+        </ACTN_MESSAGE_POSITION_RESOURCE>
+      </message>
+      <actions>
+        <ACTION_PICK />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_BAG_FULL />
+      </parameters>
+      <actions>
+        <ACTION_BACK_TO_BASE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_MESSAGE_POSITION_RESOURCE />
+        <NOT_PERCEPT_BAG_FULL />
+      </parameters>
+      <message>
+        <ACTN_TOWARD_MESSAGE_SENDER>
+          <NONE />
+        </ACTN_TOWARD_MESSAGE_SENDER>
+      </message>
+    </instruction>
+    <instruction>
+      <parameters />
+      <actions>
+        <ACTION_MOVE />
+      </actions>
+    </instruction>
+  </unit>
+  <unit name="Light">
+    <instruction>
+      <parameters>
+        <PERCEPT_ENEMY />
+      </parameters>
+      <message>
+        <ACTN_MESSAGE_ATTACK>
+          <All />
+        </ACTN_MESSAGE_ATTACK>
+      </message>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_ENEMY />
+        <PERCEPT_IS_RELOADED />
+      </parameters>
+      <actions>
+        <ACTION_FIRE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <NOT_PERCEPT_LIFE_MAX />
+        <NOT_PERCEPT_BAG_EMPTY />
+      </parameters>
+      <actions>
+        <ACTION_HEAL />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <NOT_PERCEPT_IS_RELOADED />
+      </parameters>
+      <actions>
+        <ACTION_RELOAD />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_BLOCKED />
+      </parameters>
+      <actions>
+        <ACTION_TURN_AROUND_MOVE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_MESSAGE_ATTACK />
+      </parameters>
+      <message>
+        <ACTN_TOWARD_MESSAGE_SENDER>
+          <NONE />
+        </ACTN_TOWARD_MESSAGE_SENDER>
+      </message>
+      <actions>
+        <ACTION_MOVE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_FOOD />
+        <NOT_PERCEPT_BAG_FULL />
+      </parameters>
+      <actions>
+        <ACTION_PICK />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters />
+      <actions>
+        <ACTION_MOVE />
+      </actions>
+    </instruction>
+  </unit>
+  <unit name="Heavy">
+    <instruction>
+      <parameters>
+        <PERCEPT_ENEMY />
+      </parameters>
+      <message>
+        <ACTN_MESSAGE_ATTACK>
+          <All />
+        </ACTN_MESSAGE_ATTACK>
+      </message>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_ENEMY />
+        <PERCEPT_IS_RELOADED />
+      </parameters>
+      <actions>
+        <ACTION_FIRE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <NOT_PERCEPT_LIFE_MAX />
+        <NOT_PERCEPT_BAG_EMPTY />
+      </parameters>
+      <actions>
+        <ACTION_HEAL />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <NOT_PERCEPT_IS_RELOADED />
+      </parameters>
+      <actions>
+        <ACTION_RELOAD />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_BLOCKED />
+      </parameters>
+      <actions>
+        <ACTION_TURN_AROUND_MOVE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_MESSAGE_ATTACK />
+      </parameters>
+      <message>
+        <ACTN_TOWARD_MESSAGE_SENDER>
+          <NONE />
+        </ACTN_TOWARD_MESSAGE_SENDER>
+      </message>
+      <actions>
+        <ACTION_MOVE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_FOOD_NEAR />
+        <NOT_PERCEPT_BAG_EMPTY />
+      </parameters>
+      <actions>
+        <ACTION_PICK />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters />
+      <actions>
+        <ACTION_MOVE />
+      </actions>
+    </instruction>
+  </unit>
+  <unit name="Base">
+    <instruction>
+      <parameters>
+        <NOT_PERCEPT_BAG_EMPTY />
+        <NOT_PERCEPT_LIFE_MAX />
+      </parameters>
+      <actions>
+        <ACTION_HEAL />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_LIFE_25 />
+      </parameters>
+      <actions>
+        <ACTION_CREATE_LIFE_LIGHT />
+      </actions>
+    </instruction>
+  </unit>
+</behavior>
+\end{lstlisting}
+\captionof{figure} {Equipe All In}
+
+\begin{lstlisting}[frame=single]
+<behavior>
+  <teamName>attaque</teamName>
+  <unit name="Base">
+    <instruction>
+      <parameters>
+        <NOT_PERCEPT_LIFE_MAX />
+        <NOT_PERCEPT_BAG_EMPTY />
+      </parameters>
+      <actions>
+        <ACTION_HEAL />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_LIFE_75 />
+      </parameters>
+      <actions>
+        <ACTION_CREATE_LIFE_LIGHT />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <NOT_PERCEPT_LIFE_75 />
+        <PERCEPT_LIFE_25 />
+      </parameters>
+      <actions>
+        <ACTION_CREATE_LIFE_HEAVY />
+      </actions>
+    </instruction>
+  </unit>
+  <unit name="Heavy">
+    <instruction>
+      <parameters>
+        <PERCEPT_ENEMY />
+      </parameters>
+      <message>
+        <ACTN_MESSAGE_ATTACK>
+          <Heavy />
+        </ACTN_MESSAGE_ATTACK>
+        <ACTN_MESSAGE_ATTACK>
+          <Light />
+        </ACTN_MESSAGE_ATTACK>
+      </message>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_ENEMY />
+        <PERCEPT_IS_RELOADED />
+      </parameters>
+      <actions>
+        <ACTION_FIRE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <NOT_PERCEPT_IS_RELOADED />
+      </parameters>
+      <actions>
+        <ACTION_RELOAD />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <NOT_PERCEPT_LIFE_MAX />
+        <NOT_PERCEPT_BAG_EMPTY />
+      </parameters>
+      <actions>
+        <ACTION_HEAL />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_BLOCKED />
+      </parameters>
+      <message>
+        <ACTN_HEADING_RANDOM>
+          <NONE />
+        </ACTN_HEADING_RANDOM>
+      </message>
+    </instruction>
+    <instruction>
+      <parameters />
+      <actions>
+        <ACTION_MOVE />
+      </actions>
+    </instruction>
+  </unit>
+  <unit name="Light">
+    <instruction>
+      <parameters>
+        <PERCEPT_ENEMY />
+      </parameters>
+      <message>
+        <ACTN_MESSAGE_ATTACK>
+          <Heavy />
+        </ACTN_MESSAGE_ATTACK>
+        <ACTN_MESSAGE_ATTACK>
+          <Light />
+        </ACTN_MESSAGE_ATTACK>
+      </message>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_ENEMY />
+        <PERCEPT_IS_RELOADED />
+      </parameters>
+      <actions>
+        <ACTION_FIRE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <NOT_PERCEPT_IS_RELOADED />
+      </parameters>
+      <actions>
+        <ACTION_RELOAD />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <NOT_PERCEPT_LIFE_MAX />
+        <NOT_PERCEPT_BAG_EMPTY />
+      </parameters>
+      <actions>
+        <ACTION_HEAL />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_BLOCKED />
+      </parameters>
+      <message>
+        <ACTN_HEADING_RANDOM>
+          <NONE />
+        </ACTN_HEADING_RANDOM>
+      </message>
+    </instruction>
+    <instruction>
+      <parameters />
+      <actions>
+        <ACTION_MOVE />
+      </actions>
+    </instruction>
+  </unit>
+  <unit name="Explorer">
+    <instruction>
+      <parameters>
+        <PERCEPT_ENEMY />
+      </parameters>
+      <message>
+        <ACTN_MESSAGE_ATTACK>
+          <Heavy />
+        </ACTN_MESSAGE_ATTACK>
+        <ACTN_MESSAGE_POSITION_RESOURCE>
+          <Light />
+        </ACTN_MESSAGE_POSITION_RESOURCE>
+      </message>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_FOOD_NEAR />
+        <NOT_PERCEPT_BAG_FULL />
+      </parameters>
+      <actions>
+        <ACTION_PICK />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_BASE_NEAR_ALLY />
+        <NOT_PERCEPT_BAG_EMPTY />
+      </parameters>
+      <actions>
+        <ACTION_GIVE_RESSOURCE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_BAG_FULL />
+      </parameters>
+      <actions>
+        <ACTION_BACK_TO_BASE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_BLOCKED />
+      </parameters>
+      <message>
+        <ACTN_HEADING_RANDOM>
+          <NONE />
+        </ACTN_HEADING_RANDOM>
+      </message>
+    </instruction>
+    <instruction>
+      <parameters />
+      <actions>
+        <ACTION_MOVE />
+      </actions>
+    </instruction>
+  </unit>
+</behavior>
+\end{lstlisting}
+\captionof{figure} {Equipe attaque}
+
+\begin{lstlisting}[frame=single]
+<behavior>
+  <teamName>Sans message</teamName>
+  <unit name="Base">
+    <instruction>
+      <parameters>
+        <NOT_PERCEPT_LIFE_MAX />
+        <NOT_PERCEPT_BAG_EMPTY />
+      </parameters>
+      <actions>
+        <ACTION_HEAL />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_LIFE_75 />
+      </parameters>
+      <actions>
+        <ACTION_CREATE_LIFE_EXPLORER />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <NOT_PERCEPT_LIFE_75 />
+        <NOT_PERCEPT_LIFE_50 />
+      </parameters>
+      <actions>
+        <ACTION_CREATE_LIFE_HEAVY />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_LIFE_25 />
+      </parameters>
+      <actions>
+        <ACTION_CREATE_LIFE_LIGHT />
+      </actions>
+    </instruction>
+  </unit>
+  <unit name="Explorer">
+    <instruction>
+      <parameters>
+        <NOT_PERCEPT_BAG_FULL />
+        <PERCEPT_FOOD_NEAR />
+      </parameters>
+      <actions>
+        <ACTION_PICK />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <NOT_PERCEPT_LIFE_MAX />
+        <NOT_PERCEPT_BAG_EMPTY />
+      </parameters>
+      <actions>
+        <ACTION_HEAL />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <NOT_PERCEPT_BAG_EMPTY />
+        <PERCEPT_BASE_NEAR_ALLY />
+      </parameters>
+      <actions>
+        <ACTION_GIVE_RESSOURCE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_BLOCKED />
+      </parameters>
+      <message>
+        <ACTN_HEADING_RANDOM>
+          <NONE />
+        </ACTN_HEADING_RANDOM>
+      </message>
+      <actions>
+        <ACTION_MOVE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_BAG_FULL />
+      </parameters>
+      <actions>
+        <ACTION_BACK_TO_BASE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters />
+      <actions>
+        <ACTION_MOVE />
+      </actions>
+    </instruction>
+  </unit>
+  <unit name="Heavy">
+    <instruction>
+      <parameters>
+        <NOT_PERCEPT_BAG_EMPTY />
+        <NOT_PERCEPT_LIFE_MAX />
+      </parameters>
+      <actions>
+        <ACTION_HEAL />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_ENEMY />
+        <PERCEPT_IS_RELOADED />
+      </parameters>
+      <actions>
+        <ACTION_FIRE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <NOT_PERCEPT_IS_RELOADED />
+      </parameters>
+      <actions>
+        <ACTION_RELOAD />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_FOOD_NEAR />
+        <NOT_PERCEPT_BAG_FULL />
+      </parameters>
+      <actions>
+        <ACTION_PICK />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_BLOCKED />
+      </parameters>
+      <message>
+        <ACTN_HEADING_RANDOM>
+          <NONE />
+        </ACTN_HEADING_RANDOM>
+      </message>
+    </instruction>
+    <instruction>
+      <parameters />
+      <actions>
+        <ACTION_MOVE />
+      </actions>
+    </instruction>
+  </unit>
+  <unit name="Light">
+    <instruction>
+      <parameters>
+        <NOT_PERCEPT_BAG_EMPTY />
+        <NOT_PERCEPT_LIFE_MAX />
+      </parameters>
+      <actions>
+        <ACTION_HEAL />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_ENEMY />
+        <PERCEPT_IS_RELOADED />
+      </parameters>
+      <actions>
+        <ACTION_FIRE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <NOT_PERCEPT_IS_RELOADED />
+      </parameters>
+      <actions>
+        <ACTION_RELOAD />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_FOOD_NEAR />
+        <NOT_PERCEPT_BAG_FULL />
+      </parameters>
+      <actions>
+        <ACTION_PICK />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_BLOCKED />
+      </parameters>
+      <message>
+        <ACTN_HEADING_RANDOM>
+          <NONE />
+        </ACTN_HEADING_RANDOM>
+      </message>
+    </instruction>
+    <instruction>
+      <parameters />
+      <actions>
+        <ACTION_MOVE />
+      </actions>
+    </instruction>
+  </unit>
+</behavior>
+\end{lstlisting}
+\captionof{figure} {Equipe Sans message}
+
+\begin{lstlisting}[frame=single]
+<behavior>
+  <teamName>ressources</teamName>
+  <unit name="Base">
+    <instruction>
+      <parameters>
+        <PERCEPT_ENEMY />
+      </parameters>
+      <message>
+        <ACTN_MESSAGE_HELP>
+          <Light />
+        </ACTN_MESSAGE_HELP>
+      </message>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_LIFE_50 />
+      </parameters>
+      <actions>
+        <ACTION_CREATE_LIFE_EXPLORER />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <NOT_PERCEPT_LIFE_50 />
+        <PERCEPT_LIFE_25 />
+      </parameters>
+      <actions>
+        <ACTION_CREATE_LIFE_LIGHT />
+      </actions>
+    </instruction>
+  </unit>
+  <unit name="Explorer">
+    <instruction>
+      <parameters>
+        <PERCEPT_ENEMY />
+      </parameters>
+      <message>
+        <ACTN_MESSAGE_HELP>
+          <Light />
+        </ACTN_MESSAGE_HELP>
+      </message>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_FOOD_NEAR />
+      </parameters>
+      <message>
+        <ACTN_MESSAGE_POSITION_RESOURCE>
+          <All />
+        </ACTN_MESSAGE_POSITION_RESOURCE>
+      </message>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_FOOD_NEAR />
+        <NOT_PERCEPT_BAG_FULL />
+      </parameters>
+      <actions>
+        <ACTION_PICK />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_BASE_NEAR_ALLY />
+        <NOT_PERCEPT_BAG_EMPTY />
+      </parameters>
+      <actions>
+        <ACTION_GIVE_RESSOURCE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_BLOCKED />
+      </parameters>
+      <message>
+        <ACTN_HEADING_RANDOM>
+          <NONE />
+        </ACTN_HEADING_RANDOM>
+      </message>
+      <actions>
+        <ACTION_MOVE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_BAG_FULL />
+      </parameters>
+      <actions>
+        <ACTION_BACK_TO_BASE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_MESSAGE_POSITION_RESOURCE />
+      </parameters>
+      <message>
+        <ACTN_TOWARD_MESSAGE_SENDER>
+          <NONE />
+        </ACTN_TOWARD_MESSAGE_SENDER>
+      </message>
+    </instruction>
+    <instruction>
+      <parameters />
+      <actions>
+        <ACTION_MOVE />
+      </actions>
+    </instruction>
+  </unit>
+  <unit name="Light">
+    <instruction>
+      <parameters>
+        <PERCEPT_ENEMY />
+      </parameters>
+      <message>
+        <ACTN_MESSAGE_HELP>
+          <Light />
+        </ACTN_MESSAGE_HELP>
+      </message>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_FOOD_NEAR />
+      </parameters>
+      <message>
+        <ACTN_MESSAGE_POSITION_RESOURCE>
+          <All />
+        </ACTN_MESSAGE_POSITION_RESOURCE>
+      </message>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_ENEMY />
+        <PERCEPT_IS_RELOADED />
+      </parameters>
+      <actions>
+        <ACTION_FIRE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <NOT_PERCEPT_IS_RELOADED />
+      </parameters>
+      <actions>
+        <ACTION_RELOAD />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <NOT_PERCEPT_BAG_FULL />
+        <PERCEPT_FOOD_NEAR />
+      </parameters>
+      <actions>
+        <ACTION_PICK />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <NOT_PERCEPT_LIFE_MAX />
+        <NOT_PERCEPT_BAG_EMPTY />
+      </parameters>
+      <actions>
+        <ACTION_HEAL />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_BLOCKED />
+      </parameters>
+      <message>
+        <ACTN_HEADING_RANDOM>
+          <NONE />
+        </ACTN_HEADING_RANDOM>
+      </message>
+      <actions>
+        <ACTION_MOVE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_MESSAGE_HELP />
+      </parameters>
+      <message>
+        <ACTN_TOWARD_MESSAGE_SENDER>
+          <NONE />
+        </ACTN_TOWARD_MESSAGE_SENDER>
+      </message>
+      <actions>
+        <ACTION_MOVE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_BAG_FULL />
+      </parameters>
+      <actions>
+        <ACTION_BACK_TO_BASE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_MESSAGE_POSITION_RESOURCE />
+      </parameters>
+      <message>
+        <ACTN_TOWARD_MESSAGE_SENDER>
+          <NONE />
+        </ACTN_TOWARD_MESSAGE_SENDER>
+      </message>
+    </instruction>
+    <instruction>
+      <parameters />
+      <actions>
+        <ACTION_MOVE />
+      </actions>
+    </instruction>
+  </unit>
+</behavior>
+\end{lstlisting}
+\captionof{figure} {Equipe ressources}
 \section{Documents}
+
 % Uncomment the following two lines if you want to have a bibliography
 %\bibliographystyle{alpha}
 %\bibliography{document}
