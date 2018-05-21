@@ -127,33 +127,33 @@
 \contentsline {subsubsection}{Bouton "Reload Team"}{48}
 \contentsline {subsubsection}{Choisir carte de jeu}{48}
 \contentsline {subsubsection}{Choisir nombre de d\IeC {\'e}part de chaque unit\IeC {\'e}}{49}
-\contentsline {subsubsection}{Barre de Chargement}{49}
+\contentsline {subsubsection}{Barre de Chargement}{50}
+\contentsline {subsubsection}{Bouton Quitter}{50}
 \contentsline {subsection}{\numberline {3.3.2}Menu des Param\IeC {\`e}tres}{50}
-\contentsline {subsubsection}{Changer le Volume de la musique}{50}
-\contentsline {subsubsection}{Choisir le nombre de ressource maximales dans le jeu}{50}
-\contentsline {subsubsection}{Choisir le mode de jeu}{50}
-\contentsline {subsubsection}{Choisir la langue}{51}
-\contentsline {subsubsection}{Bouton Retour}{52}
-\contentsline {subsubsection}{Bouton Valider}{52}
-\contentsline {subsubsection}{Bouton Quitter}{53}
-\contentsline {subsection}{\numberline {3.3.3}Editeur de Comportement}{53}
-\contentsline {paragraph}{}{53}
+\contentsline {subsubsection}{Choisir le nombre de ressource maximales dans le jeu}{51}
+\contentsline {subsubsection}{Choisir le mode de jeu}{51}
+\contentsline {subsubsection}{Changer le Volume de la musique}{52}
+\contentsline {subsubsection}{Choisir la langue}{52}
+\contentsline {subsubsection}{Bouton Retour}{53}
+\contentsline {subsubsection}{Bouton Valider}{53}
+\contentsline {subsection}{\numberline {3.3.3}Editeur de Comportement}{54}
 \contentsline {paragraph}{}{54}
 \contentsline {paragraph}{}{54}
-\contentsline {subsubsection}{ToolBox}{55}
-\contentsline {subsubsection}{S\IeC {\'e}lection des \IeC {\'e}quipes / unit\IeC {\'e}s}{59}
-\contentsline {subsubsection}{Informations sur l'unit\IeC {\'e}}{61}
-\contentsline {subsubsection}{Liste des pi\IeC {\`e}ces}{62}
-\contentsline {subsubsection}{Editeur}{63}
-\contentsline {subsection}{\numberline {3.3.4}\IeC {\'E}l\IeC {\'e}ment dans le jeu}{66}
-\contentsline {subsubsection}{R\IeC {\'e}glage du volume du son}{66}
-\contentsline {part}{III\hspace {1em}L'avenir du projet}{67}
-\contentsline {chapter}{\numberline {4}Am\IeC {\'e}lioration possible}{68}
-\contentsline {chapter}{\numberline {5}Bugs}{69}
-\contentsline {part}{IV\hspace {1em}Annexe}{70}
-\contentsline {chapter}{\numberline {6}Scripts Remarquables}{71}
-\contentsline {section}{\numberline {6.1}ObjectPool}{72}
-\contentsline {section}{\numberline {6.2}MovableCharacter}{74}
-\contentsline {section}{\numberline {6.3}Brain}{76}
-\contentsline {section}{\numberline {6.4}PerceptUnit}{79}
-\contentsline {section}{\numberline {6.5}LoadFile}{82}
+\contentsline {paragraph}{}{55}
+\contentsline {subsubsection}{ToolBox}{56}
+\contentsline {subsubsection}{S\IeC {\'e}lection des \IeC {\'e}quipes / unit\IeC {\'e}s}{60}
+\contentsline {subsubsection}{Informations sur l'unit\IeC {\'e}}{62}
+\contentsline {subsubsection}{Liste des pi\IeC {\`e}ces}{63}
+\contentsline {subsubsection}{Editeur}{64}
+\contentsline {subsection}{\numberline {3.3.4}\IeC {\'E}l\IeC {\'e}ment dans le jeu}{67}
+\contentsline {subsubsection}{R\IeC {\'e}glage du volume du son}{67}
+\contentsline {part}{III\hspace {1em}L'avenir du projet}{68}
+\contentsline {chapter}{\numberline {4}Am\IeC {\'e}lioration possible}{69}
+\contentsline {chapter}{\numberline {5}Bugs}{70}
+\contentsline {part}{IV\hspace {1em}Annexe}{71}
+\contentsline {chapter}{\numberline {6}Scripts Remarquables}{72}
+\contentsline {section}{\numberline {6.1}ObjectPool}{73}
+\contentsline {section}{\numberline {6.2}MovableCharacter}{75}
+\contentsline {section}{\numberline {6.3}Brain}{77}
+\contentsline {section}{\numberline {6.4}PerceptUnit}{80}
+\contentsline {section}{\numberline {6.5}LoadFile}{83}

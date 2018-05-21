@@ -1375,7 +1375,7 @@ _unitCounter.text = _number.ToString("00");
 		\includegraphics[scale=0.80]{NumberUnits}
 	\caption{Choix du nombre d'unités}
 \end{figure}
-
+\clearpage
 \subsubsection{Barre de Chargement}
 Quand on lance une partie, une barre de chargement apparaît et indique l'avancement du chargement de la partie.
 Ceci est une fonction qui utilise "AsyncOperation". La variable ao va contrôler l'avancée du chargement de la scène jeu.
@@ -1403,25 +1403,22 @@ IEnumerator AsynchronousLoad(int scene)
     }
 \end{lstlisting}
 
-
+\subsubsection{Bouton Quitter}
+Ce bouton ouvre une boite de dialogue demandant à l'utilisateur s'il veut vraiment quitter le jeu. Il peut ainsi choisir de revenir sur le menu principal ou fermer le jeu.
 
 \subsection{Menu des Paramètres}
-Ce menu regroupe les paramètres de jeu. 
-
-\subsubsection{Changer le Volume de la musique}
-Ce slider indique le niveau sonore de la musique. On peut le modifier en cliquant dessus et en déplaçant la valeur de 0 jusqu’à 100. 0 correspond à un arrêt de la musique et 100 au volume maximal. De plus, le volume sonore dans le menu est le même dans l'éditeur de comportement et dans le jeu lui même.
-La valeur de notre slider affectera directement la valeur de notre AudioSource.
+Ce menu regroupe tous les paramètres modifiables par l'utilisateur. En ouvrant cette fenêtre, l'utilisateur aura donc la possibilité de personnaliser son expérience de jeu, en modifiant les valeurs des paramètres. Cela permet de renouveler la dynamique des parties, et d'offrir une expérience nouvelle. \newline
 \smallbreak
-\begin{figure}[!h]
+Au delà des paramètres concernant directement le déroulement de la partie, l'utilisateur peut également modifier la langue du jeu. L'utilisateur peut alors choisir la langue avec laquelle il est le plus à l'aise.
+\begin{figure}[h]
 	\centering
-		\includegraphics[scale=0.60]{AudioSource}
-	\caption{Aperçu de l'AudioSource, dans l'Inspector}
+		\includegraphics[scale=0.60]{MenuParametres}
+	\caption{Fenêtre des paramètres}
 \end{figure}
 
 \subsubsection{Choisir le nombre de ressource maximales dans le jeu}
 Dans cette case, on peut entrer un chiffre entier qui indiquera le nombre maximum de ressources présentes simultanément en jeu.
-\smallbreak
-\begin{figure}[!h]
+\begin{figure}[h]
 	\centering
 		\includegraphics[scale=0.80]{RessourcesMax}
 	\caption{Choix du nombre maximal de ressources}
@@ -1439,6 +1436,17 @@ Si le mode choisi est RessourceRace alors deux autres paramètres apparaissent:
 	\centering
 		\includegraphics[scale=0.80]{ManuelJeu/ModeJeuRessourceRace}
 	\caption{Paramètres RessourceRace}
+\end{figure}
+
+\subsubsection{Changer le Volume de la musique}
+Ce slider indique le niveau sonore de la musique. On peut le modifier en cliquant dessus et en déplaçant la valeur de 0 jusqu’à 100. 0 correspond à un arrêt de la musique et 100 au volume maximal. \newline
+De plus, le volume sonore dans le menu est le même dans l'éditeur de comportement et dans le jeu lui même.
+La valeur de notre slider affectera directement la valeur de notre AudioSource.
+\smallbreak
+\begin{figure}[h]
+	\centering
+		\includegraphics[scale=1]{AudioSource}
+	\caption{Aperçu de l'AudioSource, dans l'Inspector}
 \end{figure}
 
 \subsubsection{Choisir la langue}
@@ -1499,8 +1507,7 @@ public void ApplySettings()
 On peut apercevoir dans cette méthode, qu'elle appelle une méthode spécifique pour chaque paramètre modifiable.
 Elle s'occupe donc d'appliquer chacune des modifications effectuées, via l'appel de la fonction adéquate.
 
-\subsubsection{Bouton Quitter}
-Ce bouton ouvre une boite de dialogue demandant à l'utilisateur s'il veut vraiment quitter le jeu. Il peut ainsi choisir de revenir sur le menu principal ou fermer le jeu.
+
 
 
 \subsection{Editeur de Comportement}
@@ -1800,24 +1807,22 @@ Nous allons parcourir la structure pour créer toutes les pièces disponibles po
 new Vector2(0, -button.GetComponent<RectTransform>().rect.height)+ deltaVect;
 \end{lstlisting}
 Dans cette fonction, nous nous occupons uniquement de la liste Conditions présente dans notre structure. Il y a une fonction pour chaque liste de la structure.
-\end{itemize}
-\item\textbf{createPuzzle.cs} : Lors de l'appel à ce script, nous récupérons le prefab et le label associé au type de pièce concernée. Par exemple, pour une pièce "Conditions", nous récupérerons le prefab des pièces "<Conditions">, ainsi qu'un label nommé "PERCEPT". Le traitement de ce label se fait dans le script ConditionEditorScript.cs.\newline
+
+\item\textbf{createPuzzle.cs} : Lors de l'appel au script createPuzzle.cs, nous récupérons le prefab et le label associé au type de pièce concernée. Par exemple, pour une pièce "Conditions", nous récupérerons le prefab des pièces "Conditions", ainsi qu'un label nommé "PERCEPT". Le traitement de ce label se fait dans le script ConditionEditorScript.cs.\newline
 Nous plaçons ensuite la pièce créée 
 
-\begin{itemize}
-\item\textbf{create()} : Lors d'un clic sur le modèle de pièce que l'on veut ajouter au comportement courant, cette fonction est appelée. Une position par défaut est définie dans l'éditeur, qui déterminera où la pièce sera placée lors de sa création.\newline
+Lors d'un clic sur le modèle de pièce que l'on veut ajouter au comportement courant, la fonction create() est appelée. Une position par défaut est définie dans l'éditeur, qui déterminera où la pièce sera placée lors de sa création.\newline
 A chaque pièce créée, nous l'ajoutons dans la liste listPieces, utilisée pour la fonction Annuler.
-\end{itemize}
+
 \begin{lstlisting}[frame=single]
-GameObject puzzleClone = (GameObject)Instantiate(puzzle, GameObject.Find("MaskEditeur").transform);
-if (puzzleClone.GetComponent<PuzzleScript>())
-{
-   puzzleClone.GetComponent<PuzzleScript>()._value = _label;
-}
+puzzleClone.GetComponent<RectTransform>().anchoredPosition = new Vector3(positionInitial.x, positionInitial.y,15);
+puzzleClone.transform.parent = GameObject.Find("Editeur").transform;
+puzzleClone.GetComponent<RectTransform>().localPosition = new Vector3(puzzleClone.GetComponent<RectTransform>().localPosition.x, puzzleClone.GetComponent<RectTransform>().localPosition.y, 10);
 \end{lstlisting}
 
 Les pièces sont présentes sous forme de cases avec leur nom à l'intérieur (certaines possèdent des menus déroulant pour choisir la valeur voulue une fois dans la zone d'édition). La couleur des pièces dépend de leur catégorie.
 Les pièces peuvent être sélectionnées et déplacées dans la zone d'édition du comportement grâce au glissé/déposé (Drag \& Drop).
+\end{itemize}
 \end{enumerate}
 
 \subsubsection{Editeur}
@@ -1890,6 +1895,12 @@ Cette fonction récupère les pièces adjacentes à notre pièce actuelle, à l'
 \subsection{Élément dans le jeu}
 \subsubsection{Réglage du volume du son}
 En bas à droite de la fenêtre de jeu se trouve une icône de son et un slider. Le slider permet, comme dans le menu des paramètres, de modifier le volume du son. L’icône sert de bouton; si on le presse, le son passe à 0 et l’icône devient barrée. Si l'on appuie de nouveau, elle redevient classique, et le son est restitué à sa valeur précédente.
+/smallbreak
+\begin{figure}[h]
+	\centering
+		\includegraphics[scale=1]{ManuelJeu/SoundIG}
+	\caption{Barre de son, en jeu}
+\end{figure}
 
 
 \newpage
