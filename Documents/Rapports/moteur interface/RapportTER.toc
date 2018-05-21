@@ -102,60 +102,63 @@
 \contentsline {subsection}{\numberline {2.3.3}Animations.}{36}
 \contentsline {paragraph}{Les projectiles.}{36}
 \contentsline {paragraph}{Les unit\IeC {\'e}s.}{36}
-\contentsline {subsection}{\numberline {2.3.4}Sons.}{38}
-\contentsline {paragraph}{Fonctionnement.}{38}
-\contentsline {paragraph}{Les fond sonores.}{38}
-\contentsline {paragraph}{Les projectiles.}{39}
-\contentsline {paragraph}{Les unit\IeC {\'e}s.}{39}
+\contentsline {paragraph}{Sp\IeC {\'e}cificit\IeC {\'e}e de unit\IeC {\'e}s de type Light.}{38}
+\contentsline {subsection}{\numberline {2.3.4}Sons.}{39}
+\contentsline {paragraph}{Fonctionnement.}{39}
+\contentsline {paragraph}{Les fond sonores.}{39}
+\contentsline {paragraph}{Les projectiles.}{40}
+\contentsline {paragraph}{Les unit\IeC {\'e}s.}{40}
 \contentsline {section}{\numberline {2.4}Am\IeC {\'e}lioration possible}{40}
-\contentsline {chapter}{\numberline {3}Partie Interface Graphique}{41}
-\contentsline {section}{\numberline {3.1}Pr\IeC {\'e}sentation}{41}
-\contentsline {section}{\numberline {3.2}Etude de l'ancienne interface}{41}
-\contentsline {subsection}{\numberline {3.2.1}Menu Principal}{41}
-\contentsline {subsection}{\numberline {3.2.2}Editeur de comportement}{42}
-\contentsline {paragraph}{}{42}
-\contentsline {subsection}{\numberline {3.2.3}La s\IeC {\'e}l\IeC {\'e}ction des \IeC {\'e}quipes}{44}
-\contentsline {subsection}{\numberline {3.2.4}Am\IeC {\'e}liorations envisag\IeC {\'e}es}{44}
-\contentsline {paragraph}{}{44}
-\contentsline {section}{\numberline {3.3}Nouvelle Interface}{45}
-\contentsline {subsection}{\numberline {3.3.1}Menu Principal}{45}
-\contentsline {subsubsection}{Lancer une Partie}{46}
-\contentsline {subsubsection}{Bouton \IeC {\'E}diteur de Comportement}{47}
-\contentsline {subsubsection}{Bouton Param\IeC {\`e}tres}{47}
-\contentsline {subsubsection}{Choisir le nombre d'\IeC {\'e}quipe}{47}
-\contentsline {subsubsection}{Choisir les \IeC {\'e}quipes}{47}
-\contentsline {subsubsection}{Bouton "Reload Team"}{48}
-\contentsline {subsubsection}{Choisir carte de jeu}{48}
-\contentsline {subsubsection}{Choisir nombre de d\IeC {\'e}part de chaque unit\IeC {\'e}}{49}
-\contentsline {subsubsection}{Barre de Chargement}{50}
-\contentsline {subsubsection}{Bouton Quitter}{50}
-\contentsline {subsection}{\numberline {3.3.2}Menu des Param\IeC {\`e}tres}{50}
-\contentsline {subsubsection}{Choisir le nombre de ressource maximales dans le jeu}{51}
-\contentsline {subsubsection}{Choisir le mode de jeu}{51}
-\contentsline {subsubsection}{Changer le Volume de la musique}{52}
-\contentsline {subsubsection}{Choisir la langue}{52}
-\contentsline {subsubsection}{Bouton Retour}{53}
-\contentsline {subsubsection}{Bouton Valider}{53}
-\contentsline {subsection}{\numberline {3.3.3}Editeur de Comportement}{54}
-\contentsline {paragraph}{}{54}
-\contentsline {paragraph}{}{54}
+\contentsline {chapter}{\numberline {3}Partie Interface Graphique}{42}
+\contentsline {section}{\numberline {3.1}Pr\IeC {\'e}sentation}{42}
+\contentsline {section}{\numberline {3.2}Etude de l'ancienne interface}{42}
+\contentsline {subsection}{\numberline {3.2.1}Menu Principal}{42}
+\contentsline {subsection}{\numberline {3.2.2}Editeur de comportement}{43}
+\contentsline {paragraph}{}{43}
+\contentsline {subsection}{\numberline {3.2.3}La s\IeC {\'e}l\IeC {\'e}ction des \IeC {\'e}quipes}{45}
+\contentsline {subsection}{\numberline {3.2.4}Am\IeC {\'e}liorations envisag\IeC {\'e}es}{45}
+\contentsline {paragraph}{}{45}
+\contentsline {section}{\numberline {3.3}Nouvelle Interface}{46}
+\contentsline {subsection}{\numberline {3.3.1}Menu Principal}{46}
+\contentsline {subsubsection}{Lancer une Partie}{47}
+\contentsline {subsubsection}{Bouton \IeC {\'E}diteur de Comportement}{48}
+\contentsline {subsubsection}{Bouton Param\IeC {\`e}tres}{48}
+\contentsline {subsubsection}{Choisir le nombre d'\IeC {\'e}quipe}{48}
+\contentsline {subsubsection}{Choisir les \IeC {\'e}quipes}{48}
+\contentsline {subsubsection}{Bouton "Reload Team"}{49}
+\contentsline {subsubsection}{Choisir carte de jeu}{49}
+\contentsline {subsubsection}{Choisir nombre de d\IeC {\'e}part de chaque unit\IeC {\'e}}{50}
+\contentsline {subsubsection}{Barre de Chargement}{51}
+\contentsline {subsubsection}{Bouton Quitter}{51}
+\contentsline {subsection}{\numberline {3.3.2}Menu des Param\IeC {\`e}tres}{51}
+\contentsline {subsubsection}{Choisir le nombre de ressource maximales dans le jeu}{52}
+\contentsline {subsubsection}{Choisir le mode de jeu}{52}
+\contentsline {subsubsection}{Changer le Volume de la musique}{53}
+\contentsline {subsubsection}{Choisir la langue}{53}
+\contentsline {subsubsection}{Bouton Retour}{54}
+\contentsline {subsubsection}{Bouton Valider}{54}
+\contentsline {subsection}{\numberline {3.3.3}Editeur de Comportement}{55}
 \contentsline {paragraph}{}{55}
-\contentsline {subsubsection}{ToolBox}{56}
-\contentsline {subsubsection}{S\IeC {\'e}lection des \IeC {\'e}quipes / unit\IeC {\'e}s}{60}
-\contentsline {subsubsection}{Informations sur l'unit\IeC {\'e}}{62}
-\contentsline {subsubsection}{Liste des pi\IeC {\`e}ces}{63}
-\contentsline {subsubsection}{Editeur}{64}
-\contentsline {subsection}{\numberline {3.3.4}\IeC {\'E}cran de partie}{67}
-\contentsline {subsubsection}{Cam\IeC {\'e}ras}{68}
-\contentsline {subsubsection}{Contr\IeC {\^o}les}{69}
-\contentsline {subsubsection}{Gestion de partie}{69}
-\contentsline {part}{III\hspace {1em}L'avenir du projet}{71}
-\contentsline {chapter}{\numberline {4}Am\IeC {\'e}lioration possible}{72}
-\contentsline {chapter}{\numberline {5}Bugs}{73}
-\contentsline {part}{IV\hspace {1em}Annexe}{74}
-\contentsline {chapter}{\numberline {6}Scripts Remarquables}{75}
-\contentsline {section}{\numberline {6.1}ObjectPool}{76}
-\contentsline {section}{\numberline {6.2}MovableCharacter}{78}
-\contentsline {section}{\numberline {6.3}Brain}{80}
-\contentsline {section}{\numberline {6.4}PerceptUnit}{83}
-\contentsline {section}{\numberline {6.5}LoadFile}{86}
+\contentsline {paragraph}{}{55}
+\contentsline {paragraph}{}{56}
+\contentsline {subsubsection}{ToolBox}{57}
+\contentsline {subsubsection}{S\IeC {\'e}lection des \IeC {\'e}quipes / unit\IeC {\'e}s}{61}
+\contentsline {subsubsection}{Informations sur l'unit\IeC {\'e}}{63}
+\contentsline {subsubsection}{Liste des pi\IeC {\`e}ces}{64}
+\contentsline {subsubsection}{Editeur}{65}
+\contentsline {subsection}{\numberline {3.3.4}\IeC {\'E}cran de partie}{68}
+\contentsline {subsubsection}{Cam\IeC {\'e}ras}{69}
+\contentsline {subsubsection}{Contr\IeC {\^o}les}{70}
+\contentsline {subsubsection}{Gestion de partie}{70}
+\contentsline {section}{\numberline {3.4}Am\IeC {\'e}lioration possible}{71}
+\contentsline {subsection}{\numberline {3.4.1}Fonctionnalit\IeC {\'e}}{71}
+\contentsline {part}{III\hspace {1em}L'avenir du projet}{73}
+\contentsline {chapter}{\numberline {4}Am\IeC {\'e}lioration possible}{74}
+\contentsline {chapter}{\numberline {5}Bugs}{75}
+\contentsline {part}{IV\hspace {1em}Annexe}{76}
+\contentsline {chapter}{\numberline {6}Scripts Remarquables}{77}
+\contentsline {section}{\numberline {6.1}ObjectPool}{78}
+\contentsline {section}{\numberline {6.2}MovableCharacter}{80}
+\contentsline {section}{\numberline {6.3}Brain}{82}
+\contentsline {section}{\numberline {6.4}PerceptUnit}{85}
+\contentsline {section}{\numberline {6.5}LoadFile}{88}

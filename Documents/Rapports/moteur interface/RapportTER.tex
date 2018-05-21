@@ -178,7 +178,7 @@ Dans cette section, nous allons développer la notion d'agent dans un système m
     \hfill%
     \begin{minipage}[c]{.46\linewidth}
         \centering
-        \includegraphics[scale=0.45]{interface-warbot3}
+        \includegraphics[scale=0.3]{WarbotUnity}
         \caption{WarBot, la version Unity.}
     \end{minipage}
 \end{figure}
@@ -448,6 +448,11 @@ L'action de récupération d'un objet par une unité se déroule comme ceci :
 \paragraph{}On vient de voir la récupération d'une ressource par une unité, arrêtons-nous un instant sur le concept et la représentation d'une ressource dans le jeu. Sur Unity, un Prefab est une sauvegarde d'un GameObject avec ses composants et ses propriétés afin que celui-ci puisse être utilisé autant de fois qu'on le souhaite sans avoir à le reconfigurer.
 
 \paragraph{}Du point de vue de sa modélisation, une ressource est représentée par une sphère contenant une autre plus petite en son centre. Elle détient également un système à particules permettant de générer ces dernières, tournant autour du centre de la sphère la rendant plus dynamique. 
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.5]{Ressource}
+\caption{Une ressource sans son animation.}
+\end{figure}
 \paragraph{} Pour sa représentation informatique, une ressource est un Prefab détenant un script ItemHandler, uniquement composé d'un attribut de type Objet.
 \paragraph{}Le script Objet a donc plusieurs attributs ce qui permet la création d'objet de façon générique utilisable dans le gameplay:
 \begin{itemize}
@@ -1261,29 +1266,21 @@ if (_health <= 0)
 \end{lstlisting}
 \section{Amélioration possible}
 L’objectif de ce projet était de rendre générique la version Warbot Unity réalisée l'an dernier.
-Le but étant de facilité la création sur le moteur de jeu Unity, de jeux de stratégie basés sur le paradigme de  la programmation orientée agent afin de permettre un véritable apprentissage de ses différentes notions. En ce sens, notre objectif a été rempli, mais les corrections et améliorations possibles pour les années à
+Le but étant de facilité la création sur le moteur de jeu Unity, de jeux de stratégie basés sur le paradigme de  la programmation orientée agent afin de permettre un véritable apprentissage de ses différentes notions. Mais les corrections et améliorations possibles pour les années à
 venir sont multiples :
 \begin{itemize}
 \item corriger le problème provoquant la rotation des bases lors de la transmission de message..
 \item corriger le positionnement sur l'axe z des unités.
-\item corriger le positionnement du cercle des scores qui est trop haut sur certaines maps. 
-\item améliorer les modèles 3D.
-\item implémenter de nouvelles maps.
 \item perfectionner la gestion des collisions des unités.
-\item ajouter de nouvelles unités au mode Warbot (Tourelles, Ingénieur et RocketLauncher).
+\item améliorer les modèles 3D.
 \item créer de nouveaux percepts, de nouvelles actions terminales et non terminales.
 \item ajouter la possibilité de créer, supprimer et déplacer des unités directement en jeu.
-\item implémenter de nouveaux modes de jeux possédant leurs propres types d'unités, de comportement et d'élément de gameplay.
 \item permettre la sauvegarde d'une partie en cours de jeu et la reprise de celle-ci ultérieurement.
 \item permettre la création de comportements sous forme de machine à état finie en plus de l'architecture de subsomption actuellement présente.
 \item permettre la désactivation/activation du Friendly Fire actuellement non désactivable.
 \item rendre fonctionnel l'application sur Mac et Android.
 \item de manière générale corriger l'ensemble des bugs présents dans la partie dédiée.
-\item
 \end{itemize}
-
-
-
 
 \newpage
 %%%
@@ -2132,11 +2129,53 @@ Le slider se trouvant juste en dessous du précédent permet, comme dans le menu
 	\caption{Barre de son, en jeu}
 \end{figure}
 
+\section{Amélioration possible}
+L'interface a été grandement améliorée par rapport à ce qu'elle était lorsque nous l'avons reçu, cependant, il reste beaucoup d'éléments qui aurait pu être implémentés avec plus de temps, ou de bug qui aurait pu être résout. Nous avons listé ces différents points :
+\subsection{Fonctionnalité}
+\begin{itemize}
+\item InfoBulle apparaissant lors du passage du curseur au dessus d'un éléments de l'interface. 
+\item Zone de comparaison de deux comportements à la fois, soit deux unités différentes soit la même unité mais dans deux équipes différentes.
+\item ScrollBars dynamique dans la zone d'édition et dans la liste des pièces.
+\item Bouton de sauvegarde qui change visuellement si le comportement courant n'est pas déjà sauvegardé.
+\item Nouveau type de condition pour remplacer "Vie 75\%", "Vie 50\%", ... qui deviendrait une seule pièce avec un menu déroulant, qui contiendrait la liste des valeurs. 
+\item Bruitage du jeu séparé de la musique du jeu. Dans l’intérêt que l'on puisse modifier l'un sans changer l'autre.
+\item Une checkBox dans le menu des paramètres pour activer/désactiver le tir allié des unités.
+\item Les boutons UNDO et REDO ne concerne que la création et la suppression des pièces de comportement. Une amélioration serait donc que ces boutons puisse aussi annuler le déplacement d'une pièce.
+\item Bruitages en passant/appuyant sur les boutons (retour sonore).
+\item Forme des pièces qui pourraient être de vraies pièce de puzzle, avec de vrais emboîtement visuels.
+\item Animations visuelle des pièces lorsqu'elles sont au bon emplacement.
+\item Animation et rotation des modèles 3D des unités.
+\item Changement de l'aspect de l'éditeur suivant le jeu(fond d'écran, code couleur des pièces, musiques, etc...).
+\item Image de présentation des cartes (Menu principal) qui tourne pour voir toute la carte.
+\item Fenêtre de classement des équipes (score ELO).
+\item Amélioration de la barre de chargement des parties qui est austère.
+\item Bouton en jeu pour ouvrir l'éditeur de comportement sans arrêter la partie (et pouvoir modifier les comportements en direct).
+\end{itemize}
+
 
 \newpage
 \part{L'avenir du projet}
 \chapter{Pistes envisageable.}
+\begin{itemize}
+\item implémenter de nouvelles maps.
+\item ajouter de nouvelles unités au mode Warbot (Tourelles, Ingénieur et RocketLauncher).
+\item implémenter de nouveaux modes de jeux possédant leurs propres types d'unités, de comportement et d'élément de gameplay.
+\end{itemize}
+
 \chapter{Bugs}
+\begin{enumerate}
+\item\textbf{Scrollbar éditeur}\newline
+La scrollbar de la zone d'édition du comportement n’est pas affectée par la molette de la souris. Seul celle des primitives l’est.
+Si on rendait ça possible, le déplacement d'une pièce affectait les scrollbars, ce qui était un problème majeur.
+
+\item\textbf{Undo / Redo}\newline
+Si l'on annule une ou plusieurs créations / suppressions de pièces dans le comportement d'une unité, que l'on change d'unité, ou d'équipe, et qu'on clique sur "Redo", les pièces apparaîssent sur le comportement de la nouvelle unité.
+
+\item\textbf{Suppression d'une équipe}\newline
+Supprimer une équipe dans l’éditeur alors qu’il n’existe qu’un seule équipe ne fait pas disparaître la sous-fenêtre de confirmation de la suppression.
+Pour faire disparaître la fenêtre, il faudra alors appuyer sur le bouton "Non".
+
+\end{enumerate}
 
 
 \newpage
