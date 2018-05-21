@@ -6,6 +6,7 @@
 \usepackage{xcolor}
 \usepackage{textcomp}
 \usepackage{graphicx}
+\usepackage{hyperref}
 \pagestyle{plain}
 \definecolor{listinggray}{gray}{0.9}
 \definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
@@ -33,8 +34,18 @@
 }
 % Start the document
 \begin{document}
-\newpage
+\begin{titlepage}
+  \begin{sffamily}
+  \begin{center}
 
+    \huge \textsc{Manuel utilisateur de WarBot}\\[5cm]
+  \end{center}
+
+  \end{sffamily}
+\end{titlepage}
+  
+\tableofcontents
+\newpage
 %%%
 % PARTIE Interface Graphique
 %%%
@@ -284,4 +295,195 @@ Permet de régler le son durant une partie.
 		\includegraphics[scale=0.80]{SoundIG}
 	\caption{Volume du son en jeu}
 \end{figure}
+
+\subsection{Outil de debug}
+Cliquer sur ces boutons permet d'activer ou désactiver l'affichage de certaines informations.
+\begin{figure}[!h]
+	\centering
+		\includegraphics[scale=0.80]{sebug.png}
+	\caption{Outils de debug}
+\end{figure}
+\paragraph{}
+Cliquer sur le bouton "Stats" affecte l'affichage des barres de vie et du nombre de ressources de l'unité. \newline
+Cliquer sur le bouton "Message" affecte l'affichage des traits entre les unités qui représentent les envois de message entre ces dernières. \newline
+Cliquer sur le bouton "Vision" affecte l'affichage des cône de vision des unités.
+
+\subsection{Caméras}
+Cliquer sur ces boutons permet de changer de caméra.
+\begin{figure}[!h]
+	\centering
+		\includegraphics[scale=0.80]{camera.png}
+	\caption{Caméras}
+\end{figure}
+\paragraph{}
+Pour activer la vue à la première personne, il faut cliquer sur une unité. La caméra suit les mouvements de l'unit sur laquelle on a cliqué. Bouger la souris à droite ou à gauche modifie l'orintation de la caméra. Cliquer sur le bouton "FPS" permet de retourner en vue de dessus. \newline
+Cliquer sur le bouton "Libre" permet d'activer ou désactiver la caméra libre. En mode améra libre, il possible de modifier la position de la caméra en emmenant la souris sur les bords de la fenêtre. Il est également possible de zoomer. Si la caméra n'est pas libre, elle changera elle même sa position pour capturer au mieux l'entièreté des unités.
+
+\subsection{Vitesse}
+Modifier ce slider modifie la vitesse du jeu. 100\% représente la vitesse normale. Si la valeur est inférieur à 100\%, le jeu est ralentit. Si la valeur est au-dessus de 100\%, le jeu est accéléré. \newline
+Il est possible d'appuyer sur espace pour passer la vitesse à 0\% automatiquement, ce qui met le jeu en pause.
+\begin{figure}[!h]
+	\centering
+		\includegraphics[scale=0.80]{vitesse.png}
+	\caption{Changement de vitesse}
+\end{figure}
+
+\subsection{Boutons}
+\begin{figure}[!h]
+	\centering
+		\includegraphics[scale=0.80]{quitter.png}
+	\caption{Boutons quitter recommencer}
+\end{figure}
+\paragraph{}
+Cliquer sur le bouton "Quitter" permet de revenir à l'écran principal, ce qui arrête la partie. \newline
+Cliquer sur le bouton "Recommencer" permet de lancer une nouvelle partie avec les mêmes paramètres qui ont permis de lancer la partie en cours.
+
+\chapter{Documentation primitives}
+\section{Explication}
+\paragraph{}
+Les primitives permettent de modifier le comportement d'un certain type d'unité au sein d'une même équipe. Pour créer une primitive, il faut cliquer sur l'un des blocs dans le menu de gauche. Une primitive est alors positionné dans l'éditeur de comportement. \newline
+Pour changer le type de primitives à créer, il faut cliquer sur les onglets de couleurs tout à droite de la fenêtre. \newline
+Il faut ensuite la déplacer au bon endroit pour qu'elle soit prise en compte dans le comportement. Pour celà, il suffit de cliquer avec le clic gauche de la souris sur la primitive, de maintenir le bouton enfoncé et de déplacer sa souris. \newline
+Il est possible de supprimer une primitive en faisant un clic droit sur l'une de celles dans l'éditeur de comportement.\newline
+Une fois le comportement d'une unité terminé, il faut cliquer sur le bouton de sauvegarde pour que les unités de votre équipe puissent le suivre. \newline
+Il est possible d'annuler la suppression ou la création d'une primitive en cliquant sur le bouton retour arrière.  \newline
+Le bouton rétablir permet d'annuler les dernières modifications faites avec le bouton retour arrière.
+\section{Start}
+La primitive start est une primitive placé automatiquement dans chaque comportement. Elle est impossible à supprimer. Il n'existe aucun moyen d'en créer une seconde dans un même comportement. Pour qu'une primitive soit compté dans le comportement, il faut qu'elle soit reliée à la primitive start.
+ \begin{figure}[!h]
+	\centering
+		\includegraphics[scale=1]{start.png}
+	\caption{Primitive start}
+\end{figure}
+\section{Controles}
+La seule primitive de controle est "If". Elle est essentielle à la constrution de comportement car c'est la seul primitive pouvant se déplacer en dessous de la primitive Start.\newline
+Les If se plaent les un en-dessous des autres. La partie haute du bloc est destiné aux conditions et la partie basse aux actions et messages.
+\begin{figure}[!h]
+	\centering
+		\includegraphics[scale=1]{if.png}
+	\caption{Primitive de contrôle}
+\end{figure}
+\paragraph{}
+\newpage
+\section{Conditions}
+\paragraph{}
+Les conditions se placent sur la partie haute d'un if ou à droite d'une autre condition. Elles permettent d'exécuter les actions placées sur la partie basse du if si toutes les conditions sont vérifiés.
+\begin{figure}[!h]
+	\centering
+		\includegraphics[scale=1]{cond.png}
+	\caption{Primitive de condition}
+\end{figure}
+\paragraph{}
+\subsection{Conditions communes}
+La liste des conditions communes à chaque unité est :
+\begin{itemize}
+\item Message à l'aide : vérifie si l'unité à reçut un message Demander de l'aide
+\item Message position : vérifie si l'unité à reçut un message Donner sa position
+\item Message attaquer : vérifie si l'unité à reçut un message Ordonner l'attaque
+\item Message position ressource : vérifie si l'unité à reçut un message Donner position de ressource
+\item Vie au niveau max : Vérifie si la vie actuelle de l'unité est égale à  sa vie maximale
+\item Vie \textgreater 75\% : Vérifie si la vie actuelle de l'unité est supérieur à  75\% de sa vie maximale
+\item Vie \textgreater 50\% : Vérifie si la vie actuelle de l'unité est supérieur à  50\% de sa vie maximale
+\item Vie \textgreater 25\% : Vérifie si la vie actuelle de l'unité est supérieur à  25\% de sa vie maximale
+\item Sac plein : Vérifie si le le nombre de ressource de l'unité est égale à la taille de son inventaire
+\item Sac vide : Vérifie si l'unité n'a pas de ressources sur elle.
+\item \textgreater 10 ressources dans sac : Vérifie si l'unité a au moins 10 ressources dans son sac
+\item \textgreater 25 ressources dans sac : Vérifie si l'unité a au moins 25 ressources dans son sac
+\item Ennemi à portée : Vérifie si un ennemi est dans le champ de vision de l'unité. Modifie la cible de l'unité
+\item Allié à portée : Vérifie si un allié est dans le champ de vision de l'unité. Modifie la cible de l'unité
+\end{itemize}
+\subsection{Conditions explorer, light, heavy}
+La liste des conditions communes aux explorer, light et heavy est :
+\begin{itemize}
+\item Est bloqué : vérifie si l'unité ne peux pas avancer à cause d'un obstacle
+\item Base alliée Proche : Vérifie si une base alliée est dans le champ de vision de l'unité. Modifie la cible de l'unité
+\item Can give : vérifie si l'unité peut donner une ressource à une autre unité
+\item Contract Elimination : vérifie si l'unité a un contract d'élimination en cours
+\item Contract Elimination target near : Vérifie si la cible du contract de l'unité est dans son champs de vision
+\item Nourriture prohe : Vérifie si une ressource est suffisemment proche pour être récupérée par l'unité
+\item A un contrat : 
+\item Nourriture a portée : Vérifie si une ressource est dans le champ de vision de l'unité
+\end{itemize}
+\subsection{Conditions ligh, heavy}
+Il reste une condition commune aux light et aux heavy : \newline
+Est recharge : Vérifie si l'unité est rechargé
+\section{Acions}
+\paragraph{}
+Les actions permettent de faire agir les unités. Les actions se placent sur la partie basses d'un if et ne sont exécutés que si toutes les conditions placés dans la partie haute du if sont validés. Les actions terminent le tour de l'unité.
+\begin{figure}[!h]
+	\centering
+		\includegraphics[scale=1]{action.png}
+	\caption{Primitive d'action}
+\end{figure}
+\paragraph{}
+\subsection{Actions communes}
+La liste des actions communes à chaque unité est :
+\begin{itemize}
+\item Ne rien faire : Termine le tour de l'unité
+\item Donner une ressource : Donne une ressource à la cible de l'unité
+\item Se soigner : Consomme une ressource pour récupérer de la vie
+\end{itemize}
+\subsection{Actions explorer, light, heavy}
+La liste des actions communes aux explorer, light et heavy est :
+\begin{itemize}
+\item Avancer orientation aléaoire : modifie l'orientation de l'unité et la fait avancer d'un pas.
+\item Se retourner puis avancer : L'unité se retourner puis avance d'un pas
+\item Rentrer à la base : L'unité se tourne vers la base et avance d'un pas
+\item Ramasser : L'unité ramasse une des ressource à sa porté
+\end{itemize}
+\subsection{Actions light, heavy}
+La liste des actions communes aux light et heavy est :
+\begin{itemize}
+\item Tirer : lance un projetile droit devant soit
+\item Recharger : L'unité recharge son arme
+\end{itemize}
+\subsection{Actions bases}
+La liste des actions spécifiques aux base est :
+\begin{itemize}
+\item Créer Explorer (sac) : Crée une unité de type Explorer à l'aide des ressources de la base
+\item Créer Light (sac) : Crée une unité de type Light à l'aide des ressources de la base
+\item Créer Heavy (sac) : Crée une unité de type Heavy à l'aide des ressources de la base
+\item Créer Explorer (vie) : Crée une unité de type Explorer en utilisant la vie de la base
+\item Créer Light (vie) : Crée une unité de type Light en utilisant la vie de la base
+\item Créer Heavy (vie) : Crée une unité de type Heavy en utilisant la vie de la base
+\item Recharger : L'unité recharge son arme
+\end{itemize}
+\newpage
+\section{Messages}
+\paragraph{}
+Les messages permettent de communiquer avec les unités spécifiés via un paramètre géré par un menu déroulant. Ils se placent sur la partie basse d'un if ou à droite d'un autre message ou d'une ation non terminale. Le message n'est envoyé que si les conditions du if sont toutes validées. Les messages ne terminent pas le tour de l'unité\newline
+\begin{figure}[!h]
+	\centering
+		\includegraphics[scale=1]{msg.png}
+	\caption{Primitive de message}
+\end{figure}
+\paragraph{}
+La liste des messages communs à chaque unité est :
+\begin{itemize}
+\item Demander de l'aide : Envoit un message de type aide aux unités spéifiés dans le menu déroulant
+\item Donner se position : Envoit un message de type position aux unités spéifiés dans le menu déroulant
+\item Ordonner attaque : Envoit un message de type attaque aux unités spéifiés dans le menu déroulant
+\item Donner la position de ressource : Envoit un message de type position ressources aux unités spéifiés dans le menu déroulant
+\end{itemize}
+\newpage
+\section{Actions non terminale}
+\paragraph{}
+Les actions non terminales permettent de faire agir l'unité. Elles se placent sur la partie basse d'un if ou à droite d'une autre action non terminale ou d'un message. L'action n'est effectué que si les conditions du if sont toutes validées. Les actions non terminales ne terminent pas le tour de l'unité.
+\begin{figure}[!h]
+	\centering
+		\includegraphics[scale=1]{action2.png}
+	\caption{Primitive d'ation non terminale}
+\end{figure}
+\paragraph{}
+La liste des actions non terminales communes à chaque unité est :
+\begin{itemize}
+\item Se tourner au sud : Se tourne vers le bas de la fenêtre
+\item Se tourner au nord : Se tourne vers le haut de la fenêtre
+\item Se tourner à l'est: Se tourne vers la droite de la fenêtre
+\item Se tourner à l'ouest : Se tourne vers la gauche de la fenêtre
+\item Se tourner aléatoirement : Prend une orientation aléatoire
+\item Se retourner : Fait un demi tour sur elle-même
+\item Se tourner vers l'expéditeur: Se tourne vers l'expéditeur du dernier message perçu
+\item Ajouter contrat d'élimination : Crée un ontrat d'élimination à partir de la cible actuelle de l'unité
+\end{itemize}
 \end{document}
