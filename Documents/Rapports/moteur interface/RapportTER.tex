@@ -608,7 +608,7 @@ public class Brain : MonoBehaviour
 \end{lstlisting}
 
 \paragraph{}Afin de mener à bien le développement du comportement des unités, on a aussi dû créer une carte plus légère et plus petite que celle de l'ancienne génération nous permettant de faciliter nos tests.
-\newpage
+
 
 \begin{figure}[h!]
         	\centering
@@ -1000,24 +1000,44 @@ Le sujet de notre projet est de permettre à des programmeurs de pouvoir concevo
 \subsection{Création d'unité.}
 Pour pouvoir créer une unité simplement, nous avons mis en place des scripts pour permettre cela.
 Toutes les unités doivent avoir les 8 scripts suivant:
-
-\begin{itemize}
-\item \textit{Message Manager Unit.}\newline
-Ce script permet la gestion des messages de l'unité. Il gère aussi les types de messages que l'unité peut envoyer. 
-\item Stats:
-\item Sight:
-\item Inventory:
-\item Brain:
-\item Action Unit:
-\item Percept Unit:
-\item Action Non Terminale Unit:
-\end{itemize}
-
 \begin{figure}[!h]
 \centering
-\includegraphics[scale = 0.7]{WarUnitImage}
+\includegraphics[scale = 0.5]{WarUnitImage}
 \caption{Un exemple de la composition d'une unité.}
 \end{figure}
+
+\begin{itemize}
+\item \textit{Message Manager Unit.} Le gestionnaire des messages.\newline
+Ce script permet la gestion des messages de l'unité. Il gère aussi les types de messages que l'unité peut envoyer. 
+
+\item \textit{Stats.} Les statistiques.\newline
+Ce script donne accès aux statistiques de l'unité. (Listing \ref{lst:LoadFile}).
+\item \textit{Sight.} Le champ de vision.\newline
+Permet à l'unité de se représenter son environnement.  
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.75]{SightScriptImage}
+\caption{Composant Sight d'une unité.}
+\end{figure}
+
+
+
+\item \textit{Inventory.} L'inventaire.\newline
+Donne la possibilité à une unité de stocker des objets. L'inventaire est caractérisé par le nombre maximal d'objets qu'il peut contenir.
+\begin{figure}[!h]
+\centering
+\includegraphics{InventoryImage}
+\caption{Composant Inventory d'une unité.}
+\end{figure}
+
+
+\item \textit{Brain.} Le centre de commandement de l'unité. (listing \ref{lst:BrainScript})
+\item \textit{Action Unit.} La liste des actions autorisés de l'unité.
+\item \textit{Percept Unit.} La liste des percepts accessible de l'unité.
+\item \textit{Action Non Terminale Unit.} La liste des actions non-terminales possible de l'unité.
+\end{itemize}
+
+
 
 \subsection{Création de carte.}
 \begin{itemize}
@@ -2218,6 +2238,10 @@ Pour faire disparaître la fenêtre, il faudra alors appuyer sur le bouton "Non"
 
 \section{LoadFile.cs}
 \lstinputlisting[language={[Sharp]C},label={lst:LoadFile}, caption=LoadFile.cs]{LoadFile.cs}
+\newpage
+
+\section{Stats.cs}
+\lstinputlisting[language={[Sharp]C},label={lst:LoadFile}, caption=Stats.cs]{Stats.cs}
 \newpage
 
 
