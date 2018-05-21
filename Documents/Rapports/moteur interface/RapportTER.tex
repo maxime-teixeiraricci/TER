@@ -1516,7 +1516,7 @@ _unitCounter.text = _number.ToString("00");
 		\includegraphics[scale=0.80]{NumberUnits}
 	\caption{Choix du nombre d'unités}
 \end{figure}
-\clearpage
+
 \subsubsection{Barre de Chargement}
 Quand on lance une partie, une barre de chargement apparaît et indique l'avancement du chargement de la partie.
 Ceci est une fonction qui utilise "AsyncOperation". La variable ao va contrôler l'avancée du chargement de la scène jeu.
@@ -1663,7 +1663,7 @@ Nous avons commencé par faire un croquis de deux interfaces potentielles.
 
 
 \paragraph{}
-Le premier modèle s'appuie sur l'esprit de l'ancienne interface, avec le panneau de contrôles fortement similaire. Cependant, après concertation lors d'une réunion, nous avons écarté ce modèle, car il ne semblait pas optimisé. La barre d'outils paraissait bien trop importante, et la zone d'édition de comportement s'en voyait restreinte.\newline
+Le premier modèle s'appuie sur l'esprit de l'ancienne interface, avec le panneau de contrôles fortement similaire. Cependant, après concertation lors d'une réunion, nous avons écarté ce modèle, car il ne semblait pas optimisé. La barre d'outils paraissait bien trop importante, et la zone d'édition de comportement s'en voyait restreinte.\clearpage
 Quant au second modèle, il nous semblait organisé de manière plus logique, et intuitive. Toutes les options et choix se trouvent à gauche de la fenêtre, alors que la partie droite se consacre à l'édition du comportement.\newline
 Nous avons donc décidé de partir sur ce modèle.
 
@@ -2191,11 +2191,22 @@ comportements en direct).
 
 \newpage
 \part{L'avenir du projet}
-\chapter{Pistes envisageable.}
+\chapter{Pistes envisageables}
 \begin{itemize}
-\item implémenter de nouvelles maps.
-\item ajouter de nouvelles unités au mode Warbot (Tourelles, Ingénieur et RocketLauncher).
-\item implémenter de nouveaux modes de jeux possédant leurs propres types d'unités, de comportement et d'élément de gameplay.
+\item Implémenter de nouvelles maps
+\item Ajouter de nouvelles unités au mode Warbot (Tourelles, Ingénieur et RocketLauncher)
+\item Implémenter de nouveaux modes de jeux possédant leurs propres types d'unités, de comportement et d'élément de gameplay
+\item Mettre en place la possibilité de sauvegarder une partie en cours, la quitter, et reprendre là où l'on s'était arrêté, en cliquant sur "Continuer partie"
+\item Proposer un générateur de comportements aléatoires, configurable à l'aide de paramètres(équipe agressive, équipe défensive, etc...)
+\item Possibilité de jouer en ligne
+\item Partager ses équipes en ligne
+\item Proposer un classement en ligne
+\item Ajouter une liste de contacts
+\item Ajouter un chat présent durant une partie
+\item Proposer des aspects d'unités différents
+\item Mettre en place des macros, avec niveau de complexité (débutant, avancé, confirmé, etc...), et proposer à l'utilisateur de pouvoir créer ses propres macros
+\item Ajout de décor impactant le gameplay (untié qui se cache dans un buisson, une forêt)
+\item Ajouter un mode debug en jeu
 \end{itemize}
 
 \chapter{Bugs}
@@ -2210,6 +2221,9 @@ Si l'on annule une ou plusieurs créations / suppressions de pièces dans le com
 \item\textbf{Suppression d'une équipe}\newline
 Supprimer une équipe dans l’éditeur alors qu’il n’existe qu’un seule équipe ne fait pas disparaître la sous-fenêtre de confirmation de la suppression.
 Pour faire disparaître la fenêtre, il faudra alors appuyer sur le bouton "Non".
+
+\item\textbf{Placement de condition sur IF verrouillé}\newline
+Quand on essaye de placer une condition à côté d'un IF qui est verrouillé, alors la condition ira par dessus le IF et non au bon endroit.
 
 \end{enumerate}
 
