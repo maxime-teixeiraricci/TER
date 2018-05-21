@@ -87,6 +87,8 @@
 	Contract :=Contrat :
 # Menu principal	
 	Reload Teams=Recharger les équipes
+	Reload teams=Recharger les équipes
+	secondes=secondes
 	Jouer=Jouer
 	Editer=Editer
 	Carte de test=Carte de test
@@ -106,7 +108,7 @@
 	Heavy=Char Lourd
 	Explorer=Explorateur
 	Ressource limit=Limite de ressources
-	Time(s)=Temps(s)
+	Time=Temps
 	Êtes-vous sûr de vouloir quitter le jeu ?=Êtes-vous sûr de vouloir quitter le jeu ?
 # Editeur 
 	Start=Debut

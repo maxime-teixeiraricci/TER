@@ -857,14 +857,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfa56917baab16f4d9f60ef8533a5e41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  posGridX: -14
+  posGridX: -12
   posGridY: 13
   posGridH: 0
   posGridW: 0
   sizePuzzleX: 75
   sizePuzzleY: 75
   undestructible: 1
-  _initialPosition: {x: 283, y: 432.34375, z: 0}
+  _initialPosition: {x: 343.6111, y: 466, z: 0}
   deltaDest: 10
   overEditor: 0
 --- !u!114 &101264365
@@ -2755,7 +2755,6 @@ GameObject:
   m_Component:
   - component: {fileID: 439336063}
   - component: {fileID: 439336065}
-  - component: {fileID: 439336066}
   - component: {fileID: 439336068}
   - component: {fileID: 439336064}
   m_Layer: 5
@@ -2824,17 +2823,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 439336062}
---- !u!114 &439336066
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 439336062}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c7826cf0eb45cd4ea0df221fdea8f02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &439336068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4201,8 +4189,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 784990399}
   m_HandleRect: {fileID: 784990398}
   m_Direction: 2
-  m_Value: 0.99985015
-  m_Size: 0.36567977
+  m_Value: 0.9998501
+  m_Size: 0.3657267
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4379,12 +4367,12 @@ Prefab:
     - target: {fileID: 224067513221369924, guid: 9a2fcd79281119843b3edde35f732bbc,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 339
       objectReference: {fileID: 0}
     - target: {fileID: 224067513221369924, guid: 9a2fcd79281119843b3edde35f732bbc,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 56
       objectReference: {fileID: 0}
     - target: {fileID: 224067513221369924, guid: 9a2fcd79281119843b3edde35f732bbc,
         type: 2}
@@ -8736,12 +8724,12 @@ Prefab:
     - target: {fileID: 224515022587016678, guid: 7d6796989adc9c14aa6d274aab8450f7,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 39
+      value: 91.9812
       objectReference: {fileID: 0}
     - target: {fileID: 224515022587016678, guid: 7d6796989adc9c14aa6d274aab8450f7,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -40.200012
+      value: -25.88013
       objectReference: {fileID: 0}
     - target: {fileID: 224515022587016678, guid: 7d6796989adc9c14aa6d274aab8450f7,
         type: 2}
@@ -11628,8 +11616,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1313297920}
   m_HandleRect: {fileID: 1313297919}
   m_Direction: 0
-  m_Value: 0.00000014908441
-  m_Size: 0.5967293
+  m_Value: 0.00000022362656
+  m_Size: 0.59677666
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -11961,8 +11949,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 190336736}
   m_HandleRect: {fileID: 190336735}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.24781622
+  m_Value: 0.9999999
+  m_Size: 0.2478531
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -12112,7 +12100,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.34450334, y: 0.7021649}
-  m_AnchoredPosition: {x: -0.34213257, y: 17.021}
+  m_AnchoredPosition: {x: -0.3421631, y: 17.021}
   m_SizeDelta: {x: -0.6843, y: 34.202}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1986357861

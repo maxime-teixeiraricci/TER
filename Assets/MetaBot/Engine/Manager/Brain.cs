@@ -106,13 +106,6 @@ public class Brain : MonoBehaviour
             if (!(_componentPercepts._percepts.ContainsKey(percept.Replace("NOT_", "")) && (percept.Contains("NOT_") ^ _componentPercepts._percepts[percept.Replace("NOT_", "")]())))  { flag = false; }
         }
 
-        // bool flag2 = false;
-        // foreach (string percept in instruction._listeStringPerceptsOu)
-        // {
-        //     if (!(_percepts._percepts.ContainsKey(percept) && _percepts._percepts[percept]())) { flag2 = true; }
-        // }
-        // return (flag && flag2);
-
         return flag;
     }
 

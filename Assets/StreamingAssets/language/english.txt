@@ -87,6 +87,8 @@
 	Contract :=Contract :
 # Menu principal
 	Reload Teams=Reload teams
+	Reload teams=Reload teams
+	secondes=seconds
 	Jouer=Play
 	Editer=Edit
 	Carte de test=Test map
@@ -105,7 +107,7 @@
 	Heavy=Heavy
 	Explorer=Explorer
 	Ressource limit=Ressource limit
-	Time(s)=Time(s)
+	Time=Time
 	Êtes-vous sûr de vouloir quitter le jeu ?=Are you sure you want to quit?
 # Editeur 
 	Start=Start
