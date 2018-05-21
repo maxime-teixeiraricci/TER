@@ -98,7 +98,7 @@ Après inspection de l’ancien projet et la nécessité de recommencer sur de n
 \paragraph{}
 Le travail sur le projet a donc été réparti en 4 sous-groupes de 2 personnes comme ci : 
 Un groupe sur le moteur du jeu lui-même
-Un groupe sur l’interface graphique et des intéractions avec l’utilisateur
+Un groupe sur l’interface graphique et des interactions avec l’utilisateur
 Un groupe travaillant sur le langage pour le comportement des unités et l’interprétation de ce langage
 Un groupe de “Game Design” 
 
@@ -106,10 +106,10 @@ Ce rapport portera sur le sous-groupe Game Design et le sous-groupe Interpréteu
 \section{Notion d'agent}
 \subsection{Système multi-agents}
 Un agent est une unité simple et autonome qui suit les règles donnés par un comportement  écrit par un utilisateur ou programmeur. 
-Le but d’un Système multi-agent est la mise en collaboration de l’ensemble des agents dans un but commun, ou simplement pour observer leur évolution dans un environnement défini.
+Le but d’un Système multi-agent est la mise en collaboration de l’ensemble des agents dans un objectif commun, ou simplement pour observer leur évolution dans un environnement défini.
 Il existe 2 types d’agents:
  Les agents cognitifs , qui disposent d’une représentation explicite de leur environnements et des agents qui les entourent. Ils disposent d’un but et peuvent s’organiser en société, tout en effectuant des collaborations si nécessaire.
-Les agents réactifs répondent de manière automatique à des stimulis externe / changements dans son environnement. Cet agent n’a pas de but précis et n’est pas capable de s’organiser en sociétés. 
+Les agents réactifs répondent de manière automatique à des stimulis externe / changements dans son environnement. Cet agent n’a pas de but précis et n’est pas capable de s’organiser en société. 
 Même si les agents réactifs ne sont pas organisés et capable de s’adapter à leur environnement, un ensemble d’agents réactifs sera capable d’effectuer des actions évoluées. C’est le cas d’une société d’insectes comme les fourmis par exemple. 
 
 
@@ -117,11 +117,11 @@ Même si les agents réactifs ne sont pas organisés et capable de s’adapter �
  Le langage et les échanges entre agents seront donc 2 points clés pour avoir une bonne coordination au sein d’une société.
 Il est bien sûr possible d’implémenter une équipe n’utilisant aucune communication, mais les performances de l’équipe dans la réalisation de leur but seront très faible et dans le cas d’une confrontation avec une équipe organisée, leur victoire serait plus liée au hasard que de meilleures performances.
 
-Un exemple d’agent nécessitant de la communication pour utiliser ses compétences correctement est le cas du War RocketLauncher dans WarBot , qui a une portée de tir supérieure à son champ de vision. Il va devoir s’organiser avec d’autres unités pour réussir son but
+Un exemple d’agent nécessitant de la communication pour utiliser ses compétences correctement est le cas du War RocketLauncher dans WarBot , qui a une portée de tir supérieure à son champ de vision. Il va devoir s’organiser avec d’autres unités pour réussir son but.
 \paragraph{}
-Il existe différentes structures pour représenter le comportement d’agents : Architecture du subsomption, machine à états, … mais nous nous concentrerons sur l’Architecture de subsomption lors de ce projet, puisqu’elle est plus simple et intuitive pour de jeunes programmeurs, qui pourraient être le public cible d’un jeu comme Warbot
+Il existe différentes structures pour représenter le comportement d’agents : Architecture du subsomption, machine à états, … mais nous nous concentrerons sur l’Architecture de subsomption lors de ce projet, puisqu’elle est plus simple et intuitive pour de jeunes programmeurs, qui pourraient être le public cible d’un jeu comme Warbot.
 
-Une architecture de subsomption se décompose comme un ensemble de cas que pourraient traités l’agent, organisés de manière hiérarchique, l’ordre est donc très important.
+Une architecture de subsomption se décompose comme un ensemble de cas que pourraient traiter l’agent, organisés de manière hiérarchique, l’ordre est donc très important.
 
 \newpage
 \chapter{WarBot: Le mode par défaut}
@@ -146,11 +146,11 @@ Dans WarBot, deux à quatre équipes se battent sur un terrain pour les ressourc
 repasser sur le texte pour ajouter exemples et illustrations !
 \section{Présentation et Attente}
 La partie "Interpréteur" est la partie la moins visible du projet MetaBot,
-mais il s'agit de la partie du projet servant de clé de voute du jeu.
-Comme dit plus tôt, la particularité de MetaBot est que le joueur, qui pourra être considéré comme le programmeur, va préparer en amont une cohésion d'équipe à travers le comportement et va pouvoir lancer un match contre une autre équipe, afin d'évaluer quel comportement sera le meilleur.
+mais il s'agit de la partie du projet servant de clé de voûte du jeu.
+Comme dit plus tôt, la particularité de Warbot est que le joueur, qui pourra être considéré comme le programmeur, va préparer en amont une cohésion d'équipe à travers le comportement et va pouvoir lancer un match contre une autre équipe, afin d'évaluer quel comportement sera le meilleur.
 L'interpréteur permet de faire la liaison entre l'éditeur du comportement ou l'utilisateur va développer son comportement, en utilisant un ensemble d'instructions que nous avons prédéfinies  et la partie moteur, ou le fonctionnement des unités est inscrit, ainsi que les différents modes de jeux.
 \paragraph{}
-Le langage et l'ensemble des instructions nécessaires est alimenté par l'équipe Game Design qui nous a donné des exemples de messages ou de spécificités du langage qui pourraient être importante. On pouvait ensuite tous en discuter en pesant le pour et le contre, afin de définir si la fonctionnalité allait être mise en place , et de quelle façon.
+Le langage et l'ensemble des instructions nécessaires est alimenté par l'équipe Game Design qui nous a donné des exemples de messages ou de spécificités du langage qui pourraient être importantes. On pouvait ensuite tous en discuter en pesant le pour et le contre, afin de définir si la fonctionnalité allait être mise en place , et de quelle façon.
 
 \section{Etude de l'ancien projet et conception préalable}
 
@@ -174,9 +174,10 @@ Chaque instruction est toujours organisée de la même façon :
 
 Ce sont ces variables qui seront utilisées lors du déroulement du jeu pour exécuter les primitives correspondantes.
 
+La gestion des différentes parties à était déplacée dans la conception du moteur, pour favoriser la généricité du jeu.
 \paragraph{}
 
-Les actions ont été représentées à part, et leur fonctionnement est simple. On utilise comme base une fonction anonyme, et les différentes actions sont implémentées dans un Dictionnaire, mettant en relation un “String” correspondant au nom de l’action qu’il faut executer, et une fonction anonyme qui sera effectivement exécutée en jeu. Ensuite, un ensemble d’action commune à toutes les unités seront écrites dans un script “ActionCommon” et celles-ci seront bien partagées par toutes les unités. 
+Les actions ont été représentées à part, et leur fonctionnement est simple. On utilise comme base une fonction anonyme, et les différentes actions sont implémentées dans un Dictionnaire, mettant en relation un “String” correspondant au nom de l’action qu’il faut exécuter, et une fonction anonyme qui sera effectivement exécutée en jeu. Ensuite, un ensemble d’actions communes à toutes les unités seront écrites dans un script “ActionCommon” et celles-ci seront bien partagées par toutes les unités. 
 
 \begin{lstlisting}[frame=single]
 public abstract class Action : MonoBehaviour
@@ -188,7 +189,7 @@ public abstract class Action : MonoBehaviour
 }
 \end{lstlisting}
 
-Les différences entres unités vont se faire en fonction de leur type. A partir de cet ensemble d’action commune on va spécifier les actions spécifiques ,des unités qui se déplacent, de la base qui est une unité assez spéciale puisqu’elle a la possibilité de créer de nouvelles unités ,  un groupe d’unités qui peuvent tirer , à travers des sous classes de cette classe commune.
+Les différences entres unités vont se faire en fonction de leur type. A partir de cet ensemble d’action commune on va spécifier les actions spécifiques ,des unités qui se déplacent, de la base qui est une unité assez spéciale puisqu’elle a la possibilité de créer de nouvelles unités,  un groupe d’unités qui peuvent tirer , à travers des sous classes de cette classe commune.
 
 \begin{lstlisting}[frame=single]
 public class ActionCommon : Action
@@ -215,8 +216,8 @@ _actions["ACTION_MOVE"]
 
 \paragraph{}
 
-Avant d'exécuter leurs actions , les unités doivent vérifier si les conditions que l’utilisateur a défini nécessaire sont bien validées. Pour cela, on a conservé une structure très similaires de celles des actions, avec les même structures de fonction anonymes. 
-Une spécificité dans la gestion des percepts (et ce sera aussi le cas pour la gestion des messages entre unités) est que l’orientation de l’unité actuelle sera modifiée selon ce qu’elle perçoit. Par exemple, si elle voit une unité agressive , elle va s’orienter vers elle, comme ça l’utilisateur ne devra pas gérer l’orientation de l’unité sauf si celle ci doit être orientée de manière externe (par exemple changer d’orientation si on est bloqué contre un mur)
+Avant d'exécuter leurs actions , les unités doivent vérifier si les conditions que l’utilisateur a défini nécessaire sont bien validées. Pour cela, une structure très similaires de celles des actions a été conservée, avec le même principe de fonctions anonymes. 
+Une spécificité dans la gestion des percepts (et ce sera aussi le cas pour la gestion des messages entre unités) est que l’orientation de l’unité actuelle sera modifiée selon ce qu’elle perçoit. Par exemple, si elle voit une unité agressive , elle va s’orienter vers elle, comme ça l’utilisateur ne devra pas gérer la direction de l’unit,é sauf si celle ci doit être orientée de manière externe (par exemple changer d’orientation si on est bloqué contre un mur).
 
 \begin{lstlisting}[frame=single]
 _percepts["PERCEPT_ENEMY"] = delegate ()
@@ -230,15 +231,14 @@ _percepts["PERCEPT_ENEMY"] = delegate ()
         };
 \end{lstlisting}
 
-Vers la fin du projet, il a été nécessaire de mettre en place des actions non terminales au sein du comportement des unités, puisqu’on ne pouvait plus se limiter à des actions telles que tirer ou avancer. 
+Vers le milieu du projet, il a été nécessaire de mettre en place des actions non terminales au sein du comportement des unités, puisqu’on ne pouvait plus se limiter à des actions telles que tirer ou avancer. 
 WarBot étant une plate-forme multi-agents, il n’était pas concevable de ne pas mettre en place des messages entre les unités, afin de donner la possibilité au joueur d’exploiter pleinement les possibilités de coordination entre agents.
 
-La structure des Action non terminales est la même que les Actions initiales, mais il a fallu installer un système permettant de les exécuter au cours de la partie, sans qu’elles mettent fin au tour de l’unité comme les actions “classiques”.
+La structure des Action non terminales est la même que les Actions initiales, mais l’équipe moteur a pu installer un système permettant de les exécuter au cours de la partie, sans qu’elles ne mettent fin au tour de l’unité comme les actions “classiques”.
 
-% a compléter quand l'équipe moteur aura avancé dessus
 
-La dernière structure importante était donc les messages, qu’il a fallu instaurer de manière assez différentes.
-Ceux-ci contiennent bien sûr un expéditeur et un destinataire,mais aussi un titre qui va permettre de les différencier, pour savoir si un message va plutôt donner la position d’une ressource, une demande d’aide ou une demande d’attaque? Enfin on conservera la direction vers l’expéditeur du message, afin que le destinataire puisse se tourner facilement version l’expéditeur, à travers une action non terminale “Se tourner vers expéditeur”.
+La dernière structure importante était donc les messages, qu’il a fallu instaurer de manière assez différente.
+Ceux-ci contiennent bien sûr un expéditeur et un destinataire,mais aussi un titre qui va permettre de les différencier, pour savoir si un message va plutôt donner la position d’une ressource, une demande d’aide ou une demande d’attaque. Enfin on conservera la direction vers l’expéditeur du message, afin que le destinataire puisse se tourner facilement, à travers une action non terminale “Se tourner vers expéditeur”.
 
 \begin{lstlisting}[frame=single]
 public abstract class MessageManager : MonoBehaviour {
@@ -255,10 +255,10 @@ public abstract class MessageManager : MonoBehaviour {
   }    
 \end{lstlisting}
 
-La gestion des messages dans les unités est réalisée sous forme d’une boite au lettre. Les messages qui arrivent à l’unité pendant le tick  de jeu sont stockés dans une boite “Attente” , et les messages que peuvent traiter l’unité pendant ce tick sont dans une boite “Courante”. A chaque début de tick , on va charger la boite courante avec les messages de la boite “Attente” et on va vider la boite d’attente. Ainsi les messages ne vont pas trainer dans les boites de réception et ralentir le jeu. Cela implique par contre que les messages qui ne sont pas traités sont perdus, ce qui correspond bien à ce que l’on souhaite, puisqu’ainsi si toutes les ressouces a un endroit ont été récupérées entre le moment où une unité envoie le message “Ressource” et que le destinaire le traite, le message n’emmenera pas l’unité à un endroit ou il n’y aura plus de ressources. De plus , il est très important que les unités ne puissent pas stocker des positions telles que la base adverse, donc pouvoir garder un message contenant la position de la base adversaire et l’utiliser alors que plus aucune unité ne se trouve près de la base adversaire est contraire à l’idée de la coordination en multi agents.
+La gestion des messages dans les unités est réalisée sous forme d’une boite au lettre. Les messages qui arrivent à l’unité pendant le tick  de jeu sont stockés dans une boite “Attente” , et les messages que peuvent traiter l’unité pendant ce tick sont dans une boite “Courante”. A chaque début de tick , on va charger la boîte courante avec les messages de la boite “Attente” et on va vider la boite d’attente. Ainsi les messages ne vont pas traîner dans les boîtes de réception et ralentir le jeu. Cela implique par contre que les messages qui ne sont pas traités sont perdus, ce qui correspond bien à ce que l’on souhaite, puisqu’ainsi si toutes les ressources à un endroit ont été récupérées entre le moment où une unité envoie le message “Ressource” et que le destinataire le traite, le message n’emmenera pas l’unité à un endroit ou il n’y aura plus de ressources. De plus , il est très important que les unités ne puissent pas stocker des positions telles que la base adverse, donc pouvoir garder un message contenant la position de la base adversaire et l’utiliser alors que plus aucune unité ne se trouve près de la base adversaire est contraire à l’idée de la coordination en multi agents.
 \paragraph{}
 
-L’ensemble de ces représentations permet la séparation de l’interpréteur et de l’éxecution des primitives en jeu , l’interpréteur sera donc totalement externe et n’aura pas besoin d’être touché lors d’ajout d’actions, conditions, messages…
+L’ensemble de ces représentations permet la séparation de l’interpréteur et de l'exécution des primitives en jeu , l’interpréteur sera donc totalement externe et n’aura pas besoin d’être touché lors d’ajout d’actions, conditions, messages…
 De plus , cette structure utilisant les fonctions anonymes permet d'être totalement générique puisque l’ajout se fait simplement en ajoutant une entrée dans l’initialisation du tableau correspondant.
 \paragraph{}
 
@@ -330,7 +330,7 @@ Cette fonction permet d'aller lire le comportement enregistré à l'endroit du p
 
 Les fichiers d'équipes sont au format XML , mais leur extension est ".wbt" pour coller au projet.
 
-Tout d'abord, la vérification du fichier dans la fonction xmlToBehavior est un peu plus spécifique que uniquement vérifier si le fichier existe, on va aussi aller vérifier qu'on trouve bien un Noeud contenant le nom de l'équipe. Cela permet d'être sûr qu'on ait un fichier de comportement, puisque le chargement des comportements est un moment clé dans le lancement du jeu.
+Tout d'abord, la vérification du fichier dans la fonction xmlToBehavior est un peu plus spécifique que uniquement vérifier si le fichier existe, on va aussi aller vérifier qu'on trouve bien un noeud contenant le nom de l'équipe. Cela permet d'être sûr qu'on ait un fichier de comportement, puisque le chargement des comportements est un moment clé dans le lancement du jeu.
 
 \begin{lstlisting}[frame=single]
  if (file.Contains(Constants.xmlExtension) && !file.Contains(".meta"))
@@ -438,7 +438,6 @@ Toujours dans l'idée de rester générique, un traducteur a été mis en place 
 \paragraph{}
 \subsection{Mise en place}
 
-L'ajout de traductions est externe au jeu.
 Dans les fichiers du jeu , on retrouve un dossier contenant ces traductions,sous formes de fichier représentant chacun une langue.
 Une traduction est simplement une ligne du fichier mettant en relation une clé et sa traduction.
 Le rajout d'une langue est totalement simple et générique :
@@ -465,7 +464,7 @@ Il est possible que le caractère ' = ' pose problème au bout d'un moment, si j
 
 \paragraph{}
 
-La traduction dupliquée de chaque texte comme vue dans la partie "Percepts" de l'exemple plus haut, à laquelle on rajoute un "FALSE\_" , provient du fait que les conditions qui sont traitées dans le jeu peuvent être mises au négatif. Par exemple, si le comportement d'une unité de mon équipe cherche à savoir si cette unité à "un contrat d'élimination en cours" lorsqu'elle reçoit le message demandant de l'aide depuis la base, il est tout à fait possible que l'on cherche à vérifier que l'on a aucun contrat d'élimination pour pouvoir en accepter un nouveau.
+La traduction dupliquée de chaque texte comme vue dans la partie "Percepts" de l'exemple plus haut, à laquelle on ajoute un "FALSE\_" , provient du fait que les conditions qui sont traitées dans le jeu peuvent être mises au négatif. Par exemple, si le comportement d'une unité de mon équipe cherche à savoir si cette unité à "un contrat d'élimination en cours" lorsqu'elle reçoit le message demandant de l'aide depuis la base, il est tout à fait possible que l'on cherche à vérifier que l'on a aucun contrat d'élimination pour pouvoir en accepter un nouveau.
 Au lieu de dupliquer les conditions dans le code , il a été préféré de pouvoir les rendre négatives.
 \paragraph{}
 La traduction fonctionne ainsi :
@@ -498,9 +497,9 @@ public struct Langage
 
 Ceci est la structure qui va permettre de conserver une langue, représentée simplement comme un ensemble de traductions.
 \paragraph{}
-Il est théoriquement possible de stocker plusieurs langues à la fois dans le “LangageLoader”, mais la liste des traductions est vidée à chaque fois que le projet change de langue, afin de ne pas stocker trop de choses inutiles en Runtime, ainsi on va clear la liste des traductions à chaque fois que la langue est modifiée dans les paramètres.
+Il est théoriquement possible de stocker plusieurs langues à la fois dans le “LangageLoader”, mais  on va vider la liste des traductions à chaque fois que la langue est modifiée dans les paramètres, pour ne pas stocker trop de choses en runtime.
 
- Ce script est rattaché à un objet des scènes Unity appellé le Game Manager, qui existe dès le lancement du jeu et qui n’est pas détruit au changement des scènes. Ainsi, si il y a besoin de partager des ressources entre les scènes tel que des configurations , ont peut utiliser le GameManager. 
+ Ce script est rattaché à un objet des scènes Unity appelé le Game Manager,qui a été mis en place par l’équipe moteur et n’est pas détruit au changement des scènes.Le fait que cet objet soit conservé à travers les scènes provient d’utilisation de l’appel “DontDestroyOnLoad()” . Ainsi, si il y a besoin de partager des ressources entre les scènes tel que des configurations , ont peut utiliser le GameManager. 
 
 \paragraph{}
 \begin{adjustwidth}{-3em}{}
@@ -510,7 +509,7 @@ Il est théoriquement possible de stocker plusieurs langues à la fois dans le �
 \paragraph{}
 
 
-Un second script est lui attaché à tous les Objets du jeu qui vont devoir être traduits. Celui-ci va , à la création de l'objet auquel il est rattaché, chercher la langue actuellement affichée, récupérer comme clé le texte original de l'objet auquel le script est affilié, et va stocker la traduction, et l'afficher à l’utilisateur.
+Un second script est lui attaché à tous les Objets du jeu qui vont devoir être traduits. Celui-ci va , à la création de l'objet auquel il est rattaché, chercher la langue actuellement affichée, récupérer comme clé le texte original de l'objet auquel le script est affilié, et va stocker la traduction récupérée dans le LangageLoader du GameManager, et l'afficher à l’utilisateur.
 
 \begin{lstlisting}[frame=single]
    public void Traduction()
@@ -581,8 +580,9 @@ Mais ce fichier est caché, à moins de connaître sa position dans la hiérarch
 
 
 \section{Caméras Spécifiques}
+
 Depuis le début de l’existence de WarBot,les caméras ont toujours été des caméras vue de dessus, puisque ce genre de caméras correspond parfaitement à la vue globale que l’on cherche à avoir pour regarder les agents évolués sur le terrain.
-Nous n’allions pas déroger à la règle et avons conservé cette caméra vue de dessus, mais une spécificité à été implémentée qui est une caméra qui va suivre le mouvement moyen des unités afin d'être toujours orienté vers l’action. 
+Nous n’allions pas déroger à la règle et avons conservé cette caméra vue de dessus, mais une spécificité à été implémentée par l’équipe moteur qui est une caméra qui va suivre le mouvement moyen des unités afin d'être toujours orienté vers l’action. 
 
 Le script va simplement calculer la moyenne des positions de l’ensembles des unités sur le terrain, et va déplacer l’angle de la caméra vers cette position moyenne , grâce à la fonction “LookAt” contenue dans les caméras de Unity. 
 
@@ -635,10 +635,10 @@ On a pu ajouter un cadre à mini carte pour ne pas la confondre avec le sol.
 
 \subsection{Caméra “Libre”}
 
-Au final, une nouvelle caméra à été ajouté au projet, qui a été inspirée de jeux tel que Age of Empires, Civilisation ou Dota, qui est une caméra qui laisse la liberté à l’utilisateur de se déplacer et de dézoomer ou zoomer à l’utilisateur. Nous avons bien sûr bloquer la caméra sur les côtés de la carte pour éviter que l’utilisateur puisse se déplacer tant qu’il le souhaite d’un côté ou de l’autre.
+Au final, une nouvelle caméra à été ajouté au projet, qui a été inspirée de jeux tel que Age of Empires, Civilisation ou Dota, qui est une caméra qui laisse la liberté à l’utilisateur de se déplacer et de dézoomer ou zoomer à l’utilisateur. Nous avons bien sûr bloqué la caméra sur les côtés de la carte pour éviter que l’utilisateur puisse se déplacer tant qu’il le souhaite d’un côté ou de l’autre.
 Une limite à aussi été mise en place sur le zoom/dézoom en caméra libre, de telle manière qu’on ne voit pas la fin de la carte sur unity, mais aussi qu’on ne puisse pas traverser les objets en zoomant trop. 
 
-Le zoom est très classique, il suffit de scroller vers l’avant avec la souris pour zoomer et scroller dans le sens inverse pour dézoomer. Pour les déplacements de la caméra, tant que la souris est dans l’écran la caméra ne bouge pas , et dès que la souris sort de l’écran la caméra va suivre la direction de la souris que ce soit sur le côté ou en diagonale.
+Le zoom est très classique, il suffit de scroller vers l’avant avec la souris pour zoomer et dans le sens inverse pour dézoomer. Pour les déplacements de la caméra, tant que la souris est dans l’écran la caméra ne bouge pas , et dès que la souris sort de l’écran la caméra va suivre la direction de la souris que ce soit sur le côté ou en diagonale.
 \begin{lstlisting}[frame=single]
  if (Input.mousePosition.x <= 2 && Camera.main.transform.position.x > backPosition.x - terrain.bounds.size.x / 4)
      Camera.main.transform.position = new Vector3(Camera.main.transform.position.x - speed, Camera.main.transform.position.y, Camera.main.transform.position.z);
@@ -666,7 +666,7 @@ L’utilisateur peut choisir sa caméra directement depuis le HUD en jeu,  a par
 \end{center}
 \paragraph{}
 
-Initialement, on ne peut passer qu’en caméra libre à partir des boutons, puisque le passage en caméra première personne se fait en cliquant directement sur l’unité voulue. 
+Initialement, on ne peut passer qu’en caméra libre à partir des boutons, puisque le passage en caméra première personne se fait en cliquant directement sur l’unité voulue.
 Lorsque le bouton est vert, cela signifie que l’on peut cliquer dessus pour passer sur la caméra correspondante. Si il est rouge cela signifie que l’on peut cliquer dessus pour quitter la caméra actuelle et revenir dans l’état initial. 
 Enfin si il est grisé, cela signifie que cette caméra n’est pas disponible dans ce mode
 
@@ -681,11 +681,11 @@ Enfin si il est grisé, cela signifie que cette caméra n’est pas disponible d
 
 \section{Fin du jeu et Statistiques}
 
-Avec la quantité de travail pour faire fonctionner le moteur, nous n’avions pas encore mis en place un vrai écran de fin du jeu, qui est bien sur totalement vitale ici. Si l’on souhaite que WarBot soit utilisable l’année prochaine pour l’UE Programmation Orientée Agents de Mr. Ferber, il est nécessaire de pouvoir finir le jeu et récupérer le nom du gagnant du match.
+Avec la quantité de travail pour faire fonctionner le moteur, un écran de fin du jeu n’avait pas encore mis en place,alors qu’il totalement vital ici. Si l’on souhaite que WarBot soit utilisable l’année prochaine pour l’UE Programmation Orientée Agents de Mr. Ferber, il est nécessaire de pouvoir finir le jeu et récupérer le nom du gagnant du match.
 \paragraph{}
 La aussi dans l’optique d’une généricité maximale, il a fallu trouver un moyen de pouvoir ajouter très facilement des conditions et des exécutions de fin.
 Nous nous sommes ainsi inspirés du fonctionnement des Actions, et  utilisons ainsi des fonctions anonymes stockées dans 2 tableaux. 
-Le EndGameManager doit pouvoir vérifier à chaque tick du jeu si la condition de victoire actuelle est validée, et si c’est le cas on va éxecuter une séquence d’instructions détaillées plus tard.
+Le EndGameManager doit pouvoir vérifier à chaque tick du jeu si la condition de victoire actuelle est validée, et si c’est le cas on va exécuter une séquence d’instructions détaillées plus tard.
 
 \begin{lstlisting}[frame=single]
 void Update()
@@ -712,7 +712,7 @@ L’animateur dans Unity va récupérer des objets de la scène et on va pouvoir
 
 Sur la photo ci-dessus, nous voyons sur la gauche les différents objet impliqués dans l’animation , et l’écoulement du temps sur le milieu. 
 Il est possible d’ajouter des images clés sur la timeline, et définir les valeurs qu’auront les  propriétés des objets à chaque image clé. Par exemple, si à 10 secondes je veux que la taille de mon texte soit à 100\% je vais simplement mettre une frame sur 10 sec, et mettre la valeur 1 dans la propriété “Scale” du texte. Unity va donc augmenter linéairement la taille de mon texte entre 0 et 10 secondes.\newline
-L’animation ici correspond à l’apparition d’un fond coloré , avec une augmentation linéaire de sa transparence sur le temps de l’animation. Par dessus, on va voir 2 textes contenant le mot “Game Over” et aussi le nom de l’équipe gagnante. Ces 2 textes vont grossir de 0 à 1.2x leur taille initiale pour ensuite revenir à 1x la taille initiale, pour ajouter un peu de dynamique à l’animation.
+L’animation ici correspond à l’apparition d’un fond coloré , avec une augmentation progressive de sa transparence sur le temps de l’animation. Par dessus, on va voir 2 textes contenant le mot “Game Over” et aussi le nom de l’équipe gagnante. Ces 2 textes vont grossir de 0 à 1.2x leur taille initiale pour ensuite revenir à 1x la taille initiale, pour ajouter un peu de dynamique à l’animation.
 \paragraph{}
 Une fois l’animation terminée, il faut déterminer quand a t-on besoin de jouer cette animation et certains paramètres (doit elle boucler ? , …)
 Ici , il ne fallait absolument pas que l’animation boucle, l’écran doit rester fixe lorsque le jeu est fini. Il est donc indispensable de simplement jouer l’animation dès qu’on détecte la fin du jeu. 
@@ -913,6 +913,52 @@ Lors de l’affichage de l’animation , on va afficher le terme “Égalité”
 \end{center}
 \paragraph{}
 
+\section{Début de la création d’une nouvelle carte}
+
+Souhaitant s’essayer à la création d’une nouvelle carte, et suivant la création du mode de jeu des ressources, nous avons réfléchi à l’ajout d’une carte dans le jeu. 
+Le temps étant trop court, et ayant d’autres priorités, la carte n’a pas été terminée, et ainsi l’équipe qui récupèrera le projet sera libre de pouvoir l’adapter comme bon leur semble.
+\paragraph{}
+
+Même si le but était la découverte de Unity sur la création de scène, nous avons cherché un moyen de rendre cette carte unique et ayant un intérêt. 
+Avec une grande aide de l’équipe Game Design nous avons trouvé une configuration de carte équilibrée et utile. 
+
+%Schéma carte ressources
+
+Les bases ont été écartés aux 4 points cardinaux afin de les éloigner et limiter les combats. L’action est déplacée dans la zone centrale, où les ressources apparaissent et se retrouvent à même distance des 4 bases, les agents vont se déplacer en majorité. \newline
+L’organisation des murs autour de chaque base rend plus difficile l’accès aux bases adversaires à cause des collisions qui vont renvoyer les agents dans une autre direction.
+
+Bien sûr une équipe oubliant les ressources va tomber sur la base adverse si elle est située en face de soi, mais il n’est pas sûr que cette technique soit si rentable dans le mode Course aux ressources.
+
+Un thème de carte qui plaît beaucoup et qui n’avait pas encore été exploré dans les 5 cartes du jeu est l’espace. 
+Une idée était de représenter la carte comme un HUB central de vaisseau spatial, ce qui collait bien à la forme qu’on lui donnait.
+\paragraph{}
+Il a fallu trouver des textures de murs et de sol en rapport avec le thème, et nous avons pu apprendre le fonctionnement des “Skybox” dans Unity.
+La skybox d’une scène un ensemble de 6 images correspondant à l’intérieur d’un cube (respectivement haut, bas , gauche, droit, arrière, avant) qui va être rendu par le jeu en après de tout le reste (donc en arrière-plan) , pour ne pas avoir un fond gris peu agréable pour l’utilisateur.
+La skybox utilisée dans cette carte est tout simplement un fond noir, avec des étoiles pixélisées réparties.
+
+Cette skybox a été générée par l’outil “Spacescape”, qui génère des skybox par couches, en générant des étoiles plus ou moins grosses.
+
+\paragraph{}
+\begin{center}
+\includegraphics[scale=0.5]{DATA/spacescape.png}
+\captionof{figure} {Outil Spacescape pour générer une skybox}
+\end{center}
+\paragraph{}
+
+La carte a d'abord été mise en place sous forme de rectangle, pour bien comprendre le fonctionnement de Unity. Il  n’a pas été malheureusement possible de finir et de modifier la forme pour s’adapter au schéma, la carte est donc restée dans les fichiers du projet tel quelle et n’est pas accessible dans le jeu.
+
+Voici une image de l’état de la carte : 
+
+\paragraph{}
+\begin{center}
+\includegraphics[scale=0.5]{DATA/space.png}
+\captionof{figure} {Etat actuel de la carte}
+\end{center}
+\paragraph{}
+
+
+
+
 \newpage
 \chapter{Partie "Game Design"}
 \section{Expérience utilisateur}
@@ -958,6 +1004,43 @@ Ce problème était particulièrement dérangeant lorsque l’on souhaitait util
 \paragraph{}
 
 \subsection{Création d’équipe sous la version actuelle}
+
+\paragraph{}
+La création d’équipe sous la nouvelle version de WarBot était un mélange de recherche de bugs et d’expérience utilisateur.
+\paragraph{}
+Pour créer une équipe nous partions d’une stratégie générale et nous développions les comportement à partir de cette idée. N’ayant pas encore la possibilité d’utiliser des groupes, les stratégies se limitaient souvent au choix entre une équipe défensive ou offensive.
+\paragraph{}
+Au vu de notre expérience, il y a une seule chose qui sépare ces deux genres d’équipes : l’ordre dans lequel on veut gérer les actions. Une équipe défensive va préférer mettre ses primitives pour se soigner au plus haut de sa hiérarchie pour que ce soit une action prioritaire, assurant la survie alors qu’une équipe offensive va préférer placer les actions de tirs et de rechargement avant les soins pour s’assurer d’effectuer des dégâts plus souvents. 
+\paragraph{}
+De manière générale,il y a quelques astuces importantes à prendre en compte pour optimiser le comportement d’une équipe. La première est de placer toutes les actions qui ne terminent pas le tour d’une unité comme les envois de message tout en haut de la hiérarchie pour s’assurer que ces actions soit effectués. On fait ensuite suivre les actions qui ont le moins de chances de se produire qui s’avèrent être les actions qui se font alors que l’unité est immobile (tirer, ramasser une ressource…) en les plaçant dans un ordre en particulier suivant la stratégie d’équipe que l’on souhaite appliquer. \newline
+La deuxième est de préférer le système de création d’unité à l’aide de la vie car ce procédé permet de créer des unités dès le début de partie alors qu’une équipe qui crée des unités à partir des ressources devra attendre beaucoup plus longtemps avant de voir ses premières unités se former. Les ressources ramenées à la base sert alors à la soigner, ce qui permet de créer de nouvelles unités. L’avantage numérique étant très important dans le mode de jeu WarBot, il vaut mieux s’assurer de posséder beaucoup d’unités dès le départ si nous ne voulons pas nous mettre dans une situation de laquelle il est presque impossible de reprendre l’avantage. L’inconvénient de cette technique est le fait de ne pas avoir beaucoup de vie mais l’avantage numérique nous semble beaucoup trop important pour arriver à former une équipe efficace qui préfère utiliser les ressources pour créer ses agents. \newline
+Dernièrement, il vaut mieux respecter ce genre de comportement pour les déplacements :
+\begin{lstlisting}[frame=single]
+if(blocked) {
+  heading random
+  move
+}
+#Tout mouvement qui demande de se diriger vers quelque chose (base, message...)
+if( ){
+  move
+}
+\end{lstlisting}
+De cette manière, le fait de se débloquer est prioritaire à tout déplacement. Ce qui permet de ne pas rester bloqué dans un obstacle.
+\paragraph{}
+  Lors de la création des équipes, nous avons pu apprécier les améliorations ergonomiques par rapport à l’ancienne version de WarBot. Le code est bien plus facile à lire grâce au code couleur qui différencie bien les différents types de blocs. De plus, le système de suppression de blocs a été changé : il faut maintenant faire un clic droit sur un bloc. Cette méthode permet de placer des blocs sans les rattacher aux blocs du comportement ce qui rend le déplacement de primitives plus simples et agréables. \newline
+L’ajout d’un système de grille est également très agréable car les blocs sont naturellement attirés les un les autres ce qui permet de ne pas avoir besoin d’être précis lorsque que l’on place des blocs. \newline
+Il est très facile de comprendre si nos blocs sont pris en compte dans le comportement grâe au système de coloralisation des pièces qui sont grisées si elles ne sont pas prises en compte et colorées si la primitive fait parti du omportement. \newline  
+L’ajout de boutons de sauvegarde et de retour arrière et restauration rende également la partie conception bien plus agréable car il est possible de corriger ses erreurs bien plus simplement qu’avec la version de l’éditeur développé l’année dernière.\newline
+La seule chose qui nous dérange encore sur la version actuelle est l’impossibilité d’utiliser la molette de la souris pour agir sur la partie de la fenêtre où l’on construit le comportement d’une unité ce qui demande de déplacer l’ascenseur avec sa souris, chose qui nous éloigne de l’endroit où se situe les primitives du comportement. Comme on utilise cet ascenseur pour pouvoir déplacer les blocs, il est dommage de devoir s’en éloigner avant de pouvoir faire les déplacer.\newline
+La partie propriétés, bien qu’elle demande à être revu graphiquement fait son travail et permet de se donner une idée de l’intérêt de chaque unité qui permettra aux nouveaux joueurs de rapidement saisir les atouts et les faiblesses de chaques unités. Chose qui leur permettra de concevoir plus rapidement des équipes qui exploitent toutes les unités de manière optimale.
+\paragraph{}
+\begin{adjustwidth}{-5.5em}{-5.5em}
+\begin{center}
+\includegraphics[scale=0.35]{DATA/editeurNew.png}
+\captionof{figure} {Aperçu du nouvel éditeur}
+\end{center}
+\end{adjustwidth}
+\paragraph{}
 \section{Test logiciel}
 \subsection{Procédé}
 \paragraph{}
