@@ -1085,6 +1085,36 @@ void SetSmoke()
         }
     }
 \end{lstlisting}
+\paragraph{Spécificitée de unités de type Light.} La particularité de ceux-ci est qu'ils ont une tourelle rotative. Elle s'aligne en direction en direction de l'ennemi avant de tirer, cette caractéristique est particulièrement appréciable en mode de caméra première personne.
+ \begin{lstlisting}[language={[Sharp]C},label={lst:ShooterAnimation}, caption= Extrait du code de Shooter.cs]
+public void Shoot()
+    {
+        if (reloadTick == 0)
+        {
+            GameObject weapon = Instantiate(_weapon);
+            _i = (_i + 1) % _listOfStartPoint.Length;
+            weapon.transform.position = _listOfStartPoint[_i].position;
+            weapon.GetComponent<BulletScript>()._owner = gameObject;
+            Transform canon = null;
+            for (int i = 0; i < transform.childCount - 1; i++)
+            {
+                if (transform.GetChild(i).transform.CompareTag("Canon"))
+                {
+                    canon = transform.GetChild(i);
+                }
+            }
+
+
+            //If the child was found.
+            if (canon != null)
+            {
+                weapon.GetComponent<BulletScript>()._vect = -canon.right;
+            }
+            else weapon.GetComponent<BulletScript>()._vect = Utility.vectorFromAngle(GetComponent<Stats>().GetHeading());
+            reloadTick = GetComponent<Stats>().GetReloadTime();
+        }
+    }
+\end{lstlisting}
 \subsection{Sons.}
 Les différents sons et bruitages présents dans le jeu ont été récupérés à partir de banques de sons libres de droit sur internet.
 \newline Différents fonds musicaux et effets sonores sont audibles tout au long de l'utilisation du jeu.
@@ -1142,7 +1172,7 @@ if (_health <= 0)
 \end{lstlisting}
 \section{Amélioration possible}
 L’objectif de ce projet était de rendre générique la version Warbot Unity réalisée l'an dernier.
-Le but étant de facilité la création sur le moteur de jeu Unity, de jeux de stratégie basés sur le paradigme de  la programmation orientée agent afin de permettre un véritable apprentissage de ses différentes notions. En ce sens, notre objectif a été rempli, mais les améliorations possibles pour les années à
+Le but étant de facilité la création sur le moteur de jeu Unity, de jeux de stratégie basés sur le paradigme de  la programmation orientée agent afin de permettre un véritable apprentissage de ses différentes notions. En ce sens, notre objectif a été rempli, mais les corrections et améliorations possibles pour les années à
 venir sont multiples :
 \begin{itemize}
 \item corriger le problème provoquant la rotation des bases lors de la transmission de message..
@@ -1157,6 +1187,8 @@ venir sont multiples :
 \item implémenter de nouveaux modes de jeux possédant leurs propres types d'unités, de comportement et d'élément de gameplay.
 \item permettre la sauvegarde d'une partie en cours de jeu et la reprise de celle-ci ultérieurement.
 \item permettre la création de comportements sous forme de machine à état finie en plus de l'architecture de subsomption actuellement présente.
+\item permettre la désactivation/activation du Friendly Fire actuellement non désactivable.
+\item rendre fonctionnel l'application sur Mac et Android.
 \item de manière générale corriger l'ensemble des bugs présents dans la partie dédiée.
 \item
 \end{itemize}
