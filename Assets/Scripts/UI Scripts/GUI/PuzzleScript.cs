@@ -68,11 +68,11 @@ public class PuzzleScript : MonoBehaviour
     {
         string affiche = _value;
         affiche = affiche.Replace("NOT_", "FALSE_");
-        if (gamemanager)
-        {
-            gamemanager.GetComponent<Traducteur>().setTextOriginal(affiche);
-            affiche = gamemanager.GetComponent<Traducteur>().traduction;
-        }
+        //if (gamemanager)
+        //{
+        GameObject.Find("GameManager").GetComponent<Traducteur>().setTextOriginal(affiche);
+            affiche = GameObject.Find("GameManager").GetComponent<Traducteur>().traduction;
+        //}
         if (type == Type.CONDITION)
         {
             _label.GetComponent<Text>().text = affiche.Replace("PERCEPT_", "").Replace("_", " ") + "?";
