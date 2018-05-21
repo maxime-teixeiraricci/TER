@@ -2048,7 +2048,19 @@ Le slider se trouvant juste en dessous du précédent permet, comme dans le menu
 \part{L'avenir du projet}
 \chapter{Amélioration possible}
 \chapter{Bugs}
+\begin{enumerate}
+\item\textbf{Scrollbar éditeur}\newline
+La scrollbar de la zone d'édition du comportement n’est pas affectée par la molette de la souris. Seul celle des primitives l’est.
+Si on rendait ça possible, le déplacement d'une pièce affectait les scrollbars, ce qui était un problème majeur.
 
+\item\textbf{Undo / Redo}\newline
+Si l'on annule une ou plusieurs créations / suppressions de pièces dans le comportement d'une unité, que l'on change d'unité, ou d'équipe, et qu'on clique sur "Redo", les pièces apparaîssent sur le comportement de la nouvelle unité.
+
+\item\textbf{Suppression d'une équipe}\newline
+Supprimer une équipe dans l’éditeur alors qu’il n’existe qu’un seule équipe ne fait pas disparaître la sous-fenêtre de confirmation de la suppression.
+Pour faire disparaître la fenêtre, il faudra alors appuyer sur le bouton "Non".
+
+\end{enumerate}
 
 \newpage
 \part{Annexe}
