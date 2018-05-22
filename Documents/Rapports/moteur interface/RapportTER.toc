@@ -1,5 +1,4 @@
 \babel@toc {french}{}
-\contentsline {paragraph}{}{1}
 \contentsline {part}{I\hspace {1em}Pr\IeC {\'e}sentation du projet}{4}
 \contentsline {chapter}{\numberline {1}Introduction}{5}
 \contentsline {section}{\numberline {1.1}But du projet}{5}
