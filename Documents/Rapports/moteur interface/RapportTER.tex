@@ -868,6 +868,9 @@ public abstract class MessageManager : MonoBehaviour
 Lorsqu'un message est envoyé à une unité, ce message est recuperé dans le \textit{MessageManager} de l'unité et est réceptionné dans la liste de messages \textit{\_waitingMessages}. Cette liste reçoit tous les messages du tour en cours de l'unité. Ce système a été mis en place pour éviter que certaines unités reçoivent des messages avant d'autres.
 \paragraph{}
 Dans le script \textit{Brain.cs} (listing \ref{lst:BrainScript}), la méthode \textit{UnitTurn} s'occupe de la gestion du tour de l'unité. La première phase du tour fait appelle à \textit{UpdateMessage()} du composant \textit{MessageManager}. Cette méthode met à jour la liste des messages en basculant les messages de la liste d'attentes (\textit{\_waitingMessages}) dans la liste de messages courants (\textit{\_currentMessages}).
+\subsubsection{Gestion des contrats.}
+Les unités ont une "target", qui est leur cible pour le tour actuel. Celle-ci peut être un ennemi sur lequel l'unité doit tirer, une ressource qu'elle doit récupérer...
+\newline Maiis un des ajout important dans ce projet a été la notion d'objectif, de cible à long terme. Celle-ci est représentée par un contrat. Un contrat est un engagement pris par une unité envers une autre. Par exemple si une unité repère un ennemi sur la carte et qu'elle souhaite demander du renfort, elle peut envoyer un message proposant un contrat à certaines unités et celles-ci peuvent l'accepter. Dans ce cas, l'ennemi repéré devient la cible au long terme de l'unité, cela signifie que l'unité détient l'identité de l'ennemi qui reste en mémoire jusqu'à ce que celui-ci meurt ou que l'unité accepte un nouveau contrat. Ce mécanisme est mis en place de manière générique et un type de contrat spécifique "EliminationContract" est actuellement en place, celui-ci reprend le principe de l'exemple ci-dessus. Le même type de contrat pourrait donc être utilisé à fin de demender la récupération de ressource ou encore de demander de l'aide à d'autres unités alliées. Les unités ont donc accès au message "AttackUnit", proposant un contrat; au percept "HaveEliminationContract", vérifiant la détention d'un contrat d'élimination et à l'action non terminale "AddEliminationContract" lui permettant d'accepter un contrat.     
 
 \subsubsection{Optimisation du temps de chargement.}
 \paragraph{} L'un des gros problèmes que l'on a rencontré est le fait que le temps de chargement lors d'une partie était beaucoup trop élevé. Cela nuisait au bon déroulement de la partie, atteignant parfois deux minutes de temps de chargement lorsque l'on voulait générer 200 unités. Pour résoudre ce problème, nous avons étudié plusieurs pistes.
@@ -1090,7 +1093,7 @@ Donne la possibilité à une unité de stocker des objets. L'inventaire est cara
 \item \textit{MinimapCamera.} Caméra permettant l'affichage de la mini-carte en mode vue subjective.
 \item \textit{ItemManager.} Gère le comportement des objets.
 \item \textit{CanvasHUD.} Le canvas permettant d'afficher les éléments graphiques sur la caméra. Il contient notamment les scores, les noms des équipes, la gestion du temps, et les boutons de contrôle.
-\item \textit{UnitManager.} Gestionnaire d'unité qui comporte les 4 équipes. C'est ici que le positionnement des unités de départ est geré. Ainsi les bases des équipes 
+\item \textit{UnitManager.} Gestionnaire d'unité qui comporte les 4 équipes. C'est ici que le positionnement des unités de départ est géré. Ainsi les bases des équipes 
 
 \begin{figure}[!h]
 \centering
@@ -1101,6 +1104,81 @@ Donne la possibilité à une unité de stocker des objets. L'inventaire est cara
 \end{itemize}
 
 \subsection{Gestion des comportements.}
+\paragraph{Action, Action non-terminales et Percepts.}
+Pour ajouter de nouvelles actions, actions non-terminales et percepts, il faut créer des classes dérivant des classes \textit{Action}, \textit{ActionNonTerminal} et \textit{Percept}.
+
+ \begin{lstlisting}[language={[Sharp]C},label={lst:ActionUnit2Script}, caption= Code de ActionUnit.cs]
+public class ActionUnit : ActionCommon {
+    void Start() {
+        InitAction();
+    }
+    
+    public override void InitAction() {
+        base.InitAction(); // IMPORTANT : Permet de recuperer les percepts de la classe mere
+        _actions["ACTION_MOVE"] = delegate () { GetComponent<MovableCharacter>().Move(); };
+        
+        _actions["ACTION_RANDOM_MOVE"] = delegate ()
+        {
+            GetComponent<Stats>().SetHeading(Random.Range(0f,360f));
+            _actions["ACTION_MOVE"]();
+        };
+   
+        _actions["ACTION_TURN_AROUND_MOVE"] = delegate () { [...] };
+        _actions["ACTION_PICK"] = delegate () { [...] };
+        _actions["ACTION_BACK_TO_BASE"] = delegate () { [...] };
+    }
+}
+\end{lstlisting}
+
+
+\paragraph{Squelettes.}Ci-dessous, les trois squelettes pour l'ajout d'actions, d'actions non-terminales et de percepts.
+ \begin{lstlisting}[language={[Sharp]C},label={lst:ActionNewScript}, caption= Structure du code d'une nouvelle classe d'action.]
+public class ActionNew : Action {
+
+    void Start() 
+    {
+        InitAction();
+    }
+    
+    public override void InitAction() 
+    {
+        base.InitAction(); // IMPORTANT : Permet de récupérer les actions de la classe mère
+        /* Code à définir ici */
+    }
+}
+\end{lstlisting}
+
+ \begin{lstlisting}[language={[Sharp]C},label={lst:PerceptNewScript}, caption= Structure du code d'une nouvelle classe de percepts.]
+public class PerceptNew : Percept {
+
+    void Start() 
+    {
+        InitPercept();
+    }
+    
+    public override void InitPercept() 
+    {
+        base.InitPercept(); // IMPORTANT : Permet de récupérer les percepts de la classe mère
+        /* Code à définir ici */
+    }
+}
+\end{lstlisting}
+
+ \begin{lstlisting}[language={[Sharp]C},label={lst:ActionNonTerminalNewScript}, caption= Structure du code d'une nouvelle classe d'action non-terminale.]
+public class ActionNonTerminalNew : ActionNonTerminal {
+
+    void Start() 
+    {
+       InitActionNonTerminal();
+    }
+    
+    public override void InitActionNonTerminal()
+    {
+        base.InitActionNonTerminal(); // IMPORTANT : Permet de récupérer les actions non-terminales de la classe mère
+        /* Code à définir ici */
+    }
+}
+\end{lstlisting}
 
 \section{Modélisation 3D, sons et animation.}
 
@@ -1339,18 +1417,19 @@ L’objectif de ce projet était de rendre générique la version Warbot Unity r
 Le but étant de facilité la création sur le moteur de jeu Unity, de jeux de stratégie basés sur le paradigme de  la programmation orientée agent afin de permettre un véritable apprentissage de ses différentes notions. Mais les corrections et améliorations possibles pour les années à
 venir sont multiples :
 \begin{itemize}
-\item corriger le problème provoquant la rotation des bases lors de la transmission de message..
-\item corriger le positionnement sur l'axe z des unités.
-\item perfectionner la gestion des collisions des unités.
-\item améliorer les modèles 3D.
-\item créer de nouveaux percepts, de nouvelles actions terminales et non terminales.
-\item ajouter la possibilité de créer, supprimer et déplacer des unités directement en jeu.
-\item intégrer la notion de groupe au comportement des unités.
-\item permettre la sauvegarde d'une partie en cours de jeu et la reprise de celle-ci ultérieurement.
-\item permettre la création de comportements sous forme de machine à état finie en plus de l'architecture de subsomption actuellement présente.
-\item permettre la désactivation/activation du Friendly Fire actuellement non désactivable.
-\item rendre fonctionnel l'application sur Mac et Android.
-\item de manière générale corriger l'ensemble des bugs présents dans la partie dédiée.
+\item Corriger le problème provoquant la rotation des bases lors de la transmission de message..
+\item Corriger le positionnement sur l'axe z des unités.
+\item Perfectionner la gestion des collisions des unités.
+\item Améliorer les modèles 3D.
+\item Créer de nouveaux percepts, de nouvelles actions terminales et non terminales.
+\item Ajouter la possibilité de créer, supprimer et déplacer des unités directement en jeu.
+\item Intégrer la notion de groupe au comportement des unités.
+\item Permettre la sauvegarde d'une partie en cours de jeu et la reprise de celle-ci ultérieurement.
+\item Permettre la création de comportements sous forme de machine à état finie en plus de l'architecture de subsomption actuellement présente.
+\item Permettre la désactivation/activation du Friendly Fire actuellement non désactivable.
+\item Rendre fonctionnel l'application sur Mac et Android.
+\item De manière générale corriger l'ensemble des bugs présents dans la partie dédiée.
+\item Optimiser le moteur de jeu.
 \end{itemize}
 
 \newpage
@@ -1630,7 +1709,7 @@ Si le mode choisi est RessourceRace alors deux autres paramètres apparaissent:
 	\caption{Paramètres RessourceRace}
 \end{figure}
 
-\subsubsection{Changer le Volume de la musique}
+\subsubsection{Changer le volume de la musique}
 Ce slider indique le niveau sonore de la musique. On peut le modifier en cliquant dessus et en déplaçant la valeur de 0 jusqu’à 100. 0 correspond à un arrêt de la musique et 100 au volume maximal. \newline
 De plus, le volume sonore dans le menu est le même dans l'éditeur de comportement et dans le jeu lui même.
 La valeur de notre slider affectera directement la valeur de notre AudioSource.
