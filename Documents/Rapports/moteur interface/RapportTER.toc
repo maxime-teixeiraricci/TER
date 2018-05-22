@@ -87,18 +87,19 @@
 \contentsline {paragraph}{Messagerie individualis\IeC {\'e}e.}{32}
 \contentsline {paragraph}{}{32}
 \contentsline {paragraph}{}{32}
-\contentsline {subsubsection}{Optimisation du temps de chargement.}{32}
-\contentsline {paragraph}{}{32}
+\contentsline {subsubsection}{Gestion des contrats.}{32}
+\contentsline {subsubsection}{Optimisation du temps de chargement.}{33}
+\contentsline {paragraph}{}{33}
 \contentsline {subparagraph}{1. La gestion des actions des unit\IeC {\'e}s.}{33}
 \contentsline {subparagraph}{2. \textit {ObjectPool}, les "bassins" d'objets.}{34}
-\contentsline {subparagraph}{}{35}
-\contentsline {subparagraph}{3. Simplification des collisions.}{35}
+\contentsline {subparagraph}{}{36}
+\contentsline {subparagraph}{3. Simplification des collisions.}{36}
 \contentsline {subparagraph}{}{36}
 \contentsline {subparagraph}{}{36}
 \contentsline {subsubsection}{Am\IeC {\'e}lioration des collisions.}{36}
 \contentsline {paragraph}{}{36}
-\contentsline {subparagraph}{}{37}
-\contentsline {section}{\numberline {2.3}Usage.}{37}
+\contentsline {subparagraph}{}{38}
+\contentsline {section}{\numberline {2.3}Usage.}{38}
 \contentsline {subsection}{\numberline {2.3.1}Pr\IeC {\'e}requis.}{38}
 \contentsline {paragraph}{Le moteur Unity.}{38}
 \contentsline {paragraph}{}{38}

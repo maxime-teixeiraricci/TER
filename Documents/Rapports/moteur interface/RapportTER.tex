@@ -109,7 +109,7 @@ title=\lstname,
 %-------------------------------------------------------------------------------
 
 \begin{document}
-
+\pagenumbering{Roman}
 \title{\normalsize \textsc{Rapport de TER}
 		\\ [1.5cm]
 		\HRule{0.5pt} \\
@@ -128,12 +128,10 @@ title=\lstname,
 
 \maketitle
 
-\newpage
-\newpage
 \tableofcontents
 \newpage
 % Create a new 1st level heading
-
+\pagenumbering{arabic}
 \part{Présentation du projet}
 \chapter{Introduction}
 \section{But du projet}
@@ -1061,7 +1059,7 @@ Donne la possibilité à une unité de stocker des objets. L'inventaire est cara
 \item \textit{TurnManager.} S'occupe de la gestion des tours des unité.
 
 
-\item \textit{RessourceGenerator.} Cet objet permets
+\item \textit{RessourceGenerator.} Cet objet permets de générer les ressources nécessaires au jeu WarBot.
 
 
 \begin{figure}[!h]
@@ -1070,13 +1068,20 @@ Donne la possibilité à une unité de stocker des objets. L'inventaire est cara
 \caption{Script \textit{SpawnRessource.cs} dans l'éditeur d'Unity}
 \end{figure}
 
-\item \textit{MinimapCamera.} Caméra permettant l'affichage de la mini-carte.
-\item \textit{ItemManager.} gère le comportement des objets.
-\item \textit{HUD.} canvas d'affichage tête haute.
-\item \textit{UnitManager.} gestionnaire d'unité qui comporte les 4 équipes.
-\end{itemize}
-\subsection{Gestion des comportements.}
+\item \textit{MinimapCamera.} Caméra permettant l'affichage de la mini-carte en mode vue subjective.
+\item \textit{ItemManager.} Gère le comportement des objets.
+\item \textit{CanvasHUD.} Le canvas permettant d'afficher les éléments graphiques sur la caméra. Il contient notamment les scores, les noms des équipes, la gestion du temps, et les boutons de contrôle.
+\item \textit{UnitManager.} Gestionnaire d'unité qui comporte les 4 équipes. C'est ici que le positionnement des unités de départ est geré. Ainsi les bases des équipes 
 
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.35]{UnitManagerImage}
+\caption{Le positionnement d'une base dans la scene.}
+\end{figure}
+
+\end{itemize}
+
+\subsection{Gestion des comportements.}
 
 \section{Modélisation 3D, sons et animation.}
 
