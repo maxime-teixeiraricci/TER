@@ -128,6 +128,25 @@ title=\lstname,
 
 \maketitle
 
+
+\chapter*{Remerciements}
+Nous tenions à remercier notre encadrant M.Ferber, qui nous a suivi et conseillé durant toute la durée de ce projet.\newline
+Nous tenions également à créditer les créateurs de certaines icônes et polices faisant partis de notre projet.
+
+\section*{Icônes}
+\noindent
+New file icon : Creative Stall\newline
+Load file icon : Ralf Schmitzer\newline
+Save icon : To Uyen\newline
+Undo : Michael Kussmaul\newline
+Redo : ImageCatalog\newline
+Sound Icon : Yaroslav Samoyl\newline
+Muted sound icon : Dev Patel\newline
+\section*{Polices}
+\noindent
+Enchanted Land\newline
+Dennis Ludlow
+
 \tableofcontents
 \newpage
 % Create a new 1st level heading
@@ -159,7 +178,7 @@ Dans cette section, nous allons développer la notion d'agent dans un système m
 \end{figure}
 
 \paragraph{L'individualisme au service du collectif.}L’intérêt des agents est l'idée qu'une action individualiste et égoïste permet un comportement collectif d'un ensemble d'agents pour réaliser des actions qu'un individu seul ne pourrais pas accomplir. Pour permettre de réaliser des objectifs de groupe, les individues peuvent communiquer entre eux afin de permettre de déléguer ou de s'unir dans des tâches plus ardues.
-\paragraph{Représentation et simulation}Ce genre de système permet, en créant des comportements d'agents simple, la simulation de société plus complexe. Ainsi, on peut étudier les comportement globales des entités selon ce que l'on veut observer.
+\paragraph{Représentation et simulation.}Ce genre de système permet, en créant des comportements d'agents simple, la simulation de société plus complexe. Ainsi, on peut étudier les comportement globales des entités selon ce que l'on veut observer.
 \paragraph{Les système-multi agents dans de multiples domaines.} Les systèmes multi-agents sont utilisées dans de nombreux domaines, notamment dans les jeux vidéos et le cinéma. Dans ces domaines, les systèmes multi-agents  sont utilisées pour représenter des mouvement de foules avec des comportement très simples, ou, dans le cas du jeu vidéo, permettre de créer des comportements aux personnages non joueurs pour les rendre plus intéressant pour le joueurs.
 
 
@@ -814,12 +833,12 @@ Cette structure est composé simplement de deux attributs string \textit{\_intit
 \item A un type d'unité en particulier.
 \end{itemize}
 
-\paragraph{3. Mouvement tactique.}
+\paragraph{3. Mouvements tactiques.}
 Comme définie dans le listing \ref{lst:BehaviorExample}, l'instruction 2. permet de faire une action non-terminale même sans d'action terminale.
 Ainsi on a la possibilité de réaliser des mouvements plus tactiques sans terminer le tour.
 \paragraph{}Lorsque les percepts de l'instruction 2 sont activés, cela déclenche l'action non terminale en ligne 6 qui envoie un message d'aide aux unités de type \textit{Heavy}. Mais comme il n'y a pas d'action terminant le tour, on continue à regarder les autres instructions tant qu'il n'y a pas d'action terminale à effectuer.
 
-\paragraph{4. Instruction par défaut.}
+\paragraph{4. Instructions par défaut.}
 Lorsqu'une instruction ne comporte pas de percepts, cette instruction est, par définition toujours valide. Cela permet, entre autre, de créer des cas par défaut que l'on peut mettre à la fin d'un comportement. L'action de cette instruction est alors toujours exécutée si aucune autre action ne peut l'être.
 
 \paragraph{5. Cas exceptionnels.}
@@ -2116,7 +2135,7 @@ D'autres éléments, que l'on pourrait diviser en trois parties, sont également
 \subsubsection{Caméras}
 Dans le coin supérieur gauche de l'écran se trouvent deux boutons liés à la gestion des caméras.
 Deux choix s'offrent à l'utilisateur : une caméra vue subjective, et la caméra par défaut.\\
-La caméra subjective permet de placer une caméra sur une unité, et de voir à travers ses yeux. Pour activer cette caméra, il faut d'abord appuyer sur le bouton "FPS", puis cliquer sur l'unité sur laquelle on désire se placer. On se retrouve donc sur notre unité. Avec les mouvements de la souris, on peut déplacer l'orientation de la caméra, nous permettant donc de scruter ce qu'il se passe autour de l'unité.
+La caméra subjective permet de placer une caméra sur une unité, et de voir à travers ses yeux. Pour activer cette caméra, il suffit de cliquer sur l'unité sur laquelle on désire se placer. On se retrouve donc sur notre unité. Avec les mouvements de la souris, on peut déplacer l'orientation de la caméra, nous permettant donc de scruter ce qu'il se passe autour de l'unité.
 Cet affichage nous permet également de voir apparaître une fenêtre, regroupant la vie de l’unité, la contenance de son sac, et son orientation.
 Pour quitter cette caméra, il suffit de cliquer à nouveau sur le bouton "FPS", qui remettra la caméra par défaut.
 
@@ -2224,6 +2243,7 @@ comportements en direct).
 \newpage
 \part{L'avenir du projet}
 \chapter{Pistes envisageables}
+\paragraph{} Nous avons regroupé, dans ce chapitre, nos idées et nos pistes pour de possibles ajouts sur l'ensemble du projet.
 \begin{itemize}
 \item Implémenter de nouvelles maps
 \item Ajouter de nouvelles unités au mode Warbot (Tourelles, Ingénieur et RocketLauncher)
@@ -2290,8 +2310,6 @@ Il arrive parfois que les unités sortent des limites de la zone de jeu et parte
 \section{Stats.cs}
 \lstinputlisting[language={[Sharp]C},label={lst:LoadFile}, caption=Stats.cs]{Stats.cs}
 \newpage
-
-
 % Uncomment the following two lines if you want to have a bibliography
 %\bibliographystyle{alpha}
 %\bibliography{document}

@@ -1,174 +1,175 @@
 \babel@toc {french}{}
-\contentsline {part}{I\hspace {1em}Pr\IeC {\'e}sentation du projet}{3}
-\contentsline {chapter}{\numberline {1}Introduction}{4}
-\contentsline {section}{\numberline {1.1}But du projet}{4}
-\contentsline {paragraph}{}{4}
-\contentsline {paragraph}{}{4}
-\contentsline {section}{\numberline {1.2}Cahier des charges}{4}
-\contentsline {section}{\numberline {1.3}Notion d'agent}{5}
-\contentsline {subsection}{\numberline {1.3.1}Syst\IeC {\`e}me multi-agents}{5}
+\contentsline {paragraph}{}{1}
+\contentsline {part}{I\hspace {1em}Pr\IeC {\'e}sentation du projet}{4}
+\contentsline {chapter}{\numberline {1}Introduction}{5}
+\contentsline {section}{\numberline {1.1}But du projet}{5}
 \contentsline {paragraph}{}{5}
-\contentsline {paragraph}{L'individualisme au service du collectif.}{5}
-\contentsline {paragraph}{Repr\IeC {\'e}sentation et simulation}{6}
-\contentsline {paragraph}{Les syst\IeC {\`e}me-multi agents dans de multiples domaines.}{6}
-\contentsline {subsection}{\numberline {1.3.2}Repr\IeC {\'e}sentation dans le projet}{6}
-\contentsline {paragraph}{WarBot: Le mode par d\IeC {\'e}faut}{6}
+\contentsline {paragraph}{}{5}
+\contentsline {section}{\numberline {1.2}Cahier des charges}{5}
+\contentsline {section}{\numberline {1.3}Notion d'agent}{6}
+\contentsline {subsection}{\numberline {1.3.1}Syst\IeC {\`e}me multi-agents}{6}
 \contentsline {paragraph}{}{6}
-\contentsline {subsubsection}{Warbot Java en quelques mots}{6}
-\contentsline {subsubsection}{Diff\IeC {\'e}rences avec Warbot Unity}{7}
-\contentsline {part}{II\hspace {1em}R\IeC {\'e}alisation du projet}{8}
-\contentsline {chapter}{\numberline {2}Partie Moteur}{9}
-\contentsline {section}{\numberline {2.1}\IeC {\'E}tat de l'art de l'ancien projet.}{9}
-\contentsline {paragraph}{}{9}
-\contentsline {section}{\numberline {2.2}Refonte du noyau.}{10}
+\contentsline {paragraph}{L'individualisme au service du collectif.}{6}
+\contentsline {paragraph}{Repr\IeC {\'e}sentation et simulation}{7}
+\contentsline {paragraph}{Les syst\IeC {\`e}me-multi agents dans de multiples domaines.}{7}
+\contentsline {subsection}{\numberline {1.3.2}Repr\IeC {\'e}sentation dans le projet}{7}
+\contentsline {paragraph}{WarBot: Le mode par d\IeC {\'e}faut}{7}
+\contentsline {paragraph}{}{7}
+\contentsline {subsubsection}{Warbot Java en quelques mots}{7}
+\contentsline {subsubsection}{Diff\IeC {\'e}rences avec Warbot Unity}{8}
+\contentsline {part}{II\hspace {1em}R\IeC {\'e}alisation du projet}{9}
+\contentsline {chapter}{\numberline {2}Partie Moteur}{10}
+\contentsline {section}{\numberline {2.1}\IeC {\'E}tat de l'art de l'ancien projet.}{10}
 \contentsline {paragraph}{}{10}
-\contentsline {paragraph}{}{10}
-\contentsline {paragraph}{}{10}
-\contentsline {paragraph}{}{10}
+\contentsline {section}{\numberline {2.2}Refonte du noyau.}{11}
+\contentsline {paragraph}{}{11}
+\contentsline {paragraph}{}{11}
+\contentsline {paragraph}{}{11}
 \contentsline {paragraph}{}{11}
 \contentsline {paragraph}{}{12}
-\contentsline {paragraph}{}{12}
-\contentsline {subsection}{\numberline {2.2.1}Retour aux bases.}{13}
 \contentsline {paragraph}{}{13}
 \contentsline {paragraph}{}{13}
+\contentsline {subsection}{\numberline {2.2.1}Retour aux bases.}{14}
 \contentsline {paragraph}{}{14}
 \contentsline {paragraph}{}{14}
-\contentsline {paragraph}{}{14}
-\contentsline {paragraph}{}{14}
-\contentsline {paragraph}{}{14}
-\contentsline {paragraph}{}{14}
+\contentsline {paragraph}{}{15}
+\contentsline {paragraph}{}{15}
+\contentsline {paragraph}{}{15}
+\contentsline {paragraph}{}{15}
 \contentsline {paragraph}{}{15}
 \contentsline {paragraph}{}{15}
 \contentsline {paragraph}{}{16}
-\contentsline {paragraph}{}{18}
-\contentsline {paragraph}{}{18}
-\contentsline {paragraph}{}{18}
-\contentsline {paragraph}{}{18}
+\contentsline {paragraph}{}{16}
+\contentsline {paragraph}{}{17}
 \contentsline {paragraph}{}{19}
 \contentsline {paragraph}{}{19}
 \contentsline {paragraph}{}{19}
-\contentsline {subparagraph}{Hi\IeC {\'e}rarchisation des actions et des percepts.}{20}
-\contentsline {paragraph}{}{21}
-\contentsline {paragraph}{}{21}
+\contentsline {paragraph}{}{19}
+\contentsline {paragraph}{}{20}
+\contentsline {paragraph}{}{20}
+\contentsline {paragraph}{}{20}
+\contentsline {subparagraph}{Hi\IeC {\'e}rarchisation des actions et des percepts.}{21}
 \contentsline {paragraph}{}{22}
 \contentsline {paragraph}{}{22}
-\contentsline {paragraph}{}{24}
-\contentsline {paragraph}{}{25}
-\contentsline {subsection}{\numberline {2.2.2}Int\IeC {\'e}gration dans le projet.}{25}
-\contentsline {subsubsection}{Le lien avec l\IeC {\textquoteright }interpr\IeC {\'e}teur}{25}
-\contentsline {paragraph}{}{25}
+\contentsline {paragraph}{}{23}
+\contentsline {paragraph}{}{23}
 \contentsline {paragraph}{}{25}
 \contentsline {paragraph}{}{26}
+\contentsline {subsection}{\numberline {2.2.2}Int\IeC {\'e}gration dans le projet.}{26}
+\contentsline {subsubsection}{Le lien avec l\IeC {\textquoteright }interpr\IeC {\'e}teur}{26}
 \contentsline {paragraph}{}{26}
 \contentsline {paragraph}{}{26}
-\contentsline {subsubsection}{Lien avec l'\IeC {\'e}diteur de comportement.}{26}
-\contentsline {paragraph}{Les clefs des dictionnaires.}{26}
-\contentsline {paragraph}{}{26}
-\contentsline {subsection}{\numberline {2.2.3}Am\IeC {\'e}liorations des fonctionnalit\IeC {\'e}s.}{27}
-\contentsline {subsubsection}{Ajout de fonctionnalit\IeC {\'e}s des instructions.}{27}
 \contentsline {paragraph}{}{27}
+\contentsline {paragraph}{}{27}
+\contentsline {paragraph}{}{27}
+\contentsline {subsubsection}{Lien avec l'\IeC {\'e}diteur de comportement.}{27}
+\contentsline {paragraph}{Les clefs des dictionnaires.}{27}
+\contentsline {paragraph}{}{27}
+\contentsline {subsection}{\numberline {2.2.3}Am\IeC {\'e}liorations des fonctionnalit\IeC {\'e}s.}{28}
+\contentsline {subsubsection}{Ajout de fonctionnalit\IeC {\'e}s des instructions.}{28}
 \contentsline {paragraph}{}{28}
-\contentsline {paragraph}{1. N\IeC {\'e}gation.}{28}
-\contentsline {subparagraph}{}{28}
-\contentsline {subparagraph}{}{28}
-\contentsline {subparagraph}{}{28}
+\contentsline {paragraph}{}{29}
+\contentsline {paragraph}{1. N\IeC {\'e}gation.}{29}
 \contentsline {subparagraph}{}{29}
-\contentsline {paragraph}{2. Actions non-terminales.}{29}
-\contentsline {paragraph}{}{30}
-\contentsline {paragraph}{}{30}
-\contentsline {subparagraph}{Messages.}{30}
+\contentsline {subparagraph}{}{29}
+\contentsline {subparagraph}{}{29}
 \contentsline {subparagraph}{}{30}
+\contentsline {paragraph}{2. Actions non-terminales.}{30}
 \contentsline {paragraph}{}{31}
-\contentsline {paragraph}{3. Mouvement tactique.}{31}
 \contentsline {paragraph}{}{31}
-\contentsline {paragraph}{4. Instruction par d\IeC {\'e}faut.}{31}
-\contentsline {paragraph}{5. Cas exceptionnels.}{31}
-\contentsline {subsubsection}{Gestion des messages.}{32}
-\contentsline {paragraph}{Messagerie individualis\IeC {\'e}e.}{32}
+\contentsline {subparagraph}{Messages.}{31}
+\contentsline {subparagraph}{}{31}
 \contentsline {paragraph}{}{32}
+\contentsline {paragraph}{3. Mouvement tactique.}{32}
 \contentsline {paragraph}{}{32}
-\contentsline {subsubsection}{Gestion des contrats.}{32}
-\contentsline {subsubsection}{Optimisation du temps de chargement.}{33}
+\contentsline {paragraph}{4. Instruction par d\IeC {\'e}faut.}{32}
+\contentsline {paragraph}{5. Cas exceptionnels.}{32}
+\contentsline {subsubsection}{Gestion des messages.}{33}
+\contentsline {paragraph}{Messagerie individualis\IeC {\'e}e.}{33}
 \contentsline {paragraph}{}{33}
-\contentsline {subparagraph}{1. La gestion des actions des unit\IeC {\'e}s.}{33}
-\contentsline {subparagraph}{2. \textit {ObjectPool}, les "bassins" d'objets.}{34}
+\contentsline {paragraph}{}{33}
+\contentsline {subsubsection}{Gestion des contrats.}{33}
+\contentsline {subsubsection}{Optimisation du temps de chargement.}{34}
+\contentsline {paragraph}{}{34}
+\contentsline {subparagraph}{1. La gestion des actions des unit\IeC {\'e}s.}{34}
+\contentsline {subparagraph}{2. \textit {ObjectPool}, les "bassins" d'objets.}{35}
 \contentsline {subparagraph}{}{36}
 \contentsline {subparagraph}{3. Simplification des collisions.}{36}
 \contentsline {subparagraph}{}{36}
-\contentsline {subparagraph}{}{36}
-\contentsline {subsubsection}{Am\IeC {\'e}lioration des collisions.}{36}
-\contentsline {paragraph}{}{36}
-\contentsline {subparagraph}{}{38}
-\contentsline {section}{\numberline {2.3}Usage.}{38}
-\contentsline {subsection}{\numberline {2.3.1}Pr\IeC {\'e}requis.}{38}
-\contentsline {paragraph}{Le moteur Unity.}{38}
-\contentsline {paragraph}{}{38}
-\contentsline {subsection}{\numberline {2.3.2}Cr\IeC {\'e}ation d'unit\IeC {\'e}.}{38}
-\contentsline {subsection}{\numberline {2.3.3}Cr\IeC {\'e}ation de carte.}{39}
-\contentsline {subsection}{\numberline {2.3.4}Gestion des comportements.}{40}
-\contentsline {section}{\numberline {2.4}Mod\IeC {\'e}lisation 3D, sons et animation.}{40}
-\contentsline {subsection}{\numberline {2.4.1}Les unit\IeC {\'e}s Warbot.}{40}
-\contentsline {subsection}{\numberline {2.4.2}Les diff\IeC {\'e}rentes cartes.}{41}
-\contentsline {subsection}{\numberline {2.4.3}Animations.}{43}
-\contentsline {paragraph}{Les projectiles.}{43}
-\contentsline {paragraph}{Les unit\IeC {\'e}s.}{43}
-\contentsline {paragraph}{Sp\IeC {\'e}cificit\IeC {\'e}e de unit\IeC {\'e}s de type Light.}{44}
-\contentsline {subsection}{\numberline {2.4.4}Sons.}{45}
-\contentsline {paragraph}{Fonctionnement.}{45}
-\contentsline {paragraph}{Les fond sonores.}{46}
-\contentsline {paragraph}{Les projectiles.}{46}
-\contentsline {paragraph}{Les unit\IeC {\'e}s.}{47}
-\contentsline {section}{\numberline {2.5}Am\IeC {\'e}lioration possible}{47}
-\contentsline {chapter}{\numberline {3}Partie Interface Graphique}{49}
-\contentsline {section}{\numberline {3.1}Pr\IeC {\'e}sentation}{49}
-\contentsline {section}{\numberline {3.2}Etude de l'ancienne interface}{49}
-\contentsline {subsection}{\numberline {3.2.1}Menu Principal}{49}
-\contentsline {subsection}{\numberline {3.2.2}Editeur de comportement}{50}
-\contentsline {paragraph}{}{50}
-\contentsline {subsection}{\numberline {3.2.3}La s\IeC {\'e}l\IeC {\'e}ction des \IeC {\'e}quipes}{51}
-\contentsline {subsection}{\numberline {3.2.4}Am\IeC {\'e}liorations envisag\IeC {\'e}es}{51}
+\contentsline {subparagraph}{}{37}
+\contentsline {subsubsection}{Am\IeC {\'e}lioration des collisions.}{37}
+\contentsline {paragraph}{}{37}
+\contentsline {subparagraph}{}{39}
+\contentsline {section}{\numberline {2.3}Usage.}{39}
+\contentsline {subsection}{\numberline {2.3.1}Pr\IeC {\'e}requis.}{39}
+\contentsline {paragraph}{Le moteur Unity.}{39}
+\contentsline {paragraph}{}{39}
+\contentsline {subsection}{\numberline {2.3.2}Cr\IeC {\'e}ation d'unit\IeC {\'e}.}{39}
+\contentsline {subsection}{\numberline {2.3.3}Cr\IeC {\'e}ation de carte.}{40}
+\contentsline {subsection}{\numberline {2.3.4}Gestion des comportements.}{41}
+\contentsline {section}{\numberline {2.4}Mod\IeC {\'e}lisation 3D, sons et animation.}{41}
+\contentsline {subsection}{\numberline {2.4.1}Les unit\IeC {\'e}s Warbot.}{41}
+\contentsline {subsection}{\numberline {2.4.2}Les diff\IeC {\'e}rentes cartes.}{42}
+\contentsline {subsection}{\numberline {2.4.3}Animations.}{44}
+\contentsline {paragraph}{Les projectiles.}{44}
+\contentsline {paragraph}{Les unit\IeC {\'e}s.}{44}
+\contentsline {paragraph}{Sp\IeC {\'e}cificit\IeC {\'e}e de unit\IeC {\'e}s de type Light.}{45}
+\contentsline {subsection}{\numberline {2.4.4}Sons.}{46}
+\contentsline {paragraph}{Fonctionnement.}{46}
+\contentsline {paragraph}{Les fond sonores.}{47}
+\contentsline {paragraph}{Les projectiles.}{47}
+\contentsline {paragraph}{Les unit\IeC {\'e}s.}{48}
+\contentsline {section}{\numberline {2.5}Am\IeC {\'e}lioration possible}{48}
+\contentsline {chapter}{\numberline {3}Partie Interface Graphique}{50}
+\contentsline {section}{\numberline {3.1}Pr\IeC {\'e}sentation}{50}
+\contentsline {section}{\numberline {3.2}Etude de l'ancienne interface}{50}
+\contentsline {subsection}{\numberline {3.2.1}Menu Principal}{50}
+\contentsline {subsection}{\numberline {3.2.2}Editeur de comportement}{51}
 \contentsline {paragraph}{}{51}
-\contentsline {section}{\numberline {3.3}Nouvelle Interface}{53}
-\contentsline {subsection}{\numberline {3.3.1}Menu Principal}{53}
-\contentsline {subsubsection}{Lancer une Partie}{54}
-\contentsline {subsubsection}{Bouton \IeC {\'E}diteur de Comportement}{55}
-\contentsline {subsubsection}{Bouton Param\IeC {\`e}tres}{55}
-\contentsline {subsubsection}{Choisir le nombre d'\IeC {\'e}quipe}{55}
-\contentsline {subsubsection}{Choisir les \IeC {\'e}quipes}{55}
-\contentsline {subsubsection}{Bouton "Reload Team"}{56}
-\contentsline {subsubsection}{Choisir carte de jeu}{57}
-\contentsline {subsubsection}{Choisir nombre de d\IeC {\'e}part de chaque unit\IeC {\'e}}{57}
-\contentsline {subsubsection}{Barre de Chargement}{58}
-\contentsline {subsubsection}{Bouton Quitter}{59}
-\contentsline {subsection}{\numberline {3.3.2}Menu des Param\IeC {\`e}tres}{59}
-\contentsline {subsubsection}{Choisir le nombre de ressource maximales dans le jeu}{60}
-\contentsline {subsubsection}{Choisir le mode de jeu}{60}
-\contentsline {subsubsection}{Changer le Volume de la musique}{60}
-\contentsline {subsubsection}{Choisir la langue}{60}
-\contentsline {subsubsection}{Bouton Retour}{62}
-\contentsline {subsubsection}{Bouton Valider}{62}
-\contentsline {subsection}{\numberline {3.3.3}Editeur de Comportement}{63}
-\contentsline {paragraph}{}{63}
-\contentsline {paragraph}{}{63}
+\contentsline {subsection}{\numberline {3.2.3}La s\IeC {\'e}l\IeC {\'e}ction des \IeC {\'e}quipes}{52}
+\contentsline {subsection}{\numberline {3.2.4}Am\IeC {\'e}liorations envisag\IeC {\'e}es}{52}
+\contentsline {paragraph}{}{52}
+\contentsline {section}{\numberline {3.3}Nouvelle Interface}{54}
+\contentsline {subsection}{\numberline {3.3.1}Menu Principal}{54}
+\contentsline {subsubsection}{Lancer une Partie}{55}
+\contentsline {subsubsection}{Bouton \IeC {\'E}diteur de Comportement}{56}
+\contentsline {subsubsection}{Bouton Param\IeC {\`e}tres}{56}
+\contentsline {subsubsection}{Choisir le nombre d'\IeC {\'e}quipe}{56}
+\contentsline {subsubsection}{Choisir les \IeC {\'e}quipes}{56}
+\contentsline {subsubsection}{Bouton "Reload Team"}{57}
+\contentsline {subsubsection}{Choisir carte de jeu}{58}
+\contentsline {subsubsection}{Choisir nombre de d\IeC {\'e}part de chaque unit\IeC {\'e}}{58}
+\contentsline {subsubsection}{Barre de Chargement}{59}
+\contentsline {subsubsection}{Bouton Quitter}{60}
+\contentsline {subsection}{\numberline {3.3.2}Menu des Param\IeC {\`e}tres}{60}
+\contentsline {subsubsection}{Choisir le nombre de ressource maximales dans le jeu}{61}
+\contentsline {subsubsection}{Choisir le mode de jeu}{61}
+\contentsline {subsubsection}{Changer le Volume de la musique}{61}
+\contentsline {subsubsection}{Choisir la langue}{61}
+\contentsline {subsubsection}{Bouton Retour}{63}
+\contentsline {subsubsection}{Bouton Valider}{63}
+\contentsline {subsection}{\numberline {3.3.3}Editeur de Comportement}{64}
 \contentsline {paragraph}{}{64}
-\contentsline {subsubsection}{ToolBox}{65}
-\contentsline {subsubsection}{S\IeC {\'e}lection des \IeC {\'e}quipes / unit\IeC {\'e}s}{69}
-\contentsline {subsubsection}{Informations sur l'unit\IeC {\'e}}{72}
-\contentsline {subsubsection}{Liste des pi\IeC {\`e}ces}{73}
-\contentsline {subsubsection}{Editeur}{74}
-\contentsline {subsection}{\numberline {3.3.4}\IeC {\'E}cran de partie}{77}
-\contentsline {subsubsection}{Cam\IeC {\'e}ras}{79}
-\contentsline {subsubsection}{Contr\IeC {\^o}les}{79}
-\contentsline {subsubsection}{Gestion de partie}{79}
-\contentsline {section}{\numberline {3.4}Am\IeC {\'e}liorations possibles}{81}
-\contentsline {subsection}{\numberline {3.4.1}Fonctionnalit\IeC {\'e}s}{81}
-\contentsline {part}{III\hspace {1em}L'avenir du projet}{83}
-\contentsline {chapter}{\numberline {4}Pistes envisageables}{84}
-\contentsline {chapter}{\numberline {5}Bugs}{85}
-\contentsline {part}{IV\hspace {1em}Annexe}{86}
-\contentsline {chapter}{\numberline {6}Scripts Remarquables}{87}
-\contentsline {section}{\numberline {6.1}ObjectPool.cs}{88}
-\contentsline {section}{\numberline {6.2}MovableCharacter.cs}{90}
-\contentsline {section}{\numberline {6.3}Brain.cs}{92}
-\contentsline {section}{\numberline {6.4}PerceptUnit.cs}{96}
-\contentsline {section}{\numberline {6.5}LoadFile.cs}{99}
+\contentsline {paragraph}{}{64}
+\contentsline {paragraph}{}{65}
+\contentsline {subsubsection}{ToolBox}{66}
+\contentsline {subsubsection}{S\IeC {\'e}lection des \IeC {\'e}quipes / unit\IeC {\'e}s}{70}
+\contentsline {subsubsection}{Informations sur l'unit\IeC {\'e}}{73}
+\contentsline {subsubsection}{Liste des pi\IeC {\`e}ces}{74}
+\contentsline {subsubsection}{Editeur}{75}
+\contentsline {subsection}{\numberline {3.3.4}\IeC {\'E}cran de partie}{78}
+\contentsline {subsubsection}{Cam\IeC {\'e}ras}{80}
+\contentsline {subsubsection}{Contr\IeC {\^o}les}{80}
+\contentsline {subsubsection}{Gestion de partie}{80}
+\contentsline {section}{\numberline {3.4}Am\IeC {\'e}liorations possibles}{82}
+\contentsline {subsection}{\numberline {3.4.1}Fonctionnalit\IeC {\'e}s}{82}
+\contentsline {part}{III\hspace {1em}L'avenir du projet}{84}
+\contentsline {chapter}{\numberline {4}Pistes envisageables}{85}
+\contentsline {chapter}{\numberline {5}Bugs}{86}
+\contentsline {part}{IV\hspace {1em}Annexe}{87}
+\contentsline {chapter}{\numberline {6}Scripts Remarquables}{88}
+\contentsline {section}{\numberline {6.1}ObjectPool.cs}{89}
+\contentsline {section}{\numberline {6.2}MovableCharacter.cs}{91}
+\contentsline {section}{\numberline {6.3}Brain.cs}{93}
+\contentsline {section}{\numberline {6.4}PerceptUnit.cs}{97}
+\contentsline {section}{\numberline {6.5}LoadFile.cs}{100}

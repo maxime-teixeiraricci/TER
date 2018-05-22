@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.5.12)  22 MAY 2018 01:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.5.12)  22 MAY 2018 01:59
 entering extended mode
 **./RapportTER.tex
 (RapportTER.tex
@@ -932,293 +932,305 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 129.
  [1
 
-{C:/Users/fumey/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2] (Rappor
-tTER.toc
+{C:/Users/fumey/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2]
+Underfull \hbox (badness 10000) in paragraph at lines 137--144
+
+ []
+
+[1
+
+] (RapportTER.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 4.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 4.
- [1
+ [2
 
 ])
 \tf@toc=\write3
 \openout3 = `RapportTER.toc'.
 
- [2] [3
+ [3] [4
 
 ]
 Chapitre 1.
-[4
+[5
 
 ]
-<NetLogoImage.png, id=26, 642.14906pt x 528.47438pt>
+<NetLogoImage.png, id=30, 642.14906pt x 528.47438pt>
 File: NetLogoImage.png Graphic file (type png)
 <use NetLogoImage.png>
-Package pdftex.def Info: NetLogoImage.png  used on input line 159.
+Package pdftex.def Info: NetLogoImage.png  used on input line 176.
 (pdftex.def)             Requested size: 417.39194pt x 343.50427pt.
 
-Overfull \hbox (2.26622pt too wide) in paragraph at lines 159--160
+Overfull \hbox (2.26622pt too wide) in paragraph at lines 176--177
  [][] 
  []
 
-[5 <./NetLogoImage.png>]
-<interface-warbot3.png, id=31, 470.2368pt x 328.5876pt>
+[6 <./NetLogoImage.png>]
+<interface-warbot3.png, id=34, 470.2368pt x 328.5876pt>
 File: interface-warbot3.png Graphic file (type png)
 <use interface-warbot3.png>
-Package pdftex.def Info: interface-warbot3.png  used on input line 175.
+Package pdftex.def Info: interface-warbot3.png  used on input line 192.
 (pdftex.def)             Requested size: 211.6046pt x 147.86305pt.
 
-Overfull \hbox (20.644pt too wide) in paragraph at lines 175--176
+Overfull \hbox (20.644pt too wide) in paragraph at lines 192--193
  [][] 
  []
 
-<WarbotUnity.png, id=33, 744.53156pt x 559.33969pt>
+<WarbotUnity.png, id=36, 744.53156pt x 559.33969pt>
 File: WarbotUnity.png Graphic file (type png)
 <use WarbotUnity.png>
-Package pdftex.def Info: WarbotUnity.png  used on input line 181.
+Package pdftex.def Info: WarbotUnity.png  used on input line 198.
 (pdftex.def)             Requested size: 223.36119pt x 167.80319pt.
 
-Overfull \hbox (32.40059pt too wide) in paragraph at lines 181--182
+Overfull \hbox (32.40059pt too wide) in paragraph at lines 198--199
  [][] 
  []
 
-[6 <./interface-warbot3.png> <./WarbotUnity.png>] [7] [8
+[7 <./interface-warbot3.png> <./WarbotUnity.png>] [8] [9
 
 ]
 Chapitre 2.
-[9
+[10
 
-] [10]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 238.
+] [11]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 255.
 
 
 ("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <8> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 238.
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 244.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 255.
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 261.
 
 
 ("C:\Users\fumey\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\omlcmr.fd"
 File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <8> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 244.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 261.
 
-[11] [12]
-<NavMeshImage.png, id=63, 609.02531pt x 413.29407pt>
+[12] [13]
+<NavMeshImage.png, id=66, 609.02531pt x 413.29407pt>
 File: NavMeshImage.png Graphic file (type png)
 <use NavMeshImage.png>
-Package pdftex.def Info: NavMeshImage.png  used on input line 306.
+Package pdftex.def Info: NavMeshImage.png  used on input line 323.
 (pdftex.def)             Requested size: 365.418pt x 247.97835pt.
- [13 <./NavMeshImage.png>] [14] [15] [16] [17]
-<Ressource.png, id=82, 198.7425pt x 187.45032pt>
+ [14 <./NavMeshImage.png>] [15] [16] [17] [18]
+<Ressource.png, id=85, 198.7425pt x 187.45032pt>
 File: Ressource.png Graphic file (type png)
 <use Ressource.png>
-Package pdftex.def Info: Ressource.png  used on input line 453.
+Package pdftex.def Info: Ressource.png  used on input line 470.
 (pdftex.def)             Requested size: 99.371pt x 93.72491pt.
- [18 <./Ressource.png>]
-[19] [20] [21] [22] [23]
-<FirstMapImage.png, id=103, 1204.5pt x 647.41875pt>
+ [19 <./Ressource.png>]
+[20] [21] [22] [23] [24]
+<FirstMapImage.png, id=106, 1204.5pt x 647.41875pt>
 File: FirstMapImage.png Graphic file (type png)
 <use FirstMapImage.png>
-Package pdftex.def Info: FirstMapImage.png  used on input line 615.
+Package pdftex.def Info: FirstMapImage.png  used on input line 632.
 (pdftex.def)             Requested size: 421.58131pt x 226.59995pt.
 
-Overfull \hbox (6.4556pt too wide) in paragraph at lines 615--616
+Overfull \hbox (6.4556pt too wide) in paragraph at lines 632--633
  [][] 
  []
 
-[24 <./FirstMapImage.png>] [25]
-<GameManagerImage.png, id=110, 199.49532pt x 381.67593pt>
+[25 <./FirstMapImage.png>] [26]
+<GameManagerImage.png, id=113, 199.49532pt x 381.67593pt>
 File: GameManagerImage.png Graphic file (type png)
 <use GameManagerImage.png>
-Package pdftex.def Info: GameManagerImage.png  used on input line 682.
+Package pdftex.def Info: GameManagerImage.png  used on input line 699.
 (pdftex.def)             Requested size: 199.49481pt x 381.675pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 701--702
+Underfull \hbox (badness 10000) in paragraph at lines 718--719
 
  []
 
-[26] [27 <./GameManagerImage.png>] [28] [29]
-<PuzzleMessageImage.png, id=124, 219.06844pt x 157.33781pt>
+[27] [28 <./GameManagerImage.png>] [29] [30]
+<PuzzleMessageImage.png, id=127, 219.06844pt x 157.33781pt>
 File: PuzzleMessageImage.png Graphic file (type png)
 <use PuzzleMessageImage.png>
-Package pdftex.def Info: PuzzleMessageImage.png  used on input line 792.
+Package pdftex.def Info: PuzzleMessageImage.png  used on input line 809.
 (pdftex.def)             Requested size: 120.48799pt x 86.53606pt.
- [30 <./PuzzleMessageImage.png>]
-[31] [32]
-Underfull \hbox (badness 10000) in paragraph at lines 860--862
-
- []
-
-[33]
-Underfull \hbox (badness 10000) in paragraph at lines 896--897
+ [31 <./PuzzleMessageImage.png>]
+[32] [33]
+Underfull \hbox (badness 10000) in paragraph at lines 878--880
 
  []
 
 [34]
-<ObjectPoolingImage.png, id=141, 215.30438pt x 288.3272pt>
+Underfull \hbox (badness 10000) in paragraph at lines 914--915
+
+ []
+
+[35]
+<ObjectPoolingImage.png, id=145, 215.30438pt x 288.3272pt>
 File: ObjectPoolingImage.png Graphic file (type png)
 <use ObjectPoolingImage.png>
-Package pdftex.def Info: ObjectPoolingImage.png  used on input line 929.
+Package pdftex.def Info: ObjectPoolingImage.png  used on input line 947.
 (pdftex.def)             Requested size: 215.30385pt x 288.32648pt.
- [35 <./ObjectPoolingImage.png>]
-<MeshColliderImage.png, id=146, 215.30438pt x 100.87688pt>
-File: MeshColliderImage.png Graphic file (type png)
-<use MeshColliderImage.png>
-Package pdftex.def Info: MeshColliderImage.png  used on input line 939.
-(pdftex.def)             Requested size: 215.30385pt x 100.87662pt.
-<BoxColliderImage.png, id=147, 235.63031pt x 162.6075pt>
-File: BoxColliderImage.png Graphic file (type png)
-<use BoxColliderImage.png>
-Package pdftex.def Info: BoxColliderImage.png  used on input line 946.
-(pdftex.def)             Requested size: 235.62973pt x 162.6071pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[36 <./MeshColliderImage.png>] [37 <./BoxColliderImage.png>] [38]
-<WarUnitImage.png, id=157, 207.77625pt x 383.18156pt>
+<MeshColliderImage.png, id=146, 215.30438pt x 100.87688pt>
+File: MeshColliderImage.png Graphic file (type png)
+<use MeshColliderImage.png>
+Package pdftex.def Info: MeshColliderImage.png  used on input line 957.
+(pdftex.def)             Requested size: 215.30385pt x 100.87662pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<BoxColliderImage.png, id=147, 235.63031pt x 162.6075pt>
+File: BoxColliderImage.png Graphic file (type png)
+<use BoxColliderImage.png>
+Package pdftex.def Info: BoxColliderImage.png  used on input line 964.
+(pdftex.def)             Requested size: 235.62973pt x 162.6071pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[36] [37 <./ObjectPoolingImage.png> <./MeshColliderImage.png>] [38 <./BoxCollid
+erImage.png>] [39]
+<WarUnitImage.png, id=160, 207.77625pt x 383.18156pt>
 File: WarUnitImage.png Graphic file (type png)
 <use WarUnitImage.png>
-Package pdftex.def Info: WarUnitImage.png  used on input line 1021.
+Package pdftex.def Info: WarUnitImage.png  used on input line 1039.
 (pdftex.def)             Requested size: 145.44237pt x 268.22525pt.
- [39 <./WarUnitImage.png>]
-<WarBaseImage.png, id=161, 816.80156pt x 511.15968pt>
+ [40 <./WarUnitImage.png>]
+<WarBaseImage.png, id=164, 816.80156pt x 511.15968pt>
 File: WarBaseImage.png Graphic file (type png)
 <use WarBaseImage.png>
-Package pdftex.def Info: WarBaseImage.png  used on input line 1046.
+Package pdftex.def Info: WarBaseImage.png  used on input line 1064.
 (pdftex.def)             Requested size: 204.19989pt x 127.7896pt.
 
-Overfull \hbox (13.23929pt too wide) in paragraph at lines 1046--1047
+Overfull \hbox (13.23929pt too wide) in paragraph at lines 1064--1065
  [][] 
  []
 
-<WarExplorerImage.png, id=162, 801.74532pt x 505.89pt>
+<WarExplorerImage.png, id=165, 801.74532pt x 505.89pt>
 File: WarExplorerImage.png Graphic file (type png)
 <use WarExplorerImage.png>
-Package pdftex.def Info: WarExplorerImage.png  used on input line 1052.
+Package pdftex.def Info: WarExplorerImage.png  used on input line 1070.
 (pdftex.def)             Requested size: 200.43584pt x 126.47218pt.
 
-Overfull \hbox (9.47523pt too wide) in paragraph at lines 1052--1053
+Overfull \hbox (9.47523pt too wide) in paragraph at lines 1070--1071
  [][] 
  []
 
-<WarLightImage.png, id=163, 816.04875pt x 509.65407pt>
+<WarLightImage.png, id=166, 816.04875pt x 509.65407pt>
 File: WarLightImage.png Graphic file (type png)
 <use WarLightImage.png>
-Package pdftex.def Info: WarLightImage.png  used on input line 1059.
+Package pdftex.def Info: WarLightImage.png  used on input line 1077.
 (pdftex.def)             Requested size: 204.01169pt x 127.4132pt.
 
-Overfull \hbox (13.05109pt too wide) in paragraph at lines 1059--1060
+Overfull \hbox (13.05109pt too wide) in paragraph at lines 1077--1078
  [][] 
  []
 
-<WarHeavyImage.png, id=164, 816.04875pt x 510.40688pt>
+<WarHeavyImage.png, id=167, 816.04875pt x 510.40688pt>
 File: WarHeavyImage.png Graphic file (type png)
 <use WarHeavyImage.png>
-Package pdftex.def Info: WarHeavyImage.png  used on input line 1065.
+Package pdftex.def Info: WarHeavyImage.png  used on input line 1083.
 (pdftex.def)             Requested size: 204.01169pt x 127.6014pt.
 
-Overfull \hbox (13.05109pt too wide) in paragraph at lines 1065--1066
+Overfull \hbox (13.05109pt too wide) in paragraph at lines 1083--1084
  [][] 
  []
 
-[40 <./WarBaseImage.png> <./WarExplorerImage.png> <./WarLightImage.png> <./WarH
-eavyImage.png>] [41]
-<MapSimpleImage.png, id=172, 812.28468pt x 507.39563pt>
+[41 <./WarBaseImage.png> <./WarExplorerImage.png> <./WarLightImage.png> <./WarH
+eavyImage.png>] [42]
+<MapSimpleImage.png, id=175, 812.28468pt x 507.39563pt>
 File: MapSimpleImage.png Graphic file (type png)
 <use MapSimpleImage.png>
-Package pdftex.def Info: MapSimpleImage.png  used on input line 1085.
+Package pdftex.def Info: MapSimpleImage.png  used on input line 1103.
 (pdftex.def)             Requested size: 203.07066pt x 126.84859pt.
 
-Overfull \hbox (12.11006pt too wide) in paragraph at lines 1085--1086
+Overfull \hbox (12.11006pt too wide) in paragraph at lines 1103--1104
  [][] 
  []
 
-<MapMountainImage.png, id=173, 818.30719pt x 511.15968pt>
+<MapMountainImage.png, id=176, 818.30719pt x 511.15968pt>
 File: MapMountainImage.png Graphic file (type png)
 <use MapMountainImage.png>
-Package pdftex.def Info: MapMountainImage.png  used on input line 1091.
+Package pdftex.def Info: MapMountainImage.png  used on input line 1109.
 (pdftex.def)             Requested size: 204.5763pt x 127.7896pt.
 
-Overfull \hbox (13.61569pt too wide) in paragraph at lines 1091--1092
+Overfull \hbox (13.61569pt too wide) in paragraph at lines 1109--1110
  [][] 
  []
 
-<MapDesolateImage.png, id=174, 818.30719pt x 511.15968pt>
+<MapDesolateImage.png, id=177, 818.30719pt x 511.15968pt>
 File: MapDesolateImage.png Graphic file (type png)
 <use MapDesolateImage.png>
-Package pdftex.def Info: MapDesolateImage.png  used on input line 1098.
+Package pdftex.def Info: MapDesolateImage.png  used on input line 1116.
 (pdftex.def)             Requested size: 204.5763pt x 127.7896pt.
 
-Overfull \hbox (13.61569pt too wide) in paragraph at lines 1098--1099
+Overfull \hbox (13.61569pt too wide) in paragraph at lines 1116--1117
  [][] 
  []
 
-<MapPlainImage.png, id=175, 818.30719pt x 511.15968pt>
+<MapPlainImage.png, id=178, 818.30719pt x 511.15968pt>
 File: MapPlainImage.png Graphic file (type png)
 <use MapPlainImage.png>
-Package pdftex.def Info: MapPlainImage.png  used on input line 1104.
+Package pdftex.def Info: MapPlainImage.png  used on input line 1122.
 (pdftex.def)             Requested size: 204.5763pt x 127.7896pt.
 
-Overfull \hbox (13.61569pt too wide) in paragraph at lines 1104--1105
+Overfull \hbox (13.61569pt too wide) in paragraph at lines 1122--1123
  [][] 
  []
 
-<MapGardenImage.png, id=176, 817.55438pt x 511.15968pt>
+<MapGardenImage.png, id=179, 817.55438pt x 511.15968pt>
 File: MapGardenImage.png Graphic file (type png)
 <use MapGardenImage.png>
-Package pdftex.def Info: MapGardenImage.png  used on input line 1110.
+Package pdftex.def Info: MapGardenImage.png  used on input line 1128.
 (pdftex.def)             Requested size: 204.38809pt x 127.7896pt.
-[42 <./MapSimpleImage.png> <./MapMountainImage.png> <./MapDesolateImage.png> <.
-/MapPlainImage.png> <./MapGardenImage.png>] [43] [44] [45] [46] [47] [48]
+[43 <./MapSimpleImage.png> <./MapMountainImage.png> <./MapDesolateImage.png> <.
+/MapPlainImage.png> <./MapGardenImage.png>] [44] [45] [46] [47] [48] [49]
 Chapitre 3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1295--1296
+Underfull \hbox (badness 10000) in paragraph at lines 1313--1314
 
  []
 
-[49
+[50
 
 ]
-<MainScreenOld.png, id=202, 788.9475pt x 404.26031pt>
+<MainScreenOld.png, id=205, 788.9475pt x 404.26031pt>
 File: MainScreenOld.png Graphic file (type png)
 <use MainScreenOld.png>
-Package pdftex.def Info: MainScreenOld.png  used on input line 1318.
+Package pdftex.def Info: MainScreenOld.png  used on input line 1336.
 (pdftex.def)             Requested size: 394.47278pt x 202.12965pt.
- [50 <./MainScreenOld.png>]
-<PauseMenuOld.png, id=207, 636.12656pt x 353.06906pt>
+ [51 <./MainScreenOld.png>]
+<PauseMenuOld.png, id=210, 636.12656pt x 353.06906pt>
 File: PauseMenuOld.png Graphic file (type png)
 <use PauseMenuOld.png>
-Package pdftex.def Info: PauseMenuOld.png  used on input line 1333.
+Package pdftex.def Info: PauseMenuOld.png  used on input line 1351.
 (pdftex.def)             Requested size: 318.0625pt x 176.53409pt.
-<BehaviorScreenOld.png, id=208, 875.52094pt x 415.5525pt>
+<BehaviorScreenOld.png, id=211, 875.52094pt x 415.5525pt>
 File: BehaviorScreenOld.png Graphic file (type png)
 <use BehaviorScreenOld.png>
-Package pdftex.def Info: BehaviorScreenOld.png  used on input line 1345.
+Package pdftex.def Info: BehaviorScreenOld.png  used on input line 1363.
 (pdftex.def)             Requested size: 437.7594pt x 207.77574pt.
 
-Overfull \hbox (22.63368pt too wide) in paragraph at lines 1345--1346
+Overfull \hbox (22.63368pt too wide) in paragraph at lines 1363--1364
  [][] 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<SettingsOld.png, id=209, 873.2625pt x 444.91219pt>
+<SettingsOld.png, id=212, 873.2625pt x 444.91219pt>
 File: SettingsOld.png Graphic file (type png)
 <use SettingsOld.png>
-Package pdftex.def Info: SettingsOld.png  used on input line 1358.
+Package pdftex.def Info: SettingsOld.png  used on input line 1376.
 (pdftex.def)             Requested size: 436.63017pt x 222.45554pt.
 
-Overfull \hbox (21.50446pt too wide) in paragraph at lines 1358--1359
+Overfull \hbox (21.50446pt too wide) in paragraph at lines 1376--1377
  [][] 
  []
 
@@ -1226,202 +1238,202 @@ Overfull \hbox (21.50446pt too wide) in paragraph at lines 1358--1359
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1372--1375
+Underfull \hbox (badness 10000) in paragraph at lines 1390--1393
 
  []
 
-[51
+[52
 
- <./PauseMenuOld.png>] [52 <./BehaviorScreenOld.png> <./SettingsOld.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1376--1376
+ <./PauseMenuOld.png>] [53 <./BehaviorScreenOld.png> <./SettingsOld.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1394--1394
 
  []
 
-<MenuPrincipal.png, id=219, 795.72281pt x 447.17062pt>
+<MenuPrincipal.png, id=223, 795.72281pt x 447.17062pt>
 File: MenuPrincipal.png Graphic file (type png)
 <use MenuPrincipal.png>
-Package pdftex.def Info: MenuPrincipal.png  used on input line 1392.
+Package pdftex.def Info: MenuPrincipal.png  used on input line 1410.
 (pdftex.def)             Requested size: 397.86043pt x 223.58476pt.
-[53] [54 <./MenuPrincipal.png>] [55] [56]
-<ChoiceMap.png, id=234, 220.57407pt x 173.89969pt>
+[54] [55 <./MenuPrincipal.png>] [56] [57]
+<ChoiceMap.png, id=237, 220.57407pt x 173.89969pt>
 File: ChoiceMap.png Graphic file (type png)
 <use ChoiceMap.png>
-Package pdftex.def Info: ChoiceMap.png  used on input line 1487.
+Package pdftex.def Info: ChoiceMap.png  used on input line 1505.
 (pdftex.def)             Requested size: 176.45947pt x 139.11992pt.
- [57 <./ChoiceMap.png>]
-<NumberUnits.png, id=239, 345.54094pt x 82.05656pt>
+ [58 <./ChoiceMap.png>]
+<NumberUnits.png, id=242, 345.54094pt x 82.05656pt>
 File: NumberUnits.png Graphic file (type png)
 <use NumberUnits.png>
-Package pdftex.def Info: NumberUnits.png  used on input line 1500.
+Package pdftex.def Info: NumberUnits.png  used on input line 1518.
 (pdftex.def)             Requested size: 276.43312pt x 65.64532pt.
- [58 <./NumberUnits.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1535--1536
+ [59 <./NumberUnits.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1553--1554
 
  []
 
-<MenuParametres.png, id=244, 740.0147pt x 462.22687pt>
+<MenuParametres.png, id=248, 740.0147pt x 462.22687pt>
 File: MenuParametres.png Graphic file (type png)
 <use MenuParametres.png>
-Package pdftex.def Info: MenuParametres.png  used on input line 1540.
+Package pdftex.def Info: MenuParametres.png  used on input line 1558.
 (pdftex.def)             Requested size: 444.01225pt x 277.33826pt.
 
-Overfull \hbox (28.88654pt too wide) in paragraph at lines 1540--1541
+Overfull \hbox (28.88654pt too wide) in paragraph at lines 1558--1559
  [][] 
  []
 
-<RessourcesMax.png, id=245, 280.79906pt x 30.1125pt>
+<RessourcesMax.png, id=249, 280.79906pt x 30.1125pt>
 File: RessourcesMax.png Graphic file (type png)
 <use RessourcesMax.png>
-Package pdftex.def Info: RessourcesMax.png  used on input line 1548.
+Package pdftex.def Info: RessourcesMax.png  used on input line 1566.
 (pdftex.def)             Requested size: 224.63954pt x 24.09001pt.
-[59 <./MenuParametres.png>]
-<ManuelJeu/ModeJeuRessourceRace.png, id=251, 318.43968pt x 87.32625pt>
+[60 <./MenuParametres.png>]
+<ManuelJeu/ModeJeuRessourceRace.png, id=254, 318.43968pt x 87.32625pt>
 File: ManuelJeu/ModeJeuRessourceRace.png Graphic file (type png)
 <use ManuelJeu/ModeJeuRessourceRace.png>
 Package pdftex.def Info: ManuelJeu/ModeJeuRessourceRace.png  used on input line
- 1562.
+ 1580.
 (pdftex.def)             Requested size: 254.75209pt x 69.86108pt.
-<AudioSource.png, id=252, 292.09125pt x 268.75406pt>
+<AudioSource.png, id=255, 292.09125pt x 268.75406pt>
 File: AudioSource.png Graphic file (type png)
 <use AudioSource.png>
-Package pdftex.def Info: AudioSource.png  used on input line 1573.
+Package pdftex.def Info: AudioSource.png  used on input line 1591.
 (pdftex.def)             Requested size: 292.09052pt x 268.7534pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[60 <./RessourcesMax.png> <./ManuelJeu/ModeJeuRessourceRace.png>] [61 <./AudioS
+[61 <./RessourcesMax.png> <./ManuelJeu/ModeJeuRessourceRace.png>] [62 <./AudioS
 ource.png>]
-<ConceptionGraphique1.jpg, id=262, 963.6pt x 722.7pt>
+<ConceptionGraphique1.jpg, id=265, 963.6pt x 722.7pt>
 File: ConceptionGraphique1.jpg Graphic file (type jpg)
 <use ConceptionGraphique1.jpg>
-Package pdftex.def Info: ConceptionGraphique1.jpg  used on input line 1644.
+Package pdftex.def Info: ConceptionGraphique1.jpg  used on input line 1662.
 (pdftex.def)             Requested size: 337.26506pt x 252.94878pt.
- [62] [63 <./ConceptionGraphique1.jpg>]
-<ConceptionGraphique2.png, id=269, 963.6pt x 722.7pt>
+ [63] [64 <./ConceptionGraphique1.jpg>]
+<ConceptionGraphique2.png, id=272, 963.6pt x 722.7pt>
 File: ConceptionGraphique2.png Graphic file (type png)
 <use ConceptionGraphique2.png>
-Package pdftex.def Info: ConceptionGraphique2.png  used on input line 1656.
+Package pdftex.def Info: ConceptionGraphique2.png  used on input line 1674.
 (pdftex.def)             Requested size: 337.26506pt x 252.94878pt.
- [64
+ [65
 
  <./ConceptionGraphique2.png>]
-<InterfaceFinale.png, id=274, 850.67813pt x 476.53032pt>
+<InterfaceFinale.png, id=278, 850.67813pt x 476.53032pt>
 File: InterfaceFinale.png Graphic file (type png)
 <use InterfaceFinale.png>
-Package pdftex.def Info: InterfaceFinale.png  used on input line 1667.
+Package pdftex.def Info: InterfaceFinale.png  used on input line 1685.
 (pdftex.def)             Requested size: 425.33803pt x 238.26457pt.
 
-Overfull \hbox (10.21231pt too wide) in paragraph at lines 1667--1668
+Overfull \hbox (10.21231pt too wide) in paragraph at lines 1685--1686
  [][] 
  []
 
-<ToolBox.png, id=275, 485.56406pt x 41.4047pt>
+<ToolBox.png, id=279, 485.56406pt x 41.4047pt>
 File: ToolBox.png Graphic file (type png)
 <use ToolBox.png>
-Package pdftex.def Info: ToolBox.png  used on input line 1676.
+Package pdftex.def Info: ToolBox.png  used on input line 1694.
 (pdftex.def)             Requested size: 242.78143pt x 20.70229pt.
-[65
+[66
 
  <./InterfaceFinale.png> <./ToolBox.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1695--1696
+Underfull \hbox (badness 10000) in paragraph at lines 1713--1714
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1712--1713
+Underfull \hbox (badness 10000) in paragraph at lines 1730--1731
 
  []
 
-[66] [67] [68]
-<SelectionTeamUnit.png, id=291, 359.09157pt x 33.87656pt>
+[67] [68] [69]
+<SelectionTeamUnit.png, id=294, 359.09157pt x 33.87656pt>
 File: SelectionTeamUnit.png Graphic file (type png)
 <use SelectionTeamUnit.png>
-Package pdftex.def Info: SelectionTeamUnit.png  used on input line 1797.
+Package pdftex.def Info: SelectionTeamUnit.png  used on input line 1815.
 (pdftex.def)             Requested size: 359.09068pt x 33.87646pt.
- [69 <./SelectionTeamUnit.png>] [70] [71] [72]
-<StatsModel.png, id=306, 436.63126pt x 62.48344pt>
+ [70 <./SelectionTeamUnit.png>] [71] [72] [73]
+<StatsModel.png, id=309, 436.63126pt x 62.48344pt>
 File: StatsModel.png Graphic file (type png)
 <use StatsModel.png>
-Package pdftex.def Info: StatsModel.png  used on input line 1906.
+Package pdftex.def Info: StatsModel.png  used on input line 1924.
 (pdftex.def)             Requested size: 436.63019pt x 62.48328pt.
 
-Overfull \hbox (21.50447pt too wide) in paragraph at lines 1906--1907
+Overfull \hbox (21.50447pt too wide) in paragraph at lines 1924--1925
  [][] 
  []
 
-[73
+[74
 
  <./StatsModel.png>]
-Overfull \hbox (10.93044pt too wide) in paragraph at lines 1948--1950
+Overfull \hbox (10.93044pt too wide) in paragraph at lines 1966--1968
 \OT1/cmr/m/n/10 selectionnees et deplacees dans la zone d'edition du com-p
 or-te-ment gr^ace au glisse/depose
  []
 
-[74]
-<ZoneEdition.png, id=314, 654.94687pt x 402.75468pt>
+[75]
+<ZoneEdition.png, id=317, 654.94687pt x 402.75468pt>
 File: ZoneEdition.png Graphic file (type png)
 <use ZoneEdition.png>
-Package pdftex.def Info: ZoneEdition.png  used on input line 1959.
+Package pdftex.def Info: ZoneEdition.png  used on input line 1977.
 (pdftex.def)             Requested size: 458.45969pt x 281.92635pt.
 
-Overfull \hbox (43.33397pt too wide) in paragraph at lines 1959--1960
+Overfull \hbox (43.33397pt too wide) in paragraph at lines 1977--1978
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1965--1967
+Underfull \hbox (badness 10000) in paragraph at lines 1983--1985
 
  []
 
-[75
+[76
 
- <./ZoneEdition.png>] [76] [77] [78] [79]
-<OptionButtons.png, id=332, 193.47281pt x 24.84282pt>
+ <./ZoneEdition.png>] [77] [78] [79] [80]
+<OptionButtons.png, id=335, 193.47281pt x 24.84282pt>
 File: OptionButtons.png Graphic file (type png)
 <use OptionButtons.png>
-Package pdftex.def Info: OptionButtons.png  used on input line 2112.
+Package pdftex.def Info: OptionButtons.png  used on input line 2130.
 (pdftex.def)             Requested size: 193.47234pt x 24.84274pt.
-<SpeedSlider.png, id=333, 264.23718pt x 36.135pt>
+<SpeedSlider.png, id=336, 264.23718pt x 36.135pt>
 File: SpeedSlider.png Graphic file (type png)
 <use SpeedSlider.png>
-Package pdftex.def Info: SpeedSlider.png  used on input line 2122.
+Package pdftex.def Info: SpeedSlider.png  used on input line 2140.
 (pdftex.def)             Requested size: 264.23653pt x 36.13489pt.
-<ManuelJeu/SoundIG.png, id=334, 213.04594pt x 29.35968pt>
+<ManuelJeu/SoundIG.png, id=337, 213.04594pt x 29.35968pt>
 File: ManuelJeu/SoundIG.png Graphic file (type png)
 <use ManuelJeu/SoundIG.png>
-Package pdftex.def Info: ManuelJeu/SoundIG.png  used on input line 2132.
+Package pdftex.def Info: ManuelJeu/SoundIG.png  used on input line 2150.
 (pdftex.def)             Requested size: 213.04541pt x 29.35959pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[80 <./OptionButtons.png> <./SpeedSlider.png>] [81 <./ManuelJeu/SoundIG.png>]
-[82] [83
+[81 <./OptionButtons.png> <./SpeedSlider.png>] [82 <./ManuelJeu/SoundIG.png>]
+[83] [84
 
 ]
 Chapitre 4.
 
-Overfull \hbox (20.76392pt too wide) in paragraph at lines 2184--2185
+Overfull \hbox (20.76392pt too wide) in paragraph at lines 2202--2203
 []\OT1/cmr/m/n/10 Proposer un generateur de com-por-te-ments aleatoires, con
 fi-gu-rable a l'aide de pa-rametres(equipe
  []
 
-[84
+[85
 
 ]
 Chapitre 5.
-[85
+[86
 
-] [86
+] [87
 
 ]
 Chapitre 6.
-[87
+[88
 
-] (ObjectPool.cs [88]) [89] (MovableCharacter.cs [90]) [91] (Brain.cs
-[92] [93] [94]) [95] (PerceptUnit.cs [96] [97]) [98] (LoadFile.cs [99] [100]
-[101]) [102] (RapportTER.aux)
+] (ObjectPool.cs [89]) [90] (MovableCharacter.cs [91]) [92] (Brain.cs
+[93] [94] [95]) [96] (PerceptUnit.cs [97] [98]) [99] (LoadFile.cs [100]
+[101] [102]) [103] (RapportTER.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -1433,7 +1445,7 @@ Here is how much of TeX's memory you used:
  12128 multiletter control sequences out of 15000+200000
  11740 words of font info for 40 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,9n,43p,1063b,1844s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 42i,9n,43p,1301b,1844s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\fumey\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\
 tcrm0800.pk> <C:\Users\fumey\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\
 ec\dpi600\tcrm1000.pk><C:/Users/fumey/AppData/Local/Programs/MiKTeX 2.9/fonts/t
@@ -1451,9 +1463,9 @@ rams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/fumey/AppData
 umey/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pf
 b><C:/Users/fumey/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts
 /cm/cmti12.pfb>
-Output written on RapportTER.pdf (104 pages, 10701970 bytes).
+Output written on RapportTER.pdf (105 pages, 10703716 bytes).
 PDF statistics:
- 461 PDF objects out of 1000 (max. 8388607)
+ 464 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  211 words of extra memory for PDF output out of 10000 (max. 10000000)
 
