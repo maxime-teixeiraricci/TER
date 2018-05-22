@@ -15,6 +15,7 @@
 \usepackage{enumitem}
 \usepackage{textcomp}
 \usepackage{fancyhdr}
+\usepackage{hyperref}
 \pagestyle{plain}
 \definecolor{listinggray}{gray}{0.9}
 \definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
@@ -88,19 +89,21 @@ stringstyle=\color[rgb]{0.627,0.126,0.941},
 \section{But du projet}
 \paragraph{}
 L'objectif de ce projet est la réalisation d'un jeu basé sur un modèle multi-agent. L'idée générale du projet est dans la continuité de celui de l'année dernière et sur le même thème. L'outil utilisé est Unity 3D, un moteur de jeu employé dans un grand nombre de réalisations de hautes qualités. Notre projet est opérationnel sur Windows et pourrait être porté sur Mac ou encore Android.
-Ce projet consiste de réaliser un jeu que l'on peut qualifier de programmeur et de permettre, notamment, à de jeunes personnes de se familiariser avec le monde de la programmation. L'utilisateur pourra donc créer un comportement pour des robots appelés "unité" afin de remplir des objectifs du jeu.
+Ce projet consiste en la réalisation d'un jeu que l'on peut qualifier de jeu pour programmeur et de permettre, notamment, à de jeunes personnes de se familiariser avec le monde de la programmation. L'utilisateur pourra donc créer un comportement pour des robots appelés "unité" afin de remplir des objectifs en jeu.
 \paragraph{}
 Metabot est un projet modeste réalisé à partir du logiciel Unity 3D par un groupe d'étudiants débutants dans l'utilisation de cet outil. Malgré le peu d'expérience dans la création pure de ce genre d'applications, le projet actuel est le fruit d'un travail important et d'une implication entière de toute l'équipe.
 Il a donc pour unique prétention de communiquer notre amour du jeu vidéo et de la programmation.
 \subsection{Cahier des charges}
-Le but de notre groupe était donc l’ajout de fonctionnalités à la version Unity du jeu WarBot, tout en corrigeant ces problèmes, pour la rendre utilisable et aussi stable que possible. 
+Le but de notre groupe était donc l’ajout de fonctionnalités à la version Unity du jeu WarBot, tout en corrigeant ses problèmes, pour la rendre utilisable et aussi stable que possible. 
 Après inspection de l’ancien projet et la nécessité de recommencer sur de nouvelles bases, nous nous sommes d’abord concentrés sur la mise en place d’un jeu générique et stable en collaboration avec le groupe MetaBot.
 \paragraph{}
 Le travail sur le projet a donc été réparti en 4 sous-groupes de 2 personnes comme ci : 
-Un groupe sur le moteur du jeu lui-même
-Un groupe sur l’interface graphique et des interactions avec l’utilisateur
-Un groupe travaillant sur le langage pour le comportement des unités et l’interprétation de ce langage
-Un groupe de “Game Design” 
+\begin{itemize}
+\item Un groupe sur le moteur du jeu lui-même
+\item Un groupe sur l’interface graphique et des interactions avec l’utilisateur
+\item Un groupe travaillant sur le langage pour le comportement des unités et l’interprétation de ce langage
+\item Un groupe de Game Design 
+\end{itemize}
 
 Ce rapport portera sur le sous-groupe Game Design et le sous-groupe Interpréteur, même si les groupes ont rapidement disparus afin que l’on puisse s’aider comme un groupe de 8 et que chacun puisse découvrir des parties différentes du moteur Unity 3D.
 \section{Notion d'agent}
@@ -119,7 +122,7 @@ Il est bien sûr possible d’implémenter une équipe n’utilisant aucune comm
 
 Un exemple d’agent nécessitant de la communication pour utiliser ses compétences correctement est le cas du War RocketLauncher dans WarBot , qui a une portée de tir supérieure à son champ de vision. Il va devoir s’organiser avec d’autres unités pour réussir son but.
 \paragraph{}
-Il existe différentes structures pour représenter le comportement d’agents : Architecture du subsomption, machine à états, … mais nous nous concentrerons sur l’Architecture de subsomption lors de ce projet, puisqu’elle est plus simple et intuitive pour de jeunes programmeurs, qui pourraient être le public cible d’un jeu comme Warbot.
+Il existe différentes structures pour représenter le comportement d’agents : Architecture de subsomption, machine à états, … mais nous nous concentrerons sur l’Architecture de subsomption lors de ce projet, puisqu’elle est plus simple et intuitive pour de jeunes programmeurs, qui pourraient être le public cible d’un jeu comme Warbot.
 
 Une architecture de subsomption se décompose comme un ensemble de cas que pourraient traiter l’agent, organisés de manière hiérarchique, l’ordre est donc très important.
 
@@ -134,7 +137,7 @@ Une architecture de subsomption se décompose comme un ensemble de cas que pourr
 \paragraph{}
 
 \section{Principe}
-Dans WarBot, deux à quatre équipes se battent sur un terrain pour les ressources afin de survivre et d'éliminer les autres équipes afin d’être la dernière en vie. Des ressources apparaissent sur la carte et peuvent être converti en unité ou en soin.
+Dans WarBot, deux à quatre équipes se battent sur un terrain pour les ressources afin de survivre et d'éliminer les autres équipes afin d’être la dernière en vie. Des ressources apparaissent sur la carte et peuvent être converties en unité ou en soin.
 
 \section{Liste des unités}
 De nombreuses unités existent dans la dernière version Java de Warbot, mais nous n’avons pas pu implémenter le tout , mais nous nous sommes limités aux plus importantes, de manière à ce que le mode de jeu Warbot fonctionne.
@@ -144,13 +147,21 @@ La base est l’unité la plus importante de chaque équipe. Tant qu’elle est 
 Elle ne peut pas se déplacer, mais elle possède un inventaire bien plus gros que les autres unités. Elle peut se soigner en utilisant les ressources que lui apporte les autres unités et peut aussi se servir de ces ressources pour créer de nouvelles unités. Il est aussi possible de créer des unités en utilisant la vie de la base.
 \paragraph{}
 Les explorers:\newline
-Les explorers sont des unités pacifiques dans le jeu. Elles peuvent se déplacer et récupérer les ressources mais ne peuvent pas se battre.\newline
-Les explorers sont la clé de la communication du jeu, car leur vitesse de déplacement élevée leur permet d’explorer, comme leur nom l’indique, la carte rapidement.
+Les explorers sont des unités pacifistes dans le jeu. Elles peuvent se déplacer et récupérer les ressources mais ne peuvent pas se battre.\newline
+Les explorers sont la clé de la communication du jeu, car leur vitesse de déplacement élevée leur permet d’explorer, comme leur nom l’indique, la carte rapidement. \newline
+Au vu de leur inventaire plus grand que la normale et leur vitesse de déplacement, ce sont les unités idéales pour rapporter les ressources à la base.
 \paragraph{}
 Les heavy:\newline
+Les heavy sont les unités qui font le plus de dégâts du jeu. Pour compenser, ce sont les unités les plus lentes et avec la distance de vue la plus faible. \newline
+Elles sont idéales pour détruire rapidement des unités immobiles.
+\paragraph{}
+Les light:\newline
+Les light sont les autres unités offensives du jeu. Plus rapide et moins résistance que les heavy, leurs projectiles font également moins de dégâts mais leur cadence de tir est plus élevé \newline
+Cette unité est très pratique pour détruire des unités mobiles. Sa rapidité lui permet de rivaliser avec les heavy qui ne devraient pas arriver à les toucher si elles se déplacent pendant l'affrontement.
 \newpage
 \part{Réalisation du projet}
 \newpage
+
 
 
 \newpage
@@ -229,7 +240,7 @@ _actions["ACTION_MOVE"]
 \paragraph{}
 
 Avant d'exécuter leurs actions , les unités doivent vérifier si les conditions que l’utilisateur a défini nécessaire sont bien validées. Pour cela, une structure très similaires de celles des actions a été conservée, avec le même principe de fonctions anonymes. 
-Une spécificité dans la gestion des percepts (et ce sera aussi le cas pour la gestion des messages entre unités) est que l’orientation de l’unité actuelle sera modifiée selon ce qu’elle perçoit. Par exemple, si elle voit une unité agressive , elle va s’orienter vers elle, comme ça l’utilisateur ne devra pas gérer la direction de l’unit,é sauf si celle ci doit être orientée de manière externe (par exemple changer d’orientation si on est bloqué contre un mur).
+Une spécificité dans la gestion des percepts (et ce sera aussi le cas pour la gestion des messages entre unités) est que l’orientation de l’unité actuelle sera modifiée selon ce qu’elle perçoit. Par exemple, si elle voit une unité agressive , elle va s’orienter vers elle, comme ça l’utilisateur ne devra pas gérer la direction de l’unité sauf si celle ci doit être orientée de manière externe (par exemple changer d’orientation si on est bloqué contre un mur).
 
 \begin{lstlisting}[frame=single]
 _percepts["PERCEPT_ENEMY"] = delegate ()
@@ -622,7 +633,7 @@ Le script va simplement calculer la moyenne des positions de l’ensembles des u
 \subsection{Caméra première personne}
 \paragraph{}
 
-Sur une idée de notre encadrant Mr Ferber, il a été décidé de mettre en place une caméra première personne , car cette option permettait à l’utilisateur de se mettre dans la vue complète de l’unité et de pouvoir mieux suivre ce qui peut se passer autour de cette unité, et pour profiter pleinement des possibilités que permet une version Unity du jeu. \newline
+Sur une idée de notre encadrant M. Ferber, il a été décidé de mettre en place une caméra première personne , car cette option permettait à l’utilisateur de se mettre dans la vue complète de l’unité et de pouvoir mieux suivre ce qui peut se passer autour de cette unité, et pour profiter pleinement des possibilités que permet une version Unity du jeu. \newline
 
 Un premier jet de la caméra avait été une caméra totalement dans l’unité, suivant ainsi sa position et sa rotation. La caméra était en soit très bien , mais le fait de suivre la rotation de l’unité était peu agréable car les unités ont tendance à beaucoup bouger et se retourner dans les coins. 
 
@@ -701,7 +712,7 @@ Enfin si il est grisé, cela signifie que cette caméra n’est pas disponible d
 
 \section{Fin du jeu et Statistiques}
 
-Avec la quantité de travail pour faire fonctionner le moteur, un écran de fin du jeu n’avait pas encore mis en place,alors qu’il totalement vital ici. Si l’on souhaite que WarBot soit utilisable l’année prochaine pour l’UE Programmation Orientée Agents de Mr. Ferber, il est nécessaire de pouvoir finir le jeu et récupérer le nom du gagnant du match.
+Avec la quantité de travail pour faire fonctionner le moteur, un écran de fin du jeu n’avait pas encore mis en place,alors qu’il totalement vital ici. Si l’on souhaite que WarBot soit utilisable l’année prochaine pour l’UE Programmation Orientée Agents de M. Ferber, il est nécessaire de pouvoir finir le jeu et récupérer le nom du gagnant du match.
 \paragraph{}
 La aussi dans l’optique d’une généricité maximale, il a fallu trouver un moyen de pouvoir ajouter très facilement des conditions et des exécutions de fin.
 Nous nous sommes ainsi inspirés du fonctionnement des Actions, et  utilisons ainsi des fonctions anonymes stockées dans 2 tableaux. 
@@ -905,7 +916,7 @@ Voici un exemple
 % Ressource Race
 \newpage
 \section{Nouvelle condition de victoire}
-A la fin du projet , après avoir intégré la gestion de la fin du jeu, Mr Ferber nous a donné l’idée de mettre en place un second mode de jeu pour montrer les possibilités de généricité du projet. Le temps étant assez court, l’idée de mettre en place un mode de jeu entier était impossible , et nous avons mis en place une condition de victoire différente, mais toujours basée sur le mode de jeu WarBot.
+A la fin du projet , après avoir intégré la gestion de la fin du jeu, M. Ferber nous a donné l’idée de mettre en place un second mode de jeu pour montrer les possibilités de généricité du projet. Le temps étant assez court, l’idée de mettre en place un mode de jeu entier était impossible , et nous avons mis en place une condition de victoire différente, mais toujours basée sur le mode de jeu WarBot.
 \paragraph{}
 Reprenant l’idée d’un mode réfléchi par l’équipe Game Design, la possibilité de passer en “Course aux ressources” a été rajoutée dans les paramètres. Si ce mode est sélectionné , l’utilisateur va pouvoir définir un temps limité en secondes avant l’arrêt de la partie, ainsi qu’une limite de ressource à atteindre. Le jeu s’arrête si le temps imparti est atteint, ou si l’une des équipes à atteint le nombre de ressources spécifié dans l’inventaire de leur base. Dans le cas où le temps est atteint, c’est l’équipe ayant le plus de ressources dans sa base qui a gagnée. 
 
@@ -963,7 +974,7 @@ Cette skybox a été générée par l’outil “Spacescape”, qui génère des
 \end{center}
 \paragraph{}
 
-La carte a d'abord été mise en place sous forme de rectangle, pour bien comprendre le fonctionnement de Unity. Il  n’a pas été malheureusement possible de finir et de modifier la forme pour s’adapter au schéma, la carte est donc restée dans les fichiers du projet tel quelle et n’est pas accessible dans le jeu.
+La carte a d'abord été mise en place sous forme de rectangle, pour bien comprendre le fonctionnement de Unity. Il  n’a pas été malheureusement possible de finir et de modifier la forme pour s’adapter au schéma, la carte est donc restée dans les fichiers du projet tel quelle.
 
 Voici une image de l’état de la carte : 
 
@@ -974,7 +985,7 @@ Voici une image de l’état de la carte :
 \end{center}
 \paragraph{}
 
-
+La carte est présente dans la liste des cartes disponibles pour le jeu pour la démonstration, mais elle n’est qu’au stade présenté sur la capture d’écran ci dessus. Il faudra la retravailler pour qu’elle corresponde au schéma imaginé initialement.
 
 \newpage
 \chapter{Partie "Game Design"}
@@ -1058,9 +1069,6 @@ La partie propriétés, bien qu’elle demande à être revu graphiquement fait 
 \end{center}
 \end{adjustwidth}
 \paragraph{}
-\section{Test logiciel}
-\subsection{Procédé}
-\paragraph{}
 
 Malheureusement, les groupes ne sont plus présents dans cette version, ce qui rend le nombre d’option bien plus limité.\newline
 La disparition des unités WarEngineer et WarTurret rend également le jeu moins complet. Les tourelles étant des outils très intéressant pour les stratégie défensive, ces équipes sont bien moins fortes que dans la version faite l’année dernière.
@@ -1095,7 +1103,7 @@ Lorsqu’un bug était plus important, comme l’impossibilité de lancer une pa
 \paragraph{}
   Deux semaines après le début du projet, il nous a été demandé de rédiger un document expliquant comment nous voulions voir langage évoluer. Nous avons donc commencé à imaginer comment améliorer le langage de l’éditeur de l’ancienne version.
 \paragraph{}
-  Tout d’abord, nous voulions introduire une nouvelle fonctionnalité : l’objectif. Au vu de la nature d’une Finish-State Machine qui est le concept sur lequel se base le comportement des agents de WarBot, il est très dur de réaliser des stratégie car la moindre réponse à un réflexe nous fait perdre notre trajectoire car l'orientation de l'unité est modifiée. \newline
+  Tout d’abord, nous voulions introduire une nouvelle fonctionnalité : l’objectif. Au vu de la nature d’une architecture de subsomption qui est le concept sur lequel se base le comportement des agents de WarBot, il est très dur de réaliser des stratégie car la moindre réponse à un réflexe nous fait perdre notre trajectoire car l'orientation de l'unité est modifiée. \newline
 L’objectif est donc un objet contenant simplement des coordonnées qui se conserve au fil des tours, contrairement à la cible. Il a été conçu notamment pour se diriger vers des messages. Le but est de conserver la position de l’émission d’un message pour pouvoir se diriger vers ce dernier à tout moment. \newline
 Ainsi, il est possible de réagir à des réflexes sur un tour puis de modifier son orientation en direction de l’objectif pour reprendre le chemin vers ce dernier aux tours suivants. Cette fonctionnalité permet également de tirer vers une position en dehors de notre champ de vision, possibilité imposé par M. Ferber qui veut que les WarHeavy aient une distance de vue très faible pour que les autres unités soient obligés de les guider.
 \newpage
@@ -1187,7 +1195,7 @@ L’autre approche est l’approche top-down dans laquelle on commence par déte
 Nous avons choisi l’approche top-down car notre but dans la création de nouveau mode était de créer des modes se différenciant du mode WarBot. Il était donc plus logique de partir d’une intention de jeu précise suffisamment différente de ce qui est demandé dans le mode WarBot pour se détacher de ce dernier.
 \paragraph{}
 
-  Nous avons donc commencé à chercher des idées en ayant eu pour consigne la très vague instruction “faire quelque chose de différent de WarBot sans trop s’en éloigner”. Parmis ces idées, nous avons décidé de développer celles que nous trouvions les plus pertinentes à savoir un jeu en coopération basé sur la collecte de ressources, un simili RPG où les agents devaient accepter des quêtes de personnages non joueur et un jeu d’énigme. \newline
+  Nous avons donc commencé à chercher des idées en ayant eu pour consigne de faire quelque chose de différent de WarBot sans trop s’en éloigner. Parmis ces idées, nous avons décidé de développer celles que nous trouvions les plus pertinentes à savoir un jeu en coopération basé sur la collecte de ressources, un simili RPG où les agents devaient accepter des quêtes de personnages non joueur et un jeu d’énigme. \newline
 Au final, seulement l’idée du jeu de coopération a été accepté par le reste de l’équipe mais il a été jugé trop complexe et il nous a donc été demandé de retravailler ce mode. On nous a également demandé de travailler sur la conception d’un mode de jeu de capture de drapeau car implémenter un mode de jeu qui partage un grand nombre de primitives avec WarBot semblait bien plus faisable que la création d’un mode de coopération qui demandait de plus amples réflexions afin de le faire fonctionner sous le moteur de jeu développé cette année.
  \paragraph{}
  \newpage
@@ -1388,6 +1396,46 @@ Au départ, le WarHeavy semblait presque inutile. En effet, la particularité de
 Nous avons donc décidé de réduire l’angle de perception et d’augmenter la portée de son champs de vision. Ainsi, les WarHeavy détectent mieux les ennemis mais sont plus vulnérables aux attaques qui arrivent de côté.
 \paragraph{}
 Les autres réglages ont plus été des règlements mineurs sur les autres unités pour obtenir des parties plus dynamique. On a par exemple légèrement augmenté les dégâts des unités offensives pour que les parties se terminent plus rapidement.
+\paragraph{}
+En plus de l’équilibrage des unités, on a cherché à modifier de manière générale les propriétés des unités pour obtenir des expériences de jeux différentes. Tout d’abord, on a noté les performances de l’équilibrage de base afin de pouvoir les comparer. Nous avons effectué cette acquisition de données sur la carte “Mountain” qui est une carte de taille moyenne et ne comportent pas d’obstacle. Le comportement de l’équipe de test restait basique : les explorateurs s’aident pour la récolte en partageant leur position quand ils ramassent une ressource, les unités offensives partagent la position des ennemis qu’ils attaquent et la tour se soigne et créé un explorateur quand elle le peut. Avec tous ces facteurs, une partie dure environ 1min30.
+\paragraph{}
+Nous avons ensuite voulu essayer un mode où des erreurs de comportements seraient beaucoup plus punitives. On s’est orienté vers une réduction des points de vie. Avec ce réglage, le nombre de coups en fonction de son type et de l’unité attaqué devenait le suivant : 
+
+
+\paragraph{}
+\begin{adjustwidth}{-3em}{}
+\begin{center}
+\includegraphics[scale=1]{DATA/coutUnit.png}
+\captionof{figure} {Nombre de coups pour tuer une unité en fonction de son type}
+\end{center}
+\end{adjustwidth}
+\paragraph{}
+
+\paragraph{}
+Comme excepté, la durée des parties était plus courte et passait généralement en dessous de la barre de la minute. Cependant, avec des points de vie aussi faibles, on s’est demandé si certains comportements atypiques pouvaient apparaître, voire avoir un comportement qui est clairement supérieur aux autres.  On s’est alors rappelé du concours WarBot que l’on a fait au semestre précédent sous Java. Une des équipes avait une stratégie où leur base sacrifiait quasiment l’ensemble de ces points de vie pour créer un maximum d’unité et finir la partie avant que l’équipe adverse est le temps de riposter. On a donc recréé cette équipe avec notre version de Warbot et on s’est rendu compte qu’elle était très efficace avec un taux de victoire supérieur à 80\% sur 20 parties. Deux questions se sont donc posé : est-ce notre équipe de base qui est trop faible ou est-ce ce comportement qui est particulièrement trop fort ?
+\paragraph{}
+On a donc créé d’autres équipes pour répondre à ces questions : une équipe du même type mais sans la communication, une équipe plus avancée avec une base qui gère mieux ces points de vie et la création d’unités et une équipe assez faible où il n’y a aucune communication et aucune création d’unité au niveau de la base. Avec ces équipes, on visait le classement suivant :
+\begin{itemize}
+\item Première place : l’équipe avancée et l’équipe “sacrifice” avec communication,
+\item Deuxième place : l’équipe “sacrifice” avec communication,
+\item Troisième place  : l’équipe de base 
+\item Quatrième place : l’équipe “sacrifice” sans communication,
+\item Cinquième place : l’équipe faible
+\end{itemize}
+\paragraph{}
+  Ce classement se base sur un principe de base que l’on souhaite sur WarBot : la communication est un élément central du jeu et on souhaite récompenser les joueurs qui l’utilisent. C’est pour cela que les trois équipes utilisant ce principe sont dans le haut du classement. Ensuite, les équipes “sacrifice” doivent tout de même rester moins fiables que des équipes plus complexes tout en l’heure laissant l’occasion de gagner sur un “coup de poker”.  On a tout d’abord fait affronter les équipes communication/sans communication de chaque type. Au niveau des équipes basique/avancé, on obtient le résultat escompté : une domination de la part de l’équipe avancé. Pour les équipes “sacrifices”, le résultat était plus aléatoire. En effet, avec aussi peu de points de vie, un comportement aléatoire sans communication, même si peu d’unité, trouve plus rapidement la base adverse et ne laisse pas le temps à l’équipe adverse la possibilité de répliquer. De son côté, l’équipe faible gagnait seulement contre l’équipe sacrifice sans communication dans de rares cas. On retrouvait donc le classement pré-établi plus tôt. 
+  \paragraph{}
+  Au final, on en a conclu que c’était notre équipe de base qui était trop faible et qu’une bonne gestion de la communication et de ses ressources étaient souvent plus pertinentes. On a refait les mêmes tests avec l'équilibrage basique (plus de points de vie). Comme avec l’équilibrage précédent, le classement entre les équipes fut le même. De plus, l’équipe “sacrifice” avec communication semblait prendre plus facilement l'avantage sur l’équipe “sacrifice” sans communication. On a donc repris cet équilibrage comme base. Le public visé étant aussi des jeunes, on ne souhaite pas que l’expérience de jeu soit trop frustrante et trop punitive. Il est cependant toujours possible de basculer vers l’autre équilibrage facilement pour créer d’autres types de tournoi et/ou vérifier la fiabilité d’une équipe face à d’autres rythmes de jeu. 
+  
+
+\paragraph{}
+\begin{adjustwidth}{-3em}{}
+\begin{center}
+\includegraphics[scale=1]{DATA/EquilibrageComp.png}
+\captionof{figure} {A gauche, équilibrage punitif. A droite, équilibrage choisi}
+\end{center}
+\end{adjustwidth}
+\paragraph{}
 
 
 \newpage
@@ -1419,6 +1467,8 @@ Il reste à implémenter les unités manquantes de la version actuelles comme le
  Le système de groupe et d’objectif ainsi que l’ajout des primitives évoqués dans la partie “Améliorations demandées” permettraient d’augmenter le nombre de possibilité des joueurs ce qui permettra de commencer à voir des équipes radicalement différentes.
 \paragraph{}
 Bien sûr, il est toujours possible de concevoir de nouveaux modes de jeu et de nouvelles cartes. Il pourrait être intéressant que le mode de course aux ressources soit poussé plus loin pour former un mode à part car les unités offensives sont beaucoup moins intéressantes dans ce mode de jeu.
+\paragraph{}
+Le mode de jeu de coopération nous semble encore trop peu intéressant notamment à cause des transporteurs qui devraient avoir un rôle plus important. Malheureusement, en laissant le contrôle à l'unité qu'elle transporte, cette unité est plus un outil de l'équipe A qu'une unité de l'équipe B.
 
 
 \chapter{Conclusion}
@@ -1426,8 +1476,76 @@ Bien sûr, il est toujours possible de concevoir de nouveaux modes de jeu et de 
 Bien sûr de nombreux bugs vont subsister lors de la modification et l’ajout de fonctionnalités que nous ne voyons pas encore, mais nous pourrons répondre aux questions des prochaines équipes travaillant sur le projet si besoin.
 
 \section{Point final}
+Ce projet a été une grande expérience pour nous tous.\newline
+Ce fut une joie pour certains d’entre nous,qui n’avaient pas encore travaillé avec des outils comme Unity,  de pouvoir se lancer dans la découverte du développement d’un jeu comme Warbot.\newline
+L’apprentissage de nouveaux outils et de nouvelles méthodes de programmation qui peuvent dépayser un développeur a été une expérience formidable pour chacun.
+\paragraph{}
+Travailler à 8 fut une expérience enrichissante pour tous les membres de l’équipe qui ont rarement voire jamais eu l’occasion de travailler à plus de 4 sur un même projet. \newline
+Être autant sur ce projet nous a permis de nous confronter aux problèmes de communications mais aussi de diversifier énormément le type de travail demandé à chacune des sous-équipes de 2 formées pendant ce projet. De plus les réunions hebdomadaires ont été l’occasion de comprendre les enjeux et les méthodes de travail de chaques parties nécessaires au développement de WarBot. 
+\paragraph{}
+L’ensemble du projet à été réalisé sous une méthode de développement Agile, qui a été une expérience nouvelle pour certains d’entre nous.\newline
+Le respect des délais pour l’implémentation de fonctionnalités, l’assurance d’avoir un jeu qui pourra être lancé à chaque réunion avec notre encadrant sont des contraintes auxquelles il a fallu s’habituer. \newline
+Le jeu a ainsi été utilisable à chaque réunion, quelques soit les fonctionnalités implémentées durant la semaine qui précédait. 
+\paragraph{}
+Toute l’équipe souhaite donc remercier M. Ferber pour nous avoir permis de participer à son projet de portage de WarBot sous le moteur de jeu Unity, en plus de son expérience et de ses nombreux conseils. \newline
+Nous souhaitons aussi remercier l’équipe qui a travaillé sur le moteur et l’interface du jeu, pour l’aide qu’ils ont pu nous apporter, ainsi que l’équipe de l’année précédente qui nous ont permis de nous aiguiller sur comment améliorer leur version du projet. \newline
+Enfin, nous remercions M. Lafourcade pour l’expérience qu’il a apporté à tout le monde par l’organisation de l’UE TER.
+
+\newpage
 \part{Annexe}
+\section{Captures d'écrans du jeu}
+Voici un ensemble de capture d’écrans, afin que vous puissiez voir le jeu tel qu’il est a la fin de la rédaction de ce rapport.
+
+\paragraph{}
+\begin{adjustwidth}{-3em}{-3em}
+\begin{center}
+\includegraphics[scale=0.5]{DATA/menuprincipal.png}
+\captionof{figure} {Menu Principal du jeu}
+\end{center}
+\end{adjustwidth}
+\paragraph{}
+
+
+\paragraph{}
+\begin{adjustwidth}{-3em}{-3em}
+\begin{center}
+\includegraphics[scale=0.5]{DATA/menuparametre.png}
+\captionof{figure} {Menu Paramètres du jeu}
+\end{center}
+\end{adjustwidth}
+\paragraph{}
+
+\paragraph{}
+\begin{adjustwidth}{-3em}{-3em}
+\begin{center}
+\includegraphics[scale=0.5]{DATA/editeurcomportement.png}
+\captionof{figure} {Editeur de comportement du jeu}
+\end{center}
+\end{adjustwidth}
+\paragraph{}
+
+
+\paragraph{}
+\begin{adjustwidth}{-3em}{-3em}
+\begin{center}
+\includegraphics[scale=0.3]{DATA/enjeu.png}
+\captionof{figure} {Interface en jeu sur la carte “Garden”}
+\end{center}
+\end{adjustwidth}
+\paragraph{}
+
+\paragraph{}
+\begin{adjustwidth}{-3em}{-3em}
+\begin{center}
+\includegraphics[scale=0.3]{DATA/enjeufps.png}
+\captionof{figure} {Interface en vue première personne sur la carte “Garden”}
+\end{center}
+\end{adjustwidth}
+\paragraph{}
+
+
 \section{Point importants du code}
+
 
 \begin{lstlisting}[frame=single]
  public override Instruction whichInstruction(string unitName, XmlNode ins)
@@ -3155,8 +3273,7 @@ public struct Traduction
       </actions>
     </instruction>
     <instruction>
-      <parameters>
-        <NOT_PERCEPT_BAG_FULL />
+      <parameters>a
         <PERCEPT_FOOD_NEAR />
       </parameters>
       <actions>
@@ -3226,13 +3343,162 @@ public struct Traduction
 </behavior>
 \end{lstlisting}
 \captionof{figure} {Equipe ressources}
+
+\section{Fichier statistiques}
+
+\begin{lstlisting}[frame=single]
+  Unit:Base
+    ViewAngle:360
+    ViewDistance:15
+    MaxHealth:1000
+    InventorySize:999
+    ;
+  Unit:Explorer
+    ViewAngle:80
+    ViewDistance:9
+    MaxHealth:75
+    InventorySize:10
+    Speed:17
+    ;
+  Unit:Heavy
+    ViewAngle:35
+    ViewDistance:4
+    MaxHealth:305
+    InventorySize:2
+    Speed:6
+    Reload:55
+    ;
+  Unit:Light
+    ViewAngle:55
+    ViewDistance:7
+    MaxHealth:135
+    InventorySize:5
+    Speed:13
+    Reload:35
+    ;
+\end{lstlisting}
+\captionof{figure} {Statistiques actuelles}
+
+\begin{lstlisting}[frame=single]
+  Unit:Base
+    ViewAngle:360
+    ViewDistance:15
+    MaxHealth:3000
+    InventorySize:999
+    ;
+  Unit:Explorer
+    ViewAngle:80
+    ViewDistance:9
+    MaxHealth:50
+    InventorySize:10
+    Speed:17
+    ;
+  Unit:Heavy
+    ViewAngle:35
+    ViewDistance:4
+    MaxHealth:400
+    InventorySize:0
+    Speed:6
+    Reload:35
+    ;
+  Unit:Light
+    ViewAngle:55
+    ViewDistance:7
+    MaxHealth:200
+    InventorySize:5
+    Speed:13
+    Reload:10
+    ;
+\end{lstlisting}
+\captionof{figure} {Statistiques punitives}
+
+\begin{lstlisting}[frame=single]
+  Unit:Base
+    ViewAngle:360
+    ViewDistance:15
+    MaxHealth:6000
+    InventorySize:999
+    ;
+  Unit:Explorer
+    ViewAngle:80
+    ViewDistance:9
+    MaxHealth:200
+    InventorySize:10
+    Speed:17
+    ;
+  Unit:Heavy
+    ViewAngle:5
+    ViewDistance:7
+    MaxHealth:800
+    InventorySize:0
+    Speed:6
+    Reload:35
+    ;
+  Unit:Light
+    ViewAngle:55
+    ViewDistance:7
+    MaxHealth:400
+    InventorySize:5
+    Speed:13
+    Reload:10
+    ;
+\end{lstlisting}
+\captionof{figure} {Statistiques bases}
+
+\begin{lstlisting}[frame=single]
+  Unit:Base
+    ViewAngle:360
+    ViewDistance:15
+    MaxHealth:1000
+    InventorySize:999
+    ;
+  Unit:Explorer
+    ViewAngle:100
+    ViewDistance:9
+    MaxHealth:200
+    InventorySize:10
+    Speed:30
+    ;
+  Unit:Heavy
+    ViewAngle:5
+    ViewDistance:7
+    MaxHealth:200
+    InventorySize:0
+    Speed:8
+    Reload:100
+    ;
+  Unit:Light
+    ViewAngle:75
+    ViewDistance:9
+    MaxHealth:100
+    InventorySize:10
+    Speed:20
+    Reload:10
+    ;
+\end{lstlisting}
+\captionof{figure} {Statistiques funs}
+\newpage
 \section{Documents}
+
+Voici une listes des documents rédigés par notre équipe lors de ce projet :
+\begin{itemize}
+\item Liste bugs amélioration ancien Warbot : une liste des bugs trouvés sur la version créé l'année dernière et des notes sur les choses à améliorer dans notre version du projet
+\item Rapport de bug version acuelle : la liste des bugs trouvés dans la version actuelle de WarBot. Classé par catégorie suivant s'ils sont corrigés, patchés, à corriger ou réapparu.
+\item Manuel utilisateur : un document expliquant comment utiliser WarBot. Il y a également une documentation des primitives présentent dans la version acuelle.
+\item Idees modes coop : un brouillon du mode de coopération qui a permis à structurer nos idées.
+\item CoopBot : le game document du mode de coopération
+\item Capture De Drapeau : le game document du mode capture de drapeau
+\end{itemize}
 
 % Uncomment the following two lines if you want to have a bibliography
 %\bibliographystyle{alpha}
 %\bibliography{document}
 
 \end{document}
+
+
+
+
 
 
 

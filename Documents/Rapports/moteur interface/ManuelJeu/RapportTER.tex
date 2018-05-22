@@ -316,8 +316,8 @@ Cliquer sur ces boutons permet de changer de caméra.
 	\caption{Caméras}
 \end{figure}
 \paragraph{}
-Pour activer la vue à la première personne, il faut cliquer sur une unité. La caméra suit les mouvements de l'unit sur laquelle on a cliqué. Bouger la souris à droite ou à gauche modifie l'orintation de la caméra. Cliquer sur le bouton "FPS" permet de retourner en vue de dessus. \newline
-Cliquer sur le bouton "Libre" permet d'activer ou désactiver la caméra libre. En mode améra libre, il possible de modifier la position de la caméra en emmenant la souris sur les bords de la fenêtre. Il est également possible de zoomer. Si la caméra n'est pas libre, elle changera elle même sa position pour capturer au mieux l'entièreté des unités.
+Pour activer la vue à la première personne, il faut cliquer sur une unité. La caméra suit les mouvements de l'unit sur laquelle on a cliqué. Bouger la souris à droite ou à gauche modifie l'orientation de la caméra. Cliquer sur le bouton "FPS" permet de retourner en vue de dessus. \newline
+Cliquer sur le bouton "Libre" permet d'activer ou désactiver la caméra libre. En mode caméra libre, il possible de modifier la position de la caméra en emmenant la souris sur les bords de la fenêtre. Il est également possible de zoomer. Si la caméra n'est pas libre, elle changera elle même sa position pour capturer au mieux l'entièreté des unités.
 
 \subsection{Vitesse}
 Modifier ce slider modifie la vitesse du jeu. 100\% représente la vitesse normale. Si la valeur est inférieur à 100\%, le jeu est ralentit. Si la valeur est au-dessus de 100\%, le jeu est accéléré. \newline
@@ -343,7 +343,7 @@ Cliquer sur le bouton "Recommencer" permet de lancer une nouvelle partie avec le
 \paragraph{}
 Les primitives permettent de modifier le comportement d'un certain type d'unité au sein d'une même équipe. Pour créer une primitive, il faut cliquer sur l'un des blocs dans le menu de gauche. Une primitive est alors positionné dans l'éditeur de comportement. \newline
 Pour changer le type de primitives à créer, il faut cliquer sur les onglets de couleurs tout à droite de la fenêtre. \newline
-Il faut ensuite la déplacer au bon endroit pour qu'elle soit prise en compte dans le comportement. Pour celà, il suffit de cliquer avec le clic gauche de la souris sur la primitive, de maintenir le bouton enfoncé et de déplacer sa souris. \newline
+Il faut ensuite la déplacer au bon endroit pour qu'elle soit prise en compte dans le comportement. Pour cela, il suffit de cliquer avec le clic gauche de la souris sur la primitive, de maintenir le bouton enfoncé et de déplacer sa souris. \newline
 Il est possible de supprimer une primitive en faisant un clic droit sur l'une de celles dans l'éditeur de comportement.\newline
 Une fois le comportement d'une unité terminé, il faut cliquer sur le bouton de sauvegarde pour que les unités de votre équipe puissent le suivre. \newline
 Il est possible d'annuler la suppression ou la création d'une primitive en cliquant sur le bouton retour arrière.  \newline
@@ -356,8 +356,8 @@ La primitive start est une primitive placé automatiquement dans chaque comporte
 	\caption{Primitive start}
 \end{figure}
 \section{Controles}
-La seule primitive de controle est "If". Elle est essentielle à la constrution de comportement car c'est la seul primitive pouvant se déplacer en dessous de la primitive Start.\newline
-Les If se plaent les un en-dessous des autres. La partie haute du bloc est destiné aux conditions et la partie basse aux actions et messages.
+La seule primitive de contrôle est "If". Elle est essentielle à la construction de comportement car c'est la seul primitive pouvant se déplacer en dessous de la primitive Start.\newline
+Les If se placent les un en-dessous des autres. La partie haute du bloc est destiné aux conditions et la partie basse aux actions et messages.
 \begin{figure}[!h]
 	\centering
 		\includegraphics[scale=1]{if.png}
@@ -398,9 +398,9 @@ La liste des conditions communes aux explorer, light et heavy est :
 \item Est bloqué : vérifie si l'unité ne peux pas avancer à cause d'un obstacle
 \item Base alliée Proche : Vérifie si une base alliée est dans le champ de vision de l'unité. Modifie la cible de l'unité
 \item Can give : vérifie si l'unité peut donner une ressource à une autre unité
-\item Contract Elimination : vérifie si l'unité a un contract d'élimination en cours
-\item Contract Elimination target near : Vérifie si la cible du contract de l'unité est dans son champs de vision
-\item Nourriture prohe : Vérifie si une ressource est suffisemment proche pour être récupérée par l'unité
+\item Contract Elimination : vérifie si l'unité a un contrat d'élimination en cours
+\item Contract Elimination target near : Vérifie si la cible du contrat de l'unité est dans son champs de vision
+\item Nourriture proche : Vérifie si une ressource est suffisamment proche pour être récupérée par l'unité
 \item A un contrat : 
 \item Nourriture a portée : Vérifie si une ressource est dans le champ de vision de l'unité
 \end{itemize}
@@ -426,7 +426,7 @@ La liste des actions communes à chaque unité est :
 \subsection{Actions explorer, light, heavy}
 La liste des actions communes aux explorer, light et heavy est :
 \begin{itemize}
-\item Avancer orientation aléaoire : modifie l'orientation de l'unité et la fait avancer d'un pas.
+\item Avancer orientation aléatoire : modifie l'orientation de l'unité et la fait avancer d'un pas.
 \item Se retourner puis avancer : L'unité se retourner puis avance d'un pas
 \item Rentrer à la base : L'unité se tourne vers la base et avance d'un pas
 \item Ramasser : L'unité ramasse une des ressource à sa porté
@@ -434,7 +434,7 @@ La liste des actions communes aux explorer, light et heavy est :
 \subsection{Actions light, heavy}
 La liste des actions communes aux light et heavy est :
 \begin{itemize}
-\item Tirer : lance un projetile droit devant soit
+\item Tirer : lance un projectile droit devant soit
 \item Recharger : L'unité recharge son arme
 \end{itemize}
 \subsection{Actions bases}
@@ -451,7 +451,7 @@ La liste des actions spécifiques aux base est :
 \newpage
 \section{Messages}
 \paragraph{}
-Les messages permettent de communiquer avec les unités spécifiés via un paramètre géré par un menu déroulant. Ils se placent sur la partie basse d'un if ou à droite d'un autre message ou d'une ation non terminale. Le message n'est envoyé que si les conditions du if sont toutes validées. Les messages ne terminent pas le tour de l'unité\newline
+Les messages permettent de communiquer avec les unités spécifiés via un paramètre géré par un menu déroulant. Ils se placent sur la partie basse d'un if ou à droite d'un autre message ou d'une action non terminale. Le message n'est envoyé que si les conditions du if sont toutes validées. Les messages ne terminent pas le tour de l'unité\newline
 \begin{figure}[!h]
 	\centering
 		\includegraphics[scale=1]{msg.png}
@@ -460,10 +460,10 @@ Les messages permettent de communiquer avec les unités spécifiés via un param
 \paragraph{}
 La liste des messages communs à chaque unité est :
 \begin{itemize}
-\item Demander de l'aide : Envoit un message de type aide aux unités spéifiés dans le menu déroulant
-\item Donner se position : Envoit un message de type position aux unités spéifiés dans le menu déroulant
-\item Ordonner attaque : Envoit un message de type attaque aux unités spéifiés dans le menu déroulant
-\item Donner la position de ressource : Envoit un message de type position ressources aux unités spéifiés dans le menu déroulant
+\item Demander de l'aide : Envoit un message de type aide aux unités spécifiés dans le menu déroulant
+\item Donner se position : Envoit un message de type position aux unités spécifiés dans le menu déroulant
+\item Ordonner attaque : Envoit un message de type attaque aux unités spécifiés dans le menu déroulant
+\item Donner la position de ressource : Envoit un message de type position ressources aux unités spécifiés dans le menu déroulant
 \end{itemize}
 \newpage
 \section{Actions non terminale}
