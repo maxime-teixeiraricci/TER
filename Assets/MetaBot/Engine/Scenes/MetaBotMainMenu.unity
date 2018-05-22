@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1273174, g: 0.13414761, b: 0.12107885, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731725, g: 0.13414745, b: 0.12107873, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -6342,6 +6342,11 @@ Prefab:
       propertyPath: m_Color.a
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 224088341953780032, guid: 5364b43c29f49044a8b92b622f777355,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.106536865
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5364b43c29f49044a8b92b622f777355, type: 2}
   m_IsPrefabParent: 0
@@ -6508,7 +6513,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.46937528}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000084639, y: 0.3999977}
+  m_AnchoredPosition: {x: -0.000084639, y: 0.40000153}
   m_SizeDelta: {x: -0.000061035, y: -0.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &931928732
@@ -6869,6 +6874,11 @@ Prefab:
         type: 2}
       propertyPath: m_Color.a
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224088341953780032, guid: 5364b43c29f49044a8b92b622f777355,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.10650635
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5364b43c29f49044a8b92b622f777355, type: 2}
@@ -7839,7 +7849,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.24400002, y: 0.42178455}
   m_AnchorMax: {x: 0.9075614, y: 0.5295231}
-  m_AnchoredPosition: {x: 1.1162033, y: 52.38}
+  m_AnchoredPosition: {x: 1.1162109, y: 52.38}
   m_SizeDelta: {x: 1.0052, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1049752118
@@ -9327,6 +9337,9 @@ MonoBehaviour:
   - _mapName: Garden
     _indexScene: 6
     _mapThumbnail: {fileID: 21300000, guid: 43be50ecdfb881b42b3e0d3f4f900a90, type: 3}
+  - _mapName: Space
+    _indexScene: 7
+    _mapThumbnail: {fileID: 0}
   _selectedMap:
     _mapName: 
     _indexScene: 0
@@ -12804,7 +12817,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.8678956, y: 0.89868546}
   m_AnchorMax: {x: 0.92600006, y: 0.9861088}
-  m_AnchoredPosition: {x: 4.4658203, y: 20.6745}
+  m_AnchoredPosition: {x: 4.4658203, y: 20.67456}
   m_SizeDelta: {x: 1.5999985, y: 7.5999985}
   m_Pivot: {x: 3.288681, y: 3.0768855}
 --- !u!114 &1754692049
@@ -13299,6 +13312,11 @@ Prefab:
         type: 2}
       propertyPath: m_Color.a
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224088341953780032, guid: 5364b43c29f49044a8b92b622f777355,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.106536865
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5364b43c29f49044a8b92b622f777355, type: 2}
@@ -15407,6 +15425,11 @@ Prefab:
         type: 2}
       propertyPath: m_Color.a
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224088341953780032, guid: 5364b43c29f49044a8b92b622f777355,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.10650635
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5364b43c29f49044a8b92b622f777355, type: 2}

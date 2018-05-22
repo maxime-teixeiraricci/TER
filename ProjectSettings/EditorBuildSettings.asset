@@ -26,3 +26,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/GardenMap.unity
     guid: 8cee35d1bc64cc9429d56d00ed31e180
+  - enabled: 1
+    path: Assets/MetaBot/Scenes/SpaceMap.unity
+    guid: 5f47f74331acbfa439a8827f78b20a7b
