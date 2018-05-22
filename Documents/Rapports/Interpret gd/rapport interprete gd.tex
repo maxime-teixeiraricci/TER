@@ -633,7 +633,7 @@ Le script va simplement calculer la moyenne des positions de l’ensembles des u
 \subsection{Caméra première personne}
 \paragraph{}
 
-Sur une idée de notre encadrant Mr Ferber, il a été décidé de mettre en place une caméra première personne , car cette option permettait à l’utilisateur de se mettre dans la vue complète de l’unité et de pouvoir mieux suivre ce qui peut se passer autour de cette unité, et pour profiter pleinement des possibilités que permet une version Unity du jeu. \newline
+Sur une idée de notre encadrant M. Ferber, il a été décidé de mettre en place une caméra première personne , car cette option permettait à l’utilisateur de se mettre dans la vue complète de l’unité et de pouvoir mieux suivre ce qui peut se passer autour de cette unité, et pour profiter pleinement des possibilités que permet une version Unity du jeu. \newline
 
 Un premier jet de la caméra avait été une caméra totalement dans l’unité, suivant ainsi sa position et sa rotation. La caméra était en soit très bien , mais le fait de suivre la rotation de l’unité était peu agréable car les unités ont tendance à beaucoup bouger et se retourner dans les coins. 
 
@@ -712,7 +712,7 @@ Enfin si il est grisé, cela signifie que cette caméra n’est pas disponible d
 
 \section{Fin du jeu et Statistiques}
 
-Avec la quantité de travail pour faire fonctionner le moteur, un écran de fin du jeu n’avait pas encore mis en place,alors qu’il totalement vital ici. Si l’on souhaite que WarBot soit utilisable l’année prochaine pour l’UE Programmation Orientée Agents de Mr. Ferber, il est nécessaire de pouvoir finir le jeu et récupérer le nom du gagnant du match.
+Avec la quantité de travail pour faire fonctionner le moteur, un écran de fin du jeu n’avait pas encore mis en place,alors qu’il totalement vital ici. Si l’on souhaite que WarBot soit utilisable l’année prochaine pour l’UE Programmation Orientée Agents de M. Ferber, il est nécessaire de pouvoir finir le jeu et récupérer le nom du gagnant du match.
 \paragraph{}
 La aussi dans l’optique d’une généricité maximale, il a fallu trouver un moyen de pouvoir ajouter très facilement des conditions et des exécutions de fin.
 Nous nous sommes ainsi inspirés du fonctionnement des Actions, et  utilisons ainsi des fonctions anonymes stockées dans 2 tableaux. 
@@ -916,7 +916,7 @@ Voici un exemple
 % Ressource Race
 \newpage
 \section{Nouvelle condition de victoire}
-A la fin du projet , après avoir intégré la gestion de la fin du jeu, Mr Ferber nous a donné l’idée de mettre en place un second mode de jeu pour montrer les possibilités de généricité du projet. Le temps étant assez court, l’idée de mettre en place un mode de jeu entier était impossible , et nous avons mis en place une condition de victoire différente, mais toujours basée sur le mode de jeu WarBot.
+A la fin du projet , après avoir intégré la gestion de la fin du jeu, M. Ferber nous a donné l’idée de mettre en place un second mode de jeu pour montrer les possibilités de généricité du projet. Le temps étant assez court, l’idée de mettre en place un mode de jeu entier était impossible , et nous avons mis en place une condition de victoire différente, mais toujours basée sur le mode de jeu WarBot.
 \paragraph{}
 Reprenant l’idée d’un mode réfléchi par l’équipe Game Design, la possibilité de passer en “Course aux ressources” a été rajoutée dans les paramètres. Si ce mode est sélectionné , l’utilisateur va pouvoir définir un temps limité en secondes avant l’arrêt de la partie, ainsi qu’une limite de ressource à atteindre. Le jeu s’arrête si le temps imparti est atteint, ou si l’une des équipes à atteint le nombre de ressources spécifié dans l’inventaire de leur base. Dans le cas où le temps est atteint, c’est l’équipe ayant le plus de ressources dans sa base qui a gagnée. 
 
@@ -974,7 +974,7 @@ Cette skybox a été générée par l’outil “Spacescape”, qui génère des
 \end{center}
 \paragraph{}
 
-La carte a d'abord été mise en place sous forme de rectangle, pour bien comprendre le fonctionnement de Unity. Il  n’a pas été malheureusement possible de finir et de modifier la forme pour s’adapter au schéma, la carte est donc restée dans les fichiers du projet tel quelle et n’est pas accessible dans le jeu.
+La carte a d'abord été mise en place sous forme de rectangle, pour bien comprendre le fonctionnement de Unity. Il  n’a pas été malheureusement possible de finir et de modifier la forme pour s’adapter au schéma, la carte est donc restée dans les fichiers du projet tel quelle.
 
 Voici une image de l’état de la carte : 
 
@@ -985,7 +985,7 @@ Voici une image de l’état de la carte :
 \end{center}
 \paragraph{}
 
-
+La carte est présente dans la liste des cartes disponibles pour le jeu pour la démonstration, mais elle n’est qu’au stade présenté sur la capture d’écran ci dessus. Il faudra la retravailler pour qu’elle corresponde au schéma imaginé initialement.
 
 \newpage
 \chapter{Partie "Game Design"}
@@ -1476,7 +1476,22 @@ Le mode de jeu de coopération nous semble encore trop peu intéressant notammen
 Bien sûr de nombreux bugs vont subsister lors de la modification et l’ajout de fonctionnalités que nous ne voyons pas encore, mais nous pourrons répondre aux questions des prochaines équipes travaillant sur le projet si besoin.
 
 \section{Point final}
+Ce projet a été une grande expérience pour nous tous.\newline
+Ce fut une joie pour certains d’entre nous,qui n’avaient pas encore travaillé avec des outils comme Unity,  de pouvoir se lancer dans la découverte du développement d’un jeu comme Warbot.\newline
+L’apprentissage de nouveaux outils et de nouvelles méthodes de programmation qui peuvent dépayser un développeur a été une expérience formidable pour chacun.
+\paragraph{}
+Travailler à 8 fut une expérience enrichissante pour tous les membres de l’équipe qui ont rarement voire jamais eu l’occasion de travailler à plus de 4 sur un même projet. \newline
+Être autant sur ce projet nous a permis de nous confronter aux problèmes de communications mais aussi de diversifier énormément le type de travail demandé à chacune des sous-équipes de 2 formées pendant ce projet. De plus les réunions hebdomadaires ont été l’occasion de comprendre les enjeux et les méthodes de travail de chaques parties nécessaires au développement de WarBot. 
+\paragraph{}
+L’ensemble du projet à été réalisé sous une méthode de développement Agile, qui a été une expérience nouvelle pour certains d’entre nous.\newline
+Le respect des délais pour l’implémentation de fonctionnalités, l’assurance d’avoir un jeu qui pourra être lancé à chaque réunion avec notre encadrant sont des contraintes auxquelles il a fallu s’habituer. \newline
+Le jeu a ainsi été utilisable à chaque réunion, quelques soit les fonctionnalités implémentées durant la semaine qui précédait. 
+\paragraph{}
+Toute l’équipe souhaite donc remercier M. Ferber pour nous avoir permis de participer à son projet de portage de WarBot sous le moteur de jeu Unity, en plus de son expérience et de ses nombreux conseils. \newline
+Nous souhaitons aussi remercier l’équipe qui a travaillé sur le moteur et l’interface du jeu, pour l’aide qu’ils ont pu nous apporter, ainsi que l’équipe de l’année précédente qui nous ont permis de nous aiguiller sur comment améliorer leur version du projet. \newline
+Enfin, nous remercions M. Lafourcade pour l’expérience qu’il a apporté à tout le monde par l’organisation de l’UE TER.
 
+\newpage
 \part{Annexe}
 \section{Captures d'écrans du jeu}
 Voici un ensemble de capture d’écrans, afin que vous puissiez voir le jeu tel qu’il est a la fin de la rédaction de ce rapport.
@@ -3462,14 +3477,26 @@ public struct Traduction
     ;
 \end{lstlisting}
 \captionof{figure} {Statistiques funs}
-
+\newpage
 \section{Documents}
+
+Voici une listes des documents rédigés par notre équipe lors de ce projet :
+\begin{itemize}
+\item Liste bugs amélioration ancien Warbot : une liste des bugs trouvés sur la version créé l'année dernière et des notes sur les choses à améliorer dans notre version du projet
+\item Rapport de bug version acuelle : la liste des bugs trouvés dans la version actuelle de WarBot. Classé par catégorie suivant s'ils sont corrigés, patchés, à corriger ou réapparu.
+\item Manuel utilisateur : un document expliquant comment utiliser WarBot. Il y a également une documentation des primitives présentent dans la version acuelle.
+\item Idees modes coop : un brouillon du mode de coopération qui a permis à structurer nos idées.
+\item CoopBot : le game document du mode de coopération
+\item Capture De Drapeau : le game document du mode capture de drapeau
+\end{itemize}
 
 % Uncomment the following two lines if you want to have a bibliography
 %\bibliographystyle{alpha}
 %\bibliography{document}
 
 \end{document}
+
+
 
 
 
