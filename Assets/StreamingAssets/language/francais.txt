@@ -107,7 +107,7 @@
 	Light=Char Léger
 	Heavy=Char Lourd
 	Explorer=Explorateur
-	Ressource limit=Limite de ressources
+	Ressource limit=Ressources
 	Time=Temps
 	Êtes-vous sûr de vouloir quitter le jeu ?=Êtes-vous sûr de vouloir quitter le jeu ?
 # Editeur 
@@ -162,6 +162,6 @@
 	FPS=FPS
 	FREE=LIBRE
 	Winner=Gagnant
-	Time Limit :=Limite de temps
-	Ressource Limit :=Limite de ressources
+	Time Limit :=Temps
+	Ressource Limit :=Ressources
 	Egalite=Egalite
