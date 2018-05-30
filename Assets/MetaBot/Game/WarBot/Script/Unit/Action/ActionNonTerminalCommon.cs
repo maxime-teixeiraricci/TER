@@ -5,11 +5,12 @@ using UnityEngine;
 public class ActionNonTerminalCommon : ActionNonTerminal
 {
     
-
+    
     void Start()
     {
         InitActionNonTerminal();
     }
+    
 
     public override void InitActionNonTerminal()
     {

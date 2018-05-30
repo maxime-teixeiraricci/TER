@@ -5907,10 +5907,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInstructionUsed: 0
   _instructions: []
-  _instructionsEditor: []
   _componentPercepts: {fileID: 114281282133564676}
   _componentActions: {fileID: 114705731146767942}
   _componentActionsNonTerminales: {fileID: 114182705814539960}
+  _instructionsEditor: []
   _messageManager: {fileID: 114623010356796800}
   nbInstruction: 0
 --- !u!114 &114461150599077682
@@ -8332,10 +8332,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInstructionUsed: 0
   _instructions: []
-  _instructionsEditor: []
   _componentPercepts: {fileID: 114626029791487328}
   _componentActions: {fileID: 114661875131545866}
   _componentActionsNonTerminales: {fileID: 114572671148681802}
+  _instructionsEditor: []
   _messageManager: {fileID: 114459000106165838}
   nbInstruction: 0
 --- !u!114 &114932586317708574
@@ -8547,10 +8547,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInstructionUsed: 0
   _instructions: []
-  _instructionsEditor: []
   _componentPercepts: {fileID: 114217357924578970}
   _componentActions: {fileID: 114455615528967702}
   _componentActionsNonTerminales: {fileID: 114752557574285384}
+  _instructionsEditor: []
   _messageManager: {fileID: 114349587072439970}
   nbInstruction: 0
 --- !u!114 &114985844408022414
@@ -8566,10 +8566,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInstructionUsed: 0
   _instructions: []
-  _instructionsEditor: []
   _componentPercepts: {fileID: 114450536404498506}
   _componentActions: {fileID: 114820325244372160}
   _componentActionsNonTerminales: {fileID: 114073716874955344}
+  _instructionsEditor: []
   _messageManager: {fileID: 114082178259436498}
   nbInstruction: 0
 --- !u!114 &114987709052030350

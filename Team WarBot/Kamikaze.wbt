@@ -1,0 +1,232 @@
+<behavior>
+  <teamName>Kamikaze</teamName>
+  <unit name="Base">
+    <instruction>
+      <parameters>
+        <PERCEPT_LIFE_25 />
+      </parameters>
+      <actions>
+        <ACTION_CREATE_LIFE_LIGHT />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_BAG_25 />
+      </parameters>
+      <actions>
+        <ACTION_CREATE_LIGHT />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_ENEMY />
+      </parameters>
+      <message>
+        <ACTN_MESSAGE_HELP>
+          <Heavy />
+        </ACTN_MESSAGE_HELP>
+      </message>
+      <actions>
+        <ACTION_IDLE />
+      </actions>
+    </instruction>
+  </unit>
+  <unit name="Heavy">
+    <instruction>
+      <parameters>
+        <PERCEPT_BLOCKED />
+      </parameters>
+      <actions>
+        <ACTION_MOVE_UNTIL_UNBLOCKED />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <NOT_PERCEPT_IS_RELOADED />
+      </parameters>
+      <actions>
+        <ACTION_RELOAD />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_ENEMY />
+        <PERCEPT_IS_RELOADED />
+      </parameters>
+      <actions>
+        <ACTION_FIRE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_MESSAGE_HELP />
+        <NOT_PERCEPT_ENEMY />
+      </parameters>
+      <message>
+        <ACTN_TOWARD_MESSAGE_SENDER>
+          <NONE />
+        </ACTN_TOWARD_MESSAGE_SENDER>
+      </message>
+      <actions>
+        <ACTION_MOVE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters />
+      <actions>
+        <ACTION_MOVE />
+      </actions>
+    </instruction>
+  </unit>
+  <unit name="Light">
+    <instruction>
+      <parameters>
+        <PERCEPT_BLOCKED />
+      </parameters>
+      <actions>
+        <ACTION_MOVE_UNTIL_UNBLOCKED />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_ENEMY />
+        <PERCEPT_IS_RELOADED />
+      </parameters>
+      <message>
+        <ACTN_MESSAGE_ATTACK>
+          <Light />
+        </ACTN_MESSAGE_ATTACK>
+      </message>
+      <actions>
+        <ACTION_FIRE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <NOT_PERCEPT_IS_RELOADED />
+      </parameters>
+      <actions>
+        <ACTION_RELOAD />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_MESSAGE_ATTACK />
+        <NOT_PERCEPT_ENEMY />
+      </parameters>
+      <message>
+        <ACTN_TOWARD_MESSAGE_SENDER>
+          <NONE />
+        </ACTN_TOWARD_MESSAGE_SENDER>
+      </message>
+      <actions>
+        <ACTION_MOVE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_FOOD_NEAR />
+        <NOT_PERCEPT_BAG_FULL />
+      </parameters>
+      <actions>
+        <ACTION_PICK />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <NOT_PERCEPT_LIFE_MAX />
+        <NOT_PERCEPT_BAG_EMPTY />
+      </parameters>
+      <actions>
+        <ACTION_HEAL />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters />
+      <actions>
+        <ACTION_MOVE />
+      </actions>
+    </instruction>
+  </unit>
+  <unit name="Explorer">
+    <instruction>
+      <parameters>
+        <PERCEPT_FOOD />
+      </parameters>
+      <actions>
+        <ACTION_MOVE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_FOOD_NEAR />
+        <NOT_PERCEPT_BAG_FULL />
+      </parameters>
+      <message>
+        <ACTN_MESSAGE_POSITION_RESOURCE>
+          <Explorer />
+        </ACTN_MESSAGE_POSITION_RESOURCE>
+      </message>
+      <actions>
+        <ACTION_PICK />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_BAG_10 />
+      </parameters>
+      <actions>
+        <ACTION_BACK_TO_BASE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_BASE_NEAR_ALLY />
+        <NOT_PERCEPT_BAG_EMPTY />
+      </parameters>
+      <actions>
+        <ACTION_GIVE_RESSOURCE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_ENEMY />
+      </parameters>
+      <message>
+        <ACTN_MESSAGE_ATTACK>
+          <Light />
+        </ACTN_MESSAGE_ATTACK>
+      </message>
+      <actions>
+        <ACTION_TURN_AROUND_MOVE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_BLOCKED />
+      </parameters>
+      <actions>
+        <ACTION_MOVE_UNTIL_UNBLOCKED />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters>
+        <PERCEPT_MESSAGE_POSITION_RESOURCE />
+      </parameters>
+      <message>
+        <ACTN_TOWARD_MESSAGE_SENDER>
+          <NONE />
+        </ACTN_TOWARD_MESSAGE_SENDER>
+      </message>
+      <actions>
+        <ACTION_MOVE />
+      </actions>
+    </instruction>
+    <instruction>
+      <parameters />
+      <actions>
+        <ACTION_MOVE />
+      </actions>
+    </instruction>
+  </unit>
+</behavior>

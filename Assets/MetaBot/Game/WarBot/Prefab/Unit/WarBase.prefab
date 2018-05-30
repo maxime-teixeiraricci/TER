@@ -489,10 +489,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInstructionUsed: 0
   _instructions: []
-  _instructionsEditor: []
   _componentPercepts: {fileID: 114903467683322418}
   _componentActions: {fileID: 114010804989806642}
   _componentActionsNonTerminales: {fileID: 114228995306872970}
+  _instructionsEditor: []
   _messageManager: {fileID: 114404676544177780}
   nbInstruction: 0
 --- !u!114 &114375346082489782

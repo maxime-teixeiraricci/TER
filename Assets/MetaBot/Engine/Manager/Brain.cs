@@ -12,12 +12,15 @@ public class Brain : MonoBehaviour
 {
 
     public int indexInstructionUsed;
+
     public List<Instruction> _instructions = new List<Instruction>();
-    public List<InstructionEditor> _instructionsEditor = new List<InstructionEditor>();
+
     public Percept _componentPercepts;
     public Action _componentActions;
     public ActionNonTerminal _componentActionsNonTerminales;
     private string _currentAction;
+
+    public List<InstructionEditor> _instructionsEditor = new List<InstructionEditor>();
     public MessageManager _messageManager;
     public int nbInstruction;
 

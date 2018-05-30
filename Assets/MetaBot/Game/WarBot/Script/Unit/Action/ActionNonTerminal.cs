@@ -9,4 +9,5 @@ public abstract class ActionNonTerminal : MonoBehaviour
     public abstract void InitActionNonTerminal();
     public string _messageDestinataire;
     public Message _tmpMessage;
+
 }

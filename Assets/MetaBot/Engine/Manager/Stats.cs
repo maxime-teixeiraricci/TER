@@ -63,7 +63,10 @@ public class Stats : MonoBehaviour
     }
 
 
-
+    public float GetHealthRatio()
+    {
+        return _health * 1.0f / _maxHealth;
+    }
 
 
 
