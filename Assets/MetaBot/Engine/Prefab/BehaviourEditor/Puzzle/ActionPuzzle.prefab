@@ -110,7 +110,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 87c316b602156405d92e616621658222, type: 3}
+    m_Font: {fileID: 12800000, guid: 15dc1860b4770354297a47d1e87e3a27, type: 3}
     m_FontSize: 10
     m_FontStyle: 0
     m_BestFit: 1
@@ -190,11 +190,13 @@ MonoBehaviour:
   _label: {fileID: 114464871799310004}
   validPlace: false
   isValid: 0
+  isLock: 0
   neg: 0
   defaultColor: {r: 0.43382353, g: 0.43382353, b: 0.43382353, a: 0.784}
   validColor: {r: 1, g: 0.28676468, b: 0.28676468, a: 1}
   currentColor: {r: 0, g: 0, b: 0, a: 0}
   messageDropDown: {fileID: 0}
+  deltaPosNextObject: {x: 0, y: 0}
 --- !u!114 &114890633662104206
 MonoBehaviour:
   m_ObjectHideFlags: 1
