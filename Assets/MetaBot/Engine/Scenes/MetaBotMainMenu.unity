@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731725, g: 0.13414745, b: 0.12107873, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -3400,7 +3400,7 @@ Prefab:
     - target: {fileID: 114611912082327328, guid: f803624d2c783d54a99cd2d93a0527e0,
         type: 2}
       propertyPath: _listUnitGameObject.Array.size
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4713595209440132, guid: f803624d2c783d54a99cd2d93a0527e0, type: 2}
       propertyPath: m_LocalPosition.x
@@ -5758,7 +5758,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.042885266, y: 0.040523514}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -7.8200073, y: -0.52014637}
+  m_AnchoredPosition: {x: -7.8200226, y: -0.52014637}
   m_SizeDelta: {x: -16.82, y: -0.24}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &842230064
@@ -8282,7 +8282,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.046159253, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -9.02002, y: 0.47966003}
+  m_AnchoredPosition: {x: -9.020035, y: 0.47966003}
   m_SizeDelta: {x: -16.23, y: -0.24}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1139438334

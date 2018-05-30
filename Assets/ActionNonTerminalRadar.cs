@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActionNonTerminalRadar : ActionNonTerminalCommon
+public class ActionNonTerminalRadar : ActionNonTerminal
 {
 
     
@@ -26,6 +26,5 @@ public class ActionNonTerminalRadar : ActionNonTerminalCommon
         {
             GetComponent<Stats>().SetHeading(GetComponent<Stats>().GetHeading() - 30);
         };
-        base.InitActionNonTerminal();
     }
 }
